@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -104,13 +105,66 @@ footer{
 }
 
 @media(max-width:900px){
-    header{flex-direction:column;padding:10px;}
-    .logo img,.logo-right img{width:55px;}
-    nav{flex-wrap:wrap;gap:20px;margin:10px 0;}
-    nav a{font-size:15px;}
-    .slider-track a,.player-card{flex:0 0 80%;}
-    .slider-arrow{width:42px;height:42px;font-size:22px;}
-    .social-icons img{width:55px;}
+
+    header{
+        flex-direction:row;
+        padding:8px 10px;
+        gap:10px;
+        overflow-x:auto;
+    }
+
+    .logo{
+        flex:0 0 45px;
+    }
+
+    .logo img{
+        width:45px;
+    }
+
+    .logo-right{
+        display:none;
+    }
+
+    nav{
+        flex:1;
+        display:flex;
+        justify-content:flex-start;
+        align-items:center;
+        gap:16px;
+        margin:0;
+        overflow-x:auto;
+        white-space:nowrap;
+        flex-wrap:nowrap;
+    }
+
+    nav a{
+        font-size:12px;
+        flex:0 0 auto;
+    }
+
+    section{
+        padding:55px 6%;
+        scroll-margin-top:75px;
+    }
+
+    h2{
+        font-size:clamp(30px,9vw,44px);
+    }
+
+    .slider-track a,
+    .player-card{
+        flex:0 0 85%;
+    }
+
+    .slider-arrow{
+        width:40px;
+        height:40px;
+        font-size:22px;
+    }
+
+    .social-icons img{
+        width:55px;
+    }
 }
 </style>
 </head>
@@ -294,3 +348,4 @@ function scrollSlider(trackId, direction){
 
 </body>
 </html>
+```
