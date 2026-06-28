@@ -1,10 +1,309 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Allstar Galaxy</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Allstar Galaxy</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #05000f;
+      color: white;
+    }
+
+    header {
+      background: #090014;
+      padding: 15px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid #ffcc00;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo img {
+      width: 80px;
+    }
+
+    .logo h1 {
+      color: #ffcc00;
+      margin: 0;
+      font-size: 32px;
+    }
+
+    .logo p {
+      margin: 0;
+      font-size: 13px;
+      color: #ffffff;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #ffcc00;
+    }
+
+    .hero {
+      min-height: 650px;
+      background-image: url("ALLSTARGALAXY.png");
+      background-size: cover;
+      background-position: center;
+    }
+
+    section {
+      padding: 50px 8%;
+    }
+
+    h2 {
+      text-align: center;
+      color: #ffffff;
+      font-size: 36px;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: #120022;
+      border: 1px solid #b000ff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(176, 0, 255, 0.5);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 18px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #ffcc00;
+    }
+
+    .button {
+      display: inline-block;
+      background: linear-gradient(90deg, #b000ff, #ff007f);
+      color: white;
+      padding: 12px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .panel {
+      background: #090014;
+      border: 1px solid #b000ff;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 0 15px rgba(176, 0, 255, 0.4);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid #ffcc00;
+    }
+
+    .socials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .social-box {
+      background: #100020;
+      border: 1px solid #b000ff;
+      padding: 25px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    footer {
+      background: #05000f;
+      border-top: 1px solid #333;
+      padding: 30px;
+      text-align: center;
+      color: #aaa;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      nav {
+        margin-top: 15px;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 8px;
+      }
+
+      .hero {
+        min-height: 350px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <h1>Welcome to Allstar Galaxy</h1>
-    <p>The official home of the Allstar Galaxy.</p>
+
+  <header>
+    <div class="logo">
+      <img src="allstargalaxy-logo-instagram(1).png" alt="Allstar Galaxy Logo">
+      <div>
+        <h1>ALLSTAR GALAXY</h1>
+        <p>The Official Home of the Allstar Galaxy</p>
+      </div>
+    </div>
+
+    <nav>
+      <a href="#">Home</a>
+      <a href="#team">Team</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#videos">Videos</a>
+      <a href="#social">Social</a>
+    </nav>
+  </header>
+
+  <div class="hero"></div>
+
+  <section id="videos">
+    <h2>Latest Videos</h2>
+
+    <div class="cards">
+      <div class="card">
+        <img src="ALLSTARGALAXY.png" alt="Best of Allstar Galaxy">
+        <div class="card-content">
+          <h3>The Best of Allstar Galaxy</h3>
+          <p>Best plays, goals, saves, and moments from the team.</p>
+          <a class="button" href="#">Watch Video</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="IMG_3490.JPG" alt="Top 10 Goals">
+        <div class="card-content">
+          <h3>Top 10 Goals</h3>
+          <p>The top 10 goals of the season.</p>
+          <a class="button" href="#">Watch Video</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="IMG_3508.JPG" alt="Goal of the Season">
+        <div class="card-content">
+          <h3>Goal of the Season</h3>
+          <p>Which goal was your favorite?</p>
+          <a class="button" href="#">Watch Video</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="schedule">
+    <h2>Schedule</h2>
+
+    <div class="info-grid">
+      <div class="panel">
+        <h3>Upcoming Match</h3>
+        <p><strong>League:</strong> Sunnyvale Soccer League</p>
+        <p><strong>Match:</strong> Allstar Galaxy vs Opponent Team</p>
+        <p><strong>Date:</strong> Coming Soon</p>
+        <p><strong>Location:</strong> Sunnyvale, California</p>
+      </div>
+
+      <div class="panel">
+        <h3>League Standings</h3>
+        <p>Standings information coming soon.</p>
+        <p>Team stats, wins, losses, and points will be added here.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <h2>Photo Gallery</h2>
+
+    <div class="gallery">
+      <img src="IMG_3490.JPG" alt="Allstar Galaxy goal celebration">
+      <img src="IMG_3508.JPG" alt="Allstar Galaxy team celebration">
+      <img src="ALLSTARGALAXY.png" alt="Allstar Galaxy banner">
+    </div>
+  </section>
+
+  <section id="social">
+    <h2>Follow Allstar Galaxy</h2>
+
+    <div class="socials">
+      <div class="social-box">
+        <h3>YouTube</h3>
+        <p>Full matches, highlights, goals, saves, and shorts.</p>
+        <a class="button" href="#">Subscribe</a>
+      </div>
+
+      <div class="social-box">
+        <h3>Instagram</h3>
+        <p>Photos, reels, and team moments.</p>
+        <a class="button" href="#">Follow</a>
+      </div>
+
+      <div class="social-box">
+        <h3>Facebook</h3>
+        <p>Updates, videos, and community posts.</p>
+        <a class="button" href="#">Like</a>
+      </div>
+
+      <div class="social-box">
+        <h3>TikTok</h3>
+        <p>Short clips, goals, and highlights.</p>
+        <a class="button" href="#">Follow</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Allstar Galaxy Soccer Team. All rights reserved.</p>
+  </footer>
+
 </body>
 </html>
