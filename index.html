@@ -6,7 +6,6 @@
 <title>Allstar Galaxy</title>
 
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -23,19 +22,14 @@ body{
     color:white;
 }
 
-/* HEADER */
-
 header{
     position:sticky;
     top:0;
     z-index:1000;
-
     background:rgba(9,0,20,.97);
-
     display:flex;
     align-items:center;
     justify-content:space-between;
-
     padding:10px 30px;
 }
 
@@ -71,14 +65,10 @@ nav a:hover{
     text-shadow:0 0 10px #ffcc00;
 }
 
-/* HERO */
-
 .hero img{
     width:100%;
     display:block;
 }
-
-/* GENERAL */
 
 section{
     padding:80px 8%;
@@ -91,8 +81,6 @@ h2{
     margin-bottom:40px;
     text-transform:uppercase;
 }
-
-/* FEATURED VIDEO */
 
 .video-container{
     max-width:1000px;
@@ -110,8 +98,6 @@ h2{
     border:0;
 }
 
-/* TEAM */
-
 .team-image{
     max-width:1000px;
     margin:auto;
@@ -125,51 +111,11 @@ h2{
     display:block;
 }
 
-/* VIDEO CARDS */
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:25px;
-}
-
-.card{
-    background:#120022;
-    border:1px solid #b000ff;
-    border-radius:12px;
-    overflow:hidden;
-}
-
-.card img{
-    width:100%;
-    aspect-ratio:16/9;
-    object-fit:cover;
-}
-
-.card-content{
-    padding:20px;
-}
-
-.card h3{
-    color:#ffcc00;
-    margin-bottom:15px;
-}
-
-.button{
-    display:inline-block;
-    margin-top:20px;
-    background:linear-gradient(90deg,#b000ff,#ff007f);
-    color:white;
-    text-decoration:none;
-    padding:12px 25px;
-    border-radius:8px;
-}
-
 /* SCHEDULE */
 
 .schedule-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(500px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
     gap:40px;
     max-width:1400px;
     margin:auto;
@@ -187,7 +133,7 @@ h2{
     text-align:center;
     padding:20px;
     color:#ffcc00;
-    font-size:28px;
+    font-size:26px;
 }
 
 .schedule-card img{
@@ -195,16 +141,9 @@ h2{
     display:block;
 }
 
-.panel{
-    background:#090014;
-    border:1px solid #b000ff;
-    border-radius:12px;
-    padding:30px;
-}
+/* PHOTO / VIDEO SLIDERS */
 
-/* GALLERY */
-
-.gallery-slider{
+.slider{
     position:relative;
     display:flex;
     align-items:center;
@@ -212,7 +151,7 @@ h2{
     margin:auto;
 }
 
-.gallery-track{
+.slider-track{
     display:flex;
     gap:20px;
     overflow-x:auto;
@@ -221,24 +160,30 @@ h2{
     width:100%;
 }
 
-.gallery-track::-webkit-scrollbar{
+.slider-track::-webkit-scrollbar{
     display:none;
 }
 
-.gallery-track a{
+.slider-track a{
     flex:0 0 calc(33.333% - 14px);
 }
 
-.gallery-track img{
+.slider-track img{
     width:100%;
     aspect-ratio:16/9;
     object-fit:cover;
     object-position:center top;
     border-radius:12px;
     border:2px solid #ffcc00;
+    transition:.3s;
 }
 
-.gallery-arrow{
+.slider-track img:hover{
+    transform:scale(1.03);
+    box-shadow:0 0 20px rgba(255,204,0,.6);
+}
+
+.slider-arrow{
     background:#090014;
     color:#ffcc00;
     border:2px solid #ffcc00;
@@ -247,6 +192,12 @@ h2{
     border-radius:50%;
     font-size:28px;
     cursor:pointer;
+    z-index:5;
+}
+
+.slider-arrow:hover{
+    background:#ffcc00;
+    color:#090014;
 }
 
 .left{
@@ -276,16 +227,12 @@ h2{
     transform:scale(1.15);
 }
 
-/* FOOTER */
-
 footer{
     border-top:1px solid #222;
     padding:40px;
     text-align:center;
     color:#aaa;
 }
-
-/* MOBILE */
 
 @media(max-width:900px){
 
@@ -309,17 +256,20 @@ footer{
         font-size:15px;
     }
 
-    .gallery-track a{
+    .slider-track a{
         flex:0 0 80%;
     }
 
-    .gallery-arrow{
+    .slider-arrow{
         width:42px;
         height:42px;
         font-size:22px;
     }
-}
 
+    .social-icons img{
+        width:55px;
+    }
+}
 </style>
 </head>
 
@@ -329,28 +279,28 @@ footer{
 
 <div class="logo">
 <a href="#top">
-<img src="allstargalaxy-logo-instagram(1).png" alt="Logo">
+<img src="allstargalaxy-logo-instagram(1).png" alt="Allstar Galaxy Logo">
 </a>
 </div>
 
 <nav>
-    <a href="#team">Team</a>
-    <a href="#schedule">Schedule</a>
-    <a href="#gallery">Photos</a>
-    <a href="#videos">Videos</a>
-    <a href="#social">Follow</a>
+<a href="#team">Team</a>
+<a href="#schedule">Schedule</a>
+<a href="#gallery">Photos</a>
+<a href="#videos">Videos</a>
+<a href="#social">Follow</a>
 </nav>
-    
+
 <div class="logo-right">
 <a href="#top">
-<img src="allstargalaxy-logo-instagram(1).png" alt="Logo">
+<img src="allstargalaxy-logo-instagram(1).png" alt="Allstar Galaxy Logo">
 </a>
 </div>
 
 </header>
 
 <div class="hero">
-<img src="ALLSTARGALAXY.png" alt="Banner">
+<img src="ALLSTARGALAXY.png" alt="Allstar Galaxy Banner">
 </div>
 
 <section>
@@ -365,126 +315,106 @@ footer{
 <h2>Team</h2>
 
 <div class="team-image">
-<img src="Allstar-Galaxy-Team.png" alt="Team">
+<img src="Allstar-Galaxy-Team.png" alt="Allstar Galaxy Team">
 </div>
 </section>
 
 <section id="schedule">
+<h2>Schedule</h2>
 
-    <h2>Schedule</h2>
+<div class="schedule-grid">
 
-    <div class="schedule-grid">
+<div class="schedule-card">
+<h3>Latest Results</h3>
+<img src="schedule.png" alt="Latest Results">
+</div>
 
-        <div class="schedule-card">
-            <h3>Latest Results</h3>
-            <img src="schedule.png" alt="Match Schedule">
-        </div>
+<div class="schedule-card">
+<h3>League Standings</h3>
+<img src="standings.png" alt="League Standings">
+</div>
 
-        <div class="schedule-card">
-            <h3>League Standings</h3>
-            <img src="standings.png" alt="League Standings">
-        </div>
-
-    </div>
-
+</div>
 </section>
 
 <section id="gallery">
-
 <h2>Latest Photos</h2>
 
-<div class="gallery-slider">
+<div class="slider">
+<button class="slider-arrow left" onclick="scrollSlider('photoTrack', -1)">&#10094;</button>
 
-<button class="gallery-arrow left" onclick="scrollGallery(-1)">&#10094;</button>
-
-<div class="gallery-track" id="galleryTrack">
+<div class="slider-track" id="photoTrack">
 
 <a href="IMG_3490.JPG" target="_blank">
-<img src="IMG_3490.JPG">
+<img src="IMG_3490.JPG" alt="Allstar Galaxy Action Photo">
 </a>
 
 <a href="IMG_3508.JPG" target="_blank">
-<img src="IMG_3508.JPG">
+<img src="IMG_3508.JPG" alt="Allstar Galaxy Celebration Photo">
 </a>
 
 <a href="ALLSTARGALAXY.png" target="_blank">
-<img src="ALLSTARGALAXY.png">
+<img src="ALLSTARGALAXY.png" alt="Allstar Galaxy Banner">
 </a>
 
 </div>
 
-<button class="gallery-arrow right" onclick="scrollGallery(1)">&#10095;</button>
-
+<button class="slider-arrow right" onclick="scrollSlider('photoTrack', 1)">&#10095;</button>
 </div>
 </section>
-
-    
 
 <section id="videos">
-    
 <h2>Latest Videos</h2>
 
-<div class="cards">
+<div class="slider">
+<button class="slider-arrow left" onclick="scrollSlider('videoTrack', -1)">&#10094;</button>
 
-<div class="card">
-<img src="ALL-GOALS-OF-THE-SEASON.jpg">
-<div class="card-content">
-<h3>All Goals of the Season</h3>
-<p>Every Allstar Galaxy goal from Summer 2026.</p>
-<a class="button" href="https://www.youtube.com/watch?v=J1rAx-5y53g" target="_blank">Watch Video</a>
-</div>
-</div>
+<div class="slider-track" id="videoTrack">
 
-<div class="card">
-<img src="TOP-10-GOALS-OF-THE-SEASON.jpg">
-<div class="card-content">
-<h3>Top 10 Goals</h3>
-<p>The top 10 goals from Summer 2026.</p>
-<a class="button" href="https://www.youtube.com/watch?v=8u4EgZcyqYk" target="_blank">Watch Video</a>
-</div>
-</div>
+<a href="https://www.youtube.com/watch?v=J1rAx-5y53g" target="_blank">
+<img src="ALL-GOALS-OF-THE-SEASON.jpg" alt="All Goals of the Season">
+</a>
 
-<div class="card">
-<img src="GOAL-OF-THE-SEASON.jpg">
-<div class="card-content">
-<h3>Goal of the Season</h3>
-<p>The best goal from Summer 2026.</p>
-<a class="button" href="https://www.youtube.com/watch?v=XNC3krjQZqo" target="_blank">Watch Video</a>
-</div>
+<a href="https://www.youtube.com/watch?v=8u4EgZcyqYk" target="_blank">
+<img src="TOP-10-GOALS-OF-THE-SEASON.jpg" alt="Top 10 Goals of the Season">
+</a>
+
+<a href="https://www.youtube.com/watch?v=XNC3krjQZqo" target="_blank">
+<img src="GOAL-OF-THE-SEASON.jpg" alt="Goal of the Season">
+</a>
+
 </div>
 
+<button class="slider-arrow right" onclick="scrollSlider('videoTrack', 1)">&#10095;</button>
 </div>
 </section>
 
-
 <section id="social">
-
 <h2>Follow Allstar Galaxy</h2>
 
 <div class="social-icons">
 
-<a href="https://www.youtube.com/@Allstar-Galaxy" target="_blank">
-<img src="youtube-logo.png">
+<a href="https://www.youtube.com/@Allstar-Galaxy" target="_blank" rel="noopener noreferrer">
+<img src="youtube-logo.png" alt="YouTube">
 </a>
 
-<a href="https://www.instagram.com/allstargalaxysoccer/" target="_blank">
-<img src="instagram-logo.png">
+<a href="https://www.instagram.com/allstargalaxysoccer/" target="_blank" rel="noopener noreferrer">
+<img src="instagram-logo.png" alt="Instagram">
 </a>
 
-<a href="#" target="_blank">
-<img src="facebook-logo.png">
+<a href="#" target="_blank" rel="noopener noreferrer">
+<img src="facebook-logo.png" alt="Facebook">
 </a>
 
-<a href="https://www.tiktok.com/@allstar.galaxy" target="_blank">
-<img src="tiktok-logo.png">
+<a href="https://www.tiktok.com/@allstar.galaxy" target="_blank" rel="noopener noreferrer">
+<img src="tiktok-logo.png" alt="TikTok">
 </a>
 
-<a href="#" target="_blank">
-<img src="x-logo.png">
+<a href="#" target="_blank" rel="noopener noreferrer">
+<img src="x-logo.png" alt="X">
 </a>
 
 </div>
-
 </section>
 
 <footer>
@@ -492,12 +422,12 @@ footer{
 </footer>
 
 <script>
-function scrollGallery(direction){
-const gallery=document.getElementById('galleryTrack');
-gallery.scrollBy({
-left:direction*400,
-behavior:'smooth'
-});
+function scrollSlider(trackId, direction){
+    const track = document.getElementById(trackId);
+    track.scrollBy({
+        left: direction * 400,
+        behavior: 'smooth'
+    });
 }
 </script>
 
