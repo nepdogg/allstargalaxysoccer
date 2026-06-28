@@ -167,10 +167,32 @@ h2{
 
 /* SCHEDULE */
 
-.info-grid{
+.schedule-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:30px;
+    grid-template-columns:repeat(auto-fit,minmax(500px,1fr));
+    gap:40px;
+    max-width:1400px;
+    margin:auto;
+}
+
+.schedule-card{
+    background:#090014;
+    border:1px solid #b000ff;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 0 20px rgba(176,0,255,.3);
+}
+
+.schedule-card h3{
+    text-align:center;
+    padding:20px;
+    color:#ffcc00;
+    font-size:28px;
+}
+
+.schedule-card img{
+    width:100%;
+    display:block;
 }
 
 .panel{
@@ -348,25 +370,24 @@ footer{
 </section>
 
 <section id="schedule">
-<h2>Schedule</h2>
 
-<div class="info-grid">
+    <h2>Schedule</h2>
 
-<div class="panel">
-<h3>Upcoming Match</h3><br>
-<p><strong>League:</strong> Sunnyvale Soccer League</p><br>
-<p><strong>Match:</strong> Allstar Galaxy vs Opponent Team</p><br>
-<p><strong>Date:</strong> Coming Soon</p>
-</div>
+    <div class="schedule-grid">
 
-<div class="panel">
-<h3>League Standings</h3><br>
-<p>Standings information coming soon.</p>
-</div>
+        <div class="schedule-card">
+            <h3>Latest Results</h3>
+            <img src="schedule.png" alt="Match Schedule">
+        </div>
 
-</div>
-</section>    
+        <div class="schedule-card">
+            <h3>League Standings</h3>
+            <img src="standings.png" alt="League Standings">
+        </div>
 
+    </div>
+
+</section>
 
 <section id="gallery">
 
