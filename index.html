@@ -12,48 +12,40 @@
       color: white;
     }
 
-    header {
-      background: #090014;
-      padding: 15px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 2px solid #ffcc00;
-    }
+   header {
+    background: #090014;
+    padding: 15px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #ffcc00;
+}
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
+.logo img {
+    width: 90px;
+}
 
-    .logo img {
-      width: 80px;
-    }
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
 
-    .logo h1 {
-      color: #ffcc00;
-      margin: 0;
-      font-size: 32px;
-    }
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
 
-    .logo p {
-      margin: 0;
-      font-size: 13px;
-      color: #ffffff;
-    }
-
-    nav a {
-      color: white;
-      margin-left: 20px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      color: #ffcc00;
-    }
-
+nav a:hover {
+    color: #ffcc00;
+    text-shadow: 0 0 10px #ffcc00;
+}
    .hero {
   background-image: url("ALLSTARGALAXY.png");
   background-size: contain;
@@ -191,24 +183,21 @@
 
 <body>
 
-  <header>
+ <header>
     <div class="logo">
-      <img src="allstargalaxy-logo-instagram(1).png" alt="Allstar Galaxy Logo">
-      <div>
-        <h1>ALLSTAR GALAXY</h1>
-        <p>The Official Home of the Allstar Galaxy</p>
-      </div>
+        <img src="allstargalaxy-logo-instagram(1).png"
+             alt="Allstar Galaxy Logo">
     </div>
 
     <nav>
-      <a href="#">Home</a>
-      <a href="#team">Team</a>
-      <a href="#schedule">Schedule</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#videos">Videos</a>
-      <a href="#social">Social</a>
+        <a href="#">Home</a>
+        <a href="#team">Team</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#videos">Videos</a>
+        <a href="#social">Social</a>
     </nav>
-  </header>
+</header>
 
   <div class="hero"></div>
 
@@ -309,7 +298,11 @@ Watch Video
       <div class="social-box">
         <h3>YouTube</h3>
         <p>Full matches, highlights, goals, saves, and shorts.</p>
-        <a class="button" href="#">Subscribe</a>
+        <a class="button"
+href="https://www.youtube.com/@Allstar-Galaxy"
+target="_blank">
+Subscribe
+</a>
       </div>
 
       <div class="social-box">
