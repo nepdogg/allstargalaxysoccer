@@ -164,25 +164,33 @@ nav a:hover {
       color: #aaa;
     }
 
-    @media (max-width: 700px) {
-      header {
+@media (max-width: 900px) {
+
+    header {
+        height: auto;
+        padding: 20px;
         flex-direction: column;
-        text-align: center;
-      }
-
-      nav {
-        margin-top: 15px;
-      }
-
-      nav a {
-        display: inline-block;
-        margin: 8px;
-      }
-
-      .hero {
-        min-height: 350px;
-      }
     }
+
+    .logo {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 20px;
+    }
+
+    nav a {
+        font-size: 16px;
+    }
+
+    .hero {
+        min-height: 350px;
+    }
+}  
+  
   </style>
 </head>
 
