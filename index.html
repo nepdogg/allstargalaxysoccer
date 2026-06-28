@@ -12,31 +12,35 @@
       color: white;
     }
 
-   header {
+header {
     background: #090014;
-    padding: 15px 50px;
+    border-bottom: 2px solid #ffcc00;
+    padding: 0 40px;
+    height: 100px;
+
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    border-bottom: 2px solid #ffcc00;
+}
+
+.logo {
+    margin-right: 50px;
 }
 
 .logo img {
-    width: 90px;
+    width: 80px;
 }
 
 nav {
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 50px;
+    gap: 45px;
     flex-wrap: wrap;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: bold;
     text-transform: uppercase;
     transition: 0.3s;
@@ -45,8 +49,9 @@ nav a {
 nav a:hover {
     color: #ffcc00;
     text-shadow: 0 0 10px #ffcc00;
-}
- .hero {
+} 
+    
+    .hero {
   background-image: url("ALLSTARGALAXY.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -183,7 +188,8 @@ nav a:hover {
 
 <body>
 
- <header>
+<header>
+
     <div class="logo">
         <img src="allstargalaxy-logo-instagram(1).png"
              alt="Allstar Galaxy Logo">
@@ -197,6 +203,7 @@ nav a:hover {
         <a href="#videos">Videos</a>
         <a href="#social">Social</a>
     </nav>
+
 </header>
 
   <div class="hero"></div>
