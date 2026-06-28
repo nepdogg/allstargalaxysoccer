@@ -1,23 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Allstar Galaxy</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#05000f;
+    color:white;
+}
+
+/* HEADER */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    background:rgba(9,0,20,.97);
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:10px 30px;
+}
+
+.logo,
+.logo-right{
+    flex:0 0 70px;
+    text-align:center;
+}
+
+.logo img,
+.logo-right img{
+    width:70px;
+}
+
+nav{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    gap:80px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:bold;
+    text-transform:uppercase;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#ffcc00;
+    text-shadow:0 0 10px #ffcc00;
+}
+
+/* HERO */
+
+.hero img{
+    width:100%;
+    display:block;
+}
+
+/* GENERAL */
+
+section{
+    padding:80px 8%;
+    scroll-margin-top:120px;
+}
+
+h2{
+    text-align:center;
+    font-size:clamp(32px,3vw,52px);
+    margin-bottom:40px;
+    text-transform:uppercase;
+}
+
+/* FEATURED VIDEO */
+
+.video-container{
+    max-width:1000px;
+    margin:auto;
+    aspect-ratio:16/9;
+    border:2px solid #ffcc00;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 0 25px rgba(255,204,0,.4);
+}
+
+.video-container iframe{
+    width:100%;
+    height:100%;
+    border:0;
+}
+
+/* TEAM */
+
+.team-image{
+    max-width:1000px;
+    margin:auto;
+    border:2px solid #ffcc00;
+    border-radius:15px;
+    overflow:hidden;
+}
+
+.team-image img{
+    width:100%;
+    display:block;
+}
+
+/* VIDEO CARDS */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:#120022;
+    border:1px solid #b000ff;
+    border-radius:12px;
+    overflow:hidden;
+}
+
+.card img{
+    width:100%;
+    aspect-ratio:16/9;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:20px;
+}
+
+.card h3{
+    color:#ffcc00;
+    margin-bottom:15px;
+}
+
+.button{
+    display:inline-block;
+    margin-top:20px;
+    background:linear-gradient(90deg,#b000ff,#ff007f);
+    color:white;
+    text-decoration:none;
+    padding:12px 25px;
+    border-radius:8px;
+}
+
+/* SCHEDULE */
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+.panel{
+    background:#090014;
+    border:1px solid #b000ff;
+    border-radius:12px;
+    padding:30px;
+}
+
+/* GALLERY */
+
+.gallery-slider{
+    position:relative;
+    display:flex;
+    align-items:center;
+    max-width:1200px;
+    margin:auto;
+}
+
+.gallery-track{
+    display:flex;
+    gap:20px;
+    overflow-x:auto;
+    scroll-behavior:smooth;
+    scrollbar-width:none;
+    width:100%;
+}
+
+.gallery-track::-webkit-scrollbar{
+    display:none;
+}
+
+.gallery-track a{
+    flex:0 0 calc(33.333% - 14px);
+}
+
+.gallery-track img{
+    width:100%;
+    aspect-ratio:16/9;
+    object-fit:cover;
+    object-position:center top;
+    border-radius:12px;
+    border:2px solid #ffcc00;
+}
+
+.gallery-arrow{
+    background:#090014;
+    color:#ffcc00;
+    border:2px solid #ffcc00;
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    font-size:28px;
+    cursor:pointer;
+}
+
+.left{
+    margin-right:15px;
+}
+
+.right{
+    margin-left:15px;
+}
+
+/* SOCIAL */
+
+.social-icons{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:50px;
+    flex-wrap:wrap;
+}
+
+.social-icons img{
+    width:70px;
+    transition:.3s;
+}
+
+.social-icons img:hover{
+    transform:scale(1.15);
+}
+
+/* FOOTER */
+
+footer{
+    border-top:1px solid #222;
+    padding:40px;
+    text-align:center;
+    color:#aaa;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    header{
+        flex-direction:column;
+        padding:10px;
+    }
+
+    .logo img,
+    .logo-right img{
+        width:55px;
+    }
+
+    nav{
+        flex-wrap:wrap;
+        gap:20px;
+        margin:10px 0;
+    }
+
+    nav a{
+        font-size:15px;
+    }
+
+    .gallery-track a{
+        flex:0 0 80%;
+    }
+
+    .gallery-arrow{
+        width:42px;
+        height:42px;
+        font-size:22px;
+    }
+}
+
+</style>
+</head>
+
 <body id="top">
 
 <header>
-    <div class="logo">
-        <a href="#top">
-            <img src="allstargalaxy-logo-instagram(1).png" alt="Allstar Galaxy Logo">
-        </a>
-    </div>
 
-    <nav>
-        <a href="#team">Team</a>
-        <a href="#schedule">Schedule</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#videos">Videos</a>
-        <a href="#social">Social</a>
-    </nav>
+<div class="logo">
+<a href="#top">
+<img src="allstargalaxy-logo-instagram(1).png" alt="Logo">
+</a>
+</div>
 
-    <div class="logo-right">
-        <a href="#top">
-            <img src="allstargalaxy-logo-instagram(1).png" alt="Allstar Galaxy Logo">
-        </a>
-    </div>
+<nav>
+<a href="#team">Team</a>
+<a href="#schedule">Schedule</a>
+<a href="#gallery">Gallery</a>
+<a href="#videos">Videos</a>
+<a href="#social">Social</a>
+</nav>
+
+<div class="logo-right">
+<a href="#top">
+<img src="allstargalaxy-logo-instagram(1).png" alt="Logo">
+</a>
+</div>
+
 </header>
+
+<div class="hero">
+<img src="ALLSTARGALAXY.png" alt="Banner">
+</div>
+
+<section>
+<h2>Featured Video</h2>
+
+<div class="video-container">
+<iframe src="https://www.youtube.com/embed/lmNJQI41oK8" allowfullscreen></iframe>
+</div>
+</section>
+
+<section id="team">
+<h2>Team</h2>
+
+<div class="team-image">
+<img src="Allstar-Galaxy-Team.png" alt="Team">
+</div>
+</section>
+
+<section id="videos">
+<h2>Latest Videos</h2>
+
+<div class="cards">
+
+<div class="card">
+<img src="ALL-GOALS-OF-THE-SEASON.jpg">
+<div class="card-content">
+<h3>All Goals of the Season</h3>
+<p>Every Allstar Galaxy goal from Summer 2026.</p>
+<a class="button" href="https://www.youtube.com/watch?v=J1rAx-5y53g" target="_blank">Watch Video</a>
+</div>
+</div>
+
+<div class="card">
+<img src="TOP-10-GOALS-OF-THE-SEASON.jpg">
+<div class="card-content">
+<h3>Top 10 Goals</h3>
+<p>The top 10 goals from Summer 2026.</p>
+<a class="button" href="https://www.youtube.com/watch?v=8u4EgZcyqYk" target="_blank">Watch Video</a>
+</div>
+</div>
+
+<div class="card">
+<img src="GOAL-OF-THE-SEASON.jpg">
+<div class="card-content">
+<h3>Goal of the Season</h3>
+<p>The best goal from Summer 2026.</p>
+<a class="button" href="https://www.youtube.com/watch?v=XNC3krjQZqo" target="_blank">Watch Video</a>
+</div>
+</div>
+
+</div>
+</section>
+
+<section id="schedule">
+<h2>Schedule</h2>
+
+<div class="info-grid">
+
+<div class="panel">
+<h3>Upcoming Match</h3><br>
+<p><strong>League:</strong> Sunnyvale Soccer League</p><br>
+<p><strong>Match:</strong> Allstar Galaxy vs Opponent Team</p><br>
+<p><strong>Date:</strong> Coming Soon</p>
+</div>
+
+<div class="panel">
+<h3>League Standings</h3><br>
+<p>Standings information coming soon.</p>
+</div>
+
+</div>
+</section>
+
+<section id="gallery">
+
+<h2>Photo Gallery</h2>
+
+<div class="gallery-slider">
+
+<button class="gallery-arrow left" onclick="scrollGallery(-1)">&#10094;</button>
+
+<div class="gallery-track" id="galleryTrack">
+
+<a href="IMG_3490.JPG" target="_blank">
+<img src="IMG_3490.JPG">
+</a>
+
+<a href="IMG_3508.JPG" target="_blank">
+<img src="IMG_3508.JPG">
+</a>
+
+<a href="ALLSTARGALAXY.png" target="_blank">
+<img src="ALLSTARGALAXY.png">
+</a>
+
+</div>
+
+<button class="gallery-arrow right" onclick="scrollGallery(1)">&#10095;</button>
+
+</div>
+</section>
+
+<section id="social">
+
+<h2>Follow Allstar Galaxy</h2>
+
+<div class="social-icons">
+
+<a href="https://www.youtube.com/@Allstar-Galaxy" target="_blank">
+<img src="youtube-logo.png">
+</a>
+
+<a href="https://www.instagram.com/allstargalaxysoccer/" target="_blank">
+<img src="instagram-logo.png">
+</a>
+
+<a href="#" target="_blank">
+<img src="facebook-logo.png">
+</a>
+
+<a href="https://www.tiktok.com/@allstar.galaxy" target="_blank">
+<img src="tiktok-logo.png">
+</a>
+
+<a href="#" target="_blank">
+<img src="x-logo.png">
+</a>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 Allstar Galaxy Soccer Team. All rights reserved.
+</footer>
+
+<script>
+function scrollGallery(direction){
+const gallery=document.getElementById('galleryTrack');
+gallery.scrollBy({
+left:direction*400,
+behavior:'smooth'
+});
+}
+</script>
+
+</body>
+</html>
