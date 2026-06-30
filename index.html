@@ -618,15 +618,34 @@
 }
 
 .follow-icons img {
-    width: 72px;
-    height: 72px;
+    width: 70px;
+    height: 70px;
+    max-width: 70px;
+    max-height: 70px;
     object-fit: contain;
     transition: transform 0.25s ease;
+}
+
+.follow-icons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 90px;
 }
 
 .follow-icons img:hover {
     transform: scale(1.12);
 }
+
+.follow-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}            
+            
         }
 
     </style>
