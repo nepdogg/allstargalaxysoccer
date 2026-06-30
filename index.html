@@ -110,13 +110,15 @@
         }
 
         .hero-image {
-            width: 100%;
-            min-height: 420px;
-            background:
-                linear-gradient(to bottom, rgba(5, 0, 15, 0.05), rgba(5, 0, 15, 0.9)),
-                url("hero.png") center / cover no-repeat;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-        }
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2560 / 1440;
+    background:
+        linear-gradient(to bottom, rgba(5, 0, 15, 0.05), rgba(5, 0, 15, 0.25)),
+        url("hero.png") center center / contain no-repeat;
+    background-color: #05000f;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
 
         main {
             max-width: 1200px;
@@ -569,8 +571,9 @@
             }
 
             .hero-image {
-                min-height: 300px;
-            }
+    aspect-ratio: 1 / 0.8;
+    background-size: cover;
+}
 
             .media-slide {
                 height: 360px;
