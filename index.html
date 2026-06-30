@@ -47,49 +47,49 @@
             border-bottom: 1px solid rgba(255, 215, 0, 0.25);
         }
 
-        .hero-bar {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 110px 1fr 110px;
-            align-items: center;
-            padding: 14px 20px 6px;
-        }    
+       .hero-bar {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 120px minmax(0, 1fr) 120px;
+    align-items: center;
+    padding: 14px 20px 6px;
+}
 
-        .hero-logo,
-        .hero-logo-right {
-            display: flex;
-            align-items: center;
-        }
+.hero-logo,
+.hero-logo-right {
+    display: flex;
+    align-items: center;
+}
 
-        .hero-logo {
-            justify-content: flex-start;
-        }
+.hero-logo {
+    justify-content: flex-start;
+}
 
-        .hero-logo-right {
-            justify-content: flex-end;
-        }
+.hero-logo-right {
+    justify-content: flex-end;
+}
 
-        .hero-logo img,
-        .hero-logo-right img {
-            width: 100px;
-            display: block;
-        }
+.hero-logo img,
+.hero-logo-right img {
+    width: 105px;
+    display: block;
+}
 
-        .hero-title {
-            text-align: center;
-        }
+.hero-title {
+    min-width: 0;
+    text-align: center;
+}
 
-        .hero-title p {
-            color: var(--gold);
-            font-size: clamp(2rem, 3vw, 3.2rem);
-            font-weight: bold;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            white-space: nowrap;
-            text-align: center;
-            line-height: 1.1;
-        }
+.hero-title p {
+    color: var(--gold);
+    font-size: clamp(1.6rem, 2.4vw, 2.7rem);
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    line-height: 1.1;
+    white-space: normal;
+}
 
         nav {
             max-width: 1200px;
@@ -116,19 +116,19 @@
         }
 
         .hero-image {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            aspect-ratio: 2560 / 1440;
-            background:
-                linear-gradient(to bottom, rgba(5, 0, 15, 0.05), rgba(5, 0, 15, 0.25)),
-                url("hero.png");
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-color: #05000f;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-        }
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    aspect-ratio: 2560 / 1440;
+    background:
+        linear-gradient(to bottom, rgba(5, 0, 15, 0.05), rgba(5, 0, 15, 0.25)),
+        url("hero.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #05000f;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
 
         main {
             max-width: 1200px;
