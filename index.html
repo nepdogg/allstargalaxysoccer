@@ -49,15 +49,14 @@ a{
 
 .hero-bar{
     display:grid;
-    grid-template-columns:90px 1fr 90px;
+    grid-template-columns:130px 1fr 130px;
     align-items:center;
-    padding:10px 20px;
+    padding:8px 20px 2px;
 }
 
 .hero-logo img,
 .hero-logo-right img{
-    width:100px;
-    
+    width:120px;
 }
 
 .hero-logo-right{
@@ -74,11 +73,11 @@ a{
 
 .hero-title p{
     color:var(--gold);
-    font-size:clamp(1.6rem,2.4vw,2.6rem);
+    font-size:clamp(2rem,3vw,3.4rem);
     font-weight:bold;
-    letter-spacing:3px;
+    letter-spacing:5px;
     text-transform:uppercase;
-    width:100%;
+    white-space:nowrap;
 }
 
 /* NAV */
@@ -87,7 +86,7 @@ nav{
     display:flex;
     justify-content:center;
     gap:28px;
-    padding:12px;
+    padding:2px 12px 10px;
 }
 
 nav a{
@@ -273,33 +272,32 @@ footer{
 
 .hero-bar{
     grid-template-columns:60px 1fr 60px;
+    padding:8px 8px 4px;
 }
 
 .hero-logo img,
 .hero-logo-right img{
-    width:70px;
+    width:54px;
 }
 
 .hero-title p{
-    font-size:1rem;
+    font-size:.9rem;
+    letter-spacing:1px;
+    white-space:normal;
 }
 
 nav{
-    gap:12px;
-    flex-wrap:nowrap;
-    overflow-x:auto;
-    white-space:nowrap;
+    gap:10px;
+    padding:4px 6px 8px;
 }
 
 nav a{
-    font-size:.78rem;
+    font-size:.72rem;
 }
 
-.hero-image{
-    aspect-ratio:1/0.8;
-    background-size:cover;
 }
 
+    
 .follow-icons{
     display:flex;
     justify-content:center;
