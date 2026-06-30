@@ -1,791 +1,473 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Allstar Galaxy | Official Home</title>
-    <link rel="icon" type="image/png" href="favicon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Allstar Galaxy | Official Home</title>
 
-    <style>
+<link rel="icon" type="image/png" href="favicon.png">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
 
-        html {
-            scroll-behavior: smooth;
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #05000f;
-            color: white;
-            line-height: 1.6;
-        }
+body{
+    font-family:Arial,sans-serif;
+    background:#05000f;
+    color:white;
+    line-height:1.6;
+}
 
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
+html{
+    scroll-behavior:smooth;
+}
 
-        :root {
-            --gold: #ffd700;
-            --purple: #9d4edd;
-            --white: #f5f5f5;
-            --muted: #cfc6df;
-            --panel: rgba(18, 0, 40, 0.88);
-            --border: rgba(255, 215, 0, 0.35);
-        }
+a{
+    text-decoration:none;
+    color:inherit;
+}
 
-        .site-top {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(5, 0, 15, 0.97);
-            border-bottom: 1px solid rgba(255, 215, 0, 0.25);
-        }
+:root{
+    --gold:#ffd700;
+    --panel:rgba(18,0,40,.88);
+    --border:rgba(255,215,0,.35);
+}
 
-        .hero-bar {
-            display: grid;
-            grid-template-columns: 90px 1fr 90px;
-            align-items: center;
-            gap: 15px;
-            padding: 10px 24px 6px;
-        }
+/* HEADER */
 
-        .hero-logo img,
-        .hero-logo-right img {
-            width: 72px;
-            max-width: 100%;
-            display: block;
-        }
+.site-top{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(5,0,15,.97);
+    border-bottom:1px solid rgba(255,215,0,.25);
+}
 
-        .hero-logo-right {
-            display: flex;
-            justify-content: flex-end;
-        }
+.hero-bar{
+    display:grid;
+    grid-template-columns:90px 1fr 90px;
+    align-items:center;
+    padding:10px 20px;
+}
 
-        .hero-title {
-            text-align: center;
-        }
+.hero-logo img,
+.hero-logo-right img{
+    width:72px;
+}
 
-        .hero-title h1 {
-            color: var(--gold);
-            font-size: clamp(1.8rem, 4vw, 3.8rem);
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            line-height: 1;
-        }
+.hero-logo-right{
+    text-align:right;
+}
 
-        .hero-title p {
-            color: var(--white);
-            font-size: clamp(0.85rem, 1.8vw, 1.2rem);
-            letter-spacing: 1.5px;
-            margin-top: 6px;
-        }
+.hero-title{
+    text-align:center;
+}
 
-        nav {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 30px;
-            padding: 8px 16px 12px;
-        }
+.hero-title h1{
+    color:var(--gold);
+    font-size:clamp(2rem,4vw,4rem);
+    letter-spacing:4px;
+    text-transform:uppercase;
+}
 
-        nav a {
-            color: var(--white);
-            font-weight: bold;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            transition: 0.25s;
-        }
+.hero-title p{
+    font-size:1.2rem;
+}
 
-        nav a:hover,
-        nav a.active {
-            color: var(--gold);
-            text-shadow: 0 0 12px rgba(255, 215, 0, 0.75);
-        }
+/* NAV */
 
-        .hero-image {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 2560 / 1440;
+nav{
+    display:flex;
+    justify-content:center;
+    gap:28px;
+    padding:12px;
+}
+
+nav a{
+    font-weight:bold;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+nav a:hover,
+nav a.active{
+    color:var(--gold);
+}
+
+/* HERO IMAGE */
+
+.hero-image{
+    width:100%;
+    aspect-ratio:2560/1440;
+
     background:
-        linear-gradient(to bottom, rgba(5, 0, 15, 0.05), rgba(5, 0, 15, 0.25)),
-        url("hero.png") center center / contain no-repeat;
-    background-color: #05000f;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        linear-gradient(to bottom,
+        rgba(5,0,15,.05),
+        rgba(5,0,15,.25)),
+        url("hero.png");
+
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-color:#05000f;
+
+    border-bottom:1px solid rgba(255,255,255,.15);
 }
 
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 22px;
-        }
+/* MAIN */
 
-        section {
-            margin-bottom: 60px;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 24px;
-        }
-
-        .section-title h2 {
-            color: var(--gold);
-            font-size: clamp(1.8rem, 4vw, 3rem);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .section-title p {
-            color: var(--muted);
-            max-width: 780px;
-            margin: 10px auto 0;
-        }
-
-        .carousel {
-            position: relative;
-            overflow: hidden;
-            border-radius: 24px;
-            border: 1px solid var(--border);
-            background: var(--panel);
-            box-shadow: 0 0 35px rgba(157, 78, 221, 0.25);
-        }
-
-        .carousel-track {
-            display: flex;
-            width: 100%;
-            animation: slideShow 24s infinite;
-        }
-
-        .media-slide,
-        .team-slide {
-            min-width: 100%;
-        }
-
-  .media-slide {
-    height: auto;
-    aspect-ratio: 16 / 9;
-    position: relative;
-    background: #05000f;
-}
-       .media-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-    background: #05000f;
+main{
+    max-width:1200px;
+    margin:auto;
+    padding:40px 20px;
 }
 
-        .media-caption {
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            padding: 28px;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
-        }
-
-        .media-caption h3 {
-            color: var(--gold);
-            font-size: clamp(1.4rem, 3vw, 2.4rem);
-            text-transform: uppercase;
-        }
-
-        .media-caption p {
-            color: var(--white);
-        }
-
-        @keyframes slideShow {
-            0%, 20% {
-                transform: translateX(0);
-            }
-
-            25%, 45% {
-                transform: translateX(-100%);
-            }
-
-            50%, 70% {
-                transform: translateX(-200%);
-            }
-
-            75%, 95% {
-                transform: translateX(-300%);
-            }
-
-            100% {
-                transform: translateX(0);
-            }
-        }
-
-        .social-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 18px;
-        }
-
-        .social-card {
-            border: 1px solid var(--border);
-            background: rgba(18, 0, 40, 0.8);
-            border-radius: 18px;
-            padding: 24px 18px;
-            text-align: center;
-            transition: 0.25s;
-        }
-
-        .social-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--gold);
-        }
-
-        .social-icon {
-            font-size: 2.2rem;
-            margin-bottom: 8px;
-        }
-
-        .social-card h3 {
-            color: var(--gold);
-            text-transform: uppercase;
-            font-size: 1rem;
-        }
-
-        .story-card,
-        .page-card,
-        .table-card,
-        .game-card,
-        .live-card {
-            background: var(--panel);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            box-shadow: 0 0 28px rgba(157, 78, 221, 0.18);
-        }
-
-        .story-card {
-            padding: 34px;
-            max-width: 950px;
-            margin: 0 auto 34px;
-        }
-
-        .story-card h2 {
-            color: var(--gold);
-            text-transform: uppercase;
-            margin-bottom: 12px;
-        }
-
-        .story-card p {
-            color: var(--muted);
-            margin-bottom: 14px;
-        }
-
-        .team-carousel .carousel-track {
-            animation: teamSlide 30s infinite;
-        }
-
-        @keyframes teamSlide {
-            0%, 16% {
-                transform: translateX(0);
-            }
-
-            20%, 36% {
-                transform: translateX(-100%);
-            }
-
-            40%, 56% {
-                transform: translateX(-200%);
-            }
-
-            60%, 76% {
-                transform: translateX(-300%);
-            }
-
-            80%, 96% {
-                transform: translateX(-400%);
-            }
-
-            100% {
-                transform: translateX(0);
-            }
-        }
-
-        .team-slide {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            min-height: 420px;
-        }
-
-        .team-photo {
-            background: radial-gradient(circle, rgba(157, 78, 221, 0.35), rgba(18, 0, 40, 0.95));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gold);
-            font-weight: bold;
-            font-size: 1.6rem;
-            text-transform: uppercase;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .team-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .team-info {
-            padding: 42px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .team-info .number {
-            color: var(--purple);
-            font-size: 4rem;
-            font-weight: bold;
-            line-height: 1;
-        }
-
-        .team-info h3 {
-            color: var(--gold);
-            font-size: 2.2rem;
-            text-transform: uppercase;
-            margin: 8px 0;
-        }
-
-        .team-info h4 {
-            color: var(--white);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 14px;
-        }
-
-        .team-info p {
-            color: var(--muted);
-        }
-
-        .game-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 22px;
-        }
-
-        .game-card {
-            overflow: hidden;
-            transition: 0.25s;
-        }
-
-        .game-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--gold);
-        }
-
-        .game-thumb {
-            height: 180px;
-            background: radial-gradient(circle, rgba(157, 78, 221, 0.35), rgba(18, 0, 40, 0.95));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gold);
-            font-weight: bold;
-            text-transform: uppercase;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .game-card-content {
-            padding: 20px;
-        }
-
-        .game-card-content h3 {
-            color: var(--gold);
-            text-transform: uppercase;
-            margin-bottom: 6px;
-        }
-
-        .game-card-content p {
-            color: var(--muted);
-            font-size: 0.95rem;
-        }
-
-        .game-card-content span {
-            display: inline-block;
-            margin-top: 12px;
-            color: var(--white);
-            font-weight: bold;
-        }
-
-        .page-card {
-            max-width: 950px;
-            margin: 0 auto;
-            overflow: hidden;
-            text-align: center;
-        }
-
-        .page-card-content {
-            padding: 34px 24px;
-        }
-
-        .page-card-content h2 {
-            color: var(--gold);
-            font-size: clamp(2rem, 5vw, 4rem);
-            text-transform: uppercase;
-        }
-
-        .page-card-content p {
-            color: var(--muted);
-            margin-top: 10px;
-        }
-
-        .schedule-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-        }
-
-        .table-card {
-            padding: 24px;
-            overflow-x: auto;
-        }
-
-        .table-card h3 {
-            color: var(--gold);
-            text-transform: uppercase;
-            margin-bottom: 16px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 420px;
-        }
-
-        th,
-        td {
-            padding: 12px 10px;
-            text-align: left;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-        }
-
-        th {
-            color: var(--gold);
-            text-transform: uppercase;
-            font-size: 0.82rem;
-            letter-spacing: 1px;
-        }
-
-        td {
-            color: var(--white);
-        }
-
-        .live-card {
-            max-width: 960px;
-            margin: 0 auto;
-            overflow: hidden;
-            text-align: center;
-        }
-
-        .live-frame {
-            aspect-ratio: 16 / 9;
-            background: radial-gradient(circle, rgba(157, 78, 221, 0.35), rgba(5, 0, 15, 0.95));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 30px;
-        }
-
-        .live-frame h2 {
-            color: var(--gold);
-            font-size: clamp(2rem, 5vw, 4rem);
-            text-transform: uppercase;
-        }
-
-        .live-content {
-            padding: 32px 24px;
-        }
-
-        .live-content p {
-            color: var(--muted);
-            margin-bottom: 12px;
-        }
-
-        .live-button {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 12px 22px;
-            border: 1px solid var(--gold);
-            border-radius: 999px;
-            color: var(--gold);
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        footer {
-            border-top: 1px solid rgba(255, 215, 0, 0.25);
-            background: rgba(5, 0, 15, 0.97);
-            text-align: center;
-            padding: 28px 20px;
-        }
-
-        .footer-logo {
-            display: inline-flex;
-        }
-
-        .footer-logo img {
-            width: 72px;
-            max-width: 100%;
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .footer-count {
-            color: var(--gold);
-            margin: 8px 0;
-            font-weight: bold;
-        }
-
-        .footer-small {
-            color: var(--muted);
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 800px) {
-            .hero-bar {
-                grid-template-columns: 60px 1fr 60px;
-                padding: 8px 12px 6px;
-            }
-
-            .hero-logo img,
-            .hero-logo-right img,
-            .footer-logo img {
-                width: 54px;
-            }
-
-            nav {
-                gap: 14px;
-            }
-
-            .hero-image {
-    aspect-ratio: 1 / 0.8;
-    background-size: cover;
+section{
+    margin-bottom:70px;
 }
 
-            .media-slide {
-                height: 360px;
-            }
-
-            .team-slide {
-                grid-template-columns: 1fr;
-            }
-
-            .team-photo {
-                height: 280px;
-            }
-
-            .team-info {
-                padding: 28px;
-            }
-
-            .schedule-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .follow-original {
-    text-align: center;
-    padding: 70px 20px;
+.section-title{
+    text-align:center;
+    margin-bottom:30px;
 }
 
-.follow-original h2 {
-    color: white;
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 40px;
+.section-title h2{
+    color:var(--gold);
+    font-size:clamp(2rem,4vw,4rem);
+    text-transform:uppercase;
 }
 
-.follow-icons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 46px;
-    flex-wrap: wrap;
+.section-title p{
+    max-width:800px;
+    margin:auto;
 }
 
-.follow-icons img {
-    width: 70px;
-    height: 70px;
-    max-width: 70px;
-    max-height: 70px;
-    object-fit: contain;
-    transition: transform 0.25s ease;
+/* CAROUSEL */
+
+.carousel{
+    overflow:hidden;
+    border-radius:24px;
+    border:1px solid var(--border);
+    background:var(--panel);
 }
 
-.follow-icons a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 90px;
-    height: 90px;
+.carousel-track{
+    display:flex;
+    animation:slideShow 24s infinite;
 }
 
-.follow-icons img {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-}
-            
-.follow-icons img:hover {
-    transform: scale(1.12);
+.media-slide{
+    min-width:100%;
+    aspect-ratio:16/9;
+    position:relative;
+    background:#05000f;
 }
 
-.follow-icons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    flex-wrap: wrap;
-}            
-            
-        }
+.media-slide img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    background:#05000f;
+}
 
-    </style>
+.media-caption{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    padding:25px;
+
+    background:
+        linear-gradient(
+        to top,
+        rgba(0,0,0,.9),
+        transparent);
+}
+
+.media-caption h3{
+    color:var(--gold);
+    font-size:2rem;
+}
+
+@keyframes slideShow{
+
+0%,20%{transform:translateX(0);}
+25%,45%{transform:translateX(-100%);}
+50%,70%{transform:translateX(-200%);}
+75%,95%{transform:translateX(-300%);}
+100%{transform:translateX(0);}
+
+}
+
+/* FOLLOW */
+
+.follow-section{
+    text-align:center;
+    padding:40px 0;
+}
+
+.follow-section h2{
+    font-size:clamp(2rem,4vw,3.5rem);
+    margin-bottom:40px;
+}
+
+.follow-icons{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:45px;
+    flex-wrap:nowrap;
+}
+
+.follow-icons a{
+    width:72px;
+    height:72px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.follow-icons img{
+    width:60px !important;
+    height:60px !important;
+    max-width:60px !important;
+    max-height:60px !important;
+
+    object-fit:contain;
+
+    transition:.25s;
+}
+
+.follow-icons img:hover{
+    transform:scale(1.12);
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:30px;
+    border-top:1px solid rgba(255,215,0,.25);
+}
+
+.footer-logo img{
+    width:70px;
+}
+
+.footer-count{
+    color:var(--gold);
+    margin:12px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+.hero-bar{
+    grid-template-columns:60px 1fr 60px;
+}
+
+.hero-logo img,
+.hero-logo-right img{
+    width:54px;
+}
+
+nav{
+    gap:12px;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    white-space:nowrap;
+}
+
+nav a{
+    font-size:.78rem;
+}
+
+.hero-image{
+    aspect-ratio:1/0.8;
+    background-size:cover;
+}
+
+.follow-icons{
+    gap:28px;
+    flex-wrap:wrap;
+}
+
+.follow-icons a{
+    width:58px;
+    height:58px;
+}
+
+.follow-icons img{
+    width:48px !important;
+    height:48px !important;
+}
+
+}
+
+</style>
 </head>
 
 <body>
-    <header class="site-top">
-        <div class="hero-bar">
-            <a class="hero-logo" href="index.html">
-                <img src="logo.png" alt="Allstar Galaxy Logo">
-            </a>
 
-            <div class="hero-title">
-                <h1>Allstar Galaxy</h1>
-                <p>The Official Home of the Allstar Galaxy</p>
-            </div>
+<header class="site-top">
 
-            <a class="hero-logo-right" href="index.html">
-                <img src="logo.png" alt="Allstar Galaxy Logo">
-            </a>
-        </div>
+<div class="hero-bar">
 
-        <nav>
-            <a class="active" href="index.html">Home</a>
-            <a class="" href="media.html">Media</a>
-            <a class="" href="team.html">Team</a>
-            <a class="" href="schedule.html">Schedule</a>
-            <a class="" href="livestream.html">Livestream</a>
-        </nav>
-    </header>
+<a class="hero-logo" href="index.html">
+<img src="logo.png" alt="Allstar Galaxy Logo">
+</a>
 
-    <div class="hero-image"></div>
+<div class="hero-title">
+<h1>Allstar Galaxy</h1>
+<p>The Official Home of the Allstar Galaxy</p>
+</div>
 
-    <main>
-        <section id="best-media">
-            <div class="section-title">
-                <h2>Best of Allstar Galaxy</h2>
-                <p>Photos, videos, highlights, goals, saves, assists, and unforgettable team moments.</p>
-            </div>
+<a class="hero-logo-right" href="index.html">
+<img src="logo.png" alt="Allstar Galaxy Logo">
+</a>
 
-            <div class="carousel">
-                <div class="carousel-track">
-                    <div class="media-slide">
-                        <img src="images/media/media-1.JPG" alt="Allstar Galaxy media moment 1">
+</div>
 
-                        <div class="media-caption">
-                            <h3>Match Day Moments</h3>
-                            <p>The best photos and videos from Allstar Galaxy.</p>
-                        </div>
-                    </div>
+<nav>
+<a class="active" href="index.html">Home</a>
+<a href="media.html">Media</a>
+<a href="team.html">Team</a>
+<a href="schedule.html">Schedule</a>
+<a href="livestream.html">Live</a>
+<a href="#social">Follow</a>
+</nav>
 
-                    <div class="media-slide">
-                        <img src="images/media/media-2.JPG" alt="Allstar Galaxy media moment 2">
+</header>
 
-                        <div class="media-caption">
-                            <h3>Goals & Highlights</h3>
-                            <p>Big plays, goals, saves, assists, and team moments.</p>
-                        </div>
-                    </div>
+<div class="hero-image"></div>
 
-                    <div class="media-slide">
-                        <img src="images/media/media-3.JPG" alt="Allstar Galaxy media moment 3">
+<main>
 
-                        <div class="media-caption">
-                            <h3>Team Celebration</h3>
-                            <p>The journey of Allstar Galaxy captured one game at a time.</p>
-                        </div>
-                    </div>
+<section>
 
-                    <div class="media-slide">
-                        <img src="images/media/media-4.JPG" alt="Allstar Galaxy media moment 4">
+<div class="section-title">
+<h2>Best of Allstar Galaxy</h2>
 
-                        <div class="media-caption">
-                            <h3>The Best Plays</h3>
-                            <p>The official media home for Allstar Galaxy highlights.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<p>
+Photos, videos, highlights, goals, saves, assists,
+and unforgettable team moments.
+</p>
+</div>
 
-        <section id="social">
-    <div class="follow-original">
-        <h2>Follow Allstar Galaxy</h2>
+<div class="carousel">
 
-        <div class="follow-icons">
-            <a href="#" target="_blank">
-                <img src="images/social/youtube.png" alt="YouTube">
-            </a>
+<div class="carousel-track">
 
-            <a href="#" target="_blank">
-                <img src="images/social/instagram.png" alt="Instagram">
-            </a>
+<div class="media-slide">
+<img src="images/media/media-1.jpg">
 
-            <a href="#" target="_blank">
-                <img src="images/social/facebook.png" alt="Facebook">
-            </a>
+<div class="media-caption">
+<h3>Match Day Moments</h3>
+<p>The best photos from Allstar Galaxy.</p>
+</div>
+</div>
 
-            <a href="#" target="_blank">
-                <img src="images/social/tiktok.png" alt="TikTok">
-            </a>
+<div class="media-slide">
+<img src="images/media/media-2.jpg">
 
-            <a href="#" target="_blank">
-                <img src="images/social/x.png" alt="X">
-            </a>
-        </div>
-    </div>
+<div class="media-caption">
+<h3>Goals & Highlights</h3>
+<p>Big plays, goals, saves, assists and highlights.</p>
+</div>
+</div>
+
+<div class="media-slide">
+<img src="images/media/media-3.jpg">
+
+<div class="media-caption">
+<h3>Team Celebration</h3>
+<p>The journey captured one game at a time.</p>
+</div>
+</div>
+
+<div class="media-slide">
+<img src="images/media/media-4.jpg">
+
+<div class="media-caption">
+<h3>The Best Plays</h3>
+<p>The official media home of Allstar Galaxy.</p>
+</div>
+</div>
+
+</div>
+</div>
+
 </section>
-    </main>
 
+<section id="social">
 
-    <footer>
-        <a class="footer-logo" href="index.html">
-            <img src="logo.png" alt="Allstar Galaxy Logo">
-        </a>
+<div class="follow-section">
 
-        <div class="footer-count">
-            Website Views: <span id="visitor-count">Loading...</span>
-        </div>
+<h2>Follow Allstar Galaxy</h2>
 
-        <p class="footer-small">
-            © 2026 Allstar Galaxy. The Official Home of the Allstar Galaxy.
-        </p>
-    </footer>
+<div class="follow-icons">
 
-    <script>
-        fetch("https://api.countapi.xyz/hit/allstar-galaxy/official-website-homepage")
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById("visitor-count").textContent = data.value.toLocaleString();
-            })
-            .catch(() => {
-                document.getElementById("visitor-count").textContent = "Unavailable";
-            });
-    </script>
+<a href="#" target="_blank">
+<img src="images/social/youtube.png">
+</a>
+
+<a href="#" target="_blank">
+<img src="images/social/instagram.png">
+</a>
+
+<a href="#" target="_blank">
+<img src="images/social/facebook.png">
+</a>
+
+<a href="#" target="_blank">
+<img src="images/social/tiktok.png">
+</a>
+
+<a href="#" target="_blank">
+<img src="images/social/x.png">
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+
+<a class="footer-logo" href="index.html">
+<img src="logo.png">
+</a>
+
+<div class="footer-count">
+Website Views:
+<span id="visitor-count">Loading...</span>
+</div>
+
+<p>
+© 2026 Allstar Galaxy.
+The Official Home of the Allstar Galaxy.
+</p>
+
+</footer>
+
+<script>
+
+fetch("https://api.countapi.xyz/hit/allstar-galaxy/official-website-homepage")
+.then(response => response.json())
+.then(data => {
+document.getElementById("visitor-count").textContent =
+data.value.toLocaleString();
+});
+
+</script>
+
 </body>
 </html>
