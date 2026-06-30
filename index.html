@@ -206,12 +206,13 @@ section{
 
 .follow-section{
     text-align:center;
-    padding:40px 0;
+    padding:35px 0 10px;
 }
 
 .follow-section h2{
+    color:#ffd700;
     font-size:clamp(2rem,4vw,3.5rem);
-    margin-bottom:40px;
+    margin-bottom:35px;
 }
 
 .follow-icons{
@@ -293,18 +294,27 @@ nav a{
 }
 
 .follow-icons{
-    gap:28px;
-    flex-wrap:wrap;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:14px;
+    flex-wrap:nowrap;
 }
 
 .follow-icons a{
-    width:58px;
-    height:58px;
+    width:50px;
+    height:50px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 .follow-icons img{
-    width:48px !important;
-    height:48px !important;
+    width:40px !important;
+    height:40px !important;
+    max-width:40px !important;
+    max-height:40px !important;
+    object-fit:contain;
 }
 
 }
