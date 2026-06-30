@@ -595,6 +595,38 @@
             .schedule-grid {
                 grid-template-columns: 1fr;
             }
+
+            .follow-original {
+    text-align: center;
+    padding: 70px 20px;
+}
+
+.follow-original h2 {
+    color: white;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+}
+
+.follow-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 46px;
+    flex-wrap: wrap;
+}
+
+.follow-icons img {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    transition: transform 0.25s ease;
+}
+
+.follow-icons img:hover {
+    transform: scale(1.12);
+}
         }
 
     </style>
@@ -677,38 +709,32 @@
         </section>
 
         <section id="social">
-            <div class="section-title">
-                <h2>Follow Allstar Galaxy</h2>
-                <p>Watch full matches, highlights, slideshows, Shorts, and team updates across every platform.</p>
-            </div>
+    <div class="follow-original">
+        <h2>Follow Allstar Galaxy</h2>
 
-            <div class="social-grid">
-                <a class="social-card" href="#" target="_blank">
-                    <div class="social-icon">▶</div>
-                    <h3>YouTube</h3>
-                </a>
+        <div class="follow-icons">
+            <a href="#" target="_blank">
+                <img src="images/social/youtube.png" alt="YouTube">
+            </a>
 
-                <a class="social-card" href="#" target="_blank">
-                    <div class="social-icon">f</div>
-                    <h3>Facebook</h3>
-                </a>
+            <a href="#" target="_blank">
+                <img src="images/social/instagram.png" alt="Instagram">
+            </a>
 
-                <a class="social-card" href="#" target="_blank">
-                    <div class="social-icon">◎</div>
-                    <h3>Instagram</h3>
-                </a>
+            <a href="#" target="_blank">
+                <img src="images/social/facebook.png" alt="Facebook">
+            </a>
 
-                <a class="social-card" href="#" target="_blank">
-                    <div class="social-icon">𝕏</div>
-                    <h3>X</h3>
-                </a>
+            <a href="#" target="_blank">
+                <img src="images/social/tiktok.png" alt="TikTok">
+            </a>
 
-                <a class="social-card" href="#" target="_blank">
-                    <div class="social-icon">♪</div>
-                    <h3>TikTok</h3>
-                </a>
-            </div>
-        </section>
+            <a href="#" target="_blank">
+                <img src="images/social/x.png" alt="X">
+            </a>
+        </div>
+    </div>
+</section>
     </main>
 
 
