@@ -6,6 +6,8 @@ document.querySelectorAll(".carousel").forEach((carousel) => {
     const dots = carousel.querySelectorAll(".carousel-dot");
 
     let currentIndex = 0;
+    let autoPlay;
+    let isPaused = false;
 
     function updateCarousel() {
         track.style.transform = `translateX(-${currentIndex * 100}%)`;
@@ -15,17 +17,40 @@ document.querySelectorAll(".carousel").forEach((carousel) => {
         });
     }
 
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateCarousel();
+    }
+
+    function previousSlide() {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateCarousel();
+    }
+
+    function startAutoPlay() {
+        autoPlay = setInterval(() => {
+            if (!isPaused) {
+                nextSlide();
+            }
+        }, 5000);
+    }
+
+    function resetAutoPlay() {
+        clearInterval(autoPlay);
+        startAutoPlay();
+    }
+
     if (previousButton) {
         previousButton.addEventListener("click", () => {
-            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-            updateCarousel();
+            previousSlide();
+            resetAutoPlay();
         });
     }
 
     if (nextButton) {
         nextButton.addEventListener("click", () => {
-            currentIndex = (currentIndex + 1) % slides.length;
-            updateCarousel();
+            nextSlide();
+            resetAutoPlay();
         });
     }
 
@@ -33,8 +58,18 @@ document.querySelectorAll(".carousel").forEach((carousel) => {
         dot.addEventListener("click", () => {
             currentIndex = dotIndex;
             updateCarousel();
+            resetAutoPlay();
         });
     });
 
+    carousel.addEventListener("mouseenter", () => {
+        isPaused = true;
+    });
+
+    carousel.addEventListener("mouseleave", () => {
+        isPaused = false;
+    });
+
     updateCarousel();
+    startAutoPlay();
 });
