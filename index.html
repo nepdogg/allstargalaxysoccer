@@ -93,10 +93,29 @@
         .email-icon { color:var(--gold); font-size:1.55rem; line-height:1; }
         footer { border-top:1px solid rgba(255,215,0,.25); background:rgba(5,0,15,.97); text-align:center; padding:28px 20px; }
         .footer-logo { display:inline-flex; }
-        .footer-logo img { width:120px; max-width:100%; display:block; margin-bottom:8px; }
+       .footer-logo img {
+    width: 120px;
+    max-width: 100%;
+    display: block;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 0 9px #ffd700)
+            drop-shadow(0 0 18px #9d4edd);
+}
         .footer-count { color:var(--gold); margin:8px 0; font-weight:bold; }
         .footer-message { color:var(--gold); display:inline-block; margin:4px 0 8px; font-weight:bold; }
         .footer-small { color:var(--white); font-size:.95rem; }
+        .footer-email {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--gold);
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.footer-email:hover {
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
         @media (max-width:800px) {
             .hero-bar { grid-template-columns:60px 1fr 60px; padding:8px 8px 4px; }
             .hero-logo img, .hero-logo-right img { width:54px; }
@@ -164,20 +183,28 @@
         </section>
     </main>
 
-    <footer>
-        <a class="footer-logo" href="index.html"><img src="logo.png" alt="Allstar Galaxy Logo"></a>
-        <div class="footer-social">
-            <a href="#" target="_blank"><img src="images/social/youtube.png" alt="YouTube"></a>
-            <a href="#" target="_blank"><img src="images/social/instagram.png" alt="Instagram"></a>
-            <a href="#" target="_blank"><img src="images/social/facebook.png" alt="Facebook"></a>
-            <a href="#" target="_blank"><img src="images/social/tiktok.png" alt="TikTok"></a>
-            <a href="#" target="_blank"><img src="images/social/x.png" alt="X"></a>
-            <a href="mailto:allstargalaxy@example.com" aria-label="Email Allstar Galaxy"><span class="email-icon">✉</span></a>
-        </div>
-        <div class="footer-count">Website Views: <span id="visitor-count">Loading...</span></div>
-        <a class="footer-message" href="mailto:allstargalaxy@example.com">Message Allstar Galaxy</a>
-        <p class="footer-small">© 2026 Allstar Galaxy. The Official Home of the Allstar Galaxy.</p>
-    </footer>
+   <footer>
+    <a class="footer-logo" href="index.html">
+        <img src="logo.png" alt="Allstar Galaxy Logo">
+    </a>
+
+    <div class="footer-social">
+        <a href="#" target="_blank"><img src="images/social/youtube.png" alt="YouTube"></a>
+        <a href="#" target="_blank"><img src="images/social/instagram.png" alt="Instagram"></a>
+        <a href="#" target="_blank"><img src="images/social/facebook.png" alt="Facebook"></a>
+        <a href="#" target="_blank"><img src="images/social/tiktok.png" alt="TikTok"></a>
+        <a href="#" target="_blank"><img src="images/social/x.png" alt="X"></a>
+
+        <a class="footer-email" href="mailto:allstargalaxy@example.com">
+            <span class="email-icon">✉</span>
+            <span>Message Allstar Galaxy</span>
+        </a>
+    </div>
+
+    <p class="footer-small">
+        © 2026 Allstar Galaxy. The Official Home of the Allstar Galaxy.
+    </p>
+</footer>
     <script>
         fetch("https://api.countapi.xyz/hit/allstar-galaxy/official-website-homepage")
             .then(response => response.json())
