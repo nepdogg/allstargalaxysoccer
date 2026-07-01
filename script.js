@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         function startAutoPlay() {
             stopAutoPlay();
-            autoPlayTimer = setInterval(nextSlide, 4000);
+            autoPlayTimer = setInterval(nextSlide, 2000);
         }
 
         function stopAutoPlay() {
