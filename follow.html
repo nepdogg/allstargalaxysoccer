@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-page="follow">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,29 +9,28 @@
 </head>
 <body class="page-follow">
   <header class="site-header">
-    <a class="logo-wrap" href="index.html" aria-label="Allstar Galaxy Home">
+    <a class="logo-link logo-left" href="index.html" aria-label="Allstar Galaxy Home">
       <img src="images/allstar-galaxy-logo.png" alt="Allstar Galaxy logo" class="nav-logo" />
     </a>
 
-    <div class="nav-center">
-      <img src="images/navigation-title-follow.png" alt="Allstar Galaxy" class="navigation-title" />
+    <div class="header-center">
+      <a href="index.html" class="title-link" aria-label="Allstar Galaxy Home">
+        <img src="images/navigation-title-follow.png" alt="Allstar Galaxy" class="navigation-title" />
+      </a>
 
-      <button class="menu-toggle" aria-label="Open navigation" onclick="document.body.classList.toggle('nav-open')">
-        ☰
-      </button>
+      <button class="menu-toggle" aria-label="Open navigation" onclick="document.body.classList.toggle('nav-open')">☰</button>
 
-      <nav class="main-nav">
-        <a href="index.html" class="">Home</a>
-        <a href="live.html" class="">Live</a>
-        <a href="team.html" class="">Team</a>
-        <a href="schedule.html" class="">Schedule</a>
-        <a href="media.html" class="">Media</a>
-        <a href="news.html" class="">News</a>
-        <a href="follow.html" class="active">Follow</a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="team.html">TEAM</a>
+        <a href="schedule.html">SCHEDULE</a>
+        <a href="media.html">MEDIA</a>
+        <a href="news.html">NEWS</a>
+        <a href="live.html">LIVE</a>
+        <a href="follow.html" class="active">FOLLOW</a>
       </nav>
     </div>
 
-    <a class="logo-wrap" href="follow.html" aria-label="Follow Allstar Galaxy">
+    <a class="logo-link logo-right" href="index.html" aria-label="Allstar Galaxy Home">
       <img src="images/allstar-galaxy-logo.png" alt="Allstar Galaxy logo" class="nav-logo" />
     </a>
   </header>
