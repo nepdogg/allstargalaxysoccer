@@ -42,7 +42,7 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     background:
-        linear-gradient(180deg, rgba(5, 0, 15, 0.48) 0%, var(--page-bg-1) 28%, rgba(5, 0, 15, 0.78) 58%, var(--page-bg-2) 100%),
+        linear-gradient(180deg, rgba(5, 0, 15, 0.34) 0%, var(--page-bg-1) 24%, rgba(5, 0, 15, 0.64) 55%, var(--page-bg-2) 100%),
         radial-gradient(circle at 16% 12%, var(--page-bg-1), transparent 42%),
         radial-gradient(circle at 84% 18%, var(--page-bg-2), transparent 45%),
         radial-gradient(circle at 50% 88%, var(--page-bg-3), transparent 40%),
@@ -60,7 +60,7 @@ body::before {
     background:
         linear-gradient(90deg, transparent, var(--page-bg-2), transparent),
         radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.36) 72%);
-    opacity: 0.56;
+    opacity: 0.72;
 }
 
 a {
@@ -111,9 +111,9 @@ small,
     --page-panel: rgba(35, 20, 0, 0.82);
     --nav-hue: 0deg;
     --nav-saturate: 1.15;
-    --page-bg-1: rgba(255, 215, 0, 0.34);
-    --page-bg-2: rgba(255, 128, 0, 0.26);
-    --page-bg-3: rgba(255, 0, 255, 0.14);
+    --page-bg-1: rgba(255, 215, 0, 0.46);
+    --page-bg-2: rgba(255, 128, 0, 0.36);
+    --page-bg-3: rgba(255, 0, 255, 0.22);
 }
 
 .page-team {
@@ -124,9 +124,9 @@ small,
     --page-panel: rgba(30, 0, 55, 0.84);
     --nav-hue: 70deg;
     --nav-saturate: 1.6;
-    --page-bg-1: rgba(176, 0, 255, 0.38);
-    --page-bg-2: rgba(255, 0, 255, 0.30);
-    --page-bg-3: rgba(123, 44, 255, 0.20);
+    --page-bg-1: rgba(176, 0, 255, 0.50);
+    --page-bg-2: rgba(255, 0, 255, 0.42);
+    --page-bg-3: rgba(123, 44, 255, 0.30);
 }
 
 .page-schedule {
@@ -137,9 +137,9 @@ small,
     --page-panel: rgba(0, 35, 12, 0.84);
     --nav-hue: 105deg;
     --nav-saturate: 1.8;
-    --page-bg-1: rgba(57, 255, 20, 0.34);
-    --page-bg-2: rgba(0, 255, 136, 0.27);
-    --page-bg-3: rgba(182, 255, 0, 0.18);
+    --page-bg-1: rgba(57, 255, 20, 0.46);
+    --page-bg-2: rgba(0, 255, 136, 0.38);
+    --page-bg-3: rgba(182, 255, 0, 0.28);
 }
 
 .page-media {
@@ -150,9 +150,9 @@ small,
     --page-panel: rgba(0, 18, 55, 0.84);
     --nav-hue: 185deg;
     --nav-saturate: 1.9;
-    --page-bg-1: rgba(0, 170, 255, 0.36);
-    --page-bg-2: rgba(0, 110, 255, 0.30);
-    --page-bg-3: rgba(125, 249, 255, 0.19);
+    --page-bg-1: rgba(0, 170, 255, 0.48);
+    --page-bg-2: rgba(0, 110, 255, 0.42);
+    --page-bg-3: rgba(125, 249, 255, 0.29);
 }
 
 .page-news {
@@ -163,9 +163,9 @@ small,
     --page-panel: rgba(55, 10, 0, 0.84);
     --nav-hue: 25deg;
     --nav-saturate: 1.8;
-    --page-bg-1: rgba(255, 77, 0, 0.38);
-    --page-bg-2: rgba(255, 153, 0, 0.28);
-    --page-bg-3: rgba(255, 34, 0, 0.20);
+    --page-bg-1: rgba(255, 77, 0, 0.50);
+    --page-bg-2: rgba(255, 153, 0, 0.40);
+    --page-bg-3: rgba(255, 34, 0, 0.30);
 }
 
 .page-live {
@@ -176,9 +176,9 @@ small,
     --page-panel: rgba(55, 0, 0, 0.84);
     --nav-hue: 330deg;
     --nav-saturate: 1.9;
-    --page-bg-1: rgba(255, 0, 0, 0.39);
-    --page-bg-2: rgba(255, 51, 51, 0.31);
-    --page-bg-3: rgba(255, 119, 0, 0.20);
+    --page-bg-1: rgba(255, 0, 0, 0.52);
+    --page-bg-2: rgba(255, 51, 51, 0.43);
+    --page-bg-3: rgba(255, 119, 0, 0.30);
 }
 
 .page-follow {
@@ -189,9 +189,9 @@ small,
     --page-panel: rgba(45, 0, 45, 0.84);
     --nav-hue: 300deg;
     --nav-saturate: 1.9;
-    --page-bg-1: rgba(255, 77, 255, 0.40);
-    --page-bg-2: rgba(255, 0, 170, 0.31);
-    --page-bg-3: rgba(0, 229, 255, 0.18);
+    --page-bg-1: rgba(255, 77, 255, 0.54);
+    --page-bg-2: rgba(255, 0, 170, 0.44);
+    --page-bg-3: rgba(0, 229, 255, 0.28);
 }
 
 /* =========================
@@ -226,10 +226,10 @@ small,
 .hero-bar {
     width: 100%;
     display: grid;
-    grid-template-columns: 105px minmax(0, 1fr) 105px;
+    grid-template-columns: 86px minmax(0, 1fr) 86px;
     align-items: center;
-    column-gap: 10px;
-    padding: 12px 14px 5px;
+    column-gap: 6px;
+    padding: 12px 10px 5px;
 }
 
 .hero-logo,
@@ -267,41 +267,34 @@ small,
 
 .hero-logo img,
 .hero-logo-right img {
-    width: 105px;
+    width: 92px;
     display: block;
 }
 
 .hero-logo img,
 .hero-logo-right img,
 .footer-logo img {
-    animation: pulseGlow 4.8s ease-in-out infinite;
+    animation: pulseGlow 6.2s ease-in-out infinite;
 }
 
 @keyframes pulseGlow {
-    0% {
+    0%, 100% {
         filter:
-            drop-shadow(0 0 7px var(--page-glow-1))
-            drop-shadow(0 0 16px var(--page-glow-2));
+            drop-shadow(0 0 8px var(--page-glow-1))
+            drop-shadow(0 0 18px var(--page-glow-2));
     }
 
-    45% {
-        filter:
-            drop-shadow(0 0 16px var(--page-glow-1))
-            drop-shadow(0 0 34px var(--page-glow-2))
-            drop-shadow(0 0 52px var(--page-glow-3));
-    }
-
-    70% {
-        filter:
-            drop-shadow(0 0 9px var(--page-glow-1))
-            drop-shadow(0 0 20px var(--page-glow-2));
-    }
-
-    100% {
+    42% {
         filter:
             drop-shadow(0 0 18px var(--page-glow-1))
-            drop-shadow(0 0 40px var(--page-glow-2))
-            drop-shadow(0 0 60px var(--page-glow-3));
+            drop-shadow(0 0 42px var(--page-glow-2))
+            drop-shadow(0 0 70px var(--page-glow-3));
+    }
+
+    68% {
+        filter:
+            drop-shadow(0 0 10px var(--page-glow-1))
+            drop-shadow(0 0 22px var(--page-glow-2));
     }
 }
 
@@ -311,7 +304,7 @@ small,
 }
 
 .hero-title img {
-    width: min(100%, 1080px);
+    width: min(100%, 1220px);
     height: auto;
     display: block;
     margin: 0 auto;
@@ -319,16 +312,32 @@ small,
         drop-shadow(0 0 10px var(--page-glow-1))
         drop-shadow(0 0 22px var(--page-glow-2))
         drop-shadow(0 0 34px var(--page-glow-3));
+    animation: titlePulseGlow 6.2s ease-in-out infinite;
+}
+
+@keyframes titlePulseGlow {
+    0%, 100% {
+        filter:
+            drop-shadow(0 0 8px var(--page-glow-1))
+            drop-shadow(0 0 18px var(--page-glow-2));
+    }
+    45% {
+        filter:
+            drop-shadow(0 0 16px var(--page-glow-1))
+            drop-shadow(0 0 38px var(--page-glow-2))
+            drop-shadow(0 0 62px var(--page-glow-3));
+    }
 }
 
 nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
-    gap: clamp(18px, 4vw, 70px);
-    width: min(100% - 180px, 760px);
+    gap: 0;
+    width: calc(100% - 118px);
+    max-width: 1120px;
     margin: 0 auto;
-    padding: 0 12px 9px;
+    padding: 0 4px 9px;
 }
 
 nav a {
@@ -338,7 +347,8 @@ nav a {
     letter-spacing: 1px;
     font-size: 0.95rem;
     transition: 0.25s;
-    padding: 2px 4px;
+    padding: 3px 10px;
+    border-radius: 999px;
 }
 
 nav a:hover,
@@ -350,20 +360,28 @@ nav a.active {
 }
 
 nav a.active {
-    animation: navPulseGlow 3.2s ease-in-out infinite;
+    animation: navPulseGlow 6.2s ease-in-out infinite;
 }
 
 @keyframes navPulseGlow {
     0%, 100% {
+        color: var(--white);
+        transform: scale(1);
         text-shadow:
-            0 0 6px var(--page-glow-1),
-            0 0 14px var(--page-glow-2);
+            0 0 8px var(--page-glow-1),
+            0 0 18px var(--page-glow-2);
+        box-shadow: 0 0 0 rgba(0,0,0,0);
     }
-    50% {
+    45% {
+        color: var(--page-glow-1);
+        transform: scale(1.05);
         text-shadow:
-            0 0 12px var(--page-glow-1),
-            0 0 26px var(--page-glow-2),
-            0 0 40px var(--page-glow-3);
+            0 0 14px var(--page-glow-1),
+            0 0 30px var(--page-glow-2),
+            0 0 52px var(--page-glow-3);
+        box-shadow:
+            0 0 10px var(--page-bg-1),
+            0 0 22px var(--page-bg-2);
     }
 }
 
@@ -376,7 +394,7 @@ nav a.active {
     aspect-ratio: 2560 / 1440;
     background-position: center center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
     background-color: rgba(5, 0, 15, 0.92);
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     box-shadow:
@@ -387,7 +405,10 @@ nav a.active {
 .hero-home {
     background-image:
         linear-gradient(to bottom, rgba(5, 0, 15, 0.05), rgba(5, 0, 15, 0.25)),
-        url("images/banner/hero.png");
+        url("images/banner/hero-home.png"),
+        url("images/banner/hero-homepage.png"),
+        url("images/banner/home-hero.png"),
+        url("images/banner/hero-team.png");
 }
 
 .hero-team {
