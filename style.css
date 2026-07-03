@@ -387,10 +387,6 @@ nav a.active {
 .hero-home {
     background-image:
         linear-gradient(to bottom, rgba(5, 0, 15, 0.05), rgba(5, 0, 15, 0.25)),
-        url("images/banner/hero-home.png"),
-        url("images/banner/hero-homepage.png"),
-        url("images/banner/home-hero.png"),
-        url("images/banner/hero-team.png");
         url("images/banner/hero.png");
 }
 
