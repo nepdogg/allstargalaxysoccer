@@ -42,12 +42,13 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     background:
-        radial-gradient(circle at 16% 12%, var(--page-bg-1), transparent 30%),
+        linear-gradient(180deg, rgba(5, 0, 15, 0.62) 0%, var(--page-bg-1) 32%, rgba(5, 0, 15, 0.88) 64%, var(--page-bg-2) 100%),
+        radial-gradient(circle at 16% 12%, var(--page-bg-1), transparent 31%),
         radial-gradient(circle at 84% 18%, var(--page-bg-2), transparent 34%),
-        radial-gradient(circle at 50% 88%, var(--page-bg-3), transparent 38%),
+        radial-gradient(circle at 50% 88%, var(--page-bg-3), transparent 40%),
         linear-gradient(135deg, rgba(5, 0, 15, 0.70), rgba(5, 0, 15, 0.92) 52%, rgba(0, 0, 0, 0.96)),
         url("images/backgrounds/galaxy-background.png") center center fixed;
-    background-size: cover, cover, cover, cover, cover;
+    background-size: cover, cover, cover, cover, cover, cover;
 }
 
 body::before {
@@ -59,7 +60,7 @@ body::before {
     background:
         linear-gradient(90deg, transparent, var(--page-bg-2), transparent),
         radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.36) 72%);
-    opacity: 0.42;
+    opacity: 0.56;
 }
 
 a {
@@ -201,8 +202,9 @@ small,
     width: min(100%, var(--site-width));
     margin: 0 auto;
     background:
-        linear-gradient(180deg, rgba(5, 0, 15, 0.78), rgba(5, 0, 15, 0.90)),
-        radial-gradient(circle at top, var(--page-bg-1), transparent 42%);
+        linear-gradient(180deg, rgba(5, 0, 15, 0.78), rgba(5, 0, 15, 0.91)),
+        radial-gradient(circle at top, var(--page-bg-1), transparent 48%),
+        linear-gradient(180deg, transparent 0%, var(--page-bg-3) 100%);
     border-left: 1px solid rgba(255, 255, 255, 0.05);
     border-right: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -217,6 +219,7 @@ small,
     z-index: 1000;
     background: rgba(5, 0, 15, 0.97);
     border-bottom: 1px solid var(--page-border);
+    box-shadow: 0 0 28px rgba(0, 0, 0, 0.55), 0 0 22px var(--page-bg-1);
 }
 
 .hero-bar {
@@ -269,21 +272,34 @@ small,
 .hero-logo img,
 .hero-logo-right img,
 .footer-logo img {
-    animation: pulseGlow 3s infinite alternate;
+    animation: pulseGlow 4.8s ease-in-out infinite;
 }
 
 @keyframes pulseGlow {
-    from {
+    0% {
         filter:
-            drop-shadow(0 0 8px var(--page-glow-1))
-            drop-shadow(0 0 18px var(--page-glow-2));
+            drop-shadow(0 0 7px var(--page-glow-1))
+            drop-shadow(0 0 16px var(--page-glow-2));
     }
 
-    to {
+    45% {
         filter:
-            drop-shadow(0 0 14px var(--page-glow-1))
-            drop-shadow(0 0 30px var(--page-glow-2))
-            drop-shadow(0 0 44px var(--page-glow-3));
+            drop-shadow(0 0 16px var(--page-glow-1))
+            drop-shadow(0 0 34px var(--page-glow-2))
+            drop-shadow(0 0 52px var(--page-glow-3));
+    }
+
+    70% {
+        filter:
+            drop-shadow(0 0 9px var(--page-glow-1))
+            drop-shadow(0 0 20px var(--page-glow-2));
+    }
+
+    100% {
+        filter:
+            drop-shadow(0 0 18px var(--page-glow-1))
+            drop-shadow(0 0 40px var(--page-glow-2))
+            drop-shadow(0 0 60px var(--page-glow-3));
     }
 }
 
@@ -293,15 +309,14 @@ small,
 }
 
 .hero-title img {
-    width: min(100%, 820px);
+    width: min(100%, 940px);
     height: auto;
     display: block;
     margin: 0 auto;
     filter:
-        hue-rotate(var(--nav-hue))
-        saturate(var(--nav-saturate))
-        drop-shadow(0 0 8px var(--page-glow-1))
-        drop-shadow(0 0 18px var(--page-glow-2));
+        drop-shadow(0 0 10px var(--page-glow-1))
+        drop-shadow(0 0 22px var(--page-glow-2))
+        drop-shadow(0 0 34px var(--page-glow-3));
 }
 
 nav {
@@ -335,11 +350,14 @@ nav a.active {
 .hero-image {
     width: 100%;
     aspect-ratio: 2560 / 1440;
-    background-position: center;
+    background-position: center top;
     background-repeat: no-repeat;
-    background-size: cover;
-    background-color: rgba(5, 0, 15, 0.85);
+    background-size: contain;
+    background-color: rgba(5, 0, 15, 0.92);
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow:
+        0 0 34px rgba(0, 0, 0, 0.55),
+        0 0 62px var(--page-bg-1);
 }
 
 .hero-home {
@@ -391,6 +409,8 @@ nav a.active {
 main {
     width: 100%;
     padding: 38px 22px 48px;
+    background:
+        linear-gradient(180deg, transparent, var(--page-bg-3));
 }
 
 section {
@@ -836,6 +856,10 @@ footer {
 
 .footer-logo img {
     width: 120px;
+    filter:
+        drop-shadow(0 0 14px var(--page-glow-1))
+        drop-shadow(0 0 34px var(--page-glow-2))
+        drop-shadow(0 0 54px var(--page-glow-3));
     max-width: 100%;
     display: block;
     margin: 0 auto 12px auto;
@@ -922,8 +946,9 @@ footer {
     }
 
     .hero-image {
-        aspect-ratio: 1 / 0.8;
-        background-size: cover;
+        aspect-ratio: 16 / 9;
+        background-size: contain;
+        background-position: center top;
     }
 
     main {
