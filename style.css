@@ -28,9 +28,9 @@ html {
     --nav-hue: 0deg;
     --nav-saturate: 1;
 
-    --page-bg-1: rgba(255, 215, 0, 0.22);
-    --page-bg-2: rgba(255, 0, 255, 0.16);
-    --page-bg-3: rgba(0, 170, 255, 0.10);
+    --page-bg-1: rgba(255, 215, 0, 0.12);
+    --page-bg-2: rgba(255, 0, 255, 0.09);
+    --page-bg-3: rgba(0, 170, 255, 0.06);
     --text-main: #ffffff;
     --text-soft: #efe8ff;
     --text-muted: #d9d1e8;
@@ -42,10 +42,10 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     background:
-        linear-gradient(180deg, rgba(5, 0, 15, 0.36) 0%, rgba(5, 0, 15, 0.58) 55%, rgba(5, 0, 15, 0.70) 100%),
-        radial-gradient(circle at 14% 12%, var(--page-bg-1), transparent 34%),
-        radial-gradient(circle at 86% 20%, var(--page-bg-2), transparent 36%),
-        radial-gradient(circle at 50% 92%, var(--page-bg-3), transparent 34%),
+        linear-gradient(180deg, rgba(5, 0, 15, 0.18) 0%, rgba(5, 0, 15, 0.38) 55%, rgba(5, 0, 15, 0.54) 100%),
+        radial-gradient(circle at 14% 12%, var(--page-bg-1), transparent 42%),
+        radial-gradient(circle at 86% 20%, var(--page-bg-2), transparent 44%),
+        radial-gradient(circle at 50% 92%, var(--page-bg-3), transparent 42%),
         url("images/backgrounds/galaxy-background.png") center center fixed;
     background-size: cover, cover, cover, cover, cover;
 }
@@ -59,7 +59,7 @@ body::before {
     background:
         linear-gradient(90deg, rgba(0,0,0,0.18), transparent 24%, transparent 76%, rgba(0,0,0,0.18)),
         radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.20) 76%);
-    opacity: 0.62;
+    opacity: 0.42;
 }
 
 a {
@@ -110,9 +110,9 @@ small,
     --page-panel: rgba(35, 20, 0, 0.82);
     --nav-hue: 0deg;
     --nav-saturate: 1.15;
-    --page-bg-1: rgba(255, 215, 0, 0.20);
-    --page-bg-2: rgba(255, 128, 0, 0.16);
-    --page-bg-3: rgba(255, 0, 255, 0.10);
+    --page-bg-1: rgba(255, 215, 0, 0.11);
+    --page-bg-2: rgba(255, 128, 0, 0.09);
+    --page-bg-3: rgba(255, 0, 255, 0.06);
 }
 
 .page-team {
@@ -123,9 +123,9 @@ small,
     --page-panel: rgba(30, 0, 55, 0.84);
     --nav-hue: 70deg;
     --nav-saturate: 1.6;
-    --page-bg-1: rgba(176, 0, 255, 0.22);
-    --page-bg-2: rgba(255, 0, 255, 0.18);
-    --page-bg-3: rgba(123, 44, 255, 0.12);
+    --page-bg-1: rgba(176, 0, 255, 0.13);
+    --page-bg-2: rgba(255, 0, 255, 0.10);
+    --page-bg-3: rgba(123, 44, 255, 0.07);
 }
 
 .page-schedule {
@@ -136,9 +136,9 @@ small,
     --page-panel: rgba(0, 35, 12, 0.84);
     --nav-hue: 105deg;
     --nav-saturate: 1.8;
-    --page-bg-1: rgba(57, 255, 20, 0.20);
-    --page-bg-2: rgba(0, 255, 136, 0.16);
-    --page-bg-3: rgba(182, 255, 0, 0.11);
+    --page-bg-1: rgba(57, 255, 20, 0.12);
+    --page-bg-2: rgba(0, 255, 136, 0.09);
+    --page-bg-3: rgba(182, 255, 0, 0.06);
 }
 
 .page-media {
@@ -149,9 +149,9 @@ small,
     --page-panel: rgba(0, 18, 55, 0.84);
     --nav-hue: 185deg;
     --nav-saturate: 1.9;
-    --page-bg-1: rgba(0, 170, 255, 0.22);
-    --page-bg-2: rgba(0, 110, 255, 0.18);
-    --page-bg-3: rgba(125, 249, 255, 0.11);
+    --page-bg-1: rgba(0, 170, 255, 0.13);
+    --page-bg-2: rgba(0, 110, 255, 0.10);
+    --page-bg-3: rgba(125, 249, 255, 0.06);
 }
 
 .page-news {
@@ -162,9 +162,9 @@ small,
     --page-panel: rgba(55, 10, 0, 0.84);
     --nav-hue: 25deg;
     --nav-saturate: 1.8;
-    --page-bg-1: rgba(255, 77, 0, 0.22);
-    --page-bg-2: rgba(255, 153, 0, 0.17);
-    --page-bg-3: rgba(255, 34, 0, 0.12);
+    --page-bg-1: rgba(255, 77, 0, 0.13);
+    --page-bg-2: rgba(255, 153, 0, 0.10);
+    --page-bg-3: rgba(255, 34, 0, 0.07);
 }
 
 .page-live {
@@ -175,9 +175,9 @@ small,
     --page-panel: rgba(55, 0, 0, 0.84);
     --nav-hue: 330deg;
     --nav-saturate: 1.9;
-    --page-bg-1: rgba(255, 0, 0, 0.24);
-    --page-bg-2: rgba(255, 51, 51, 0.18);
-    --page-bg-3: rgba(255, 119, 0, 0.12);
+    --page-bg-1: rgba(255, 0, 0, 0.14);
+    --page-bg-2: rgba(255, 51, 51, 0.10);
+    --page-bg-3: rgba(255, 119, 0, 0.07);
 }
 
 .page-follow {
@@ -188,9 +188,9 @@ small,
     --page-panel: rgba(45, 0, 45, 0.84);
     --nav-hue: 300deg;
     --nav-saturate: 1.9;
-    --page-bg-1: rgba(255, 77, 255, 0.24);
-    --page-bg-2: rgba(255, 0, 170, 0.18);
-    --page-bg-3: rgba(0, 229, 255, 0.10);
+    --page-bg-1: rgba(255, 77, 255, 0.14);
+    --page-bg-2: rgba(255, 0, 170, 0.10);
+    --page-bg-3: rgba(0, 229, 255, 0.06);
 }
 
 /* =========================
@@ -201,9 +201,9 @@ small,
     width: min(100%, var(--site-width));
     margin: 0 auto;
     background:
-        linear-gradient(180deg, rgba(5, 0, 15, 0.78), rgba(5, 0, 15, 0.90)),
-        radial-gradient(circle at top, var(--page-bg-1), transparent 68%),
-        radial-gradient(circle at bottom, var(--page-bg-2), transparent 70%);
+        linear-gradient(180deg, rgba(5, 0, 15, 0.82), rgba(5, 0, 15, 0.92)),
+        radial-gradient(circle at top, var(--page-bg-1), transparent 76%),
+        radial-gradient(circle at bottom, var(--page-bg-2), transparent 78%);
     border-left: 1px solid rgba(255, 255, 255, 0.05);
     border-right: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -224,10 +224,10 @@ small,
 .hero-bar {
     width: 100%;
     display: grid;
-    grid-template-columns: 86px minmax(0, 1fr) 86px;
+    grid-template-columns: 110px minmax(0, 1fr) 110px;
     align-items: center;
-    column-gap: 6px;
-    padding: 12px 10px 5px;
+    column-gap: 14px;
+    padding: 10px 18px 4px;
 }
 
 .hero-logo,
@@ -265,7 +265,7 @@ small,
 
 .hero-logo img,
 .hero-logo-right img {
-    width: 92px;
+    width: 88px;
     display: block;
 }
 
@@ -302,14 +302,14 @@ small,
 }
 
 .hero-title img {
-    width: min(100%, 1220px);
+    width: min(100%, 1060px);
+    max-height: 86px;
     height: auto;
     display: block;
     margin: 0 auto;
     filter:
-        drop-shadow(0 0 9px var(--page-glow-1))
-        drop-shadow(0 0 20px var(--page-glow-2))
-        drop-shadow(0 0 30px var(--page-glow-3));
+        drop-shadow(0 0 6px var(--page-glow-1))
+        drop-shadow(0 0 14px var(--page-glow-2));
 }
 
 nav {
@@ -317,10 +317,10 @@ nav {
     justify-content: space-between;
     align-items: center;
     gap: 0;
-    width: calc(100% - 80px);
-    max-width: 1280px;
+    width: calc(100% - 210px);
+    max-width: 1040px;
     margin: 0 auto;
-    padding: 0 6px 9px;
+    padding: 0 14px 9px;
 }
 
 nav a {
@@ -330,7 +330,7 @@ nav a {
     letter-spacing: 1px;
     font-size: 0.95rem;
     transition: 0.25s;
-    padding: 3px 10px;
+    padding: 3px 9px;
     border-radius: 999px;
 }
 
@@ -405,6 +405,9 @@ nav a.active {
     background-image:
         linear-gradient(to bottom, rgba(5, 0, 15, 0.05), rgba(5, 0, 15, 0.25)),
         url("images/banner/hero-home.png"),
+        url("images/banner/hero-homepage.png"),
+        url("images/banner/home-hero.png"),
+        url("images/banner/hero-team.png");
 }
 
 .hero-team {
@@ -451,7 +454,7 @@ main {
     width: 100%;
     padding: 38px 22px 48px;
     background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.015), var(--page-bg-3));
+        linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(5, 0, 15, 0.10));
 }
 
 section {
@@ -842,17 +845,18 @@ td {
 
 .follow-page-icons {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 34px;
+    grid-template-columns: repeat(3, 220px);
+    gap: 42px 62px;
     align-items: center;
+    justify-content: center;
     justify-items: center;
-    max-width: 920px;
+    max-width: 860px;
     margin: 0 auto;
 }
 
 .follow-page-icons a {
-    width: 170px;
-    height: 170px;
+    width: 210px;
+    height: 190px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -867,15 +871,15 @@ td {
 }
 
 .follow-page-icons img {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
     object-fit: contain;
     display: block;
 }
 
 .large-email-icon {
     color: var(--page-glow-1);
-    font-size: 7rem;
+    font-size: 8.5rem;
     line-height: 1;
 }
 
@@ -961,13 +965,13 @@ footer {
     }
 
     .hero-bar {
-        grid-template-columns: 60px 1fr 60px;
+        grid-template-columns: 58px 1fr 58px;
         padding: 8px 8px 4px;
     }
 
     .hero-logo img,
     .hero-logo-right img {
-        width: 54px;
+        width: 52px;
     }
 
     .hero-title img {
@@ -977,8 +981,11 @@ footer {
     nav {
         width: 100%;
         justify-content: center;
+        width: 100%;
+        max-width: none;
         gap: 12px;
         padding: 4px 6px 8px;
+        justify-content: flex-start;
         flex-wrap: nowrap;
         overflow-x: auto;
         white-space: nowrap;
@@ -1030,21 +1037,22 @@ footer {
 
     .follow-page-icons {
         grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+        gap: 24px;
+        max-width: 420px;
     }
 
     .follow-page-icons a {
-        width: 120px;
-        height: 120px;
+        width: 135px;
+        height: 135px;
     }
 
     .follow-page-icons img {
-        width: 105px;
-        height: 105px;
+        width: 118px;
+        height: 118px;
     }
 
     .large-email-icon {
-        font-size: 5rem;
+        font-size: 5.8rem;
     }
 
     .footer-logo img {
