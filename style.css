@@ -2162,3 +2162,181 @@ footer {
         max-width: none !important;
     }
 }
+
+
+/* =========================
+   HOMEPAGE MEDIA STRIP UPDATE - V15
+   Makes the homepage carousel feel like a larger media strip instead of a small boxed widget.
+========================= */
+
+.page-home main {
+    padding-top: 10px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-bottom: 46px !important;
+}
+
+.page-home .homepage-bestof-section {
+    margin-bottom: 34px !important;
+}
+
+.page-home .homepage-bestof-title-wrap {
+    padding: 6px 22px 8px !important;
+}
+
+.page-home .homepage-bestof-title {
+    width: min(92%, 960px) !important;
+    max-width: 960px !important;
+    filter:
+        drop-shadow(0 0 8px rgba(255, 215, 0, 0.26))
+        drop-shadow(0 0 18px rgba(255, 175, 0, 0.18)) !important;
+}
+
+.page-home .homepage-media-carousel {
+    width: 100% !important;
+    max-width: none !important;
+    margin: -2px auto 0 !important;
+    padding: 0 0 18px !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+}
+
+.page-home .homepage-media-carousel .carousel-track {
+    gap: 24px !important;
+    padding: 0 28px !important;
+    align-items: stretch !important;
+}
+
+.page-home .homepage-media-carousel .media-slide {
+    min-width: min(92vw, 575px) !important;
+    max-width: 575px !important;
+    aspect-ratio: 16 / 7.25 !important;
+    border: 1px solid rgba(255, 215, 0, 0.46) !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    background: rgba(4, 0, 10, 0.94) !important;
+    box-shadow:
+        0 0 8px rgba(255, 215, 0, 0.16),
+        0 10px 24px rgba(0, 0, 0, 0.48) !important;
+}
+
+.page-home .homepage-media-carousel .media-slide:hover {
+    transform: translateY(-2px) !important;
+    border-color: rgba(255, 215, 0, 0.70) !important;
+    box-shadow:
+        0 0 12px rgba(255, 215, 0, 0.22),
+        0 12px 28px rgba(0, 0, 0, 0.55) !important;
+}
+
+.page-home .homepage-media-carousel .media-slide img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    background: rgba(4, 0, 10, 0.94) !important;
+}
+
+.page-home .homepage-media-carousel .media-caption {
+    padding: 20px 18px 16px !important;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.24) 64%, transparent) !important;
+}
+
+.page-home .homepage-media-carousel .media-caption h3 {
+    font-size: clamp(1.3rem, 2vw, 2.15rem) !important;
+    line-height: 1.03 !important;
+    text-shadow: 0 0 7px rgba(255, 215, 0, 0.34) !important;
+}
+
+.page-home .homepage-media-carousel .media-caption p {
+    font-size: clamp(0.88rem, 1vw, 1rem) !important;
+    line-height: 1.25 !important;
+}
+
+.page-home .homepage-media-carousel .carousel-button {
+    width: 44px !important;
+    height: 44px !important;
+    border: 0 !important;
+    background: rgba(5, 0, 15, 0.28) !important;
+    color: var(--page-glow-1) !important;
+    box-shadow: none !important;
+}
+
+.page-home .homepage-media-carousel .carousel-button:hover {
+    background: rgba(5, 0, 15, 0.62) !important;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.22) !important;
+}
+
+.page-home .homepage-media-carousel .carousel-button.prev {
+    left: 10px !important;
+}
+
+.page-home .homepage-media-carousel .carousel-button.next {
+    right: 10px !important;
+}
+
+.page-home .homepage-media-carousel .carousel-dots {
+    background: transparent !important;
+    padding: 12px 0 0 !important;
+}
+
+.page-home .homepage-media-carousel .carousel-dot {
+    width: 8px !important;
+    height: 8px !important;
+    box-shadow: none !important;
+}
+
+.page-home .homepage-media-carousel .carousel-dot.active {
+    box-shadow: 0 0 7px rgba(255, 215, 0, 0.55) !important;
+}
+
+@media (min-width: 900px) {
+    .page-home .homepage-media-carousel .media-slide {
+        min-width: calc((100% - 48px) / 3) !important;
+        max-width: none !important;
+    }
+}
+
+@media (min-width: 1250px) {
+    .page-home .homepage-media-carousel .media-slide {
+        min-width: calc((100% - 72px) / 4) !important;
+        max-width: none !important;
+    }
+}
+
+@media (max-width: 800px) {
+    .page-home main {
+        padding-top: 8px !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .page-home .homepage-bestof-title-wrap {
+        padding: 6px 10px 10px !important;
+    }
+
+    .page-home .homepage-bestof-title {
+        width: 98% !important;
+    }
+
+    .page-home .homepage-media-carousel {
+        margin-top: -2px !important;
+    }
+
+    .page-home .homepage-media-carousel .carousel-track {
+        gap: 14px !important;
+        padding: 0 12px !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide {
+        min-width: 88vw !important;
+        max-width: none !important;
+        aspect-ratio: 16 / 8.5 !important;
+        border-radius: 14px !important;
+    }
+
+    .page-home .homepage-media-carousel .media-caption {
+        padding: 16px 14px 13px !important;
+    }
+}
