@@ -14,7 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
         let autoPlayTimer;
 
         function updateCarousel() {
-            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            const targetSlide = slides[currentIndex];
+            const slideLeft = targetSlide ? targetSlide.offsetLeft : 0;
+            track.style.transform = `translateX(-${slideLeft}px)`;
 
             dots.forEach((dot, dotIndex) => {
                 dot.classList.toggle("active", dotIndex === currentIndex);
@@ -33,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         function startAutoPlay() {
             stopAutoPlay();
-            autoPlayTimer = setInterval(nextSlide, 4000);
+            autoPlayTimer = setInterval(nextSlide, 4500);
         }
 
         function stopAutoPlay() {
@@ -60,6 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
+        window.addEventListener("resize", updateCarousel);
         carousel.addEventListener("mouseenter", stopAutoPlay);
         carousel.addEventListener("mouseleave", startAutoPlay);
 

@@ -516,43 +516,6 @@ section {
     text-align: center;
 }
 
-/* =====================================
-   HOMEPAGE BEST OF TITLE
-===================================== */
-
-.homepage-bestof{
-    text-align:center;
-    padding:28px 0 22px;
-}
-
-.homepage-bestof-title{
-    width:min(90%,760px);
-    height:auto;
-    display:block;
-    margin:0 auto;
-
-    animation:bestOfPulse 4s ease-in-out infinite;
-}
-
-@keyframes bestOfPulse{
-
-    0%{
-        transform:scale(1);
-        filter:drop-shadow(0 0 8px rgba(255,210,60,.45));
-    }
-
-    50%{
-        transform:scale(1.02);
-        filter:drop-shadow(0 0 22px rgba(255,215,0,.85));
-    }
-
-    100%{
-        transform:scale(1);
-        filter:drop-shadow(0 0 8px rgba(255,210,60,.45));
-    }
-
-}
-
 /* =========================
    CAROUSEL
 ========================= */
@@ -1118,18 +1081,6 @@ footer {
         padding: 34px 18px 42px;
     }
 
-   .homepage-bestof{
-
-       padding:18px 0 15px;
-
-   }
-
-   .homepage-bestof-title{
-
-       width:94%;
-
-   }
-
     .media-slide {
         aspect-ratio: 4 / 5;
     }
@@ -1689,5 +1640,145 @@ a.footer-logo.footer-logo-right img {
         height: 20px !important;
         min-width: 20px !important;
         font-size: 0.98rem !important;
+    }
+}
+
+
+/* =========================
+   HOMEPAGE BEST OF TITLE + WIDE MEDIA CAROUSEL - V12
+   Place images/banner/homepage-bestof-title.png in the images/banner folder.
+========================= */
+
+.page-home main {
+    padding-top: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.homepage-bestof-section {
+    margin-bottom: 44px !important;
+}
+
+.homepage-bestof-title-wrap {
+    width: 100%;
+    text-align: center;
+    padding: 18px 14px 34px;
+}
+
+.homepage-bestof-title {
+    width: min(96%, 900px);
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    filter:
+        drop-shadow(0 0 10px rgba(255, 210, 45, 0.42))
+        drop-shadow(0 0 22px rgba(255, 180, 0, 0.28));
+    animation: bestOfTitleGlow 5.5s ease-in-out infinite;
+}
+
+@keyframes bestOfTitleGlow {
+    0%, 100% {
+        transform: scale(1);
+        filter:
+            drop-shadow(0 0 8px rgba(255, 210, 45, 0.36))
+            drop-shadow(0 0 18px rgba(255, 180, 0, 0.22));
+    }
+    50% {
+        transform: scale(1.012);
+        filter:
+            drop-shadow(0 0 16px rgba(255, 230, 80, 0.72))
+            drop-shadow(0 0 34px rgba(255, 180, 0, 0.46));
+    }
+}
+
+.page-home .homepage-media-carousel {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+    padding: 0 0 20px !important;
+}
+
+.page-home .homepage-media-carousel .carousel-track {
+    gap: 16px;
+    padding: 0 22px;
+    align-items: stretch;
+}
+
+.page-home .homepage-media-carousel .media-slide {
+    min-width: min(72vw, 390px) !important;
+    max-width: 390px;
+    aspect-ratio: 16 / 9;
+    border: 1px solid var(--page-border);
+    border-radius: 18px;
+    overflow: hidden;
+    background: rgba(4, 0, 10, 0.92);
+    box-shadow:
+        0 0 12px rgba(255, 215, 0, 0.22),
+        0 0 22px rgba(0, 0, 0, 0.65);
+}
+
+.page-home .homepage-media-carousel .media-slide img {
+    object-fit: cover !important;
+    background: rgba(4, 0, 10, 0.92) !important;
+}
+
+.page-home .homepage-media-carousel .media-caption {
+    padding: 18px;
+}
+
+.page-home .homepage-media-carousel .carousel-button {
+    border: 0 !important;
+    background: rgba(5, 0, 15, 0.38) !important;
+    box-shadow: none !important;
+}
+
+.page-home .homepage-media-carousel .carousel-button.prev {
+    left: 8px !important;
+}
+
+.page-home .homepage-media-carousel .carousel-button.next {
+    right: 8px !important;
+}
+
+.page-home .homepage-media-carousel .carousel-dots {
+    background: transparent !important;
+    padding-top: 12px !important;
+}
+
+@media (min-width: 900px) {
+    .page-home .homepage-media-carousel .media-slide {
+        min-width: calc((100% - 64px) / 5) !important;
+    }
+}
+
+@media (max-width: 800px) {
+    .homepage-bestof-title-wrap {
+        padding: 12px 8px 22px !important;
+    }
+
+    .homepage-bestof-title {
+        width: 99% !important;
+    }
+
+    .page-home .homepage-media-carousel .carousel-track {
+        gap: 12px !important;
+        padding: 0 12px !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide {
+        min-width: 88vw !important;
+        max-width: none !important;
+        border-radius: 16px !important;
+    }
+
+    .page-home .homepage-media-carousel .carousel-button {
+        width: 38px !important;
+        height: 38px !important;
+        font-size: 1.75rem !important;
     }
 }
