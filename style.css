@@ -1118,6 +1118,18 @@ footer {
         padding: 34px 18px 42px;
     }
 
+   .homepage-bestof{
+
+       padding:18px 0 15px;
+
+   }
+
+   .homepage-bestof-title{
+
+       width:94%;
+
+   }
+
     .media-slide {
         aspect-ratio: 4 / 5;
     }
