@@ -1782,3 +1782,312 @@ a.footer-logo.footer-logo-right img {
         font-size: 1.75rem !important;
     }
 }
+
+
+/* =========================
+   PROFESSIONAL POLISH + HOMEPAGE FINAL FIX - V13
+   Upload this file as style.css and update HTML cache versions to ?v=13.
+========================= */
+
+/* Reduce the overall glow so the site still feels premium but less overwhelming. */
+.site-top {
+    box-shadow:
+        0 0 18px rgba(0, 0, 0, 0.62),
+        0 0 8px rgba(var(--page-rgb), 0.16) !important;
+}
+
+.hero-logo img,
+.hero-logo-right img,
+.footer-logo img {
+    filter:
+        drop-shadow(0 0 5px var(--page-glow-1))
+        drop-shadow(0 0 10px rgba(var(--page-rgb), 0.38)) !important;
+}
+
+.hero-logo:hover img,
+.hero-logo-right:hover img,
+.footer-logo:hover img {
+    transform: scale(1.08) !important;
+    filter:
+        drop-shadow(0 0 8px var(--page-glow-1))
+        drop-shadow(0 0 16px rgba(var(--page-rgb), 0.52)) !important;
+}
+
+.hero-title img {
+    filter:
+        drop-shadow(0 0 4px var(--page-glow-1))
+        drop-shadow(0 0 8px rgba(var(--page-rgb), 0.32)) !important;
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        filter:
+            drop-shadow(0 0 4px var(--page-glow-1))
+            drop-shadow(0 0 10px rgba(var(--page-rgb), 0.34));
+    }
+    45% {
+        filter:
+            drop-shadow(0 0 8px var(--page-glow-1))
+            drop-shadow(0 0 18px rgba(var(--page-rgb), 0.50));
+    }
+    70% {
+        filter:
+            drop-shadow(0 0 5px var(--page-glow-1))
+            drop-shadow(0 0 12px rgba(var(--page-rgb), 0.38));
+    }
+}
+
+nav a:hover,
+nav a.active {
+    text-shadow:
+        0 0 6px var(--page-glow-1),
+        0 0 12px rgba(var(--page-rgb), 0.38) !important;
+}
+
+nav a.active {
+    animation: navPulseGlowPro 11.5s ease-in-out infinite !important;
+}
+
+@keyframes navPulseGlowPro {
+    0%, 100% {
+        color: var(--white);
+        transform: scale(1);
+        background: rgba(255, 255, 255, 0.025);
+        box-shadow: 0 0 5px rgba(var(--page-rgb), 0.35);
+        text-shadow: 0 0 6px var(--page-glow-1);
+    }
+    45% {
+        color: var(--page-glow-1);
+        transform: scale(1.04);
+        background: rgba(255, 255, 255, 0.055);
+        box-shadow: 0 0 12px rgba(var(--page-rgb), 0.45);
+        text-shadow:
+            0 0 9px var(--page-glow-1),
+            0 0 16px rgba(var(--page-rgb), 0.42);
+    }
+    72% {
+        color: var(--white);
+        transform: scale(1.01);
+        background: rgba(255, 255, 255, 0.03);
+        box-shadow: 0 0 7px rgba(var(--page-rgb), 0.34);
+    }
+}
+
+.hero-image {
+    box-shadow:
+        0 0 22px rgba(0, 0, 0, 0.58),
+        0 0 28px rgba(var(--page-rgb), 0.10) !important;
+}
+
+h1,
+h2,
+.big-header,
+.section-title,
+.story-card h2,
+.live-frame h2 {
+    text-shadow:
+        0 0 6px var(--page-glow-1),
+        0 0 13px rgba(var(--page-rgb), 0.32) !important;
+}
+
+.card,
+.game-card,
+.story-card,
+.table-card,
+.live-card,
+.carousel {
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.42) !important;
+}
+
+.card:hover,
+.game-card:hover {
+    transform: translateY(-4px) !important;
+    box-shadow:
+        0 0 10px rgba(var(--page-rgb), 0.45),
+        0 0 18px rgba(0, 0, 0, 0.52) !important;
+}
+
+/* Homepage: tighter hero-to-title spacing, wider Best Of title, cleaner carousel. */
+.page-home main {
+    padding-top: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-bottom: 42px !important;
+}
+
+.page-home #best-media.homepage-bestof-section {
+    margin-bottom: 34px !important;
+}
+
+.homepage-bestof-title-wrap {
+    width: 100% !important;
+    text-align: center !important;
+    padding: 10px 18px 22px !important;
+}
+
+.homepage-bestof-title {
+    width: min(94%, 1060px) !important;
+    max-width: 1060px !important;
+    height: auto !important;
+    display: block !important;
+    margin: 0 auto !important;
+    border-radius: 2px;
+    filter:
+        drop-shadow(0 0 6px rgba(255, 215, 0, 0.30))
+        drop-shadow(0 0 14px rgba(255, 175, 0, 0.18)) !important;
+    animation: bestOfTitleGlowPro 7.5s ease-in-out infinite !important;
+}
+
+@keyframes bestOfTitleGlowPro {
+    0%, 100% {
+        transform: scale(1);
+        filter:
+            drop-shadow(0 0 5px rgba(255, 215, 0, 0.25))
+            drop-shadow(0 0 12px rgba(255, 175, 0, 0.16));
+    }
+    50% {
+        transform: scale(1.006);
+        filter:
+            drop-shadow(0 0 9px rgba(255, 225, 75, 0.46))
+            drop-shadow(0 0 18px rgba(255, 175, 0, 0.24));
+    }
+}
+
+.page-home .homepage-media-carousel {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 0 16px !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+}
+
+.page-home .homepage-media-carousel .carousel-track {
+    gap: 18px !important;
+    padding: 0 24px !important;
+    align-items: stretch !important;
+}
+
+.page-home .homepage-media-carousel .media-slide {
+    min-width: min(76vw, 405px) !important;
+    max-width: 405px !important;
+    aspect-ratio: 16 / 9 !important;
+    border: 1px solid rgba(255, 215, 0, 0.48) !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    background: rgba(4, 0, 10, 0.93) !important;
+    box-shadow:
+        0 0 8px rgba(255, 215, 0, 0.18),
+        0 8px 24px rgba(0, 0, 0, 0.44) !important;
+}
+
+.page-home .homepage-media-carousel .media-slide:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 215, 0, 0.72) !important;
+    box-shadow:
+        0 0 12px rgba(255, 215, 0, 0.24),
+        0 10px 26px rgba(0, 0, 0, 0.52) !important;
+}
+
+.page-home .homepage-media-carousel .media-slide img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    background: rgba(4, 0, 10, 0.93) !important;
+}
+
+.page-home .homepage-media-carousel .media-caption {
+    padding: 16px !important;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 0.18) 64%, transparent) !important;
+}
+
+.page-home .homepage-media-carousel .media-caption h3 {
+    font-size: clamp(1.05rem, 1.45vw, 1.65rem) !important;
+    line-height: 1.08 !important;
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.34) !important;
+}
+
+.page-home .homepage-media-carousel .media-caption p {
+    font-size: 0.86rem !important;
+    line-height: 1.35 !important;
+}
+
+.page-home .homepage-media-carousel .carousel-button {
+    width: 42px !important;
+    height: 42px !important;
+    border: 0 !important;
+    background: rgba(5, 0, 15, 0.32) !important;
+    color: var(--page-glow-1) !important;
+    box-shadow: none !important;
+}
+
+.page-home .homepage-media-carousel .carousel-button:hover {
+    background: rgba(5, 0, 15, 0.62) !important;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.24) !important;
+}
+
+.page-home .homepage-media-carousel .carousel-button.prev {
+    left: 10px !important;
+}
+
+.page-home .homepage-media-carousel .carousel-button.next {
+    right: 10px !important;
+}
+
+.page-home .homepage-media-carousel .carousel-dots {
+    background: transparent !important;
+    padding: 12px 0 0 !important;
+}
+
+.page-home .homepage-media-carousel .carousel-dot {
+    width: 8px !important;
+    height: 8px !important;
+    box-shadow: none !important;
+}
+
+.page-home .homepage-media-carousel .carousel-dot.active {
+    box-shadow: 0 0 7px rgba(255, 215, 0, 0.58) !important;
+}
+
+footer {
+    box-shadow:
+        inset 0 1px 0 rgba(var(--page-rgb), 0.44),
+        0 -6px 18px rgba(var(--page-rgb), 0.08) !important;
+}
+
+@media (min-width: 900px) {
+    .page-home .homepage-media-carousel .media-slide {
+        min-width: calc((100% - 54px) / 4) !important;
+        max-width: none !important;
+    }
+}
+
+@media (min-width: 1250px) {
+    .page-home .homepage-media-carousel .media-slide {
+        min-width: calc((100% - 72px) / 5) !important;
+    }
+}
+
+@media (max-width: 800px) {
+    .homepage-bestof-title-wrap {
+        padding: 8px 10px 18px !important;
+    }
+
+    .homepage-bestof-title {
+        width: 98% !important;
+    }
+
+    .page-home .homepage-media-carousel .carousel-track {
+        gap: 12px !important;
+        padding: 0 12px !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide {
+        min-width: 84vw !important;
+        max-width: none !important;
+        border-radius: 14px !important;
+    }
+}
