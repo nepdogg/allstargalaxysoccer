@@ -516,6 +516,43 @@ section {
     text-align: center;
 }
 
+/* =====================================
+   HOMEPAGE BEST OF TITLE
+===================================== */
+
+.homepage-bestof{
+    text-align:center;
+    padding:28px 0 22px;
+}
+
+.homepage-bestof-title{
+    width:min(90%,760px);
+    height:auto;
+    display:block;
+    margin:0 auto;
+
+    animation:bestOfPulse 4s ease-in-out infinite;
+}
+
+@keyframes bestOfPulse{
+
+    0%{
+        transform:scale(1);
+        filter:drop-shadow(0 0 8px rgba(255,210,60,.45));
+    }
+
+    50%{
+        transform:scale(1.02);
+        filter:drop-shadow(0 0 22px rgba(255,215,0,.85));
+    }
+
+    100%{
+        transform:scale(1);
+        filter:drop-shadow(0 0 8px rgba(255,210,60,.45));
+    }
+
+}
+
 /* =========================
    CAROUSEL
 ========================= */
