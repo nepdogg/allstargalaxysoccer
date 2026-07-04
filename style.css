@@ -2091,3 +2091,74 @@ footer {
         border-radius: 14px !important;
     }
 }
+
+
+/* =========================
+   HOMEPAGE CAROUSEL SIZE UPDATE - V14
+   Makes the homepage carousel thumbnails about 25% larger and moves them closer to the Best Of graphic.
+========================= */
+
+.page-home .homepage-bestof-title-wrap {
+    padding-bottom: 12px !important;
+}
+
+.page-home .homepage-media-carousel {
+    margin-top: -4px !important;
+    padding-bottom: 18px !important;
+}
+
+.page-home .homepage-media-carousel .carousel-track {
+    gap: 22px !important;
+    padding: 0 24px !important;
+}
+
+.page-home .homepage-media-carousel .media-slide {
+    min-width: min(86vw, 506px) !important;
+    max-width: 506px !important;
+}
+
+.page-home .homepage-media-carousel .media-caption {
+    padding: 18px !important;
+}
+
+.page-home .homepage-media-carousel .media-caption h3 {
+    font-size: clamp(1.18rem, 1.75vw, 1.95rem) !important;
+}
+
+.page-home .homepage-media-carousel .media-caption p {
+    font-size: 0.92rem !important;
+}
+
+@media (min-width: 900px) {
+    .page-home .homepage-media-carousel .media-slide {
+        min-width: calc((100% - 66px) / 3.25) !important;
+        max-width: none !important;
+    }
+}
+
+@media (min-width: 1250px) {
+    .page-home .homepage-media-carousel .media-slide {
+        min-width: calc((100% - 66px) / 4) !important;
+        max-width: none !important;
+    }
+}
+
+@media (max-width: 800px) {
+    .page-home .homepage-bestof-title-wrap {
+        padding-bottom: 12px !important;
+    }
+
+    .page-home .homepage-media-carousel {
+        margin-top: -2px !important;
+    }
+
+    .page-home .homepage-media-carousel .carousel-track {
+        gap: 14px !important;
+        padding: 0 12px !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide {
+        min-width: 92vw !important;
+        max-width: none !important;
+    }
+}
