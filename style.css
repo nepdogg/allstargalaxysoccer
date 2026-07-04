@@ -306,19 +306,19 @@ small,
 .hero-logo img,
 .hero-logo-right img,
 .footer-logo img {
-    animation: pulseGlow 9.5s ease-in-out infinite;
+    animation: pulseGlow 11.5s ease-in-out infinite;
 }
 
 .hero-logo-right img {
-    animation-delay: 0.65s;
+    animation-delay: 2.8s;
 }
 
 .footer-logo-left img {
-    animation-delay: 0s;
+    animation-delay: 0.9s;
 }
 
 .footer-logo-right img {
-    animation-delay: 0.75s;
+    animation-delay: 4.2s;
 }
 
 @keyframes pulseGlow {
@@ -389,8 +389,8 @@ nav a.active {
 }
 
 nav a.active {
-    animation: navPulseGlow 9.5s ease-in-out infinite;
-    animation-delay: 0.35s;
+    animation: navPulseGlow 11.5s ease-in-out infinite;
+    animation-delay: 1.65s;
 }
 
 @keyframes navPulseGlow {
@@ -1164,5 +1164,134 @@ footer {
 
     .footer-small {
         font-size: 0.78rem;
+    }
+}
+
+
+/* =========================
+   FOOTER COMPACT FIX - V9
+   Keeps footer logos small and staggers pulse timing
+========================= */
+footer {
+    padding: 14px 18px 12px !important;
+}
+
+.footer-social-row {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 13px !important;
+    flex-wrap: nowrap !important;
+    margin: 0 auto 6px !important;
+}
+
+.footer-social-row > .footer-logo,
+.footer-social-row > a.footer-logo,
+a.footer-logo.footer-logo-left,
+a.footer-logo.footer-logo-right {
+    width: 30px !important;
+    height: 30px !important;
+    min-width: 30px !important;
+    max-width: 30px !important;
+    min-height: 30px !important;
+    max-height: 30px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex: 0 0 30px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.footer-social-row > .footer-logo img,
+.footer-social-row > a.footer-logo img,
+a.footer-logo.footer-logo-left img,
+a.footer-logo.footer-logo-right img {
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+    max-width: 28px !important;
+    min-height: 28px !important;
+    max-height: 28px !important;
+    object-fit: contain !important;
+    display: block !important;
+    margin: 0 !important;
+    animation: pulseGlow 11.5s ease-in-out infinite !important;
+}
+
+a.footer-logo.footer-logo-left img {
+    animation-delay: 0.9s !important;
+}
+
+a.footer-logo.footer-logo-right img {
+    animation-delay: 4.2s !important;
+}
+
+.hero-logo img {
+    animation-delay: 0s !important;
+}
+
+.hero-logo-right img {
+    animation-delay: 2.8s !important;
+}
+
+nav a.active {
+    animation-delay: 1.65s !important;
+}
+
+.footer-social {
+    gap: 12px !important;
+    flex-wrap: nowrap !important;
+}
+
+.footer-social img {
+    width: 24px !important;
+    height: 24px !important;
+}
+
+.footer-email {
+    font-size: 0.86rem !important;
+}
+
+.footer-small {
+    font-size: 0.82rem !important;
+    margin-top: 3px !important;
+}
+
+@media (max-width: 800px) {
+    .footer-social-row {
+        gap: 8px !important;
+        flex-wrap: wrap !important;
+    }
+
+    .footer-social-row > .footer-logo,
+    .footer-social-row > a.footer-logo,
+    a.footer-logo.footer-logo-left,
+    a.footer-logo.footer-logo-right {
+        width: 26px !important;
+        height: 26px !important;
+        min-width: 26px !important;
+        max-width: 26px !important;
+        flex-basis: 26px !important;
+    }
+
+    .footer-social-row > .footer-logo img,
+    .footer-social-row > a.footer-logo img,
+    a.footer-logo.footer-logo-left img,
+    a.footer-logo.footer-logo-right img {
+        width: 24px !important;
+        height: 24px !important;
+        min-width: 24px !important;
+        max-width: 24px !important;
+    }
+
+    .footer-social {
+        gap: 9px !important;
+        flex-wrap: wrap !important;
+    }
+
+    .footer-social img {
+        width: 22px !important;
+        height: 22px !important;
     }
 }
