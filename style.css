@@ -31,6 +31,10 @@ html {
     --page-bg-1: rgba(255, 215, 0, 0.12);
     --page-bg-2: rgba(255, 0, 255, 0.09);
     --page-bg-3: rgba(0, 170, 255, 0.06);
+    --page-rgb: 255, 215, 0;
+    --galaxy-tint: rgba(255, 215, 0, 0.06);
+    --shell-tint: rgba(255, 215, 0, 0.045);
+    --main-tint: rgba(255, 215, 0, 0.055);
     --text-main: #ffffff;
     --text-soft: #efe8ff;
     --text-muted: #d9d1e8;
@@ -42,12 +46,13 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     background:
-        linear-gradient(180deg, rgba(5, 0, 15, 0.18) 0%, rgba(5, 0, 15, 0.38) 55%, rgba(5, 0, 15, 0.54) 100%),
-        radial-gradient(circle at 14% 12%, var(--page-bg-1), transparent 42%),
-        radial-gradient(circle at 86% 20%, var(--page-bg-2), transparent 44%),
-        radial-gradient(circle at 50% 92%, var(--page-bg-3), transparent 42%),
+        linear-gradient(180deg, rgba(5, 0, 15, 0.18) 0%, rgba(5, 0, 15, 0.34) 58%, rgba(5, 0, 15, 0.48) 100%),
+        linear-gradient(135deg, var(--galaxy-tint), rgba(0, 0, 0, 0.02) 42%, var(--galaxy-tint)),
+        radial-gradient(circle at 14% 12%, rgba(var(--page-rgb), 0.11), transparent 38%),
+        radial-gradient(circle at 86% 22%, rgba(var(--page-rgb), 0.08), transparent 42%),
+        radial-gradient(circle at 50% 92%, rgba(var(--page-rgb), 0.06), transparent 44%),
         url("images/backgrounds/galaxy-background.png") center center fixed;
-    background-size: cover, cover, cover, cover, cover;
+    background-size: cover, cover, cover, cover, cover, cover;
 }
 
 body::before {
@@ -57,9 +62,9 @@ body::before {
     pointer-events: none;
     z-index: -1;
     background:
-        linear-gradient(90deg, rgba(0,0,0,0.18), transparent 24%, transparent 76%, rgba(0,0,0,0.18)),
-        radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.20) 76%);
-    opacity: 0.42;
+        linear-gradient(90deg, rgba(0,0,0,0.12), transparent 24%, transparent 76%, rgba(0,0,0,0.12)),
+        radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.16) 78%);
+    opacity: 0.32;
 }
 
 a {
@@ -113,6 +118,10 @@ small,
     --page-bg-1: rgba(255, 215, 0, 0.11);
     --page-bg-2: rgba(255, 128, 0, 0.09);
     --page-bg-3: rgba(255, 0, 255, 0.06);
+    --page-rgb: 255, 215, 0;
+    --galaxy-tint: rgba(255, 215, 0, 0.065);
+    --shell-tint: rgba(255, 215, 0, 0.050);
+    --main-tint: rgba(255, 215, 0, 0.060);
 }
 
 .page-team {
@@ -126,6 +135,10 @@ small,
     --page-bg-1: rgba(176, 0, 255, 0.13);
     --page-bg-2: rgba(255, 0, 255, 0.10);
     --page-bg-3: rgba(123, 44, 255, 0.07);
+    --page-rgb: 176, 0, 255;
+    --galaxy-tint: rgba(176, 0, 255, 0.075);
+    --shell-tint: rgba(176, 0, 255, 0.055);
+    --main-tint: rgba(176, 0, 255, 0.065);
 }
 
 .page-schedule {
@@ -139,6 +152,10 @@ small,
     --page-bg-1: rgba(57, 255, 20, 0.12);
     --page-bg-2: rgba(0, 255, 136, 0.09);
     --page-bg-3: rgba(182, 255, 0, 0.06);
+    --page-rgb: 57, 255, 20;
+    --galaxy-tint: rgba(57, 255, 20, 0.070);
+    --shell-tint: rgba(57, 255, 20, 0.050);
+    --main-tint: rgba(57, 255, 20, 0.060);
 }
 
 .page-media {
@@ -152,6 +169,10 @@ small,
     --page-bg-1: rgba(0, 170, 255, 0.13);
     --page-bg-2: rgba(0, 110, 255, 0.10);
     --page-bg-3: rgba(125, 249, 255, 0.06);
+    --page-rgb: 0, 170, 255;
+    --galaxy-tint: rgba(0, 170, 255, 0.075);
+    --shell-tint: rgba(0, 170, 255, 0.055);
+    --main-tint: rgba(0, 170, 255, 0.065);
 }
 
 .page-news {
@@ -165,6 +186,10 @@ small,
     --page-bg-1: rgba(255, 77, 0, 0.13);
     --page-bg-2: rgba(255, 153, 0, 0.10);
     --page-bg-3: rgba(255, 34, 0, 0.07);
+    --page-rgb: 255, 77, 0;
+    --galaxy-tint: rgba(255, 77, 0, 0.075);
+    --shell-tint: rgba(255, 77, 0, 0.055);
+    --main-tint: rgba(255, 77, 0, 0.065);
 }
 
 .page-live {
@@ -178,6 +203,10 @@ small,
     --page-bg-1: rgba(255, 0, 0, 0.14);
     --page-bg-2: rgba(255, 51, 51, 0.10);
     --page-bg-3: rgba(255, 119, 0, 0.07);
+    --page-rgb: 255, 0, 0;
+    --galaxy-tint: rgba(255, 0, 0, 0.080);
+    --shell-tint: rgba(255, 0, 0, 0.055);
+    --main-tint: rgba(255, 0, 0, 0.065);
 }
 
 .page-follow {
@@ -191,6 +220,10 @@ small,
     --page-bg-1: rgba(255, 77, 255, 0.14);
     --page-bg-2: rgba(255, 0, 170, 0.10);
     --page-bg-3: rgba(0, 229, 255, 0.06);
+    --page-rgb: 255, 77, 255;
+    --galaxy-tint: rgba(255, 77, 255, 0.075);
+    --shell-tint: rgba(255, 77, 255, 0.055);
+    --main-tint: rgba(255, 77, 255, 0.065);
 }
 
 /* =========================
@@ -201,9 +234,10 @@ small,
     width: min(100%, var(--site-width));
     margin: 0 auto;
     background:
-        linear-gradient(180deg, rgba(5, 0, 15, 0.82), rgba(5, 0, 15, 0.92)),
-        radial-gradient(circle at top, var(--page-bg-1), transparent 76%),
-        radial-gradient(circle at bottom, var(--page-bg-2), transparent 78%);
+        linear-gradient(180deg, rgba(5, 0, 15, 0.80), rgba(5, 0, 15, 0.90)),
+        linear-gradient(180deg, var(--shell-tint), rgba(0, 0, 0, 0.02) 52%, var(--shell-tint)),
+        radial-gradient(circle at top, rgba(var(--page-rgb), 0.075), transparent 74%),
+        radial-gradient(circle at bottom, rgba(var(--page-rgb), 0.055), transparent 78%);
     border-left: 1px solid rgba(255, 255, 255, 0.05);
     border-right: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -454,7 +488,8 @@ main {
     width: 100%;
     padding: 38px 22px 48px;
     background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(5, 0, 15, 0.10));
+        linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(5, 0, 15, 0.10)),
+        linear-gradient(180deg, var(--main-tint), rgba(5, 0, 15, 0.02) 48%, var(--main-tint));
 }
 
 section {
@@ -600,7 +635,9 @@ section {
 .story-card,
 .table-card,
 .live-card {
-    background: var(--page-panel);
+    background:
+        linear-gradient(180deg, rgba(var(--page-rgb), 0.055), rgba(0, 0, 0, 0.04)),
+        var(--page-panel);
     border: 1px solid var(--page-border);
     border-radius: 24px;
     box-shadow: 0 0 22px rgba(0, 0, 0, 0.35);
@@ -845,18 +882,18 @@ td {
 
 .follow-page-icons {
     display: grid;
-    grid-template-columns: repeat(3, 220px);
-    gap: 42px 62px;
+    grid-template-columns: repeat(3, minmax(210px, 1fr));
+    gap: 56px 92px;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     justify-items: center;
-    max-width: 860px;
-    margin: 0 auto;
+    max-width: 1040px;
+    margin: 6px auto 12px;
 }
 
 .follow-page-icons a {
-    width: 210px;
-    height: 190px;
+    width: 240px;
+    height: 220px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -871,15 +908,15 @@ td {
 }
 
 .follow-page-icons img {
-    width: 180px;
-    height: 180px;
+    width: 212px;
+    height: 212px;
     object-fit: contain;
     display: block;
 }
 
 .large-email-icon {
     color: var(--page-glow-1);
-    font-size: 8.5rem;
+    font-size: 10rem;
     line-height: 1;
 }
 
@@ -889,7 +926,10 @@ td {
 
 footer {
     border-top: 1px solid var(--page-border);
-    background: rgba(5, 0, 15, 0.97);
+    background:
+        linear-gradient(180deg, rgba(var(--page-rgb), 0.040), rgba(5, 0, 15, 0.02)),
+        rgba(5, 0, 15, 0.97);
+    box-shadow: inset 0 1px 0 var(--page-glow-1), 0 -10px 35px rgba(var(--page-rgb), 0.10);
     text-align: center;
     padding: 28px 20px;
 }
