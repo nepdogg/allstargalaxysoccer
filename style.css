@@ -1480,3 +1480,165 @@ nav a.active {
         height: min(82px, 25vw) !important;
     }
 }
+
+/* =========================
+   FINAL MOBILE POLISH - V10
+   Full-bleed mobile hero, compact one-line footer, smaller footer logos,
+   and page-color mobile browser tint support via theme-color meta tags.
+========================= */
+
+.footer-small {
+    white-space: nowrap !important;
+    font-size: 0.82rem !important;
+}
+
+.footer-logo,
+.footer-social-row > .footer-logo,
+.footer-social-row > a.footer-logo,
+a.footer-logo.footer-logo-left,
+a.footer-logo.footer-logo-right {
+    width: 26px !important;
+    height: 26px !important;
+    min-width: 26px !important;
+    max-width: 26px !important;
+    min-height: 26px !important;
+    max-height: 26px !important;
+    flex: 0 0 26px !important;
+}
+
+.footer-logo img,
+.footer-social-row > .footer-logo img,
+.footer-social-row > a.footer-logo img,
+a.footer-logo.footer-logo-left img,
+a.footer-logo.footer-logo-right img {
+    width: 22px !important;
+    height: 22px !important;
+    min-width: 22px !important;
+    max-width: 22px !important;
+    min-height: 22px !important;
+    max-height: 22px !important;
+}
+
+@media (max-width: 800px) {
+    .hero-image {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        margin-left: 50% !important;
+        transform: translateX(-50%) !important;
+        aspect-ratio: 16 / 9.35 !important;
+        background-size: 100% 100% !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+        border-left: 0 !important;
+        border-right: 0 !important;
+    }
+
+    .footer-social-row {
+        gap: 8px !important;
+        flex-wrap: nowrap !important;
+    }
+
+    .footer-logo,
+    .footer-social-row > .footer-logo,
+    .footer-social-row > a.footer-logo,
+    a.footer-logo.footer-logo-left,
+    a.footer-logo.footer-logo-right {
+        width: 22px !important;
+        height: 22px !important;
+        min-width: 22px !important;
+        max-width: 22px !important;
+        min-height: 22px !important;
+        max-height: 22px !important;
+        flex: 0 0 22px !important;
+    }
+
+    .footer-logo img,
+    .footer-social-row > .footer-logo img,
+    .footer-social-row > a.footer-logo img,
+    a.footer-logo.footer-logo-left img,
+    a.footer-logo.footer-logo-right img {
+        width: 20px !important;
+        height: 20px !important;
+        min-width: 20px !important;
+        max-width: 20px !important;
+        min-height: 20px !important;
+        max-height: 20px !important;
+    }
+
+    .footer-social img {
+        width: 22px !important;
+        height: 22px !important;
+    }
+
+    .footer-email {
+        width: 22px !important;
+        height: 22px !important;
+        min-width: 22px !important;
+        font-size: 1.05rem !important;
+    }
+
+    .footer-small {
+        white-space: nowrap !important;
+        font-size: clamp(0.68rem, 3.2vw, 0.82rem) !important;
+        line-height: 1.2 !important;
+        margin-top: 4px !important;
+    }
+}
+
+@media (max-width: 430px) {
+    .hero-image {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        margin-left: 50% !important;
+        transform: translateX(-50%) !important;
+        aspect-ratio: 16 / 9.35 !important;
+        background-size: 100% 100% !important;
+    }
+
+    footer {
+        padding: 10px 6px 9px !important;
+    }
+
+    .footer-social-row {
+        gap: 6px !important;
+    }
+
+    .footer-social {
+        gap: 7px !important;
+    }
+
+    .footer-logo,
+    .footer-social-row > .footer-logo,
+    .footer-social-row > a.footer-logo,
+    a.footer-logo.footer-logo-left,
+    a.footer-logo.footer-logo-right {
+        width: 20px !important;
+        height: 20px !important;
+        min-width: 20px !important;
+        max-width: 20px !important;
+        flex-basis: 20px !important;
+    }
+
+    .footer-logo img,
+    .footer-social-row > .footer-logo img,
+    .footer-social-row > a.footer-logo img,
+    a.footer-logo.footer-logo-left img,
+    a.footer-logo.footer-logo-right img {
+        width: 18px !important;
+        height: 18px !important;
+        min-width: 18px !important;
+        max-width: 18px !important;
+    }
+
+    .footer-social img {
+        width: 20px !important;
+        height: 20px !important;
+    }
+
+    .footer-email {
+        width: 20px !important;
+        height: 20px !important;
+        min-width: 20px !important;
+        font-size: 0.98rem !important;
+    }
+}
