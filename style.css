@@ -3965,3 +3965,148 @@ nav {
         transform: scale(1.03) !important;
     }
 }
+
+
+/* =========================
+   HOMEPAGE CAROUSEL FINAL POLISH - V29
+   More depth: larger selected card, darker inactive cards,
+   wider spacing, stronger selected border, and larger active dot.
+========================= */
+
+.page-home .homepage-media-carousel {
+    padding-left: 84px !important;
+    padding-right: 84px !important;
+}
+
+.page-home .homepage-media-carousel::before,
+.page-home .homepage-media-carousel::after {
+    width: 84px !important;
+}
+
+.page-home .homepage-media-carousel .carousel-track {
+    gap: 46px !important;
+    padding-top: 32px !important;
+    padding-bottom: 34px !important;
+}
+
+.page-home .homepage-media-carousel .media-slide {
+    opacity: 0.42 !important;
+    transform: scale(0.86) !important;
+    filter: brightness(0.58) saturate(0.82) !important;
+}
+
+.page-home .homepage-media-carousel .media-slide.is-neighbor {
+    opacity: 0.72 !important;
+    transform: scale(0.91) !important;
+    filter: brightness(0.72) saturate(0.96) !important;
+}
+
+.page-home .homepage-media-carousel .media-slide.is-active {
+    transform: translateY(-8px) scale(1.18) !important;
+    opacity: 1 !important;
+    filter: brightness(1.09) saturate(1.16) !important;
+    border-color: rgba(255, 230, 90, 1) !important;
+    animation: activePlaylistBreathV29 5.2s ease-in-out infinite !important;
+    box-shadow:
+        0 0 0 3px rgba(255, 215, 0, 1),
+        0 0 42px rgba(255, 215, 0, 0.78),
+        0 0 94px rgba(255, 176, 0, 0.42),
+        0 34px 62px rgba(0, 0, 0, 0.64) !important;
+}
+
+@keyframes activePlaylistBreathV29 {
+    0%, 100% {
+        box-shadow:
+            0 0 0 3px rgba(255, 215, 0, 0.92),
+            0 0 32px rgba(255, 215, 0, 0.58),
+            0 0 72px rgba(255, 176, 0, 0.30),
+            0 32px 58px rgba(0, 0, 0, 0.60);
+        filter: brightness(1.05) saturate(1.10);
+    }
+    50% {
+        box-shadow:
+            0 0 0 3px rgba(255, 235, 120, 1),
+            0 0 52px rgba(255, 215, 0, 0.88),
+            0 0 112px rgba(255, 176, 0, 0.50),
+            0 36px 68px rgba(0, 0, 0, 0.66);
+        filter: brightness(1.13) saturate(1.20);
+    }
+}
+
+.page-home .homepage-media-carousel .media-slide:hover,
+.page-home .homepage-media-carousel .media-slide:focus-visible {
+    transform: translateY(-8px) scale(1.19) !important;
+    animation-play-state: paused !important;
+    filter: brightness(1.16) saturate(1.22) !important;
+    border-color: rgba(255, 235, 120, 1) !important;
+    box-shadow:
+        0 0 0 3px rgba(255, 235, 120, 1),
+        0 0 56px rgba(255, 215, 0, 0.92),
+        0 0 118px rgba(255, 176, 0, 0.54),
+        0 36px 70px rgba(0, 0, 0, 0.68) !important;
+}
+
+.page-home .homepage-media-carousel .carousel-dot.active {
+    width: 15px !important;
+    height: 15px !important;
+    transform: translateY(1px) scale(1.18) !important;
+    box-shadow:
+        0 0 13px var(--page-glow-1),
+        0 0 26px var(--page-glow-2) !important;
+}
+
+@media (max-width: 1000px) {
+    .page-home .homepage-media-carousel {
+        padding-left: 58px !important;
+        padding-right: 58px !important;
+    }
+
+    .page-home .homepage-media-carousel::before,
+    .page-home .homepage-media-carousel::after {
+        width: 58px !important;
+    }
+
+    .page-home .homepage-media-carousel .carousel-track {
+        gap: 34px !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide.is-active {
+        transform: translateY(-6px) scale(1.10) !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide:hover,
+    .page-home .homepage-media-carousel .media-slide:focus-visible {
+        transform: translateY(-6px) scale(1.115) !important;
+    }
+}
+
+@media (max-width: 800px) {
+    .page-home .homepage-media-carousel {
+        padding-left: 34px !important;
+        padding-right: 34px !important;
+    }
+
+    .page-home .homepage-media-carousel::before,
+    .page-home .homepage-media-carousel::after {
+        width: 34px !important;
+    }
+
+    .page-home .homepage-media-carousel .carousel-track {
+        gap: 20px !important;
+        padding-top: 18px !important;
+        padding-bottom: 24px !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide {
+        flex-basis: 84vw !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide.is-active {
+        transform: translateY(-4px) scale(1.04) !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide:hover,
+    .page-home .homepage-media-carousel .media-slide:focus-visible {
+        transform: translateY(-4px) scale(1.05) !important;
+    }
+}
