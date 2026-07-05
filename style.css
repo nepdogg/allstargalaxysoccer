@@ -3641,3 +3641,110 @@ nav {
         transform: scale(1.01) !important;
     }
 }
+
+
+/* =========================
+   HOMEPAGE FINAL POLISH - V27
+   Fixes clipped Best Of banner and gives the playlist showcase more vertical breathing room.
+========================= */
+
+/* Keep the Best Of graphic wide, but not edge-to-edge, so it no longer clips. */
+.page-home .homepage-bestof-title-wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto 34px !important;
+    padding: 0 0 !important;
+    overflow: visible !important;
+    text-align: center !important;
+}
+
+.page-home .homepage-bestof-title {
+    display: block !important;
+    width: min(94%, 1220px) !important;
+    max-width: 1220px !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 auto !important;
+    object-fit: contain !important;
+    transform: none !important;
+    transform-origin: center center !important;
+}
+
+/* Let the section breathe while keeping the carousel centered. */
+.page-home #best-media.homepage-bestof-section,
+.page-home .homepage-bestof-section {
+    overflow: visible !important;
+}
+
+/* Taller showcase frame: the cards stay proportional, but the carousel no longer feels cramped. */
+.page-home .homepage-media-carousel {
+    width: min(96%, 1320px) !important;
+    max-width: 1320px !important;
+    min-height: 420px !important;
+    padding: 50px 70px 46px !important;
+    overflow: hidden !important;
+}
+
+.page-home .homepage-media-carousel .carousel-track {
+    padding: 10px 0 22px !important;
+    align-items: center !important;
+}
+
+/* Keep artwork aspect ratio; do not stretch or crop the thumbnails. */
+.page-home .homepage-media-carousel .media-slide,
+.page-home .homepage-media-carousel .media-slide.is-neighbor,
+.page-home .homepage-media-carousel .media-slide.is-active {
+    aspect-ratio: 16 / 9 !important;
+}
+
+.page-home .homepage-media-carousel .media-slide img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+}
+
+/* Move dots lower so they are not crowding the cards. */
+.page-home .homepage-media-carousel .carousel-dots {
+    padding-top: 28px !important;
+    margin-top: 2px !important;
+}
+
+/* Recenter arrows on the artwork area inside the taller frame. */
+.page-home .homepage-media-carousel .carousel-button {
+    top: 48% !important;
+}
+
+@media (max-width: 1000px) {
+    .page-home .homepage-bestof-title {
+        width: min(94%, 1120px) !important;
+    }
+
+    .page-home .homepage-media-carousel {
+        min-height: 380px !important;
+        padding: 42px 48px 40px !important;
+    }
+
+    .page-home .homepage-media-carousel .carousel-dots {
+        padding-top: 22px !important;
+    }
+}
+
+@media (max-width: 800px) {
+    .page-home .homepage-bestof-title-wrap {
+        margin-bottom: 26px !important;
+    }
+
+    .page-home .homepage-bestof-title {
+        width: 94% !important;
+    }
+
+    .page-home .homepage-media-carousel {
+        min-height: auto !important;
+        padding: 28px 32px 30px !important;
+    }
+
+    .page-home .homepage-media-carousel .carousel-dots {
+        padding-top: 18px !important;
+    }
+}
