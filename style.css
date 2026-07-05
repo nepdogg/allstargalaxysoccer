@@ -3013,8 +3013,8 @@ footer {
 
 
 /* =========================
-   FINAL HOMEPAGE / NAV POLISH - V23
-   Larger centered header logos, cleaner carousel controls, and subtle playlist-card interaction.
+   FINAL HOMEPAGE / NAV POLISH - V24
+   Larger centered header logos, cleaner carousel controls, and hover glow without movement.
 ========================= */
 
 /* Header logo balance */
@@ -3097,16 +3097,28 @@ nav {
         0 0 0 1px rgba(255, 215, 0, 0.72),
         0 0 16px rgba(255, 215, 0, 0.24),
         0 18px 34px rgba(0, 0, 0, 0.38) !important;
-    transition: transform 0.28s ease, box-shadow 0.28s ease, filter 0.28s ease !important;
+    transition: box-shadow 0.28s ease, filter 0.28s ease, border-color 0.28s ease !important;
 }
 
 .page-home .homepage-media-carousel .media-slide:hover {
-    transform: scale(1.025) !important;
+    transform: none !important;
     box-shadow:
-        0 0 0 1px rgba(255, 215, 0, 0.95),
-        0 0 22px rgba(255, 215, 0, 0.42),
-        0 22px 42px rgba(0, 0, 0, 0.48) !important;
-    filter: brightness(1.04) !important;
+        0 0 0 2px rgba(255, 215, 0, 1),
+        0 0 24px rgba(255, 215, 0, 0.62),
+        0 0 48px rgba(255, 176, 0, 0.34),
+        0 18px 34px rgba(0, 0, 0, 0.42) !important;
+    filter: brightness(1.06) saturate(1.06) !important;
+}
+
+
+.page-home .homepage-media-carousel .media-slide:focus-visible {
+    outline: 2px solid var(--page-glow-1) !important;
+    outline-offset: 4px !important;
+    box-shadow:
+        0 0 0 2px rgba(255, 215, 0, 1),
+        0 0 26px rgba(255, 215, 0, 0.68),
+        0 0 52px rgba(255, 176, 0, 0.36),
+        0 18px 34px rgba(0, 0, 0, 0.42) !important;
 }
 
 /* Bigger, easier-to-find carousel arrows */
