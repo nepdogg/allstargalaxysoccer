@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const slides = carousel.querySelectorAll(".media-slide, .team-slide");
         const previousButton = carousel.querySelector(".prev");
         const nextButton = carousel.querySelector(".next");
-        const dots = carousel.querySelectorAll(".carousel-dot");
+        const dotsContainer = carousel.querySelector(".carousel-dots");
 
         if (!track || slides.length === 0) {
             return;
@@ -12,6 +12,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let currentIndex = 0;
         let autoPlayTimer;
+
+        if (dotsContainer) {
+            dotsContainer.innerHTML = "";
+
+            slides.forEach((_, slideIndex) => {
+                const dot = document.createElement("button");
+                dot.className = "carousel-dot";
+                dot.type = "button";
+                dot.setAttribute("aria-label", `Go to slide ${slideIndex + 1}`);
+                if (slideIndex === 0) {
+                    dot.classList.add("active");
+                }
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        const dots = carousel.querySelectorAll(".carousel-dot");
 
         function updateCarousel() {
             const targetSlide = slides[currentIndex];
@@ -43,6 +60,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 clearInterval(autoPlayTimer);
             }
         }
+
+        carousel.querySelectorAll(".playlist-pending").forEach((pendingLink) => {
+            pendingLink.addEventListener("click", (event) => event.preventDefault());
+        });
 
         previousButton?.addEventListener("click", () => {
             previousSlide();

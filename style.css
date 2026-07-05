@@ -2972,3 +2972,41 @@ footer {
         aspect-ratio: 16 / 10 !important;
     }
 }
+
+/* =========================
+   HOMEPAGE PLAYLIST CAROUSEL - V22
+   Uses the new branded playlist thumbnails and links directly to YouTube playlists.
+========================= */
+
+.page-home .homepage-media-carousel .media-slide img {
+    object-fit: cover !important;
+}
+
+.page-home .homepage-media-carousel .media-caption {
+    display: none !important;
+}
+
+.page-home .homepage-media-carousel .playlist-pending {
+    cursor: default !important;
+}
+
+.page-home .homepage-media-carousel .carousel-dots {
+    gap: 8px !important;
+    padding-top: 13px !important;
+}
+
+.page-home .homepage-media-carousel .carousel-dot {
+    width: 8px !important;
+    height: 8px !important;
+}
+
+@media (max-width: 800px) {
+    .page-home .homepage-media-carousel .carousel-dots {
+        gap: 6px !important;
+    }
+
+    .page-home .homepage-media-carousel .carousel-dot {
+        width: 7px !important;
+        height: 7px !important;
+    }
+}
