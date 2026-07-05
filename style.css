@@ -2888,3 +2888,87 @@ footer {
         font-size: 0.95rem !important;
     }
 }
+
+
+/* =========================
+   HOMEPAGE FEATURE SECTION - V21
+   Wider Best Of graphic with balanced spacing above and below.
+========================= */
+
+.page-home main {
+    padding-top: 26px !important;
+    padding-bottom: 26px !important;
+}
+
+.page-home .homepage-bestof-section {
+    margin-bottom: 32px !important;
+}
+
+.page-home .homepage-bestof-title-wrap {
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 auto 26px !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.page-home .homepage-bestof-title {
+    width: min(92%, 1240px) !important;
+    max-width: 1240px !important;
+    height: auto !important;
+    display: block !important;
+}
+
+.page-home .homepage-media-carousel {
+    width: min(92%, 1240px) !important;
+    max-width: 1240px !important;
+    margin: 0 auto !important;
+    padding: 0 0 12px !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+}
+
+.page-home .homepage-media-carousel .media-slide {
+    flex: 0 0 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    aspect-ratio: 16 / 9 !important;
+    border-radius: 18px !important;
+}
+
+.page-home .homepage-media-carousel .carousel-button.prev {
+    left: 10px !important;
+}
+
+.page-home .homepage-media-carousel .carousel-button.next {
+    right: 10px !important;
+}
+
+@media (max-width: 900px) {
+    .page-home main {
+        padding-top: 22px !important;
+    }
+
+    .page-home .homepage-bestof-title-wrap {
+        margin-bottom: 22px !important;
+    }
+
+    .page-home .homepage-bestof-title,
+    .page-home .homepage-media-carousel {
+        width: min(94%, 1240px) !important;
+    }
+}
+
+@media (max-width: 800px) {
+    .page-home .homepage-bestof-title,
+    .page-home .homepage-media-carousel {
+        width: 96% !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide {
+        aspect-ratio: 16 / 10 !important;
+    }
+}
