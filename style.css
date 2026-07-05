@@ -3475,3 +3475,169 @@ nav {
         height: 10px !important;
     }
 }
+
+
+
+/* =========================
+   HOMEPAGE PLAYLIST SHOWCASE POLISH - V26
+   Larger neighboring cards, stronger active-card glow, better spacing, and smoother selection.
+========================= */
+
+.page-home .homepage-media-carousel {
+    width: min(98%, 1360px) !important;
+    max-width: 1360px !important;
+    padding: 34px 58px 28px !important;
+    min-height: 360px !important;
+    border-color: rgba(255, 215, 0, 0.72) !important;
+    box-shadow:
+        inset 0 0 22px rgba(255, 215, 0, 0.12),
+        0 0 30px rgba(255, 215, 0, 0.18),
+        0 26px 48px rgba(0, 0, 0, 0.48) !important;
+}
+
+.page-home .homepage-media-carousel .carousel-track {
+    gap: 30px !important;
+    padding: 16px 0 18px !important;
+}
+
+.page-home .homepage-media-carousel .media-slide {
+    flex: 0 0 clamp(310px, 42vw, 590px) !important;
+    opacity: 0.50 !important;
+    transform: scale(0.92) !important;
+    filter: brightness(0.76) saturate(0.92) !important;
+}
+
+.page-home .homepage-media-carousel .media-slide.is-neighbor {
+    opacity: 0.82 !important;
+    transform: scale(0.98) !important;
+    filter: brightness(0.90) saturate(1.02) !important;
+}
+
+.page-home .homepage-media-carousel .media-slide.is-active {
+    opacity: 1 !important;
+    transform: scale(1.075) !important;
+    filter: brightness(1.04) saturate(1.10) !important;
+    border-color: rgba(255, 215, 0, 1) !important;
+    animation: activePlaylistPulse 0.48s ease both;
+    box-shadow:
+        0 0 0 2px rgba(255, 215, 0, 0.95),
+        0 0 32px rgba(255, 215, 0, 0.62),
+        0 0 76px rgba(255, 176, 0, 0.34),
+        0 24px 46px rgba(0, 0, 0, 0.55) !important;
+}
+
+@keyframes activePlaylistPulse {
+    0% {
+        opacity: 0.86;
+        transform: scale(1.02);
+        filter: brightness(0.94) saturate(1.02);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.075);
+        filter: brightness(1.04) saturate(1.10);
+    }
+}
+
+.page-home .homepage-media-carousel .media-slide:hover,
+.page-home .homepage-media-carousel .media-slide:focus-visible {
+    transform: scale(1.09) !important;
+    filter: brightness(1.11) saturate(1.14) !important;
+    box-shadow:
+        0 0 0 2px rgba(255, 215, 0, 1),
+        0 0 36px rgba(255, 215, 0, 0.78),
+        0 0 84px rgba(255, 176, 0, 0.40),
+        0 26px 48px rgba(0, 0, 0, 0.58) !important;
+}
+
+.page-home .homepage-media-carousel .carousel-button {
+    width: 62px !important;
+    height: 62px !important;
+    background: rgba(5, 0, 15, 0.84) !important;
+}
+
+.page-home .homepage-media-carousel .carousel-button.prev {
+    left: 8px !important;
+}
+
+.page-home .homepage-media-carousel .carousel-button.next {
+    right: 8px !important;
+}
+
+.page-home .homepage-media-carousel .carousel-dots {
+    gap: 12px !important;
+    padding-top: 18px !important;
+}
+
+.page-home .homepage-media-carousel .carousel-dot {
+    width: 9px !important;
+    height: 9px !important;
+    opacity: 0.58 !important;
+}
+
+.page-home .homepage-media-carousel .carousel-dot.active {
+    width: 14px !important;
+    height: 14px !important;
+    opacity: 1 !important;
+}
+
+@media (max-width: 1000px) {
+    .page-home .homepage-media-carousel {
+        width: 98% !important;
+        padding: 30px 44px 26px !important;
+        min-height: 315px !important;
+    }
+
+    .page-home .homepage-media-carousel .carousel-track {
+        gap: 24px !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide {
+        flex-basis: clamp(300px, 50vw, 520px) !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide.is-neighbor {
+        transform: scale(0.96) !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide.is-active {
+        transform: scale(1.055) !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide:hover,
+    .page-home .homepage-media-carousel .media-slide:focus-visible {
+        transform: scale(1.065) !important;
+    }
+}
+
+@media (max-width: 800px) {
+    .page-home .homepage-media-carousel {
+        width: 96% !important;
+        padding: 22px 32px 22px !important;
+        min-height: auto !important;
+    }
+
+    .page-home .homepage-media-carousel .carousel-track {
+        gap: 16px !important;
+        padding: 8px 0 12px !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide {
+        flex-basis: 82vw !important;
+        transform: scale(0.94) !important;
+        opacity: 0.62 !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide.is-active {
+        transform: scale(1) !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide.is-neighbor {
+        transform: scale(0.94) !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide:hover,
+    .page-home .homepage-media-carousel .media-slide:focus-visible {
+        transform: scale(1.01) !important;
+    }
+}
