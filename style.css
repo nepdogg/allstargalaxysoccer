@@ -3010,3 +3010,222 @@ footer {
         height: 7px !important;
     }
 }
+
+
+/* =========================
+   FINAL HOMEPAGE / NAV POLISH - V23
+   Larger centered header logos, cleaner carousel controls, and subtle playlist-card interaction.
+========================= */
+
+/* Header logo balance */
+.hero-bar {
+    grid-template-columns: 128px minmax(0, 1fr) 128px !important;
+    align-items: center !important;
+    column-gap: 12px !important;
+    padding: 8px 22px 3px !important;
+}
+
+.hero-logo,
+.hero-logo-right {
+    min-height: 76px !important;
+    align-items: center !important;
+}
+
+.hero-logo {
+    justify-content: center !important;
+}
+
+.hero-logo-right {
+    justify-content: center !important;
+}
+
+.hero-logo img,
+.hero-logo-right img {
+    width: 106px !important;
+    max-width: 106px !important;
+    height: auto !important;
+    display: block !important;
+    filter:
+        drop-shadow(0 0 6px var(--page-glow-1))
+        drop-shadow(0 0 14px var(--page-glow-2)) !important;
+}
+
+.hero-logo:hover img,
+.hero-logo-right:hover img {
+    transform: scale(1.08) !important;
+    filter:
+        drop-shadow(0 0 9px var(--page-glow-1))
+        drop-shadow(0 0 20px var(--page-glow-2))
+        drop-shadow(0 0 30px var(--page-glow-3)) !important;
+}
+
+/* Let the current slim navigation graphic use the header space cleanly. */
+.hero-title img {
+    width: min(100%, 1080px) !important;
+    max-height: 94px !important;
+    object-fit: contain !important;
+}
+
+nav {
+    width: calc(100% - 255px) !important;
+    max-width: 1060px !important;
+    padding-bottom: 8px !important;
+}
+
+/* Featured section polish */
+.page-home .homepage-bestof-title {
+    width: min(93%, 1260px) !important;
+    max-width: 1260px !important;
+    transform: scaleY(1.05) !important;
+    transform-origin: center center !important;
+}
+
+.page-home .homepage-bestof-title-wrap {
+    margin-bottom: 30px !important;
+}
+
+.page-home .homepage-media-carousel {
+    width: min(93%, 1260px) !important;
+    max-width: 1260px !important;
+}
+
+/* Make the single playlist card feel interactive without changing the layout. */
+.page-home .homepage-media-carousel .media-slide {
+    overflow: hidden !important;
+    border-radius: 18px !important;
+    box-shadow:
+        0 0 0 1px rgba(255, 215, 0, 0.72),
+        0 0 16px rgba(255, 215, 0, 0.24),
+        0 18px 34px rgba(0, 0, 0, 0.38) !important;
+    transition: transform 0.28s ease, box-shadow 0.28s ease, filter 0.28s ease !important;
+}
+
+.page-home .homepage-media-carousel .media-slide:hover {
+    transform: scale(1.025) !important;
+    box-shadow:
+        0 0 0 1px rgba(255, 215, 0, 0.95),
+        0 0 22px rgba(255, 215, 0, 0.42),
+        0 22px 42px rgba(0, 0, 0, 0.48) !important;
+    filter: brightness(1.04) !important;
+}
+
+/* Bigger, easier-to-find carousel arrows */
+.page-home .homepage-media-carousel .carousel-button {
+    width: 58px !important;
+    height: 58px !important;
+    font-size: 2.7rem !important;
+    border-width: 2px !important;
+    background: rgba(5, 0, 15, 0.68) !important;
+    color: var(--page-glow-1) !important;
+    box-shadow:
+        0 0 10px rgba(0,0,0,0.65),
+        0 0 12px rgba(255, 215, 0, 0.24) !important;
+}
+
+.page-home .homepage-media-carousel .carousel-button:hover {
+    background: rgba(255, 215, 0, 0.12) !important;
+    box-shadow:
+        0 0 14px var(--page-glow-1),
+        0 0 28px var(--page-glow-2) !important;
+}
+
+.page-home .homepage-media-carousel .carousel-button.prev {
+    left: 24px !important;
+}
+
+.page-home .homepage-media-carousel .carousel-button.next {
+    right: 24px !important;
+}
+
+/* Bigger dots under the playlist carousel */
+.page-home .homepage-media-carousel .carousel-dots {
+    gap: 11px !important;
+    padding-top: 16px !important;
+    padding-bottom: 2px !important;
+}
+
+.page-home .homepage-media-carousel .carousel-dot {
+    width: 12px !important;
+    height: 12px !important;
+    border-width: 2px !important;
+}
+
+.page-home .homepage-media-carousel .carousel-dot.active {
+    box-shadow:
+        0 0 10px var(--page-glow-1),
+        0 0 20px var(--page-glow-2) !important;
+}
+
+@media (max-width: 900px) {
+    .hero-bar {
+        grid-template-columns: 96px minmax(0, 1fr) 96px !important;
+        padding: 7px 12px 3px !important;
+    }
+
+    .hero-logo,
+    .hero-logo-right {
+        min-height: 60px !important;
+    }
+
+    .hero-logo img,
+    .hero-logo-right img {
+        width: 78px !important;
+        max-width: 78px !important;
+    }
+
+    nav {
+        width: calc(100% - 180px) !important;
+    }
+
+    .page-home .homepage-bestof-title,
+    .page-home .homepage-media-carousel {
+        width: 94% !important;
+    }
+
+    .page-home .homepage-media-carousel .carousel-button {
+        width: 48px !important;
+        height: 48px !important;
+        font-size: 2.2rem !important;
+    }
+
+    .page-home .homepage-media-carousel .carousel-button.prev {
+        left: 14px !important;
+    }
+
+    .page-home .homepage-media-carousel .carousel-button.next {
+        right: 14px !important;
+    }
+}
+
+@media (max-width: 800px) {
+    .hero-bar {
+        grid-template-columns: 62px 1fr 62px !important;
+        padding: 7px 8px 3px !important;
+    }
+
+    .hero-logo,
+    .hero-logo-right {
+        min-height: 44px !important;
+    }
+
+    .hero-logo img,
+    .hero-logo-right img {
+        width: 54px !important;
+        max-width: 54px !important;
+    }
+
+    nav {
+        width: 100% !important;
+    }
+
+    .page-home .homepage-media-carousel .carousel-button {
+        width: 42px !important;
+        height: 42px !important;
+        font-size: 1.9rem !important;
+    }
+
+    .page-home .homepage-media-carousel .carousel-dot {
+        width: 10px !important;
+        height: 10px !important;
+    }
+}
