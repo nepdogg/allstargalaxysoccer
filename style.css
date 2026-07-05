@@ -4110,3 +4110,85 @@ nav {
         transform: translateY(-4px) scale(1.05) !important;
     }
 }
+
+/* =========================
+   HOMEPAGE CAROUSEL CENTERING + VISIBILITY POLISH - V30
+   Keeps the active card visually centered, brightens side cards, and smooths the active glow.
+========================= */
+
+.page-home .homepage-media-carousel .media-slide {
+    opacity: 0.52 !important;
+    filter: brightness(0.66) saturate(0.90) !important;
+}
+
+.page-home .homepage-media-carousel .media-slide.is-neighbor {
+    opacity: 0.84 !important;
+    filter: brightness(0.82) saturate(1.02) !important;
+}
+
+.page-home .homepage-media-carousel .media-slide.is-active {
+    animation: activePlaylistBreathV30 3s ease-in-out infinite !important;
+    transform: translateY(-8px) scale(1.18) !important;
+}
+
+@keyframes activePlaylistBreathV30 {
+    0%, 100% {
+        box-shadow:
+            0 0 0 3px rgba(255, 215, 0, 0.92),
+            0 0 34px rgba(255, 215, 0, 0.58),
+            0 0 76px rgba(255, 176, 0, 0.32),
+            0 32px 58px rgba(0, 0, 0, 0.60);
+        filter: brightness(1.06) saturate(1.12);
+    }
+
+    50% {
+        box-shadow:
+            0 0 0 3px rgba(255, 235, 120, 1),
+            0 0 54px rgba(255, 215, 0, 0.86),
+            0 0 116px rgba(255, 176, 0, 0.50),
+            0 36px 68px rgba(0, 0, 0, 0.66);
+        filter: brightness(1.13) saturate(1.20);
+    }
+}
+
+.page-home .homepage-media-carousel .media-slide:hover,
+.page-home .homepage-media-carousel .media-slide:focus-visible {
+    transform: translateY(-8px) scale(1.19) !important;
+    filter: brightness(1.16) saturate(1.22) !important;
+}
+
+.page-home .homepage-media-carousel .carousel-track {
+    gap: 50px !important;
+}
+
+@media (max-width: 1000px) {
+    .page-home .homepage-media-carousel .media-slide.is-neighbor {
+        opacity: 0.84 !important;
+        filter: brightness(0.82) saturate(1.02) !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide.is-active {
+        transform: translateY(-6px) scale(1.10) !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide:hover,
+    .page-home .homepage-media-carousel .media-slide:focus-visible {
+        transform: translateY(-6px) scale(1.115) !important;
+    }
+}
+
+@media (max-width: 800px) {
+    .page-home .homepage-media-carousel .media-slide {
+        opacity: 0.82 !important;
+        filter: brightness(0.84) saturate(1) !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide.is-active {
+        transform: translateY(-4px) scale(1.04) !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide:hover,
+    .page-home .homepage-media-carousel .media-slide:focus-visible {
+        transform: translateY(-4px) scale(1.05) !important;
+    }
+}

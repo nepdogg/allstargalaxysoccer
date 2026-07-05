@@ -42,10 +42,30 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             if (isHomepagePlaylist) {
-                const carouselCenter = carousel.clientWidth / 2;
-                const slideCenter = targetSlide.offsetLeft + (targetSlide.offsetWidth / 2);
-                const targetOffset = Math.max(0, slideCenter - carouselCenter);
-                track.style.transform = `translateX(-${targetOffset}px)`;
+                /*
+                 * Center the active playlist card using its real rendered position.
+                 * This keeps the selected card centered even when CSS scale, gaps,
+                 * padding, or responsive sizing change the visible card width.
+                 */
+                const carouselRect = carousel.getBoundingClientRect();
+                const slideRect = targetSlide.getBoundingClientRect();
+                const transform = window.getComputedStyle(track).transform;
+                let currentTranslateX = 0;
+
+                if (transform && transform !== "none") {
+                    const matrixValues = transform.match(/matrix.*\((.+)\)/);
+                    if (matrixValues) {
+                        const values = matrixValues[1].split(",").map((value) => parseFloat(value.trim()));
+                        currentTranslateX = values.length === 6 ? values[4] : values[12] || 0;
+                    }
+                }
+
+                const carouselCenter = carouselRect.left + (carouselRect.width / 2);
+                const slideCenter = slideRect.left + (slideRect.width / 2);
+                const correction = slideCenter - carouselCenter;
+                const nextTranslateX = currentTranslateX - correction;
+
+                track.style.transform = `translateX(${nextTranslateX}px)`;
             } else {
                 const slideLeft = targetSlide ? targetSlide.offsetLeft : 0;
                 track.style.transform = `translateX(-${slideLeft}px)`;
