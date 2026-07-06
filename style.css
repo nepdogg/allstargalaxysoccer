@@ -7139,3 +7139,107 @@ body.lightbox-open {
             scale(1.055) !important;
     }
 }
+
+
+/* =========================
+   HOMEPAGE MEDIA CAROUSEL TRUE CENTER - V47
+   Removes the manual pixel nudge and centers every homepage slide from its
+   own midpoint on the carousel frame midpoint. Side cards are spaced evenly
+   from the active card so the active thumbnail stays visually centered.
+========================= */
+
+:root {
+    --home-carousel-center-correction: 0px;
+    --home-slide-gap: clamp(258px, 40.5vw, 474px);
+}
+
+.page-home .homepage-media-carousel .carousel-track {
+    transform: none !important;
+    position: relative !important;
+    overflow: visible !important;
+}
+
+.page-home .homepage-media-carousel .media-slide {
+    left: 50% !important;
+    top: 44% !important;
+    width: clamp(300px, 45vw, 520px) !important;
+    transform:
+        translate(-50%, -50%)
+        translateX(calc(var(--home-offset) * var(--home-slide-gap)))
+        scale(0.68) !important;
+    opacity: 0.28 !important;
+    filter: brightness(0.50) saturate(0.78) !important;
+}
+
+.page-home .homepage-media-carousel .media-slide.is-neighbor {
+    transform:
+        translate(-50%, -50%)
+        translateX(calc(var(--home-offset) * var(--home-slide-gap)))
+        scale(0.80) !important;
+    opacity: 0.74 !important;
+    filter: brightness(0.74) saturate(0.96) !important;
+}
+
+.page-home .homepage-media-carousel .media-slide.is-distance-2 {
+    transform:
+        translate(-50%, -50%)
+        translateX(calc(var(--home-offset) * var(--home-slide-gap)))
+        scale(0.58) !important;
+    opacity: 0.16 !important;
+    filter: brightness(0.38) saturate(0.72) !important;
+}
+
+.page-home .homepage-media-carousel .media-slide.is-active {
+    left: 50% !important;
+    top: 43% !important;
+    transform:
+        translate(-50%, -50%)
+        translateX(0)
+        scale(1.145) !important;
+    opacity: 1 !important;
+    filter: brightness(1.10) saturate(1.16) !important;
+    z-index: 6 !important;
+}
+
+.page-home .homepage-media-carousel .media-slide.is-active:hover,
+.page-home .homepage-media-carousel .media-slide.is-active:focus-visible {
+    transform:
+        translate(-50%, -50%)
+        translateX(0)
+        scale(1.16) !important;
+}
+
+@media (max-width: 900px) {
+    :root {
+        --home-slide-gap: clamp(218px, 59vw, 372px);
+    }
+
+    .page-home .homepage-media-carousel .media-slide {
+        transform:
+            translate(-50%, -50%)
+            translateX(calc(var(--home-offset) * var(--home-slide-gap)))
+            scale(0.64) !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide.is-neighbor {
+        transform:
+            translate(-50%, -50%)
+            translateX(calc(var(--home-offset) * var(--home-slide-gap)))
+            scale(0.76) !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide.is-active {
+        transform:
+            translate(-50%, -50%)
+            translateX(0)
+            scale(1.08) !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide.is-active:hover,
+    .page-home .homepage-media-carousel .media-slide.is-active:focus-visible {
+        transform:
+            translate(-50%, -50%)
+            translateX(0)
+            scale(1.095) !important;
+    }
+}
