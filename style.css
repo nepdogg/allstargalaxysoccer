@@ -6329,3 +6329,60 @@ body.lightbox-open {
     .page-team .team-roster-carousel .carousel-button.prev { left: 8px !important; }
     .page-team .team-roster-carousel .carousel-button.next { right: 8px !important; }
 }
+
+/* =========================
+   TEAM PAGE FINAL SIMPLIFY - V41
+   Removes the stats strip visually, tightens carousel height,
+   brings dots closer to cards, and makes arrows easier to use.
+========================= */
+
+.page-team .team-info-strip {
+    display: none !important;
+}
+
+.page-team .team-roster-section {
+    padding-bottom: 20px !important;
+}
+
+.page-team .team-roster-carousel {
+    height: clamp(380px, 47vw, 500px) !important;
+    min-height: clamp(380px, 47vw, 500px) !important;
+    margin-bottom: 26px !important;
+    padding-bottom: 44px !important;
+}
+
+.page-team .team-roster-carousel .carousel-dots {
+    bottom: 18px !important;
+}
+
+.page-team .team-roster-carousel .carousel-button {
+    width: 62px !important;
+    height: 82px !important;
+    font-size: 5.7rem !important;
+}
+
+.page-team .team-roster-carousel .carousel-button.prev {
+    left: 14px !important;
+}
+
+.page-team .team-roster-carousel .carousel-button.next {
+    right: 14px !important;
+}
+
+.page-team footer {
+    margin-top: 0 !important;
+}
+
+@media (max-width: 900px) {
+    .page-team .team-roster-carousel {
+        height: clamp(360px, 72vw, 470px) !important;
+        min-height: clamp(360px, 72vw, 470px) !important;
+        padding-bottom: 46px !important;
+    }
+
+    .page-team .team-roster-carousel .carousel-button {
+        width: 48px !important;
+        height: 70px !important;
+        font-size: 4.8rem !important;
+    }
+}
