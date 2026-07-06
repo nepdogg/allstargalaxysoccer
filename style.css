@@ -6881,3 +6881,178 @@ body.lightbox-open {
     .page-team .team-roster-carousel .carousel-button.prev { left: 8px !important; }
     .page-team .team-roster-carousel .carousel-button.next { right: 8px !important; }
 }
+
+
+/* =========================
+   HOMEPAGE CAROUSEL TRUE CENTER FIX - V45
+   The homepage media carousel now uses the same stable absolute-positioning
+   approach as the Team carousel so the active thumbnail always sits exactly
+   in the center of the visible carousel frame.
+========================= */
+
+:root {
+    --home-carousel-center-correction: 0px;
+}
+
+.page-home .homepage-media-carousel {
+    width: min(94%, 1180px) !important;
+    max-width: 1180px !important;
+    height: clamp(330px, 39vw, 410px) !important;
+    min-height: clamp(330px, 39vw, 410px) !important;
+    margin: 0 auto 28px !important;
+    padding: 34px 72px 56px !important;
+    overflow: hidden !important;
+    position: relative !important;
+}
+
+.page-home .homepage-media-carousel .carousel-track {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    transform: none !important;
+    transition: none !important;
+    overflow: visible !important;
+}
+
+.page-home .homepage-media-carousel .media-slide {
+    position: absolute !important;
+    left: 50% !important;
+    top: 44% !important;
+    width: clamp(300px, 45vw, 520px) !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    flex: none !important;
+    aspect-ratio: 16 / 9 !important;
+    opacity: 0.34 !important;
+    filter: brightness(0.56) saturate(0.86) !important;
+    transform:
+        translate(-50%, -50%)
+        translateX(calc(var(--home-offset) * clamp(245px, 39vw, 460px)))
+        scale(0.72) !important;
+    transition:
+        transform 0.48s cubic-bezier(.22,.61,.36,1),
+        opacity 0.48s ease,
+        filter 0.48s ease,
+        box-shadow 0.48s ease,
+        border-color 0.48s ease !important;
+    z-index: 1 !important;
+}
+
+.page-home .homepage-media-carousel .media-slide.is-neighbor {
+    opacity: 0.82 !important;
+    filter: brightness(0.82) saturate(1.02) !important;
+    transform:
+        translate(-50%, -50%)
+        translateX(calc(var(--home-offset) * clamp(245px, 39vw, 460px)))
+        scale(0.84) !important;
+    z-index: 2 !important;
+}
+
+.page-home .homepage-media-carousel .media-slide.is-distance-2 {
+    opacity: 0.22 !important;
+    filter: brightness(0.46) saturate(0.78) !important;
+    transform:
+        translate(-50%, -50%)
+        translateX(calc(var(--home-offset) * clamp(245px, 39vw, 460px)))
+        scale(0.62) !important;
+    z-index: 1 !important;
+}
+
+.page-home .homepage-media-carousel .media-slide.is-hidden-home {
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+.page-home .homepage-media-carousel .media-slide.is-active {
+    left: 50% !important;
+    top: 43% !important;
+    opacity: 1 !important;
+    filter: brightness(1.08) saturate(1.14) !important;
+    transform:
+        translate(-50%, -50%)
+        translateX(0)
+        scale(1.10) !important;
+    z-index: 5 !important;
+    animation: activePlaylistBreathV30 3s ease-in-out infinite !important;
+}
+
+.page-home .homepage-media-carousel .media-slide.is-active:hover,
+.page-home .homepage-media-carousel .media-slide.is-active:focus-visible {
+    transform:
+        translate(-50%, -50%)
+        translateX(0)
+        scale(1.115) !important;
+}
+
+.page-home .homepage-media-carousel .carousel-dots {
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 24px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    z-index: 10 !important;
+}
+
+.page-home .homepage-media-carousel .carousel-button {
+    top: 47% !important;
+    z-index: 12 !important;
+}
+
+.page-home .homepage-media-carousel .carousel-button.prev {
+    left: 16px !important;
+}
+
+.page-home .homepage-media-carousel .carousel-button.next {
+    right: 16px !important;
+}
+
+@media (max-width: 900px) {
+    .page-home .homepage-media-carousel {
+        width: 94% !important;
+        height: clamp(300px, 62vw, 390px) !important;
+        min-height: clamp(300px, 62vw, 390px) !important;
+        padding: 30px 44px 50px !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide {
+        width: clamp(250px, 72vw, 430px) !important;
+        transform:
+            translate(-50%, -50%)
+            translateX(calc(var(--home-offset) * clamp(210px, 58vw, 360px)))
+            scale(0.68) !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide.is-neighbor {
+        transform:
+            translate(-50%, -50%)
+            translateX(calc(var(--home-offset) * clamp(210px, 58vw, 360px)))
+            scale(0.80) !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide.is-distance-2 {
+        opacity: 0 !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide.is-active {
+        transform:
+            translate(-50%, -50%)
+            translateX(0)
+            scale(1.04) !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide.is-active:hover,
+    .page-home .homepage-media-carousel .media-slide.is-active:focus-visible {
+        transform:
+            translate(-50%, -50%)
+            translateX(0)
+            scale(1.055) !important;
+    }
+
+    .page-home .homepage-media-carousel .carousel-dots {
+        bottom: 20px !important;
+    }
+}

@@ -59,16 +59,27 @@ document.addEventListener("DOMContentLoaded", () => {
                     slide.classList.toggle('is-distance-4', absOffset >= 4);
                     slide.classList.toggle('is-hidden-card', absOffset > 4);
                 });
+            } else if (isHomepagePlaylist) {
+                // Homepage playlist showcase uses absolute positioning so the
+                // featured card is always exactly centered in the carousel frame.
+                // This avoids the tiny visual drift that happened with flex-track
+                // translate calculations after card scaling and spacing changes.
+                track.style.setProperty('transform', 'none', 'important');
+
+                slides.forEach((slide, slideIndex) => {
+                    let offset = slideIndex - currentIndex;
+                    if (offset > slides.length / 2) offset -= slides.length;
+                    if (offset < -slides.length / 2) offset += slides.length;
+
+                    const absOffset = Math.abs(offset);
+                    slide.style.setProperty('--home-offset', offset);
+                    slide.classList.toggle('is-distance-2', absOffset === 2);
+                    slide.classList.toggle('is-hidden-home', absOffset > 2);
+                });
             } else if (isShowcaseCarousel) {
-                /*
-                 * Center the active card from the untransformed layout. This avoids
-                 * accumulating translate values and prevents the homepage carousel from
-                 * drifting after scaling or resizing.
-                 */
                 const carouselCenter = carousel.clientWidth / 2;
                 const slideCenter = targetSlide.offsetLeft + (targetSlide.offsetWidth / 2);
-                const homeCorrection = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--home-carousel-center-correction')) || 0;
-                const nextTranslateX = carouselCenter - slideCenter + homeCorrection;
+                const nextTranslateX = carouselCenter - slideCenter;
 
                 track.style.setProperty('transform', `translateX(${nextTranslateX}px)`, 'important');
             } else {
