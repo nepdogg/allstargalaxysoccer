@@ -7243,3 +7243,111 @@ body.lightbox-open {
             scale(1.095) !important;
     }
 }
+
+
+/* =========================
+   HOMEPAGE MEDIA CAROUSEL FINAL ALIGNMENT - V48
+   Keeps the active card centered, gives it breathing room at the top,
+   and avoids the visual left/right bouncing from manual nudges.
+========================= */
+
+.page-home .homepage-media-carousel {
+    padding-top: 18px !important;
+    padding-bottom: 18px !important;
+    overflow: hidden !important;
+}
+
+.page-home .homepage-media-carousel .carousel-track {
+    height: 245px !important;
+    min-height: 245px !important;
+    position: relative !important;
+    overflow: visible !important;
+    transform: none !important;
+}
+
+.page-home .homepage-media-carousel .media-slide {
+    left: 50% !important;
+    top: 50% !important;
+    width: clamp(292px, 43.5vw, 500px) !important;
+    transform:
+        translate(-50%, -50%)
+        translateX(calc(var(--home-offset) * var(--home-slide-gap)))
+        scale(0.66) !important;
+}
+
+.page-home .homepage-media-carousel .media-slide.is-neighbor {
+    top: 50% !important;
+    transform:
+        translate(-50%, -50%)
+        translateX(calc(var(--home-offset) * var(--home-slide-gap)))
+        scale(0.78) !important;
+}
+
+.page-home .homepage-media-carousel .media-slide.is-distance-2 {
+    top: 50% !important;
+    transform:
+        translate(-50%, -50%)
+        translateX(calc(var(--home-offset) * var(--home-slide-gap)))
+        scale(0.56) !important;
+}
+
+.page-home .homepage-media-carousel .media-slide.is-active {
+    left: 50% !important;
+    top: 50% !important;
+    transform:
+        translate(-50%, -50%)
+        translateX(0)
+        scale(1.06) !important;
+}
+
+.page-home .homepage-media-carousel .media-slide.is-active:hover,
+.page-home .homepage-media-carousel .media-slide.is-active:focus-visible {
+    transform:
+        translate(-50%, -50%)
+        translateX(0)
+        scale(1.075) !important;
+}
+
+.page-home .homepage-media-carousel .carousel-dots {
+    padding-top: 4px !important;
+}
+
+@media (max-width: 900px) {
+    .page-home .homepage-media-carousel .carousel-track {
+        height: 215px !important;
+        min-height: 215px !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide {
+        width: clamp(270px, 76vw, 430px) !important;
+        top: 50% !important;
+        transform:
+            translate(-50%, -50%)
+            translateX(calc(var(--home-offset) * var(--home-slide-gap)))
+            scale(0.62) !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide.is-neighbor {
+        top: 50% !important;
+        transform:
+            translate(-50%, -50%)
+            translateX(calc(var(--home-offset) * var(--home-slide-gap)))
+            scale(0.72) !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide.is-active {
+        top: 50% !important;
+        transform:
+            translate(-50%, -50%)
+            translateX(0)
+            scale(1.02) !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide.is-active:hover,
+    .page-home .homepage-media-carousel .media-slide.is-active:focus-visible {
+        transform:
+            translate(-50%, -50%)
+            translateX(0)
+            scale(1.035) !important;
+    }
+}
