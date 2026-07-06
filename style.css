@@ -7466,3 +7466,55 @@ body.lightbox-open {
             scale(1.065) !important;
     }
 }
+
+
+/* =========================
+   HOMEPAGE MEDIA CAROUSEL FINAL POLISH - V50
+   Raises the thumbnail row slightly, gives dots a touch more separation,
+   and enlarges the carousel arrows without changing the locked layout.
+========================= */
+
+.page-home .homepage-media-carousel .media-slide,
+.page-home .homepage-media-carousel .media-slide.is-neighbor,
+.page-home .homepage-media-carousel .media-slide.is-distance-2,
+.page-home .homepage-media-carousel .media-slide.is-active {
+    top: 46% !important;
+}
+
+.page-home .homepage-media-carousel .carousel-dots {
+    margin-top: -1px !important;
+    padding-top: 0 !important;
+}
+
+.page-home .homepage-media-carousel .carousel-button {
+    width: 46px !important;
+    height: 46px !important;
+    font-size: 2.15rem !important;
+}
+
+.page-home .homepage-media-carousel .carousel-button.prev {
+    left: 24px !important;
+}
+
+.page-home .homepage-media-carousel .carousel-button.next {
+    right: 24px !important;
+}
+
+@media (max-width: 900px) {
+    .page-home .homepage-media-carousel .media-slide,
+    .page-home .homepage-media-carousel .media-slide.is-neighbor,
+    .page-home .homepage-media-carousel .media-slide.is-distance-2,
+    .page-home .homepage-media-carousel .media-slide.is-active {
+        top: 47% !important;
+    }
+
+    .page-home .homepage-media-carousel .carousel-button {
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 1.9rem !important;
+    }
+
+    .page-home .homepage-media-carousel .carousel-dots {
+        margin-top: 0 !important;
+    }
+}
