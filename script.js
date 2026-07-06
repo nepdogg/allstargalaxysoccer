@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
                  */
                 const carouselCenter = carousel.clientWidth / 2;
                 const slideCenter = targetSlide.offsetLeft + (targetSlide.offsetWidth / 2);
-                const homeCorrection = 0;
+                const homeCorrection = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--home-carousel-center-correction')) || 0;
                 const nextTranslateX = carouselCenter - slideCenter + homeCorrection;
 
                 track.style.setProperty('transform', `translateX(${nextTranslateX}px)`, 'important');
