@@ -43,11 +43,27 @@ document.addEventListener("DOMContentLoaded", () => {
                 slide.classList.toggle("is-neighbor", wrappedDistance === 1);
             });
 
-            if (isShowcaseCarousel) {
+            if (isTeamRoster) {
+                // Team roster uses absolute positioning so the cards never drift outside the page.
+                track.style.setProperty('transform', 'none', 'important');
+
+                slides.forEach((slide, slideIndex) => {
+                    let offset = slideIndex - currentIndex;
+                    if (offset > slides.length / 2) offset -= slides.length;
+                    if (offset < -slides.length / 2) offset += slides.length;
+
+                    const absOffset = Math.abs(offset);
+                    slide.style.setProperty('--roster-offset', offset);
+                    slide.classList.toggle('is-distance-2', absOffset === 2);
+                    slide.classList.toggle('is-distance-3', absOffset === 3);
+                    slide.classList.toggle('is-distance-4', absOffset >= 4);
+                    slide.classList.toggle('is-hidden-card', absOffset > 4);
+                });
+            } else if (isShowcaseCarousel) {
                 /*
                  * Center the active card from the untransformed layout. This avoids
-                 * accumulating translate values and prevents the roster carousel from
-                 * drifting off the page after scaling or resizing.
+                 * accumulating translate values and prevents the homepage carousel from
+                 * drifting after scaling or resizing.
                  */
                 const carouselCenter = carousel.clientWidth / 2;
                 const slideCenter = targetSlide.offsetLeft + (targetSlide.offsetWidth / 2);
