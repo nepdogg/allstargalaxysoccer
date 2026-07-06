@@ -1,17 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".carousel").forEach((carousel) => {
         const track = carousel.querySelector(".carousel-track");
-        const slides = Array.from(carousel.querySelectorAll(".media-slide, .team-slide"));
+        const slides = Array.from(carousel.querySelectorAll(".media-slide, .team-slide, .team-card-slide"));
         const previousButton = carousel.querySelector(".prev");
         const nextButton = carousel.querySelector(".next");
         const dotsContainer = carousel.querySelector(".carousel-dots");
         const isHomepagePlaylist = carousel.classList.contains("homepage-media-carousel");
+        const isTeamRoster = carousel.classList.contains("team-roster-carousel");
+        const isShowcaseCarousel = isHomepagePlaylist || isTeamRoster;
 
         if (!track || slides.length === 0) {
             return;
         }
 
-        let currentIndex = 0;
+        let currentIndex = carousel.classList.contains("team-roster-carousel") ? 4 : 0;
         let autoPlayTimer;
 
         if (dotsContainer) {
@@ -41,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 slide.classList.toggle("is-neighbor", wrappedDistance === 1);
             });
 
-            if (isHomepagePlaylist) {
+            if (isShowcaseCarousel) {
                 /*
                  * Center the active playlist card using its real rendered position.
                  * This keeps the selected card centered even when CSS scale, gaps,
@@ -88,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         function startAutoPlay() {
             stopAutoPlay();
-            autoPlayTimer = setInterval(nextSlide, isHomepagePlaylist ? 6500 : 4500);
+            autoPlayTimer = setInterval(nextSlide, isShowcaseCarousel ? 6500 : 4500);
         }
 
         function stopAutoPlay() {
