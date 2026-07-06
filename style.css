@@ -7974,3 +7974,107 @@ body.lightbox-open {
         padding: 24px 18px 30px;
     }
 }
+
+
+/* =========================
+   v56 Follow page simplification
+   ========================= */
+.page-follow .follow-hub {
+    max-width: 1180px;
+    margin: 0 auto 44px;
+    padding-top: clamp(28px, 4vw, 48px);
+}
+
+.page-follow .follow-heading-card,
+.page-follow .follow-feature-strip {
+    display: none !important;
+}
+
+.page-follow .follow-social-grid {
+    width: min(94%, 1080px);
+    margin: 0 auto clamp(28px, 4vw, 42px);
+    grid-template-columns: repeat(5, minmax(150px, 1fr));
+    gap: clamp(16px, 2vw, 24px);
+}
+
+.page-follow .follow-card {
+    min-height: 215px;
+    padding: 28px 16px 24px;
+    border-radius: 24px;
+    border-color: rgba(255, 77, 255, 0.22);
+    box-shadow:
+        0 0 22px rgba(0, 0, 0, 0.48),
+        inset 0 0 22px rgba(255, 255, 255, 0.04);
+}
+
+.page-follow .follow-card:hover {
+    transform: translateY(-6px) scale(1.035);
+    box-shadow:
+        0 0 20px rgba(0, 0, 0, 0.60),
+        0 0 24px var(--platform-glow, var(--page-glow-1)),
+        0 0 50px color-mix(in srgb, var(--platform-glow, var(--page-glow-1)) 62%, transparent);
+}
+
+.page-follow .follow-icon-wrap {
+    width: 98px;
+    height: 98px;
+}
+
+.page-follow .follow-icon-wrap img {
+    width: 88px;
+    height: 88px;
+}
+
+.page-follow .follow-card-title {
+    font-size: 1.08rem;
+}
+
+.page-follow .follow-card-subtitle {
+    font-size: 0.82rem;
+    max-width: 170px;
+}
+
+.page-follow .follow-email-card {
+    width: min(90%, 720px);
+    margin: 0 auto;
+    padding: 18px 24px;
+}
+
+@media (max-width: 900px) {
+    .page-follow .follow-social-grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 760px;
+    }
+
+    .page-follow .follow-card {
+        min-height: 190px;
+    }
+}
+
+@media (max-width: 560px) {
+    .page-follow .follow-hub {
+        padding-top: 24px;
+    }
+
+    .page-follow .follow-social-grid {
+        grid-template-columns: repeat(2, 1fr);
+        width: 94%;
+        gap: 12px;
+    }
+
+    .page-follow .follow-card {
+        min-height: 160px;
+        padding: 18px 10px 14px;
+        border-radius: 18px;
+    }
+
+    .page-follow .follow-icon-wrap {
+        width: 66px;
+        height: 66px;
+    }
+
+    .page-follow .follow-icon-wrap img {
+        width: 60px;
+        height: 60px;
+    }
+}
