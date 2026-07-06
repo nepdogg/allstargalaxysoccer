@@ -53,10 +53,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 const slideCenter = targetSlide.offsetLeft + (targetSlide.offsetWidth / 2);
                 const nextTranslateX = carouselCenter - slideCenter;
 
-                track.style.transform = `translateX(${nextTranslateX}px)`;
+                track.style.setProperty('transform', `translateX(${nextTranslateX}px)`, 'important');
             } else {
                 const slideLeft = targetSlide ? targetSlide.offsetLeft : 0;
-                track.style.transform = `translateX(-${slideLeft}px)`;
+                track.style.setProperty('transform', `translateX(-${slideLeft}px)`, 'important');
             }
 
             dots.forEach((dot, dotIndex) => {

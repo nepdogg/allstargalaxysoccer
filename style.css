@@ -5931,3 +5931,159 @@ body.lightbox-open {
         transform: scale(1.06) !important;
     }
 }
+
+
+/* =========================
+   TEAM PAGE ROSTER CAROUSEL CONTAINMENT FIX - V39
+   Keeps the player-card carousel centered inside the page, removes the heavy
+   dark edge crop, and raises the row slightly so the cards sit naturally.
+========================= */
+
+.page-team .team-roster-carousel {
+    width: min(94%, 980px) !important;
+    min-height: clamp(450px, 45vw, 590px) !important;
+    padding: clamp(42px, 4.3vw, 60px) 66px 78px !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+}
+
+.page-team .team-roster-carousel::before,
+.page-team .team-roster-carousel::after {
+    opacity: 0.30 !important;
+    width: 70px !important;
+    pointer-events: none !important;
+}
+
+.page-team .team-roster-carousel .carousel-track {
+    top: clamp(8px, 1.6vw, 22px) !important;
+    min-height: clamp(330px, 34vw, 455px) !important;
+    padding: 0 !important;
+    gap: clamp(30px, 2.4vw, 48px) !important;
+    align-items: center !important;
+    overflow: visible !important;
+    will-change: transform !important;
+}
+
+.page-team .team-roster-carousel .team-card-slide {
+    flex: 0 0 clamp(170px, 14.2vw, 230px) !important;
+    min-width: clamp(170px, 14.2vw, 230px) !important;
+    max-width: clamp(170px, 14.2vw, 230px) !important;
+    aspect-ratio: 3 / 4 !important;
+    transform: scale(0.74) !important;
+    transform-origin: center center !important;
+    overflow: visible !important;
+    opacity: 0.50 !important;
+    filter: brightness(0.72) saturate(1.0) !important;
+}
+
+.page-team .team-roster-carousel .team-card-slide.is-neighbor {
+    transform: scale(0.98) !important;
+    opacity: 0.88 !important;
+    filter: brightness(0.96) saturate(1.12) !important;
+}
+
+.page-team .team-roster-carousel .team-card-slide.is-active {
+    transform: scale(1.20) !important;
+    opacity: 1 !important;
+    filter: brightness(1.15) saturate(1.28) !important;
+    z-index: 12 !important;
+    box-shadow:
+        0 0 22px rgba(255, 0, 255, 0.95),
+        0 0 48px rgba(255, 0, 255, 0.72),
+        0 0 76px rgba(255, 211, 56, 0.38) !important;
+}
+
+.page-team .team-roster-carousel .team-card-slide:hover {
+    transform: scale(1.02) !important;
+    opacity: 1 !important;
+    filter: brightness(1.08) saturate(1.2) !important;
+}
+
+.page-team .team-roster-carousel .team-card-slide.is-active:hover {
+    transform: scale(1.22) !important;
+}
+
+.page-team .team-roster-carousel .carousel-button {
+    top: 52% !important;
+    z-index: 25 !important;
+}
+
+.page-team .team-roster-carousel .carousel-button.prev {
+    left: 24px !important;
+}
+
+.page-team .team-roster-carousel .carousel-button.next {
+    right: 24px !important;
+}
+
+.page-team .team-roster-carousel .carousel-dots {
+    bottom: 24px !important;
+    z-index: 25 !important;
+}
+
+@media (max-width: 900px) {
+    .page-team .team-roster-carousel {
+        width: min(94%, 760px) !important;
+        min-height: 450px !important;
+        padding: 44px 46px 76px !important;
+    }
+
+    .page-team .team-roster-carousel::before,
+    .page-team .team-roster-carousel::after {
+        width: 50px !important;
+        opacity: 0.24 !important;
+    }
+
+    .page-team .team-roster-carousel .carousel-track {
+        top: 14px !important;
+        min-height: 330px !important;
+        gap: 28px !important;
+    }
+
+    .page-team .team-roster-carousel .team-card-slide {
+        flex-basis: clamp(150px, 27vw, 205px) !important;
+        min-width: clamp(150px, 27vw, 205px) !important;
+        max-width: clamp(150px, 27vw, 205px) !important;
+    }
+
+    .page-team .team-roster-carousel .team-card-slide.is-active {
+        transform: scale(1.16) !important;
+    }
+
+    .page-team .team-roster-carousel .team-card-slide.is-active:hover {
+        transform: scale(1.18) !important;
+    }
+}
+
+@media (max-width: 560px) {
+    .page-team .team-roster-carousel {
+        width: 94% !important;
+        min-height: 500px !important;
+        padding: 48px 34px 78px !important;
+    }
+
+    .page-team .team-roster-carousel .carousel-track {
+        top: 18px !important;
+        min-height: 360px !important;
+        gap: 24px !important;
+    }
+
+    .page-team .team-roster-carousel .team-card-slide {
+        flex-basis: 62vw !important;
+        min-width: 62vw !important;
+        max-width: 62vw !important;
+        transform: scale(0.72) !important;
+    }
+
+    .page-team .team-roster-carousel .team-card-slide.is-neighbor {
+        transform: scale(0.86) !important;
+    }
+
+    .page-team .team-roster-carousel .team-card-slide.is-active {
+        transform: scale(1.02) !important;
+    }
+
+    .page-team .team-roster-carousel .team-card-slide.is-active:hover {
+        transform: scale(1.04) !important;
+    }
+}
