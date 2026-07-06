@@ -7801,7 +7801,7 @@ body.lightbox-open {
 }
 
 /* =========================
-   SCHEDULE PAGE FINAL PANEL ENLARGE v53
+   SCHEDULE PAGE FINAL IMAGE ENLARGE v54
 ========================= */
 .page-schedule .schedule-page-section {
     padding: 42px 0 56px !important;
@@ -7858,6 +7858,47 @@ body.lightbox-open {
         min-height: auto !important;
     }
 
+    .page-schedule .schedule-lightbox-link img {
+        max-height: none !important;
+    }
+}
+
+
+/* =========================
+   SCHEDULE PAGE FINAL IMAGE ENLARGE v54
+========================= */
+.page-schedule .schedule-image-card {
+    min-height: 305px !important;
+    padding: 14px 14px 16px !important;
+}
+
+.page-schedule .schedule-lightbox-link {
+    min-height: 248px !important;
+}
+
+.page-schedule .schedule-lightbox-link img {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 270px !important;
+    object-fit: contain !important;
+}
+
+.page-schedule .schedule-image-card h3 {
+    margin-bottom: 10px !important;
+}
+
+.page-schedule .schedule-image-card:hover .schedule-lightbox-link img {
+    transform: scale(1.045) !important;
+}
+
+@media (max-width: 900px) {
+    .page-schedule .schedule-image-card {
+        min-height: auto !important;
+        padding: 14px !important;
+    }
+    .page-schedule .schedule-lightbox-link {
+        min-height: auto !important;
+    }
     .page-schedule .schedule-lightbox-link img {
         max-height: none !important;
     }
