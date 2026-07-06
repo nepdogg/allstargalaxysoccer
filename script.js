@@ -67,7 +67,8 @@ document.addEventListener("DOMContentLoaded", () => {
                  */
                 const carouselCenter = carousel.clientWidth / 2;
                 const slideCenter = targetSlide.offsetLeft + (targetSlide.offsetWidth / 2);
-                const nextTranslateX = carouselCenter - slideCenter;
+                const homeCorrection = isHomepagePlaylist ? 5 : 0;
+                const nextTranslateX = carouselCenter - slideCenter + homeCorrection;
 
                 track.style.setProperty('transform', `translateX(${nextTranslateX}px)`, 'important');
             } else {
