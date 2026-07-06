@@ -7903,3 +7903,74 @@ body.lightbox-open {
         max-height: none !important;
     }
 }
+
+
+/* =========================
+   V55 LIVE PAGE FINAL POLISH
+   - removes intro text from layout
+   - makes the live placeholder panel wide like the other locked pages
+========================= */
+.page-live main {
+    padding-top: 44px;
+}
+
+.page-live .live-section {
+    margin-bottom: 66px;
+}
+
+.page-live .live-card {
+    width: min(90%, 980px);
+    max-width: 980px;
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1.5px solid var(--page-glow-1);
+    background:
+        radial-gradient(circle at 50% 18%, rgba(255, 0, 0, 0.22), transparent 42%),
+        linear-gradient(180deg, rgba(80, 0, 28, 0.86), rgba(28, 0, 0, 0.92));
+    box-shadow:
+        0 0 18px rgba(255, 0, 0, 0.45),
+        0 0 34px rgba(255, 0, 0, 0.22),
+        0 18px 35px rgba(0, 0, 0, 0.55) !important;
+}
+
+.page-live .live-frame {
+    aspect-ratio: 16 / 6.2;
+    min-height: 300px;
+    background:
+        radial-gradient(circle at center, rgba(255, 0, 0, 0.14), transparent 46%),
+        linear-gradient(180deg, rgba(70, 0, 32, 0.82), rgba(45, 0, 20, 0.92));
+    border-bottom: 1px solid rgba(255, 0, 0, 0.35);
+}
+
+.page-live .live-frame h2 {
+    font-size: clamp(3rem, 7vw, 6.8rem);
+    letter-spacing: 2px;
+}
+
+.page-live .live-content {
+    padding: 30px 34px 36px;
+    background: linear-gradient(180deg, rgba(70, 0, 0, 0.78), rgba(35, 0, 0, 0.92));
+}
+
+.page-live .live-content p {
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 760px) {
+    .page-live .live-card {
+        width: 94% !important;
+        max-width: 94% !important;
+    }
+
+    .page-live .live-frame {
+        min-height: 220px;
+        aspect-ratio: 16 / 8;
+    }
+
+    .page-live .live-content {
+        padding: 24px 18px 30px;
+    }
+}
