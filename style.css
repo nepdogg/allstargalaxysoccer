@@ -7056,3 +7056,86 @@ body.lightbox-open {
         bottom: 20px !important;
     }
 }
+
+
+/* =========================
+   HOMEPAGE MEDIA CAROUSEL CENTER LOCK - V46
+   The homepage card was visually sitting a little to the right of the frame.
+   This final correction shifts the whole homepage media card set left while
+   keeping the Team carousel untouched.
+========================= */
+
+:root {
+    --home-carousel-center-correction: -38px;
+}
+
+.page-home .homepage-media-carousel .media-slide {
+    transform:
+        translate(-50%, -50%)
+        translateX(calc((var(--home-offset) * clamp(245px, 39vw, 460px)) + var(--home-carousel-center-correction)))
+        scale(0.72) !important;
+}
+
+.page-home .homepage-media-carousel .media-slide.is-neighbor {
+    transform:
+        translate(-50%, -50%)
+        translateX(calc((var(--home-offset) * clamp(245px, 39vw, 460px)) + var(--home-carousel-center-correction)))
+        scale(0.84) !important;
+}
+
+.page-home .homepage-media-carousel .media-slide.is-distance-2 {
+    transform:
+        translate(-50%, -50%)
+        translateX(calc((var(--home-offset) * clamp(245px, 39vw, 460px)) + var(--home-carousel-center-correction)))
+        scale(0.62) !important;
+}
+
+.page-home .homepage-media-carousel .media-slide.is-active {
+    transform:
+        translate(-50%, -50%)
+        translateX(var(--home-carousel-center-correction))
+        scale(1.10) !important;
+}
+
+.page-home .homepage-media-carousel .media-slide.is-active:hover,
+.page-home .homepage-media-carousel .media-slide.is-active:focus-visible {
+    transform:
+        translate(-50%, -50%)
+        translateX(var(--home-carousel-center-correction))
+        scale(1.115) !important;
+}
+
+@media (max-width: 900px) {
+    :root {
+        --home-carousel-center-correction: -12px;
+    }
+
+    .page-home .homepage-media-carousel .media-slide {
+        transform:
+            translate(-50%, -50%)
+            translateX(calc((var(--home-offset) * clamp(210px, 58vw, 360px)) + var(--home-carousel-center-correction)))
+            scale(0.68) !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide.is-neighbor {
+        transform:
+            translate(-50%, -50%)
+            translateX(calc((var(--home-offset) * clamp(210px, 58vw, 360px)) + var(--home-carousel-center-correction)))
+            scale(0.80) !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide.is-active {
+        transform:
+            translate(-50%, -50%)
+            translateX(var(--home-carousel-center-correction))
+            scale(1.04) !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide.is-active:hover,
+    .page-home .homepage-media-carousel .media-slide.is-active:focus-visible {
+        transform:
+            translate(-50%, -50%)
+            translateX(var(--home-carousel-center-correction))
+            scale(1.055) !important;
+    }
+}
