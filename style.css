@@ -7351,3 +7351,118 @@ body.lightbox-open {
             scale(1.035) !important;
     }
 }
+
+
+/* =========================
+   HOMEPAGE MEDIA CAROUSEL HEIGHT FIX - V49
+   Gives the homepage playlist thumbnails enough vertical room so the active
+   card and glow are not clipped while keeping true center positioning.
+========================= */
+
+.page-home .homepage-media-carousel {
+    padding-top: 34px !important;
+    padding-bottom: 24px !important;
+    overflow: hidden !important;
+}
+
+.page-home .homepage-media-carousel .carousel-track {
+    height: 330px !important;
+    min-height: 330px !important;
+    position: relative !important;
+    overflow: visible !important;
+    transform: none !important;
+}
+
+.page-home .homepage-media-carousel .media-slide {
+    left: 50% !important;
+    top: 50% !important;
+    width: clamp(300px, 44vw, 515px) !important;
+    transform:
+        translate(-50%, -50%)
+        translateX(calc(var(--home-offset) * var(--home-slide-gap)))
+        scale(0.70) !important;
+}
+
+.page-home .homepage-media-carousel .media-slide.is-neighbor {
+    top: 50% !important;
+    transform:
+        translate(-50%, -50%)
+        translateX(calc(var(--home-offset) * var(--home-slide-gap)))
+        scale(0.83) !important;
+}
+
+.page-home .homepage-media-carousel .media-slide.is-distance-2 {
+    top: 50% !important;
+    transform:
+        translate(-50%, -50%)
+        translateX(calc(var(--home-offset) * var(--home-slide-gap)))
+        scale(0.59) !important;
+}
+
+.page-home .homepage-media-carousel .media-slide.is-active {
+    left: 50% !important;
+    top: 50% !important;
+    transform:
+        translate(-50%, -50%)
+        translateX(0)
+        scale(1.10) !important;
+    z-index: 8 !important;
+}
+
+.page-home .homepage-media-carousel .media-slide.is-active:hover,
+.page-home .homepage-media-carousel .media-slide.is-active:focus-visible {
+    transform:
+        translate(-50%, -50%)
+        translateX(0)
+        scale(1.115) !important;
+}
+
+.page-home .homepage-media-carousel .carousel-dots {
+    padding-top: 0 !important;
+    margin-top: -6px !important;
+}
+
+@media (max-width: 900px) {
+    .page-home .homepage-media-carousel {
+        padding-top: 26px !important;
+        padding-bottom: 20px !important;
+    }
+
+    .page-home .homepage-media-carousel .carousel-track {
+        height: 280px !important;
+        min-height: 280px !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide {
+        width: clamp(270px, 76vw, 440px) !important;
+        top: 50% !important;
+        transform:
+            translate(-50%, -50%)
+            translateX(calc(var(--home-offset) * var(--home-slide-gap)))
+            scale(0.64) !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide.is-neighbor {
+        top: 50% !important;
+        transform:
+            translate(-50%, -50%)
+            translateX(calc(var(--home-offset) * var(--home-slide-gap)))
+            scale(0.76) !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide.is-active {
+        top: 50% !important;
+        transform:
+            translate(-50%, -50%)
+            translateX(0)
+            scale(1.05) !important;
+    }
+
+    .page-home .homepage-media-carousel .media-slide.is-active:hover,
+    .page-home .homepage-media-carousel .media-slide.is-active:focus-visible {
+        transform:
+            translate(-50%, -50%)
+            translateX(0)
+            scale(1.065) !important;
+    }
+}
