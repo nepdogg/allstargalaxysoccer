@@ -144,4 +144,104 @@ document.addEventListener("DOMContentLoaded", () => {
         updateCarousel();
         startAutoPlay();
     });
+
+    const playerCards = Array.from(document.querySelectorAll(".team-roster-carousel .team-card-slide"));
+    const playerLightbox = document.getElementById("playerCardLightbox");
+
+    if (playerCards.length && playerLightbox) {
+        const lightboxImage = playerLightbox.querySelector(".player-lightbox-image");
+        const openOriginal = playerLightbox.querySelector(".player-lightbox-open");
+        const closeButton = playerLightbox.querySelector(".player-lightbox-close");
+        const previousButton = playerLightbox.querySelector(".player-lightbox-prev");
+        const nextButton = playerLightbox.querySelector(".player-lightbox-next");
+        let activePlayerIndex = 0;
+        let lightboxTouchStartX = null;
+
+        function showPlayerCard(index) {
+            activePlayerIndex = (index + playerCards.length) % playerCards.length;
+            const selectedCard = playerCards[activePlayerIndex];
+            const selectedImage = selectedCard.querySelector("img");
+            const imageSrc = selectedCard.getAttribute("href") || selectedImage?.getAttribute("src");
+            const imageAlt = selectedImage?.getAttribute("alt") || `Allstar Galaxy player card ${activePlayerIndex + 1}`;
+
+            if (!imageSrc || !lightboxImage) return;
+
+            lightboxImage.src = imageSrc;
+            lightboxImage.alt = imageAlt;
+
+            if (openOriginal) {
+                openOriginal.href = imageSrc;
+            }
+        }
+
+        function openPlayerLightbox(index) {
+            showPlayerCard(index);
+            playerLightbox.classList.add("is-open");
+            playerLightbox.setAttribute("aria-hidden", "false");
+            document.body.classList.add("lightbox-open");
+            closeButton?.focus();
+        }
+
+        function closePlayerLightbox() {
+            playerLightbox.classList.remove("is-open");
+            playerLightbox.setAttribute("aria-hidden", "true");
+            document.body.classList.remove("lightbox-open");
+        }
+
+        function showNextPlayer() {
+            showPlayerCard(activePlayerIndex + 1);
+        }
+
+        function showPreviousPlayer() {
+            showPlayerCard(activePlayerIndex - 1);
+        }
+
+        playerCards.forEach((card, index) => {
+            card.addEventListener("click", (event) => {
+                event.preventDefault();
+                openPlayerLightbox(index);
+            });
+        });
+
+        closeButton?.addEventListener("click", closePlayerLightbox);
+        nextButton?.addEventListener("click", showNextPlayer);
+        previousButton?.addEventListener("click", showPreviousPlayer);
+
+        playerLightbox.addEventListener("click", (event) => {
+            if (event.target === playerLightbox) {
+                closePlayerLightbox();
+            }
+        });
+
+        playerLightbox.addEventListener("touchstart", (event) => {
+            lightboxTouchStartX = event.touches[0].clientX;
+        }, { passive: true });
+
+        playerLightbox.addEventListener("touchend", (event) => {
+            if (lightboxTouchStartX === null) return;
+            const touchEndX = event.changedTouches[0].clientX;
+            const swipeDistance = lightboxTouchStartX - touchEndX;
+            if (Math.abs(swipeDistance) > 50) {
+                swipeDistance > 0 ? showNextPlayer() : showPreviousPlayer();
+            }
+            lightboxTouchStartX = null;
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (!playerLightbox.classList.contains("is-open")) return;
+
+            if (event.key === "Escape") {
+                closePlayerLightbox();
+            }
+
+            if (event.key === "ArrowRight") {
+                showNextPlayer();
+            }
+
+            if (event.key === "ArrowLeft") {
+                showPreviousPlayer();
+            }
+        });
+    }
+
 });
