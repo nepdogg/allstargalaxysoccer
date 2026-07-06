@@ -258,4 +258,61 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+
+    const scheduleLinks = Array.from(document.querySelectorAll(".schedule-lightbox-link"));
+    const scheduleLightbox = document.getElementById("scheduleImageLightbox");
+
+    if (scheduleLinks.length && scheduleLightbox) {
+        const scheduleImage = scheduleLightbox.querySelector(".schedule-lightbox-image");
+        const scheduleTitle = scheduleLightbox.querySelector(".schedule-lightbox-title");
+        const scheduleOpen = scheduleLightbox.querySelector(".schedule-lightbox-open");
+        const scheduleClose = scheduleLightbox.querySelector(".schedule-lightbox-close");
+
+        function openScheduleLightbox(link) {
+            const imageSrc = link.getAttribute("href");
+            const imageAlt = link.querySelector("img")?.getAttribute("alt") || "Schedule image";
+            const title = link.dataset.lightboxTitle || "Schedule";
+
+            if (!imageSrc || !scheduleImage) return;
+
+            scheduleImage.src = imageSrc;
+            scheduleImage.alt = imageAlt;
+            if (scheduleTitle) scheduleTitle.textContent = title;
+            if (scheduleOpen) scheduleOpen.href = imageSrc;
+
+            scheduleLightbox.classList.add("is-open");
+            scheduleLightbox.setAttribute("aria-hidden", "false");
+            document.body.classList.add("lightbox-open");
+            scheduleClose?.focus();
+        }
+
+        function closeScheduleLightbox() {
+            scheduleLightbox.classList.remove("is-open");
+            scheduleLightbox.setAttribute("aria-hidden", "true");
+            document.body.classList.remove("lightbox-open");
+        }
+
+        scheduleLinks.forEach((link) => {
+            link.addEventListener("click", (event) => {
+                event.preventDefault();
+                openScheduleLightbox(link);
+            });
+        });
+
+        scheduleClose?.addEventListener("click", closeScheduleLightbox);
+
+        scheduleLightbox.addEventListener("click", (event) => {
+            if (event.target === scheduleLightbox) {
+                closeScheduleLightbox();
+            }
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (!scheduleLightbox.classList.contains("is-open")) return;
+            if (event.key === "Escape") {
+                closeScheduleLightbox();
+            }
+        });
+    }
+
 });

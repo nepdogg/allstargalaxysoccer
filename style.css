@@ -7561,3 +7561,241 @@ body.lightbox-open {
         max-width: 92%;
     }
 }
+
+/* =========================
+   SCHEDULE PAGE IMAGE PANELS + LIGHTBOX v52
+========================= */
+.page-schedule .schedule-page-section {
+    padding: 42px 0 54px !important;
+}
+
+.page-schedule .schedule-image-grid {
+    width: min(94%, 1120px) !important;
+    max-width: 1120px !important;
+    margin: 0 auto !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: 26px !important;
+    align-items: stretch !important;
+}
+
+.page-schedule .schedule-image-card {
+    padding: 18px 18px 20px !important;
+    border: 2px solid var(--page-glow-1) !important;
+    border-radius: 18px !important;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(57,255,20,.16), transparent 42%),
+        linear-gradient(180deg, rgba(0, 35, 10, 0.76), rgba(0, 0, 0, 0.88)) !important;
+    box-shadow:
+        0 0 18px rgba(57, 255, 20, 0.28),
+        inset 0 0 22px rgba(57, 255, 20, 0.10) !important;
+    transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+
+.page-schedule .schedule-image-card:hover {
+    transform: translateY(-6px);
+    border-color: #9bff8f !important;
+    box-shadow:
+        0 0 22px rgba(57, 255, 20, 0.58),
+        0 0 42px rgba(57, 255, 20, 0.22),
+        inset 0 0 26px rgba(57, 255, 20, 0.16) !important;
+}
+
+.page-schedule .schedule-image-card h3 {
+    font-size: clamp(1.05rem, 1.7vw, 1.45rem) !important;
+    text-align: center !important;
+    margin: 0 0 14px !important;
+    color: var(--page-glow-1) !important;
+    text-transform: uppercase !important;
+    letter-spacing: .8px !important;
+    text-shadow:
+        0 0 8px rgba(57, 255, 20, 0.92),
+        0 0 18px rgba(57, 255, 20, 0.46) !important;
+}
+
+.page-schedule .schedule-lightbox-link {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.page-schedule .schedule-lightbox-link img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 12px !important;
+    transform: scale(1);
+    transition: transform .25s ease, filter .25s ease;
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.62) !important;
+}
+
+.page-schedule .schedule-image-card:hover .schedule-lightbox-link img {
+    transform: scale(1.025);
+    filter: brightness(1.08) contrast(1.05);
+}
+
+.page-schedule .schedule-image-action {
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+    padding: 7px 14px;
+    border: 1px solid rgba(57,255,20,.76);
+    border-radius: 999px;
+    color: #fff;
+    font-size: .7rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    white-space: nowrap;
+    background: rgba(0, 0, 0, .72);
+    box-shadow: 0 0 16px rgba(57,255,20,.34);
+    opacity: 0;
+    transition: opacity .22s ease, transform .22s ease;
+}
+
+.page-schedule .schedule-image-card:hover .schedule-image-action {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-2px);
+}
+
+.schedule-image-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 6000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 44px 6vw;
+    background:
+        radial-gradient(circle at center, rgba(57,255,20,.10), transparent 45%),
+        rgba(0,0,0,.91);
+    backdrop-filter: blur(7px);
+}
+
+.schedule-image-lightbox.is-open {
+    display: flex;
+    animation: scheduleLightboxFade .22s ease-out both;
+}
+
+@keyframes scheduleLightboxFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.schedule-lightbox-stage {
+    position: relative;
+    width: min(94vw, 1180px);
+    max-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.schedule-lightbox-title {
+    margin: 0;
+    color: var(--page-glow-1, #39ff14);
+    font-size: clamp(1.2rem, 2.4vw, 2rem);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 0 12px rgba(57,255,20,.75);
+}
+
+.schedule-lightbox-image {
+    display: block;
+    max-width: 100%;
+    max-height: 76vh;
+    width: auto;
+    height: auto;
+    border-radius: 16px;
+    border: 2px solid rgba(57,255,20,.75);
+    box-shadow:
+        0 0 24px rgba(57,255,20,.42),
+        0 0 58px rgba(57,255,20,.18);
+    animation: scheduleImagePop .24s cubic-bezier(.22,1,.36,1) both;
+}
+
+@keyframes scheduleImagePop {
+    from { opacity: 0; transform: scale(.96); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.schedule-lightbox-open {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(57,255,20,.76);
+    color: #fff;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: .7px;
+    background: rgba(0, 18, 5, .72);
+    box-shadow: 0 0 18px rgba(57,255,20,.30);
+}
+
+.schedule-lightbox-open:hover {
+    color: var(--page-glow-1, #39ff14);
+    box-shadow: 0 0 22px rgba(57,255,20,.54);
+}
+
+.schedule-lightbox-close {
+    position: absolute;
+    top: 18px;
+    right: 24px;
+    z-index: 6010;
+    width: 52px;
+    height: 52px;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 3rem;
+    line-height: 1;
+    cursor: pointer;
+    background: rgba(0, 18, 5, .54);
+    text-shadow: 0 0 10px #fff, 0 0 24px rgba(57,255,20,.95);
+}
+
+.schedule-lightbox-close:hover {
+    color: var(--page-glow-1, #39ff14);
+    box-shadow: 0 0 18px rgba(57,255,20,.48);
+}
+
+@media (max-width: 900px) {
+    .page-schedule .schedule-image-grid {
+        width: 92% !important;
+        grid-template-columns: 1fr !important;
+        gap: 22px !important;
+    }
+
+    .page-schedule .schedule-image-card {
+        padding: 14px !important;
+    }
+
+    .page-schedule .schedule-image-action {
+        opacity: 1;
+        font-size: .62rem;
+        bottom: 8px;
+    }
+
+    .schedule-image-lightbox {
+        padding: 32px 4vw;
+    }
+
+    .schedule-lightbox-close {
+        top: 10px;
+        right: 12px;
+        width: 44px;
+        height: 44px;
+        font-size: 2.4rem;
+    }
+
+    .schedule-lightbox-image {
+        max-height: 74vh;
+    }
+}

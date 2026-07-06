@@ -7,7 +7,7 @@
     <title>Allstar Galaxy | Schedule</title>
 
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="style.css?v=51">
+    <link rel="stylesheet" href="style.css?v=52">
 </head>
 
 <body class="page-schedule">
@@ -47,16 +47,32 @@
                     <div class="schedule-grid schedule-image-grid">
                         <article class="table-card schedule-image-card">
                             <h3>Match Schedule</h3>
-                            <img src="images/schedule/match-schedule.png?v=51" alt="Allstar Galaxy match schedule for Fair Oaks Cancha #2">
+                            <a class="schedule-lightbox-link" href="images/schedule/match-schedule.png?v=52" target="_blank" rel="noopener" data-lightbox-title="Match Schedule">
+                                <img src="images/schedule/match-schedule.png?v=52" alt="Allstar Galaxy match schedule for Fair Oaks Cancha #2">
+                                <span class="schedule-image-action">Click to view full schedule</span>
+                            </a>
                         </article>
 
                         <article class="table-card schedule-image-card">
                             <h3>League Standings</h3>
-                            <img src="images/schedule/standings.png?v=51" alt="Sunnyvale Soccer League standings with Allstar Galaxy highlighted">
+                            <a class="schedule-lightbox-link" href="images/schedule/standings.png?v=52" target="_blank" rel="noopener" data-lightbox-title="League Standings">
+                                <img src="images/schedule/standings.png?v=52" alt="Sunnyvale Soccer League standings with Allstar Galaxy highlighted">
+                                <span class="schedule-image-action">Click to view full standings</span>
+                            </a>
                         </article>
                     </div>
                 </section>
             </main>
+
+
+            <div class="schedule-image-lightbox" id="scheduleImageLightbox" aria-hidden="true">
+                <button class="schedule-lightbox-close" type="button" aria-label="Close schedule preview">×</button>
+                <div class="schedule-lightbox-stage">
+                    <h2 class="schedule-lightbox-title">Schedule</h2>
+                    <img class="schedule-lightbox-image" src="" alt="">
+                    <a class="schedule-lightbox-open" href="#" target="_blank" rel="noopener">Open Original Image</a>
+                </div>
+            </div>
 
             <footer>
                 <div class="footer-social-row">
@@ -81,7 +97,7 @@
                 <p class="footer-small">© 2026 Allstar Galaxy.</p>
             </footer>
 
-            <script src="script.js?v=51"></script>
+            <script src="script.js?v=52"></script>
 
     </div>
 </body>
