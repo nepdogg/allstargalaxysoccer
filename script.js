@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".carousel").forEach((carousel) => {
         const track = carousel.querySelector(".carousel-track");
-        const slides = Array.from(carousel.querySelectorAll(".media-slide, .team-slide, .team-card-slide"));
+        const slides = Array.from(carousel.querySelectorAll(".media-slide, .team-slide, .team-card-slide, .media-game-slide, .season-archive-slide"));
         const previousButton = carousel.querySelector(".prev");
         const nextButton = carousel.querySelector(".next");
         const dotsContainer = carousel.querySelector(".carousel-dots");
@@ -315,4 +315,64 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+});
+
+
+// Media page game-card lightbox for Full Match / Highlights / Slideshow links.
+document.addEventListener("DOMContentLoaded", () => {
+    const gameCards = Array.from(document.querySelectorAll(".media-game-slide"));
+    const gameLightbox = document.getElementById("gameLinkLightbox");
+
+    if (!gameCards.length || !gameLightbox) return;
+
+    const title = gameLightbox.querySelector(".game-link-title");
+    const opponent = gameLightbox.querySelector(".game-link-opponent");
+    const result = gameLightbox.querySelector(".game-link-result");
+    const fullLink = gameLightbox.querySelector(".game-link-full");
+    const highlightsLink = gameLightbox.querySelector(".game-link-highlights");
+    const slideshowLink = gameLightbox.querySelector(".game-link-slideshow");
+    const closeButton = gameLightbox.querySelector(".game-link-close");
+
+    function setLink(link, value) {
+        if (!link) return;
+        link.href = value || "#";
+        link.classList.toggle("is-disabled", !value || value === "#");
+    }
+
+    function openGameLightbox(card) {
+        if (title) title.textContent = card.dataset.gameTitle || "Game Media";
+        if (opponent) opponent.textContent = card.dataset.gameOpponent || "Allstar Galaxy";
+        if (result) result.textContent = card.dataset.gameResult || "";
+        setLink(fullLink, card.dataset.full);
+        setLink(highlightsLink, card.dataset.highlights);
+        setLink(slideshowLink, card.dataset.slideshow);
+        gameLightbox.classList.add("is-open");
+        gameLightbox.setAttribute("aria-hidden", "false");
+        document.body.classList.add("lightbox-open");
+        closeButton?.focus();
+    }
+
+    function closeGameLightbox() {
+        gameLightbox.classList.remove("is-open");
+        gameLightbox.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("lightbox-open");
+    }
+
+    gameCards.forEach((card) => {
+        card.addEventListener("click", (event) => {
+            event.preventDefault();
+            openGameLightbox(card);
+        });
+    });
+
+    closeButton?.addEventListener("click", closeGameLightbox);
+    gameLightbox.addEventListener("click", (event) => {
+        if (event.target === gameLightbox) closeGameLightbox();
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && gameLightbox.classList.contains("is-open")) {
+            closeGameLightbox();
+        }
+    });
 });

@@ -8171,3 +8171,382 @@ body.lightbox-open {
         min-height: 230px !important;
     }
 }
+
+/* =========================
+   MEDIA ARCHIVE REDESIGN - V58
+   Three-section media archive: latest games, season archive, playlist collection.
+========================= */
+.page-media main.media-archive-main {
+    padding: 30px 30px 48px !important;
+}
+
+.media-archive-section {
+    margin: 0 auto 38px !important;
+    width: 100% !important;
+}
+
+.media-section-heading {
+    width: min(92%, 1050px);
+    margin: 0 auto 16px;
+    text-align: left;
+    border-left: 4px solid #00aaff;
+    padding: 4px 0 4px 16px;
+}
+
+.media-section-heading h1,
+.media-section-heading h2 {
+    margin: 0 0 5px;
+    color: #19b8ff;
+    font-size: clamp(1.35rem, 2.2vw, 2.35rem);
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 10px rgba(0, 170, 255, 0.78), 0 0 22px rgba(0, 170, 255, 0.32) !important;
+}
+
+.media-section-heading p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: clamp(0.78rem, 1.1vw, 0.98rem);
+    line-height: 1.45;
+}
+
+.page-media .media-games-carousel,
+.page-media .media-season-carousel,
+.page-media .media-playlist-carousel {
+    width: min(94%, 1120px) !important;
+    margin: 0 auto !important;
+    border: 1px solid rgba(0, 170, 255, 0.72) !important;
+    border-radius: 18px !important;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(0, 170, 255, 0.14), transparent 48%),
+        linear-gradient(180deg, rgba(4, 12, 28, 0.96), rgba(2, 0, 18, 0.98)) !important;
+    box-shadow:
+        0 0 16px rgba(0, 170, 255, 0.22),
+        inset 0 0 34px rgba(0, 170, 255, 0.08) !important;
+    padding: 26px 52px 46px !important;
+    overflow: hidden !important;
+}
+
+.page-media .media-games-carousel .carousel-track,
+.page-media .media-season-carousel .carousel-track,
+.page-media .media-playlist-carousel .carousel-track {
+    gap: 22px !important;
+    align-items: center !important;
+    padding: 0 !important;
+}
+
+.page-media .media-games-carousel .media-game-slide,
+.page-media .media-season-carousel .season-archive-slide,
+.page-media .media-playlist-carousel .media-slide {
+    flex: 0 0 calc((100% - 44px) / 3) !important;
+    min-width: calc((100% - 44px) / 3) !important;
+    max-width: calc((100% - 44px) / 3) !important;
+    border: 1px solid rgba(0, 170, 255, 0.68) !important;
+    border-radius: 13px !important;
+    overflow: hidden !important;
+    background: rgba(3, 8, 28, 0.92) !important;
+    box-shadow:
+        0 0 10px rgba(0, 170, 255, 0.22),
+        0 10px 24px rgba(0, 0, 0, 0.40) !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, opacity 0.25s ease !important;
+}
+
+.page-media .media-games-carousel .media-game-slide,
+.page-media .media-season-carousel .season-archive-slide {
+    aspect-ratio: 16 / 9 !important;
+}
+
+.page-media .media-playlist-carousel .media-slide {
+    aspect-ratio: 16 / 9 !important;
+}
+
+.page-media .media-game-slide:hover,
+.page-media .season-archive-slide:hover,
+.page-media .media-playlist-carousel .media-slide:hover {
+    transform: translateY(-4px) scale(1.015) !important;
+    border-color: rgba(60, 205, 255, 0.96) !important;
+    box-shadow:
+        0 0 14px rgba(0, 170, 255, 0.50),
+        0 0 26px rgba(0, 170, 255, 0.18),
+        0 12px 26px rgba(0, 0, 0, 0.48) !important;
+}
+
+.page-media .media-game-slide img,
+.page-media .season-archive-slide img,
+.page-media .media-playlist-carousel .media-slide img {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    object-fit: cover !important;
+}
+
+.page-media .season-placeholder {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #19b8ff;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background:
+        radial-gradient(circle at 50% 35%, rgba(0, 170, 255, 0.20), transparent 50%),
+        linear-gradient(135deg, rgba(11, 18, 48, 0.98), rgba(4, 0, 18, 0.98)) !important;
+}
+
+.page-media .season-placeholder span {
+    font-weight: 900;
+    font-size: clamp(1.1rem, 2vw, 2rem);
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0, 170, 255, 0.74);
+}
+
+.page-media .season-placeholder small {
+    margin-top: 10px;
+    font-weight: 800;
+    color: #19b8ff;
+    text-shadow: 0 0 8px rgba(0, 170, 255, 0.7);
+}
+
+.page-media .media-games-carousel .carousel-button,
+.page-media .media-season-carousel .carousel-button,
+.page-media .media-playlist-carousel .carousel-button {
+    color: #19b8ff !important;
+    border-color: rgba(0, 170, 255, 0.78) !important;
+    background: rgba(0, 10, 30, 0.72) !important;
+    box-shadow: 0 0 14px rgba(0, 170, 255, 0.32) !important;
+}
+
+.page-media .media-games-carousel .carousel-button:hover,
+.page-media .media-season-carousel .carousel-button:hover,
+.page-media .media-playlist-carousel .carousel-button:hover {
+    background: rgba(0, 75, 130, 0.82) !important;
+    box-shadow: 0 0 20px rgba(0, 170, 255, 0.52) !important;
+}
+
+.page-media .media-games-carousel .carousel-dots,
+.page-media .media-season-carousel .carousel-dots,
+.page-media .media-playlist-carousel .carousel-dots {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 16px;
+    justify-content: center;
+}
+
+.page-media .media-games-carousel .carousel-dot.active,
+.page-media .media-season-carousel .carousel-dot.active,
+.page-media .media-playlist-carousel .carousel-dot.active {
+    background: #19b8ff !important;
+    box-shadow: 0 0 10px rgba(0, 170, 255, 0.78) !important;
+}
+
+.season-archive-hero {
+    width: 100%;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(0, 170, 255, 0.45);
+    box-shadow: 0 0 26px rgba(0, 170, 255, 0.14);
+}
+
+.season-archive-hero img {
+    width: 100%;
+    display: block;
+    height: auto;
+}
+
+.page-season-archive .site-top + .season-archive-hero {
+    margin-top: 0;
+}
+
+.page-season-archive .season-heading {
+    text-align: center;
+    border-left: 0;
+    padding-left: 0;
+}
+
+.season-back-row {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.season-back-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    padding: 0 18px;
+    border: 1px solid rgba(0, 170, 255, 0.72);
+    border-radius: 999px;
+    color: #19b8ff;
+    text-decoration: none;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: rgba(0, 10, 30, 0.74);
+    box-shadow: 0 0 14px rgba(0, 170, 255, 0.24);
+}
+
+.season-back-link:hover {
+    color: #fff;
+    box-shadow: 0 0 20px rgba(0, 170, 255, 0.52);
+}
+
+.game-link-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(1, 0, 10, 0.88);
+    backdrop-filter: blur(8px);
+}
+
+.game-link-lightbox.is-open {
+    display: flex;
+}
+
+.game-link-panel {
+    width: min(92vw, 720px);
+    border: 1px solid rgba(0, 170, 255, 0.86);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    color: #fff;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(0, 170, 255, 0.18), transparent 48%),
+        linear-gradient(180deg, rgba(5, 13, 35, 0.98), rgba(2, 0, 12, 0.98));
+    box-shadow:
+        0 0 20px rgba(0, 170, 255, 0.42),
+        0 0 60px rgba(0, 0, 0, 0.85);
+    position: relative;
+}
+
+.game-link-close {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(0, 170, 255, 0.55);
+    border-radius: 999px;
+    background: rgba(0, 10, 30, 0.78);
+    color: #fff;
+    font-size: 1.7rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.game-link-title {
+    margin: 0 0 8px;
+    color: #19b8ff;
+    font-size: clamp(1.6rem, 4vw, 3rem);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.game-link-opponent,
+.game-link-result {
+    margin: 4px 0;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.game-link-result {
+    color: #ffd700;
+}
+
+.game-link-actions {
+    display: grid;
+    gap: 14px;
+    margin: 24px auto 18px;
+    width: min(100%, 520px);
+}
+
+.game-link-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 54px;
+    border-radius: 14px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.game-link-full { box-shadow: 0 0 16px rgba(255, 0, 170, 0.28); border-color: rgba(255, 0, 170, 0.7); }
+.game-link-highlights { box-shadow: 0 0 16px rgba(255, 190, 0, 0.28); border-color: rgba(255, 190, 0, 0.7); }
+.game-link-slideshow { box-shadow: 0 0 16px rgba(0, 170, 255, 0.28); border-color: rgba(0, 170, 255, 0.7); }
+
+.game-link-note {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.78rem;
+    margin: 0;
+}
+
+body.lightbox-open {
+    overflow: hidden;
+}
+
+@media (min-width: 1100px) {
+    .page-media .media-games-carousel .media-game-slide,
+    .page-media .media-playlist-carousel .media-slide {
+        flex-basis: calc((100% - 66px) / 4) !important;
+        min-width: calc((100% - 66px) / 4) !important;
+        max-width: calc((100% - 66px) / 4) !important;
+    }
+
+    .page-media .media-season-carousel .season-archive-slide {
+        flex-basis: calc((100% - 44px) / 3) !important;
+        min-width: calc((100% - 44px) / 3) !important;
+        max-width: calc((100% - 44px) / 3) !important;
+    }
+}
+
+@media (max-width: 760px) {
+    .page-media main.media-archive-main {
+        padding: 22px 0 38px !important;
+    }
+
+    .media-section-heading {
+        width: 88%;
+        text-align: center;
+        border-left: 0;
+        padding-left: 0;
+    }
+
+    .page-media .media-games-carousel,
+    .page-media .media-season-carousel,
+    .page-media .media-playlist-carousel {
+        width: 92% !important;
+        padding: 20px 36px 42px !important;
+        border-radius: 16px !important;
+    }
+
+    .page-media .media-games-carousel .media-game-slide,
+    .page-media .media-season-carousel .season-archive-slide,
+    .page-media .media-playlist-carousel .media-slide {
+        flex-basis: 82vw !important;
+        min-width: 82vw !important;
+        max-width: 82vw !important;
+    }
+
+    .page-media .media-games-carousel .carousel-button.prev,
+    .page-media .media-season-carousel .carousel-button.prev,
+    .page-media .media-playlist-carousel .carousel-button.prev {
+        left: 8px !important;
+    }
+
+    .page-media .media-games-carousel .carousel-button.next,
+    .page-media .media-season-carousel .carousel-button.next,
+    .page-media .media-playlist-carousel .carousel-button.next {
+        right: 8px !important;
+    }
+}
