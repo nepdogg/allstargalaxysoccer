@@ -8550,3 +8550,127 @@ body.lightbox-open {
         right: 8px !important;
     }
 }
+
+
+/* =========================
+   MEDIA PAGE CAROUSEL SCALE FIX - V59
+   Makes the three Media page carousels match the larger homepage carousel feel.
+========================= */
+.page-media main.media-archive-main {
+    padding: clamp(26px, 3.5vw, 46px) 0 54px !important;
+}
+
+.page-media .media-archive-section {
+    margin: 0 auto clamp(32px, 4vw, 52px) !important;
+    width: 100% !important;
+}
+
+.page-media .media-section-heading {
+    width: min(94%, 1180px) !important;
+    margin: 0 auto 14px !important;
+}
+
+.page-media .media-games-carousel,
+.page-media .media-season-carousel,
+.page-media .media-playlist-carousel {
+    width: min(96%, 1240px) !important;
+    min-height: clamp(265px, 23vw, 355px) !important;
+    padding: clamp(34px, 3.8vw, 52px) clamp(58px, 5.2vw, 82px) 52px !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+}
+
+.page-media .media-games-carousel .carousel-track,
+.page-media .media-season-carousel .carousel-track,
+.page-media .media-playlist-carousel .carousel-track {
+    gap: clamp(22px, 2vw, 34px) !important;
+    align-items: center !important;
+}
+
+.page-media .media-games-carousel .media-game-slide,
+.page-media .media-season-carousel .season-archive-slide,
+.page-media .media-playlist-carousel .media-slide {
+    flex: 0 0 clamp(255px, 29vw, 392px) !important;
+    min-width: clamp(255px, 29vw, 392px) !important;
+    max-width: clamp(255px, 29vw, 392px) !important;
+    aspect-ratio: 16 / 9 !important;
+}
+
+.page-media .media-games-carousel .media-game-slide.is-active,
+.page-media .media-season-carousel .season-archive-slide.is-active,
+.page-media .media-playlist-carousel .media-slide.is-active {
+    transform: scale(1.08) !important;
+    z-index: 5 !important;
+    border-color: rgba(75, 215, 255, 1) !important;
+    box-shadow:
+        0 0 18px rgba(0, 170, 255, 0.72),
+        0 0 42px rgba(0, 170, 255, 0.35),
+        0 16px 34px rgba(0, 0, 0, 0.55) !important;
+}
+
+.page-media .media-games-carousel .media-game-slide.is-neighbor,
+.page-media .media-season-carousel .season-archive-slide.is-neighbor,
+.page-media .media-playlist-carousel .media-slide.is-neighbor {
+    opacity: 0.74 !important;
+    filter: brightness(0.82) saturate(1.1) !important;
+}
+
+.page-media .media-games-carousel .carousel-button,
+.page-media .media-season-carousel .carousel-button,
+.page-media .media-playlist-carousel .carousel-button {
+    top: 50% !important;
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 2.1rem !important;
+}
+
+.page-media .media-games-carousel .carousel-button.prev,
+.page-media .media-season-carousel .carousel-button.prev,
+.page-media .media-playlist-carousel .carousel-button.prev {
+    left: 18px !important;
+}
+
+.page-media .media-games-carousel .carousel-button.next,
+.page-media .media-season-carousel .carousel-button.next,
+.page-media .media-playlist-carousel .carousel-button.next {
+    right: 18px !important;
+}
+
+.page-media .media-games-carousel .carousel-dots,
+.page-media .media-season-carousel .carousel-dots,
+.page-media .media-playlist-carousel .carousel-dots {
+    bottom: 20px !important;
+}
+
+@media (min-width: 1100px) {
+    .page-media .media-games-carousel .media-game-slide,
+    .page-media .media-playlist-carousel .media-slide {
+        flex-basis: clamp(300px, 31vw, 430px) !important;
+        min-width: clamp(300px, 31vw, 430px) !important;
+        max-width: clamp(300px, 31vw, 430px) !important;
+    }
+
+    .page-media .media-season-carousel .season-archive-slide {
+        flex-basis: clamp(300px, 31vw, 430px) !important;
+        min-width: clamp(300px, 31vw, 430px) !important;
+        max-width: clamp(300px, 31vw, 430px) !important;
+    }
+}
+
+@media (max-width: 760px) {
+    .page-media .media-games-carousel,
+    .page-media .media-season-carousel,
+    .page-media .media-playlist-carousel {
+        width: 94% !important;
+        min-height: 250px !important;
+        padding: 30px 42px 50px !important;
+    }
+
+    .page-media .media-games-carousel .media-game-slide,
+    .page-media .media-season-carousel .season-archive-slide,
+    .page-media .media-playlist-carousel .media-slide {
+        flex-basis: 78vw !important;
+        min-width: 78vw !important;
+        max-width: 78vw !important;
+    }
+}
