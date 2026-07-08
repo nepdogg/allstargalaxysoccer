@@ -8981,3 +8981,116 @@ body.lightbox-open {
         bottom: 24px !important;
     }
 }
+
+
+/* =========================
+   MEDIA PAGE CAROUSEL FULL-CARD FIX - V63
+   Shows full 3:2 game cards and 16:9 season/playlist cards without cropping.
+   Adds extra safe height so active cards and glows clear the carousel borders.
+========================= */
+.page-media .media-games-carousel,
+.page-media .media-season-carousel,
+.page-media .media-playlist-carousel {
+    height: clamp(500px, 43vw, 640px) !important;
+    min-height: clamp(500px, 43vw, 640px) !important;
+    padding: 58px 62px 88px !important;
+    overflow: hidden !important;
+}
+
+/* Latest Games cards are 3:2 graphics, not 16:9 thumbnails. */
+.page-media .media-games-carousel .media-game-slide {
+    width: clamp(420px, 50vw, 700px) !important;
+    aspect-ratio: 3 / 2 !important;
+    top: 48% !important;
+}
+
+/* Season archive and playlist cards stay wide 16:9. */
+.page-media .media-season-carousel .season-archive-slide,
+.page-media .media-playlist-carousel .media-slide {
+    width: clamp(420px, 50vw, 700px) !important;
+    aspect-ratio: 16 / 9 !important;
+    top: 48% !important;
+}
+
+/* Never crop the artwork on Media page carousel cards. */
+.page-media .media-games-carousel .media-game-slide img,
+.page-media .media-season-carousel .season-archive-slide img,
+.page-media .media-playlist-carousel .media-slide img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    background: rgba(5, 0, 15, 0.96) !important;
+}
+
+.page-media .media-games-carousel .media-game-slide.is-active,
+.page-media .media-season-carousel .season-archive-slide.is-active,
+.page-media .media-playlist-carousel .media-slide.is-active {
+    top: 48% !important;
+    transform:
+        translate(-50%, -50%)
+        translateX(0)
+        scale(0.98) !important;
+}
+
+.page-media .media-games-carousel .media-game-slide.is-active:hover,
+.page-media .media-games-carousel .media-game-slide.is-active:focus-visible,
+.page-media .media-season-carousel .season-archive-slide.is-active:hover,
+.page-media .media-season-carousel .season-archive-slide.is-active:focus-visible,
+.page-media .media-playlist-carousel .media-slide.is-active:hover,
+.page-media .media-playlist-carousel .media-slide.is-active:focus-visible {
+    transform:
+        translate(-50%, -50%)
+        translateX(0)
+        scale(1.0) !important;
+}
+
+.page-media .media-games-carousel .carousel-dots,
+.page-media .media-season-carousel .carousel-dots,
+.page-media .media-playlist-carousel .carousel-dots {
+    bottom: 34px !important;
+}
+
+.page-media .media-games-carousel .carousel-button,
+.page-media .media-season-carousel .carousel-button,
+.page-media .media-playlist-carousel .carousel-button {
+    top: 48% !important;
+}
+
+@media (max-width: 900px) {
+    .page-media .media-games-carousel,
+    .page-media .media-season-carousel,
+    .page-media .media-playlist-carousel {
+        height: clamp(390px, 76vw, 560px) !important;
+        min-height: clamp(390px, 76vw, 560px) !important;
+        padding: 48px 44px 78px !important;
+    }
+
+    .page-media .media-games-carousel .media-game-slide,
+    .page-media .media-season-carousel .season-archive-slide,
+    .page-media .media-playlist-carousel .media-slide {
+        width: clamp(300px, 82vw, 620px) !important;
+    }
+}
+
+@media (max-width: 560px) {
+    .page-media .media-games-carousel,
+    .page-media .media-season-carousel,
+    .page-media .media-playlist-carousel {
+        height: clamp(330px, 96vw, 460px) !important;
+        min-height: clamp(330px, 96vw, 460px) !important;
+        padding: 38px 28px 66px !important;
+    }
+
+    .page-media .media-games-carousel .media-game-slide,
+    .page-media .media-season-carousel .season-archive-slide,
+    .page-media .media-playlist-carousel .media-slide {
+        width: clamp(270px, 88vw, 430px) !important;
+    }
+
+    .page-media .media-games-carousel .carousel-dots,
+    .page-media .media-season-carousel .carousel-dots,
+    .page-media .media-playlist-carousel .carousel-dots {
+        bottom: 24px !important;
+    }
+}
