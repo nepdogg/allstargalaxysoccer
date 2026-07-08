@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const dotsContainer = carousel.querySelector(".carousel-dots");
         const isHomepagePlaylist = carousel.classList.contains("homepage-media-carousel");
         const isTeamRoster = carousel.classList.contains("team-roster-carousel");
-        const isShowcaseCarousel = isHomepagePlaylist || isTeamRoster;
+        const isMediaShowcase = carousel.classList.contains("media-games-carousel") || carousel.classList.contains("media-season-carousel") || carousel.classList.contains("media-playlist-carousel");
+        const isShowcaseCarousel = isHomepagePlaylist || isTeamRoster || isMediaShowcase;
 
         if (!track || slides.length === 0) {
             return;
@@ -15,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let currentIndex = carousel.classList.contains("team-roster-carousel") ? 4 : 0;
         let autoPlayTimer;
+        let autoPlayHasStarted = false;
 
         if (dotsContainer) {
             dotsContainer.innerHTML = "";
@@ -62,8 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
             } else if (isHomepagePlaylist) {
                 // Homepage playlist showcase uses absolute positioning so the
                 // featured card is always exactly centered in the carousel frame.
-                // This avoids the tiny visual drift that happened with flex-track
-                // translate calculations after card scaling and spacing changes.
                 track.style.setProperty('transform', 'none', 'important');
 
                 slides.forEach((slide, slideIndex) => {
@@ -75,6 +75,22 @@ document.addEventListener("DOMContentLoaded", () => {
                     slide.style.setProperty('--home-offset', offset);
                     slide.classList.toggle('is-distance-2', absOffset === 2);
                     slide.classList.toggle('is-hidden-home', absOffset > 2);
+                });
+            } else if (isMediaShowcase) {
+                // Media page carousels use the same centered showcase behavior
+                // as the homepage carousel so the active card stays locked in
+                // the middle of each frame.
+                track.style.setProperty('transform', 'none', 'important');
+
+                slides.forEach((slide, slideIndex) => {
+                    let offset = slideIndex - currentIndex;
+                    if (offset > slides.length / 2) offset -= slides.length;
+                    if (offset < -slides.length / 2) offset += slides.length;
+
+                    const absOffset = Math.abs(offset);
+                    slide.style.setProperty('--media-offset', offset);
+                    slide.classList.toggle('is-distance-2', absOffset === 2);
+                    slide.classList.toggle('is-hidden-media', absOffset > 2);
                 });
             } else if (isShowcaseCarousel) {
                 const carouselCenter = carousel.clientWidth / 2;
@@ -102,13 +118,38 @@ document.addEventListener("DOMContentLoaded", () => {
             updateCarousel();
         }
 
-        function startAutoPlay() {
+        function getCarouselInterval() {
+            if (carousel.classList.contains("media-games-carousel")) return 6500;
+            if (carousel.classList.contains("media-season-carousel")) return 9000;
+            if (carousel.classList.contains("media-playlist-carousel")) return 12000;
+            return isShowcaseCarousel ? 6500 : 4500;
+        }
+
+        function getInitialDelay() {
+            if (carousel.classList.contains("media-season-carousel")) return 3000;
+            if (carousel.classList.contains("media-playlist-carousel")) return 6000;
+            return 0;
+        }
+
+        function startAutoPlay(forceNoDelay = false) {
             stopAutoPlay();
-            autoPlayTimer = setInterval(nextSlide, isShowcaseCarousel ? 6500 : 4500);
+            const interval = getCarouselInterval();
+            const delay = (!autoPlayHasStarted && !forceNoDelay) ? getInitialDelay() : 0;
+            autoPlayHasStarted = true;
+
+            if (delay > 0) {
+                autoPlayTimer = setTimeout(() => {
+                    nextSlide();
+                    autoPlayTimer = setInterval(nextSlide, interval);
+                }, delay);
+            } else {
+                autoPlayTimer = setInterval(nextSlide, interval);
+            }
         }
 
         function stopAutoPlay() {
             if (autoPlayTimer) {
+                clearTimeout(autoPlayTimer);
                 clearInterval(autoPlayTimer);
             }
         }
@@ -119,19 +160,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
         previousButton?.addEventListener("click", () => {
             previousSlide();
-            startAutoPlay();
+            startAutoPlay(true);
         });
 
         nextButton?.addEventListener("click", () => {
             nextSlide();
-            startAutoPlay();
+            startAutoPlay(true);
         });
 
         dots.forEach((dot, dotIndex) => {
             dot.addEventListener("click", () => {
                 currentIndex = dotIndex;
                 updateCarousel();
-                startAutoPlay();
+                startAutoPlay(true);
             });
         });
 
@@ -146,7 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const swipeDistance = touchStartX - touchEndX;
             if (Math.abs(swipeDistance) > 45) {
                 swipeDistance > 0 ? nextSlide() : previousSlide();
-                startAutoPlay();
+                startAutoPlay(true);
             }
             touchStartX = null;
         });

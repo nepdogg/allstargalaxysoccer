@@ -8674,3 +8674,232 @@ body.lightbox-open {
         max-width: 78vw !important;
     }
 }
+
+/* =========================
+   MEDIA PAGE CAROUSEL CENTER + STAGGER FIX - V60
+   Makes all three Media page carousels use the same premium centered
+   showcase behavior as the homepage carousel, with larger cards and
+   staggered rotation timing handled in script.js.
+========================= */
+.page-media main.media-archive-main {
+    padding: clamp(24px, 3vw, 42px) 0 58px !important;
+}
+
+.page-media .media-archive-section {
+    margin: 0 auto clamp(34px, 4.2vw, 54px) !important;
+}
+
+.page-media .media-section-heading {
+    width: calc(100% - 52px) !important;
+    max-width: 1220px !important;
+    margin: 0 auto 12px !important;
+}
+
+.page-media .media-games-carousel,
+.page-media .media-season-carousel,
+.page-media .media-playlist-carousel {
+    width: calc(100% - 36px) !important;
+    max-width: 1220px !important;
+    height: clamp(320px, 29vw, 425px) !important;
+    min-height: clamp(320px, 29vw, 425px) !important;
+    margin: 0 auto !important;
+    padding: 28px 56px 56px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 20px !important;
+    border: 1px solid rgba(0, 185, 255, 0.92) !important;
+    background:
+        radial-gradient(circle at 50% 8%, rgba(0, 185, 255, 0.18), transparent 45%),
+        linear-gradient(180deg, rgba(2, 15, 38, 0.97), rgba(3, 0, 19, 0.985)) !important;
+    box-shadow:
+        0 0 18px rgba(0, 185, 255, 0.36),
+        inset 0 0 42px rgba(0, 185, 255, 0.10),
+        0 16px 32px rgba(0, 0, 0, 0.48) !important;
+}
+
+.page-media .media-games-carousel .carousel-track,
+.page-media .media-season-carousel .carousel-track,
+.page-media .media-playlist-carousel .carousel-track {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    transform: none !important;
+    transition: none !important;
+    overflow: visible !important;
+}
+
+.page-media .media-games-carousel .media-game-slide,
+.page-media .media-season-carousel .season-archive-slide,
+.page-media .media-playlist-carousel .media-slide {
+    position: absolute !important;
+    left: 50% !important;
+    top: 46% !important;
+    width: clamp(335px, 57vw, 640px) !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    flex: none !important;
+    aspect-ratio: 16 / 9 !important;
+    border-radius: 15px !important;
+    border: 1px solid rgba(0, 185, 255, 0.72) !important;
+    overflow: hidden !important;
+    opacity: 0.28 !important;
+    filter: brightness(0.50) saturate(0.82) !important;
+    transform:
+        translate(-50%, -50%)
+        translateX(calc(var(--media-offset) * clamp(245px, 42vw, 510px)))
+        scale(0.62) !important;
+    transition:
+        transform 0.5s cubic-bezier(.22,.61,.36,1),
+        opacity 0.5s ease,
+        filter 0.5s ease,
+        box-shadow 0.5s ease,
+        border-color 0.5s ease !important;
+    z-index: 1 !important;
+    box-shadow:
+        0 0 10px rgba(0, 185, 255, 0.20),
+        0 12px 28px rgba(0, 0, 0, 0.50) !important;
+}
+
+.page-media .media-games-carousel .media-game-slide.is-neighbor,
+.page-media .media-season-carousel .season-archive-slide.is-neighbor,
+.page-media .media-playlist-carousel .media-slide.is-neighbor {
+    opacity: 0.80 !important;
+    filter: brightness(0.80) saturate(1.05) !important;
+    transform:
+        translate(-50%, -50%)
+        translateX(calc(var(--media-offset) * clamp(245px, 42vw, 510px)))
+        scale(0.76) !important;
+    z-index: 3 !important;
+}
+
+.page-media .media-games-carousel .media-game-slide.is-distance-2,
+.page-media .media-season-carousel .season-archive-slide.is-distance-2,
+.page-media .media-playlist-carousel .media-slide.is-distance-2 {
+    opacity: 0.20 !important;
+    filter: brightness(0.42) saturate(0.76) !important;
+    transform:
+        translate(-50%, -50%)
+        translateX(calc(var(--media-offset) * clamp(245px, 42vw, 510px)))
+        scale(0.52) !important;
+    z-index: 1 !important;
+}
+
+.page-media .media-games-carousel .media-game-slide.is-active,
+.page-media .media-season-carousel .season-archive-slide.is-active,
+.page-media .media-playlist-carousel .media-slide.is-active {
+    left: 50% !important;
+    top: 46% !important;
+    opacity: 1 !important;
+    filter: brightness(1.08) saturate(1.16) !important;
+    transform:
+        translate(-50%, -50%)
+        translateX(0)
+        scale(1.02) !important;
+    z-index: 8 !important;
+    border-color: rgba(70, 220, 255, 1) !important;
+    box-shadow:
+        0 0 18px rgba(0, 185, 255, 0.78),
+        0 0 44px rgba(0, 185, 255, 0.36),
+        0 18px 38px rgba(0, 0, 0, 0.62) !important;
+}
+
+.page-media .media-games-carousel .media-game-slide.is-active:hover,
+.page-media .media-games-carousel .media-game-slide.is-active:focus-visible,
+.page-media .media-season-carousel .season-archive-slide.is-active:hover,
+.page-media .media-season-carousel .season-archive-slide.is-active:focus-visible,
+.page-media .media-playlist-carousel .media-slide.is-active:hover,
+.page-media .media-playlist-carousel .media-slide.is-active:focus-visible {
+    transform:
+        translate(-50%, -50%)
+        translateX(0)
+        scale(1.045) !important;
+}
+
+.page-media .media-games-carousel .media-game-slide.is-hidden-media,
+.page-media .media-season-carousel .season-archive-slide.is-hidden-media,
+.page-media .media-playlist-carousel .media-slide.is-hidden-media {
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+.page-media .media-games-carousel .carousel-button,
+.page-media .media-season-carousel .carousel-button,
+.page-media .media-playlist-carousel .carousel-button {
+    top: 47% !important;
+    z-index: 12 !important;
+    width: 46px !important;
+    height: 46px !important;
+    font-size: 2.2rem !important;
+}
+
+.page-media .media-games-carousel .carousel-button.prev,
+.page-media .media-season-carousel .carousel-button.prev,
+.page-media .media-playlist-carousel .carousel-button.prev {
+    left: 18px !important;
+}
+
+.page-media .media-games-carousel .carousel-button.next,
+.page-media .media-season-carousel .carousel-button.next,
+.page-media .media-playlist-carousel .carousel-button.next {
+    right: 18px !important;
+}
+
+.page-media .media-games-carousel .carousel-dots,
+.page-media .media-season-carousel .carousel-dots,
+.page-media .media-playlist-carousel .carousel-dots {
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 20px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    z-index: 13 !important;
+}
+
+@media (max-width: 760px) {
+    .page-media .media-section-heading {
+        width: 90% !important;
+    }
+
+    .page-media .media-games-carousel,
+    .page-media .media-season-carousel,
+    .page-media .media-playlist-carousel {
+        width: 94% !important;
+        height: clamp(260px, 58vw, 340px) !important;
+        min-height: clamp(260px, 58vw, 340px) !important;
+        padding: 26px 38px 52px !important;
+    }
+
+    .page-media .media-games-carousel .media-game-slide,
+    .page-media .media-season-carousel .season-archive-slide,
+    .page-media .media-playlist-carousel .media-slide {
+        width: clamp(270px, 78vw, 440px) !important;
+        transform:
+            translate(-50%, -50%)
+            translateX(calc(var(--media-offset) * clamp(210px, 64vw, 365px)))
+            scale(0.58) !important;
+    }
+
+    .page-media .media-games-carousel .media-game-slide.is-neighbor,
+    .page-media .media-season-carousel .season-archive-slide.is-neighbor,
+    .page-media .media-playlist-carousel .media-slide.is-neighbor {
+        transform:
+            translate(-50%, -50%)
+            translateX(calc(var(--media-offset) * clamp(210px, 64vw, 365px)))
+            scale(0.70) !important;
+    }
+
+    .page-media .media-games-carousel .media-game-slide.is-active,
+    .page-media .media-season-carousel .season-archive-slide.is-active,
+    .page-media .media-playlist-carousel .media-slide.is-active {
+        transform:
+            translate(-50%, -50%)
+            translateX(0)
+            scale(0.98) !important;
+    }
+}
