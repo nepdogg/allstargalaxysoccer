@@ -384,6 +384,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (title) title.textContent = card.dataset.gameTitle || "Game Media";
         if (opponent) opponent.textContent = card.dataset.gameOpponent || "Allstar Galaxy";
         if (result) result.textContent = card.dataset.gameResult || "";
+        if (fullLink) fullLink.textContent = card.dataset.fullLabel || "▶ Full Match";
+        if (highlightsLink) highlightsLink.textContent = card.dataset.highlightsLabel || "▣ Highlights";
+        if (slideshowLink) slideshowLink.textContent = card.dataset.slideshowLabel || "▧ Slideshow";
         setLink(fullLink, card.dataset.full);
         setLink(highlightsLink, card.dataset.highlights);
         setLink(slideshowLink, card.dataset.slideshow);

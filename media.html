@@ -7,7 +7,7 @@
     <title>Allstar Galaxy | Media</title>
 
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="style.css?v=61">
+    <link rel="stylesheet" href="style.css?v=62">
 </head>
 
 <body class="page-media">
@@ -112,15 +112,38 @@
                 <section class="media-archive-section">
                     <div class="media-section-heading">
                         <h2>Allstar Galaxy Game Archive</h2>
-                        <p>Browse seasons. Each season card opens its own season game archive page.</p>
+                        <p>Browse season archives. Click a season card to open Full Matches, Highlights, and Slideshows playlists.</p>
                     </div>
 
                     <div class="carousel media-season-carousel" aria-label="Allstar Galaxy season archive carousel">
                         <div class="carousel-track">
-                            <a class="media-slide season-archive-slide" href="summer-2026.html" aria-label="Open Summer 2026 season archive"><img src="images/media/summer-2026-season-card.jpg" alt="Summer 2026 season archive"></a>
-                            <a class="media-slide season-archive-slide season-placeholder" href="#" aria-label="Spring 2026 coming soon"><span>Spring 2026</span><small>Coming Soon</small></a>
-                            <a class="media-slide season-archive-slide season-placeholder" href="#" aria-label="Winter 2025-26 coming soon"><span>Winter 2025-26</span><small>Coming Soon</small></a>
-                            <a class="media-slide season-archive-slide season-placeholder" href="#" aria-label="Older Games archive coming soon"><span>Older Games</span><small>View Archive</small></a>
+                            <a class="media-slide season-archive-slide media-game-slide" href="#"
+                               data-game-title="Summer 2026 Season Archive"
+                               data-game-opponent="Allstar Galaxy Summer 2026 playlists"
+                               data-game-result="Full Matches • Highlights • Slideshows"
+                               data-full-label="▶ Full Matches"
+                               data-highlights-label="▣ Highlights Playlist"
+                               data-slideshow-label="▧ Slideshow Playlist"
+                               data-full="https://www.youtube.com/results?search_query=Allstar+Galaxy+Full+Matches+Summer+2026"
+                               data-highlights="https://www.youtube.com/results?search_query=Allstar+Galaxy+Highlights+Summer+2026"
+                               data-slideshow="https://www.youtube.com/results?search_query=Allstar+Galaxy+Slideshows+Summer+2026"
+                               aria-label="Open Summer 2026 season playlist links">
+                                <img src="images/media/summer-2026-season-card.png" alt="Summer 2026 season archive">
+                            </a>
+
+                            <a class="media-slide season-archive-slide media-game-slide" href="#"
+                               data-game-title="Past Seasons Archive"
+                               data-game-opponent="Older Allstar Galaxy season playlists"
+                               data-game-result="Coming Soon"
+                               data-full-label="▶ Full Matches"
+                               data-highlights-label="▣ Highlights Playlist"
+                               data-slideshow-label="▧ Slideshow Playlist"
+                               data-full="#"
+                               data-highlights="#"
+                               data-slideshow="#"
+                               aria-label="Open past seasons archive coming soon card">
+                                <img src="images/media/past-seasons-archive-card.png" alt="Past Seasons Archive Coming Soon">
+                            </a>
                         </div>
                         <button class="carousel-button prev" aria-label="Previous season">‹</button>
                         <button class="carousel-button next" aria-label="Next season">›</button>
@@ -189,11 +212,11 @@
                         <a class="game-link-action game-link-highlights" href="#" target="_blank" rel="noopener">▣ Highlights</a>
                         <a class="game-link-action game-link-slideshow" href="#" target="_blank" rel="noopener">▧ Slideshow</a>
                     </div>
-                    <p class="game-link-note">Temporary YouTube search links are connected now. Replace them with exact video URLs when ready.</p>
+                    <p class="game-link-note">Temporary YouTube search links are connected now. Replace them with exact video or playlist URLs when ready.</p>
                 </div>
             </div>
 
-            <script src="script.js?v=61"></script>
+            <script src="script.js?v=62"></script>
 
     </div>
 </body>
