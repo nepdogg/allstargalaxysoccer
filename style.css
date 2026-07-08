@@ -8903,3 +8903,81 @@ body.lightbox-open {
             scale(0.98) !important;
     }
 }
+
+/* =========================
+   MEDIA PAGE CAROUSEL HEIGHT + BREATHING ROOM FIX - V61
+   Gives the three Media page carousels the same vertical breathing room as the locked homepage carousel.
+   The active center cards no longer touch the top border and the dots stay clear below the cards.
+========================= */
+.page-media .media-games-carousel,
+.page-media .media-season-carousel,
+.page-media .media-playlist-carousel {
+    height: clamp(390px, 34vw, 505px) !important;
+    min-height: clamp(390px, 34vw, 505px) !important;
+    padding: 44px 58px 74px !important;
+}
+
+.page-media .media-games-carousel .media-game-slide,
+.page-media .media-season-carousel .season-archive-slide,
+.page-media .media-playlist-carousel .media-slide {
+    top: 47.5% !important;
+}
+
+.page-media .media-games-carousel .media-game-slide.is-active,
+.page-media .media-season-carousel .season-archive-slide.is-active,
+.page-media .media-playlist-carousel .media-slide.is-active {
+    top: 47.5% !important;
+    transform:
+        translate(-50%, -50%)
+        translateX(0)
+        scale(1.0) !important;
+}
+
+.page-media .media-games-carousel .media-game-slide.is-active:hover,
+.page-media .media-games-carousel .media-game-slide.is-active:focus-visible,
+.page-media .media-season-carousel .season-archive-slide.is-active:hover,
+.page-media .media-season-carousel .season-archive-slide.is-active:focus-visible,
+.page-media .media-playlist-carousel .media-slide.is-active:hover,
+.page-media .media-playlist-carousel .media-slide.is-active:focus-visible {
+    transform:
+        translate(-50%, -50%)
+        translateX(0)
+        scale(1.025) !important;
+}
+
+.page-media .media-games-carousel .carousel-button,
+.page-media .media-season-carousel .carousel-button,
+.page-media .media-playlist-carousel .carousel-button {
+    top: 48% !important;
+}
+
+.page-media .media-games-carousel .carousel-dots,
+.page-media .media-season-carousel .carousel-dots,
+.page-media .media-playlist-carousel .carousel-dots {
+    bottom: 28px !important;
+}
+
+@media (max-width: 760px) {
+    .page-media .media-games-carousel,
+    .page-media .media-season-carousel,
+    .page-media .media-playlist-carousel {
+        height: clamp(330px, 72vw, 430px) !important;
+        min-height: clamp(330px, 72vw, 430px) !important;
+        padding: 40px 38px 68px !important;
+    }
+
+    .page-media .media-games-carousel .media-game-slide,
+    .page-media .media-season-carousel .season-archive-slide,
+    .page-media .media-playlist-carousel .media-slide,
+    .page-media .media-games-carousel .media-game-slide.is-active,
+    .page-media .media-season-carousel .season-archive-slide.is-active,
+    .page-media .media-playlist-carousel .media-slide.is-active {
+        top: 47% !important;
+    }
+
+    .page-media .media-games-carousel .carousel-dots,
+    .page-media .media-season-carousel .carousel-dots,
+    .page-media .media-playlist-carousel .carousel-dots {
+        bottom: 24px !important;
+    }
+}
