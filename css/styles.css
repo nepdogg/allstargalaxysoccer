@@ -9094,3 +9094,48 @@ body.lightbox-open {
         bottom: 24px !important;
     }
 }
+
+
+/* =========================
+   MEDIA SECTION TITLE GRAPHICS - V67
+========================= */
+.page-media .media-section-heading {
+    border-left: 0 !important;
+    padding: 0 !important;
+    text-align: center !important;
+    width: calc(100% - 36px) !important;
+    max-width: 1220px !important;
+    margin: 0 auto 18px !important;
+}
+
+.page-media .media-section-title-graphic {
+    display: block;
+    width: min(100%, 1180px);
+    height: auto;
+    margin: 0 auto 8px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 12px rgba(0, 170, 255, 0.48));
+}
+
+.page-media .media-section-heading p {
+    width: min(94%, 1050px);
+    margin: 0 auto !important;
+    text-align: center !important;
+}
+
+@media (max-width: 760px) {
+    .page-media .media-section-heading {
+        width: calc(100% - 20px) !important;
+        margin-bottom: 14px !important;
+    }
+
+    .page-media .media-section-title-graphic {
+        width: 100%;
+        margin-bottom: 6px;
+    }
+
+    .page-media .media-section-heading p {
+        width: 92%;
+        font-size: 0.86rem !important;
+    }
+}
