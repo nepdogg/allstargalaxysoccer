@@ -126,3 +126,10 @@ images/titles/page-titles/navigation-title-schedule.png
 images/titles/page-titles/navigation-title-team.png
 images/titles/page-titles/navigation-title.png
 images/titles/section-titles/homepage-bestof-title.png
+
+
+## Version 67 updates
+- Added the final Latest Games, Game Archive, and Media Center section-title graphics.
+- Added direct YouTube links for all supplied Summer 2026 game videos.
+- Game 1 and Game 2 Highlights/Slideshow buttons remain disabled until URLs are supplied.
+- Updated asset cache version to v67.
