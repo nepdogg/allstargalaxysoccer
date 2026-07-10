@@ -9139,3 +9139,56 @@ body.lightbox-open {
         font-size: 0.86rem !important;
     }
 }
+
+
+/* ============================================================
+   V68 — CONSISTENT CAROUSEL DESCRIPTION TEXT
+   ============================================================ */
+.carousel-section-description {
+    width: min(92%, 980px);
+    margin: 8px auto 0;
+    color: rgba(255, 255, 255, 0.94);
+    font-size: clamp(0.76rem, 1.05vw, 0.96rem);
+    line-height: 1.45;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    text-align: center;
+}
+
+.page-home .homepage-bestof-title-wrap {
+    padding-bottom: 14px !important;
+}
+
+.page-home .homepage-carousel-description {
+    text-shadow: 0 0 9px rgba(255, 204, 0, 0.52);
+}
+
+.page-team .roster-title-block {
+    margin-bottom: 12px !important;
+    padding-bottom: 8px !important;
+}
+
+.page-team .roster-carousel-description {
+    text-transform: none;
+    letter-spacing: 0.01em;
+    text-shadow: 0 0 10px rgba(255, 0, 255, 0.58);
+}
+
+@media (max-width: 760px) {
+    .carousel-section-description {
+        width: min(92%, 650px);
+        margin-top: 7px;
+        padding: 0 8px;
+        font-size: clamp(0.72rem, 2.8vw, 0.88rem);
+        line-height: 1.42;
+    }
+
+    .page-home .homepage-bestof-title-wrap {
+        padding-bottom: 12px !important;
+    }
+
+    .page-team .roster-title-block {
+        margin-bottom: 10px !important;
+        padding-bottom: 6px !important;
+    }
+}
