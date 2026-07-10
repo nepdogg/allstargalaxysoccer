@@ -374,22 +374,26 @@ document.addEventListener("DOMContentLoaded", () => {
     const slideshowLink = gameLightbox.querySelector(".game-link-slideshow");
     const closeButton = gameLightbox.querySelector(".game-link-close");
 
-    function setLink(link, value) {
+    function setLink(link, value, availableLabel, unavailableLabel) {
         if (!link) return;
-        link.href = value || "#";
-        link.classList.toggle("is-disabled", !value || value === "#");
+        const unavailable = !value || value === "#";
+        link.href = unavailable ? "#" : value;
+        link.classList.toggle("is-disabled", unavailable);
+        link.setAttribute("aria-disabled", unavailable ? "true" : "false");
+        link.tabIndex = unavailable ? -1 : 0;
+        link.textContent = unavailable ? unavailableLabel : availableLabel;
     }
 
     function openGameLightbox(card) {
         if (title) title.textContent = card.dataset.gameTitle || "Game Media";
         if (opponent) opponent.textContent = card.dataset.gameOpponent || "Allstar Galaxy";
         if (result) result.textContent = card.dataset.gameResult || "";
-        if (fullLink) fullLink.textContent = card.dataset.fullLabel || "▶ Full Match";
-        if (highlightsLink) highlightsLink.textContent = card.dataset.highlightsLabel || "▣ Highlights";
-        if (slideshowLink) slideshowLink.textContent = card.dataset.slideshowLabel || "▧ Slideshow";
-        setLink(fullLink, card.dataset.full);
-        setLink(highlightsLink, card.dataset.highlights);
-        setLink(slideshowLink, card.dataset.slideshow);
+        const fullLabel = card.dataset.fullLabel || "▶ Full Match";
+        const highlightsLabel = card.dataset.highlightsLabel || "▣ Highlights";
+        const slideshowLabel = card.dataset.slideshowLabel || "▧ Slideshow";
+        setLink(fullLink, card.dataset.full, fullLabel, "▶ Full Match — Coming Soon");
+        setLink(highlightsLink, card.dataset.highlights, highlightsLabel, "▣ Highlights — Coming Soon");
+        setLink(slideshowLink, card.dataset.slideshow, slideshowLabel, "▧ Slideshow — Coming Soon");
         gameLightbox.classList.add("is-open");
         gameLightbox.setAttribute("aria-hidden", "false");
         document.body.classList.add("lightbox-open");
