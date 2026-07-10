@@ -9311,3 +9311,181 @@ body.lightbox-open {
         line-height: 1.42 !important;
     }
 }
+
+/* ============================================================
+   V72 — UNIVERSAL SECTION SPACING
+   Team page is the master rhythm for titles, descriptions,
+   carousels, and primary content panels across the site.
+   ============================================================ */
+
+:root {
+  --section-title-width: min(88%, 900px);
+  --section-description-width: min(88%, 900px);
+  --section-title-to-description: 8px;
+  --section-description-to-content: 18px;
+  --section-content-to-next: 34px;
+  --page-content-top-gap: 18px;
+}
+
+/* Shared white explanatory copy */
+.carousel-section-description,
+.page-section-description,
+.media-section-heading p {
+  display: block;
+  width: var(--section-description-width);
+  max-width: 900px;
+  margin: var(--section-title-to-description) auto var(--section-description-to-content) !important;
+  padding: 0 !important;
+  color: #fff !important;
+  text-align: center !important;
+  font-size: clamp(11px, 0.85vw, 14px) !important;
+  line-height: 1.45 !important;
+  opacity: 0.92;
+  text-shadow: 0 0 7px rgba(255, 255, 255, 0.25);
+  box-sizing: border-box;
+}
+
+/* Homepage: title, description, carousel */
+.page-home .homepage-bestof-title-wrap {
+  width: 100%;
+  margin: var(--page-content-top-gap) auto 0 !important;
+  padding: 0 !important;
+  text-align: center;
+}
+
+.page-home .homepage-bestof-title {
+  display: block;
+  width: var(--section-title-width) !important;
+  max-width: 900px !important;
+  height: auto;
+  margin: 0 auto !important;
+}
+
+.page-home .homepage-carousel-description {
+  margin-top: var(--section-title-to-description) !important;
+  margin-bottom: var(--section-description-to-content) !important;
+}
+
+.page-home .homepage-media-carousel {
+  margin-top: 0 !important;
+  margin-bottom: var(--section-content-to-next) !important;
+}
+
+/* Team: locked as the visual reference */
+.page-team .roster-title-block,
+.page-team .roster-graphic-block {
+  width: 100%;
+  margin: var(--page-content-top-gap) auto 0 !important;
+  padding: 0 !important;
+  text-align: center;
+}
+
+.page-team .roster-title-graphic {
+  display: block;
+  width: var(--section-title-width) !important;
+  max-width: 900px !important;
+  height: auto;
+  margin: 0 auto !important;
+}
+
+.page-team .team-roster-description,
+.page-team .roster-carousel-description {
+  margin-top: var(--section-title-to-description) !important;
+  margin-bottom: var(--section-description-to-content) !important;
+}
+
+.page-team .team-roster-carousel {
+  margin-top: 0 !important;
+  margin-bottom: var(--section-content-to-next) !important;
+}
+
+/* Media: same spacing for all three title/description/carousel groups */
+.page-media .media-archive-main {
+  padding-top: var(--page-content-top-gap) !important;
+}
+
+.page-media .media-archive-section {
+  margin: 0 auto var(--section-content-to-next) !important;
+  padding: 0 !important;
+}
+
+.page-media .media-archive-section + .media-archive-section {
+  margin-top: 0 !important;
+}
+
+.page-media .media-section-heading {
+  width: 100%;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  text-align: center;
+}
+
+.page-media .media-section-title-graphic {
+  display: block;
+  width: var(--section-title-width) !important;
+  max-width: 900px !important;
+  height: auto;
+  margin: 0 auto !important;
+}
+
+.page-media .media-section-heading p {
+  margin-top: var(--section-title-to-description) !important;
+  margin-bottom: var(--section-description-to-content) !important;
+}
+
+.page-media .media-archive-section > .carousel {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Standard pages: hero, description, primary content block */
+.page-schedule .page-section-description,
+.page-news .page-section-description,
+.page-live .page-section-description,
+.page-follow .page-section-description {
+  margin-top: 0 !important;
+  margin-bottom: var(--section-description-to-content) !important;
+  padding-top: var(--page-content-top-gap) !important;
+}
+
+.page-schedule main,
+.page-news main,
+.page-live main,
+.page-follow main {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.page-schedule .schedule-page-section,
+.page-news .news-section,
+.page-live .live-section,
+.page-follow .follow-hub {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  margin-bottom: var(--section-content-to-next) !important;
+}
+
+/* Prevent older page-specific rules from pushing content apart */
+.page-home main,
+.page-team main,
+.page-media main {
+  padding-top: 0;
+}
+
+@media (max-width: 700px) {
+  :root {
+    --section-title-width: 90%;
+    --section-description-width: 88%;
+    --section-title-to-description: 6px;
+    --section-description-to-content: 14px;
+    --section-content-to-next: 26px;
+    --page-content-top-gap: 12px;
+  }
+
+  .carousel-section-description,
+  .page-section-description,
+  .media-section-heading p {
+    font-size: 11px !important;
+    line-height: 1.4 !important;
+  }
+}
