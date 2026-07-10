@@ -1,3 +1,5 @@
+Allstar Galaxy website files — Version 68
+
 Allstar Galaxy site files - v66 path fix
 
 Important: CSS image URLs now use ../images/... because styles.css is inside /css/.
