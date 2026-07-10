@@ -51,7 +51,7 @@ body {
         radial-gradient(circle at 14% 12%, rgba(var(--page-rgb), 0.11), transparent 38%),
         radial-gradient(circle at 86% 22%, rgba(var(--page-rgb), 0.08), transparent 42%),
         radial-gradient(circle at 50% 92%, rgba(var(--page-rgb), 0.06), transparent 44%),
-        url("images/backgrounds/galaxy-background.png") center center fixed;
+        url("../images/backgrounds/galaxy-background.png") center center fixed;
     background-size: cover, cover, cover, cover, cover, cover;
 }
 
@@ -451,46 +451,46 @@ nav a.active {
 .hero-home {
     background-image:
         linear-gradient(to bottom, rgba(5, 0, 15, 0.05), rgba(5, 0, 15, 0.25)),
-        url("images/heroes/pages/hero-home.png"),
-        url("images/heroes/pages/hero-homepage.png"),
-        url("images/heroes/pages/home-hero.png"),
-        url("images/heroes/pages/hero-team.png");
+        url("../images/heroes/pages/hero-home.png"),
+        url("../images/heroes/pages/hero-homepage.png"),
+        url("../images/heroes/pages/home-hero.png"),
+        url("../images/heroes/pages/hero-team.png");
 }
 
 .hero-team {
     background-image:
         linear-gradient(to bottom, rgba(5, 0, 15, 0.05), rgba(5, 0, 15, 0.25)),
-        url("images/heroes/pages/hero-team.png");
+        url("../images/heroes/pages/hero-team.png");
 }
 
 .hero-schedule {
     background-image:
         linear-gradient(to bottom, rgba(5, 0, 15, 0.05), rgba(5, 0, 15, 0.25)),
-        url("images/heroes/pages/hero-schedule.png");
+        url("../images/heroes/pages/hero-schedule.png");
 }
 
 .hero-media {
     background-image:
         linear-gradient(to bottom, rgba(5, 0, 15, 0.05), rgba(5, 0, 15, 0.25)),
-        url("images/heroes/pages/hero-media.png");
+        url("../images/heroes/pages/hero-media.png");
 }
 
 .hero-news {
     background-image:
         linear-gradient(to bottom, rgba(5, 0, 15, 0.05), rgba(5, 0, 15, 0.25)),
-        url("images/heroes/pages/hero-news.png");
+        url("../images/heroes/pages/hero-news.png");
 }
 
 .hero-live {
     background-image:
         linear-gradient(to bottom, rgba(5, 0, 15, 0.05), rgba(5, 0, 15, 0.25)),
-        url("images/heroes/pages/hero-live.png");
+        url("../images/heroes/pages/hero-live.png");
 }
 
 .hero-follow {
     background-image:
         linear-gradient(to bottom, rgba(5, 0, 15, 0.05), rgba(5, 0, 15, 0.25)),
-        url("images/heroes/pages/hero-follow.png");
+        url("../images/heroes/pages/hero-follow.png");
 }
 
 /* =========================
