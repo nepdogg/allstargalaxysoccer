@@ -9274,3 +9274,40 @@ body.lightbox-open {
 
 
 /* v70: official social profile links added to the Follow page and every site footer. */
+
+
+/* ============================================================
+   V71 — TEAM ROSTER DESCRIPTION PLACEMENT FIX
+   Keeps the help text outside the title graphic wrapper so it
+   cannot be clipped or hidden by older roster-title rules.
+   ============================================================ */
+.page-team .team-roster-description {
+    display: block !important;
+    position: relative !important;
+    z-index: 5 !important;
+    width: min(92%, 980px) !important;
+    max-width: 980px !important;
+    margin: -10px auto 20px !important;
+    padding: 0 14px !important;
+    color: #ffffff !important;
+    text-align: center !important;
+    font-size: clamp(0.76rem, 1.05vw, 0.96rem) !important;
+    line-height: 1.45 !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.01em !important;
+    text-transform: none !important;
+    opacity: 0.96 !important;
+    visibility: visible !important;
+    overflow: visible !important;
+    text-shadow: 0 0 10px rgba(255, 0, 255, 0.62) !important;
+}
+
+@media (max-width: 760px) {
+    .page-team .team-roster-description {
+        width: 90% !important;
+        margin: -5px auto 16px !important;
+        padding: 0 8px !important;
+        font-size: 0.78rem !important;
+        line-height: 1.42 !important;
+    }
+}
