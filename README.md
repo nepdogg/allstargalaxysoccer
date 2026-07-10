@@ -140,3 +140,6 @@ images/titles/section-titles/homepage-bestof-title.png
 V69 updates:
 - Added consistent centered white description text to Home, Team, Schedule, News, Live, and Follow pages.
 - Missing Game 1 and Game 2 Highlights/Slideshow links now display Coming Soon and are disabled.
+
+## Version 72
+Standardized vertical spacing across all pages using the Team page as the visual reference. Title graphics, white explanatory text, carousels, and primary content panels now share one consistent spacing rhythm on desktop and mobile.
