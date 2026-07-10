@@ -135,3 +135,8 @@ images/titles/section-titles/homepage-bestof-title.png
 - Added direct YouTube links for all supplied Summer 2026 game videos.
 - Game 1 and Game 2 Highlights/Slideshow buttons remain disabled until URLs are supplied.
 - Updated asset cache version to v67.
+
+
+V69 updates:
+- Added consistent centered white description text to Home, Team, Schedule, News, Live, and Follow pages.
+- Missing Game 1 and Game 2 Highlights/Slideshow links now display Coming Soon and are disabled.
