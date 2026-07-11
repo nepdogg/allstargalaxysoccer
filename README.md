@@ -143,3 +143,15 @@ V69 updates:
 
 ## Version 72
 Standardized vertical spacing across all pages using the Team page as the visual reference. Title graphics, white explanatory text, carousels, and primary content panels now share one consistent spacing rhythm on desktop and mobile.
+
+
+## Additional pages added in v73
+- `about.html` — project overview and links to the Media Center and Team page.
+- `404.html` — custom GitHub Pages not-found page.
+- An About link is included in every footer.
+
+
+## Version 74
+- Added ‘Playlist’ to the Summer 2026 Full Matches season-archive button.
+- Enlarged and vertically centered both navigation logos.
+- Standardized Homepage, Team, and Media carousel outer dimensions.
