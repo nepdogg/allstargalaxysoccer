@@ -9825,3 +9825,61 @@ body.lightbox-open {
     bottom: 24px !important;
   }
 }
+
+/* ============================================================
+   V75 — HOMEPAGE + TEAM CAROUSEL TOP-CLEARANCE FIX
+   Keeps the unified carousel shells from V74, but lowers the
+   artwork rows so enlarged active cards no longer touch or clip
+   against the top edge of the carousel frame.
+   ============================================================ */
+
+/* Homepage: center the 16:9 card vertically in the taller shell. */
+.page-home .homepage-media-carousel .media-slide,
+.page-home .homepage-media-carousel .media-slide.is-neighbor,
+.page-home .homepage-media-carousel .media-slide.is-distance-2,
+.page-home .homepage-media-carousel .media-slide.is-active {
+  top: 52% !important;
+}
+
+/* Team: lower the complete player-card fan, including the active card. */
+.page-team .team-roster-carousel .team-card-slide,
+.page-team .team-roster-carousel .team-card-slide.is-neighbor,
+.page-team .team-roster-carousel .team-card-slide.is-distance-2,
+.page-team .team-roster-carousel .team-card-slide.is-distance-3 {
+  top: 48% !important;
+}
+
+.page-team .team-roster-carousel .team-card-slide.is-active {
+  top: 47% !important;
+}
+
+/* Preserve clear separation between cards and carousel dots. */
+.page-home .homepage-media-carousel .carousel-dots,
+.page-team .team-roster-carousel .carousel-dots {
+  bottom: 26px !important;
+}
+
+@media (max-width: 900px) {
+  .page-home .homepage-media-carousel .media-slide,
+  .page-home .homepage-media-carousel .media-slide.is-neighbor,
+  .page-home .homepage-media-carousel .media-slide.is-distance-2,
+  .page-home .homepage-media-carousel .media-slide.is-active {
+    top: 52% !important;
+  }
+
+  .page-team .team-roster-carousel .team-card-slide,
+  .page-team .team-roster-carousel .team-card-slide.is-neighbor,
+  .page-team .team-roster-carousel .team-card-slide.is-distance-2,
+  .page-team .team-roster-carousel .team-card-slide.is-distance-3 {
+    top: 48% !important;
+  }
+
+  .page-team .team-roster-carousel .team-card-slide.is-active {
+    top: 47% !important;
+  }
+
+  .page-home .homepage-media-carousel .carousel-dots,
+  .page-team .team-roster-carousel .carousel-dots {
+    bottom: 20px !important;
+  }
+}
