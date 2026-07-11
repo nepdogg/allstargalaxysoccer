@@ -1,4 +1,5 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+    if (window.ASGContent?.ready) await window.ASGContent.ready;
     document.querySelectorAll(".carousel").forEach((carousel) => {
         const track = carousel.querySelector(".carousel-track");
         const slides = Array.from(carousel.querySelectorAll(".media-slide, .team-slide, .team-card-slide, .media-game-slide, .season-archive-slide"));
@@ -360,7 +361,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // Media page game-card lightbox for Full Match / Highlights / Slideshow links.
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+    if (window.ASGContent?.ready) await window.ASGContent.ready;
     const gameCards = Array.from(document.querySelectorAll(".media-game-slide"));
     const gameLightbox = document.getElementById("gameLinkLightbox");
 
