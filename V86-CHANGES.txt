@@ -1,0 +1,7 @@
+V86 changes
+- Media page game, season, and archive cards use blue accents.
+- Homepage carousel cards retain gold accents.
+- Latest game cards use two footer lines: season/game, then matchup/result.
+- Season names moved from the artwork overlay into a footer below the image.
+- News cards now stretch full-width and stack like the Schedule page.
+- Cache version updated to 86.
