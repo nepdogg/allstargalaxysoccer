@@ -2,8 +2,8 @@
   "version": 81,
   "updated": "2026-07-11",
   "assets": {
-    "mediaBackground": "images/generated/media-card-background.png",
-    "logo": "images/generated/allstar-galaxy-logo.png"
+    "mediaBackground": "generated/media-card-background.png",
+    "logo": "generated/allstar-galaxy-logo.png"
   },
   "colors": {
     "core": "#f5c542",
