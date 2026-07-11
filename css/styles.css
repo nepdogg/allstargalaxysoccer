@@ -10022,3 +10022,237 @@ body.lightbox-open {
 
 /* Remove any spacing left by legacy standalone footer-link rules. */
 .footer-links { display: none !important; }
+
+
+/* ============================================================
+   V77 — ABOUT HERO + PLATINUM THEME + FINAL CAROUSEL SAFE ZONES
+   ============================================================ */
+
+/* About page: use the dedicated silver/platinum navigation graphic and hero. */
+.page-about {
+  --page-accent: #eef3f8 !important;
+  --page-accent-rgb: 238, 243, 248 !important;
+  color: #f7f9fc;
+}
+
+.page-about .hero-title img {
+  filter: drop-shadow(0 0 10px rgba(255,255,255,.58)) drop-shadow(0 0 22px rgba(185,205,226,.42));
+}
+
+.page-about .site-top,
+.page-about footer {
+  border-color: rgba(232, 239, 247, .82) !important;
+  box-shadow: 0 0 22px rgba(210, 225, 242, .18) !important;
+}
+
+.page-about .about-main {
+  padding-top: 0 !important;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(235, 242, 250, .16), transparent 38%),
+    linear-gradient(180deg, #0b0f16 0%, #111822 52%, #040608 100%) !important;
+}
+
+.special-page-hero {
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #030509;
+}
+
+.special-page-hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.page-about .about-page-hero {
+  border-bottom: 1px solid rgba(235, 242, 250, .75);
+  box-shadow: 0 12px 30px rgba(205, 220, 239, .15);
+}
+
+.special-page-description {
+  width: min(90%, 960px);
+  margin: 10px auto 20px;
+  color: #f3f6fa;
+  text-align: center;
+  font-size: clamp(.82rem, 1.25vw, 1rem);
+  line-height: 1.5;
+  text-shadow: 0 0 10px rgba(230, 239, 248, .38);
+}
+
+.page-about .about-grid,
+.page-about .about-cta {
+  width: min(92%, 1080px) !important;
+}
+
+.page-about .about-card,
+.page-about .about-cta {
+  border-color: rgba(231, 238, 247, .78) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.06),
+    0 0 24px rgba(205, 220, 239, .20),
+    inset 0 0 24px rgba(255,255,255,.035) !important;
+}
+
+.page-about .about-card h2,
+.page-about .about-cta h2,
+.page-about .about-card p,
+.page-about .about-cta p {
+  color: #f3f6fa !important;
+}
+
+.page-about .site-button {
+  color: #fff !important;
+  border-color: #eef3f8 !important;
+  background: linear-gradient(180deg, rgba(245,248,252,.16), rgba(151,169,190,.08)) !important;
+  box-shadow: 0 0 18px rgba(220, 233, 247, .28) !important;
+}
+
+.page-about .site-button:hover,
+.page-about .site-button:focus-visible {
+  background: linear-gradient(180deg, rgba(255,255,255,.28), rgba(173,192,214,.16)) !important;
+  box-shadow: 0 0 30px rgba(230, 241, 252, .48) !important;
+}
+
+/* 404 page: use the dedicated gold navigation title and retain a compact recovery card. */
+.page-404 .hero-title img {
+  filter: drop-shadow(0 0 10px rgba(255,213,46,.7)) drop-shadow(0 0 24px rgba(245,196,0,.42));
+}
+
+/* Homepage carousel: reserve a true artwork zone above the dots and fully fill the image frame. */
+.page-home .homepage-media-carousel {
+  height: clamp(500px, 43vw, 640px) !important;
+  min-height: clamp(500px, 43vw, 640px) !important;
+  padding: 44px 62px 92px !important;
+}
+
+.page-home .homepage-media-carousel .carousel-track {
+  position: absolute !important;
+  inset: 36px 0 82px !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+}
+
+.page-home .homepage-media-carousel .media-slide,
+.page-home .homepage-media-carousel .media-slide.is-neighbor,
+.page-home .homepage-media-carousel .media-slide.is-distance-2,
+.page-home .homepage-media-carousel .media-slide.is-active {
+  top: 50% !important;
+  width: clamp(390px, 47vw, 650px) !important;
+  max-width: 650px !important;
+}
+
+.page-home .homepage-media-carousel .media-slide.is-active {
+  transform: translate(-50%, -50%) translateX(0) scale(.98) !important;
+}
+
+.page-home .homepage-media-carousel .media-slide.is-active:hover,
+.page-home .homepage-media-carousel .media-slide.is-active:focus-visible {
+  transform: translate(-50%, -50%) translateX(0) scale(1.01) !important;
+}
+
+.page-home .homepage-media-carousel .media-slide img {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 2 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+  opacity: 1 !important;
+}
+
+.page-home .homepage-media-carousel .media-slide::before,
+.page-home .homepage-media-carousel .media-slide::after {
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
+
+.page-home .homepage-media-carousel .carousel-dots {
+  bottom: 26px !important;
+}
+
+/* Team carousel: reduce and lower the active card so the full card remains inside the shell. */
+.page-team .team-roster-carousel {
+  padding: 48px 62px 92px !important;
+}
+
+.page-team .team-roster-carousel .carousel-track {
+  position: absolute !important;
+  inset: 34px 0 82px !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+.page-team .team-roster-carousel .team-card-slide,
+.page-team .team-roster-carousel .team-card-slide.is-neighbor,
+.page-team .team-roster-carousel .team-card-slide.is-distance-2,
+.page-team .team-roster-carousel .team-card-slide.is-distance-3 {
+  top: 52% !important;
+  height: clamp(300px, 31vw, 430px) !important;
+}
+
+.page-team .team-roster-carousel .team-card-slide.is-active {
+  top: 52% !important;
+  transform: translate(-50%, -50%) translateX(0) scale(1.10) !important;
+}
+
+.page-team .team-roster-carousel .team-card-slide.is-active:hover {
+  transform: translate(-50%, -50%) translateX(0) scale(1.12) !important;
+}
+
+.page-team .team-roster-carousel .carousel-dots {
+  bottom: 24px !important;
+}
+
+@media (max-width: 900px) {
+  .page-home .homepage-media-carousel,
+  .page-team .team-roster-carousel {
+    padding: 34px 30px 72px !important;
+  }
+
+  .page-home .homepage-media-carousel .carousel-track,
+  .page-team .team-roster-carousel .carousel-track {
+    inset: 26px 0 64px !important;
+  }
+
+  .page-home .homepage-media-carousel .media-slide,
+  .page-home .homepage-media-carousel .media-slide.is-neighbor,
+  .page-home .homepage-media-carousel .media-slide.is-distance-2,
+  .page-home .homepage-media-carousel .media-slide.is-active {
+    width: clamp(270px, 78vw, 470px) !important;
+    top: 50% !important;
+  }
+
+  .page-home .homepage-media-carousel .media-slide.is-active {
+    transform: translate(-50%, -50%) translateX(0) scale(.96) !important;
+  }
+
+  .page-team .team-roster-carousel .team-card-slide,
+  .page-team .team-roster-carousel .team-card-slide.is-neighbor,
+  .page-team .team-roster-carousel .team-card-slide.is-distance-2,
+  .page-team .team-roster-carousel .team-card-slide.is-distance-3 {
+    top: 52% !important;
+    height: clamp(240px, 62vw, 340px) !important;
+  }
+
+  .page-team .team-roster-carousel .team-card-slide.is-active {
+    top: 52% !important;
+    transform: translate(-50%, -50%) translateX(0) scale(1.04) !important;
+  }
+
+  .page-home .homepage-media-carousel .carousel-dots,
+  .page-team .team-roster-carousel .carousel-dots {
+    bottom: 18px !important;
+  }
+
+  .special-page-description {
+    margin: 8px auto 16px;
+    font-size: .8rem;
+  }
+}
