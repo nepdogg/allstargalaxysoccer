@@ -9489,3 +9489,339 @@ body.lightbox-open {
     line-height: 1.4 !important;
   }
 }
+
+
+/* ============================================================
+   V73 — ABOUT PAGE, 404 PAGE, AND FOOTER ABOUT LINK
+   ============================================================ */
+.footer-links {
+  margin: 2px 0 0;
+  text-align: center;
+  font-size: 0.72rem;
+  line-height: 1.2;
+}
+.footer-links a {
+  color: rgba(255,255,255,0.78);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.footer-links a:hover,
+.footer-links a:focus-visible {
+  color: #fff;
+  text-shadow: 0 0 8px currentColor;
+}
+
+.page-about,
+.page-404 {
+  --page-accent: #9b4dff;
+  --page-accent-rgb: 155, 77, 255;
+}
+.page-404 {
+  --page-accent: #00a8ff;
+  --page-accent-rgb: 0, 168, 255;
+}
+
+.about-main,
+.not-found-main {
+  position: relative;
+  min-height: 620px;
+  padding: clamp(30px, 5vw, 64px) clamp(18px, 5vw, 70px);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 12%, rgba(var(--page-accent-rgb), .25), transparent 36%),
+    linear-gradient(180deg, #060311 0%, #09041a 50%, #020108 100%);
+}
+.about-main::before,
+.not-found-main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .42;
+  background-image:
+    radial-gradient(circle at 8% 18%, #fff 0 1px, transparent 1.6px),
+    radial-gradient(circle at 78% 12%, #fff 0 1px, transparent 1.6px),
+    radial-gradient(circle at 26% 72%, #fff 0 1px, transparent 1.6px),
+    radial-gradient(circle at 88% 78%, #fff 0 1px, transparent 1.6px);
+  background-size: 160px 150px, 220px 180px, 190px 210px, 250px 230px;
+}
+.about-main > *,
+.not-found-main > * { position: relative; z-index: 1; }
+
+.about-hero {
+  width: min(100%, 980px);
+  margin: 0 auto 28px;
+  padding: clamp(28px, 5vw, 52px);
+  text-align: center;
+  border: 1px solid rgba(var(--page-accent-rgb), .9);
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(17,8,36,.92), rgba(3,3,12,.94));
+  box-shadow: 0 0 28px rgba(var(--page-accent-rgb), .28), inset 0 0 28px rgba(var(--page-accent-rgb), .08);
+}
+.about-logo,
+.not-found-logo {
+  width: clamp(82px, 11vw, 132px);
+  height: auto;
+  filter: drop-shadow(0 0 16px rgba(var(--page-accent-rgb), .95));
+}
+.about-kicker {
+  margin: 18px 0 7px;
+  color: var(--page-accent);
+  font-weight: 800;
+  letter-spacing: .12em;
+  font-size: clamp(.74rem, 1.4vw, .98rem);
+}
+.about-hero h1,
+.not-found-card h1 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(2rem, 5vw, 4.4rem);
+  line-height: 1;
+  text-transform: uppercase;
+  text-shadow: 0 0 14px rgba(var(--page-accent-rgb), .88);
+}
+.about-lead {
+  width: min(100%, 760px);
+  margin: 18px auto 0;
+  color: rgba(255,255,255,.9);
+  font-size: clamp(1rem, 1.8vw, 1.24rem);
+  line-height: 1.65;
+}
+.about-grid {
+  width: min(100%, 1100px);
+  margin: 0 auto 28px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.about-card,
+.about-cta,
+.not-found-card {
+  border: 1px solid rgba(var(--page-accent-rgb), .72);
+  border-radius: 18px;
+  background: linear-gradient(155deg, rgba(18,8,38,.94), rgba(3,3,12,.96));
+  box-shadow: 0 0 20px rgba(var(--page-accent-rgb), .18);
+}
+.about-card { padding: 26px; }
+.about-card h2,
+.about-cta h2 {
+  margin: 0 0 10px;
+  color: var(--page-accent);
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  text-transform: uppercase;
+  text-shadow: 0 0 9px rgba(var(--page-accent-rgb), .72);
+}
+.about-card p,
+.about-cta p,
+.not-found-card p {
+  margin: 0;
+  color: rgba(255,255,255,.84);
+  line-height: 1.65;
+}
+.about-cta {
+  width: min(100%, 900px);
+  margin: 0 auto;
+  padding: 28px;
+  text-align: center;
+}
+.about-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 22px;
+}
+.site-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 170px;
+  padding: 12px 20px;
+  border: 1px solid var(--page-accent);
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(var(--page-accent-rgb), .18);
+  text-decoration: none;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  box-shadow: 0 0 14px rgba(var(--page-accent-rgb), .32);
+  transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.site-button:hover,
+.site-button:focus-visible {
+  transform: translateY(-2px);
+  background: rgba(var(--page-accent-rgb), .33);
+  box-shadow: 0 0 23px rgba(var(--page-accent-rgb), .52);
+}
+.site-button-secondary { background: rgba(255,255,255,.05); }
+
+.not-found-main {
+  display: grid;
+  place-items: center;
+}
+.not-found-card {
+  width: min(100%, 760px);
+  padding: clamp(34px, 7vw, 72px) clamp(22px, 6vw, 60px);
+  text-align: center;
+}
+.not-found-code {
+  margin: 18px 0 0 !important;
+  color: var(--page-accent) !important;
+  font-size: clamp(4.8rem, 15vw, 10rem);
+  line-height: .82 !important;
+  font-weight: 900;
+  letter-spacing: -.05em;
+  text-shadow: 0 0 25px rgba(var(--page-accent-rgb), .8);
+}
+.not-found-card h1 { margin-top: 18px; }
+.not-found-card > p:not(.not-found-code) {
+  width: min(100%, 580px);
+  margin: 18px auto 0;
+  font-size: clamp(1rem, 2vw, 1.18rem);
+}
+
+@media (max-width: 760px) {
+  .about-main,
+  .not-found-main { min-height: 520px; padding: 22px 14px 30px; }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-hero { padding: 28px 18px; }
+  .about-card { padding: 22px 20px; }
+  .about-cta { padding: 24px 18px; }
+  .site-button { width: 100%; }
+  .footer-links { font-size: .66rem; }
+}
+
+
+/* ============================================================
+   V74 — FINAL NAV LOGO ALIGNMENT + UNIFIED CAROUSEL SHELLS
+   ============================================================ */
+
+/* Center the two header logos vertically and give them more presence. */
+.hero-bar {
+  grid-template-columns: 122px minmax(0, 1fr) 122px !important;
+  align-items: center !important;
+  padding-top: 10px !important;
+  padding-bottom: 6px !important;
+}
+
+.hero-logo,
+.hero-logo-right {
+  min-height: 104px !important;
+  align-items: center !important;
+}
+
+.hero-logo img,
+.hero-logo-right img {
+  width: 100px !important;
+  height: 100px !important;
+  object-fit: contain !important;
+  transform: translateY(5px);
+}
+
+.hero-logo:hover img,
+.hero-logo-right:hover img {
+  transform: translateY(5px) scale(1.08) !important;
+}
+
+/* Use the Media page carousel shell as the master size everywhere. */
+.page-home .homepage-media-carousel,
+.page-team .team-roster-carousel,
+.page-media .media-games-carousel,
+.page-media .media-season-carousel,
+.page-media .media-playlist-carousel {
+  width: calc(100% - 36px) !important;
+  max-width: 1220px !important;
+  height: clamp(500px, 43vw, 640px) !important;
+  min-height: clamp(500px, 43vw, 640px) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 58px 62px 88px !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+/* Keep each page's card artwork proportional inside the shared shell. */
+.page-home .homepage-media-carousel .media-slide {
+  width: clamp(420px, 50vw, 700px) !important;
+  min-width: 0 !important;
+  max-width: 700px !important;
+  aspect-ratio: 16 / 9 !important;
+}
+
+.page-team .team-roster-carousel .team-slide,
+.page-team .team-roster-carousel .team-card-slide {
+  height: clamp(330px, 34vw, 470px) !important;
+  width: auto !important;
+  aspect-ratio: 2 / 3 !important;
+}
+
+.page-home .homepage-media-carousel .carousel-dots,
+.page-team .team-roster-carousel .carousel-dots,
+.page-media .media-games-carousel .carousel-dots,
+.page-media .media-season-carousel .carousel-dots,
+.page-media .media-playlist-carousel .carousel-dots {
+  bottom: 34px !important;
+}
+
+.page-home .homepage-media-carousel .carousel-button,
+.page-team .team-roster-carousel .carousel-button,
+.page-media .media-games-carousel .carousel-button,
+.page-media .media-season-carousel .carousel-button,
+.page-media .media-playlist-carousel .carousel-button {
+  top: 48% !important;
+}
+
+@media (max-width: 760px) {
+  .hero-bar {
+    grid-template-columns: 82px minmax(0, 1fr) 82px !important;
+    column-gap: 8px !important;
+    padding: 7px 10px 4px !important;
+  }
+
+  .hero-logo,
+  .hero-logo-right {
+    min-height: 76px !important;
+  }
+
+  .hero-logo img,
+  .hero-logo-right img {
+    width: 74px !important;
+    height: 74px !important;
+    transform: translateY(4px);
+  }
+
+  .hero-logo:hover img,
+  .hero-logo-right:hover img {
+    transform: translateY(4px) scale(1.06) !important;
+  }
+
+  .page-home .homepage-media-carousel,
+  .page-team .team-roster-carousel,
+  .page-media .media-games-carousel,
+  .page-media .media-season-carousel,
+  .page-media .media-playlist-carousel {
+    width: calc(100% - 20px) !important;
+    height: clamp(330px, 96vw, 460px) !important;
+    min-height: clamp(330px, 96vw, 460px) !important;
+    padding: 38px 28px 66px !important;
+  }
+
+  .page-home .homepage-media-carousel .media-slide {
+    width: clamp(270px, 88vw, 430px) !important;
+  }
+
+  .page-team .team-roster-carousel .team-slide,
+  .page-team .team-roster-carousel .team-card-slide {
+    height: clamp(250px, 68vw, 360px) !important;
+  }
+
+  .page-home .homepage-media-carousel .carousel-dots,
+  .page-team .team-roster-carousel .carousel-dots,
+  .page-media .media-games-carousel .carousel-dots,
+  .page-media .media-season-carousel .carousel-dots,
+  .page-media .media-playlist-carousel .carousel-dots {
+    bottom: 24px !important;
+  }
+}
