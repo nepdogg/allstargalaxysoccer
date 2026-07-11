@@ -163,3 +163,6 @@ V75: lowered homepage and team carousel artwork to prevent top clipping while pr
 - Added silver/platinum About navigation and hero image.
 - Added gold 404 navigation graphic.
 - Finalized Homepage and Team carousel safe-zone sizing.
+
+## V81 Data-Driven Upgrade
+All recurring website content is now controlled by `data/master-content.json`. See `MASTER-CONTENT-GUIDE.md`.
