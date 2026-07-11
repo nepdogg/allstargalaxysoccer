@@ -155,3 +155,5 @@ Standardized vertical spacing across all pages using the Team page as the visual
 - Added ‘Playlist’ to the Summer 2026 Full Matches season-archive button.
 - Enlarged and vertically centered both navigation logos.
 - Standardized Homepage, Team, and Media carousel outer dimensions.
+
+V75: lowered homepage and team carousel artwork to prevent top clipping while preserving unified carousel shell dimensions.
