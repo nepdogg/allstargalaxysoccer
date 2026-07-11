@@ -10450,3 +10450,110 @@ body.lightbox-open {
 /* Remove obsolete V81 layers that competed with the new templates. */
 .generated-media-art{display:none!important}.generated-game-card,.generated-season-card,.generated-playlist-card,.generated-player-card{background:none!important}
 @media(max-width:800px){.generated-wide-card{grid-template-columns:58% 42%}.generated-wide-actions{padding:3%}.generated-action-row{border-radius:8px}.generated-action-copy small{display:none}.generated-game-meta span:nth-child(2),.generated-game-meta span:nth-child(3){display:none}.generated-season-heading span{display:none}}
+
+/* ============================================================
+   V84 — CLEAN CINEMATIC GENERATED CARDS
+   Simplified to match the approved visual samples.
+   ============================================================ */
+/* Playlist cards: one bold title, one icon and one action only. */
+.generated-playlist-art{
+  background-position:center 30%!important;
+}
+.generated-playlist-art:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,.02) 0%,rgba(0,0,0,.08) 45%,rgba(0,0,0,.88) 73%,rgba(0,0,0,.98) 100%);
+  z-index:1;
+  pointer-events:none;
+}
+.generated-playlist-content{
+  left:5%!important;
+  right:5%!important;
+  bottom:18%!important;
+  grid-template-columns:clamp(48px,8vw,88px) minmax(0,1fr)!important;
+  gap:4%!important;
+  align-items:center!important;
+}
+.generated-playlist-text .generated-card-title{
+  max-width:100%!important;
+  font-size:clamp(1.55rem,4.5vw,4rem)!important;
+  line-height:.88!important;
+  letter-spacing:.01em!important;
+}
+.generated-playlist-art>.generated-card-cta{
+  bottom:4%!important;
+  min-height:clamp(32px,4.5vw,48px);
+  font-size:clamp(.62rem,1.2vw,1rem)!important;
+}
+.generated-card-subtitle,.generated-card-eyebrow{display:none!important}
+
+/* Game and season cards: remove secondary copy and use stronger proportions. */
+.generated-wide-card{grid-template-columns:64% 36%!important}
+.generated-wide-visual{padding:4% 5%!important}
+.generated-game-layout .generated-wide-visual{justify-content:center!important}
+.generated-matchup{width:88%!important;margin-top:3%!important}
+.generated-matchup strong{font-size:clamp(1.25rem,3.3vw,3rem)!important}
+.generated-score-strip{margin-top:4%!important;min-width:58%!important;font-size:clamp(.9rem,2vw,1.55rem)!important}
+.generated-game-meta,.generated-updated{display:none!important}
+.generated-wide-actions{padding:5%!important}
+.generated-action-list{gap:clamp(10px,1.4vw,16px)!important}
+.generated-action-row{
+  min-height:clamp(52px,7.3vw,82px)!important;
+  grid-template-columns:clamp(34px,4.8vw,58px) minmax(0,1fr) clamp(24px,3.5vw,40px)!important;
+  padding:clamp(8px,1.2vw,14px)!important;
+}
+.generated-action-copy strong{font-size:clamp(.82rem,1.7vw,1.45rem)!important;white-space:normal!important}
+.generated-action-copy small{display:none!important}
+.generated-season-heading{margin-bottom:6%!important;padding-bottom:4%!important;text-align:center!important}
+.generated-season-heading strong{font-size:clamp(.9rem,2vw,1.65rem)!important}
+.generated-season-heading span{display:none!important}
+.generated-season-main{font-size:clamp(2.5rem,7vw,6.2rem)!important}
+.generated-season-archive{font-size:clamp(.8rem,1.9vw,1.5rem)!important}
+
+/* Player cards: photo/logo, number, name and position only. */
+.generated-player-placeholder span{font-size:clamp(.72rem,1.6vw,1.15rem);line-height:1.2}
+.generated-player-info{padding:6% 4% 5%!important}
+.generated-player-info small,.generated-player-info em{display:none!important}
+.generated-player-info span{font-size:clamp(1.5rem,3.5vw,2.9rem)!important}
+.generated-player-info strong{margin-top:6%!important;font-size:clamp(.58rem,1.15vw,.92rem)!important}
+
+/* News uses the same balanced, full-width presentation as Schedule. */
+.page-news main{display:block!important}
+.page-news #news.news-section{
+  width:min(94%,1400px)!important;
+  max-width:none!important;
+  margin:0 auto!important;
+}
+.page-news .news-grid,
+.page-news .generated-news-grid{
+  width:100%!important;
+  max-width:none!important;
+  margin:0 auto!important;
+}
+.page-news .generated-news-grid{
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:20px!important;
+}
+.page-news .generated-news-card{
+  width:100%!important;
+  box-sizing:border-box!important;
+  min-height:150px;
+  padding:clamp(22px,3vw,38px)!important;
+  border-radius:18px!important;
+}
+.page-news .generated-news-card img{
+  width:clamp(72px,8vw,112px)!important;
+  height:clamp(72px,8vw,112px)!important;
+}
+.page-news .generated-news-card h3{font-size:clamp(1.25rem,2.2vw,2rem)!important}
+.page-news .generated-news-card p{font-size:clamp(.9rem,1.25vw,1.1rem)!important}
+
+@media(max-width:800px){
+  .generated-wide-card{grid-template-columns:60% 40%!important}
+  .generated-playlist-content{grid-template-columns:42px minmax(0,1fr)!important}
+  .generated-playlist-text .generated-card-title{font-size:clamp(1.15rem,6vw,2rem)!important}
+  .page-news #news.news-section{width:92%!important}
+  .page-news .generated-news-card{align-items:flex-start!important}
+}
