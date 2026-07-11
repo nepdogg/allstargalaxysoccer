@@ -17,20 +17,19 @@
       const active=item.url && item.url !== '#';
       return `<div class="generated-action-row ${active?'':'is-pending'}" style="--row-accent:${item.color}">
         <span class="generated-action-icon">${item.icon}</span>
-        <span class="generated-action-copy"><strong>${esc(item.label)}</strong><small>${esc(item.note||'')}</small></span>
+        <span class="generated-action-copy"><strong>${esc(item.label)}</strong></span>
         <span class="generated-action-arrow">›</span>
       </div>`;
     }).join('')}</div>`;
   }
-  function mediaArt(data, title, eyebrow, category, subtitle='') {
+  function mediaArt(data, title, category) {
     const color=colorFor(data,category);
-    return `<div class="generated-playlist-art" style="--card-accent:${color};background-image:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.22) 48%,rgba(0,0,0,.96) 76%),url('${esc(data.assets.mediaBackground)}')">
-      <div class="generated-playlist-visual"></div>
+    return `<div class="generated-playlist-art" style="--card-accent:${color};background-image:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.18) 50%,rgba(0,0,0,.94) 82%),url('${esc(data.assets.mediaBackground)}')">
       <div class="generated-playlist-content">
         <div class="generated-playlist-icon">${iconFor(category)}</div>
-        <div class="generated-playlist-text"><div class="generated-card-title">${esc(title)}</div>${subtitle?`<div class="generated-card-subtitle">${esc(subtitle)}</div>`:''}<div class="generated-card-eyebrow">${esc(eyebrow)}</div></div>
+        <div class="generated-playlist-text"><div class="generated-card-title">${esc(title)}</div></div>
       </div>
-      <div class="generated-card-cta"><span>▶</span> ${category==='best'?'WATCH PLAYLIST':'BROWSE PLAYLIST'}</div>
+      <div class="generated-card-cta"><span>▶</span> WATCH PLAYLIST</div>
     </div>`;
   }
   function gameCard(data,g){
@@ -38,9 +37,9 @@
     const result=g.result||'GAME MEDIA';
     const gold=colorFor(data,'core');
     const rows=[
-      {label:'FULL MATCH',note:'Watch the complete game',icon:'▶',url:g.fullMatch,color:gold},
-      {label:'HIGHLIGHTS',note:'Best moments from the game',icon:'▣',url:g.highlights,color:gold},
-      {label:'SLIDESHOW',note:'Photos and slideshow',icon:'▧',url:g.slideshow,color:gold}
+      {label:'FULL MATCH',icon:'▶',url:g.fullMatch,color:gold},
+      {label:'HIGHLIGHTS',icon:'▣',url:g.highlights,color:gold},
+      {label:'SLIDESHOW',icon:'▧',url:g.slideshow,color:gold}
     ];
     return `<a href="#" class="media-slide media-game-slide generated-game-card" aria-label="Open ${esc(title)}" data-game-title="${esc(title)}" data-game-opponent="Allstar Galaxy vs ${esc(g.opponent||'Coming Soon')}" data-game-result="${esc(result)}" data-full="${esc(g.fullMatch||'')}" data-highlights="${esc(g.highlights||'')}" data-slideshow="${esc(g.slideshow||'')}">
       <div class="generated-wide-card generated-game-layout" style="--card-accent:${gold}">
@@ -49,17 +48,16 @@
           <div class="generated-game-number">GAME ${String(g.gameNumber||'').padStart(2,'0')}</div>
           <div class="generated-matchup"><strong>ALLSTAR GALAXY</strong><span>VS</span><strong>${esc(g.opponent||'COMING SOON')}</strong></div>
           <div class="generated-score-strip"><span>${esc(result)}</span></div>
-          <div class="generated-game-meta"><span>${esc(g.date||'DATE TBA')}</span><span>${esc(g.time||'TIME TBA')}</span><span>${esc(g.location||'SUNNYVALE')}</span></div>
         </section>
-        <section class="generated-wide-actions">${actionRows(rows)}<div class="generated-updated">ALLSTAR GALAXY GAME MEDIA</div></section>
+        <section class="generated-wide-actions">${actionRows(rows)}</section>
       </div></a>`;
   }
   function seasonCard(data,s){
     const gold=colorFor(data,'core');
     const rows=[
-      {label:'FULL MATCHES',note:'Watch every full game',icon:'▶',url:s.fullMatches,color:gold},
-      {label:'HIGHLIGHTS',note:'Best moments from every game',icon:'▣',url:s.highlights,color:gold},
-      {label:'SLIDESHOWS',note:'Photos and slideshows',icon:'▧',url:s.slideshows,color:gold}
+      {label:'FULL MATCHES',icon:'▶',url:s.fullMatches,color:gold},
+      {label:'HIGHLIGHTS',icon:'▣',url:s.highlights,color:gold},
+      {label:'SLIDESHOWS',icon:'▧',url:s.slideshows,color:gold}
     ];
     return `<a href="#" class="media-slide season-archive-slide media-game-slide generated-season-card" aria-label="Open ${esc(s.title)} archive" data-game-title="${esc(s.title)} Season Archive" data-game-opponent="Full Matches • Highlights • Slideshows" data-game-result="${esc(s.subtitle||'Season Archive')}" data-full="${esc(s.fullMatches||'')}" data-highlights="${esc(s.highlights||'')}" data-slideshow="${esc(s.slideshows||'')}" data-full-label="▶ Full Matches" data-highlights-label="▣ Highlights" data-slideshow-label="▧ Slideshows">
       <div class="generated-wide-card generated-season-layout" style="--card-accent:${gold}">
@@ -67,12 +65,11 @@
           <div class="generated-season-main">${esc(s.title)}</div>
           <div class="generated-season-archive">SEASON ARCHIVE</div>
         </section>
-        <section class="generated-wide-actions"><div class="generated-season-heading"><strong>${esc(s.title)} SEASON</strong><span>${esc(s.dateRange||s.league||'ALLSTAR GALAXY')}</span></div>${actionRows(rows)}</section>
+        <section class="generated-wide-actions"><div class="generated-season-heading"><strong>${esc(s.title)} SEASON</strong></div>${actionRows(rows)}</section>
       </div></a>`;
   }
   function playlistCard(data,p){
-    const eyebrow=p.locations?.includes('home-best')?'BEST OF ALLSTAR GALAXY':'ALLSTAR GALAXY ARCHIVE';
-    return `<a class="media-slide generated-playlist-card" ${linkAttrs(p.url)} aria-label="Open ${esc(p.title)} playlist">${mediaArt(data,p.title,eyebrow,p.category,p.description)}</a>`;
+    return `<a class="media-slide generated-playlist-card" ${linkAttrs(p.url)} aria-label="Open ${esc(p.title)} playlist">${mediaArt(data,p.title,p.category)}</a>`;
   }
   function playerCard(data,p){
     const accent=colorFor(data,'players');
@@ -83,7 +80,7 @@
         ${photo}
         <img class="generated-player-logo" src="${esc(data.assets.logo)}" alt="">
         <div class="generated-player-number">${esc(p.number||'')}</div>
-        <div class="generated-player-info"><small>${esc((p.firstName||p.name||'PLAYER').split(' ')[0])}</small><span>${esc(p.name||'COMING SOON')}</span><strong>${esc(p.position||'PLAYER')}</strong><em>★ ALLSTAR GALAXY ★</em></div>
+        <div class="generated-player-info"><span>${esc(p.name||'COMING SOON')}</span><strong>${esc(p.position||'PLAYER')}</strong></div>
       </div></a>`;
   }
   function newsCard(data,n){
