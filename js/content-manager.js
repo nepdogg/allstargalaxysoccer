@@ -35,37 +35,43 @@
   function gameCard(data,g){
     const title=`${g.season || ''} — Game ${String(g.gameNumber||'').padStart(2,'0')}`;
     const result=g.result||'GAME MEDIA';
-    const gold=colorFor(data,'core');
+    const mediaBlue='#20bfff';
     const rows=[
-      {label:'FULL MATCH',icon:'▶',url:g.fullMatch,color:gold},
-      {label:'HIGHLIGHTS',icon:'▣',url:g.highlights,color:gold},
-      {label:'SLIDESHOW',icon:'▧',url:g.slideshow,color:gold}
+      {label:'FULL MATCH',icon:'▶',url:g.fullMatch,color:mediaBlue},
+      {label:'HIGHLIGHTS',icon:'▣',url:g.highlights,color:mediaBlue},
+      {label:'SLIDESHOW',icon:'▧',url:g.slideshow,color:mediaBlue}
     ];
     return `<a href="#" class="media-slide media-game-slide generated-game-card" aria-label="Open ${esc(title)}" data-game-title="${esc(title)}" data-game-opponent="Allstar Galaxy vs ${esc(g.opponent||'Coming Soon')}" data-game-result="${esc(result)}" data-full="${esc(g.fullMatch||'')}" data-highlights="${esc(g.highlights||'')}" data-slideshow="${esc(g.slideshow||'')}">
-      <div class="generated-wide-card generated-game-layout" style="--card-accent:${gold}">
+      <div class="generated-wide-card generated-game-layout" style="--card-accent:${mediaBlue}">
         <section class="generated-wide-visual" style="background-image:linear-gradient(90deg,rgba(0,0,0,.02),rgba(0,0,0,.14)),url('${esc(data.assets.mediaBackground)}')">
-          <div class="generated-game-bottom-line">${esc(g.season||'UPCOMING SEASON')} <span>•</span> GAME ${String(g.gameNumber||'').padStart(2,'0')} <span>•</span> ALLSTAR GALAXY VS ${esc(g.opponent||'COMING SOON')} <span>•</span> ${esc(result)}</div>
+          <div class="generated-game-footer">
+            <div class="generated-game-line generated-game-line-top">${esc(g.season||'UPCOMING SEASON')} <span>•</span> GAME ${String(g.gameNumber||'').padStart(2,'0')}</div>
+            <div class="generated-game-line generated-game-line-bottom">ALLSTAR GALAXY VS ${esc(g.opponent||'COMING SOON')} ${result?`<span>•</span> ${esc(result)}`:''}</div>
+          </div>
         </section>
         <section class="generated-wide-actions">${actionRows(rows)}</section>
       </div></a>`;
   }
   function seasonCard(data,s){
-    const gold=colorFor(data,'core');
+    const mediaBlue='#20bfff';
     const rows=[
-      {label:'FULL MATCHES',icon:'▶',url:s.fullMatches,color:gold},
-      {label:'HIGHLIGHTS',icon:'▣',url:s.highlights,color:gold},
-      {label:'SLIDESHOWS',icon:'▧',url:s.slideshows,color:gold}
+      {label:'FULL MATCHES',icon:'▶',url:s.fullMatches,color:mediaBlue},
+      {label:'HIGHLIGHTS',icon:'▣',url:s.highlights,color:mediaBlue},
+      {label:'SLIDESHOWS',icon:'▧',url:s.slideshows,color:mediaBlue}
     ];
     return `<a href="#" class="media-slide season-archive-slide media-game-slide generated-season-card" aria-label="Open ${esc(s.title)} archive" data-game-title="${esc(s.title)} Season Archive" data-game-opponent="Full Matches • Highlights • Slideshows" data-game-result="${esc(s.subtitle||'Season Archive')}" data-full="${esc(s.fullMatches||'')}" data-highlights="${esc(s.highlights||'')}" data-slideshow="${esc(s.slideshows||'')}" data-full-label="▶ Full Matches" data-highlights-label="▣ Highlights" data-slideshow-label="▧ Slideshows">
-      <div class="generated-wide-card generated-season-layout" style="--card-accent:${gold}">
+      <div class="generated-wide-card generated-season-layout" style="--card-accent:${mediaBlue}">
         <section class="generated-wide-visual generated-season-visual" style="background-image:linear-gradient(90deg,rgba(0,0,0,.02),rgba(0,0,0,.16)),url('${esc(data.assets.mediaBackground)}')">
-          <div class="generated-season-main">${esc(s.title)}</div>
+          <div class="generated-season-footer">${esc(s.title)}</div>
         </section>
         <section class="generated-wide-actions">${actionRows(rows)}</section>
       </div></a>`;
   }
-  function playlistCard(data,p){
-    return `<a class="media-slide generated-playlist-card" ${linkAttrs(p.url)} aria-label="Open ${esc(p.title)} playlist">${mediaArt(data,p.title,p.category)}</a>`;
+  function playlistCard(data,p,theme='gold'){
+    const accent=theme==='blue'?'#20bfff':'#f5c542';
+    const original=data.colors?.[p.category];
+    const themed={...data,colors:{...(data.colors||{}),[p.category]:accent,archive:accent}};
+    return `<a class="media-slide generated-playlist-card theme-${theme}" ${linkAttrs(p.url)} aria-label="Open ${esc(p.title)} playlist">${mediaArt(themed,p.title,p.category)}</a>`;
   }
   function playerCard(data,p){
     const accent=colorFor(data,'players');
@@ -95,8 +101,8 @@
       const source=el.dataset.generatedSource;
       if(source==='games') el.innerHTML=sortItems(data.games).filter(g=>g.group==='latest').map(g=>gameCard(data,g)).join('');
       else if(source==='seasons') el.innerHTML=sortItems(data.seasons).map(s=>seasonCard(data,s)).join('');
-      else if(source==='media-archive') el.innerHTML=sortItems(data.playlists).filter(p=>p.locations?.includes('media-archive')).map(p=>playlistCard(data,p)).join('');
-      else if(source==='home-best') el.innerHTML=sortItems(data.playlists).filter(p=>p.locations?.includes('home-best')).map(p=>playlistCard(data,p)).join('');
+      else if(source==='media-archive') el.innerHTML=sortItems(data.playlists).filter(p=>p.locations?.includes('media-archive')).map(p=>playlistCard(data,p,'blue')).join('');
+      else if(source==='home-best') el.innerHTML=sortItems(data.playlists).filter(p=>p.locations?.includes('home-best')).map(p=>playlistCard(data,p,'gold')).join('');
       else if(source==='players') el.innerHTML=sortItems(data.players).map(p=>playerCard(data,p)).join('');
       else if(source==='news') el.innerHTML=sortItems(data.news).map(n=>newsCard(data,n)).join('');
       else if(source==='schedule') el.innerHTML=scheduleMarkup(data);
