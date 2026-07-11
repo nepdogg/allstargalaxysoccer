@@ -9883,3 +9883,142 @@ body.lightbox-open {
     bottom: 20px !important;
   }
 }
+
+
+/* ============================================================
+   V76 — GOLD 404, PLATINUM ABOUT, INLINE FOOTER ABOUT LINK
+   ============================================================ */
+
+/* The About page uses a neutral silver/platinum identity that is
+   separate from all seven main page color themes. */
+.page-about {
+  --page-accent: #e7edf5 !important;
+  --page-accent-rgb: 231, 237, 245 !important;
+}
+
+.page-about .site-top {
+  border-bottom-color: rgba(231, 237, 245, .78) !important;
+  box-shadow: 0 5px 18px rgba(190, 210, 235, .16) !important;
+}
+
+.page-about .about-main {
+  background:
+    radial-gradient(circle at 50% 10%, rgba(210, 225, 244, .24), transparent 37%),
+    radial-gradient(circle at 16% 68%, rgba(120, 160, 205, .12), transparent 34%),
+    linear-gradient(180deg, #080b12 0%, #101722 52%, #03050a 100%) !important;
+}
+
+.page-about .about-hero,
+.page-about .about-card,
+.page-about .about-cta {
+  background: linear-gradient(145deg, rgba(24, 31, 42, .95), rgba(5, 8, 13, .97)) !important;
+  border-color: rgba(220, 232, 246, .72) !important;
+  box-shadow: 0 0 24px rgba(196, 218, 244, .2), inset 0 0 24px rgba(255,255,255,.035) !important;
+}
+
+.page-about .about-kicker,
+.page-about .about-card h2,
+.page-about .about-cta h2 {
+  color: #eef4fb !important;
+  text-shadow: 0 0 10px rgba(205, 226, 250, .72) !important;
+}
+
+.page-about .about-hero h1 {
+  background: linear-gradient(180deg, #ffffff 0%, #d9e4f0 45%, #8fa7c1 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  text-shadow: 0 0 18px rgba(211, 230, 250, .34) !important;
+}
+
+.page-about .site-button {
+  border-color: #dce8f5 !important;
+  background: rgba(210, 226, 244, .12) !important;
+  box-shadow: 0 0 16px rgba(205, 225, 248, .25) !important;
+}
+
+.page-about .site-button:hover,
+.page-about .site-button:focus-visible {
+  background: rgba(220, 235, 250, .24) !important;
+  box-shadow: 0 0 25px rgba(215, 235, 255, .45) !important;
+}
+
+/* The 404 page inherits the Homepage's gold identity. */
+.page-404 {
+  --page-accent: #f5c400 !important;
+  --page-accent-rgb: 245, 196, 0 !important;
+}
+
+.page-404 .site-top {
+  border-bottom-color: rgba(245, 196, 0, .82) !important;
+  box-shadow: 0 5px 18px rgba(245, 196, 0, .18) !important;
+}
+
+.page-404 .not-found-main {
+  background:
+    radial-gradient(circle at 50% 12%, rgba(245, 196, 0, .24), transparent 37%),
+    radial-gradient(circle at 18% 74%, rgba(255, 156, 0, .1), transparent 34%),
+    linear-gradient(180deg, #0d0800 0%, #140c00 50%, #030200 100%) !important;
+}
+
+.page-404 .not-found-card {
+  border-color: rgba(245, 196, 0, .82) !important;
+  background: linear-gradient(145deg, rgba(27, 18, 2, .95), rgba(5, 3, 0, .97)) !important;
+  box-shadow: 0 0 30px rgba(245, 196, 0, .28), inset 0 0 28px rgba(245, 196, 0, .06) !important;
+}
+
+.page-404 .not-found-code {
+  background: linear-gradient(180deg, #fff4a8 0%, #ffd52e 43%, #b87900 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  text-shadow: 0 0 25px rgba(245, 196, 0, .5) !important;
+}
+
+.page-404 .not-found-card h1 {
+  color: #fff7ca !important;
+  text-shadow: 0 0 14px rgba(245, 196, 0, .88) !important;
+}
+
+.page-404 .site-button {
+  border-color: #f5c400 !important;
+  background: rgba(245, 196, 0, .12) !important;
+  box-shadow: 0 0 16px rgba(245, 196, 0, .28) !important;
+}
+
+.page-404 .site-button:hover,
+.page-404 .site-button:focus-visible {
+  background: rgba(245, 196, 0, .25) !important;
+  box-shadow: 0 0 25px rgba(245, 196, 0, .5) !important;
+}
+
+/* Keep copyright and About on one clean footer line. */
+.footer-small {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: .4rem;
+}
+
+.footer-divider {
+  color: rgba(255,255,255,.52);
+}
+
+.footer-about-link {
+  color: rgba(255,255,255,.82);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: .88em;
+  transition: color .2s ease, text-shadow .2s ease;
+}
+
+.footer-about-link:hover,
+.footer-about-link:focus-visible {
+  color: #fff;
+  text-shadow: 0 0 8px currentColor;
+}
+
+/* Remove any spacing left by legacy standalone footer-link rules. */
+.footer-links { display: none !important; }
