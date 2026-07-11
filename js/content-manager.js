@@ -43,11 +43,8 @@
     ];
     return `<a href="#" class="media-slide media-game-slide generated-game-card" aria-label="Open ${esc(title)}" data-game-title="${esc(title)}" data-game-opponent="Allstar Galaxy vs ${esc(g.opponent||'Coming Soon')}" data-game-result="${esc(result)}" data-full="${esc(g.fullMatch||'')}" data-highlights="${esc(g.highlights||'')}" data-slideshow="${esc(g.slideshow||'')}">
       <div class="generated-wide-card generated-game-layout" style="--card-accent:${gold}">
-        <section class="generated-wide-visual" style="background-image:linear-gradient(90deg,rgba(0,0,0,.06),rgba(0,0,0,.28)),url('${esc(data.assets.mediaBackground)}')">
-          <div class="generated-season-label">${esc(g.season||'UPCOMING SEASON')}</div>
-          <div class="generated-game-number">GAME ${String(g.gameNumber||'').padStart(2,'0')}</div>
-          <div class="generated-matchup"><strong>ALLSTAR GALAXY</strong><span>VS</span><strong>${esc(g.opponent||'COMING SOON')}</strong></div>
-          <div class="generated-score-strip"><span>${esc(result)}</span></div>
+        <section class="generated-wide-visual" style="background-image:linear-gradient(90deg,rgba(0,0,0,.02),rgba(0,0,0,.14)),url('${esc(data.assets.mediaBackground)}')">
+          <div class="generated-game-bottom-line">${esc(g.season||'UPCOMING SEASON')} <span>•</span> GAME ${String(g.gameNumber||'').padStart(2,'0')} <span>•</span> ALLSTAR GALAXY VS ${esc(g.opponent||'COMING SOON')} <span>•</span> ${esc(result)}</div>
         </section>
         <section class="generated-wide-actions">${actionRows(rows)}</section>
       </div></a>`;
@@ -61,11 +58,10 @@
     ];
     return `<a href="#" class="media-slide season-archive-slide media-game-slide generated-season-card" aria-label="Open ${esc(s.title)} archive" data-game-title="${esc(s.title)} Season Archive" data-game-opponent="Full Matches • Highlights • Slideshows" data-game-result="${esc(s.subtitle||'Season Archive')}" data-full="${esc(s.fullMatches||'')}" data-highlights="${esc(s.highlights||'')}" data-slideshow="${esc(s.slideshows||'')}" data-full-label="▶ Full Matches" data-highlights-label="▣ Highlights" data-slideshow-label="▧ Slideshows">
       <div class="generated-wide-card generated-season-layout" style="--card-accent:${gold}">
-        <section class="generated-wide-visual generated-season-visual" style="background-image:linear-gradient(90deg,rgba(0,0,0,.02),rgba(0,0,0,.22)),url('${esc(data.assets.mediaBackground)}')">
+        <section class="generated-wide-visual generated-season-visual" style="background-image:linear-gradient(90deg,rgba(0,0,0,.02),rgba(0,0,0,.16)),url('${esc(data.assets.mediaBackground)}')">
           <div class="generated-season-main">${esc(s.title)}</div>
-          <div class="generated-season-archive">SEASON ARCHIVE</div>
         </section>
-        <section class="generated-wide-actions"><div class="generated-season-heading"><strong>${esc(s.title)} SEASON</strong></div>${actionRows(rows)}</section>
+        <section class="generated-wide-actions">${actionRows(rows)}</section>
       </div></a>`;
   }
   function playlistCard(data,p){
@@ -80,7 +76,7 @@
         ${photo}
         <img class="generated-player-logo" src="${esc(data.assets.logo)}" alt="">
         <div class="generated-player-number">${esc(p.number||'')}</div>
-        <div class="generated-player-info"><span>${esc(p.name||'COMING SOON')}</span><strong>${esc(p.position||'PLAYER')}</strong></div>
+        <div class="generated-player-info"><span>${esc(p.name||'COMING SOON')}</span>${p.position && !/roster spot/i.test(p.position)?`<strong>${esc(p.position)}</strong>`:''}</div>
       </div></a>`;
   }
   function newsCard(data,n){
