@@ -10256,3 +10256,89 @@ body.lightbox-open {
     font-size: .8rem;
   }
 }
+
+/* ============================================================
+   V78 — FULL-BLEED SPECIAL HEROES + COLOR-CODED LOGO GLOWS
+   ============================================================ */
+
+/* About page: true edge-to-edge hero inside the site shell. */
+.page-about .about-main {
+  padding: 0 0 clamp(28px, 4vw, 46px) !important;
+}
+
+.page-about .about-page-hero {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+
+.page-about .about-page-hero img {
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+/* Silver/platinum glow for every Allstar Galaxy logo on About. */
+.page-about .hero-logo img,
+.page-about .hero-logo-right img,
+.page-about .footer-logo img,
+.page-about .about-logo,
+.page-about .not-found-logo {
+  filter:
+    drop-shadow(0 0 8px rgba(255,255,255,.92))
+    drop-shadow(0 0 18px rgba(205,220,238,.78))
+    drop-shadow(0 0 30px rgba(155,182,214,.45)) !important;
+}
+
+/* 404: add a full-width gold hero and keep the recovery card compact below it. */
+.page-404 .not-found-main {
+  display: block !important;
+  padding: 0 0 clamp(30px, 5vw, 56px) !important;
+}
+
+.page-404 .not-found-page-hero {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 0 clamp(22px, 3vw, 36px) !important;
+  border-bottom: 1px solid rgba(245,196,0,.82);
+  box-shadow: 0 12px 30px rgba(245,196,0,.18);
+}
+
+.page-404 .not-found-page-hero img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  object-fit: cover !important;
+}
+
+.page-404 .not-found-card {
+  width: min(90%, 760px) !important;
+  margin: 0 auto !important;
+  padding: clamp(30px, 5vw, 54px) clamp(20px, 5vw, 48px) !important;
+}
+
+/* Gold glow for all header/footer/card logos on the 404 page. */
+.page-404 .hero-logo img,
+.page-404 .hero-logo-right img,
+.page-404 .footer-logo img,
+.page-404 .not-found-logo {
+  filter:
+    drop-shadow(0 0 8px rgba(255,238,135,.95))
+    drop-shadow(0 0 18px rgba(255,196,0,.88))
+    drop-shadow(0 0 30px rgba(255,132,0,.48)) !important;
+}
+
+@media (max-width: 760px) {
+  .page-about .about-page-hero img,
+  .page-404 .not-found-page-hero img {
+    min-height: 220px;
+    object-fit: cover !important;
+  }
+
+  .page-404 .not-found-card {
+    width: min(92%, 680px) !important;
+  }
+}
