@@ -228,38 +228,6 @@
       "order": 15
     },
     {
-      "id": "summer-2026-game-14",
-      "season": "Summer 2026",
-      "gameNumber": 14,
-      "opponent": "Allstar Galaxy Summer 2026 playlists",
-      "date": "",
-      "time": "",
-      "location": "",
-      "result": "Full Matches • Highlights • Slideshows",
-      "fullMatch": "https://youtube.com/playlist?list=PLQXB02gCqUmc&si=8knj3jO2801AAalt",
-      "highlights": "https://youtube.com/playlist?list=PLH0LZ2QuNj3g&si=h0D-OFtnc2cnTj8h",
-      "slideshow": "https://youtube.com/playlist?list=PLX9TIVWlcYG4&si=9Tc2ozBEACJgE02q",
-      "status": "published",
-      "group": "latest",
-      "order": 14
-    },
-    {
-      "id": "summer-2026-game-15",
-      "season": "Summer 2026",
-      "gameNumber": 15,
-      "opponent": "Older Allstar Galaxy season playlists",
-      "date": "",
-      "time": "",
-      "location": "",
-      "result": "Coming Soon",
-      "fullMatch": "#",
-      "highlights": "#",
-      "slideshow": "#",
-      "status": "published",
-      "group": "latest",
-      "order": 15
-    },
-    {
       "id": "new-game-01",
       "season": "Fall 2026",
       "gameNumber": 1,
