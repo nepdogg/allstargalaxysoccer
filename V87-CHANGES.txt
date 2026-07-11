@@ -1,0 +1,10 @@
+ALLSTAR GALAXY V87
+
+- Restored a clearly visible lower border on generated game and season cards.
+- Changed generated game and season cards to a wider cinematic proportion.
+- Increased both lines of game-card footer text to the largest practical size.
+- Increased season-card footer text and vertically centered it.
+- Removed the duplicate incorrect Summer 2026 Game 15 data record.
+- Removed the old 980px News grid wrapper.
+- News cards now stack vertically and span the same page width as Schedule.
+- Updated HTML asset cache version to v=87.
