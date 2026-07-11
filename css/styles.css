@@ -10640,3 +10640,133 @@ body.lightbox-open {
   .page-news #news.news-section,
   .page-schedule .schedule-page-section{width:92%!important}
 }
+
+/* ============================================================
+   V86 — PAGE-CODED CARDS + TWO-LINE GAME/SEASON FOOTERS
+   ============================================================ */
+/* Media page cards are always blue; homepage playlist cards are gold. */
+.page-media .generated-wide-card,
+.page-media .generated-playlist-art{
+  --card-accent:#20bfff!important;
+}
+.page-media .generated-action-row{
+  --row-accent:#20bfff!important;
+  border-color:#20bfff!important;
+  box-shadow:0 0 12px rgba(32,191,255,.45)!important;
+}
+.page-media .generated-action-icon,
+.page-media .generated-action-arrow{
+  background:#20bfff!important;
+  color:#00131f!important;
+}
+.page-media .generated-action-copy strong,
+.page-media .generated-card-title,
+.page-media .generated-card-cta{
+  color:#20bfff!important;
+}
+.page-home .generated-playlist-art{
+  --card-accent:#f5c542!important;
+}
+.page-home .generated-card-title,
+.page-home .generated-card-cta{
+  color:#f5c542!important;
+}
+
+/* Latest game card: two tidy lines below the image. */
+.generated-game-layout .generated-wide-visual{
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:flex-end!important;
+  padding:0!important;
+  background-position:center!important;
+}
+.generated-game-footer{
+  width:100%;
+  box-sizing:border-box;
+  background:linear-gradient(90deg,rgba(0,0,0,.98),rgba(0,18,28,.92),rgba(0,0,0,.98));
+  border-top:1px solid var(--card-accent);
+  padding:clamp(8px,1vw,12px) clamp(12px,1.6vw,20px);
+  text-align:center;
+  text-transform:uppercase;
+  font-family:Impact,"Arial Narrow",sans-serif;
+  text-shadow:0 2px 4px #000;
+}
+.generated-game-line{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.generated-game-line-top{
+  color:var(--card-accent);
+  font-size:clamp(.68rem,1.2vw,1.05rem);
+  letter-spacing:.08em;
+}
+.generated-game-line-bottom{
+  margin-top:4px;
+  color:#fff;
+  font-size:clamp(.62rem,1.08vw,.98rem);
+  letter-spacing:.04em;
+}
+.generated-game-line span{color:var(--card-accent);padding:0 .35em}
+.generated-game-bottom-line{display:none!important}
+
+/* Season title now sits in a clean footer below the artwork. */
+.generated-season-layout .generated-season-visual{
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:flex-end!important;
+  padding:0!important;
+  background-position:center!important;
+}
+.generated-season-footer{
+  width:100%;
+  box-sizing:border-box;
+  padding:clamp(10px,1.35vw,16px) clamp(12px,2vw,22px);
+  background:linear-gradient(90deg,rgba(0,0,0,.98),rgba(0,18,28,.92),rgba(0,0,0,.98));
+  border-top:1px solid var(--card-accent);
+  color:#fff;
+  font-family:Impact,"Arial Narrow",sans-serif;
+  font-size:clamp(1rem,2.2vw,1.8rem);
+  letter-spacing:.06em;
+  text-align:center;
+  text-transform:uppercase;
+  text-shadow:0 2px 5px #000,0 0 10px var(--card-accent);
+}
+.generated-season-main{display:none!important}
+
+/* News now matches Schedule: full-width stacked boxes. */
+.page-news main{
+  display:block!important;
+  width:100%!important;
+  max-width:none!important;
+  padding-left:0!important;
+  padding-right:0!important;
+}
+.page-news #news.news-section{
+  width:min(94%,1400px)!important;
+  max-width:none!important;
+  margin:0 auto!important;
+  padding:0!important;
+  box-sizing:border-box!important;
+}
+.page-news #news .news-grid,
+.page-news #news .generated-news-grid{
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  margin:0!important;
+  padding:0!important;
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:20px!important;
+}
+.page-news #news .generated-news-card{
+  width:100%!important;
+  max-width:none!important;
+  min-height:150px!important;
+  margin:0!important;
+  box-sizing:border-box!important;
+}
+
+@media(max-width:800px){
+  .generated-game-line-top{font-size:clamp(.58rem,2.6vw,.78rem)}
+  .generated-game-line-bottom{font-size:clamp(.52rem,2.2vw,.72rem)}
+  .generated-season-footer{font-size:clamp(.85rem,4.3vw,1.25rem)}
+  .page-news #news.news-section{width:92%!important}
+}
