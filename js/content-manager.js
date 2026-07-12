@@ -64,8 +64,8 @@
           <div class="generated-game-matchup-block">
             <strong>ALLSTAR GALAXY</strong>
             <span>VS ${esc(g.opponent||'COMING SOON')}</span>
-            ${result?`<em>${esc(result)}</em>`:''}
           </div>
+          <div class="generated-game-result-block">${result?`<em>${esc(result)}</em>`:''}</div>
         </footer>
       </div></a>`;
   }
