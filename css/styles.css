@@ -11670,3 +11670,90 @@ body.lightbox-open {
   .page-media .generated-game-matchup-block span,
   .page-media .generated-game-matchup-block em{font-size:clamp(.57rem,2.05vw,.76rem)!important}
 }
+
+/* ============================================================
+   V95 — FINAL PLAYLIST FOOTER ALIGNMENT & GAME CARD SCALE
+   ============================================================ */
+
+/* Keep the complete game artwork visible while still filling its panel.
+   The reusable artwork is intentionally sized to the exact viewport so
+   neither side of the source composition is clipped. */
+.page-media .generated-game-layout .generated-wide-visual,
+.page-media .generated-season-layout .generated-wide-visual{
+  background-size:100% 100%!important;
+  background-position:center center!important;
+  background-repeat:no-repeat!important;
+}
+
+/* Use the remaining game-footer room more confidently. */
+.page-media .generated-game-meta-block span{
+  font-size:clamp(.9rem,1.86vw,1.38rem)!important;
+}
+.page-media .generated-game-meta-block strong{
+  font-size:clamp(1.1rem,2.16vw,1.58rem)!important;
+}
+.page-media .generated-game-matchup-block strong,
+.page-media .generated-game-matchup-block span{
+  font-size:clamp(.84rem,1.64vw,1.2rem)!important;
+}
+.page-media .generated-game-matchup-block em{
+  font-size:clamp(.88rem,1.72vw,1.26rem)!important;
+}
+
+/* Playlist footer: a truly centered icon cell followed immediately by a
+   larger, left-aligned title.  The slight visual lift compensates for the
+   icon's glow and makes it appear centered inside the strip. */
+.generated-playlist-footer{
+  grid-template-columns:clamp(68px,7.2vw,92px) minmax(0,1fr)!important;
+  column-gap:clamp(10px,1.15vw,16px)!important;
+  padding:8px clamp(18px,2vw,28px) 8px clamp(18px,2vw,26px)!important;
+  align-items:center!important;
+}
+.generated-playlist-footer-icon{
+  align-self:center!important;
+  justify-self:center!important;
+  transform:translateY(-5px)!important;
+  margin:0!important;
+}
+.generated-playlist-footer-title{
+  align-self:center!important;
+  justify-self:stretch!important;
+  justify-content:flex-start!important;
+  text-align:left!important;
+  font-size:clamp(1.28rem,2.35vw,2rem)!important;
+  line-height:1.02!important;
+  letter-spacing:.045em!important;
+  padding:0!important;
+}
+.generated-playlist-art.is-long-title .generated-playlist-footer-title{
+  font-size:clamp(1.08rem,2.05vw,1.72rem)!important;
+}
+.generated-playlist-art.is-very-long-title .generated-playlist-footer-title{
+  font-size:clamp(.96rem,1.82vw,1.52rem)!important;
+}
+
+@media(max-width:800px){
+  .page-media .generated-game-meta-block span{font-size:clamp(.65rem,2.28vw,.84rem)!important}
+  .page-media .generated-game-meta-block strong{font-size:clamp(.8rem,2.72vw,1.04rem)!important}
+  .page-media .generated-game-matchup-block strong,
+  .page-media .generated-game-matchup-block span{font-size:clamp(.6rem,2.16vw,.8rem)!important}
+  .page-media .generated-game-matchup-block em{font-size:clamp(.63rem,2.22vw,.83rem)!important}
+  .generated-playlist-footer{
+    grid-template-columns:42px minmax(0,1fr)!important;
+    column-gap:8px!important;
+    padding:7px 11px 7px 9px!important;
+  }
+  .generated-playlist-footer-icon{
+    width:36px!important;
+    transform:translateY(-3px)!important;
+  }
+  .generated-playlist-footer-title{
+    font-size:clamp(.9rem,4.2vw,1.28rem)!important;
+  }
+  .generated-playlist-art.is-long-title .generated-playlist-footer-title{
+    font-size:clamp(.78rem,3.75vw,1.12rem)!important;
+  }
+  .generated-playlist-art.is-very-long-title .generated-playlist-footer-title{
+    font-size:clamp(.7rem,3.35vw,1rem)!important;
+  }
+}
