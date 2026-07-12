@@ -13113,3 +13113,141 @@ body.lightbox-open {
       height:0 !important;
   }
 }
+
+/* ============================================================
+   V105 — HOMEPAGE BEST-OF MOBILE CAROUSEL PROPORTION FIX
+   Mobile only. Desktop layout remains unchanged.
+   ============================================================ */
+@media (max-width: 760px) {
+  .page-home .homepage-media-carousel {
+    position: relative !important;
+    width: calc(100% - 24px) !important;
+    height: 365px !important;
+    min-height: 365px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .page-home .homepage-media-carousel .carousel-track {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    transform: none !important;
+    overflow: visible !important;
+  }
+
+  .page-home .homepage-media-carousel .media-slide {
+    position: absolute !important;
+    left: 50% !important;
+    top: 45% !important;
+    width: calc(100% - 38px) !important;
+    max-width: 440px !important;
+    height: auto !important;
+    aspect-ratio: auto !important;
+    margin: 0 !important;
+    transform: translate(calc(-50% + (var(--home-offset, 0) * 72vw)), -50%) scale(.76) !important;
+  }
+
+  .page-home .homepage-media-carousel .media-slide.is-active {
+    transform: translate(-50%, -50%) scale(1) !important;
+  }
+
+  .page-home .homepage-media-carousel .media-slide.is-neighbor {
+    transform: translate(calc(-50% + (var(--home-offset, 0) * 72vw)), -50%) scale(.76) !important;
+  }
+
+  .page-home .homepage-media-carousel .generated-playlist-art {
+    width: 100% !important;
+    height: auto !important;
+    display: grid !important;
+    grid-template-rows: auto 62px !important;
+    overflow: hidden !important;
+  }
+
+  .page-home .homepage-media-carousel .generated-playlist-image {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9 !important;
+    background-size: 100% 100% !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+
+  .page-home .homepage-media-carousel .generated-playlist-footer {
+    height: 62px !important;
+    min-height: 62px !important;
+    padding: 7px 14px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 12px !important;
+    overflow: hidden !important;
+  }
+
+  .page-home .homepage-media-carousel .generated-playlist-footer-icon {
+    flex: 0 0 42px !important;
+    width: 42px !important;
+    height: 42px !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+  }
+
+  .page-home .homepage-media-carousel .generated-playlist-footer-title {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    text-align: left !important;
+    font-size: clamp(.98rem, 5vw, 1.32rem) !important;
+    line-height: 1.05 !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .page-home .homepage-media-carousel .carousel-button {
+    top: 45% !important;
+    width: 48px !important;
+    height: 48px !important;
+    transform: translateY(-50%) !important;
+    z-index: 20 !important;
+  }
+
+  .page-home .homepage-media-carousel .carousel-button.prev {
+    left: 5px !important;
+  }
+
+  .page-home .homepage-media-carousel .carousel-button.next {
+    right: 5px !important;
+  }
+
+  .page-home .homepage-media-carousel .carousel-dots {
+    position: absolute !important;
+    left: 50% !important;
+    bottom: 12px !important;
+    transform: translateX(-50%) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: auto !important;
+    max-width: calc(100% - 42px) !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .page-home .homepage-media-carousel {
+    height: 350px !important;
+    min-height: 350px !important;
+  }
+  .page-home .homepage-media-carousel .media-slide {
+    width: calc(100% - 30px) !important;
+    top: 44% !important;
+  }
+  .page-home .homepage-media-carousel .carousel-button {
+    top: 44% !important;
+    width: 46px !important;
+    height: 46px !important;
+  }
+}
