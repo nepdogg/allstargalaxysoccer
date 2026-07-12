@@ -13036,3 +13036,80 @@ body.lightbox-open {
     max-width: calc(100% - 30px) !important;
   }
 }
+
+
+
+/* =====================================================
+   V104 MOBILE CAROUSEL REBUILD
+   Mobile only - desktop untouched
+===================================================== */
+@media screen and (max-width: 800px){
+
+  .carousel-container,
+  .media-carousel,
+  .playlist-carousel,
+  .games-carousel,
+  .season-carousel{
+      min-height:auto !important;
+      height:auto !important;
+      padding-bottom:20px !important;
+  }
+
+  .carousel-track,
+  .carousel-wrapper{
+      min-height:auto !important;
+      height:auto !important;
+      align-items:center !important;
+  }
+
+  .media-slide,
+  .playlist-card,
+  .season-card,
+  .game-card{
+      width:92% !important;
+      max-width:92% !important;
+      margin:0 auto !important;
+      transform:none !important;
+  }
+
+  .media-slide{
+      aspect-ratio:1.25/1 !important;
+  }
+
+  .playlist-card .card-image,
+  .game-card .card-image,
+  .season-card .card-image{
+      object-fit:contain !important;
+      object-position:center center !important;
+  }
+
+  .playlist-card .card-footer,
+  .playlist-card .card-content{
+      min-height:72px !important;
+      height:72px !important;
+      padding:12px 16px !important;
+      display:flex !important;
+      align-items:center !important;
+      justify-content:flex-start !important;
+      gap:14px !important;
+  }
+
+  .carousel-button,
+  .carousel-arrow{
+      top:50% !important;
+      transform:translateY(-50%) !important;
+  }
+
+  .carousel-dots,
+  .slick-dots{
+      margin-top:14px !important;
+      position:relative !important;
+      bottom:auto !important;
+  }
+
+  .carousel-spacer,
+  .empty-carousel-space{
+      display:none !important;
+      height:0 !important;
+  }
+}
