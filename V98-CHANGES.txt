@@ -1,4 +1,4 @@
-ALLSTAR GALAXY V98
+ALLSTAR GALAXY V99
 
 Changes:
 - Game footer redesigned into three fixed zones: season/game, matchup, result.
@@ -6,6 +6,6 @@ Changes:
 - Playlist icon/title group moved farther left.
 - Playlist icon lifted slightly for better optical centering.
 - Playlist titles enlarged with long-title responsive fallbacks.
-- Cache references updated to v=98.
+- Cache references updated to v=99.
 
 This safe package does not include data/master-content.json or image folders.

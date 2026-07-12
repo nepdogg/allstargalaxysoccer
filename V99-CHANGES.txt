@@ -1,0 +1,15 @@
+ALLSTAR GALAXY V99 — FINAL TWO-LINE GAME FOOTER
+
+Changes:
+- Game footer now uses three fixed columns and two text lines in every column.
+- Left column: season on line 1, game number on line 2.
+- Center column: ALLSTAR GALAXY on line 1, VS OPPONENT on line 2.
+- Right column: WIN / LOSS / DRAW on line 1, score on line 2.
+- Existing result strings such as W (3-1), L (1-4), and D (5-5) are parsed automatically.
+- Long opponent names remain on one line with safe ellipsis protection.
+- Large scores no longer get cut off.
+- Responsive mobile sizing included.
+- Cache references updated to v=99.
+
+SAFE UPDATE:
+This package does not include data/master-content.json and will not overwrite live content.
