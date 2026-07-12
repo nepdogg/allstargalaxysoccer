@@ -11873,3 +11873,149 @@ body.lightbox-open {
 .generated-player-frame:before{z-index:2!important;background:linear-gradient(180deg,rgba(0,0,0,.02) 0%,rgba(0,0,0,.02) 48%,rgba(0,0,0,.40) 66%,rgba(0,0,0,.94) 82%)!important}
 .generated-player-number,.generated-player-info{z-index:5!important}
 .generated-player-logo{display:none!important}
+
+
+/* ============================================================
+   V98 — THREE-ZONE GAME FOOTER + PLAYLIST ALIGNMENT POLISH
+   ============================================================ */
+
+/* Game card footer follows the final sketch: season/game at left,
+   matchup in the wide center zone, and result in its own right zone.
+   This prevents long opponent names from pushing the score onto a new line. */
+.page-media .generated-game-footer{
+  display:grid!important;
+  grid-template-columns:minmax(145px,24%) minmax(0,1fr) minmax(92px,16%)!important;
+  grid-template-rows:1fr!important;
+  align-items:stretch!important;
+  justify-items:stretch!important;
+  gap:0!important;
+  padding:0!important;
+  text-align:center!important;
+}
+.page-media .generated-game-meta-block,
+.page-media .generated-game-matchup-block,
+.page-media .generated-game-result-block{
+  min-width:0!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  box-sizing:border-box!important;
+  padding:clamp(8px,1.1vw,14px) clamp(8px,1.2vw,16px)!important;
+  overflow:hidden!important;
+}
+.page-media .generated-game-meta-block{
+  flex-direction:column!important;
+  border-right:1px solid var(--card-accent)!important;
+}
+.page-media .generated-game-meta-block span,
+.page-media .generated-game-meta-block strong{
+  width:100%!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+.page-media .generated-game-meta-block span{
+  color:var(--card-accent)!important;
+  font-size:clamp(.78rem,1.48vw,1.12rem)!important;
+  line-height:1!important;
+  letter-spacing:.075em!important;
+}
+.page-media .generated-game-meta-block strong{
+  margin-top:4px!important;
+  color:#fff!important;
+  font-size:clamp(1rem,1.9vw,1.42rem)!important;
+  line-height:1!important;
+  letter-spacing:.055em!important;
+}
+.page-media .generated-game-matchup-block{
+  flex-direction:row!important;
+  gap:clamp(7px,.8vw,12px)!important;
+  border-right:1px solid var(--card-accent)!important;
+  white-space:nowrap!important;
+}
+.page-media .generated-game-matchup-block strong,
+.page-media .generated-game-matchup-block span{
+  display:block!important;
+  min-width:0!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  font-size:clamp(.82rem,1.55vw,1.18rem)!important;
+  line-height:1!important;
+  letter-spacing:.045em!important;
+  word-spacing:.08em!important;
+}
+.page-media .generated-game-matchup-block strong{
+  flex:0 1 auto!important;
+  color:var(--card-accent)!important;
+}
+.page-media .generated-game-matchup-block span{
+  flex:1 1 auto!important;
+  color:#fff!important;
+}
+.page-media .generated-game-result-block{
+  font-family:Impact,"Arial Narrow",sans-serif!important;
+  white-space:nowrap!important;
+}
+.page-media .generated-game-result-block em{
+  display:block!important;
+  width:100%!important;
+  color:#f5c542!important;
+  font-style:normal!important;
+  font-size:clamp(1rem,1.95vw,1.48rem)!important;
+  line-height:1!important;
+  letter-spacing:.04em!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  text-shadow:0 0 10px rgba(245,197,66,.6),0 2px 4px #000!important;
+}
+
+/* Playlist footer: move the icon/title group farther left, lift the icon
+   slightly, and enlarge the title while preserving long-title fallbacks. */
+.generated-playlist-footer{
+  gap:clamp(9px,1vw,14px)!important;
+  padding:7px clamp(12px,1.4vw,20px)!important;
+}
+.generated-playlist-footer-icon{
+  min-width:clamp(30px,3.2vw,44px)!important;
+  transform:translateY(-2px)!important;
+  font-size:clamp(1.85rem,3.3vw,2.8rem)!important;
+}
+.generated-playlist-footer-title{
+  font-size:clamp(1.62rem,2.9vw,2.45rem)!important;
+  letter-spacing:.035em!important;
+  line-height:1!important;
+}
+.generated-playlist-art.is-long-title .generated-playlist-footer-title{
+  font-size:clamp(1.3rem,2.48vw,2.08rem)!important;
+}
+.generated-playlist-art.is-very-long-title .generated-playlist-footer-title{
+  font-size:clamp(1.12rem,2.18vw,1.82rem)!important;
+}
+
+@media(max-width:800px){
+  .page-media .generated-game-footer{
+    grid-template-columns:minmax(88px,27%) minmax(0,1fr) minmax(64px,18%)!important;
+  }
+  .page-media .generated-game-meta-block,
+  .page-media .generated-game-matchup-block,
+  .page-media .generated-game-result-block{
+    padding:7px 6px!important;
+  }
+  .page-media .generated-game-meta-block span{font-size:clamp(.54rem,1.95vw,.7rem)!important}
+  .page-media .generated-game-meta-block strong{font-size:clamp(.67rem,2.35vw,.88rem)!important}
+  .page-media .generated-game-matchup-block{gap:4px!important}
+  .page-media .generated-game-matchup-block strong,
+  .page-media .generated-game-matchup-block span{font-size:clamp(.52rem,1.9vw,.7rem)!important}
+  .page-media .generated-game-result-block em{font-size:clamp(.65rem,2.35vw,.9rem)!important}
+  .generated-playlist-footer{gap:7px!important;padding:6px 9px!important}
+  .generated-playlist-footer-icon{
+    min-width:26px!important;
+    transform:translateY(-1px)!important;
+    font-size:clamp(1.2rem,5.4vw,1.62rem)!important;
+  }
+  .generated-playlist-footer-title{font-size:clamp(1.04rem,4.7vw,1.46rem)!important}
+  .generated-playlist-art.is-long-title .generated-playlist-footer-title{font-size:clamp(.88rem,4.15vw,1.24rem)!important}
+  .generated-playlist-art.is-very-long-title .generated-playlist-footer-title{font-size:clamp(.76rem,3.65vw,1.08rem)!important}
+}
