@@ -1598,7 +1598,7 @@
       "name": "Neptune",
       "number": "22",
       "position": "CB",
-      "photo": "images/team/player/neptune.png",
+      "photo": "images/team/players/neptune.png",
       "status": "published",
       "order": 1
     },
@@ -1607,7 +1607,7 @@
       "name": "Cristiano",
       "number": "7",
       "position": "LW",
-      "photo": "images/team/player/ronaldo.png",
+      "photo": "images/team/players/ronaldo.png",
       "status": "published",
       "order": 2
     },
@@ -1616,7 +1616,7 @@
       "name": "Lionel",
       "number": "10",
       "position": "CF",
-      "photo": "images/team/player/messi.png",
+      "photo": "images/team/players/messi.png",
       "status": "published",
       "order": 3
     },
@@ -1625,7 +1625,7 @@
       "name": "Zlatan",
       "number": "9",
       "position": "ST",
-      "photo": "images/team/player/zlatan.png",
+      "photo": "images/team/players/zlatan.png",
       "status": "published",
       "order": 4
     },
@@ -1634,7 +1634,7 @@
       "name": "Lamine",
       "number": "5",
       "position": "LW",
-      "photo": "images/team/player/yamal.png",
+      "photo": "images/team/players/yamal.png",
       "status": "published",
       "order": 5
     },
