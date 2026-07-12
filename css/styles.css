@@ -12848,3 +12848,191 @@ body.lightbox-open {
   .generated-season-footer,
   .generated-card-footer { height: 68px !important; min-height: 68px !important; }
 }
+
+/* ============================================================
+   V103 — FINAL MOBILE CAROUSEL GEOMETRY FIX
+   Rebuilds phone carousel positioning without changing desktop.
+   ============================================================ */
+@media (max-width: 760px) {
+  /* Every non-roster showcase gets one compact, card-sized stage. */
+  .page-home .homepage-media-carousel,
+  .page-media .media-games-carousel,
+  .page-media .media-season-carousel,
+  .page-media .media-playlist-carousel {
+    position: relative !important;
+    width: calc(100% - 24px) !important;
+    height: 500px !important;
+    min-height: 500px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .page-home .homepage-media-carousel .carousel-track,
+  .page-media .media-games-carousel .carousel-track,
+  .page-media .media-season-carousel .carousel-track,
+  .page-media .media-playlist-carousel .carousel-track {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    transform: none !important;
+    overflow: visible !important;
+  }
+
+  /* Normalize all slide boxes first. */
+  .page-home .homepage-media-carousel .media-slide,
+  .page-media .media-games-carousel .media-slide,
+  .page-media .media-season-carousel .media-slide,
+  .page-media .media-playlist-carousel .media-slide {
+    position: absolute !important;
+    left: 50% !important;
+    top: 42% !important;
+    width: min(86vw, 610px) !important;
+    max-width: calc(100% - 42px) !important;
+    height: auto !important;
+    margin: 0 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transition: transform .42s ease, opacity .42s ease !important;
+  }
+
+  /* Homepage offsets. */
+  .page-home .homepage-media-carousel .media-slide {
+    transform: translate(calc(-50% + (var(--home-offset, 0) * 72vw)), -50%) scale(.76) !important;
+  }
+  .page-home .homepage-media-carousel .media-slide.is-active {
+    transform: translate(-50%, -50%) scale(1) !important;
+  }
+  .page-home .homepage-media-carousel .media-slide.is-neighbor {
+    transform: translate(calc(-50% + (var(--home-offset, 0) * 72vw)), -50%) scale(.76) !important;
+  }
+
+  /* Media-page offsets. */
+  .page-media .media-games-carousel .media-slide,
+  .page-media .media-season-carousel .media-slide,
+  .page-media .media-playlist-carousel .media-slide {
+    transform: translate(calc(-50% + (var(--media-offset, 0) * 72vw)), -50%) scale(.76) !important;
+  }
+  .page-media .media-games-carousel .media-slide.is-active,
+  .page-media .media-season-carousel .media-slide.is-active,
+  .page-media .media-playlist-carousel .media-slide.is-active {
+    transform: translate(-50%, -50%) scale(1) !important;
+  }
+  .page-media .media-games-carousel .media-slide.is-neighbor,
+  .page-media .media-season-carousel .media-slide.is-neighbor,
+  .page-media .media-playlist-carousel .media-slide.is-neighbor {
+    transform: translate(calc(-50% + (var(--media-offset, 0) * 72vw)), -50%) scale(.76) !important;
+  }
+
+  .page-home .homepage-media-carousel .media-slide.is-active,
+  .page-home .homepage-media-carousel .media-slide.is-neighbor,
+  .page-media .media-games-carousel .media-slide.is-active,
+  .page-media .media-games-carousel .media-slide.is-neighbor,
+  .page-media .media-season-carousel .media-slide.is-active,
+  .page-media .media-season-carousel .media-slide.is-neighbor,
+  .page-media .media-playlist-carousel .media-slide.is-active,
+  .page-media .media-playlist-carousel .media-slide.is-neighbor {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  .page-home .homepage-media-carousel .media-slide.is-active,
+  .page-media .media-games-carousel .media-slide.is-active,
+  .page-media .media-season-carousel .media-slide.is-active,
+  .page-media .media-playlist-carousel .media-slide.is-active {
+    z-index: 8 !important;
+    pointer-events: auto !important;
+  }
+  .page-home .homepage-media-carousel .media-slide.is-neighbor,
+  .page-media .media-games-carousel .media-slide.is-neighbor,
+  .page-media .media-season-carousel .media-slide.is-neighbor,
+  .page-media .media-playlist-carousel .media-slide.is-neighbor {
+    z-index: 2 !important;
+    opacity: .22 !important;
+  }
+
+  /* Keep the complete card inside the stage. */
+  .generated-wide-card,
+  .generated-playlist-art {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+  }
+  .generated-playlist-image,
+  .generated-wide-visual {
+    background-size: cover !important;
+    background-position: center !important;
+  }
+
+  /* Arrows sit beside the active card, dots directly below it. */
+  .page-home .homepage-media-carousel .carousel-button,
+  .page-media .media-games-carousel .carousel-button,
+  .page-media .media-season-carousel .carousel-button,
+  .page-media .media-playlist-carousel .carousel-button {
+    top: 42% !important;
+    width: 52px !important;
+    height: 52px !important;
+    transform: translateY(-50%) !important;
+    z-index: 20 !important;
+  }
+  .page-home .homepage-media-carousel .carousel-button.prev,
+  .page-media .media-games-carousel .carousel-button.prev,
+  .page-media .media-season-carousel .carousel-button.prev,
+  .page-media .media-playlist-carousel .carousel-button.prev { left: 7px !important; }
+  .page-home .homepage-media-carousel .carousel-button.next,
+  .page-media .media-games-carousel .carousel-button.next,
+  .page-media .media-season-carousel .carousel-button.next,
+  .page-media .media-playlist-carousel .carousel-button.next { right: 7px !important; }
+
+  .page-home .homepage-media-carousel .carousel-dots,
+  .page-media .media-games-carousel .carousel-dots,
+  .page-media .media-season-carousel .carousel-dots,
+  .page-media .media-playlist-carousel .carousel-dots {
+    position: absolute !important;
+    left: 50% !important;
+    bottom: 24px !important;
+    transform: translateX(-50%) !important;
+    width: auto !important;
+    max-width: calc(100% - 54px) !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scrollbar-width: none !important;
+    z-index: 22 !important;
+  }
+  .page-home .homepage-media-carousel .carousel-dots::-webkit-scrollbar,
+  .page-media .media-games-carousel .carousel-dots::-webkit-scrollbar,
+  .page-media .media-season-carousel .carousel-dots::-webkit-scrollbar,
+  .page-media .media-playlist-carousel .carousel-dots::-webkit-scrollbar { display: none !important; }
+
+  /* Compact footer typography so no card is clipped. */
+  .generated-game-footer { height: 74px !important; min-height: 74px !important; }
+  .generated-season-footer { height: 64px !important; min-height: 64px !important; }
+  .generated-playlist-footer { height: 70px !important; min-height: 70px !important; }
+  .generated-game-meta-block span,
+  .generated-game-matchup-block strong,
+  .generated-game-result-block strong { font-size: clamp(.64rem, 2.9vw, .84rem) !important; }
+  .generated-game-meta-block strong,
+  .generated-game-matchup-block span,
+  .generated-game-result-block em { font-size: clamp(.72rem, 3.25vw, .94rem) !important; }
+}
+
+@media (max-width: 390px) {
+  .page-home .homepage-media-carousel,
+  .page-media .media-games-carousel,
+  .page-media .media-season-carousel,
+  .page-media .media-playlist-carousel {
+    height: 470px !important;
+    min-height: 470px !important;
+  }
+  .page-home .homepage-media-carousel .media-slide,
+  .page-media .media-games-carousel .media-slide,
+  .page-media .media-season-carousel .media-slide,
+  .page-media .media-playlist-carousel .media-slide {
+    width: min(88vw, 560px) !important;
+    max-width: calc(100% - 30px) !important;
+  }
+}
