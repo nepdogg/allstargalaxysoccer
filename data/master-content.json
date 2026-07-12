@@ -1221,7 +1221,7 @@
         "home-best",
         "media-archive"
       ],
-      "status": "published",
+      "status": "hidden",
       "order": 6
     },
     {
@@ -1247,7 +1247,7 @@
         "home-best",
         "media-archive"
       ],
-      "status": "published",
+      "status": "hidden",
       "order": 8
     },
     {
@@ -1325,7 +1325,7 @@
         "home-best",
         "media-archive"
       ],
-      "status": "published",
+      "status": "hidden",
       "order": 14
     },
     {
@@ -1338,7 +1338,7 @@
         "home-best",
         "media-archive"
       ],
-      "status": "published",
+      "status": "hidden",
       "order": 15
     },
     {
@@ -1351,7 +1351,7 @@
         "home-best",
         "media-archive"
       ],
-      "status": "published",
+      "status": "hidden",
       "order": 16
     },
     {
@@ -1364,7 +1364,7 @@
         "home-best",
         "media-archive"
       ],
-      "status": "published",
+      "status": "hidden",
       "order": 17
     },
     {
@@ -1377,7 +1377,7 @@
         "home-best",
         "media-archive"
       ],
-      "status": "published",
+      "status": "hidden",
       "order": 18
     },
     {
@@ -1390,7 +1390,7 @@
         "home-best",
         "media-archive"
       ],
-      "status": "published",
+      "status": "hidden",
       "order": 19
     },
     {
@@ -1403,7 +1403,7 @@
         "home-best",
         "media-archive"
       ],
-      "status": "published",
+      "status": "hidden",
       "order": 20
     },
     {
@@ -1416,7 +1416,7 @@
         "home-best",
         "media-archive"
       ],
-      "status": "published",
+      "status": "hidden",
       "order": 21
     },
     {
@@ -1429,7 +1429,7 @@
         "home-best",
         "media-archive"
       ],
-      "status": "published",
+      "status": "hidden",
       "order": 22
     },
     {
@@ -1442,7 +1442,7 @@
         "home-best",
         "media-archive"
       ],
-      "status": "published",
+      "status": "hidden",
       "order": 23
     },
     {
@@ -1507,7 +1507,7 @@
         "home-best",
         "media-archive"
       ],
-      "status": "published",
+      "status": "hidden",
       "order": 28
     },
     {
@@ -1517,7 +1517,6 @@
       "url": "https://youtube.com/playlist?list=PLQXB02gCqUmc&si=8knj3jO2801AAalt",
       "category": "core",
       "locations": [
-        "media-archive",
         "season-archive",
         "latest-season-playlists"
       ],
@@ -1531,7 +1530,6 @@
       "url": "https://youtube.com/playlist?list=PLH0LZ2QuNj3g&si=h0D-OFtnc2cnTj8h",
       "category": "core",
       "locations": [
-        "media-archive",
         "season-archive",
         "latest-season-playlists"
       ],
@@ -1545,7 +1543,6 @@
       "url": "https://youtube.com/playlist?list=PLX9TIVWlcYG4&si=9Tc2ozBEACJgE02q",
       "category": "core",
       "locations": [
-        "media-archive",
         "season-archive",
         "latest-season-playlists"
       ],
@@ -1559,10 +1556,9 @@
       "url": "https://youtube.com/playlist?list=PLVwILpeVjHX4&si=C9beS7dCHH-c-jZW",
       "category": "core",
       "locations": [
-        "media-archive",
         "season-archive"
       ],
-      "status": "published",
+      "status": "hidden",
       "order": 32
     },
     {
@@ -1572,10 +1568,9 @@
       "url": "https://youtube.com/playlist?list=PLXmsfx9ciIqE&si=QD25bCGmUs32NjJ9",
       "category": "core",
       "locations": [
-        "media-archive",
         "season-archive"
       ],
-      "status": "published",
+      "status": "hidden",
       "order": 33
     },
     {
@@ -1585,10 +1580,9 @@
       "url": "https://youtube.com/playlist?list=PLfhTCGgsBWKs&si=rX3CFUNV9ChIr2VE",
       "category": "core",
       "locations": [
-        "media-archive",
         "season-archive"
       ],
-      "status": "published",
+      "status": "hidden",
       "order": 34
     }
   ],
