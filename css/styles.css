@@ -11592,3 +11592,81 @@ body.lightbox-open {
   .page-media .generated-game-matchup-block span,
   .page-media .generated-game-matchup-block em{font-size:clamp(.54rem,1.92vw,.72rem)!important}
 }
+
+/* ============================================================
+   V94 — PLAYLIST FILL/ALIGNMENT & GAME FOOTER SCALE
+   ============================================================ */
+
+/* Fill the playlist image window completely without leaving black bars.
+   The reusable artwork is intentionally stretched to the card viewport so
+   the full composition remains visible edge-to-edge. */
+.generated-playlist-image{
+  background-size:100% 100%!important;
+  background-position:center center!important;
+  background-repeat:no-repeat!important;
+  background-color:#020204!important;
+}
+
+/* Keep the icon and playlist name as one balanced footer group:
+   a centered icon column followed immediately by a centered title area. */
+.generated-playlist-footer{
+  display:grid!important;
+  grid-template-columns:clamp(62px,6.8vw,86px) minmax(0,1fr)!important;
+  align-items:center!important;
+  justify-items:stretch!important;
+  column-gap:clamp(10px,1.4vw,18px)!important;
+  padding-left:clamp(14px,1.8vw,24px)!important;
+  padding-right:clamp(18px,2.2vw,30px)!important;
+}
+.generated-playlist-footer::after{display:none!important;content:none!important}
+.generated-playlist-footer-icon{
+  grid-column:1!important;
+  align-self:center!important;
+  justify-self:center!important;
+  margin:0!important;
+}
+.generated-playlist-footer-title{
+  grid-column:2!important;
+  align-self:stretch!important;
+  justify-self:stretch!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  text-align:center!important;
+  width:100%!important;
+  min-width:0!important;
+  margin:0!important;
+  padding:0!important;
+  line-height:1.02!important;
+}
+
+/* Use the remaining room in the game footer more confidently. */
+.page-media .generated-game-meta-block span{
+  font-size:clamp(.82rem,1.72vw,1.28rem)!important;
+  line-height:1.02!important;
+}
+.page-media .generated-game-meta-block strong{
+  font-size:clamp(1rem,1.98vw,1.46rem)!important;
+  line-height:1!important;
+}
+.page-media .generated-game-matchup-block strong,
+.page-media .generated-game-matchup-block span,
+.page-media .generated-game-matchup-block em{
+  font-size:clamp(.77rem,1.5vw,1.1rem)!important;
+  line-height:1.08!important;
+}
+
+@media(max-width:800px){
+  .generated-playlist-footer{
+    grid-template-columns:40px minmax(0,1fr)!important;
+    column-gap:8px!important;
+    padding-left:9px!important;
+    padding-right:11px!important;
+  }
+  .generated-playlist-footer-icon{width:36px!important}
+  .page-media .generated-game-meta-block span{font-size:clamp(.61rem,2.15vw,.79rem)!important}
+  .page-media .generated-game-meta-block strong{font-size:clamp(.75rem,2.55vw,.98rem)!important}
+  .page-media .generated-game-matchup-block strong,
+  .page-media .generated-game-matchup-block span,
+  .page-media .generated-game-matchup-block em{font-size:clamp(.57rem,2.05vw,.76rem)!important}
+}
