@@ -570,19 +570,19 @@
       "fullMatches": "https://youtube.com/playlist?list=PLVwILpeVjHX4&si=C9beS7dCHH-c-jZW",
       "highlights": "https://youtube.com/playlist?list=PLXmsfx9ciIqE&si=QD25bCGmUs32NjJ9",
       "slideshows": "https://youtube.com/playlist?list=PLfhTCGgsBWKs&si=rX3CFUNV9ChIr2VE",
-      "status": "published",
+      "status": "hidden",
       "order": 2
     },
     {
       "id": "season-03",
-      "title": "Future Season",
+      "title": "Past Season",
       "subtitle": "Coming Soon",
       "dateRange": "",
       "league": "Sunnyvale Soccer League",
       "fullMatches": "",
       "highlights": "",
       "slideshows": "",
-      "status": "hidden",
+      "status": "published",
       "order": 3
     },
     {
