@@ -216,9 +216,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         function showPlayerCard(index) {
             activePlayerIndex = (index + playerCards.length) % playerCards.length;
             const selectedCard = playerCards[activePlayerIndex];
-            const selectedImage = selectedCard.querySelector("img");
-            const imageSrc = selectedCard.getAttribute("href") || selectedImage?.getAttribute("src");
-            const imageAlt = selectedImage?.getAttribute("alt") || `Allstar Galaxy player card ${activePlayerIndex + 1}`;
+            const selectedImage = selectedCard.querySelector(".generated-player-photo, .generated-player-placeholder img, img");
+            const imageSrc = selectedCard.dataset.playerImage || selectedCard.getAttribute("href") || selectedImage?.getAttribute("src");
+            const imageAlt = selectedCard.dataset.playerName || selectedImage?.getAttribute("alt") || `Allstar Galaxy player card ${activePlayerIndex + 1}`;
 
             if (!imageSrc || !lightboxImage) return;
 

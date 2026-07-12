@@ -1,6 +1,16 @@
 (() => {
   const DATA_URL = 'data/master-content.json';
   const esc = (v='') => String(v).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+  const pngOnlyPath = (value='') => {
+    const path = String(value || '').trim();
+    if (!path) return '';
+    const match = path.match(/^([^?#]*)([?#].*)?$/);
+    const base = match ? match[1] : path;
+    const suffix = match && match[2] ? match[2] : '';
+    if (/\.(png)$/i.test(base)) return base.replace(/\.png$/i, '.png') + suffix;
+    if (/\.(jpe?g|webp|gif|avif)$/i.test(base)) return base.replace(/\.(jpe?g|webp|gif|avif)$/i, '.png') + suffix;
+    return /\.[a-z0-9]+$/i.test(base) ? base + suffix : `${base}.png${suffix}`;
+  };
   const isVisible = item => item && item.status !== 'hidden';
   const sortItems = items => [...items].filter(isVisible).sort((a,b)=>(a.order||0)-(b.order||0));
   const linkAttrs = url => url && url !== '#' ? `href="${esc(url)}" target="_blank" rel="noopener"` : 'href="#" class="generated-disabled" aria-disabled="true"';
@@ -26,7 +36,7 @@
     const length=String(title||'').trim().length;
     const sizeClass=length>28?' is-very-long-title':(length>18?' is-long-title':'');
     return `<div class="generated-playlist-art${sizeClass}" style="--card-accent:${color}">
-      <div class="generated-playlist-image" style="background-image:url('${esc(data.assets.mediaBackground)}')"></div>
+      <div class="generated-playlist-image" style="background-image:url('${esc(pngOnlyPath(data.assets.mediaBackground))}')"></div>
       <div class="generated-playlist-footer">
         <span class="generated-playlist-footer-icon">${iconFor(category)}</span>
         <span class="generated-playlist-footer-title">${esc(title)}</span>
@@ -44,7 +54,7 @@
     ];
     return `<a href="#" class="media-slide media-game-slide generated-game-card" aria-label="Open ${esc(title)}" data-game-title="${esc(title)}" data-game-opponent="Allstar Galaxy vs ${esc(g.opponent||'Coming Soon')}" data-game-result="${esc(result)}" data-full="${esc(g.fullMatch||'')}" data-highlights="${esc(g.highlights||'')}" data-slideshow="${esc(g.slideshow||'')}">
       <div class="generated-wide-card generated-game-layout" style="--card-accent:${mediaBlue}">
-        <section class="generated-wide-visual" style="background-image:url('${esc(data.assets.mediaBackground)}')"></section>
+        <section class="generated-wide-visual" style="background-image:url('${esc(pngOnlyPath(data.assets.mediaBackground))}')"></section>
         <section class="generated-wide-actions">${actionRows(rows)}</section>
         <footer class="generated-card-footer generated-game-footer">
           <div class="generated-game-meta-block">
@@ -68,7 +78,7 @@
     ];
     return `<a href="#" class="media-slide season-archive-slide media-game-slide generated-season-card" aria-label="Open ${esc(s.title)} archive" data-game-title="${esc(s.title)} Season Archive" data-game-opponent="Full Matches • Highlights • Slideshows" data-game-result="${esc(s.subtitle||'Season Archive')}" data-full="${esc(s.fullMatches||'')}" data-highlights="${esc(s.highlights||'')}" data-slideshow="${esc(s.slideshows||'')}" data-full-label="▶ Full Matches" data-highlights-label="▣ Highlights" data-slideshow-label="▧ Slideshows">
       <div class="generated-wide-card generated-season-layout" style="--card-accent:${mediaBlue}">
-        <section class="generated-wide-visual generated-season-visual" style="background-image:url('${esc(data.assets.mediaBackground)}')"></section>
+        <section class="generated-wide-visual generated-season-visual" style="background-image:url('${esc(pngOnlyPath(data.assets.mediaBackground))}')"></section>
         <section class="generated-wide-actions">${actionRows(rows)}</section>
         <footer class="generated-card-footer generated-season-footer">${esc(s.title)}</footer>
       </div></a>`;
@@ -81,19 +91,23 @@
   }
   function playerCard(data,p){
     const accent=colorFor(data,'players');
-    const photo=p.photo?`<img class="generated-player-photo" src="${esc(p.photo)}" alt="${esc(p.name)}"/>`:`<div class="generated-player-placeholder"><img src="${esc(data.assets.logo)}" alt="Allstar Galaxy logo"><span>PLAYER PHOTO<br>COMING SOON</span></div>`;
-    return `<a href="#" class="team-card-slide generated-player-card" aria-label="${esc(p.name)} player card" style="--card-accent:${accent}">
+    const photoPath=pngOnlyPath(p.photo||'');
+    const fallbackLogo=pngOnlyPath(data.assets.logo||'');
+    const lightboxPath=photoPath||fallbackLogo;
+    const photo=photoPath
+      ? `<img class="generated-player-photo" src="${esc(photoPath)}" alt="${esc(p.name)}" loading="lazy"/>`
+      : `<div class="generated-player-placeholder"><img src="${esc(fallbackLogo)}" alt="Allstar Galaxy logo"><span>PLAYER PHOTO<br>COMING SOON</span></div>`;
+    return `<a href="${esc(lightboxPath||'#')}" class="team-card-slide generated-player-card" aria-label="${esc(p.name)} player card" data-player-image="${esc(lightboxPath)}" data-player-name="${esc(p.name)}" style="--card-accent:${accent}">
       <div class="generated-player-frame">
-        <div class="generated-player-cosmos" style="background-image:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.12)),url('${esc(data.assets.mediaBackground)}')"></div>
+        <div class="generated-player-cosmos" style="background-image:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.12)),url('${esc(pngOnlyPath(data.assets.mediaBackground))}')"></div>
         ${photo}
-        <img class="generated-player-logo" src="${esc(data.assets.logo)}" alt="">
         <div class="generated-player-number">${esc(p.number||'')}</div>
         <div class="generated-player-info"><span>${esc(p.name||'COMING SOON')}</span>${p.position && !/roster spot/i.test(p.position)?`<strong>${esc(p.position)}</strong>`:''}</div>
       </div></a>`;
   }
   function newsCard(data,n){
     const accent=colorFor(data,'news'); const tag=n.link?'a':'article'; const attrs=n.link?`href="${esc(n.link)}" target="_blank" rel="noopener"`:'';
-    return `<${tag} class="generated-news-card" ${attrs} style="--card-accent:${accent}"><img src="${esc(data.assets.logo)}" alt=""><div><small>${esc(n.date||n.category||'ALLSTAR GALAXY NEWS')}</small><h3>${esc(n.title)}</h3><p>${esc(n.summary)}</p></div></${tag}>`;
+    return `<${tag} class="generated-news-card" ${attrs} style="--card-accent:${accent}"><img src="${esc(pngOnlyPath(data.assets.logo))}" alt=""><div><small>${esc(n.date||n.category||'ALLSTAR GALAXY NEWS')}</small><h3>${esc(n.title)}</h3><p>${esc(n.summary)}</p></div></${tag}>`;
   }
   function scheduleMarkup(data){
     const matches=sortItems(data.schedule);
@@ -101,7 +115,7 @@
     const standings=(data.standings||[]).filter(isVisible).map(r=>`<tr><td>${esc(r.position)}</td><td>${esc(r.team)}</td><td>${esc(r.played)}</td><td>${esc(r.wins)}</td><td>${esc(r.draws)}</td><td>${esc(r.losses)}</td><td>${esc(r.points)}</td></tr>`).join('');
     return `<div class="generated-schedule-grid"><section><h2>Match Schedule</h2>${rows}</section><section><h2>League Standings</h2><div class="generated-table-wrap"><table><thead><tr><th>#</th><th>Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>Pts</th></tr></thead><tbody>${standings}</tbody></table></div></section></div>`;
   }
-  function liveMarkup(data){const l=data.live||{};return `<div class="generated-live-card"><img src="${esc(data.assets.logo)}" alt="Allstar Galaxy"><span>${esc((l.status||'offline').toUpperCase())}</span><h2>${esc(l.title||'Livestream Coming Soon')}</h2><p>${esc(l.description||'')}</p>${l.url?`<a href="${esc(l.url)}" target="_blank" rel="noopener">WATCH LIVE</a>`:''}</div>`}
+  function liveMarkup(data){const l=data.live||{};return `<div class="generated-live-card"><img src="${esc(pngOnlyPath(data.assets.logo))}" alt="Allstar Galaxy"><span>${esc((l.status||'offline').toUpperCase())}</span><h2>${esc(l.title||'Livestream Coming Soon')}</h2><p>${esc(l.description||'')}</p>${l.url?`<a href="${esc(l.url)}" target="_blank" rel="noopener">WATCH LIVE</a>`:''}</div>`}
   function render(data){
     document.querySelectorAll('[data-generated-source]').forEach(el=>{
       const source=el.dataset.generatedSource;
