@@ -11156,3 +11156,158 @@ body.lightbox-open {
   .generated-playlist-footer-icon{width:34px!important;font-size:.95rem!important}
   .generated-playlist-footer-title{font-size:clamp(.85rem,4.2vw,1.35rem)!important}
 }
+
+/* ============================================================
+   V90 — FINAL SIMPLIFIED CARD LAYOUT
+   Divider-only action panel, structured game footer, uncropped playlist art,
+   and restored breathing room beneath the News section.
+   ============================================================ */
+
+/* Action panel: remove individual button boxes and use only two separators. */
+.page-media .generated-wide-actions{
+  padding:0!important;
+  background:linear-gradient(180deg,rgba(4,13,18,.98),rgba(1,5,8,.98))!important;
+}
+.page-media .generated-action-list{
+  gap:0!important;
+  grid-template-rows:repeat(3,minmax(0,1fr))!important;
+}
+.page-media .generated-action-row{
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  background:transparent!important;
+  padding:clamp(8px,1.4vw,18px) clamp(6px,1vw,12px)!important;
+  gap:clamp(6px,.9vw,12px)!important;
+}
+.page-media .generated-action-row + .generated-action-row{
+  border-top:1px solid color-mix(in srgb,var(--card-accent) 72%,transparent)!important;
+}
+.page-media .generated-action-row:hover{
+  background:color-mix(in srgb,var(--card-accent) 8%,transparent)!important;
+}
+.page-media .generated-action-icon{
+  box-shadow:0 0 12px color-mix(in srgb,var(--card-accent) 65%,transparent)!important;
+}
+.page-media .generated-action-copy strong{
+  font-size:clamp(.72rem,1.2vw,1.08rem)!important;
+  line-height:1!important;
+}
+
+/* Game footer follows the final sketch: season/game block at left,
+   matchup/result block across the remaining width. */
+.page-media .generated-game-footer{
+  display:grid!important;
+  grid-template-columns:minmax(130px,28%) minmax(0,72%)!important;
+  align-items:stretch!important;
+  padding:0!important;
+  text-align:left!important;
+}
+.page-media .generated-game-meta-block,
+.page-media .generated-game-matchup-block{
+  min-width:0!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  box-sizing:border-box!important;
+}
+.page-media .generated-game-meta-block{
+  flex-direction:column!important;
+  gap:2px!important;
+  padding:clamp(7px,.9vw,11px) clamp(9px,1.1vw,14px)!important;
+  border-right:1px solid color-mix(in srgb,var(--card-accent) 72%,transparent)!important;
+  color:var(--card-accent)!important;
+  font-family:Impact,"Arial Narrow",sans-serif!important;
+  text-transform:uppercase!important;
+  letter-spacing:.045em!important;
+}
+.page-media .generated-game-meta-block span{
+  font-size:clamp(.68rem,1.12vw,1rem)!important;
+  line-height:1!important;
+}
+.page-media .generated-game-meta-block strong{
+  font-size:clamp(.9rem,1.45vw,1.3rem)!important;
+  line-height:1!important;
+}
+.page-media .generated-game-matchup-block{
+  flex-wrap:wrap!important;
+  gap:clamp(5px,.65vw,10px)!important;
+  padding:clamp(8px,1vw,12px) clamp(10px,1.5vw,18px)!important;
+  color:#fff!important;
+  font-family:Impact,"Arial Narrow",sans-serif!important;
+  text-transform:uppercase!important;
+  letter-spacing:.025em!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+}
+.page-media .generated-game-matchup-block strong,
+.page-media .generated-game-matchup-block span,
+.page-media .generated-game-matchup-block em{
+  font-size:clamp(.68rem,1.25vw,1.1rem)!important;
+  line-height:1!important;
+  font-style:normal!important;
+  text-overflow:ellipsis!important;
+  overflow:hidden!important;
+}
+.page-media .generated-game-matchup-block span:before{
+  content:"•";
+  color:var(--card-accent);
+  margin-right:clamp(5px,.55vw,9px);
+}
+.page-media .generated-game-matchup-block em{
+  color:var(--card-accent)!important;
+}
+
+/* Season title stays bold but leaves more air. */
+.page-media .generated-season-footer{
+  font-size:clamp(1.45rem,3vw,2.85rem)!important;
+  padding:clamp(8px,1vw,12px) 4%!important;
+}
+
+/* Playlist cards: show the complete image and let titles wrap instead of clipping. */
+.generated-playlist-art{
+  background-size:contain!important;
+  background-position:center top!important;
+  background-color:#020204!important;
+  grid-template-rows:minmax(0,1fr) clamp(74px,21%,108px)!important;
+}
+.generated-playlist-art:before{
+  inset:0 0 clamp(74px,21%,108px) 0!important;
+  background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.03))!important;
+}
+.generated-playlist-footer{
+  min-height:74px!important;
+  padding:clamp(9px,1.35vw,15px) clamp(12px,1.8vw,20px)!important;
+}
+.generated-playlist-footer-title{
+  font-size:clamp(.95rem,2.05vw,1.9rem)!important;
+  line-height:1.02!important;
+  white-space:normal!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+  overflow-wrap:anywhere!important;
+  display:-webkit-box!important;
+  -webkit-box-orient:vertical!important;
+  -webkit-line-clamp:2!important;
+}
+
+/* News page: preserve space between the final card and the footer. */
+.page-news #news{
+  padding-bottom:clamp(48px,6vw,84px)!important;
+}
+
+@media(max-width:800px){
+  .page-media .generated-game-footer{
+    grid-template-columns:34% 66%!important;
+  }
+  .page-media .generated-game-meta-block span{font-size:clamp(.48rem,1.7vw,.65rem)!important}
+  .page-media .generated-game-meta-block strong{font-size:clamp(.6rem,2vw,.78rem)!important}
+  .page-media .generated-game-matchup-block{gap:4px!important;padding:6px 7px!important}
+  .page-media .generated-game-matchup-block strong,
+  .page-media .generated-game-matchup-block span,
+  .page-media .generated-game-matchup-block em{font-size:clamp(.45rem,1.65vw,.62rem)!important}
+  .page-media .generated-season-footer{font-size:clamp(1rem,4.1vw,1.5rem)!important}
+  .generated-playlist-art{grid-template-rows:minmax(0,1fr) 66px!important}
+  .generated-playlist-art:before{inset:0 0 66px 0!important}
+  .generated-playlist-footer-title{font-size:clamp(.78rem,3.8vw,1.18rem)!important}
+}
