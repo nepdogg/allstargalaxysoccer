@@ -18,18 +18,16 @@
       return `<div class="generated-action-row ${active?'':'is-pending'}" style="--row-accent:${item.color}">
         <span class="generated-action-icon">${item.icon}</span>
         <span class="generated-action-copy"><strong>${esc(item.label)}</strong></span>
-        <span class="generated-action-arrow">›</span>
       </div>`;
     }).join('')}</div>`;
   }
   function mediaArt(data, title, category) {
     const color=colorFor(data,category);
-    return `<div class="generated-playlist-art" style="--card-accent:${color};background-image:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.18) 50%,rgba(0,0,0,.94) 82%),url('${esc(data.assets.mediaBackground)}')">
-      <div class="generated-playlist-content">
-        <div class="generated-playlist-icon">${iconFor(category)}</div>
-        <div class="generated-playlist-text"><div class="generated-card-title">${esc(title)}</div></div>
+    return `<div class="generated-playlist-art" style="--card-accent:${color};background-image:url('${esc(data.assets.mediaBackground)}')">
+      <div class="generated-playlist-footer">
+        <span class="generated-playlist-footer-icon">${iconFor(category)}</span>
+        <span class="generated-playlist-footer-title">${esc(title)}</span>
       </div>
-      <div class="generated-card-cta"><span>▶</span> WATCH PLAYLIST</div>
     </div>`;
   }
   function gameCard(data,g){
