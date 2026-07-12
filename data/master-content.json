@@ -575,14 +575,14 @@
     },
     {
       "id": "season-03",
-      "title": "Future Season",
+      "title": "Past Seasons",
       "subtitle": "Coming Soon",
       "dateRange": "",
       "league": "Sunnyvale Soccer League",
       "fullMatches": "",
       "highlights": "",
       "slideshows": "",
-      "status": "hidden",
+      "status": "published",
       "order": 3
     },
     {
@@ -1604,38 +1604,38 @@
     },
     {
       "id": "player-02",
-      "name": "Coming Soon",
-      "number": "2",
-      "position": "Roster Spot",
-      "photo": "",
-      "status": "placeholder",
+      "name": "Messi",
+      "number": "10",
+      "position": "CF",
+      "photo": "images/team/player/messi.jpg",
+      "status": "published",
       "order": 2
     },
     {
       "id": "player-03",
-      "name": "Coming Soon",
-      "number": "3",
-      "position": "Roster Spot",
-      "photo": "",
-      "status": "placeholder",
+      "name": "Zlatan",
+      "number": "9",
+      "position": "ST",
+      "photo": "images/team/player/zlatan.jpg",
+      "status": "published",
       "order": 3
     },
     {
       "id": "player-04",
-      "name": "Coming Soon",
-      "number": "4",
-      "position": "Roster Spot",
-      "photo": "",
-      "status": "placeholder",
+      "name": "Ronaldo",
+      "number": "7",
+      "position": "LW",
+      "photo": "images/team/player/ronaldo.jpg",
+      "status": "published",
       "order": 4
     },
     {
       "id": "player-05",
-      "name": "Coming Soon",
+      "name": "Yamal",
       "number": "5",
-      "position": "Roster Spot",
-      "photo": "",
-      "status": "placeholder",
+      "position": "LW",
+      "photo": "images/team/player/yamal.jpg",
+      "status": "published",
       "order": 5
     },
     {
@@ -1644,7 +1644,7 @@
       "number": "6",
       "position": "Roster Spot",
       "photo": "",
-      "status": "placeholder",
+      "status": "hidden",
       "order": 6
     },
     {
@@ -1653,7 +1653,7 @@
       "number": "7",
       "position": "Roster Spot",
       "photo": "",
-      "status": "placeholder",
+      "status": "hidden",
       "order": 7
     },
     {
@@ -1662,7 +1662,7 @@
       "number": "8",
       "position": "Roster Spot",
       "photo": "",
-      "status": "placeholder",
+      "status": "hidden",
       "order": 8
     },
     {
@@ -1671,7 +1671,7 @@
       "number": "9",
       "position": "Roster Spot",
       "photo": "",
-      "status": "placeholder",
+      "status": "hidden",
       "order": 9
     },
     {
@@ -1680,7 +1680,7 @@
       "number": "10",
       "position": "Roster Spot",
       "photo": "",
-      "status": "placeholder",
+      "status": "hidden",
       "order": 10
     },
     {
@@ -1689,7 +1689,7 @@
       "number": "11",
       "position": "Roster Spot",
       "photo": "",
-      "status": "placeholder",
+      "status": "hidden",
       "order": 11
     },
     {
@@ -1698,7 +1698,7 @@
       "number": "12",
       "position": "Roster Spot",
       "photo": "",
-      "status": "placeholder",
+      "status": "hidden",
       "order": 12
     },
     {
@@ -1707,7 +1707,7 @@
       "number": "13",
       "position": "Roster Spot",
       "photo": "",
-      "status": "placeholder",
+      "status": "hidden",
       "order": 13
     },
     {
@@ -1716,7 +1716,7 @@
       "number": "14",
       "position": "Roster Spot",
       "photo": "",
-      "status": "placeholder",
+      "status": "hidden",
       "order": 14
     },
     {
@@ -1725,7 +1725,7 @@
       "number": "15",
       "position": "Roster Spot",
       "photo": "",
-      "status": "placeholder",
+      "status": "hidden",
       "order": 15
     },
     {
@@ -1734,7 +1734,7 @@
       "number": "16",
       "position": "Roster Spot",
       "photo": "",
-      "status": "placeholder",
+      "status": "hidden",
       "order": 16
     },
     {
@@ -1743,7 +1743,7 @@
       "number": "17",
       "position": "Roster Spot",
       "photo": "",
-      "status": "placeholder",
+      "status": "hidden",
       "order": 17
     },
     {
@@ -1752,7 +1752,7 @@
       "number": "18",
       "position": "Roster Spot",
       "photo": "",
-      "status": "placeholder",
+      "status": "hidden",
       "order": 18
     },
     {
@@ -1761,7 +1761,7 @@
       "number": "19",
       "position": "Roster Spot",
       "photo": "",
-      "status": "placeholder",
+      "status": "hidden",
       "order": 19
     },
     {
@@ -1770,7 +1770,7 @@
       "number": "20",
       "position": "Roster Spot",
       "photo": "",
-      "status": "placeholder",
+      "status": "hidden",
       "order": 20
     },
     {
@@ -1779,7 +1779,7 @@
       "number": "21",
       "position": "Roster Spot",
       "photo": "",
-      "status": "placeholder",
+      "status": "hidden",
       "order": 21
     },
     {
@@ -1788,7 +1788,7 @@
       "number": "22",
       "position": "Roster Spot",
       "photo": "",
-      "status": "placeholder",
+      "status": "hidden",
       "order": 22
     }
   ],
