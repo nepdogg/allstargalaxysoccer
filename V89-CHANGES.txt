@@ -1,0 +1,9 @@
+V89 FINAL CARD REFINEMENTS
+
+- Removed arrow circles from all Full Match, Highlights, and Slideshow tiles.
+- Reduced game footer typography so long opponent names and results do not clip.
+- Reduced season footer typography so the full season name fits.
+- Preserved the entire media background in the game and season image area.
+- Rebuilt playlist cards with a large unobstructed image and a bottom strip containing only the icon and playlist name.
+- Removed WATCH PLAYLIST text and all text overlays from playlist artwork.
+- Updated browser cache references to v=89.
