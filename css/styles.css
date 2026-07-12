@@ -11035,3 +11035,124 @@ body.lightbox-open {
   .page-media .generated-game-line-bottom{font-size:clamp(.55rem,2.15vw,.76rem)!important}
   .page-media .generated-season-footer{font-size:clamp(1.25rem,5.4vw,2rem)!important}
 }
+
+/* ============================================================
+   V89 — FINAL CARD REFINEMENTS
+   Smaller non-clipping footer text, no action arrows, and poster-first
+   playlist cards with the playlist name in a dedicated bottom strip.
+   ============================================================ */
+
+/* Game and season action tiles: the full tile is clickable, so arrows are
+   intentionally removed. Center the icon and label to use the full panel. */
+.page-media .generated-action-arrow{display:none!important}
+.page-media .generated-action-row{
+  padding:6% 4%!important;
+  gap:7%!important;
+}
+.page-media .generated-action-copy strong{
+  font-size:clamp(.78rem,1.28vw,1.18rem)!important;
+  line-height:1!important;
+  overflow-wrap:normal!important;
+  word-break:normal!important;
+}
+
+/* Preserve the entire 3:2 master artwork in the visual region. */
+.page-media .generated-wide-visual{
+  background-size:contain!important;
+  background-position:center!important;
+  background-repeat:no-repeat!important;
+}
+
+/* Reduce game footer typography just enough that long opponents and results
+   remain visible without clipping. */
+.page-media .generated-game-line-top{
+  font-size:clamp(.92rem,1.72vw,1.58rem)!important;
+  letter-spacing:.045em!important;
+}
+.page-media .generated-game-line-bottom{
+  font-size:clamp(.66rem,1.13vw,1.02rem)!important;
+  letter-spacing:.012em!important;
+  padding-inline:1%!important;
+}
+
+/* Slightly reduce the season title so every season name fits comfortably. */
+.page-media .generated-season-footer{
+  font-size:clamp(1.7rem,3.65vw,3.5rem)!important;
+  letter-spacing:.055em!important;
+  padding-inline:3%!important;
+}
+
+/* Playlist cards now match the same visual system: large unobstructed media
+   image with one compact identity strip below it. */
+.generated-playlist-art{
+  display:grid!important;
+  grid-template-rows:minmax(0,1fr) clamp(64px,18%,96px)!important;
+  background-size:cover!important;
+  background-position:center!important;
+  background-repeat:no-repeat!important;
+  isolation:isolate!important;
+}
+.generated-playlist-art:before{
+  content:""!important;
+  position:absolute!important;
+  inset:0 0 clamp(64px,18%,96px) 0!important;
+  background:linear-gradient(180deg,rgba(0,0,0,.01),rgba(0,0,0,.06))!important;
+  pointer-events:none!important;
+  z-index:1!important;
+}
+.generated-playlist-content,
+.generated-playlist-art>.generated-card-cta{
+  display:none!important;
+}
+.generated-playlist-footer{
+  position:relative!important;
+  z-index:3!important;
+  grid-row:2!important;
+  display:grid!important;
+  grid-template-columns:auto minmax(0,1fr)!important;
+  align-items:center!important;
+  gap:clamp(10px,2vw,22px)!important;
+  min-width:0!important;
+  padding:clamp(10px,1.7vw,18px) clamp(14px,2.2vw,24px)!important;
+  border-top:2px solid var(--card-accent)!important;
+  background:linear-gradient(90deg,#020204,rgba(8,8,14,.97),#020204)!important;
+  box-sizing:border-box!important;
+}
+.generated-playlist-footer-icon{
+  display:grid!important;
+  place-items:center!important;
+  width:clamp(38px,5vw,62px)!important;
+  aspect-ratio:1!important;
+  border:2px solid var(--card-accent)!important;
+  border-radius:10px!important;
+  color:var(--card-accent)!important;
+  font-size:clamp(1.05rem,2vw,1.7rem)!important;
+  text-shadow:0 0 10px var(--card-accent)!important;
+  box-shadow:0 0 12px color-mix(in srgb,var(--card-accent) 55%,transparent),inset 0 0 10px color-mix(in srgb,var(--card-accent) 22%,transparent)!important;
+}
+.generated-playlist-footer-title{
+  min-width:0!important;
+  color:var(--card-accent)!important;
+  font-family:Impact,"Arial Narrow",sans-serif!important;
+  font-size:clamp(1.1rem,2.7vw,2.35rem)!important;
+  line-height:.95!important;
+  letter-spacing:.025em!important;
+  text-transform:uppercase!important;
+  text-align:left!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  text-shadow:0 3px 7px #000,0 0 12px color-mix(in srgb,var(--card-accent) 75%,transparent)!important;
+}
+
+@media(max-width:800px){
+  .page-media .generated-action-copy strong{font-size:clamp(.52rem,1.85vw,.7rem)!important}
+  .page-media .generated-game-line-top{font-size:clamp(.63rem,2.35vw,.82rem)!important}
+  .page-media .generated-game-line-bottom{font-size:clamp(.47rem,1.8vw,.64rem)!important}
+  .page-media .generated-season-footer{font-size:clamp(1.08rem,4.65vw,1.7rem)!important}
+  .generated-playlist-art{grid-template-rows:minmax(0,1fr) 58px!important}
+  .generated-playlist-art:before{inset:0 0 58px 0!important}
+  .generated-playlist-footer{padding:8px 10px!important;gap:8px!important}
+  .generated-playlist-footer-icon{width:34px!important;font-size:.95rem!important}
+  .generated-playlist-footer-title{font-size:clamp(.85rem,4.2vw,1.35rem)!important}
+}
