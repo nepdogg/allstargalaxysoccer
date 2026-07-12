@@ -11447,3 +11447,75 @@ body.lightbox-open {
   .generated-playlist-art.is-long-title .generated-playlist-footer-title{font-size:clamp(.72rem,3.35vw,1.05rem)!important}
   .generated-playlist-art.is-very-long-title .generated-playlist-footer-title{font-size:clamp(.66rem,3vw,.94rem)!important}
 }
+
+/* ============================================================
+   V92 — FINAL IMAGE FILL, PLAYLIST CENTERING & TEXT LEGIBILITY
+   ============================================================ */
+
+/* Fill the complete artwork region on generated game and season cards. */
+.page-media .generated-game-layout .generated-wide-visual,
+.page-media .generated-season-layout .generated-wide-visual{
+  background-size:cover!important;
+  background-position:center center!important;
+  background-repeat:no-repeat!important;
+}
+
+/* Improve footer readability without forcing long matchups to clip. */
+.page-media .generated-game-meta-block,
+.page-media .generated-game-matchup-block{
+  letter-spacing:.075em!important;
+  word-spacing:.12em!important;
+}
+.page-media .generated-game-meta-block span{
+  letter-spacing:.09em!important;
+}
+.page-media .generated-game-meta-block strong{
+  letter-spacing:.08em!important;
+}
+.page-media .generated-game-matchup-block strong,
+.page-media .generated-game-matchup-block span,
+.page-media .generated-game-matchup-block em{
+  letter-spacing:.055em!important;
+}
+
+/* Playlist artwork fills the image window; the title is centered perfectly
+   within the space remaining to the right of the icon. */
+.generated-playlist-image{
+  background-size:cover!important;
+  background-position:center center!important;
+  background-repeat:no-repeat!important;
+}
+.generated-playlist-footer{
+  align-items:stretch!important;
+}
+.generated-playlist-footer-title{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  text-align:center!important;
+  width:100%!important;
+  padding:0 clamp(6px,.8vw,12px)!important;
+  margin:0!important;
+  letter-spacing:.035em!important;
+}
+.generated-playlist-footer-icon{
+  align-self:center!important;
+  justify-self:center!important;
+}
+
+@media(max-width:800px){
+  .page-media .generated-game-meta-block,
+  .page-media .generated-game-matchup-block{
+    letter-spacing:.045em!important;
+    word-spacing:.06em!important;
+  }
+  .page-media .generated-game-matchup-block strong,
+  .page-media .generated-game-matchup-block span,
+  .page-media .generated-game-matchup-block em{
+    letter-spacing:.035em!important;
+  }
+  .generated-playlist-footer-title{
+    letter-spacing:.02em!important;
+    padding:0 4px!important;
+  }
+}
