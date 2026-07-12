@@ -44,8 +44,15 @@
         <section class="generated-wide-visual" style="background-image:url('${esc(data.assets.mediaBackground)}')"></section>
         <section class="generated-wide-actions">${actionRows(rows)}</section>
         <footer class="generated-card-footer generated-game-footer">
-          <div class="generated-game-line generated-game-line-top">${esc(g.season||'UPCOMING SEASON')} <span>•</span> GAME ${String(g.gameNumber||'').padStart(2,'0')}</div>
-          <div class="generated-game-line generated-game-line-bottom">ALLSTAR GALAXY VS ${esc(g.opponent||'COMING SOON')} ${result?`<span>•</span> ${esc(result)}`:''}</div>
+          <div class="generated-game-meta-block">
+            <span>${esc(g.season||'UPCOMING SEASON')}</span>
+            <strong>GAME ${String(g.gameNumber||'').padStart(2,'0')}</strong>
+          </div>
+          <div class="generated-game-matchup-block">
+            <strong>ALLSTAR GALAXY</strong>
+            <span>VS ${esc(g.opponent||'COMING SOON')}</span>
+            ${result?`<em>${esc(result)}</em>`:''}
+          </div>
         </footer>
       </div></a>`;
   }
