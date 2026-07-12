@@ -11311,3 +11311,139 @@ body.lightbox-open {
   .generated-playlist-art:before{inset:0 0 66px 0!important}
   .generated-playlist-footer-title{font-size:clamp(.78rem,3.8vw,1.18rem)!important}
 }
+
+/* ============================================================
+   V91 — FINAL TYPOGRAPHY, PLAYLIST FIT & INTERACTION POLISH
+   ============================================================ */
+
+/* Game-card footer hierarchy: larger type, alternating colors. */
+.page-media .generated-game-meta-block span{
+  color:var(--card-accent)!important;
+  font-size:clamp(.78rem,1.28vw,1.12rem)!important;
+}
+.page-media .generated-game-meta-block strong{
+  color:#fff!important;
+  font-size:clamp(1.02rem,1.62vw,1.48rem)!important;
+  text-shadow:0 2px 5px #000,0 0 8px rgba(255,255,255,.28)!important;
+}
+.page-media .generated-game-matchup-block strong{
+  color:var(--card-accent)!important;
+  font-size:clamp(.8rem,1.36vw,1.18rem)!important;
+}
+.page-media .generated-game-matchup-block span{
+  color:#fff!important;
+  font-size:clamp(.78rem,1.3vw,1.14rem)!important;
+}
+.page-media .generated-game-matchup-block em{
+  color:#ffd84a!important;
+  font-size:clamp(.78rem,1.3vw,1.14rem)!important;
+  text-shadow:0 0 9px rgba(255,216,74,.45)!important;
+}
+
+/* Season image should fill the complete visual panel like the game card. */
+.page-media .generated-season-visual{
+  background-size:cover!important;
+  background-position:center!important;
+  background-repeat:no-repeat!important;
+}
+
+/* Restore a lively hover/focus glow to the game/season popup links. */
+.game-link-action{
+  transition:transform .18s ease,box-shadow .18s ease,filter .18s ease,background .18s ease!important;
+}
+.game-link-action:not(.is-disabled):hover,
+.game-link-action:not(.is-disabled):focus-visible{
+  transform:translateY(-2px) scale(1.025)!important;
+  filter:brightness(1.18)!important;
+  background:rgba(255,255,255,.11)!important;
+  outline:none!important;
+}
+.game-link-full:not(.is-disabled):hover,
+.game-link-full:not(.is-disabled):focus-visible{
+  box-shadow:0 0 12px rgba(255,0,170,.75),0 0 28px rgba(255,0,170,.55)!important;
+}
+.game-link-highlights:not(.is-disabled):hover,
+.game-link-highlights:not(.is-disabled):focus-visible{
+  box-shadow:0 0 12px rgba(255,190,0,.78),0 0 28px rgba(255,190,0,.55)!important;
+}
+.game-link-slideshow:not(.is-disabled):hover,
+.game-link-slideshow:not(.is-disabled):focus-visible{
+  box-shadow:0 0 12px rgba(0,190,255,.82),0 0 28px rgba(0,190,255,.58)!important;
+}
+.game-link-action.is-disabled{opacity:.48!important;filter:saturate(.45)!important}
+
+/* Playlist cards now use a real image region so the artwork is never hidden
+   behind the title strip. Long titles wrap cleanly to two centered lines. */
+.generated-playlist-art{
+  display:grid!important;
+  grid-template-rows:minmax(0,1fr) clamp(86px,23%,122px)!important;
+  background:none!important;
+  overflow:hidden!important;
+}
+.generated-playlist-art:before{display:none!important}
+.generated-playlist-image{
+  grid-row:1!important;
+  min-width:0!important;
+  min-height:0!important;
+  background-size:contain!important;
+  background-position:center!important;
+  background-repeat:no-repeat!important;
+  background-color:#020204!important;
+}
+.generated-playlist-footer{
+  grid-row:2!important;
+  min-height:86px!important;
+  padding:clamp(11px,1.55vw,18px) clamp(14px,2vw,24px)!important;
+  grid-template-columns:clamp(42px,5vw,62px) minmax(0,1fr)!important;
+  gap:clamp(10px,1.6vw,20px)!important;
+}
+.generated-playlist-footer-icon{
+  width:clamp(42px,5vw,62px)!important;
+  flex:0 0 auto!important;
+}
+.generated-playlist-footer-title{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  min-width:0!important;
+  height:100%!important;
+  max-height:2.08em!important;
+  font-size:clamp(1.02rem,2.1vw,1.95rem)!important;
+  line-height:1.02!important;
+  white-space:normal!important;
+  overflow:hidden!important;
+  overflow-wrap:normal!important;
+  word-break:normal!important;
+  text-overflow:clip!important;
+  -webkit-line-clamp:2!important;
+  -webkit-box-orient:vertical!important;
+}
+.generated-playlist-art.is-long-title .generated-playlist-footer-title{
+  font-size:clamp(.94rem,1.82vw,1.66rem)!important;
+}
+.generated-playlist-art.is-very-long-title .generated-playlist-footer-title{
+  font-size:clamp(.84rem,1.58vw,1.45rem)!important;
+  letter-spacing:.012em!important;
+}
+
+/* Keep the News page visually separated from the footer. */
+.page-news #news.news-section{
+  margin-bottom:clamp(46px,5vw,72px)!important;
+}
+.page-news main{
+  padding-bottom:clamp(24px,3vw,40px)!important;
+}
+
+@media(max-width:800px){
+  .page-media .generated-game-meta-block span{font-size:clamp(.52rem,1.9vw,.7rem)!important}
+  .page-media .generated-game-meta-block strong{font-size:clamp(.66rem,2.2vw,.86rem)!important}
+  .page-media .generated-game-matchup-block strong,
+  .page-media .generated-game-matchup-block span,
+  .page-media .generated-game-matchup-block em{font-size:clamp(.49rem,1.78vw,.66rem)!important}
+  .generated-playlist-art{grid-template-rows:minmax(0,1fr) 76px!important}
+  .generated-playlist-footer{min-height:76px!important;padding:8px 10px!important;gap:8px!important;grid-template-columns:36px minmax(0,1fr)!important}
+  .generated-playlist-footer-icon{width:36px!important;font-size:1rem!important}
+  .generated-playlist-footer-title{font-size:clamp(.8rem,3.8vw,1.18rem)!important}
+  .generated-playlist-art.is-long-title .generated-playlist-footer-title{font-size:clamp(.72rem,3.35vw,1.05rem)!important}
+  .generated-playlist-art.is-very-long-title .generated-playlist-footer-title{font-size:clamp(.66rem,3vw,.94rem)!important}
+}
