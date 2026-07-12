@@ -1,0 +1,11 @@
+ALLSTAR GALAXY V96
+
+Changes:
+- Enlarged the game-card matchup, opponent, and score text.
+- Increased spacing between matchup elements for easier reading.
+- Removed the box/border/background around playlist icons.
+- Moved playlist icons to the far left of the footer.
+- Optically centered playlist icons vertically.
+- Left-aligned playlist titles directly beside the icons.
+- Increased playlist title size while preserving responsive sizing for long names.
+- Updated cache references to v=96.
