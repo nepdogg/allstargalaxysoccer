@@ -11876,7 +11876,7 @@ body.lightbox-open {
 
 
 /* ============================================================
-   V98 — THREE-ZONE GAME FOOTER + PLAYLIST ALIGNMENT POLISH
+   V99 — THREE-ZONE GAME FOOTER + PLAYLIST ALIGNMENT POLISH
    ============================================================ */
 
 /* Game card footer follows the final sketch: season/game at left,
@@ -12018,4 +12018,114 @@ body.lightbox-open {
   .generated-playlist-footer-title{font-size:clamp(1.04rem,4.7vw,1.46rem)!important}
   .generated-playlist-art.is-long-title .generated-playlist-footer-title{font-size:clamp(.88rem,4.15vw,1.24rem)!important}
   .generated-playlist-art.is-very-long-title .generated-playlist-footer-title{font-size:clamp(.76rem,3.65vw,1.08rem)!important}
+}
+
+/* ============================================================
+   V99 — FINAL TWO-LINE GAME SCOREBOARD FOOTER
+   ============================================================ */
+/* Permanent scalable layout:
+   LEFT   = season / game number
+   CENTER = Allstar Galaxy / opponent
+   RIGHT  = result word / numeric score
+   Every zone uses two lines, so long opponent names and large scores fit. */
+.page-media .generated-game-footer{
+  grid-template-columns:minmax(138px,23%) minmax(0,1fr) minmax(105px,17%)!important;
+  min-height:76px!important;
+}
+.page-media .generated-game-meta-block,
+.page-media .generated-game-matchup-block,
+.page-media .generated-game-result-block{
+  min-height:76px!important;
+  padding:8px 12px!important;
+}
+.page-media .generated-game-meta-block{
+  justify-content:center!important;
+  gap:5px!important;
+}
+.page-media .generated-game-meta-block span,
+.page-media .generated-game-meta-block strong{
+  margin:0!important;
+  line-height:1!important;
+}
+.page-media .generated-game-matchup-block{
+  flex-direction:column!important;
+  justify-content:center!important;
+  align-items:flex-start!important;
+  gap:7px!important;
+  padding-left:clamp(18px,2vw,28px)!important;
+  padding-right:clamp(12px,1.5vw,20px)!important;
+  text-align:left!important;
+}
+.page-media .generated-game-matchup-block strong,
+.page-media .generated-game-matchup-block span{
+  width:100%!important;
+  flex:none!important;
+  display:block!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  white-space:nowrap!important;
+  line-height:1!important;
+}
+.page-media .generated-game-matchup-block strong{
+  color:var(--card-accent)!important;
+  font-size:clamp(.92rem,1.72vw,1.28rem)!important;
+  letter-spacing:.055em!important;
+}
+.page-media .generated-game-matchup-block span{
+  color:#fff!important;
+  font-size:clamp(.85rem,1.58vw,1.17rem)!important;
+  letter-spacing:.045em!important;
+}
+.page-media .generated-game-result-block{
+  flex-direction:column!important;
+  justify-content:center!important;
+  gap:6px!important;
+  text-align:center!important;
+}
+.page-media .generated-game-result-block strong,
+.page-media .generated-game-result-block em{
+  display:block!important;
+  width:100%!important;
+  margin:0!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  white-space:nowrap!important;
+  line-height:1!important;
+  font-family:Impact,"Arial Narrow",sans-serif!important;
+  font-style:normal!important;
+}
+.page-media .generated-game-result-block strong{
+  color:#fff!important;
+  font-size:clamp(.82rem,1.45vw,1.08rem)!important;
+  letter-spacing:.09em!important;
+  text-shadow:0 2px 4px #000!important;
+}
+.page-media .generated-game-result-block em{
+  color:#f5c542!important;
+  font-size:clamp(1.15rem,2.08vw,1.58rem)!important;
+  letter-spacing:.055em!important;
+  text-shadow:0 0 10px rgba(245,197,66,.62),0 2px 4px #000!important;
+}
+
+@media(max-width:800px){
+  .page-media .generated-game-footer{
+    grid-template-columns:minmax(82px,27%) minmax(0,1fr) minmax(66px,19%)!important;
+    min-height:62px!important;
+  }
+  .page-media .generated-game-meta-block,
+  .page-media .generated-game-matchup-block,
+  .page-media .generated-game-result-block{
+    min-height:62px!important;
+    padding:6px 6px!important;
+  }
+  .page-media .generated-game-matchup-block{
+    gap:4px!important;
+    padding-left:8px!important;
+    align-items:flex-start!important;
+  }
+  .page-media .generated-game-matchup-block strong{font-size:clamp(.55rem,2vw,.73rem)!important}
+  .page-media .generated-game-matchup-block span{font-size:clamp(.5rem,1.85vw,.68rem)!important}
+  .page-media .generated-game-result-block{gap:4px!important}
+  .page-media .generated-game-result-block strong{font-size:clamp(.5rem,1.8vw,.66rem)!important}
+  .page-media .generated-game-result-block em{font-size:clamp(.72rem,2.55vw,.96rem)!important}
 }
