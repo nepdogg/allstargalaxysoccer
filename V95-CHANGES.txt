@@ -1,0 +1,8 @@
+ALLSTAR GALAXY V95
+
+- Game and season artwork now uses the complete source composition without side cropping.
+- Game footer typography increased again, especially matchup and result text.
+- Playlist icon visually centered higher in its footer cell.
+- Playlist title enlarged and left-aligned directly beside the icon.
+- Responsive sizes retained for smaller screens and longer titles.
+- Cache references updated to v=95.
