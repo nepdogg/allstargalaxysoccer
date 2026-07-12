@@ -43,9 +43,21 @@
       </div>
     </div>`;
   }
+  function splitGameResult(value){
+    const raw=String(value||'').trim();
+    if(!raw) return {label:'',score:''};
+    const match=raw.match(/^\s*(W|L|D|WIN|LOSS|DRAW)\s*(?:\(([^)]+)\)|[-–—:]?\s*(\d+\s*[-–—]\s*\d+))?\s*$/i);
+    if(match){
+      const token=match[1].toUpperCase();
+      const labels={W:'WIN',L:'LOSS',D:'DRAW',WIN:'WIN',LOSS:'LOSS',DRAW:'DRAW'};
+      return {label:labels[token]||token,score:String(match[2]||match[3]||'').trim()};
+    }
+    return {label:raw,score:''};
+  }
   function gameCard(data,g){
     const title=`${g.season || ''} — Game ${String(g.gameNumber||'').padStart(2,'0')}`;
-    const result=g.result||'GAME MEDIA';
+    const result=g.result||'';
+    const resultParts=splitGameResult(result);
     const mediaBlue='#20bfff';
     const rows=[
       {label:'FULL MATCH',icon:'▶',url:g.fullMatch,color:mediaBlue},
@@ -65,7 +77,10 @@
             <strong>ALLSTAR GALAXY</strong>
             <span>VS ${esc(g.opponent||'COMING SOON')}</span>
           </div>
-          <div class="generated-game-result-block">${result?`<em>${esc(result)}</em>`:''}</div>
+          <div class="generated-game-result-block">
+            ${resultParts.label?`<strong>${esc(resultParts.label)}</strong>`:''}
+            ${resultParts.score?`<em>${esc(resultParts.score)}</em>`:''}
+          </div>
         </footer>
       </div></a>`;
   }
