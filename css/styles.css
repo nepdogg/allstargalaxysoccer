@@ -11861,3 +11861,15 @@ body.lightbox-open {
     font-size:clamp(.74rem,3.55vw,1.05rem)!important;
   }
 }
+
+
+/* =========================
+   V97 PNG-ONLY + PLAYER PHOTO LAYER FIX
+========================= */
+.generated-player-frame{background:#050007!important}
+.generated-player-cosmos{z-index:0!important;opacity:.28!important}
+.generated-player-photo{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center top!important;z-index:1!important;filter:none!important}
+.generated-player-placeholder{z-index:1!important}
+.generated-player-frame:before{z-index:2!important;background:linear-gradient(180deg,rgba(0,0,0,.02) 0%,rgba(0,0,0,.02) 48%,rgba(0,0,0,.40) 66%,rgba(0,0,0,.94) 82%)!important}
+.generated-player-number,.generated-player-info{z-index:5!important}
+.generated-player-logo{display:none!important}
