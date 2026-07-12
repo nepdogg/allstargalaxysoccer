@@ -1,0 +1,7 @@
+ALLSTAR GALAXY V93
+
+- Playlist artwork now uses contain sizing so the complete source image is visible without cropping.
+- Playlist footer uses equal outside columns so the title is mathematically centered across the card.
+- Playlist icon is centered vertically and horizontally in its own column.
+- Game-card footer typography was increased while preserving responsive fitting.
+- Cache references updated to v=93.
