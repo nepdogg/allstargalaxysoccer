@@ -43,13 +43,12 @@
     ];
     return `<a href="#" class="media-slide media-game-slide generated-game-card" aria-label="Open ${esc(title)}" data-game-title="${esc(title)}" data-game-opponent="Allstar Galaxy vs ${esc(g.opponent||'Coming Soon')}" data-game-result="${esc(result)}" data-full="${esc(g.fullMatch||'')}" data-highlights="${esc(g.highlights||'')}" data-slideshow="${esc(g.slideshow||'')}">
       <div class="generated-wide-card generated-game-layout" style="--card-accent:${mediaBlue}">
-        <section class="generated-wide-visual" style="background-image:linear-gradient(90deg,rgba(0,0,0,.02),rgba(0,0,0,.14)),url('${esc(data.assets.mediaBackground)}')">
-          <div class="generated-game-footer">
-            <div class="generated-game-line generated-game-line-top">${esc(g.season||'UPCOMING SEASON')} <span>•</span> GAME ${String(g.gameNumber||'').padStart(2,'0')}</div>
-            <div class="generated-game-line generated-game-line-bottom">ALLSTAR GALAXY VS ${esc(g.opponent||'COMING SOON')} ${result?`<span>•</span> ${esc(result)}`:''}</div>
-          </div>
-        </section>
+        <section class="generated-wide-visual" style="background-image:url('${esc(data.assets.mediaBackground)}')"></section>
         <section class="generated-wide-actions">${actionRows(rows)}</section>
+        <footer class="generated-card-footer generated-game-footer">
+          <div class="generated-game-line generated-game-line-top">${esc(g.season||'UPCOMING SEASON')} <span>•</span> GAME ${String(g.gameNumber||'').padStart(2,'0')}</div>
+          <div class="generated-game-line generated-game-line-bottom">ALLSTAR GALAXY VS ${esc(g.opponent||'COMING SOON')} ${result?`<span>•</span> ${esc(result)}`:''}</div>
+        </footer>
       </div></a>`;
   }
   function seasonCard(data,s){
@@ -61,10 +60,9 @@
     ];
     return `<a href="#" class="media-slide season-archive-slide media-game-slide generated-season-card" aria-label="Open ${esc(s.title)} archive" data-game-title="${esc(s.title)} Season Archive" data-game-opponent="Full Matches • Highlights • Slideshows" data-game-result="${esc(s.subtitle||'Season Archive')}" data-full="${esc(s.fullMatches||'')}" data-highlights="${esc(s.highlights||'')}" data-slideshow="${esc(s.slideshows||'')}" data-full-label="▶ Full Matches" data-highlights-label="▣ Highlights" data-slideshow-label="▧ Slideshows">
       <div class="generated-wide-card generated-season-layout" style="--card-accent:${mediaBlue}">
-        <section class="generated-wide-visual generated-season-visual" style="background-image:linear-gradient(90deg,rgba(0,0,0,.02),rgba(0,0,0,.16)),url('${esc(data.assets.mediaBackground)}')">
-          <div class="generated-season-footer">${esc(s.title)}</div>
-        </section>
+        <section class="generated-wide-visual generated-season-visual" style="background-image:url('${esc(data.assets.mediaBackground)}')"></section>
         <section class="generated-wide-actions">${actionRows(rows)}</section>
+        <footer class="generated-card-footer generated-season-footer">${esc(s.title)}</footer>
       </div></a>`;
   }
   function playlistCard(data,p,theme='gold'){
