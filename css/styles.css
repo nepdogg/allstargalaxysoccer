@@ -12549,3 +12549,302 @@ body.lightbox-open {
   .page-team .team-roster-carousel { height: 560px !important; }
   .generated-game-footer { grid-template-columns: 28% minmax(0, 1fr) 22% !important; }
 }
+
+/* ============================================================
+   V102 — MOBILE CAROUSEL + HERO CORRECTION PASS
+   Phone-only overrides. Desktop rules remain unchanged.
+   ============================================================ */
+@media (max-width: 760px) {
+  /* Restore each complete 16:9 hero graphic instead of cropping it. */
+  .hero-image {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 16 / 9 !important;
+    background-size: 100% 100% !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+
+  /* Use the compact Team-carousel rhythm across all carousel sections. */
+  .page-home .homepage-media-carousel,
+  .page-media .media-games-carousel,
+  .page-media .media-season-carousel,
+  .page-media .media-playlist-carousel {
+    width: calc(100% - 24px) !important;
+    min-height: 0 !important;
+    height: 430px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+  .page-media .media-season-carousel { height: 420px !important; }
+  .page-media .media-playlist-carousel { height: 410px !important; }
+
+  .page-home .homepage-media-carousel .carousel-track,
+  .page-media .media-games-carousel .carousel-track,
+  .page-media .media-season-carousel .carousel-track,
+  .page-media .media-playlist-carousel .carousel-track {
+    top: 18px !important;
+    bottom: 58px !important;
+    height: auto !important;
+  }
+
+  /* Keep the selected card large and centered, matching the Team carousel. */
+  .page-home .homepage-media-carousel .media-slide.is-active,
+  .page-media .media-playlist-carousel .generated-playlist-card.is-active,
+  .page-media .media-games-carousel .generated-game-card.is-active,
+  .page-media .media-season-carousel .generated-season-card.is-active {
+    left: 50% !important;
+    top: 50% !important;
+    width: calc(100% - 38px) !important;
+    max-width: 440px !important;
+    height: auto !important;
+    max-height: none !important;
+    transform: translate(-50%, -50%) scale(1) !important;
+  }
+  .page-home .homepage-media-carousel .media-slide.is-neighbor,
+  .page-media .media-playlist-carousel .generated-playlist-card.is-neighbor,
+  .page-media .media-games-carousel .generated-game-card.is-neighbor,
+  .page-media .media-season-carousel .generated-season-card.is-neighbor {
+    opacity: .25 !important;
+    transform: translate(-50%, -50%) scale(.78) !important;
+  }
+
+  /* Playlist cards: full image, compact footer, icon and title centered together. */
+  .generated-playlist-art {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: auto !important;
+    display: grid !important;
+    grid-template-rows: auto 72px !important;
+    overflow: hidden !important;
+  }
+  .generated-playlist-image {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 16 / 9 !important;
+    background-size: 100% 100% !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+  .generated-playlist-footer {
+    min-height: 72px !important;
+    height: 72px !important;
+    padding: 8px 14px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 14px !important;
+    overflow: hidden !important;
+  }
+  .generated-playlist-footer-icon {
+    flex: 0 0 46px !important;
+    width: 46px !important;
+    height: 46px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    line-height: 1 !important;
+  }
+  .generated-playlist-footer-title {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    text-align: left !important;
+    font-size: clamp(1rem, 5vw, 1.38rem) !important;
+    line-height: 1.05 !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  /* Game and season cards keep the desktop visual structure, scaled cleanly. */
+  .generated-wide-card {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: auto !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 74%) minmax(0, 26%) !important;
+    grid-template-rows: auto 72px !important;
+    overflow: hidden !important;
+  }
+  .generated-wide-visual {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 16 / 10 !important;
+    background-size: 100% 100% !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+  .generated-wide-actions {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    border-left: 1px solid var(--card-accent) !important;
+    border-top: 0 !important;
+    display: block !important;
+  }
+  .generated-action-list {
+    width: 100% !important;
+    height: 100% !important;
+    display: grid !important;
+    grid-template-rows: repeat(3, minmax(0, 1fr)) !important;
+  }
+  .generated-action-row {
+    width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    padding: 4px 2px !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    border-right: 0 !important;
+    border-bottom: 1px solid color-mix(in srgb, var(--card-accent) 65%, transparent) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 3px !important;
+    overflow: hidden !important;
+  }
+  .generated-action-row:last-child { border-bottom: 0 !important; }
+  .generated-action-icon {
+    width: 34px !important;
+    height: 34px !important;
+    flex: 0 0 34px !important;
+    font-size: .95rem !important;
+  }
+  .generated-action-copy strong {
+    font-size: clamp(.52rem, 2.45vw, .72rem) !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+  }
+
+  .generated-game-footer,
+  .generated-season-footer,
+  .generated-card-footer {
+    grid-column: 1 / -1 !important;
+    grid-row: 2 !important;
+    width: 100% !important;
+    height: 72px !important;
+    min-height: 72px !important;
+    box-sizing: border-box !important;
+  }
+  .generated-game-footer {
+    display: grid !important;
+    grid-template-columns: 25% minmax(0, 1fr) 21% !important;
+  }
+  .generated-game-footer > div {
+    min-width: 0 !important;
+    padding: 6px 5px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    overflow: hidden !important;
+  }
+  .generated-game-meta-block span,
+  .generated-game-matchup-block strong,
+  .generated-game-result-block strong {
+    font-size: clamp(.62rem, 2.85vw, .82rem) !important;
+    line-height: 1 !important;
+    letter-spacing: .035em !important;
+  }
+  .generated-game-meta-block strong,
+  .generated-game-matchup-block span,
+  .generated-game-result-block em {
+    font-size: clamp(.68rem, 3.15vw, .9rem) !important;
+    line-height: 1.02 !important;
+    letter-spacing: .035em !important;
+  }
+  .generated-game-matchup-block strong,
+  .generated-game-matchup-block span {
+    width: 100% !important;
+    max-width: 100% !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  .generated-season-footer {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 6px 12px !important;
+    font-size: clamp(1.15rem, 6vw, 1.65rem) !important;
+    line-height: 1 !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  /* Buttons and dots stay close to the card rather than floating in empty space. */
+  .page-home .homepage-media-carousel .carousel-button,
+  .page-media .media-games-carousel .carousel-button,
+  .page-media .media-season-carousel .carousel-button,
+  .page-media .media-playlist-carousel .carousel-button {
+    top: 50% !important;
+    width: 48px !important;
+    height: 48px !important;
+    transform: translateY(-50%) !important;
+  }
+  .page-home .homepage-media-carousel .carousel-button.prev,
+  .page-media .media-games-carousel .carousel-button.prev,
+  .page-media .media-season-carousel .carousel-button.prev,
+  .page-media .media-playlist-carousel .carousel-button.prev { left: 8px !important; }
+  .page-home .homepage-media-carousel .carousel-button.next,
+  .page-media .media-games-carousel .carousel-button.next,
+  .page-media .media-season-carousel .carousel-button.next,
+  .page-media .media-playlist-carousel .carousel-button.next { right: 8px !important; }
+  .page-home .homepage-media-carousel .carousel-dots,
+  .page-media .media-games-carousel .carousel-dots,
+  .page-media .media-season-carousel .carousel-dots,
+  .page-media .media-playlist-carousel .carousel-dots {
+    bottom: 16px !important;
+    gap: 7px !important;
+  }
+
+  /* Schedule: keep every standings column available through horizontal scrolling. */
+  .page-schedule .generated-schedule-grid > section {
+    overflow: visible !important;
+  }
+  .page-schedule .generated-table-wrap {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .page-schedule .generated-table-wrap table {
+    width: 620px !important;
+    min-width: 620px !important;
+  }
+
+  /* Keep content and footer clear of Safari's floating toolbar. */
+  footer {
+    padding-bottom: calc(92px + env(safe-area-inset-bottom)) !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .page-home .homepage-media-carousel,
+  .page-media .media-games-carousel,
+  .page-media .media-season-carousel,
+  .page-media .media-playlist-carousel {
+    height: 405px !important;
+  }
+  .page-media .media-season-carousel { height: 395px !important; }
+  .page-media .media-playlist-carousel { height: 385px !important; }
+  .generated-wide-card { grid-template-rows: auto 68px !important; }
+  .generated-game-footer,
+  .generated-season-footer,
+  .generated-card-footer { height: 68px !important; min-height: 68px !important; }
+}
