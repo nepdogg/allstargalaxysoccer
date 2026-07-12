@@ -1640,56 +1640,56 @@
     },
     {
       "id": "player-06",
-      "name": "Coming Soon",
+      "name": "Halland",
       "number": "6",
-      "position": "Roster Spot",
-      "photo": "",
-      "status": "placeholder",
+      "position": "ST",
+      "photo": "images/team/players/halland.png",
+      "status": "published",
       "order": 6
     },
     {
       "id": "player-07",
-      "name": "Coming Soon",
+      "name": "Mbappe",
       "number": "7",
-      "position": "Roster Spot",
-      "photo": "",
-      "status": "placeholder",
+      "position": "RW",
+      "photo": "images/team/players/mbappe.png",
+      "status": "published",
       "order": 7
     },
     {
       "id": "player-08",
-      "name": "Coming Soon",
+      "name": "Harry",
       "number": "8",
-      "position": "Roster Spot",
-      "photo": "",
-      "status": "placeholder",
+      "position": "ST",
+      "photo": "images/team/players/kane.png",
+      "status": "published",
       "order": 8
     },
     {
       "id": "player-09",
-      "name": "Coming Soon",
+      "name": "Vinni",
       "number": "9",
-      "position": "Roster Spot",
-      "photo": "",
-      "status": "placeholder",
+      "position": "LW",
+      "photo": "images/team/players/vinni.png",
+      "status": "published",
       "order": 9
     },
     {
       "id": "player-10",
-      "name": "Coming Soon",
-      "number": "10",
-      "position": "Roster Spot",
-      "photo": "",
-      "status": "placeholder",
+      "name": "Memo",
+      "number": "13",
+      "position": "GK",
+      "photo": "images/team/player/ochoa.png",
+      "status": "published",
       "order": 10
     },
     {
       "id": "player-11",
-      "name": "Coming Soon",
+      "name": "Jude",
       "number": "11",
-      "position": "Roster Spot",
-      "photo": "",
-      "status": "placeholder",
+      "position": "ST",
+      "photo": "images/team/players/jude.png",
+      "status": "published",
       "order": 11
     },
     {
@@ -1698,7 +1698,7 @@
       "number": "12",
       "position": "Roster Spot",
       "photo": "",
-      "status": "placeholder",
+      "status": "hidden",
       "order": 12
     },
     {
@@ -1707,7 +1707,7 @@
       "number": "13",
       "position": "Roster Spot",
       "photo": "",
-      "status": "placeholder",
+      "status": "hidden",
       "order": 13
     },
     {
@@ -1716,7 +1716,7 @@
       "number": "14",
       "position": "Roster Spot",
       "photo": "",
-      "status": "placeholder",
+      "status": "hidden",
       "order": 14
     },
     {
@@ -1725,7 +1725,7 @@
       "number": "15",
       "position": "Roster Spot",
       "photo": "",
-      "status": "placeholder",
+      "status": "hidden",
       "order": 15
     },
     {
@@ -1734,7 +1734,7 @@
       "number": "16",
       "position": "Roster Spot",
       "photo": "",
-      "status": "placeholder",
+      "status": "hidden",
       "order": 16
     },
     {
@@ -1743,7 +1743,7 @@
       "number": "17",
       "position": "Roster Spot",
       "photo": "",
-      "status": "placeholder",
+      "status": "hidden",
       "order": 17
     },
     {
@@ -1752,7 +1752,7 @@
       "number": "18",
       "position": "Roster Spot",
       "photo": "",
-      "status": "placeholder",
+      "status": "hidden",
       "order": 18
     },
     {
@@ -1761,7 +1761,7 @@
       "number": "19",
       "position": "Roster Spot",
       "photo": "",
-      "status": "placeholder",
+      "status": "hidden",
       "order": 19
     },
     {
@@ -1770,7 +1770,7 @@
       "number": "20",
       "position": "Roster Spot",
       "photo": "",
-      "status": "placeholder",
+      "status": "hidden",
       "order": 20
     },
     {
@@ -1779,7 +1779,7 @@
       "number": "21",
       "position": "Roster Spot",
       "photo": "",
-      "status": "placeholder",
+      "status": "hidden",
       "order": 21
     },
     {
@@ -1788,7 +1788,7 @@
       "number": "22",
       "position": "Roster Spot",
       "photo": "",
-      "status": "placeholder",
+      "status": "hidden",
       "order": 22
     }
   ],
