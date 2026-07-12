@@ -1,0 +1,24 @@
+ALLSTAR GALAXY WEBSITE — V102 MOBILE CAROUSEL + HERO FIX
+
+This is a safe code-only update. It does NOT include data/master-content.json
+and will not overwrite players, games, seasons, playlists, links, schedule,
+standings, news, or visibility settings.
+
+PHONE-ONLY CHANGES
+- Restored full 16:9 hero graphics on every page; no mobile hero cropping.
+- Rebuilt Home and Media carousel sizing to follow the compact Team-carousel rhythm.
+- Removed the large empty areas below cards.
+- Kept active cards centered and large, with subtle neighboring cards.
+- Repositioned arrows and dots close to the active card.
+- Corrected playlist image filling and footer alignment.
+- Corrected game and season card scaling on phones.
+- Kept the three media actions readable in a slim right-side panel.
+- Improved game footer text fitting and ellipsis protection.
+- Preserved all standings columns through horizontal scrolling.
+- Added extra bottom clearance for Safari's floating toolbar.
+
+DESKTOP
+- Desktop layout is unchanged.
+
+CACHE VERSION
+- HTML references now use v=102.
