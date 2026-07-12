@@ -1,0 +1,7 @@
+ALLSTAR GALAXY V94
+
+- Playlist artwork now fills the entire image window edge-to-edge.
+- Playlist footer now uses a true two-column layout: centered icon followed by centered title.
+- Removed the balancing spacer that separated the playlist title from its icon.
+- Increased game footer typography while preserving responsive fit.
+- Updated browser cache references to v=94.
