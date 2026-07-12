@@ -1,0 +1,10 @@
+ALLSTAR GALAXY V91
+
+- Increased game-card footer typography and added clearer color hierarchy.
+- Game number is now white; season remains blue; result is gold.
+- Season artwork now fills the complete image panel.
+- Restored hover/focus glow and lift animation on popup media links.
+- Rebuilt playlist artwork into a dedicated image region so it is never hidden behind the title strip.
+- Added automatic two-line playlist title sizing for long names.
+- Added additional spacing between News cards and the footer.
+- Updated cache references to v=91.
