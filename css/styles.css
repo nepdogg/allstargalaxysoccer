@@ -12129,3 +12129,53 @@ body.lightbox-open {
   .page-media .generated-game-result-block strong{font-size:clamp(.5rem,1.8vw,.66rem)!important}
   .page-media .generated-game-result-block em{font-size:clamp(.72rem,2.55vw,.96rem)!important}
 }
+
+/* ============================================================
+   V100 — FINAL CENTERED GAME MATCHUP FOOTER
+   ============================================================ */
+/* Center the two team-name lines as one unit, remove the old blue
+   separator dot, and use the available center panel more confidently. */
+.page-media .generated-game-matchup-block{
+  align-items:center!important;
+  justify-content:center!important;
+  text-align:center!important;
+  padding-left:clamp(12px,1.6vw,22px)!important;
+  padding-right:clamp(12px,1.6vw,22px)!important;
+  gap:6px!important;
+}
+.page-media .generated-game-matchup-block strong,
+.page-media .generated-game-matchup-block span{
+  width:100%!important;
+  max-width:100%!important;
+  text-align:center!important;
+  margin:0 auto!important;
+}
+.page-media .generated-game-matchup-block strong{
+  font-size:clamp(1.02rem,1.9vw,1.42rem)!important;
+  letter-spacing:.055em!important;
+}
+.page-media .generated-game-matchup-block span{
+  font-size:clamp(.96rem,1.82vw,1.34rem)!important;
+  letter-spacing:.05em!important;
+}
+.page-media .generated-game-matchup-block span:before,
+.page-media .generated-game-matchup-block span::before{
+  display:none!important;
+  content:none!important;
+}
+
+@media(max-width:800px){
+  .page-media .generated-game-matchup-block{
+    align-items:center!important;
+    text-align:center!important;
+    padding-left:6px!important;
+    padding-right:6px!important;
+    gap:3px!important;
+  }
+  .page-media .generated-game-matchup-block strong{
+    font-size:clamp(.59rem,2.16vw,.78rem)!important;
+  }
+  .page-media .generated-game-matchup-block span{
+    font-size:clamp(.55rem,2.04vw,.73rem)!important;
+  }
+}
