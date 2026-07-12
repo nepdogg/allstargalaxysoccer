@@ -1595,11 +1595,11 @@
   "players": [
     {
       "id": "player-01",
-      "name": "Coming Soon",
-      "number": "1",
-      "position": "Roster Spot",
+      "name": "Neptune",
+      "number": "22",
+      "position": "CB",
       "photo": "",
-      "status": "placeholder",
+      "status": "published",
       "order": 1
     },
     {
