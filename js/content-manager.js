@@ -23,7 +23,10 @@
   }
   function mediaArt(data, title, category) {
     const color=colorFor(data,category);
-    return `<div class="generated-playlist-art" style="--card-accent:${color};background-image:url('${esc(data.assets.mediaBackground)}')">
+    const length=String(title||'').trim().length;
+    const sizeClass=length>28?' is-very-long-title':(length>18?' is-long-title':'');
+    return `<div class="generated-playlist-art${sizeClass}" style="--card-accent:${color}">
+      <div class="generated-playlist-image" style="background-image:url('${esc(data.assets.mediaBackground)}')"></div>
       <div class="generated-playlist-footer">
         <span class="generated-playlist-footer-icon">${iconFor(category)}</span>
         <span class="generated-playlist-footer-title">${esc(title)}</span>
