@@ -1,8 +1,0 @@
-ALLSTAR GALAXY V85
-
-- Latest game card text moved into one compact line along the bottom of the image.
-- Removed duplicate season title from the right panel.
-- Removed SEASON ARCHIVE tagline from season artwork.
-- Removed ROSTER SPOT from placeholder player cards.
-- News and Schedule sections now use matching full-width, vertically stacked boxes.
-- Cache version updated to 85.
