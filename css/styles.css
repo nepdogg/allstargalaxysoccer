@@ -14102,3 +14102,165 @@ body.lightbox-open {
     width: calc(100% - 28px) !important;
   }
 }
+
+
+/* ============================================================
+   V109 — MOBILE FINAL ALIGNMENT
+   Navigation title, playlist framing, card footers and actions.
+   Desktop remains unchanged.
+   ============================================================ */
+@media (max-width: 760px) {
+
+  /* Make the long navigation title visually taller without allowing
+     it to extend underneath either logo. */
+  .site-top .hero-title {
+    height: 58px !important;
+    overflow: hidden !important;
+  }
+
+  .site-top .hero-title img {
+    width: 100% !important;
+    max-width: 242px !important;
+    height: 52px !important;
+    max-height: 52px !important;
+    object-fit: fill !important;
+    transform: scaleY(1.18) !important;
+    transform-origin: center center !important;
+  }
+
+  /* Homepage and Media playlist cards use identical image framing.
+     Stretching to the exact image panel prevents the top from being cropped. */
+  .page-home .homepage-media-carousel .generated-playlist-image,
+  .page-media .media-playlist-carousel .generated-playlist-image {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+    background-size: 100% 100% !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+
+  /* Raise playlist icons so they align with the visual center of the title. */
+  .page-home .homepage-media-carousel .generated-playlist-footer-icon,
+  .page-home .homepage-media-carousel .generated-playlist-icon,
+  .page-media .media-playlist-carousel .generated-playlist-footer-icon,
+  .page-media .media-playlist-carousel .generated-playlist-icon {
+    transform: translateY(-4px) !important;
+    align-self: center !important;
+  }
+
+  .page-home .homepage-media-carousel .generated-playlist-footer,
+  .page-media .media-playlist-carousel .generated-playlist-footer {
+    align-items: center !important;
+    padding-top: 10px !important;
+    padding-bottom: 6px !important;
+  }
+
+  /* Give the game footer enough height so both lines remain visible. */
+  .page-media .media-games-carousel .generated-wide-card {
+    aspect-ratio: 1.30 / 1 !important;
+    grid-template-rows: minmax(0, 1fr) 84px !important;
+  }
+
+  .page-media .media-games-carousel .generated-wide-visual {
+    height: 100% !important;
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+    background-size: 100% 100% !important;
+  }
+
+  .page-media .media-games-carousel .generated-game-footer,
+  .page-media .media-games-carousel .generated-card-footer {
+    height: 84px !important;
+    min-height: 84px !important;
+  }
+
+  .page-media .media-games-carousel .generated-game-footer > div {
+    padding-top: 7px !important;
+    padding-bottom: 9px !important;
+  }
+
+  .page-media .media-games-carousel .generated-game-meta-block span,
+  .page-media .media-games-carousel .generated-game-meta-block strong,
+  .page-media .media-games-carousel .generated-game-matchup-block strong,
+  .page-media .media-games-carousel .generated-game-matchup-block span,
+  .page-media .media-games-carousel .generated-game-result-block strong,
+  .page-media .media-games-carousel .generated-game-result-block em {
+    transform: translateY(-2px) !important;
+  }
+
+  /* Season action column now uses the same dimensions as the game card. */
+  .page-media .media-season-carousel .generated-wide-card {
+    aspect-ratio: 1.30 / 1 !important;
+    grid-template-columns: minmax(0, 74%) minmax(0, 26%) !important;
+    grid-template-rows: minmax(0, 1fr) 72px !important;
+  }
+
+  .page-media .media-season-carousel .generated-wide-visual {
+    height: 100% !important;
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+    background-size: 100% 100% !important;
+  }
+
+  .page-media .media-season-carousel .generated-wide-actions {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .page-media .media-season-carousel .generated-action-row {
+    padding: 3px 2px !important;
+    gap: 2px !important;
+  }
+
+  .page-media .media-season-carousel .generated-action-icon {
+    width: 34px !important;
+    height: 34px !important;
+    flex: 0 0 34px !important;
+    font-size: .95rem !important;
+  }
+
+  .page-media .media-season-carousel .generated-action-copy strong {
+    font-size: clamp(.52rem, 2.45vw, .72rem) !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+  }
+
+  .page-media .media-season-carousel .generated-season-footer,
+  .page-media .media-season-carousel .generated-card-footer {
+    height: 72px !important;
+    min-height: 72px !important;
+  }
+
+  /* Small vertical refinements keep all Media cards centered in their shells. */
+  .page-media .media-games-carousel .media-slide {
+    top: 42% !important;
+  }
+
+  .page-media .media-season-carousel .media-slide {
+    top: 42% !important;
+  }
+
+  .page-media .media-playlist-carousel .media-slide {
+    top: 42% !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .site-top .hero-title {
+    height: 54px !important;
+  }
+
+  .site-top .hero-title img {
+    max-width: 218px !important;
+    height: 48px !important;
+    max-height: 48px !important;
+    transform: scaleY(1.20) !important;
+  }
+
+  .page-media .media-games-carousel .generated-wide-card,
+  .page-media .media-season-carousel .generated-wide-card {
+    aspect-ratio: 1.26 / 1 !important;
+  }
+}
