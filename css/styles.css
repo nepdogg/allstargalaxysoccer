@@ -14746,3 +14746,87 @@ body.lightbox-open {
     min-height: 44px !important;
   }
 }
+
+
+/* ============================================================
+   V113 — MOBILE HEADER BALANCE
+   Raises the navigation row and enlarges the center title.
+   Desktop remains unchanged.
+   ============================================================ */
+@media (max-width: 760px) {
+
+  /* Keep the fixed header compact and remove the large gap
+     between the logo/title row and the navigation links. */
+  .site-top .hero-bar {
+    height: 82px !important;
+    min-height: 82px !important;
+    padding-top: 5px !important;
+    padding-bottom: 0 !important;
+    align-items: center !important;
+  }
+
+  .site-top nav {
+    height: 44px !important;
+    min-height: 44px !important;
+    margin-top: -2px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .site-top nav a {
+    padding-top: 7px !important;
+    padding-bottom: 7px !important;
+  }
+
+  /* Increase the title's visual height while maintaining its
+     current width and center alignment between the logos. */
+  .site-top .hero-title {
+    height: 72px !important;
+    min-height: 72px !important;
+    overflow: visible !important;
+  }
+
+  .site-top .hero-title img {
+    width: min(100%, 270px) !important;
+    max-width: 270px !important;
+    height: auto !important;
+    max-height: 68px !important;
+    object-fit: contain !important;
+    transform: scaleY(1.28) !important;
+    transform-origin: center center !important;
+  }
+
+  /* Match the page offset to the more compact fixed header. */
+  body {
+    padding-top: 126px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .site-top .hero-bar {
+    height: 78px !important;
+    min-height: 78px !important;
+  }
+
+  .site-top nav {
+    height: 42px !important;
+    min-height: 42px !important;
+    margin-top: -2px !important;
+  }
+
+  .site-top .hero-title {
+    height: 68px !important;
+    min-height: 68px !important;
+  }
+
+  .site-top .hero-title img {
+    width: min(100%, 240px) !important;
+    max-width: 240px !important;
+    max-height: 64px !important;
+    transform: scaleY(1.25) !important;
+  }
+
+  body {
+    padding-top: 120px !important;
+  }
+}
