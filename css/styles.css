@@ -14264,3 +14264,174 @@ body.lightbox-open {
     aspect-ratio: 1.26 / 1 !important;
   }
 }
+
+
+/* ============================================================
+   V110 — MOBILE STICKY HEADER + COMPACT CARD FOOTERS
+   Phone-only refinements. Desktop remains unchanged.
+   ============================================================ */
+@media (max-width: 760px) {
+
+  /* Keep the complete mobile header visible while scrolling. */
+  .site-top {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+    isolation: isolate !important;
+    background: rgba(2, 1, 14, .98) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .42) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+  }
+
+  .site-top .hero-bar,
+  .site-top nav {
+    position: relative !important;
+    z-index: 1001 !important;
+  }
+
+  /* Preserve the title artwork's natural proportions. */
+  .site-top .hero-title {
+    height: 58px !important;
+    overflow: visible !important;
+  }
+
+  .site-top .hero-title img {
+    width: min(100%, 252px) !important;
+    max-width: 252px !important;
+    height: auto !important;
+    max-height: 50px !important;
+    object-fit: contain !important;
+    transform: none !important;
+    margin: 0 auto !important;
+  }
+
+  /* Homepage and Media Archive playlist cards:
+     smaller footer and more room for the image. */
+  .page-home .homepage-media-carousel .generated-playlist-art,
+  .page-media .media-playlist-carousel .generated-playlist-art {
+    aspect-ratio: 1.56 / 1 !important;
+    grid-template-rows: minmax(0, 1fr) 56px !important;
+  }
+
+  .page-home .homepage-media-carousel .generated-playlist-footer,
+  .page-media .media-playlist-carousel .generated-playlist-footer {
+    height: 56px !important;
+    min-height: 56px !important;
+    padding: 6px 14px !important;
+    gap: 9px !important;
+  }
+
+  .page-home .homepage-media-carousel .generated-playlist-footer-icon,
+  .page-home .homepage-media-carousel .generated-playlist-icon,
+  .page-media .media-playlist-carousel .generated-playlist-footer-icon,
+  .page-media .media-playlist-carousel .generated-playlist-icon {
+    width: 36px !important;
+    height: 36px !important;
+    flex: 0 0 36px !important;
+    transform: translateY(-1px) !important;
+  }
+
+  .page-home .homepage-media-carousel .generated-playlist-footer-title,
+  .page-home .homepage-media-carousel .generated-card-title,
+  .page-media .media-playlist-carousel .generated-playlist-footer-title,
+  .page-media .media-playlist-carousel .generated-card-title {
+    font-size: clamp(1rem, 4.7vw, 1.32rem) !important;
+    line-height: 1 !important;
+  }
+
+  /* Latest Games: compact footer restores space to image and action links. */
+  .page-media .media-games-carousel .generated-wide-card {
+    aspect-ratio: 1.38 / 1 !important;
+    grid-template-rows: minmax(0, 1fr) 62px !important;
+  }
+
+  .page-media .media-games-carousel .generated-game-footer,
+  .page-media .media-games-carousel .generated-card-footer {
+    height: 62px !important;
+    min-height: 62px !important;
+  }
+
+  .page-media .media-games-carousel .generated-game-footer > div {
+    padding-top: 4px !important;
+    padding-bottom: 5px !important;
+  }
+
+  .page-media .media-games-carousel .generated-game-meta-block span,
+  .page-media .media-games-carousel .generated-game-meta-block strong,
+  .page-media .media-games-carousel .generated-game-matchup-block strong,
+  .page-media .media-games-carousel .generated-game-matchup-block span,
+  .page-media .media-games-carousel .generated-game-result-block strong,
+  .page-media .media-games-carousel .generated-game-result-block em {
+    transform: none !important;
+    line-height: 1.02 !important;
+  }
+
+  /* Season Archive: compact single-line footer and restore action space. */
+  .page-media .media-season-carousel .generated-wide-card {
+    aspect-ratio: 1.42 / 1 !important;
+    grid-template-columns: minmax(0, 74%) minmax(0, 26%) !important;
+    grid-template-rows: minmax(0, 1fr) 56px !important;
+  }
+
+  .page-media .media-season-carousel .generated-season-footer,
+  .page-media .media-season-carousel .generated-card-footer {
+    height: 56px !important;
+    min-height: 56px !important;
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+  }
+
+  /* Keep action links balanced after footer reduction. */
+  .page-media .media-games-carousel .generated-wide-actions,
+  .page-media .media-season-carousel .generated-wide-actions {
+    min-height: 0 !important;
+    height: 100% !important;
+  }
+
+  .page-media .media-games-carousel .generated-action-row,
+  .page-media .media-season-carousel .generated-action-row {
+    min-height: 0 !important;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .site-top .hero-title img {
+    width: min(100%, 226px) !important;
+    max-width: 226px !important;
+    max-height: 46px !important;
+  }
+
+  .page-home .homepage-media-carousel .generated-playlist-art,
+  .page-media .media-playlist-carousel .generated-playlist-art {
+    grid-template-rows: minmax(0, 1fr) 52px !important;
+  }
+
+  .page-home .homepage-media-carousel .generated-playlist-footer,
+  .page-media .media-playlist-carousel .generated-playlist-footer {
+    height: 52px !important;
+    min-height: 52px !important;
+  }
+
+  .page-media .media-games-carousel .generated-wide-card {
+    grid-template-rows: minmax(0, 1fr) 58px !important;
+  }
+
+  .page-media .media-games-carousel .generated-game-footer,
+  .page-media .media-games-carousel .generated-card-footer {
+    height: 58px !important;
+    min-height: 58px !important;
+  }
+
+  .page-media .media-season-carousel .generated-wide-card {
+    grid-template-rows: minmax(0, 1fr) 52px !important;
+  }
+
+  .page-media .media-season-carousel .generated-season-footer,
+  .page-media .media-season-carousel .generated-card-footer {
+    height: 52px !important;
+    min-height: 52px !important;
+  }
+}
