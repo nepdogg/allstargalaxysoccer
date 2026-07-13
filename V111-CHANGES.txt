@@ -1,0 +1,17 @@
+ALLSTAR GALAXY WEBSITE — V111
+
+MOBILE-ONLY CORRECTIONS
+- Changed the full mobile header from sticky to fixed so it always remains visible.
+- Added page-top spacing so content does not hide underneath the fixed header.
+- Enlarged the navigation title while preserving its natural proportions.
+- Reduced Homepage playlist footer height.
+- Made the Media Archive playlist card match the Homepage card exactly.
+- Reduced Latest Games footer height.
+- Increased Latest Games right-side action width from 25% to 28%.
+- Reduced Season Archive footer height.
+- Increased Season Archive right-side action width from 25% to 28%.
+- Preserved the desktop layout.
+
+SAFE UPDATE
+This ZIP does not include data/master-content.json and will not overwrite your
+players, games, seasons, playlists, schedule, standings, links, or visibility settings.
