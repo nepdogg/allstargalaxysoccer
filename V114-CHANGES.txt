@@ -1,0 +1,11 @@
+ALLSTAR GALAXY WEBSITE — V114
+
+MOBILE-ONLY CORRECTION
+- Increased the visual height of the center navigation title.
+- Kept the title width unchanged.
+- Kept the header height, logo positions, navigation spacing, and carousels unchanged.
+- Preserved the desktop design.
+
+SAFE UPDATE
+This ZIP does not include data/master-content.json and will not overwrite your
+players, games, seasons, playlists, schedule, standings, links, or visibility settings.
