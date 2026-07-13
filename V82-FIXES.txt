@@ -1,5 +1,0 @@
-V82 fixes:
-- Uses the root /generated folder exactly as shown in the GitHub repository.
-- Centers the generated News cards.
-- Forces the About navigation title and logos to silver/platinum glow.
-- Bumps CSS/JS cache version to 82.
