@@ -14830,3 +14830,46 @@ body.lightbox-open {
     padding-top: 120px !important;
   }
 }
+
+
+/* ============================================================
+   V114 — MOBILE NAVIGATION TITLE HEIGHT
+   Final phone-only title adjustment. Desktop remains unchanged.
+   ============================================================ */
+@media (max-width: 760px) {
+  /* Keep the existing width, header height, logo placement and
+     navigation position. Only increase the title's visual height. */
+  .site-top .hero-title {
+    height: 74px !important;
+    min-height: 74px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: visible !important;
+  }
+
+  .site-top .hero-title img {
+    width: min(100%, 270px) !important;
+    max-width: 270px !important;
+    height: auto !important;
+    max-height: 70px !important;
+    object-fit: contain !important;
+    transform: scaleY(1.42) !important;
+    transform-origin: center center !important;
+    margin: 0 auto !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .site-top .hero-title {
+    height: 70px !important;
+    min-height: 70px !important;
+  }
+
+  .site-top .hero-title img {
+    width: min(100%, 240px) !important;
+    max-width: 240px !important;
+    max-height: 66px !important;
+    transform: scaleY(1.38) !important;
+  }
+}
