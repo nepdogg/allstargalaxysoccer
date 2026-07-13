@@ -1,8 +1,0 @@
-ALLSTAR GALAXY V92 — FINAL IMAGE FILL & TYPOGRAPHY POLISH
-
-- Playlist artwork now fills the entire image region.
-- Playlist names are centered vertically and horizontally in the title area.
-- Game and season artwork now fills the complete visual panel.
-- Game footer letter and word spacing increased for easier reading.
-- Responsive spacing retained to prevent clipping on smaller screens.
-- Cache references updated to v=92.
