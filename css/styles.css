@@ -13831,3 +13831,274 @@ body.lightbox-open {
     width: calc(100% - 28px) !important;
   }
 }
+
+
+/* ============================================================
+   V108 — MOBILE TITLE + HOMEPAGE CAROUSEL MATCH
+   Final phone-only overrides. Desktop remains unchanged.
+   ============================================================ */
+@media (max-width: 760px) {
+
+  /* Navigation title: keep it completely between the two logos. */
+  .site-top .hero-bar {
+    position: relative !important;
+    height: 102px !important;
+    min-height: 102px !important;
+    padding: 8px 12px 4px !important;
+    display: grid !important;
+    grid-template-columns: 66px minmax(0, 1fr) 66px !important;
+    align-items: center !important;
+    column-gap: 8px !important;
+  }
+
+  .site-top .hero-logo,
+  .site-top .hero-logo-right {
+    position: relative !important;
+    inset: auto !important;
+    z-index: 3 !important;
+    width: 66px !important;
+    height: 66px !important;
+    min-width: 66px !important;
+    min-height: 66px !important;
+    flex: none !important;
+  }
+
+  .site-top .hero-logo img,
+  .site-top .hero-logo-right img {
+    width: 64px !important;
+    height: 64px !important;
+    max-width: 64px !important;
+    max-height: 64px !important;
+  }
+
+  .site-top .hero-title {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: 38px !important;
+    min-width: 0 !important;
+    transform: none !important;
+    overflow: hidden !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 2 !important;
+  }
+
+  .site-top .hero-title img {
+    display: block !important;
+    width: 100% !important;
+    max-width: 235px !important;
+    height: auto !important;
+    max-height: 36px !important;
+    object-fit: contain !important;
+    transform: none !important;
+    margin: 0 auto !important;
+  }
+
+  /* Homepage Best Of carousel now uses the same compact geometry
+     as the Media-page playlist carousel, with gold styling preserved. */
+  .page-home .homepage-media-carousel {
+    position: relative !important;
+    width: calc(100% - 24px) !important;
+    height: 310px !important;
+    min-height: 310px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  .page-home .homepage-media-carousel .carousel-track {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    transform: none !important;
+  }
+
+  .page-home .homepage-media-carousel .media-slide,
+  .page-home .homepage-media-carousel .media-slide.is-neighbor,
+  .page-home .homepage-media-carousel .media-slide.is-distance-2,
+  .page-home .homepage-media-carousel .media-slide.is-active {
+    position: absolute !important;
+    left: 50% !important;
+    top: 42% !important;
+    width: calc(100% - 36px) !important;
+    max-width: 600px !important;
+    min-width: 0 !important;
+    height: auto !important;
+    margin: 0 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translate(calc(-50% + (var(--media-offset, 0) * 82vw)), -50%) scale(.72) !important;
+  }
+
+  .page-home .homepage-media-carousel .media-slide.is-active {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    z-index: 8 !important;
+    transform: translate(-50%, -50%) scale(1) !important;
+  }
+
+  .page-home .homepage-media-carousel .media-slide.is-neighbor {
+    opacity: .10 !important;
+    visibility: visible !important;
+    z-index: 2 !important;
+  }
+
+  .page-home .homepage-media-carousel .generated-playlist-art {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    aspect-ratio: 1.48 / 1 !important;
+    display: grid !important;
+    grid-template-rows: minmax(0, 1fr) 68px !important;
+    overflow: hidden !important;
+  }
+
+  .page-home .homepage-media-carousel .generated-playlist-image {
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+
+  .page-home .homepage-media-carousel .generated-playlist-footer {
+    height: 68px !important;
+    min-height: 68px !important;
+    padding: 8px 16px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+    overflow: hidden !important;
+  }
+
+  .page-home .homepage-media-carousel .generated-playlist-footer-icon,
+  .page-home .homepage-media-carousel .generated-playlist-icon {
+    flex: 0 0 40px !important;
+    width: 40px !important;
+    height: 40px !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transform: translateY(1px) !important;
+    line-height: 1 !important;
+  }
+
+  .page-home .homepage-media-carousel .generated-playlist-footer-title,
+  .page-home .homepage-media-carousel .generated-card-title {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    font-size: clamp(1.08rem, 5vw, 1.42rem) !important;
+    line-height: 1 !important;
+    text-align: left !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .page-home .homepage-media-carousel .carousel-button {
+    top: 42% !important;
+    width: 46px !important;
+    height: 46px !important;
+    transform: translateY(-50%) !important;
+    z-index: 20 !important;
+  }
+
+  .page-home .homepage-media-carousel .carousel-button.prev {
+    left: 5px !important;
+  }
+
+  .page-home .homepage-media-carousel .carousel-button.next {
+    right: 5px !important;
+  }
+
+  .page-home .homepage-media-carousel .carousel-dots {
+    position: absolute !important;
+    left: 50% !important;
+    bottom: 10px !important;
+    width: auto !important;
+    max-width: calc(100% - 44px) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: translateX(-50%) !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    gap: 6px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scrollbar-width: none !important;
+  }
+
+  .page-home .homepage-media-carousel .carousel-dots::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  /* Move Media-page arrows outward to the card edges. */
+  .page-media .media-games-carousel .carousel-button.prev,
+  .page-media .media-season-carousel .carousel-button.prev,
+  .page-media .media-playlist-carousel .carousel-button.prev {
+    left: -2px !important;
+  }
+
+  .page-media .media-games-carousel .carousel-button.next,
+  .page-media .media-season-carousel .carousel-button.next,
+  .page-media .media-playlist-carousel .carousel-button.next {
+    right: -2px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .site-top .hero-bar {
+    grid-template-columns: 58px minmax(0, 1fr) 58px !important;
+    column-gap: 6px !important;
+    height: 96px !important;
+    min-height: 96px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  .site-top .hero-logo,
+  .site-top .hero-logo-right {
+    width: 58px !important;
+    height: 58px !important;
+    min-width: 58px !important;
+    min-height: 58px !important;
+  }
+
+  .site-top .hero-logo img,
+  .site-top .hero-logo-right img {
+    width: 56px !important;
+    height: 56px !important;
+    max-width: 56px !important;
+    max-height: 56px !important;
+  }
+
+  .site-top .hero-title img {
+    max-width: 210px !important;
+    max-height: 34px !important;
+  }
+
+  .page-home .homepage-media-carousel {
+    height: 300px !important;
+    min-height: 300px !important;
+  }
+
+  .page-home .homepage-media-carousel .media-slide,
+  .page-home .homepage-media-carousel .media-slide.is-neighbor,
+  .page-home .homepage-media-carousel .media-slide.is-distance-2,
+  .page-home .homepage-media-carousel .media-slide.is-active {
+    width: calc(100% - 28px) !important;
+  }
+}
