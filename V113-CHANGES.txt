@@ -1,0 +1,13 @@
+ALLSTAR GALAXY WEBSITE — V113
+
+MOBILE-ONLY CORRECTIONS
+- Moved the navigation links upward by reducing unused header space.
+- Reduced the gap between the logo/title row and navigation row.
+- Made the center navigation title taller and more visually balanced with the side logos.
+- Kept the full mobile header fixed and always visible.
+- Updated the page-top offset to match the shorter fixed header.
+- Preserved the desktop design and all carousel settings from V112.
+
+SAFE UPDATE
+This ZIP does not include data/master-content.json and will not overwrite your
+players, games, seasons, playlists, schedule, standings, links, or visibility settings.
