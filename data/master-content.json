@@ -1,5 +1,5 @@
 {
-  "version": 139,
+  "version": 140,
   "updated": "2026-07-14",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -583,23 +583,6 @@
       "group": "latest",
       "order": 120,
       "cardImage": ""
-    },
-    {
-      "status": "published",
-      "order": 34,
-      "id": "game-01",
-      "season": "Summer 2026",
-      "gameNumber": 30,
-      "opponent": "Paisas",
-      "date": "",
-      "time": "",
-      "location": "",
-      "result": "",
-      "fullMatch": "",
-      "highlights": "",
-      "slideshow": "",
-      "cardImage": "",
-      "group": "latest"
     }
   ],
   "seasons": [
