@@ -1,1 +1,74 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Allstar Galaxy Admin</title><link rel="stylesheet" href="admin.css?v=128"></head><body><main class="admin-main"><section class="panel login-panel"><div class="admin-brand"><img src="../images/logos/logo.png" alt=""><h1>ALLSTAR GALAXY WEBSITE MANAGER</h1></div><h2>Connect securely to GitHub</h2><p class="help">Enter a fine-grained GitHub personal access token with <strong>Contents: Read and write</strong> permission for only the <strong>allstargalaxysoccer</strong> repository. The token is kept only in this browser tab's session storage and is never saved in the website files.</p><div class="field"><label>GitHub token</label><input id="tokenInput" type="password" autocomplete="off" placeholder="github_pat_…"></div><div class="admin-actions" style="margin-top:16px"><button class="btn primary" id="connectBtn">Connect to Website</button><a class="btn" href="../index.html">Return to Website</a></div><p class="help">For maximum security, use a short expiration date and revoke the token when no longer needed.</p></section></main><script>const input=document.getElementById('tokenInput');document.getElementById('connectBtn').onclick=()=>{if(!input.value.trim())return alert('Enter your GitHub token.');sessionStorage.setItem('asgGithubToken',input.value.trim());location.href='dashboard.html'};if(sessionStorage.getItem('asgGithubToken'))location.href='dashboard.html';</script></body></html>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="#ffd700" name="theme-color"/>
+<title>Allstar Galaxy | Home</title>
+<link href="images/logos/favicon.png" rel="icon" type="image/png"/>
+<link href="css/styles.css?v=117" rel="stylesheet"/>
+</head>
+<body class="page-home">
+<div class="site-shell">
+<header class="site-top">
+<div class="hero-bar">
+<a class="hero-logo home-active" href="index.html">
+<img alt="Allstar Galaxy Logo" src="images/logos/logo.png"/>
+</a>
+<div class="hero-title">
+<img alt="The Official Home of the Allstar Galaxy" onerror="this.onerror=null;this.src='images/titles/page-titles/navigation-title.png';" src="images/titles/page-titles/navigation-title-home.png"/>
+</div>
+<a class="hero-logo-right home-active" href="index.html">
+<img alt="Allstar Galaxy Logo" src="images/logos/logo.png"/>
+</a>
+</div>
+<nav>
+<a class="active" href="index.html">Home</a>
+<a class="" href="team.html">Team</a>
+<a class="" href="schedule.html">Schedule</a>
+<a class="" href="media.html">Media</a>
+<a class="" href="news.html">News</a>
+<a class="" href="livestream.html">Live</a>
+<a class="" href="follow.html">Follow</a>
+</nav>
+</header>
+<div class="hero-image hero-home"></div>
+<main>
+<section class="homepage-bestof-section" id="best-media">
+<div class="homepage-bestof-title-wrap">
+<img alt="The Best of Allstar Galaxy" class="homepage-bestof-title" src="images/titles/section-titles/homepage-bestof-title.png"/>
+<p class="carousel-section-description homepage-carousel-description">Browse the best moments from the Allstar Galaxy archive, including goals, saves, assists, awards, and featured highlights.</p>
+</div>
+<div aria-label="Allstar Galaxy playlist carousel" class="carousel homepage-media-carousel">
+<div class="carousel-track" data-generated-source="home-best"></div>
+<button aria-label="Previous playlist" class="carousel-button prev">‹</button>
+<button aria-label="Next playlist" class="carousel-button next">›</button>
+<div aria-label="Carousel slide navigation" class="carousel-dots"></div>
+</div>
+</section>
+</main>
+<footer>
+<div class="footer-social-row">
+<a aria-label="Allstar Galaxy Home" class="footer-logo footer-logo-left" href="index.html">
+<img alt="Allstar Galaxy Logo" src="images/logos/logo.png"/>
+</a>
+<div class="footer-social">
+<a aria-label="Visit Allstar Galaxy on YouTube" href="https://www.youtube.com/@Allstar-Galaxy" rel="noopener noreferrer" target="_blank"><img alt="YouTube" src="images/icons/social/youtube.png"/></a>
+<a aria-label="Visit Allstar Galaxy on Instagram" href="https://www.instagram.com/allstargalaxysoccer/" rel="noopener noreferrer" target="_blank"><img alt="Instagram" src="images/icons/social/instagram.png"/></a>
+<a aria-label="Visit Allstar Galaxy on Facebook" href="https://www.facebook.com/profile.php?id=61591642103786" rel="noopener noreferrer" target="_blank"><img alt="Facebook" src="images/icons/social/facebook.png"/></a>
+<a aria-label="Visit Allstar Galaxy on TikTok" href="https://www.tiktok.com/@allstar.galaxy" rel="noopener noreferrer" target="_blank"><img alt="TikTok" src="images/icons/social/tiktok.png"/></a>
+<a aria-label="Visit Allstar Galaxy on X" href="https://x.com/Allstar__Galaxy" rel="noopener noreferrer" target="_blank"><img alt="X" src="images/icons/social/x.png"/></a>
+<a aria-label="Email Allstar Galaxy" class="footer-email" href="mailto:allstargalaxy@example.com" title="Email Allstar Galaxy">✉</a>
+</div>
+<a aria-label="Allstar Galaxy Home" class="footer-logo footer-logo-right" href="index.html">
+<img alt="Allstar Galaxy Logo" src="images/logos/logo.png"/>
+</a>
+</div>
+<p class="footer-small">© 2026 Allstar Galaxy. <span aria-hidden="true" class="footer-divider">•</span> <a class="footer-about-link" href="about.html">About</a></p>
+</footer>
+<script src="js/content-manager.js?v=117"></script>
+<script src="js/script.js?v=117"></script>
+</div>
+</body>
+</html>
