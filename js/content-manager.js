@@ -11,6 +11,17 @@
     if (/\.(jpe?g|webp|gif|avif)$/i.test(base)) return base.replace(/\.(jpe?g|webp|gif|avif)$/i, '.png') + suffix;
     return /\.[a-z0-9]+$/i.test(base) ? base + suffix : `${base}.png${suffix}`;
   };
+  const firstValue = (...values) => values.find(value => String(value || '').trim()) || '';
+  const itemImage = (item={}) => pngOnlyPath(firstValue(
+    item.image, item.imagePath, item.photo, item.thumbnail, item.flyer,
+    item.poster, item.graphic, item.cardImage
+  ));
+  const firstItemImage = (items=[]) => {
+    const source = Array.isArray(items) ? items : [];
+    const preferred = source.find(item => isVisible(item) && itemImage(item));
+    const fallback = source.find(item => itemImage(item));
+    return itemImage(preferred || fallback || {});
+  };
   const isVisible = item => item && item.status !== 'hidden';
   const sortItems = items => [...items].filter(isVisible).sort((a,b)=>(a.order||0)-(b.order||0));
   const linkAttrs = url => url && url !== '#' ? `href="${esc(url)}" target="_blank" rel="noopener"` : 'href="#" class="generated-disabled" aria-disabled="true"';
@@ -121,10 +132,52 @@
       </div></a>`;
   }
   function newsCard(data,n){
-    const accent=colorFor(data,'news'); const tag=n.link?'a':'article'; const attrs=n.link?`href="${esc(n.link)}" target="_blank" rel="noopener"`:'';
-    return `<${tag} class="generated-news-card" ${attrs} style="--card-accent:${accent}"><img src="${esc(pngOnlyPath(data.assets.logo))}" alt=""><div><small>${esc(n.date||n.category||'ALLSTAR GALAXY NEWS')}</small><h3>${esc(n.title)}</h3><p>${esc(n.summary)}</p></div></${tag}>`;
+    const accent=colorFor(data,'news');
+    const tag=n.link?'a':'article';
+    const attrs=n.link?`href="${esc(n.link)}" target="_blank" rel="noopener"`:'';
+    const image=itemImage(n)||pngOnlyPath(data.assets.logo);
+    const imageAlt=n.imageAlt||n.alt||n.title||'Allstar Galaxy news';
+    return `<${tag} class="generated-news-card" ${attrs} style="--card-accent:${accent}">
+      <img src="${esc(image)}" alt="${esc(imageAlt)}" loading="lazy" onerror="this.onerror=null;this.src='${esc(pngOnlyPath(data.assets.logo))}'">
+      <div><small>${esc(n.date||n.category||'ALLSTAR GALAXY NEWS')}</small><h3>${esc(n.title)}</h3><p>${esc(n.summary)}</p></div>
+    </${tag}>`;
   }
   function scheduleMarkup(data){
+    const scheduleConfig=data.schedulePage||data.scheduleContent||data.scheduleSettings||{};
+    const scheduleImage=pngOnlyPath(firstValue(
+      scheduleConfig.scheduleImage, scheduleConfig.image, scheduleConfig.flyer,
+      data.scheduleImage, data.assets?.scheduleImage, firstItemImage(data.schedule)
+    ));
+    const standingsImage=pngOnlyPath(firstValue(
+      scheduleConfig.standingsImage, scheduleConfig.tableImage,
+      data.standingsImage, data.assets?.standingsImage, firstItemImage(data.standings)
+    ));
+
+    if(scheduleImage || standingsImage){
+      const cards=[];
+      if(scheduleImage){
+        cards.push(`<article class="schedule-image-card generated-schedule-image-card">
+          <h3>${esc(scheduleConfig.scheduleTitle||'Match Schedule')}</h3>
+          <a class="schedule-lightbox-link" href="${esc(scheduleImage)}" data-lightbox-title="${esc(scheduleConfig.scheduleTitle||'Match Schedule')}">
+            <img src="${esc(scheduleImage)}" alt="${esc(scheduleConfig.scheduleAlt||'Allstar Galaxy match schedule')}" loading="lazy">
+            <span class="schedule-image-action">Open Full Image</span>
+          </a>
+          ${scheduleConfig.scheduleDescription?`<p>${esc(scheduleConfig.scheduleDescription)}</p>`:''}
+        </article>`);
+      }
+      if(standingsImage){
+        cards.push(`<article class="schedule-image-card generated-schedule-image-card">
+          <h3>${esc(scheduleConfig.standingsTitle||'League Standings')}</h3>
+          <a class="schedule-lightbox-link" href="${esc(standingsImage)}" data-lightbox-title="${esc(scheduleConfig.standingsTitle||'League Standings')}">
+            <img src="${esc(standingsImage)}" alt="${esc(scheduleConfig.standingsAlt||'Allstar Galaxy league standings')}" loading="lazy">
+            <span class="schedule-image-action">Open Full Image</span>
+          </a>
+          ${scheduleConfig.standingsDescription?`<p>${esc(scheduleConfig.standingsDescription)}</p>`:''}
+        </article>`);
+      }
+      return `<div class="schedule-image-grid generated-schedule-image-grid">${cards.join('')}</div>`;
+    }
+
     const matches=sortItems(data.schedule);
     const rows=matches.length?matches.map(m=>`<article class="generated-match-card"><div class="generated-match-number">GAME ${String(m.gameNumber||'').padStart(2,'0')}</div><h3>ALLSTAR GALAXY <span>VS</span> ${esc(m.opponent)}</h3><div class="generated-match-meta"><span>${esc(m.date||'DATE TBA')}</span><span>${esc(m.time||'TIME TBA')}</span><span>${esc(m.location||'LOCATION TBA')}</span></div>${m.result?`<strong class="generated-match-result">${esc(m.result)}</strong>`:''}</article>`).join(''):`<article class="generated-match-card"><div class="generated-match-number">NEXT SEASON</div><h3>SCHEDULE <span>COMING SOON</span></h3><div class="generated-match-meta"><span>Update the schedule section in data/master-content.json</span></div></article>`;
     const standings=(data.standings||[]).filter(isVisible).map(r=>`<tr><td>${esc(r.position)}</td><td>${esc(r.team)}</td><td>${esc(r.played)}</td><td>${esc(r.wins)}</td><td>${esc(r.draws)}</td><td>${esc(r.losses)}</td><td>${esc(r.points)}</td></tr>`).join('');

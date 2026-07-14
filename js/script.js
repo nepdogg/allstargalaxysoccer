@@ -426,3 +426,49 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 });
+
+
+/* ============================================================
+   V118 — DYNAMIC SCHEDULE IMAGE LIGHTBOX
+   Generated schedule cards are added after the page loads, so
+   use event delegation instead of querying only at startup.
+   ============================================================ */
+document.addEventListener("click", (event) => {
+    const link = event.target.closest(".schedule-lightbox-link");
+    if (!link) return;
+
+    const lightbox = document.getElementById("scheduleImageLightbox");
+    if (!lightbox) return;
+
+    event.preventDefault();
+
+    const image = lightbox.querySelector(".schedule-lightbox-image");
+    const title = lightbox.querySelector(".schedule-lightbox-title");
+    const open = lightbox.querySelector(".schedule-lightbox-open");
+    const source = link.getAttribute("href");
+    const imageAlt = link.querySelector("img")?.getAttribute("alt") || "Schedule image";
+
+    if (!source || source === "#") return;
+
+    if (image) {
+        image.src = source;
+        image.alt = imageAlt;
+    }
+    if (title) title.textContent = link.dataset.lightboxTitle || "Schedule";
+    if (open) open.href = source;
+
+    lightbox.classList.add("is-open");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.classList.add("lightbox-open");
+    lightbox.querySelector(".schedule-lightbox-close")?.focus();
+});
+
+document.addEventListener("click", (event) => {
+    const close = event.target.closest(".schedule-lightbox-close");
+    const lightbox = document.getElementById("scheduleImageLightbox");
+    if (!close || !lightbox) return;
+
+    lightbox.classList.remove("is-open");
+    lightbox.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("lightbox-open");
+});
