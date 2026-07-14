@@ -122,8 +122,10 @@
       </div></a>`;
   }
   function newsCard(data,n){
-    const accent=colorFor(data,'news'); const tag=n.link?'a':'article'; const attrs=n.link?`href="${esc(n.link)}" target="_blank" rel="noopener"`:'';
-    return `<${tag} class="generated-news-card" ${attrs} style="--card-accent:${accent}"><img src="${esc(pngOnlyPath(n.image||data.assets.logo))}" alt=""><div><small>${esc(n.date||n.category||'ALLSTAR GALAXY NEWS')}</small><h3>${esc(n.title)}</h3><p>${esc(n.summary)}</p></div></${tag}>`;
+    const accent=colorFor(data,'news');
+    const image=pngOnlyPath(n.image||data.assets.logo);
+    const more=n.link?`<a class="generated-news-link" href="${esc(n.link)}" target="_blank" rel="noopener">OPEN LINK</a>`:'';
+    return `<article class="generated-news-card" style="--card-accent:${accent}"><button class="generated-news-image-button" type="button" data-news-image="${esc(image)}" data-news-title="${esc(n.title||'News Image')}" aria-label="View full-size image for ${esc(n.title||'news')}"><img src="${esc(image)}" alt="${esc(n.title||'News image')}"></button><div><small>${esc(n.date||n.category||'ALLSTAR GALAXY NEWS')}</small><h3>${esc(n.title)}</h3><p>${esc(n.summary)}</p>${more}</div></article>`;
   }
   function scheduleMarkup(data){
     const display=data.scheduleDisplay||{};
@@ -169,7 +171,29 @@
     });
   }
   const ready=fetch(DATA_URL,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(`Unable to load ${DATA_URL}`);return r.json()}).then(data=>{render(data);window.ASG_MASTER_DATA=data;return data}).catch(err=>{console.error(err);document.querySelectorAll('[data-generated-source]').forEach(el=>el.innerHTML='<p class="generated-data-error">Content could not load. Check data/master-content.json.</p>');});
-  document.addEventListener('click',e=>{const b=e.target.closest('[data-schedule-image]');if(!b)return;const box=document.getElementById('scheduleImageLightbox');if(!box)return;const img=box.querySelector('.schedule-lightbox-image'),title=box.querySelector('.schedule-lightbox-title'),open=box.querySelector('.schedule-lightbox-open');img.src=b.dataset.scheduleImage;title.textContent=b.dataset.scheduleTitle||'Preview';open.href=b.dataset.scheduleImage;box.classList.add('is-open');box.setAttribute('aria-hidden','false');});
+  document.addEventListener('click',e=>{
+    const scheduleButton=e.target.closest('[data-schedule-image]');
+    if(scheduleButton){
+      const box=document.getElementById('scheduleImageLightbox');
+      if(!box)return;
+      const img=box.querySelector('.schedule-lightbox-image'),title=box.querySelector('.schedule-lightbox-title'),open=box.querySelector('.schedule-lightbox-open');
+      img.src=scheduleButton.dataset.scheduleImage;title.textContent=scheduleButton.dataset.scheduleTitle||'Preview';open.href=scheduleButton.dataset.scheduleImage;box.classList.add('is-open');box.setAttribute('aria-hidden','false');
+      return;
+    }
+    const newsButton=e.target.closest('[data-news-image]');
+    if(newsButton){
+      const box=document.getElementById('newsImageLightbox');
+      if(!box)return;
+      const img=box.querySelector('.news-lightbox-image'),title=box.querySelector('.news-lightbox-title'),open=box.querySelector('.news-lightbox-open');
+      img.src=newsButton.dataset.newsImage;title.textContent=newsButton.dataset.newsTitle||'News Image';open.href=newsButton.dataset.newsImage;box.classList.add('is-open');box.setAttribute('aria-hidden','false');
+    }
+  });
+  document.addEventListener('click',e=>{
+    const box=e.target.closest('#newsImageLightbox');
+    if(!box)return;
+    if(e.target.classList.contains('news-lightbox-close')||e.target===box){box.classList.remove('is-open');box.setAttribute('aria-hidden','true');}
+  });
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){const box=document.getElementById('newsImageLightbox');if(box){box.classList.remove('is-open');box.setAttribute('aria-hidden','true');}}});
   ready.then(data=>{const seconds=Math.max(30,Number(data.live?.autoRefreshSeconds||60));if(document.querySelector('[data-generated-source=\"live\"]'))setInterval(()=>render(data),seconds*1000);});
   window.ASGContent={ready,render};
 })();
