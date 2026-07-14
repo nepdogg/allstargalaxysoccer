@@ -15202,3 +15202,55 @@ body.lightbox-open {
     max-height: calc(100dvh - 235px) !important;
   }
 }
+
+
+/* ============================================================
+   V118 — ADMIN IMAGE RENDERING
+   News and Schedule images from master-content.json.
+   ============================================================ */
+.generated-news-card > img {
+  object-fit: contain;
+  object-position: center;
+  background: rgba(0,0,0,.78);
+}
+
+.page-schedule .generated-schedule-image-grid {
+  width: min(94%, 1120px);
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px;
+}
+
+.page-schedule .generated-schedule-image-card p {
+  margin: 14px 0 0;
+  text-align: center;
+  line-height: 1.55;
+}
+
+@media (max-width: 760px) {
+  .page-schedule .generated-schedule-image-grid {
+    width: min(94%, 680px) !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 24px !important;
+  }
+
+  .page-schedule .generated-schedule-image-card {
+    padding: 16px !important;
+  }
+
+  .page-schedule .generated-schedule-image-card .schedule-lightbox-link img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 66vh !important;
+    object-fit: contain !important;
+  }
+
+  .page-news .generated-news-card > img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 62vh !important;
+    object-fit: contain !important;
+  }
+}
