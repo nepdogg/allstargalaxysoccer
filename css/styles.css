@@ -15131,3 +15131,66 @@ body.lightbox-open {
     object-fit: contain !important;
   }
 }
+
+/* ============================================================
+   V122 — SCHEDULE/STANDINGS THUMBNAILS + RELIABLE LIGHTBOX CLOSE
+   ============================================================ */
+.page-schedule .generated-schedule-images {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 28px !important;
+  align-items: stretch !important;
+}
+.page-schedule .generated-schedule-image-card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  min-height: 330px !important;
+  padding: 20px !important;
+  overflow: hidden !important;
+  cursor: zoom-in !important;
+}
+.page-schedule .generated-schedule-image-card img {
+  display: block !important;
+  width: 100% !important;
+  height: 255px !important;
+  max-height: 255px !important;
+  min-height: 0 !important;
+  aspect-ratio: auto !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  background: #000 !important;
+}
+.page-schedule .generated-schedule-image-card span {
+  width: 100% !important;
+  margin-top: 10px !important;
+  padding: 12px 8px 0 !important;
+  text-align: center !important;
+}
+.schedule-image-lightbox {
+  cursor: zoom-out;
+}
+.schedule-lightbox-stage,
+.schedule-lightbox-image,
+.schedule-lightbox-open,
+.schedule-lightbox-title {
+  cursor: default;
+}
+.schedule-lightbox-close {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+@media (max-width: 760px) {
+  .page-schedule .generated-schedule-images {
+    grid-template-columns: 1fr !important;
+    width: 94vw !important;
+  }
+  .page-schedule .generated-schedule-image-card {
+    min-height: 280px !important;
+    padding: 14px !important;
+  }
+  .page-schedule .generated-schedule-image-card img {
+    height: 220px !important;
+    max-height: 220px !important;
+  }
+}
