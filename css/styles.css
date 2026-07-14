@@ -15862,3 +15862,117 @@ body.lightbox-open {
     transform: none !important;
   }
 }
+
+
+/* ============================================================
+   V123 — FINAL MOBILE SCHEDULE LIGHTBOX + TITLE HEIGHT FIX
+   ============================================================ */
+
+@media (max-width: 760px) {
+
+  /* Make the schedule/standings viewer cover the fixed website
+     header so its controls can never be hidden behind it. */
+  .schedule-image-lightbox {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 50000 !important;
+    display: none !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding:
+      calc(env(safe-area-inset-top) + 70px)
+      14px
+      calc(env(safe-area-inset-bottom) + 44px) !important;
+    box-sizing: border-box !important;
+  }
+
+  .schedule-image-lightbox.is-open {
+    display: flex !important;
+  }
+
+  .schedule-lightbox-stage {
+    width: 100% !important;
+    max-width: 94vw !important;
+    max-height: none !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    gap: 16px !important;
+  }
+
+  .schedule-lightbox-image {
+    display: block !important;
+    width: auto !important;
+    height: auto !important;
+    max-width: 92vw !important;
+    max-height: calc(100dvh - 245px) !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    margin: 0 auto !important;
+  }
+
+  /* Keep the close X permanently visible above every other layer. */
+  .schedule-lightbox-close {
+    position: fixed !important;
+    top: calc(env(safe-area-inset-top) + 12px) !important;
+    right: 14px !important;
+    z-index: 50020 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 50px !important;
+    height: 50px !important;
+    padding: 0 !important;
+    border: 1px solid rgba(57, 255, 20, .9) !important;
+    border-radius: 50% !important;
+    background: rgba(0, 18, 5, .96) !important;
+    color: #fff !important;
+    font-size: 2.45rem !important;
+    line-height: 1 !important;
+    box-shadow:
+      0 0 16px rgba(57, 255, 20, .78),
+      0 0 30px rgba(57, 255, 20, .42) !important;
+    text-shadow:
+      0 0 8px #fff,
+      0 0 18px rgba(57, 255, 20, .95) !important;
+  }
+
+  /* Final increase to the center navigation-title height.
+     Width, logos, navigation row and header height stay unchanged. */
+  .site-top .hero-title {
+    height: 80px !important;
+    min-height: 80px !important;
+    overflow: visible !important;
+  }
+
+  .site-top .hero-title img {
+    width: min(100%, 270px) !important;
+    max-width: 270px !important;
+    height: auto !important;
+    max-height: 76px !important;
+    object-fit: contain !important;
+    transform: scaleY(2.14) !important;
+    transform-origin: center center !important;
+    margin: 0 auto !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .site-top .hero-title {
+    height: 76px !important;
+    min-height: 76px !important;
+  }
+
+  .site-top .hero-title img {
+    width: min(100%, 240px) !important;
+    max-width: 240px !important;
+    max-height: 72px !important;
+    transform: scaleY(2.06) !important;
+  }
+
+  .schedule-lightbox-image {
+    max-height: calc(100dvh - 230px) !important;
+  }
+}
