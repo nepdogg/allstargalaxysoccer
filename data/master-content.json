@@ -1,5 +1,5 @@
 {
-  "version": 140,
+  "version": 141,
   "updated": "2026-07-14",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -610,19 +610,6 @@
       "slideshows": "https://youtube.com/playlist?list=PLfhTCGgsBWKs&si=rX3CFUNV9ChIr2VE",
       "status": "hidden",
       "order": 2,
-      "cardImage": ""
-    },
-    {
-      "id": "season-03",
-      "title": "Past Seasons Comming Soon",
-      "subtitle": "Coming Soon",
-      "dateRange": "",
-      "league": "Sunnyvale Soccer League",
-      "fullMatches": "",
-      "highlights": "",
-      "slideshows": "",
-      "status": "published",
-      "order": 3,
       "cardImage": ""
     },
     {
