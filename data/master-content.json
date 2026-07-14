@@ -1,5 +1,5 @@
 {
-  "version": 135,
+  "version": 136,
   "updated": "2026-07-14",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -1822,7 +1822,7 @@
       "number": "13",
       "position": "ST",
       "photo": "images/team/players/r9.png",
-      "status": "hidden",
+      "status": "published",
       "order": 13
     },
     {
