@@ -1,9 +1,13 @@
 {
-  "version": 84,
-  "updated": "2026-07-11",
+  "version": 117,
+  "updated": "2026-07-13",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
-    "logo": "generated/allstar-galaxy-logo.png"
+    "logo": "generated/allstar-galaxy-logo.png",
+    "playerSilhouette": "images/team/players/player-silhouette.png",
+    "scheduleImage": "images/schedule/schedule.png",
+    "standingsImage": "images/schedule/standings.png",
+    "liveDefaultImage": "images/live/live-default.png"
   },
   "colors": {
     "core": "#f5c542",
@@ -33,7 +37,8 @@
       "slideshow": "#",
       "status": "published",
       "group": "latest",
-      "order": 1
+      "order": 1,
+      "cardImage": ""
     },
     {
       "id": "summer-2026-game-02",
@@ -49,7 +54,8 @@
       "slideshow": "#",
       "status": "published",
       "group": "latest",
-      "order": 2
+      "order": 2,
+      "cardImage": ""
     },
     {
       "id": "summer-2026-game-03",
@@ -65,7 +71,8 @@
       "slideshow": "https://youtu.be/XdOchG2h2u0",
       "status": "published",
       "group": "latest",
-      "order": 3
+      "order": 3,
+      "cardImage": ""
     },
     {
       "id": "summer-2026-game-05",
@@ -81,7 +88,8 @@
       "slideshow": "https://youtu.be/ry18rl0zRIk",
       "status": "published",
       "group": "latest",
-      "order": 5
+      "order": 5,
+      "cardImage": ""
     },
     {
       "id": "summer-2026-game-06",
@@ -97,7 +105,8 @@
       "slideshow": "https://youtu.be/Zv0HCyKcgYM",
       "status": "published",
       "group": "latest",
-      "order": 6
+      "order": 6,
+      "cardImage": ""
     },
     {
       "id": "summer-2026-game-07",
@@ -113,7 +122,8 @@
       "slideshow": "https://youtu.be/IyTPDbYihBs",
       "status": "published",
       "group": "latest",
-      "order": 7
+      "order": 7,
+      "cardImage": ""
     },
     {
       "id": "summer-2026-game-08",
@@ -129,7 +139,8 @@
       "slideshow": "https://youtu.be/NOwsq6BnYeg",
       "status": "published",
       "group": "latest",
-      "order": 8
+      "order": 8,
+      "cardImage": ""
     },
     {
       "id": "summer-2026-game-10",
@@ -145,7 +156,8 @@
       "slideshow": "https://youtu.be/pf4FhBFTYW0",
       "status": "published",
       "group": "latest",
-      "order": 10
+      "order": 10,
+      "cardImage": ""
     },
     {
       "id": "summer-2026-game-11",
@@ -161,7 +173,8 @@
       "slideshow": "https://youtu.be/A3g_0wrrVIU",
       "status": "published",
       "group": "latest",
-      "order": 11
+      "order": 11,
+      "cardImage": ""
     },
     {
       "id": "summer-2026-game-12",
@@ -177,7 +190,8 @@
       "slideshow": "https://youtu.be/znftKzKJhsw",
       "status": "published",
       "group": "latest",
-      "order": 12
+      "order": 12,
+      "cardImage": ""
     },
     {
       "id": "summer-2026-game-13",
@@ -193,7 +207,8 @@
       "slideshow": "https://youtu.be/dAhGqP5FV2U",
       "status": "published",
       "group": "latest",
-      "order": 13
+      "order": 13,
+      "cardImage": ""
     },
     {
       "id": "summer-2026-game-14",
@@ -209,7 +224,8 @@
       "slideshow": "https://youtu.be/BdDheshdWvU",
       "status": "published",
       "group": "latest",
-      "order": 14
+      "order": 14,
+      "cardImage": ""
     },
     {
       "id": "summer-2026-game-15",
@@ -225,7 +241,8 @@
       "slideshow": "https://youtu.be/TqElETWpU-c",
       "status": "published",
       "group": "latest",
-      "order": 15
+      "order": 15,
+      "cardImage": ""
     },
     {
       "id": "new-game-01",
@@ -241,7 +258,8 @@
       "slideshow": "",
       "status": "hidden",
       "group": "latest",
-      "order": 101
+      "order": 101,
+      "cardImage": ""
     },
     {
       "id": "new-game-02",
@@ -257,7 +275,8 @@
       "slideshow": "",
       "status": "hidden",
       "group": "latest",
-      "order": 102
+      "order": 102,
+      "cardImage": ""
     },
     {
       "id": "new-game-03",
@@ -273,7 +292,8 @@
       "slideshow": "",
       "status": "hidden",
       "group": "latest",
-      "order": 103
+      "order": 103,
+      "cardImage": ""
     },
     {
       "id": "new-game-04",
@@ -289,7 +309,8 @@
       "slideshow": "",
       "status": "hidden",
       "group": "latest",
-      "order": 104
+      "order": 104,
+      "cardImage": ""
     },
     {
       "id": "new-game-05",
@@ -305,7 +326,8 @@
       "slideshow": "",
       "status": "hidden",
       "group": "latest",
-      "order": 105
+      "order": 105,
+      "cardImage": ""
     },
     {
       "id": "new-game-06",
@@ -321,7 +343,8 @@
       "slideshow": "",
       "status": "hidden",
       "group": "latest",
-      "order": 106
+      "order": 106,
+      "cardImage": ""
     },
     {
       "id": "new-game-07",
@@ -337,7 +360,8 @@
       "slideshow": "",
       "status": "hidden",
       "group": "latest",
-      "order": 107
+      "order": 107,
+      "cardImage": ""
     },
     {
       "id": "new-game-08",
@@ -353,7 +377,8 @@
       "slideshow": "",
       "status": "hidden",
       "group": "latest",
-      "order": 108
+      "order": 108,
+      "cardImage": ""
     },
     {
       "id": "new-game-09",
@@ -369,7 +394,8 @@
       "slideshow": "",
       "status": "hidden",
       "group": "latest",
-      "order": 109
+      "order": 109,
+      "cardImage": ""
     },
     {
       "id": "new-game-10",
@@ -385,7 +411,8 @@
       "slideshow": "",
       "status": "hidden",
       "group": "latest",
-      "order": 110
+      "order": 110,
+      "cardImage": ""
     },
     {
       "id": "new-game-11",
@@ -401,7 +428,8 @@
       "slideshow": "",
       "status": "hidden",
       "group": "latest",
-      "order": 111
+      "order": 111,
+      "cardImage": ""
     },
     {
       "id": "new-game-12",
@@ -417,7 +445,8 @@
       "slideshow": "",
       "status": "hidden",
       "group": "latest",
-      "order": 112
+      "order": 112,
+      "cardImage": ""
     },
     {
       "id": "new-game-13",
@@ -433,7 +462,8 @@
       "slideshow": "",
       "status": "hidden",
       "group": "latest",
-      "order": 113
+      "order": 113,
+      "cardImage": ""
     },
     {
       "id": "new-game-14",
@@ -449,7 +479,8 @@
       "slideshow": "",
       "status": "hidden",
       "group": "latest",
-      "order": 114
+      "order": 114,
+      "cardImage": ""
     },
     {
       "id": "new-game-15",
@@ -465,7 +496,8 @@
       "slideshow": "",
       "status": "hidden",
       "group": "latest",
-      "order": 115
+      "order": 115,
+      "cardImage": ""
     },
     {
       "id": "new-game-16",
@@ -481,7 +513,8 @@
       "slideshow": "",
       "status": "hidden",
       "group": "latest",
-      "order": 116
+      "order": 116,
+      "cardImage": ""
     },
     {
       "id": "new-game-17",
@@ -497,7 +530,8 @@
       "slideshow": "",
       "status": "hidden",
       "group": "latest",
-      "order": 117
+      "order": 117,
+      "cardImage": ""
     },
     {
       "id": "new-game-18",
@@ -513,7 +547,8 @@
       "slideshow": "",
       "status": "hidden",
       "group": "latest",
-      "order": 118
+      "order": 118,
+      "cardImage": ""
     },
     {
       "id": "new-game-19",
@@ -529,7 +564,8 @@
       "slideshow": "",
       "status": "hidden",
       "group": "latest",
-      "order": 119
+      "order": 119,
+      "cardImage": ""
     },
     {
       "id": "new-game-20",
@@ -545,7 +581,8 @@
       "slideshow": "",
       "status": "hidden",
       "group": "latest",
-      "order": 120
+      "order": 120,
+      "cardImage": ""
     }
   ],
   "seasons": [
@@ -559,7 +596,8 @@
       "highlights": "https://youtube.com/playlist?list=PLH0LZ2QuNj3g&si=h0D-OFtnc2cnTj8h",
       "slideshows": "https://youtube.com/playlist?list=PLX9TIVWlcYG4&si=9Tc2ozBEACJgE02q",
       "status": "published",
-      "order": 1
+      "order": 1,
+      "cardImage": ""
     },
     {
       "id": "fall-2026",
@@ -571,7 +609,8 @@
       "highlights": "https://youtube.com/playlist?list=PLXmsfx9ciIqE&si=QD25bCGmUs32NjJ9",
       "slideshows": "https://youtube.com/playlist?list=PLfhTCGgsBWKs&si=rX3CFUNV9ChIr2VE",
       "status": "hidden",
-      "order": 2
+      "order": 2,
+      "cardImage": ""
     },
     {
       "id": "season-03",
@@ -583,7 +622,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "published",
-      "order": 3
+      "order": 3,
+      "cardImage": ""
     },
     {
       "id": "season-04",
@@ -595,7 +635,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 4
+      "order": 4,
+      "cardImage": ""
     },
     {
       "id": "season-05",
@@ -607,7 +648,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 5
+      "order": 5,
+      "cardImage": ""
     },
     {
       "id": "season-06",
@@ -619,7 +661,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 6
+      "order": 6,
+      "cardImage": ""
     },
     {
       "id": "season-07",
@@ -631,7 +674,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 7
+      "order": 7,
+      "cardImage": ""
     },
     {
       "id": "season-08",
@@ -643,7 +687,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 8
+      "order": 8,
+      "cardImage": ""
     },
     {
       "id": "season-09",
@@ -655,7 +700,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 9
+      "order": 9,
+      "cardImage": ""
     },
     {
       "id": "season-10",
@@ -667,7 +713,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 10
+      "order": 10,
+      "cardImage": ""
     },
     {
       "id": "season-11",
@@ -679,7 +726,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 11
+      "order": 11,
+      "cardImage": ""
     },
     {
       "id": "season-12",
@@ -691,7 +739,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 12
+      "order": 12,
+      "cardImage": ""
     },
     {
       "id": "season-13",
@@ -703,7 +752,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 13
+      "order": 13,
+      "cardImage": ""
     },
     {
       "id": "season-14",
@@ -715,7 +765,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 14
+      "order": 14,
+      "cardImage": ""
     },
     {
       "id": "season-15",
@@ -727,7 +778,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 15
+      "order": 15,
+      "cardImage": ""
     },
     {
       "id": "season-16",
@@ -739,7 +791,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 16
+      "order": 16,
+      "cardImage": ""
     },
     {
       "id": "season-17",
@@ -751,7 +804,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 17
+      "order": 17,
+      "cardImage": ""
     },
     {
       "id": "season-18",
@@ -763,7 +817,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 18
+      "order": 18,
+      "cardImage": ""
     },
     {
       "id": "season-19",
@@ -775,7 +830,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 19
+      "order": 19,
+      "cardImage": ""
     },
     {
       "id": "season-20",
@@ -787,7 +843,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 20
+      "order": 20,
+      "cardImage": ""
     },
     {
       "id": "season-21",
@@ -799,7 +856,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 21
+      "order": 21,
+      "cardImage": ""
     },
     {
       "id": "season-22",
@@ -811,7 +869,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 22
+      "order": 22,
+      "cardImage": ""
     },
     {
       "id": "season-23",
@@ -823,7 +882,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 23
+      "order": 23,
+      "cardImage": ""
     },
     {
       "id": "season-24",
@@ -835,7 +895,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 24
+      "order": 24,
+      "cardImage": ""
     },
     {
       "id": "season-25",
@@ -847,7 +908,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 25
+      "order": 25,
+      "cardImage": ""
     },
     {
       "id": "season-26",
@@ -859,7 +921,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 26
+      "order": 26,
+      "cardImage": ""
     },
     {
       "id": "season-27",
@@ -871,7 +934,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 27
+      "order": 27,
+      "cardImage": ""
     },
     {
       "id": "season-28",
@@ -883,7 +947,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 28
+      "order": 28,
+      "cardImage": ""
     },
     {
       "id": "season-29",
@@ -895,7 +960,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 29
+      "order": 29,
+      "cardImage": ""
     },
     {
       "id": "season-30",
@@ -907,7 +973,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 30
+      "order": 30,
+      "cardImage": ""
     },
     {
       "id": "season-31",
@@ -919,7 +986,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 31
+      "order": 31,
+      "cardImage": ""
     },
     {
       "id": "season-32",
@@ -931,7 +999,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 32
+      "order": 32,
+      "cardImage": ""
     },
     {
       "id": "season-33",
@@ -943,7 +1012,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 33
+      "order": 33,
+      "cardImage": ""
     },
     {
       "id": "season-34",
@@ -955,7 +1025,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 34
+      "order": 34,
+      "cardImage": ""
     },
     {
       "id": "season-35",
@@ -967,7 +1038,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 35
+      "order": 35,
+      "cardImage": ""
     },
     {
       "id": "season-36",
@@ -979,7 +1051,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 36
+      "order": 36,
+      "cardImage": ""
     },
     {
       "id": "season-37",
@@ -991,7 +1064,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 37
+      "order": 37,
+      "cardImage": ""
     },
     {
       "id": "season-38",
@@ -1003,7 +1077,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 38
+      "order": 38,
+      "cardImage": ""
     },
     {
       "id": "season-39",
@@ -1015,7 +1090,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 39
+      "order": 39,
+      "cardImage": ""
     },
     {
       "id": "season-40",
@@ -1027,7 +1103,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 40
+      "order": 40,
+      "cardImage": ""
     },
     {
       "id": "season-41",
@@ -1039,7 +1116,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 41
+      "order": 41,
+      "cardImage": ""
     },
     {
       "id": "season-42",
@@ -1051,7 +1129,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 42
+      "order": 42,
+      "cardImage": ""
     },
     {
       "id": "season-43",
@@ -1063,7 +1142,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 43
+      "order": 43,
+      "cardImage": ""
     },
     {
       "id": "season-44",
@@ -1075,7 +1155,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 44
+      "order": 44,
+      "cardImage": ""
     },
     {
       "id": "season-45",
@@ -1087,7 +1168,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 45
+      "order": 45,
+      "cardImage": ""
     },
     {
       "id": "season-46",
@@ -1099,7 +1181,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 46
+      "order": 46,
+      "cardImage": ""
     },
     {
       "id": "season-47",
@@ -1111,7 +1194,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 47
+      "order": 47,
+      "cardImage": ""
     },
     {
       "id": "season-48",
@@ -1123,7 +1207,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 48
+      "order": 48,
+      "cardImage": ""
     },
     {
       "id": "season-49",
@@ -1135,7 +1220,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 49
+      "order": 49,
+      "cardImage": ""
     },
     {
       "id": "season-50",
@@ -1147,7 +1233,8 @@
       "highlights": "",
       "slideshows": "",
       "status": "hidden",
-      "order": 50
+      "order": 50,
+      "cardImage": ""
     }
   ],
   "playlists": [
@@ -1161,7 +1248,8 @@
         "media-archive"
       ],
       "status": "published",
-      "order": 1
+      "order": 1,
+      "cardImage": ""
     },
     {
       "id": "shorts",
@@ -1173,7 +1261,8 @@
         "media-archive"
       ],
       "status": "published",
-      "order": 2
+      "order": 2,
+      "cardImage": ""
     },
     {
       "id": "full-matches",
@@ -1185,7 +1274,8 @@
         "media-archive"
       ],
       "status": "published",
-      "order": 3
+      "order": 3,
+      "cardImage": ""
     },
     {
       "id": "highlights",
@@ -1197,7 +1287,8 @@
         "media-archive"
       ],
       "status": "published",
-      "order": 4
+      "order": 4,
+      "cardImage": ""
     },
     {
       "id": "slideshows",
@@ -1209,7 +1300,8 @@
         "media-archive"
       ],
       "status": "published",
-      "order": 5
+      "order": 5,
+      "cardImage": ""
     },
     {
       "id": "hall-of-fame",
@@ -1222,7 +1314,8 @@
         "media-archive"
       ],
       "status": "hidden",
-      "order": 6
+      "order": 6,
+      "cardImage": ""
     },
     {
       "id": "best-of-allstar-galaxy",
@@ -1235,7 +1328,8 @@
         "media-archive"
       ],
       "status": "published",
-      "order": 7
+      "order": 7,
+      "cardImage": ""
     },
     {
       "id": "season-awards",
@@ -1248,7 +1342,8 @@
         "media-archive"
       ],
       "status": "hidden",
-      "order": 8
+      "order": 8,
+      "cardImage": ""
     },
     {
       "id": "championships",
@@ -1261,7 +1356,8 @@
         "media-archive"
       ],
       "status": "published",
-      "order": 9
+      "order": 9,
+      "cardImage": ""
     },
     {
       "id": "playoffs",
@@ -1274,7 +1370,8 @@
         "media-archive"
       ],
       "status": "published",
-      "order": 10
+      "order": 10,
+      "cardImage": ""
     },
     {
       "id": "all-goals-of-the-season",
@@ -1287,7 +1384,8 @@
         "media-archive"
       ],
       "status": "published",
-      "order": 11
+      "order": 11,
+      "cardImage": ""
     },
     {
       "id": "top-10-goals-of-the-season",
@@ -1300,7 +1398,8 @@
         "media-archive"
       ],
       "status": "published",
-      "order": 12
+      "order": 12,
+      "cardImage": ""
     },
     {
       "id": "goal-of-the-season",
@@ -1313,7 +1412,8 @@
         "media-archive"
       ],
       "status": "published",
-      "order": 13
+      "order": 13,
+      "cardImage": ""
     },
     {
       "id": "all-saves-of-the-season",
@@ -1326,7 +1426,8 @@
         "media-archive"
       ],
       "status": "hidden",
-      "order": 14
+      "order": 14,
+      "cardImage": ""
     },
     {
       "id": "top-10-saves-of-the-season",
@@ -1339,7 +1440,8 @@
         "media-archive"
       ],
       "status": "hidden",
-      "order": 15
+      "order": 15,
+      "cardImage": ""
     },
     {
       "id": "save-of-the-season",
@@ -1352,7 +1454,8 @@
         "media-archive"
       ],
       "status": "hidden",
-      "order": 16
+      "order": 16,
+      "cardImage": ""
     },
     {
       "id": "all-plays-of-the-season",
@@ -1365,7 +1468,8 @@
         "media-archive"
       ],
       "status": "hidden",
-      "order": 17
+      "order": 17,
+      "cardImage": ""
     },
     {
       "id": "top-10-plays-of-the-season",
@@ -1378,7 +1482,8 @@
         "media-archive"
       ],
       "status": "hidden",
-      "order": 18
+      "order": 18,
+      "cardImage": ""
     },
     {
       "id": "play-of-the-season",
@@ -1391,7 +1496,8 @@
         "media-archive"
       ],
       "status": "hidden",
-      "order": 19
+      "order": 19,
+      "cardImage": ""
     },
     {
       "id": "all-assists-of-the-season",
@@ -1404,7 +1510,8 @@
         "media-archive"
       ],
       "status": "hidden",
-      "order": 20
+      "order": 20,
+      "cardImage": ""
     },
     {
       "id": "top-10-assists-of-the-season",
@@ -1417,7 +1524,8 @@
         "media-archive"
       ],
       "status": "hidden",
-      "order": 21
+      "order": 21,
+      "cardImage": ""
     },
     {
       "id": "assist-of-the-season",
@@ -1430,7 +1538,8 @@
         "media-archive"
       ],
       "status": "hidden",
-      "order": 22
+      "order": 22,
+      "cardImage": ""
     },
     {
       "id": "player-of-the-season",
@@ -1443,7 +1552,8 @@
         "media-archive"
       ],
       "status": "hidden",
-      "order": 23
+      "order": 23,
+      "cardImage": ""
     },
     {
       "id": "goal-of-the-game",
@@ -1456,7 +1566,8 @@
         "media-archive"
       ],
       "status": "published",
-      "order": 24
+      "order": 24,
+      "cardImage": ""
     },
     {
       "id": "save-of-the-game",
@@ -1469,7 +1580,8 @@
         "media-archive"
       ],
       "status": "published",
-      "order": 25
+      "order": 25,
+      "cardImage": ""
     },
     {
       "id": "assist-of-the-game",
@@ -1482,7 +1594,8 @@
         "media-archive"
       ],
       "status": "published",
-      "order": 26
+      "order": 26,
+      "cardImage": ""
     },
     {
       "id": "play-of-the-game",
@@ -1495,7 +1608,8 @@
         "media-archive"
       ],
       "status": "published",
-      "order": 27
+      "order": 27,
+      "cardImage": ""
     },
     {
       "id": "player-of-the-game",
@@ -1508,7 +1622,8 @@
         "media-archive"
       ],
       "status": "hidden",
-      "order": 28
+      "order": 28,
+      "cardImage": ""
     },
     {
       "id": "full-matches-summer-2026",
@@ -1521,7 +1636,8 @@
         "latest-season-playlists"
       ],
       "status": "published",
-      "order": 29
+      "order": 29,
+      "cardImage": ""
     },
     {
       "id": "highlights-summer-2026",
@@ -1534,7 +1650,8 @@
         "latest-season-playlists"
       ],
       "status": "published",
-      "order": 30
+      "order": 30,
+      "cardImage": ""
     },
     {
       "id": "slideshows-summer-2026",
@@ -1547,7 +1664,8 @@
         "latest-season-playlists"
       ],
       "status": "published",
-      "order": 31
+      "order": 31,
+      "cardImage": ""
     },
     {
       "id": "full-matches-fall-2026",
@@ -1559,7 +1677,8 @@
         "season-archive"
       ],
       "status": "hidden",
-      "order": 32
+      "order": 32,
+      "cardImage": ""
     },
     {
       "id": "highlights-fall-2026",
@@ -1571,7 +1690,8 @@
         "season-archive"
       ],
       "status": "hidden",
-      "order": 33
+      "order": 33,
+      "cardImage": ""
     },
     {
       "id": "slideshows-fall-2026",
@@ -1583,7 +1703,8 @@
         "season-archive"
       ],
       "status": "hidden",
-      "order": 34
+      "order": 34,
+      "cardImage": ""
     }
   ],
   "players": [
@@ -1795,7 +1916,8 @@
       "link": "",
       "category": "news",
       "status": "placeholder",
-      "order": 1
+      "order": 1,
+      "image": ""
     },
     {
       "id": "news-02",
@@ -1805,7 +1927,8 @@
       "link": "",
       "category": "match",
       "status": "placeholder",
-      "order": 2
+      "order": 2,
+      "image": ""
     }
   ],
   "schedule": [
@@ -2926,6 +3049,21 @@
     "status": "offline",
     "title": "Livestream Coming Soon",
     "description": "Live broadcasts will appear here on game day.",
-    "url": ""
+    "url": "",
+    "mode": "automatic",
+    "scheduledStart": "",
+    "scheduledEnd": "",
+    "opponent": "",
+    "location": "",
+    "thumbnail": "",
+    "replayUrl": "",
+    "youtubeVideoId": "",
+    "pastStreams": [],
+    "autoRefreshSeconds": 60
+  },
+  "scheduleDisplay": {
+    "mode": "images",
+    "scheduleVisible": true,
+    "standingsVisible": true
   }
 }
