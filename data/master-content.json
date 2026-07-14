@@ -1,5 +1,5 @@
 {
-  "version": 120,
+  "version": 121,
   "updated": "2026-07-14",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -1915,9 +1915,9 @@
       "summary": "Team announcements and updates will appear here.",
       "link": "",
       "category": "news",
-      "status": "placeholder",
+      "status": "published",
       "order": 1,
-      "image": ""
+      "image": "images/news/latest-news.png"
     },
     {
       "id": "news-02",
