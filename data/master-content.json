@@ -1,5 +1,5 @@
 {
-  "version": 137,
+  "version": 138,
   "updated": "2026-07-14",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -1718,15 +1718,6 @@
       "order": 1
     },
     {
-      "id": "player-02",
-      "name": "Cristiano",
-      "number": "7",
-      "position": "LW",
-      "photo": "images/team/players/ronaldo.png",
-      "status": "published",
-      "order": 2
-    },
-    {
       "id": "player-03",
       "name": "Lionel",
       "number": "10",
@@ -1815,15 +1806,6 @@
       "photo": "images/team/players/dino.png",
       "status": "published",
       "order": 12
-    },
-    {
-      "id": "player-13",
-      "name": "Ronaldo",
-      "number": "13",
-      "position": "ST",
-      "photo": "images/team/players/r9.png",
-      "status": "published",
-      "order": 13
     },
     {
       "id": "player-14",
