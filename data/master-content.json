@@ -1,5 +1,5 @@
 {
-  "version": 145,
+  "version": 146,
   "updated": "2026-07-14",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -1918,6 +1918,15 @@
       "photo": "images/team/players/cr7.png",
       "name": "Cristiano",
       "number": "7",
+      "position": "LW"
+    },
+    {
+      "status": "published",
+      "order": 23,
+      "id": "player-23",
+      "photo": "images/team/players/img-3971.png",
+      "name": "Neymar",
+      "number": "11",
       "position": "LW"
     }
   ],
