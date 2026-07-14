@@ -1,5 +1,5 @@
 {
-  "version": 141,
+  "version": 142,
   "updated": "2026-07-14",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -1221,6 +1221,19 @@
       "slideshows": "",
       "status": "hidden",
       "order": 50,
+      "cardImage": ""
+    },
+    {
+      "status": "published",
+      "order": 50,
+      "id": "season-01",
+      "title": "Past Seasons Coming Soon",
+      "subtitle": "",
+      "dateRange": "",
+      "league": "",
+      "fullMatches": "",
+      "highlights": "",
+      "slideshows": "",
       "cardImage": ""
     }
   ],
