@@ -1,5 +1,5 @@
 {
-  "version": 133,
+  "version": 134,
   "updated": "2026-07-14",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -1905,24 +1905,6 @@
       "photo": "",
       "status": "hidden",
       "order": 22
-    },
-    {
-      "status": "published",
-      "order": 23,
-      "id": "player-23",
-      "photo": "images/team/players/ronaldo.png",
-      "name": "Ronaldo",
-      "number": "99",
-      "position": "ST"
-    },
-    {
-      "status": "published",
-      "order": 24,
-      "id": "player-24",
-      "photo": "images/team/players/neymar.png",
-      "name": "Neymar",
-      "number": "17",
-      "position": "LW"
     }
   ],
   "news": [
