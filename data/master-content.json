@@ -1,5 +1,5 @@
 {
-  "version": 122,
+  "version": 123,
   "updated": "2026-07-14",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -1812,7 +1812,7 @@
       "name": "Ronaldinho",
       "number": "12",
       "position": "CM",
-      "photo": "",
+      "photo": "images/team/players/dino.png",
       "status": "published",
       "order": 12
     },
