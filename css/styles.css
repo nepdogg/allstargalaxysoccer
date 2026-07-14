@@ -15662,3 +15662,105 @@ body.lightbox-open {
     text-align: center !important;
   }
 }
+
+
+/* ============================================================
+   V121 — NEWS CARD + IMAGE HOVER GLOW
+   Matches the Schedule page hover behavior.
+   Desktop hover only; mobile tap layout remains unchanged.
+   ============================================================ */
+
+.page-news .generated-news-card {
+  transition:
+    transform .22s ease,
+    border-color .22s ease,
+    box-shadow .22s ease,
+    background-color .22s ease !important;
+}
+
+.page-news .news-lightbox-link {
+  transition:
+    transform .22s ease,
+    border-color .22s ease,
+    box-shadow .22s ease,
+    filter .22s ease,
+    background-color .22s ease !important;
+}
+
+.page-news .news-lightbox-link img {
+  transition:
+    transform .22s ease,
+    filter .22s ease !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .page-news .generated-news-card:hover,
+  .page-news .generated-news-card:focus-within {
+    transform: translateY(-3px) !important;
+    border-color: var(--card-accent, #ff6a00) !important;
+    background: linear-gradient(
+      135deg,
+      rgba(18, 0, 24, .98),
+      rgba(42, 0, 38, .96)
+    ) !important;
+    box-shadow:
+      0 0 14px color-mix(in srgb, var(--card-accent, #ff6a00) 70%, transparent),
+      0 0 34px color-mix(in srgb, var(--card-accent, #ff6a00) 48%, transparent),
+      inset 0 0 24px color-mix(in srgb, var(--card-accent, #ff6a00) 14%, transparent) !important;
+  }
+
+  .page-news .news-lightbox-link:hover,
+  .page-news .news-lightbox-link:focus-visible {
+    transform: translateY(-2px) scale(1.015) !important;
+    border-color: var(--card-accent, #ff6a00) !important;
+    background: rgba(18, 0, 18, .94) !important;
+    box-shadow:
+      0 0 12px color-mix(in srgb, var(--card-accent, #ff6a00) 78%, transparent),
+      0 0 28px color-mix(in srgb, var(--card-accent, #ff6a00) 52%, transparent),
+      inset 0 0 18px color-mix(in srgb, var(--card-accent, #ff6a00) 16%, transparent) !important;
+    filter: brightness(1.08) saturate(1.08) !important;
+  }
+
+  .page-news .news-lightbox-link:hover img,
+  .page-news .news-lightbox-link:focus-visible img {
+    transform: scale(1.025) !important;
+    filter: brightness(1.08) saturate(1.08) !important;
+  }
+
+  .page-news .generated-news-external-link:hover,
+  .page-news .generated-news-external-link:focus-visible {
+    color: #fff !important;
+    background: var(--card-accent, #ff6a00) !important;
+    box-shadow:
+      0 0 12px color-mix(in srgb, var(--card-accent, #ff6a00) 72%, transparent),
+      0 0 24px color-mix(in srgb, var(--card-accent, #ff6a00) 42%, transparent) !important;
+  }
+}
+
+/* Fallback for browsers without color-mix support. */
+@supports not (color: color-mix(in srgb, red 50%, transparent)) {
+  @media (hover: hover) and (pointer: fine) {
+    .page-news .generated-news-card:hover,
+    .page-news .generated-news-card:focus-within {
+      box-shadow:
+        0 0 14px rgba(255, 106, 0, .72),
+        0 0 34px rgba(255, 106, 0, .42),
+        inset 0 0 24px rgba(255, 106, 0, .12) !important;
+    }
+
+    .page-news .news-lightbox-link:hover,
+    .page-news .news-lightbox-link:focus-visible {
+      box-shadow:
+        0 0 12px rgba(255, 106, 0, .8),
+        0 0 28px rgba(255, 106, 0, .48),
+        inset 0 0 18px rgba(255, 106, 0, .14) !important;
+    }
+
+    .page-news .generated-news-external-link:hover,
+    .page-news .generated-news-external-link:focus-visible {
+      box-shadow:
+        0 0 12px rgba(255, 106, 0, .72),
+        0 0 24px rgba(255, 106, 0, .4) !important;
+    }
+  }
+}
