@@ -472,3 +472,64 @@ document.addEventListener("click", (event) => {
     lightbox.setAttribute("aria-hidden", "true");
     document.body.classList.remove("lightbox-open");
 });
+
+
+/* ============================================================
+   V119 — DYNAMIC NEWS IMAGE LIGHTBOX
+   News cards are rendered from master-content.json after load.
+   ============================================================ */
+(() => {
+    const getLightbox = () => document.getElementById("newsImageLightbox");
+
+    const closeNewsLightbox = () => {
+        const lightbox = getLightbox();
+        if (!lightbox) return;
+        lightbox.classList.remove("is-open");
+        lightbox.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("lightbox-open");
+    };
+
+    document.addEventListener("click", (event) => {
+        const trigger = event.target.closest(".news-lightbox-link");
+        if (trigger) {
+            const lightbox = getLightbox();
+            if (!lightbox) return;
+
+            const source = trigger.dataset.newsImage || trigger.querySelector("img")?.src;
+            if (!source) return;
+
+            event.preventDefault();
+            const image = lightbox.querySelector(".news-lightbox-image");
+            const title = lightbox.querySelector(".news-lightbox-title");
+            const open = lightbox.querySelector(".news-lightbox-open");
+
+            if (image) {
+                image.src = source;
+                image.alt = trigger.querySelector("img")?.alt || "News image";
+            }
+            if (title) title.textContent = trigger.dataset.newsTitle || "News";
+            if (open) open.href = source;
+
+            lightbox.classList.add("is-open");
+            lightbox.setAttribute("aria-hidden", "false");
+            document.body.classList.add("lightbox-open");
+            lightbox.querySelector(".news-lightbox-close")?.focus();
+            return;
+        }
+
+        if (event.target.closest(".news-lightbox-close")) {
+            event.preventDefault();
+            closeNewsLightbox();
+            return;
+        }
+
+        const lightbox = getLightbox();
+        if (lightbox && event.target === lightbox) {
+            closeNewsLightbox();
+        }
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeNewsLightbox();
+    });
+})();

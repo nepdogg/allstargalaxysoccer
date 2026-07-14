@@ -133,14 +133,25 @@
   }
   function newsCard(data,n){
     const accent=colorFor(data,'news');
-    const tag=n.link?'a':'article';
-    const attrs=n.link?`href="${esc(n.link)}" target="_blank" rel="noopener"`:'';
     const image=itemImage(n)||pngOnlyPath(data.assets.logo);
     const imageAlt=n.imageAlt||n.alt||n.title||'Allstar Galaxy news';
-    return `<${tag} class="generated-news-card" ${attrs} style="--card-accent:${accent}">
-      <img src="${esc(image)}" alt="${esc(imageAlt)}" loading="lazy" onerror="this.onerror=null;this.src='${esc(pngOnlyPath(data.assets.logo))}'">
-      <div><small>${esc(n.date||n.category||'ALLSTAR GALAXY NEWS')}</small><h3>${esc(n.title)}</h3><p>${esc(n.summary)}</p></div>
-    </${tag}>`;
+    const externalLink=String(n.link||'').trim();
+    return `<article class="generated-news-card" style="--card-accent:${accent}">
+      <button class="news-lightbox-link" type="button"
+        data-news-image="${esc(image)}"
+        data-news-title="${esc(n.title||'Allstar Galaxy News')}"
+        aria-label="Open ${esc(imageAlt)} full size">
+        <img src="${esc(image)}" alt="${esc(imageAlt)}" loading="lazy"
+          onerror="this.onerror=null;this.src='${esc(pngOnlyPath(data.assets.logo))}'">
+        <span class="news-image-action">Open Full Image</span>
+      </button>
+      <div class="generated-news-content">
+        <small>${esc(n.date||n.category||'ALLSTAR GALAXY NEWS')}</small>
+        <h3>${esc(n.title)}</h3>
+        <p>${esc(n.summary)}</p>
+        ${externalLink?`<a class="generated-news-external-link" href="${esc(externalLink)}" target="_blank" rel="noopener">Open Related Link</a>`:''}
+      </div>
+    </article>`;
   }
   function scheduleMarkup(data){
     const scheduleConfig=data.schedulePage||data.scheduleContent||data.scheduleSettings||{};
