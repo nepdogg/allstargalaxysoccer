@@ -15522,3 +15522,143 @@ body.lightbox-open {
     right: 14px !important;
   }
 }
+
+
+/* ============================================================
+   V120 — SCHEDULE CARDS MATCH NEWS PAGE
+   Desktop: thumbnail left, text right, one card per row.
+   Mobile: image above text.
+   ============================================================ */
+
+.page-schedule .generated-schedule-image-grid,
+.page-schedule .schedule-image-grid {
+  width: min(92%, 1160px) !important;
+  max-width: 1160px !important;
+  margin: 0 auto !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 28px !important;
+}
+
+.page-schedule .generated-schedule-image-card,
+.page-schedule .schedule-image-card {
+  width: 100% !important;
+  min-height: 250px !important;
+  display: grid !important;
+  grid-template-columns: minmax(220px, 28%) minmax(0, 1fr) !important;
+  align-items: center !important;
+  gap: 28px !important;
+  padding: 28px !important;
+  box-sizing: border-box !important;
+}
+
+.page-schedule .generated-schedule-image-card .schedule-lightbox-link,
+.page-schedule .schedule-image-card .schedule-lightbox-link {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 210px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  padding: 14px !important;
+  margin: 0 !important;
+  border: 1px solid var(--card-accent, #28ff28) !important;
+  border-radius: 18px !important;
+  background: rgba(0, 0, 0, .78) !important;
+  color: var(--card-accent, #28ff28) !important;
+  cursor: zoom-in !important;
+  box-sizing: border-box !important;
+  text-decoration: none !important;
+}
+
+.page-schedule .generated-schedule-image-card .schedule-lightbox-link img,
+.page-schedule .schedule-image-card .schedule-lightbox-link img {
+  display: block !important;
+  width: 100% !important;
+  height: 190px !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+
+.page-schedule .schedule-image-action {
+  display: block !important;
+  font-size: .78rem !important;
+  font-weight: 900 !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+  opacity: .88 !important;
+}
+
+.page-schedule .schedule-card-content {
+  min-width: 0 !important;
+  text-align: left !important;
+}
+
+.page-schedule .schedule-card-content small,
+.page-schedule .schedule-card-content h3,
+.page-schedule .schedule-card-content p {
+  text-align: left !important;
+}
+
+.page-schedule .schedule-card-content small {
+  display: block !important;
+  margin-bottom: 10px !important;
+  color: var(--card-accent, #28ff28) !important;
+  font-weight: 900 !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+}
+
+.page-schedule .schedule-card-content h3 {
+  margin: 0 0 14px !important;
+  color: var(--card-accent, #28ff28) !important;
+}
+
+.page-schedule .schedule-card-content p {
+  margin: 0 !important;
+  line-height: 1.55 !important;
+}
+
+@media (max-width: 760px) {
+  .page-schedule .generated-schedule-image-grid,
+  .page-schedule .schedule-image-grid {
+    width: min(94%, 680px) !important;
+    gap: 22px !important;
+  }
+
+  .page-schedule .generated-schedule-image-card,
+  .page-schedule .schedule-image-card {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 16px !important;
+    padding: 18px !important;
+    min-height: 0 !important;
+  }
+
+  .page-schedule .generated-schedule-image-card .schedule-lightbox-link,
+  .page-schedule .schedule-image-card .schedule-lightbox-link {
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  .page-schedule .generated-schedule-image-card .schedule-lightbox-link img,
+  .page-schedule .schedule-image-card .schedule-lightbox-link img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 58vh !important;
+    object-fit: contain !important;
+  }
+
+  .page-schedule .schedule-card-content,
+  .page-schedule .schedule-card-content small,
+  .page-schedule .schedule-card-content h3,
+  .page-schedule .schedule-card-content p {
+    text-align: center !important;
+  }
+}
