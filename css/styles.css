@@ -14957,3 +14957,8 @@ body.lightbox-open {
     transform: scaleY(1.82) !important;
   }
 }
+
+
+/* V117 — ADMIN CMS SUPPORT + OPTIONAL CARD IMAGES */
+.generated-schedule-images{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;width:min(1500px,96vw);margin:0 auto 36px}.generated-schedule-image-card{appearance:none;border:1px solid rgba(57,255,20,.65);background:#050709;padding:14px;cursor:pointer;box-shadow:0 0 24px rgba(57,255,20,.18);transition:.25s}.generated-schedule-image-card:hover{transform:translateY(-3px);box-shadow:0 0 32px rgba(57,255,20,.4)}.generated-schedule-image-card img{display:block;width:100%;height:auto;max-height:72vh;object-fit:contain}.generated-schedule-image-card span{display:block;padding:13px 8px 2px;color:#39ff14;font-weight:900;letter-spacing:.12em}.generated-live-card.is-live{box-shadow:0 0 48px rgba(255,0,0,.55)}.generated-live-card.is-live>span{animation:asgLivePulse 1.2s infinite}@keyframes asgLivePulse{50%{opacity:.45}}.generated-live-card time,.generated-live-card h3{display:block;margin:.45rem 0;color:#fff}.schedule-image-lightbox.is-open{display:flex!important}
+@media(max-width:760px){.generated-schedule-images{grid-template-columns:1fr;gap:18px;width:94vw}}
