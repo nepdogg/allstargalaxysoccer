@@ -1,5 +1,5 @@
 {
-  "version": 121,
+  "version": 122,
   "updated": "2026-07-14",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -1928,7 +1928,7 @@
       "category": "match",
       "status": "placeholder",
       "order": 2,
-      "image": ""
+      "image": "images/news/match-updates.png"
     }
   ],
   "schedule": [
