@@ -14873,3 +14873,87 @@ body.lightbox-open {
     transform: scaleY(1.38) !important;
   }
 }
+
+
+/* ============================================================
+   V115 — MOBILE NAVIGATION TITLE FINAL HEIGHT
+   Increases only the center title's visual height.
+   Desktop and all carousel layouts remain unchanged.
+   ============================================================ */
+@media (max-width: 760px) {
+  .site-top .hero-title {
+    height: 76px !important;
+    min-height: 76px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: visible !important;
+  }
+
+  .site-top .hero-title img {
+    width: min(100%, 270px) !important;
+    max-width: 270px !important;
+    height: auto !important;
+    max-height: 72px !important;
+    object-fit: contain !important;
+    transform: scaleY(1.60) !important;
+    transform-origin: center center !important;
+    margin: 0 auto !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .site-top .hero-title {
+    height: 72px !important;
+    min-height: 72px !important;
+  }
+
+  .site-top .hero-title img {
+    width: min(100%, 240px) !important;
+    max-width: 240px !important;
+    max-height: 68px !important;
+    transform: scaleY(1.56) !important;
+  }
+}
+
+
+/* ============================================================
+   V116 — MOBILE NAVIGATION TITLE COMPLETION
+   Final phone-only increase to the center title height.
+   Desktop and all carousel layouts remain unchanged.
+   ============================================================ */
+@media (max-width: 760px) {
+  .site-top .hero-title {
+    height: 78px !important;
+    min-height: 78px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: visible !important;
+  }
+
+  .site-top .hero-title img {
+    width: min(100%, 270px) !important;
+    max-width: 270px !important;
+    height: auto !important;
+    max-height: 74px !important;
+    object-fit: contain !important;
+    transform: scaleY(1.88) !important;
+    transform-origin: center center !important;
+    margin: 0 auto !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .site-top .hero-title {
+    height: 74px !important;
+    min-height: 74px !important;
+  }
+
+  .site-top .hero-title img {
+    width: min(100%, 240px) !important;
+    max-width: 240px !important;
+    max-height: 70px !important;
+    transform: scaleY(1.82) !important;
+  }
+}
