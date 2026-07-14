@@ -1,5 +1,5 @@
 {
-  "version": 151,
+  "version": 152,
   "updated": "2026-07-14",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -1923,6 +1923,17 @@
       "id": "new-01",
       "image": "images/news/img-3493.png",
       "title": "Latest news",
+      "date": "",
+      "summary": "",
+      "link": "",
+      "category": ""
+    },
+    {
+      "status": "published",
+      "order": 2,
+      "id": "new-02",
+      "image": "images/news/news-1.png",
+      "title": "Match Results",
       "date": "",
       "summary": "",
       "link": "",
