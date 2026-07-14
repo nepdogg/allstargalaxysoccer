@@ -167,23 +167,29 @@
     if(scheduleImage || standingsImage){
       const cards=[];
       if(scheduleImage){
-        cards.push(`<article class="schedule-image-card generated-schedule-image-card">
-          <h3>${esc(scheduleConfig.scheduleTitle||'Match Schedule')}</h3>
+        cards.push(`<article class="schedule-image-card generated-schedule-image-card" style="--card-accent:${colorFor(data,'schedule')}">
           <a class="schedule-lightbox-link" href="${esc(scheduleImage)}" data-lightbox-title="${esc(scheduleConfig.scheduleTitle||'Match Schedule')}">
             <img src="${esc(scheduleImage)}" alt="${esc(scheduleConfig.scheduleAlt||'Allstar Galaxy match schedule')}" loading="lazy">
             <span class="schedule-image-action">Open Full Image</span>
           </a>
-          ${scheduleConfig.scheduleDescription?`<p>${esc(scheduleConfig.scheduleDescription)}</p>`:''}
+          <div class="schedule-card-content">
+            <small>${esc(scheduleConfig.scheduleLabel||'CURRENT SCHEDULE')}</small>
+            <h3>${esc(scheduleConfig.scheduleTitle||'Match Schedule')}</h3>
+            <p>${esc(scheduleConfig.scheduleDescription||'Click the image to view the complete schedule.')}</p>
+          </div>
         </article>`);
       }
       if(standingsImage){
-        cards.push(`<article class="schedule-image-card generated-schedule-image-card">
-          <h3>${esc(scheduleConfig.standingsTitle||'League Standings')}</h3>
+        cards.push(`<article class="schedule-image-card generated-schedule-image-card" style="--card-accent:${colorFor(data,'schedule')}">
           <a class="schedule-lightbox-link" href="${esc(standingsImage)}" data-lightbox-title="${esc(scheduleConfig.standingsTitle||'League Standings')}">
             <img src="${esc(standingsImage)}" alt="${esc(scheduleConfig.standingsAlt||'Allstar Galaxy league standings')}" loading="lazy">
             <span class="schedule-image-action">Open Full Image</span>
           </a>
-          ${scheduleConfig.standingsDescription?`<p>${esc(scheduleConfig.standingsDescription)}</p>`:''}
+          <div class="schedule-card-content">
+            <small>${esc(scheduleConfig.standingsLabel||'CURRENT STANDINGS')}</small>
+            <h3>${esc(scheduleConfig.standingsTitle||'League Standings')}</h3>
+            <p>${esc(scheduleConfig.standingsDescription||'Click the image to view the complete standings.')}</p>
+          </div>
         </article>`);
       }
       return `<div class="schedule-image-grid generated-schedule-image-grid">${cards.join('')}</div>`;
