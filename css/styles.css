@@ -15764,3 +15764,101 @@ body.lightbox-open {
     }
   }
 }
+
+
+/* ============================================================
+   V122 — NEWS HOVER GLOW DIRECT FIX
+   Uses the same direct hover pattern as the Schedule cards.
+   Removed pointer/hover media-query restrictions that prevented
+   the effect on some desktop and touch-capable computers.
+   ============================================================ */
+
+.page-news .generated-news-card {
+  transition:
+    transform .22s ease,
+    box-shadow .22s ease,
+    border-color .22s ease,
+    background .22s ease !important;
+}
+
+.page-news .generated-news-card:hover,
+.page-news .generated-news-card:focus-within {
+  transform: translateY(-6px) !important;
+  border-color: #ffb06b !important;
+  box-shadow:
+    0 0 22px rgba(255, 106, 0, .62),
+    0 0 42px rgba(255, 106, 0, .28),
+    inset 0 0 26px rgba(255, 106, 0, .17) !important;
+}
+
+.page-news .news-lightbox-link {
+  transition:
+    transform .22s ease,
+    box-shadow .22s ease,
+    border-color .22s ease,
+    filter .22s ease,
+    background .22s ease !important;
+}
+
+.page-news .news-lightbox-link img {
+  transform: scale(1) !important;
+  transition:
+    transform .25s ease,
+    filter .25s ease !important;
+}
+
+.page-news .generated-news-card:hover .news-lightbox-link,
+.page-news .generated-news-card:focus-within .news-lightbox-link,
+.page-news .news-lightbox-link:hover,
+.page-news .news-lightbox-link:focus-visible {
+  border-color: #ffb06b !important;
+  background: rgba(20, 2, 12, .96) !important;
+  box-shadow:
+    0 0 18px rgba(255, 106, 0, .68),
+    0 0 34px rgba(255, 106, 0, .32),
+    inset 0 0 20px rgba(255, 106, 0, .14) !important;
+  filter: brightness(1.08) saturate(1.08) !important;
+}
+
+.page-news .generated-news-card:hover .news-lightbox-link img,
+.page-news .generated-news-card:focus-within .news-lightbox-link img,
+.page-news .news-lightbox-link:hover img,
+.page-news .news-lightbox-link:focus-visible img {
+  transform: scale(1.025) !important;
+  filter: brightness(1.10) contrast(1.05) saturate(1.08) !important;
+}
+
+.page-news .generated-news-card:hover .news-image-action,
+.page-news .generated-news-card:focus-within .news-image-action,
+.page-news .news-lightbox-link:hover .news-image-action,
+.page-news .news-lightbox-link:focus-visible .news-image-action {
+  color: #fff !important;
+  text-shadow:
+    0 0 8px rgba(255, 106, 0, .95),
+    0 0 18px rgba(255, 106, 0, .72) !important;
+}
+
+.page-news .generated-news-external-link {
+  transition:
+    color .22s ease,
+    background .22s ease,
+    box-shadow .22s ease,
+    transform .22s ease !important;
+}
+
+.page-news .generated-news-external-link:hover,
+.page-news .generated-news-external-link:focus-visible {
+  color: #fff !important;
+  background: #ff6a00 !important;
+  transform: translateY(-2px) !important;
+  box-shadow:
+    0 0 14px rgba(255, 106, 0, .76),
+    0 0 28px rgba(255, 106, 0, .42) !important;
+}
+
+/* Do not create persistent hover movement on phones. */
+@media (max-width: 760px) {
+  .page-news .generated-news-card:hover {
+    transform: none !important;
+  }
+}
