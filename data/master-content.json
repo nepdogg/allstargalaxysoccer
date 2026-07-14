@@ -1,5 +1,5 @@
 {
-  "version": 134,
+  "version": 135,
   "updated": "2026-07-14",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -1818,10 +1818,10 @@
     },
     {
       "id": "player-13",
-      "name": "Coming Soon",
+      "name": "Ronaldo",
       "number": "13",
-      "position": "Roster Spot",
-      "photo": "",
+      "position": "ST",
+      "photo": "images/team/players/r9.png",
       "status": "hidden",
       "order": 13
     },
