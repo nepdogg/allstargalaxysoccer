@@ -1705,6 +1705,20 @@
       "status": "hidden",
       "order": 34,
       "cardImage": ""
+    },
+    {
+      "status": "published",
+      "order": 35,
+      "id": "playlist-01",
+      "title": "Testing",
+      "description": "",
+      "url": "",
+      "category": "core",
+      "locations": [
+        "home-best",
+        "media-archive"
+      ],
+      "cardImage": ""
     }
   ],
   "players": [
@@ -1887,6 +1901,15 @@
       "photo": "",
       "status": "hidden",
       "order": 22
+    },
+    {
+      "status": "published",
+      "order": 21,
+      "id": "player-02",
+      "photo": "images/team/players/r9.png",
+      "name": "Ronaldo",
+      "number": "9",
+      "position": "ST"
     }
   ],
   "news": [
