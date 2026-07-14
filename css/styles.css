@@ -14990,3 +14990,144 @@ body.lightbox-open {
     max-height: 72vh;
   }
 }
+
+/* ============================================================
+   V121 — NEWS IMAGE LIGHTBOX + SCHEDULE/STANDINGS FRAME FIX
+   ============================================================ */
+.page-news .generated-news-card {
+  grid-template-columns: 170px minmax(0, 1fr) !important;
+  align-items: center !important;
+}
+.page-news .generated-news-image-button {
+  appearance: none;
+  border: 1px solid color-mix(in srgb, var(--card-accent) 70%, transparent);
+  border-radius: 10px;
+  padding: 6px;
+  width: 170px;
+  height: 170px;
+  background: rgba(0,0,0,.75);
+  cursor: zoom-in;
+  overflow: hidden;
+  box-shadow: 0 0 14px color-mix(in srgb, var(--card-accent) 35%, transparent);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.page-news .generated-news-image-button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--card-accent) 65%, transparent);
+}
+.page-news .generated-news-image-button img {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+}
+.page-news .generated-news-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--card-accent);
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-decoration: none;
+}
+.news-image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(0,0,0,.92);
+  backdrop-filter: blur(8px);
+}
+.news-image-lightbox.is-open { display: flex; }
+.news-lightbox-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: min(1100px, 94vw);
+  max-height: 92vh;
+}
+.news-lightbox-title {
+  margin: 0;
+  color: #ff7a00;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+.news-lightbox-image {
+  display: block;
+  max-width: 100%;
+  max-height: 76vh;
+  object-fit: contain;
+  border: 1px solid #ff7a00;
+  border-radius: 10px;
+  background: #000;
+  box-shadow: 0 0 30px rgba(255,122,0,.45);
+}
+.news-lightbox-open {
+  color: #ff7a00;
+  font-weight: 900;
+  text-decoration: none;
+}
+.news-lightbox-close {
+  position: fixed;
+  top: 18px;
+  right: 22px;
+  z-index: 10001;
+  width: 48px;
+  height: 48px;
+  border: 1px solid #ff7a00;
+  border-radius: 50%;
+  background: rgba(0,0,0,.82);
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* Make both uploaded graphics occupy the complete matching card frame. */
+.page-schedule .generated-schedule-images {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  align-items: stretch !important;
+}
+.page-schedule .generated-schedule-image-card {
+  display: grid !important;
+  grid-template-rows: minmax(360px, 27vw) auto !important;
+  padding: 14px !important;
+  overflow: hidden !important;
+}
+.page-schedule .generated-schedule-image-card img {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  aspect-ratio: auto !important;
+  object-fit: fill !important;
+  object-position: center !important;
+  background: #000 !important;
+}
+.page-schedule .generated-schedule-image-card span {
+  margin: 0 !important;
+  padding: 14px 8px 2px !important;
+}
+@media (max-width: 760px) {
+  .page-news .generated-news-card {
+    grid-template-columns: 110px minmax(0,1fr) !important;
+  }
+  .page-news .generated-news-image-button {
+    width: 110px;
+    height: 140px;
+  }
+  .page-schedule .generated-schedule-images {
+    grid-template-columns: 1fr !important;
+  }
+  .page-schedule .generated-schedule-image-card {
+    grid-template-rows: auto auto !important;
+  }
+  .page-schedule .generated-schedule-image-card img {
+    height: auto !important;
+    object-fit: contain !important;
+  }
+}
