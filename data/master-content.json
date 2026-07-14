@@ -1935,7 +1935,7 @@
       "summary": "Scores, upcoming matches, and important game information will appear here.",
       "link": "",
       "category": "match",
-      "status": "placeholder",
+      "status": "published",
       "order": 2,
       "image": "images/news/match-updates.png"
     }
