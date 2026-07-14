@@ -15194,3 +15194,97 @@ body.lightbox-open {
     max-height: 220px !important;
   }
 }
+
+
+/* ============================================================
+   V123 — SCHEDULE PAGE USES THE PROVEN NEWS-CARD DISPLAY
+   ============================================================ */
+.page-schedule .generated-schedule-news-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 20px !important;
+  width: min(1320px, 92vw) !important;
+  margin: 0 auto 36px !important;
+}
+.page-schedule .generated-schedule-news-card {
+  display: grid !important;
+  grid-template-columns: 170px minmax(0, 1fr) !important;
+  align-items: center !important;
+  gap: 22px !important;
+  min-height: 190px !important;
+  padding: 28px 36px !important;
+  border: 1px solid #39ff14 !important;
+  border-radius: 18px !important;
+  background: rgba(0, 10, 2, .86) !important;
+  box-shadow: 0 0 22px rgba(57,255,20,.22) !important;
+}
+.page-schedule .generated-schedule-news-card .generated-news-image-button {
+  appearance: none;
+  width: 170px !important;
+  height: 170px !important;
+  padding: 6px !important;
+  border: 1px solid #39ff14 !important;
+  border-radius: 10px !important;
+  background: rgba(0,0,0,.78) !important;
+  cursor: zoom-in !important;
+  overflow: hidden !important;
+  box-shadow: 0 0 14px rgba(57,255,20,.35) !important;
+  transition: transform .2s ease, box-shadow .2s ease !important;
+}
+.page-schedule .generated-schedule-news-card .generated-news-image-button:hover {
+  transform: scale(1.03) !important;
+  box-shadow: 0 0 24px rgba(57,255,20,.65) !important;
+}
+.page-schedule .generated-schedule-news-card .generated-news-image-button img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  background: #000 !important;
+}
+.page-schedule .generated-schedule-news-card small,
+.page-schedule .generated-schedule-news-card h3 {
+  color: #39ff14 !important;
+}
+.page-schedule .generated-schedule-news-card h3 {
+  margin: 8px 0 12px !important;
+  font-size: clamp(1.7rem, 2.3vw, 2.35rem) !important;
+}
+.page-schedule .generated-schedule-news-card p {
+  margin: 0 !important;
+  color: #f3f3f3 !important;
+  font-size: 1.05rem !important;
+}
+.page-schedule .schedule-news-lightbox .news-lightbox-title,
+.page-schedule .schedule-news-lightbox .news-lightbox-open {
+  color: #39ff14 !important;
+}
+.page-schedule .schedule-news-lightbox .news-lightbox-image,
+.page-schedule .schedule-news-lightbox .news-lightbox-close {
+  border-color: #39ff14 !important;
+  box-shadow: 0 0 30px rgba(57,255,20,.45) !important;
+}
+@media (max-width: 760px) {
+  .page-schedule .generated-schedule-news-grid {
+    width: 94vw !important;
+    gap: 16px !important;
+  }
+  .page-schedule .generated-schedule-news-card {
+    grid-template-columns: 110px minmax(0, 1fr) !important;
+    gap: 14px !important;
+    min-height: 150px !important;
+    padding: 18px 14px !important;
+  }
+  .page-schedule .generated-schedule-news-card .generated-news-image-button {
+    width: 110px !important;
+    height: 140px !important;
+  }
+  .page-schedule .generated-schedule-news-card h3 {
+    font-size: clamp(1.35rem, 6vw, 1.75rem) !important;
+  }
+  .page-schedule .generated-schedule-news-card p {
+    font-size: .96rem !important;
+    line-height: 1.4 !important;
+  }
+}
