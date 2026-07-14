@@ -1,5 +1,5 @@
 {
-  "version": 144,
+  "version": 145,
   "updated": "2026-07-14",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -1910,6 +1910,15 @@
       "name": "Ronaldo",
       "number": "9",
       "position": "ST"
+    },
+    {
+      "status": "published",
+      "order": 22,
+      "id": "player-13",
+      "photo": "images/team/players/cr7.png",
+      "name": "Cristiano",
+      "number": "7",
+      "position": "LW"
     }
   ],
   "news": [
