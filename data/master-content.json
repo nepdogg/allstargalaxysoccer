@@ -1,6 +1,6 @@
 {
-  "version": 117,
-  "updated": "2026-07-13",
+  "version": 118,
+  "updated": "2026-07-14",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
     "logo": "generated/allstar-galaxy-logo.png",
@@ -1809,11 +1809,11 @@
     },
     {
       "id": "player-12",
-      "name": "Coming Soon",
+      "name": "Ronaldinho",
       "number": "12",
-      "position": "Roster Spot",
-      "photo": "",
-      "status": "hidden",
+      "position": "CM",
+      "photo": "images/team/players/dino.png",
+      "status": "published",
       "order": 12
     },
     {
