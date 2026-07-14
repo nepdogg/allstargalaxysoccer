@@ -533,3 +533,37 @@ document.addEventListener("click", (event) => {
         if (event.key === "Escape") closeNewsLightbox();
     });
 })();
+
+
+/* ============================================================
+   V123 — SCHEDULE LIGHTBOX CLOSE FALLBACK
+   ============================================================ */
+(() => {
+    const closeScheduleViewer = () => {
+        const lightbox = document.getElementById("scheduleImageLightbox");
+        if (!lightbox) return;
+        lightbox.classList.remove("is-open");
+        lightbox.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("lightbox-open");
+    };
+
+    document.addEventListener("click", (event) => {
+        const lightbox = document.getElementById("scheduleImageLightbox");
+        if (!lightbox || !lightbox.classList.contains("is-open")) return;
+
+        if (event.target.closest(".schedule-lightbox-close")) {
+            event.preventDefault();
+            event.stopPropagation();
+            closeScheduleViewer();
+            return;
+        }
+
+        if (event.target === lightbox) {
+            closeScheduleViewer();
+        }
+    }, true);
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeScheduleViewer();
+    });
+})();
