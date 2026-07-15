@@ -36,7 +36,7 @@
       <div class="field"><label>Transition speed</label><select id="heroTransition">${[[500,'Fast — 0.5 seconds'],[900,'Quick — 0.9 seconds'],[1400,'Smooth — 1.4 seconds'],[2000,'Slow — 2 seconds'],[3000,'Cinematic — 3 seconds']].map(([v,t])=>`<option value="${v}" ${Number(p.transition||1400)===v?'selected':''}>${t}</option>`).join('')}</select></div>
       <div class="field locked-field"><label>Page selector 🔒</label><input value="${esc(p.selector)}" readonly></div>
     </div></div>
-    <div class="admin-actions manager-actions"><label class="btn primary upload-hero-btn">+ Add Hero Photos<input id="heroUpload" type="file" accept="image/png,image/jpeg,image/webp" multiple hidden></label><button class="btn" id="duplicateFirst">Duplicate First Image</button><button class="btn" id="publishHeroes">Publish Hero Changes</button><span class="pending" id="pendingLabel">${state.dirty?'Unpublished changes':''}</span></div>
+    <div class="admin-actions manager-actions"><label class="btn primary upload-hero-btn">+ Add Hero Photos<input id="heroUpload" type="file" accept="image/png,image/jpeg,image/webp" multiple hidden></label><button class="btn" id="duplicateFirst">Duplicate First Image</button><button class="btn" id="publishHeroes">Publish Hero Changes</button><button class="btn" id="previewHeroes">Preview Page</button><span class="pending" id="pendingLabel">${state.dirty?'Unpublished changes':''}</span></div>
     <div class="hero-help">Recommended: 5–15 photos per page. Images are automatically converted to PNG. Use the arrows to control the rotation order.</div>
     <div class="hero-admin-grid">${p.images.map((src,i)=>heroCard(src,i)).join('')||'<div class="empty-state">No hero images assigned. Add at least one image.</div>'}</div>`;
     bind();
@@ -50,7 +50,7 @@
     $('#heroTransition').onchange=e=>{current().transition=Number(e.target.value);markDirty()};
     $('#heroUpload').onchange=async e=>{for(const file of e.target.files)await addFile(file);render()};
     $('#duplicateFirst').onclick=()=>{if(current().images[0]){current().images.push(current().images[0]);markDirty();render()}};
-    $('#publishHeroes').onclick=publish;
+    $('#publishHeroes').onclick=publish;$('#previewHeroes').onclick=()=>{sessionStorage.setItem('asgPreviewHeroRotation',JSON.stringify(state.config));const map={home:'index.html',team:'team.html',schedule:'schedule.html',media:'media.html',news:'news.html',livestream:'livestream.html',follow:'follow.html',about:'about.html','404':'404.html','season-archive':'summer-2026.html'};window.open('../'+map[state.page]+'?adminPreview=1','_blank')};
     $$('[data-left]').forEach(b=>b.onclick=()=>move(+b.dataset.left,-1));
     $$('[data-right]').forEach(b=>b.onclick=()=>move(+b.dataset.right,1));
     $$('[data-remove]').forEach(b=>b.onclick=()=>{const i=+b.dataset.remove;if(confirm('Remove this hero image from the rotation? The uploaded PNG will remain in GitHub.')){current().images.splice(i,1);markDirty();render()}});
@@ -62,8 +62,9 @@
   async function replaceFile(index,file){const r=await fileToPng(file),path=uniquePath(file);state.pendingFiles.push({path,base64:r.base64});current().images[index]=path;markDirty();status(`Image ${index+1} replaced.`,'ok')}
   async function publish(){
     if(!current().images.length){status('Add at least one hero image before publishing.','bad');return}
-    status('Publishing hero images and rotation settings…');
+    status('Creating backup and publishing hero images and rotation settings…');
     try{
+      await window.ASGBackup?.create('Before Hero Manager publish');
       for(const f of state.pendingFiles){let sha;try{sha=(await ghGet(f.path)).sha}catch(e){}await ghPut(f.path,f.base64,`Hero Manager: upload ${f.path}`,sha)}
       state.config.version=Number(state.config.version||132)+1;
       const latest=await ghGet(CONFIG.path);
