@@ -16019,3 +16019,156 @@ body.lightbox-open {
     transform: scaleY(2.24) !important;
   }
 }
+
+
+/* ============================================================
+   V132 — ROTATING PAGE HEROES
+   Existing hero art remains the fallback. The two absolutely
+   positioned layers crossfade above it without changing desktop
+   or mobile dimensions.
+   ============================================================ */
+
+.hero-rotator {
+    position: relative !important;
+    isolation: isolate;
+    overflow: hidden !important;
+    outline: none;
+    --hero-transition: 1400ms;
+}
+
+.hero-rotation-stage {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.hero-rotation-layer {
+    position: absolute;
+    inset: -1px;
+    opacity: 0;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transform: scale(1.018);
+    transition:
+        opacity var(--hero-transition) ease-in-out,
+        transform 8s ease-out;
+    will-change: opacity, transform;
+}
+
+.hero-rotation-layer.is-active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.hero-original-fallback {
+    position: relative;
+    z-index: 0;
+}
+
+.hero-rotation-ready > .hero-original-fallback {
+    opacity: 0;
+}
+
+.hero-rotation-dots {
+    position: absolute;
+    z-index: 4;
+    left: 50%;
+    bottom: clamp(8px, 1.15vw, 18px);
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(6px, .65vw, 10px);
+    padding: 6px 9px;
+    border-radius: 999px;
+    background: rgba(2, 0, 10, .36);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    opacity: .62;
+    transition: opacity .25s ease, background .25s ease;
+}
+
+.hero-rotator:hover .hero-rotation-dots,
+.hero-rotator:focus-within .hero-rotation-dots {
+    opacity: 1;
+    background: rgba(2, 0, 10, .64);
+}
+
+.hero-rotation-dot {
+    appearance: none;
+    width: clamp(7px, .7vw, 11px);
+    height: clamp(7px, .7vw, 11px);
+    min-width: 0;
+    padding: 0;
+    border: 1px solid rgba(255,255,255,.75);
+    border-radius: 50%;
+    background: rgba(0,0,0,.42);
+    cursor: pointer;
+    box-shadow: 0 0 7px rgba(255,255,255,.2);
+    transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+}
+
+.hero-rotation-dot.is-active {
+    transform: scale(1.25);
+    background: var(--page-accent, #ffd700);
+    border-color: #fff;
+    box-shadow:
+        0 0 8px var(--page-accent, #ffd700),
+        0 0 15px var(--page-accent, #ffd700);
+}
+
+.hero-rotation-dot:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+}
+
+/* Keep existing direct-image heroes at their original dimensions. */
+.special-page-hero.hero-rotator,
+.season-archive-hero.hero-rotator {
+    min-height: 1px;
+}
+
+.special-page-hero.hero-rotator > img,
+.season-archive-hero.hero-rotator > img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* The real hero photos will eventually replace the repeated placeholders.
+   When those photos are installed, object placement remains consistent. */
+.special-page-hero .hero-rotation-layer,
+.season-archive-hero .hero-rotation-layer {
+    background-size: 100% 100%;
+}
+
+@media (max-width: 760px) {
+    .hero-rotation-dots {
+        bottom: 7px;
+        gap: 6px;
+        padding: 5px 8px;
+    }
+
+    .hero-rotation-dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    .hero-rotation-layer {
+        transform: scale(1.012);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-rotation-layer {
+        transition: none !important;
+        transform: none !important;
+    }
+
+    .hero-rotation-dots {
+        display: none;
+    }
+}
