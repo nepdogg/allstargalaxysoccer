@@ -16188,3 +16188,5 @@ body.lightbox-open {
 @keyframes heroPanLeft{from{background-position:58% center;transform:scale(1.02)}to{background-position:42% center;transform:scale(1.02)}}
 @keyframes heroPanRight{from{background-position:42% center;transform:scale(1.02)}to{background-position:58% center;transform:scale(1.02)}}
 @media(prefers-reduced-motion:reduce){.hero-rotation-layer{animation:none!important}}
+
+:root{--managed-accent:#ffd700}.disabled-page{min-height:100vh;display:grid;place-content:center;text-align:center;padding:30px;background:#050014;color:#fff}.disabled-page a{color:var(--managed-accent)}
