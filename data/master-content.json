@@ -1,5 +1,5 @@
 {
-  "version": 156,
+  "version": 157,
   "updated": "2026-07-15",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -1914,15 +1914,6 @@
       "name": "Neymar",
       "number": "11",
       "position": "LW"
-    },
-    {
-      "status": "published",
-      "order": 24,
-      "id": "player-24",
-      "name": "Player",
-      "number": "32",
-      "position": "Striker",
-      "photo": "images/team/players/img-3979.png"
     }
   ],
   "news": [
