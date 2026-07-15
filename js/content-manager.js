@@ -214,6 +214,6 @@
       else if(source==='live') el.innerHTML=liveMarkup(data);
     });
   }
-  const ready=fetch(DATA_URL,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(`Unable to load ${DATA_URL}`);return r.json()}).then(data=>{render(data);window.ASG_MASTER_DATA=data;return data}).catch(err=>{console.error(err);document.querySelectorAll('[data-generated-source]').forEach(el=>el.innerHTML='<p class="generated-data-error">Content could not load. Check data/master-content.json.</p>');});
+  const preview=(()=>{if(new URLSearchParams(location.search).get('adminPreview')!=='1')return null;try{return JSON.parse(sessionStorage.getItem('asgPreviewMasterContent')||'null')}catch(e){return null}})();const ready=(preview?Promise.resolve(preview):fetch(DATA_URL,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(`Unable to load ${DATA_URL}`);return r.json()})).then(data=>{render(data);window.ASG_MASTER_DATA=data;return data}).catch(err=>{console.error(err);document.querySelectorAll('[data-generated-source]').forEach(el=>el.innerHTML='<p class="generated-data-error">Content could not load. Check data/master-content.json.</p>');});
   window.ASGContent={ready,render};
 })();

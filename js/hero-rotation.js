@@ -45,7 +45,10 @@
 
     async function loadConfig() {
         try {
-            const response = await fetch(CONFIG_URL, { cache: "no-store" });
+            if(new URLSearchParams(location.search).get("adminPreview")==="1"){
+  try{const draft=sessionStorage.getItem("asgPreviewHeroRotation");if(draft)return JSON.parse(draft)}catch(e){}
+}
+const response = await fetch(CONFIG_URL, { cache: "no-store" });
             if (!response.ok) throw new Error(`Hero config ${response.status}`);
             return await response.json();
         } catch (error) {
