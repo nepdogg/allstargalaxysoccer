@@ -16172,3 +16172,19 @@ body.lightbox-open {
         display: none;
     }
 }
+
+/* V133 selectable hero effects */
+.hero-rotation-layer{animation-duration:var(--hero-duration,7000ms);animation-timing-function:ease-in-out;animation-fill-mode:both}
+.hero-rotator[data-hero-effect="none"] .hero-rotation-layer,.hero-rotator[data-hero-effect="fade"] .hero-rotation-layer{transform:none!important}
+.hero-rotator[data-hero-effect="pulse"] .hero-rotation-layer.is-active{animation-name:heroPulse}
+.hero-rotator[data-hero-effect="zoom-in"] .hero-rotation-layer.is-active{animation-name:heroZoomIn}
+.hero-rotator[data-hero-effect="zoom-out"] .hero-rotation-layer.is-active{animation-name:heroZoomOut}
+.hero-rotator[data-hero-effect="pan-left"] .hero-rotation-layer.is-active{animation-name:heroPanLeft;background-size:108% 108%}
+.hero-rotator[data-hero-effect="pan-right"] .hero-rotation-layer.is-active{animation-name:heroPanRight;background-size:108% 108%}
+.hero-rotation-static .hero-rotation-dots{display:none!important}
+@keyframes heroPulse{0%{transform:scale(1.012)}50%{transform:scale(1.032)}100%{transform:scale(1.012)}}
+@keyframes heroZoomIn{from{transform:scale(1)}to{transform:scale(1.075)}}
+@keyframes heroZoomOut{from{transform:scale(1.075)}to{transform:scale(1)}}
+@keyframes heroPanLeft{from{background-position:58% center;transform:scale(1.02)}to{background-position:42% center;transform:scale(1.02)}}
+@keyframes heroPanRight{from{background-position:42% center;transform:scale(1.02)}to{background-position:58% center;transform:scale(1.02)}}
+@media(prefers-reduced-motion:reduce){.hero-rotation-layer{animation:none!important}}
