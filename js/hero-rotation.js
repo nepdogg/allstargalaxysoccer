@@ -13,7 +13,7 @@
 
     const DEFAULT_INTERVAL = 7000;
     const DEFAULT_TRANSITION = 1400;
-    const CONFIG_URL = "data/hero-rotation.json?v=132";
+    const CONFIG_URL = "data/hero-rotation.json?v=133";
 
     const pageKey = () => {
         const body = document.body;
@@ -89,6 +89,8 @@
 
         container.classList.add("hero-rotator");
         container.style.setProperty("--hero-transition", `${settings.transition}ms`);
+        container.style.setProperty("--hero-duration", `${settings.interval}ms`);
+        container.dataset.heroEffect = settings.effect || "fade";
 
         const originalImage = container.querySelector(":scope > img");
         if (originalImage) originalImage.classList.add("hero-original-fallback");
@@ -150,7 +152,7 @@
 
         const schedule = () => {
             clearTimeout(timer);
-            if (paused || reducedMotion || images.length < 2) return;
+            if (paused || reducedMotion || images.length < 2 || settings.enabled === false) return;
             timer = window.setTimeout(() => {
                 next();
                 schedule();
@@ -170,6 +172,10 @@
         };
 
         const dotButtons = buildDots(container, images.length, show);
+
+        if (settings.enabled === false || images.length < 2) {
+            container.classList.add("hero-rotation-static");
+        }
 
         container.tabIndex = container.hasAttribute("tabindex") ? container.tabIndex : 0;
         container.setAttribute("aria-roledescription", "rotating hero image");
@@ -239,7 +245,9 @@
         const container = document.querySelector(entry.selector);
         initializeRotator(container, validImages, {
             interval: Math.max(3000, Number(entry.interval || config.interval || DEFAULT_INTERVAL)),
-            transition: Math.max(300, Number(entry.transition || config.transition || DEFAULT_TRANSITION))
+            transition: Math.max(300, Number(entry.transition || config.transition || DEFAULT_TRANSITION)),
+            effect: entry.effect || "fade",
+            enabled: entry.enabled !== false
         });
     });
 })();
