@@ -1,5 +1,5 @@
 {
-  "version": 155,
+  "version": 156,
   "updated": "2026-07-15",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -1922,7 +1922,7 @@
       "name": "Player",
       "number": "32",
       "position": "Striker",
-      "photo": ""
+      "photo": "images/team/players/img-3979.png"
     }
   ],
   "news": [
