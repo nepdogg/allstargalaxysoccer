@@ -52,10 +52,13 @@
  function drawSitePreview(){
    const s=state.data, nav=[...s.navigation].filter(x=>x.visible!==false).sort((a,b)=>(a.order||0)-(b.order||0));
    const target=document.getElementById('siteChromePreview');if(!target)return;
-   target.innerHTML=`<div class="chrome-preview-header"><img src="../${esc(s.branding.leftLogo)}"><strong>${esc(s.branding.teamName||'ALLSTAR GALAXY')}</strong><img src="../${esc(s.branding.rightLogo)}"></div><div class="chrome-preview-nav">${nav.map(n=>`<span>${esc(n.label)}</span>`).join('')}</div><div class="chrome-preview-page">PAGE CONTENT PREVIEW</div><div class="chrome-preview-footer">
-     <div><span>${esc(s.footer.copyright||'')}</span>${s.footer.showAboutLink!==false?`<span> • ${esc(s.footer.aboutLabel||'About')}</span>`:''}${s.footer.showAdminLink!==false?`<span class="chrome-preview-admin"> • ${esc(s.footer.adminLabel||'Admin')}</span>`:''}</div>
-     ${s.footer.showPlatformVersion!==false?`<div class="chrome-preview-version">${esc(s.footer.platformName||'Allstar Galaxy Platform')} ${esc(s.footer.platformVersion||'v1.0')} (Build ${esc(s.footer.platformBuild||'138')})</div>`:''}
-     ${s.footer.showXitlaliCredit!==false?`<div class="chrome-preview-credit">${esc(s.footer.xitlaliCreditText||'Designed and Developed by Xitlali Media')}</div>`:''}
+   target.innerHTML=`<div class="chrome-preview-header"><img src="../${esc(s.branding.leftLogo)}"><strong>${esc(s.branding.teamName||'ALLSTAR GALAXY')}</strong><img src="../${esc(s.branding.rightLogo)}"></div><div class="chrome-preview-nav">${nav.map(n=>`<span>${esc(n.label)}</span>`).join('')}</div><div class="chrome-preview-page">PAGE CONTENT PREVIEW</div><div class="chrome-preview-footer chrome-preview-footer-v139">
+     <div class="chrome-preview-footer-left"><span>${esc(s.footer.copyright||'')}</span><b>AG</b></div>
+     <div class="chrome-preview-footer-center">
+       <span>SOCIAL MEDIA ICONS</span>
+       <small>${s.footer.showAboutLink!==false?esc(s.footer.aboutLabel||'About')+' • ':''}${s.footer.showPlatformVersion!==false?`${esc(s.footer.platformName||'Allstar Galaxy Platform')} ${esc(s.footer.platformVersion||'v1.0')} (Build ${esc(s.footer.platformBuild||'139')})`:''}${s.footer.showAdminLink!==false?' • '+esc(s.footer.adminLabel||'Admin'):''}</small>
+     </div>
+     <div class="chrome-preview-footer-right"><b>AG</b><span>${s.footer.showXitlaliCredit!==false?esc(s.footer.xitlaliCreditText||'Designed and Developed by Xitlali Media'):''}</span></div>
    </div>`;
    target.style.setProperty('--preview-accent',s.branding.accentColor||'#ffd700');
  }

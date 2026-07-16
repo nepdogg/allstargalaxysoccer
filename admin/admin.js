@@ -6,7 +6,7 @@ const SECTION_SCHEMAS={
  games:{title:'Games',array:'games',imageField:'cardImage',imageFolder:'images/media/latest-games',fields:[['season','Season','seasonselect',true,'basic'],['gameNumber','Game number','number',true,'basic'],['opponent','Opponent team','text',true,'basic'],['result','Final result, e.g. W (3-1)','text',false,'basic'],['fullMatch','Full Match YouTube URL','url',false,'basic'],['highlights','Highlights YouTube URL','url',false,'basic'],['slideshow','Slideshow YouTube URL','url',false,'basic'],['status','Show on website','select',['published','hidden'],'basic'],['date','Match date','date',false,'advanced'],['time','Match time','time',false,'advanced'],['location','Location','text',false,'advanced'],['group','Game carousel','select',['latest','archive'],'advanced'],['order','Carousel position','number',false,'advanced'],['cardImage','Custom card image path','locked',false,'developer']]},
  seasons:{title:'Seasons',array:'seasons',imageField:'cardImage',imageFolder:'images/seasons',fields:[['title','Season name','text',true,'basic'],['fullMatches','Full Matches playlist URL','url',false,'basic'],['highlights','Highlights playlist URL','url',false,'basic'],['slideshows','Slideshows playlist URL','url',false,'basic'],['status','Show on website','select',['published','hidden'],'basic'],['subtitle','Optional subtitle','text',false,'advanced'],['dateRange','Date range','text',false,'advanced'],['league','League','text',false,'advanced'],['order','Carousel position','number',false,'advanced'],['cardImage','Custom card image path','locked',false,'developer']]},
  playlists:{title:'Playlists',array:'playlists',imageField:'cardImage',imageFolder:'images/media/playlists',fields:[['title','Playlist name','text',true,'basic'],['url','YouTube playlist URL','url',false,'basic'],['category','Playlist type','select',['core','archive','shorts','best','goals','saves','assists','plays'],'basic'],['locations','Show in these carousels','locationselect',false,'basic'],['status','Show on website','select',['published','hidden'],'basic'],['description','Optional description','textarea',false,'advanced'],['order','Carousel position','number',false,'advanced'],['cardImage','Custom card image path','locked',false,'developer']]},
- news:{title:'News',array:'news',imageField:'image',imageFolder:'images/news',fields:[['title','Headline','text',true,'basic'],['summary','Description','textarea',false,'basic'],['category','News type','select',['NEWS','MATCH','ANNOUNCEMENT','RESULT','TEAM UPDATE'],'basic'],['link','Optional related URL','url',false,'basic'],['status','Show on website','select',['published','hidden','placeholder'],'basic'],['date','Date','date',false,'advanced'],['order','Display position','number',false,'advanced'],['image','News image storage path','locked',false,'developer']]}
+ news:{title:'News',array:'news',imageField:'image',imageFolder:'images/news',fields:[['title','Headline','text',true,'basic'],['imageNote','Image note / what this flyer is','textarea',false,'basic'],['summary','Public description','textarea',false,'basic'],['category','News type','select',['NEWS','MATCH','ANNOUNCEMENT','RESULT','TEAM UPDATE'],'basic'],['link','Optional related URL','url',false,'basic'],['status','Show on website','select',['published','hidden','placeholder'],'basic'],['date','Date','date',false,'advanced'],['order','Display position','number',false,'advanced'],['image','News image storage path','locked',false,'developer']]}
 };
 let state={data:null,sha:null,dirty:false,section:null,editIndex:-1,pendingFiles:[]};
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
@@ -299,5 +299,349 @@ window.AdminCMS={initCommon,publish};
     ${[['mediaBackground','Default media-card background','generated/media-card-background.png'],['playerSilhouette','Default player silhouette','images/team/players/player-silhouette.png'],['liveDefaultImage','Default livestream image','images/live/live-default.png']].map(([k,label,path])=>`<article class="graphic-preview-item"><div class="field"><label>${label}</label><input data-asset-path="${path}" data-asset-key="${k}" type="file" accept="image/png,image/jpeg,image/webp"><div class="help">Protected destination: ${esc(a[k]||path)} 🔒</div></div><div class="graphic-preview-box"><img data-graphic-preview="${k}" src="../${esc(a[k]||path)}"></div></article>`).join('')}</div><div class="admin-actions form-actions"><button class="btn primary" id="publishAssets">Publish Website Graphics</button></div></div>`;
     $$('[data-asset-key]').forEach(inp=>inp.onchange=async()=>{await queueAssetUpload(inp);if(inp.files[0])$(`[data-graphic-preview="${inp.dataset.assetKey}"]`).src=URL.createObjectURL(inp.files[0])});
     $('#publishAssets').onclick=publish;
+  };
+})();
+
+
+/* ============================================================
+   V139 — ADMIN TESTING FIXES
+   - Permanent News preview
+   - News image-note display
+   - Schedule and standings note fields
+   - Full, uncropped Website Graphics previews
+   ============================================================ */
+(() => {
+  "use strict";
+
+  const previousRenderManager = renderManager;
+
+  const previewPath = (path, fallback = "../images/logos/logo.png") => {
+    const value = String(path || "").trim();
+    if (!value) return fallback;
+    if (/^(blob:|data:|https?:)/i.test(value)) return value;
+    return "../" + value.replace(/^\/+/, "");
+  };
+
+  function newsListPreview(item) {
+    if (!item) {
+      return `<div class="empty-admin-preview">
+        <strong>No news item selected</strong>
+        <p>Select Preview, Edit, or Add New to view a News card.</p>
+      </div>`;
+    }
+
+    const image = previewPath(item.image);
+    const note = item.imageNote || "No image note has been entered yet.";
+    const description = item.summary || "No public description has been entered yet.";
+
+    return `<article class="visual-card news-preview-card ${item.status === "hidden" ? "preview-hidden" : ""}">
+      <div class="preview-news-image">
+        <img src="${esc(image)}" alt="" onerror="this.onerror=null;this.src='../images/logos/logo.png'">
+      </div>
+      <div class="preview-news-copy">
+        <small>${esc(item.category || item.date || "NEWS")}</small>
+        <strong>${esc(item.title || "NEWS HEADLINE")}</strong>
+        <div class="admin-image-note"><b>IMAGE NOTE:</b> ${esc(note)}</div>
+        <p>${esc(description)}</p>
+        ${item.link
+          ? '<span class="preview-link">RELATED LINK ACTIVE</span>'
+          : '<span class="preview-link is-disabled">NO RELATED LINK</span>'}
+      </div>
+      <span class="preview-visibility">${item.status === "hidden" ? "HIDDEN" : "VISIBLE"}</span>
+    </article>`;
+  }
+
+  renderManager = function(section) {
+    if (section !== "news") {
+      previousRenderManager(section);
+      return;
+    }
+
+    state.section = section;
+    const schema = SECTION_SCHEMAS.news;
+    const arr = state.data.news || [];
+    const firstVisible = arr.findIndex(item => item.status !== "hidden");
+    let selectedIndex = firstVisible >= 0 ? firstVisible : (arr.length ? 0 : -1);
+
+    $("#pageTitle").textContent = "News";
+    $("#content").innerHTML = `
+      <div class="v2-banner">
+        <strong>Visual News Manager</strong>
+        <span>Select any item to see the public News card. Add an image note so you can quickly identify every uploaded flyer.</span>
+      </div>
+
+      <div class="admin-actions manager-actions">
+        <button class="btn primary" id="addBtn">Add News</button>
+        <button class="btn" id="publishBtn">Publish All Changes</button>
+        <button class="btn" id="previewBtn">Preview Draft</button>
+        <span class="pending" id="pendingLabel">${state.dirty ? "Unpublished changes" : ""}</span>
+      </div>
+
+      <div class="permanent-preview-layout">
+        <div class="item-list news-admin-list">
+          ${arr.map((item, index) => `
+            <div class="item-row ${item.status === "hidden" ? "is-hidden" : ""}" data-news-row="${index}">
+              <div>
+                <div class="item-title">${esc(titleFor(item, section))}</div>
+                <div class="item-sub">${esc(item.imageNote || subFor(item, section) || "No image note")}</div>
+              </div>
+              <div class="row-actions">
+                <button class="btn small" data-select="${index}">Preview</button>
+                <button class="btn small" data-edit="${index}">Edit</button>
+                <button class="btn small" data-toggle="${index}">${item.status === "hidden" ? "Restore" : "Hide"}</button>
+                <button class="btn small danger" data-delete="${index}">Delete</button>
+              </div>
+            </div>
+          `).join("")}
+        </div>
+
+        <aside class="visual-editor-preview permanent-news-preview">
+          <div class="preview-toolbar">
+            <div><span class="v2-pill">LIVE PREVIEW</span><h4>Selected News Card</h4></div>
+            <div class="preview-device-switch">
+              <button type="button" class="is-active" data-news-device="desktop">Desktop</button>
+              <button type="button" data-news-device="mobile">Mobile</button>
+            </div>
+          </div>
+          <div id="permanentNewsPreview" class="live-card-preview"></div>
+          <p class="help preview-help">The image note helps identify the flyer in Admin and can also appear on the public card.</p>
+        </aside>
+      </div>
+    `;
+
+    const drawSelected = () => {
+      const target = $("#permanentNewsPreview");
+      if (target) target.innerHTML = newsListPreview(arr[selectedIndex]);
+      $$("[data-news-row]").forEach(row =>
+        row.classList.toggle("is-selected", Number(row.dataset.newsRow) === selectedIndex)
+      );
+    };
+
+    $("#addBtn").onclick = () => openForm(-1);
+    $("#publishBtn").onclick = publish;
+    $("#previewBtn").onclick = () => {
+      sessionStorage.setItem("asgPreviewMasterContent", JSON.stringify(state.data));
+      window.open("../news.html?adminPreview=1", "_blank");
+    };
+
+    $$("[data-select]").forEach(button => button.onclick = () => {
+      selectedIndex = Number(button.dataset.select);
+      drawSelected();
+    });
+
+    $$("[data-edit]").forEach(button => button.onclick = () => {
+      selectedIndex = Number(button.dataset.edit);
+      drawSelected();
+      openForm(selectedIndex);
+    });
+
+    $$("[data-toggle]").forEach(button => button.onclick = () => {
+      const item = arr[Number(button.dataset.toggle)];
+      item.status = item.status === "hidden" ? "published" : "hidden";
+      markDirty();
+      renderManager("news");
+    });
+
+    $$("[data-delete]").forEach(button => button.onclick = () => {
+      const index = Number(button.dataset.delete);
+      if (confirm("Permanently delete this news item? Hide is safer.")) {
+        arr.splice(index, 1);
+        markDirty();
+        renderManager("news");
+      }
+    });
+
+    $$("[data-news-device]").forEach(button => button.onclick = () => {
+      $$("[data-news-device]").forEach(item => item.classList.toggle("is-active", item === button));
+      $("#permanentNewsPreview").classList.toggle("mobile-preview", button.dataset.newsDevice === "mobile");
+    });
+
+    drawSelected();
+  };
+
+  renderScheduleAssets = function() {
+    const assets = state.data.assets || {};
+    const display = state.data.display || {};
+    const schedulePage = state.data.schedulePage = state.data.schedulePage || {};
+
+    $("#pageTitle").textContent = "Schedule & Standings";
+    $("#content").innerHTML = `
+      <div class="v2-banner">
+        <strong>Visual Schedule Editor</strong>
+        <span>Upload a graphic, enter a quick note describing it, and see exactly how the public card will look.</span>
+      </div>
+
+      <div class="visual-page-editor">
+        <div class="panel">
+          <div class="form-grid">
+            ${assetField("scheduleImage", "Upload Match Schedule PNG", "images/schedule/schedule.png", assets.scheduleImage)}
+            ${assetField("standingsImage", "Upload League Standings PNG", "images/schedule/standings.png", assets.standingsImage)}
+
+            <div class="field full">
+              <label>Schedule note / what this image is</label>
+              <textarea id="scheduleNote" placeholder="Example: Summer 2026 playoff schedule">${esc(schedulePage.scheduleDescription || "")}</textarea>
+              <div class="help">When blank, the website uses its standard “Click the image…” message.</div>
+            </div>
+
+            <div class="field full">
+              <label>Standings note / what this image is</label>
+              <textarea id="standingsNote" placeholder="Example: Final standings after Game 16">${esc(schedulePage.standingsDescription || "")}</textarea>
+              <div class="help">When blank, the website uses its standard “Click the image…” message.</div>
+            </div>
+
+            <div class="field">
+              <label>Schedule visibility</label>
+              <select id="scheduleVisible">
+                <option value="true" ${display.scheduleVisible !== false ? "selected" : ""}>Visible</option>
+                <option value="false" ${display.scheduleVisible === false ? "selected" : ""}>Hidden</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label>Standings visibility</label>
+              <select id="standingsVisible">
+                <option value="true" ${display.standingsVisible !== false ? "selected" : ""}>Visible</option>
+                <option value="false" ${display.standingsVisible === false ? "selected" : ""}>Hidden</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="admin-actions form-actions">
+            <button class="btn primary" id="publishSchedule">Publish Schedule & Standings</button>
+          </div>
+        </div>
+
+        <aside class="visual-editor-preview page-preview-column">
+          <div class="preview-toolbar">
+            <div><span class="v2-pill">LIVE PREVIEW</span><h4>Schedule Page Cards</h4></div>
+          </div>
+          <div id="schedulePreview" class="stacked-card-preview"></div>
+        </aside>
+      </div>
+    `;
+
+    let scheduleSrc = previewPath(assets.scheduleImage, "../images/schedule/schedule.png");
+    let standingsSrc = previewPath(assets.standingsImage, "../images/schedule/standings.png");
+
+    const draw = () => {
+      const scheduleText = $("#scheduleNote").value.trim() || "Click the image to view the complete schedule.";
+      const standingsText = $("#standingsNote").value.trim() || "Click the image to view the complete standings.";
+
+      $("#schedulePreview").innerHTML = `
+        <div class="mini-news-card ${$("#scheduleVisible").value === "false" ? "preview-hidden" : ""}">
+          <img src="${esc(scheduleSrc)}" alt="" onerror="this.onerror=null;this.src='../images/logos/logo.png'">
+          <div><small>CURRENT SCHEDULE</small><strong>Match Schedule</strong><p>${esc(scheduleText)}</p></div>
+        </div>
+        <div class="mini-news-card ${$("#standingsVisible").value === "false" ? "preview-hidden" : ""}">
+          <img src="${esc(standingsSrc)}" alt="" onerror="this.onerror=null;this.src='../images/logos/logo.png'">
+          <div><small>CURRENT STANDINGS</small><strong>League Standings</strong><p>${esc(standingsText)}</p></div>
+        </div>
+      `;
+    };
+
+    $$("[data-asset-key]").forEach(input => input.onchange = async () => {
+      await queueAssetUpload(input);
+      if (input.files[0]) {
+        const url = URL.createObjectURL(input.files[0]);
+        if (input.dataset.assetKey === "scheduleImage") scheduleSrc = url;
+        if (input.dataset.assetKey === "standingsImage") standingsSrc = url;
+      }
+      draw();
+    });
+
+    $("#scheduleNote").oninput = event => {
+      schedulePage.scheduleDescription = event.target.value;
+      markDirty();
+      draw();
+    };
+    $("#standingsNote").oninput = event => {
+      schedulePage.standingsDescription = event.target.value;
+      markDirty();
+      draw();
+    };
+    $("#scheduleVisible").onchange = event => {
+      state.data.display = state.data.display || {};
+      state.data.display.scheduleVisible = event.target.value === "true";
+      markDirty();
+      draw();
+    };
+    $("#standingsVisible").onchange = event => {
+      state.data.display = state.data.display || {};
+      state.data.display.standingsVisible = event.target.value === "true";
+      markDirty();
+      draw();
+    };
+
+    $("#publishSchedule").onclick = publish;
+    draw();
+  };
+
+  renderAssets = function() {
+    const assets = state.data.assets || {};
+    $("#pageTitle").textContent = "Website Graphics";
+    $("#content").innerHTML = `
+      <div class="v2-banner">
+        <strong>Visual Graphics Manager</strong>
+        <span>Every graphic is displayed in full without cropping or stretching.</span>
+      </div>
+
+      <div class="panel">
+        <div class="graphics-preview-grid">
+          ${[
+            ["mediaBackground", "Default media-card background", "generated/media-card-background.png"],
+            ["playerSilhouette", "Default player silhouette", "images/team/players/player-silhouette.png"],
+            ["liveDefaultImage", "Default livestream image", "images/live/live-default.png"]
+          ].map(([key, label, path]) => {
+            const current = assets[key] || path;
+            return `<article class="graphic-preview-item">
+              <div class="field">
+                <label>${label}</label>
+                <input data-asset-path="${path}" data-asset-key="${key}" type="file" accept="image/png,image/jpeg,image/webp">
+                <div class="help">Protected destination: ${esc(current)} 🔒</div>
+              </div>
+              <div class="graphic-preview-box">
+                <img data-graphic-preview="${key}" src="../${esc(current)}" alt="${esc(label)}">
+                <div class="graphic-missing-placeholder" hidden>
+                  <strong>IMAGE NOT AVAILABLE</strong>
+                  <span>Upload a replacement image, then publish Website Graphics.</span>
+                </div>
+              </div>
+            </article>`;
+          }).join("")}
+        </div>
+
+        <div class="admin-actions form-actions">
+          <button class="btn primary" id="publishAssets">Publish Website Graphics</button>
+        </div>
+      </div>
+    `;
+
+    $$("[data-graphic-preview]").forEach(image => {
+      image.onerror = () => {
+        image.hidden = true;
+        const placeholder = image.nextElementSibling;
+        if (placeholder) placeholder.hidden = false;
+      };
+      image.onload = () => {
+        image.hidden = false;
+        const placeholder = image.nextElementSibling;
+        if (placeholder) placeholder.hidden = true;
+      };
+    });
+
+    $$("[data-asset-key]").forEach(input => input.onchange = async () => {
+      await queueAssetUpload(input);
+      if (!input.files[0]) return;
+
+      const image = $(`[data-graphic-preview="${input.dataset.assetKey}"]`);
+      const placeholder = image?.nextElementSibling;
+      if (image) {
+        image.src = URL.createObjectURL(input.files[0]);
+        image.hidden = false;
+      }
+      if (placeholder) placeholder.hidden = true;
+    });
+
+    $("#publishAssets").onclick = publish;
   };
 })();
