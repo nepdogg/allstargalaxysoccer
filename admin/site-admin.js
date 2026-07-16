@@ -17,6 +17,7 @@
   $('#pageTitle').textContent='Site Settings';
   $('#content').innerHTML=`<div class="v2-banner"><strong>Complete Site Manager</strong><span>Update branding, text, navigation, social links, footer and page visibility.</span></div>
   <div class="admin-actions manager-actions"><button class="btn primary" id="publish">Publish Site Settings</button><button class="btn" id="preview">Preview Draft</button><span class="pending" id="pendingLabel">${state.dirty?'Unpublished changes':''}</span></div>
+  <section class="visual-settings-preview"><div class="preview-toolbar"><div><span class="v2-pill">LIVE PREVIEW</span><h4>Navigation & Footer</h4></div></div><div id="siteChromePreview"></div></section>
   <section class="panel"><h3>Global Branding</h3><div class="form-grid">
    <div class="field"><label>Team name</label><input id="teamName" value="${esc(s.branding.teamName)}"></div>
    <div class="field"><label>Accent color</label><input id="accent" type="color" value="${esc(s.branding.accentColor)}"></div>
@@ -25,17 +26,65 @@
   <section class="panel settings-panel"><h3>Navigation Manager</h3><div class="settings-head"><span>Label</span><span>Protected URL</span><span>Visibility</span><span>Order</span></div>${navRows()}</section>
   <section class="panel settings-panel"><h3>Page Text & Visibility</h3>${pageRows()}</section>
   <section class="panel"><h3>Social Links</h3><div class="form-grid">${Object.entries(s.social).map(([k,v])=>`<div class="field"><label>${k}</label><input data-social="${k}" value="${esc(v)}"></div>`).join('')}</div></section>
-  <section class="panel"><h3>Footer Manager</h3><div class="form-grid"><div class="field full"><label>Copyright text</label><input id="copyright" value="${esc(s.footer.copyright)}"></div><div class="field"><label>About link</label><select id="showAbout"><option value="true" ${s.footer.showAboutLink!==false?'selected':''}>Visible</option><option value="false" ${s.footer.showAboutLink===false?'selected':''}>Hidden</option></select></div><div class="field"><label>About label</label><input id="aboutLabel" value="${esc(s.footer.aboutLabel)}"></div></div></section>
+  <section class="panel"><h3>Footer Manager</h3><div class="form-grid">
+  <div class="field full"><label>Copyright text</label><input id="copyright" value="${esc(s.footer.copyright)}"></div>
+  <div class="field"><label>About link</label><select id="showAbout"><option value="true" ${s.footer.showAboutLink!==false?'selected':''}>Visible</option><option value="false" ${s.footer.showAboutLink===false?'selected':''}>Hidden</option></select></div>
+  <div class="field"><label>About label</label><input id="aboutLabel" value="${esc(s.footer.aboutLabel)}"></div>
+  <div class="field"><label>Admin link</label><select id="showAdmin"><option value="true" ${s.footer.showAdminLink!==false?'selected':''}>Visible — small footer link</option><option value="false" ${s.footer.showAdminLink===false?'selected':''}>Hidden</option></select></div>
+  <div class="field"><label>Admin label</label><input id="adminLabel" value="${esc(s.footer.adminLabel||'Admin')}"></div>
+  <div class="field locked-field"><label>Admin destination 🔒</label><input id="adminHref" value="${esc(s.footer.adminHref||'admin/')}" readonly><div class="help">Protected so visitors are always sent to the correct dashboard login.</div></div>
+
+  <div class="field"><label>Platform version line</label><select id="showPlatformVersion"><option value="true" ${s.footer.showPlatformVersion!==false?'selected':''}>Visible</option><option value="false" ${s.footer.showPlatformVersion===false?'selected':''}>Hidden</option></select></div>
+  <div class="field"><label>Platform name</label><input id="platformName" value="${esc(s.footer.platformName||'Allstar Galaxy Platform')}"></div>
+  <div class="field"><label>Public version</label><input id="platformVersion" value="${esc(s.footer.platformVersion||'v1.0')}" placeholder="v1.0"></div>
+  <div class="field"><label>Build number</label><input id="platformBuild" value="${esc(s.footer.platformBuild||'138')}" placeholder="138"></div>
+
+  <div class="field"><label>Xitlali Media credit</label><select id="showXitlaliCredit"><option value="true" ${s.footer.showXitlaliCredit!==false?'selected':''}>Visible</option><option value="false" ${s.footer.showXitlaliCredit===false?'selected':''}>Hidden</option></select></div>
+  <div class="field"><label>Credit text</label><input id="xitlaliCreditText" value="${esc(s.footer.xitlaliCreditText||'Designed and Developed by Xitlali Media')}"></div>
+  <div class="field"><label>Xitlali Media website</label><input id="xitlaliUrl" type="url" value="${esc(s.footer.xitlaliUrl||'https://xitlalimedia.com')}"></div>
+  <div class="field"><label>Upload Xitlali Media logo</label><input id="xitlaliLogoUpload" type="file" accept="image/png,image/jpeg,image/webp"><div class="help">Optional. Until a logo is uploaded, a small text wordmark is shown.</div></div>
+  <div class="field locked-field"><label>Xitlali logo path 🔒</label><input id="xitlaliLogoPath" value="${esc(s.footer.xitlaliLogo||'Not uploaded yet')}" readonly></div>
+</div></section>
   <section class="panel settings-panel"><h3>Homepage Sections</h3>${s.homeSections.map((x,i)=>`<div class="settings-row"><input value="${esc(x.label)}" readonly><input value="${esc(x.selector)}" readonly><select data-home="${i}" data-k="visible"><option value="true" ${x.visible!==false?'selected':''}>Visible</option><option value="false" ${x.visible===false?'selected':''}>Hidden</option></select><input data-home="${i}" data-k="order" type="number" value="${x.order}"></div>`).join('')}</section>`;
-  bind()
+  bind();drawSitePreview()
+ }
+
+ function drawSitePreview(){
+   const s=state.data, nav=[...s.navigation].filter(x=>x.visible!==false).sort((a,b)=>(a.order||0)-(b.order||0));
+   const target=document.getElementById('siteChromePreview');if(!target)return;
+   target.innerHTML=`<div class="chrome-preview-header"><img src="../${esc(s.branding.leftLogo)}"><strong>${esc(s.branding.teamName||'ALLSTAR GALAXY')}</strong><img src="../${esc(s.branding.rightLogo)}"></div><div class="chrome-preview-nav">${nav.map(n=>`<span>${esc(n.label)}</span>`).join('')}</div><div class="chrome-preview-page">PAGE CONTENT PREVIEW</div><div class="chrome-preview-footer">
+     <div><span>${esc(s.footer.copyright||'')}</span>${s.footer.showAboutLink!==false?`<span> • ${esc(s.footer.aboutLabel||'About')}</span>`:''}${s.footer.showAdminLink!==false?`<span class="chrome-preview-admin"> • ${esc(s.footer.adminLabel||'Admin')}</span>`:''}</div>
+     ${s.footer.showPlatformVersion!==false?`<div class="chrome-preview-version">${esc(s.footer.platformName||'Allstar Galaxy Platform')} ${esc(s.footer.platformVersion||'v1.0')} (Build ${esc(s.footer.platformBuild||'138')})</div>`:''}
+     ${s.footer.showXitlaliCredit!==false?`<div class="chrome-preview-credit">${esc(s.footer.xitlaliCreditText||'Designed and Developed by Xitlali Media')}</div>`:''}
+   </div>`;
+   target.style.setProperty('--preview-accent',s.branding.accentColor||'#ffd700');
  }
  function bind(){
-  $('#teamName').oninput=e=>{state.data.branding.teamName=e.target.value;mark()};$('#accent').oninput=e=>{state.data.branding.accentColor=e.target.value;mark()};
-  document.querySelectorAll('[data-nav]').forEach(e=>e.onchange=()=>{let v=e.value;if(e.dataset.k==='visible')v=v==='true';if(e.dataset.k==='order')v=Number(v);state.data.navigation[+e.dataset.nav][e.dataset.k]=v;mark()});
-  document.querySelectorAll('[data-page]').forEach(e=>e.onchange=()=>{let v=e.value;if(e.dataset.k==='visible')v=v==='true';state.data.pages[e.dataset.page][e.dataset.k]=v;mark()});
-  document.querySelectorAll('[data-social]').forEach(e=>e.oninput=()=>{state.data.social[e.dataset.social]=e.value;mark()});
-  $('#copyright').oninput=e=>{state.data.footer.copyright=e.target.value;mark()};$('#showAbout').onchange=e=>{state.data.footer.showAboutLink=e.target.value==='true';mark()};$('#aboutLabel').oninput=e=>{state.data.footer.aboutLabel=e.target.value;mark()};
-  document.querySelectorAll('[data-home]').forEach(e=>e.onchange=()=>{let v=e.value;if(e.dataset.k==='visible')v=v==='true';if(e.dataset.k==='order')v=Number(v);state.data.homeSections[+e.dataset.home][e.dataset.k]=v;mark()});
+  $('#teamName').oninput=e=>{state.data.branding.teamName=e.target.value;mark();drawSitePreview()};$('#accent').oninput=e=>{state.data.branding.accentColor=e.target.value;mark();drawSitePreview()};
+  document.querySelectorAll('[data-nav]').forEach(e=>e.onchange=()=>{let v=e.value;if(e.dataset.k==='visible')v=v==='true';if(e.dataset.k==='order')v=Number(v);state.data.navigation[+e.dataset.nav][e.dataset.k]=v;mark();drawSitePreview()});
+  document.querySelectorAll('[data-page]').forEach(e=>e.onchange=()=>{let v=e.value;if(e.dataset.k==='visible')v=v==='true';state.data.pages[e.dataset.page][e.dataset.k]=v;mark();drawSitePreview()});
+  document.querySelectorAll('[data-social]').forEach(e=>e.oninput=()=>{state.data.social[e.dataset.social]=e.value;mark();drawSitePreview()});
+  $('#copyright').oninput=e=>{state.data.footer.copyright=e.target.value;mark();drawSitePreview()};
+  $('#showAbout').onchange=e=>{state.data.footer.showAboutLink=e.target.value==='true';mark();drawSitePreview()};
+  $('#aboutLabel').oninput=e=>{state.data.footer.aboutLabel=e.target.value;mark();drawSitePreview()};
+  $('#showAdmin').onchange=e=>{state.data.footer.showAdminLink=e.target.value==='true';mark();drawSitePreview()};
+  $('#adminLabel').oninput=e=>{state.data.footer.adminLabel=e.target.value;mark();drawSitePreview()};
+  $('#showPlatformVersion').onchange=e=>{state.data.footer.showPlatformVersion=e.target.value==='true';mark();drawSitePreview()};
+  $('#platformName').oninput=e=>{state.data.footer.platformName=e.target.value;mark();drawSitePreview()};
+  $('#platformVersion').oninput=e=>{state.data.footer.platformVersion=e.target.value;mark();drawSitePreview()};
+  $('#platformBuild').oninput=e=>{state.data.footer.platformBuild=e.target.value;mark();drawSitePreview()};
+  $('#showXitlaliCredit').onchange=e=>{state.data.footer.showXitlaliCredit=e.target.value==='true';mark();drawSitePreview()};
+  $('#xitlaliCreditText').oninput=e=>{state.data.footer.xitlaliCreditText=e.target.value;mark();drawSitePreview()};
+  $('#xitlaliUrl').oninput=e=>{state.data.footer.xitlaliUrl=e.target.value;mark();drawSitePreview()};
+  $('#xitlaliLogoUpload').onchange=async e=>{
+    if(!e.target.files[0])return;
+    const path='images/managed/xitlali-media-logo.png';
+    state.pending.push({path,base64:await png(e.target.files[0])});
+    state.data.footer.xitlaliLogo=path;
+    $('#xitlaliLogoPath').value=path;
+    mark();drawSitePreview();status('Xitlali Media logo ready to publish.','ok')
+  };
+  document.querySelectorAll('[data-home]').forEach(e=>e.onchange=()=>{let v=e.value;if(e.dataset.k==='visible')v=v==='true';if(e.dataset.k==='order')v=Number(v);state.data.homeSections[+e.dataset.home][e.dataset.k]=v;mark();drawSitePreview()});
   document.querySelectorAll('[data-upload]').forEach(e=>e.onchange=async()=>{if(!e.files[0])return;const key=e.dataset.upload,path=`images/managed/${key}.png`;state.pending.push({path,base64:await png(e.files[0])});state.data.branding[key]=path;mark();status(`${key} ready to publish.`,'ok')});
   $('#preview').onclick=()=>{sessionStorage.setItem('asgPreviewSiteSettings',JSON.stringify(state.data));window.open('../index.html?adminPreview=1','_blank')};
   $('#publish').onclick=publish

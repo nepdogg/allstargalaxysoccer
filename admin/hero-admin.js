@@ -9,6 +9,18 @@
     ['fade','Crossfade only'],['pulse','Subtle pulse'],['zoom-in','Slow zoom in'],['zoom-out','Slow zoom out'],
     ['pan-left','Slow pan left'],['pan-right','Slow pan right'],['none','No motion']
   ];
+  const TRANSITION_EFFECTS=[
+    ['glow-fade','Glow pulse + crossfade (recommended)'],
+    ['bright-glow','Bright energy glow + crossfade'],
+    ['soft-glow','Soft border glow + crossfade'],
+    ['flash-glow','Quick dramatic glow flash'],
+    ['fade-only','Crossfade without transition glow']
+  ];
+  const GLOW_INTENSITIES=[
+    ['low','Low — subtle'],
+    ['medium','Medium — balanced'],
+    ['high','High — dramatic']
+  ];
   let state={config:null,sha:null,page:'home',pendingFiles:[],dirty:false};
   const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -34,6 +46,8 @@
       <div class="field"><label>Motion effect</label><select id="heroEffect">${EFFECTS.map(([v,t])=>`<option value="${v}" ${p.effect===v?'selected':''}>${t}</option>`).join('')}</select></div>
       <div class="field"><label>Time each photo stays visible</label><select id="heroInterval">${[[4000,'4 seconds'],[5000,'5 seconds'],[6000,'6 seconds'],[7000,'7 seconds'],[8000,'8 seconds'],[10000,'10 seconds'],[12000,'12 seconds'],[15000,'15 seconds']].map(([v,t])=>`<option value="${v}" ${Number(p.interval||7000)===v?'selected':''}>${t}</option>`).join('')}</select></div>
       <div class="field"><label>Transition speed</label><select id="heroTransition">${[[500,'Fast — 0.5 seconds'],[900,'Quick — 0.9 seconds'],[1400,'Smooth — 1.4 seconds'],[2000,'Slow — 2 seconds'],[3000,'Cinematic — 3 seconds']].map(([v,t])=>`<option value="${v}" ${Number(p.transition||1400)===v?'selected':''}>${t}</option>`).join('')}</select></div>
+      <div class="field"><label>Transition effect</label><select id="heroTransitionEffect">${TRANSITION_EFFECTS.map(([v,t])=>`<option value="${v}" ${(p.transitionEffect||'glow-fade')===v?'selected':''}>${t}</option>`).join('')}</select><div class="help">Controls the energy effect that appears while the next hero photo fades in.</div></div>
+      <div class="field"><label>Glow intensity</label><select id="heroGlowIntensity">${GLOW_INTENSITIES.map(([v,t])=>`<option value="${v}" ${(p.glowIntensity||'medium')===v?'selected':''}>${t}</option>`).join('')}</select></div>
       <div class="field locked-field"><label>Page selector 🔒</label><input value="${esc(p.selector)}" readonly></div>
     </div></div>
     <div class="admin-actions manager-actions"><label class="btn primary upload-hero-btn">+ Add Hero Photos<input id="heroUpload" type="file" accept="image/png,image/jpeg,image/webp" multiple hidden></label><button class="btn" id="duplicateFirst">Duplicate First Image</button><button class="btn" id="publishHeroes">Publish Hero Changes</button><button class="btn" id="previewHeroes">Preview Page</button><span class="pending" id="pendingLabel">${state.dirty?'Unpublished changes':''}</span></div>
@@ -48,6 +62,8 @@
     $('#heroEffect').onchange=e=>{current().effect=e.target.value;markDirty()};
     $('#heroInterval').onchange=e=>{current().interval=Number(e.target.value);markDirty()};
     $('#heroTransition').onchange=e=>{current().transition=Number(e.target.value);markDirty()};
+    $('#heroTransitionEffect').onchange=e=>{current().transitionEffect=e.target.value;markDirty()};
+    $('#heroGlowIntensity').onchange=e=>{current().glowIntensity=e.target.value;markDirty()};
     $('#heroUpload').onchange=async e=>{for(const file of e.target.files)await addFile(file);render()};
     $('#duplicateFirst').onclick=()=>{if(current().images[0]){current().images.push(current().images[0]);markDirty();render()}};
     $('#publishHeroes').onclick=publish;$('#previewHeroes').onclick=()=>{sessionStorage.setItem('asgPreviewHeroRotation',JSON.stringify(state.config));const map={home:'index.html',team:'team.html',schedule:'schedule.html',media:'media.html',news:'news.html',livestream:'livestream.html',follow:'follow.html',about:'about.html','404':'404.html','season-archive':'summer-2026.html'};window.open('../'+map[state.page]+'?adminPreview=1','_blank')};
@@ -74,7 +90,7 @@
   }
   async function init(){
     if(!token()){location.href='index.html';return}
-    try{const f=await ghGet(CONFIG.path);state.sha=f.sha;state.config=JSON.parse(decode64(f.content));PAGES.forEach(([k])=>{state.config.pages[k] ||= {selector:'',images:[],enabled:true,interval:7000,transition:1400,effect:'fade'};const p=state.config.pages[k];p.enabled=p.enabled!==false;p.interval=Number(p.interval||state.config.interval||7000);p.transition=Number(p.transition||state.config.transition||1400);p.effect=p.effect||'fade'});status('Hero Manager connected.','ok');render()}catch(e){status('Could not load hero settings: '+e.message,'bad')}
+    try{const f=await ghGet(CONFIG.path);state.sha=f.sha;state.config=JSON.parse(decode64(f.content));PAGES.forEach(([k])=>{state.config.pages[k] ||= {selector:'',images:[],enabled:true,interval:7000,transition:1400,effect:'fade'};const p=state.config.pages[k];p.enabled=p.enabled!==false;p.interval=Number(p.interval||state.config.interval||7000);p.transition=Number(p.transition||state.config.transition||1400);p.effect=p.effect||'fade';p.transitionEffect=p.transitionEffect||'glow-fade';p.glowIntensity=p.glowIntensity||'medium'});status('Hero Manager connected.','ok');render()}catch(e){status('Could not load hero settings: '+e.message,'bad')}
   }
   document.addEventListener('DOMContentLoaded',()=>{$('#menuBtn')?.addEventListener('click',()=>$('.admin-sidebar').classList.toggle('open'));$('#logoutBtn')?.addEventListener('click',()=>{sessionStorage.removeItem('asgGithubToken');location.href='index.html'});init()});
 })();

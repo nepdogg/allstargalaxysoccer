@@ -75,3 +75,229 @@ function renderDashboard(){const counts=Object.entries(SECTION_SCHEMAS).map(([k,
 function renderPage(){const page=document.body.dataset.page||'dashboard';$$('.admin-nav a').forEach(a=>a.classList.toggle('active',a.dataset.page===page));if(SECTION_SCHEMAS[page])renderManager(page);else if(page==='schedule')renderScheduleAssets();else if(page==='graphics')renderAssets();else if(page==='livestream')renderLive();else renderDashboard()}
 function initCommon(){$('#menuBtn')?.addEventListener('click',()=>$('.admin-sidebar').classList.toggle('open'));$('#logoutBtn')?.addEventListener('click',()=>{sessionStorage.removeItem('asgGithubToken');location.href='index.html'});$('#modalClose')?.addEventListener('click',closeModal);connect()}
 window.AdminCMS={initCommon,publish};
+
+
+/* ============================================================
+   V135 — VISUAL CARD EDITOR
+   Adds a live, responsive preview to Players, Games, Seasons,
+   Playlists and News, plus Schedule, Livestream and Graphics.
+   ============================================================ */
+(() => {
+  const originalOpenForm = openForm;
+
+  const previewEsc = v => esc(v || '');
+  const previewImage = (path, fallback='') => {
+    if (!path) return fallback;
+    if (/^(blob:|data:|https?:)/i.test(path)) return path;
+    return '../' + String(path).replace(/^\/+/, '');
+  };
+  const visibleLabel = status => status === 'hidden' ? 'HIDDEN' : 'VISIBLE';
+  const linkState = value => String(value || '').trim() ? '' : ' is-disabled';
+
+  function currentFormValues(form, item) {
+    const obj = {...item};
+    new FormData(form).forEach((value, key) => {
+      obj[key] = value;
+    });
+    return obj;
+  }
+
+  function playerPreview(obj, image) {
+    return `<div class="visual-card player-preview-card ${obj.status==='hidden'?'preview-hidden':''}">
+      <div class="preview-player-frame">
+        <img class="preview-player-logo" src="../images/logos/logo.png" alt="">
+        <img class="preview-player-photo" src="${previewEsc(image || '../images/team/players/player-silhouette.png')}" alt="">
+      </div>
+      <div class="preview-player-copy">
+        <span class="preview-number">#${previewEsc(obj.number || 'N/A')}</span>
+        <strong>${previewEsc(obj.name || 'PLAYER NAME')}</strong>
+        <small>${previewEsc(obj.position || 'POSITION N/A')}</small>
+      </div>
+      <span class="preview-visibility">${visibleLabel(obj.status)}</span>
+    </div>`;
+  }
+
+  function gamePreview(obj, image) {
+    return `<div class="visual-card wide-preview-card game-preview-card ${obj.status==='hidden'?'preview-hidden':''}">
+      <div class="preview-media-main" style="background-image:url('${previewEsc(image || '../generated/media-card-background.png')}')"></div>
+      <div class="preview-actions">
+        <div class="preview-action${linkState(obj.fullMatch)}">▶<span>FULL MATCH</span></div>
+        <div class="preview-action${linkState(obj.highlights)}">★<span>HIGHLIGHTS</span></div>
+        <div class="preview-action${linkState(obj.slideshow)}">▣<span>SLIDESHOW</span></div>
+      </div>
+      <div class="preview-game-footer">
+        <div><small>${previewEsc(obj.season || 'SEASON N/A')}</small><strong>GAME ${previewEsc(obj.gameNumber || 'N/A')}</strong></div>
+        <div><strong>ALLSTAR GALAXY</strong><small>VS ${previewEsc(obj.opponent || 'OPPONENT')}</small></div>
+        <div><strong>${previewEsc(obj.result || 'NOT PLAYED')}</strong></div>
+      </div>
+      <span class="preview-visibility">${visibleLabel(obj.status)}</span>
+    </div>`;
+  }
+
+  function seasonPreview(obj, image) {
+    return `<div class="visual-card wide-preview-card season-preview-card ${obj.status==='hidden'?'preview-hidden':''}">
+      <div class="preview-media-main" style="background-image:url('${previewEsc(image || '../generated/media-card-background.png')}')"></div>
+      <div class="preview-actions">
+        <div class="preview-action${linkState(obj.fullMatches)}">▶<span>FULL MATCHES</span></div>
+        <div class="preview-action${linkState(obj.highlights)}">★<span>HIGHLIGHTS</span></div>
+        <div class="preview-action${linkState(obj.slideshows)}">▣<span>SLIDESHOWS</span></div>
+      </div>
+      <div class="preview-season-footer"><strong>${previewEsc(obj.title || 'SEASON NAME')}</strong><small>${previewEsc(obj.subtitle || obj.dateRange || 'SEASON ARCHIVE')}</small></div>
+      <span class="preview-visibility">${visibleLabel(obj.status)}</span>
+    </div>`;
+  }
+
+  function playlistIcon(category) {
+    return ({goals:'⚽',saves:'🧤',assists:'✦',plays:'★',shorts:'▶',best:'★',archive:'▣',core:'▶'})[category] || '▶';
+  }
+
+  function playlistPreview(obj, image) {
+    return `<div class="visual-card playlist-preview-card ${obj.status==='hidden'?'preview-hidden':''}">
+      <div class="preview-playlist-image" style="background-image:url('${previewEsc(image || '../generated/media-card-background.png')}')"></div>
+      <div class="preview-playlist-footer"><span>${playlistIcon(obj.category)}</span><strong>${previewEsc(obj.title || 'PLAYLIST NAME')}</strong></div>
+      <div class="preview-location">${previewEsc(friendlyOption(obj.category))} • ${previewEsc(playlistLocationValue(obj.locations).replaceAll('-',' '))}</div>
+      <span class="preview-visibility">${visibleLabel(obj.status)}</span>
+    </div>`;
+  }
+
+  function newsPreview(obj, image) {
+    return `<div class="visual-card news-preview-card ${obj.status==='hidden'?'preview-hidden':''}">
+      <div class="preview-news-image"><img src="${previewEsc(image || '../images/logos/logo.png')}" alt=""></div>
+      <div class="preview-news-copy">
+        <small>${previewEsc(obj.category || obj.date || 'NEWS')}</small>
+        <strong>${previewEsc(obj.title || 'NEWS HEADLINE')}</strong>
+        <p>${previewEsc(obj.summary || 'News description will appear here.')}</p>
+        ${obj.link ? '<span class="preview-link">RELATED LINK ACTIVE</span>' : '<span class="preview-link is-disabled">NO RELATED LINK</span>'}
+      </div>
+      <span class="preview-visibility">${visibleLabel(obj.status)}</span>
+    </div>`;
+  }
+
+  function renderVisualPreview(section, obj, image) {
+    if (section === 'players') return playerPreview(obj, image);
+    if (section === 'games') return gamePreview(obj, image);
+    if (section === 'seasons') return seasonPreview(obj, image);
+    if (section === 'playlists') return playlistPreview(obj, image);
+    if (section === 'news') return newsPreview(obj, image);
+    return '<div class="visual-card"><p>Preview unavailable.</p></div>';
+  }
+
+  openForm = function(index) {
+    originalOpenForm(index);
+
+    const schema = SECTION_SCHEMAS[state.section];
+    const arr = state.data[schema.array];
+    const item = index >= 0 ? structuredClone(arr[index]) : {
+      id: nextId(arr, state.section.replace(/s$/,'')),
+      status: 'published',
+      order: arr.length + 1
+    };
+    const form = $('#editForm');
+    if (!form) return;
+
+    const existingPreview = form.querySelector('.visual-editor-layout');
+    if (existingPreview) return;
+
+    const currentChildren = [...form.children];
+    const wrapper = document.createElement('div');
+    wrapper.className = 'visual-editor-layout';
+    const fieldsColumn = document.createElement('div');
+    fieldsColumn.className = 'visual-editor-fields';
+    const previewColumn = document.createElement('aside');
+    previewColumn.className = 'visual-editor-preview';
+    previewColumn.innerHTML = `<div class="preview-toolbar">
+      <div><span class="v2-pill">LIVE PREVIEW</span><h4>Website Card</h4></div>
+      <div class="preview-device-switch"><button type="button" class="is-active" data-device="desktop">Desktop</button><button type="button" data-device="mobile">Mobile</button></div>
+    </div>
+    <div id="liveCardPreview" class="live-card-preview"></div>
+    <p class="help preview-help">This preview updates immediately. It does not publish until you save and click Publish All Changes.</p>`;
+
+    currentChildren.forEach(child => fieldsColumn.appendChild(child));
+    wrapper.append(fieldsColumn, previewColumn);
+    form.appendChild(wrapper);
+
+    let selectedImage = item[schema.imageField] ? previewImage(item[schema.imageField]) : '';
+    const preview = $('#liveCardPreview');
+
+    const refresh = () => {
+      const obj = currentFormValues(form, item);
+      preview.innerHTML = renderVisualPreview(state.section, obj, selectedImage);
+    };
+
+    form.addEventListener('input', refresh);
+    form.addEventListener('change', refresh);
+
+    previewColumn.querySelectorAll('[data-device]').forEach(btn => {
+      btn.onclick = () => {
+        previewColumn.querySelectorAll('[data-device]').forEach(x => x.classList.toggle('is-active', x === btn));
+        preview.classList.toggle('mobile-preview', btn.dataset.device === 'mobile');
+      };
+    });
+
+    const upload = $('#imageUpload');
+    if (upload) {
+      const priorHandler = upload.onchange;
+      upload.onchange = async event => {
+        if (priorHandler) await priorHandler.call(upload, event);
+        const img = $('#imagePreview');
+        if (img && img.src) selectedImage = img.src;
+        refresh();
+      };
+    }
+
+    refresh();
+  };
+
+  renderScheduleAssets = function() {
+    const a=state.data.assets||{},d=state.data.display||{};
+    $('#pageTitle').textContent='Schedule & Standings';
+    $('#content').innerHTML=`<div class="v2-banner"><strong>Visual Schedule Editor</strong><span>Upload a graphic and see exactly how the public card will look.</span></div>
+    <div class="visual-page-editor">
+      <div class="panel">
+        <div class="form-grid">${assetField('scheduleImage','Upload Match Schedule PNG','images/schedule/schedule.png',a.scheduleImage)}${assetField('standingsImage','Upload League Standings PNG','images/schedule/standings.png',a.standingsImage)}
+        <div class="field"><label>Schedule visibility</label><select id="scheduleVisible"><option value="true" ${d.scheduleVisible!==false?'selected':''}>Visible</option><option value="false" ${d.scheduleVisible===false?'selected':''}>Hidden</option></select></div>
+        <div class="field"><label>Standings visibility</label><select id="standingsVisible"><option value="true" ${d.standingsVisible!==false?'selected':''}>Visible</option><option value="false" ${d.standingsVisible===false?'selected':''}>Hidden</option></select></div></div>
+        <div class="admin-actions form-actions"><button class="btn primary" id="publishSchedule">Publish Schedule & Standings</button></div>
+      </div>
+      <aside class="visual-editor-preview page-preview-column">
+        <div class="preview-toolbar"><div><span class="v2-pill">LIVE PREVIEW</span><h4>Schedule Page Cards</h4></div></div>
+        <div id="schedulePreview" class="stacked-card-preview"></div>
+      </aside>
+    </div>`;
+    let scheduleSrc=previewImage(a.scheduleImage,'../images/schedule/schedule.png'), standingsSrc=previewImage(a.standingsImage,'../images/schedule/standings.png');
+    const draw=()=>{$('#schedulePreview').innerHTML=`
+      <div class="mini-news-card ${$('#scheduleVisible').value==='false'?'preview-hidden':''}"><img src="${scheduleSrc}"><div><small>CURRENT SCHEDULE</small><strong>Match Schedule</strong><p>Click the image to view the complete schedule.</p></div></div>
+      <div class="mini-news-card ${$('#standingsVisible').value==='false'?'preview-hidden':''}"><img src="${standingsSrc}"><div><small>CURRENT STANDINGS</small><strong>League Standings</strong><p>Click the image to view the complete standings.</p></div></div>`};
+    $$('[data-asset-key]').forEach(inp=>inp.onchange=async()=>{await queueAssetUpload(inp);const file=inp.files[0];if(file){const url=URL.createObjectURL(file);if(inp.dataset.assetKey==='scheduleImage')scheduleSrc=url;else standingsSrc=url;}draw()});
+    $('#scheduleVisible').onchange=e=>{state.data.display=state.data.display||{};state.data.display.scheduleVisible=e.target.value==='true';markDirty();draw()};
+    $('#standingsVisible').onchange=e=>{state.data.display=state.data.display||{};state.data.display.standingsVisible=e.target.value==='true';markDirty();draw()};
+    $('#publishSchedule').onclick=publish;draw();
+  };
+
+  renderLive = function() {
+    const l=state.data.live||{};
+    $('#pageTitle').textContent='Livestream';
+    $('#content').innerHTML=`<div class="v2-banner"><strong>Visual Livestream Editor</strong><span>Change the status and text while viewing the public Live card.</span></div>
+    <div class="visual-page-editor"><form class="panel" id="liveForm"><div class="form-grid">${[['title','Stream title','text'],['opponent','Opponent','text'],['scheduledStart','Scheduled start','datetime-local'],['scheduledEnd','Expected end','datetime-local'],['location','Location','text'],['url','YouTube livestream URL','url'],['replayUrl','Replay URL','url'],['thumbnail','Thumbnail path','locked']].map(f=>inputHtml(f,l[f[0]])).join('')}
+    <div class="field"><label>Control mode</label><select name="mode"><option ${l.mode==='automatic'?'selected':''}>automatic</option><option ${l.mode==='manual'?'selected':''}>manual</option></select></div>
+    <div class="field"><label>Manual status</label><select name="status">${['offline','scheduled','live','ended','replay'].map(x=>`<option ${l.status===x?'selected':''}>${x}</option>`).join('')}</select></div>
+    <div class="field full"><label>Description</label><textarea name="description">${esc(l.description||'')}</textarea></div><div class="field full"><label>Upload livestream thumbnail</label><input id="liveUpload" type="file" accept="image/png,image/jpeg,image/webp"></div></div>
+    <div class="admin-actions form-actions"><button class="btn primary" type="submit">Save Livestream</button><button class="btn" type="button" id="publishLive">Publish</button></div></form>
+    <aside class="visual-editor-preview page-preview-column"><div class="preview-toolbar"><div><span class="v2-pill">LIVE PREVIEW</span><h4>Live Page Card</h4></div></div><div id="livePreview"></div></aside></div>`;
+    let thumb=previewImage(l.thumbnail,'../images/live/live-default.png');
+    const draw=()=>{const fd=new FormData($('#liveForm')),o=Object.fromEntries(fd.entries()),status=(o.status||'offline').toUpperCase();$('#livePreview').innerHTML=`<div class="livestream-preview-card status-${o.status||'offline'}"><div class="live-status-dot"></div><small>${status}</small><img src="${thumb}"><strong>${esc(o.title||'LIVESTREAM COMING SOON')}</strong><p>${esc(o.description||'Live broadcasts will appear here on game day.')}</p><span>${o.url?'WATCH LIVESTREAM':'NO STREAM LINK YET'}</span></div>`};
+    $('#liveForm').addEventListener('input',draw);$('#liveForm').addEventListener('change',draw);
+    $('#liveForm').onsubmit=e=>{e.preventDefault();Object.assign(state.data.live,Object.fromEntries(new FormData(e.target).entries()));markDirty();setStatus('Livestream settings saved locally. Publish when ready.','ok');draw()};
+    $('#liveUpload').onchange=async e=>{if(!e.target.files[0])return;const r=await fileToPng(e.target.files[0]),path='images/live/current-livestream.png';state.data.live.thumbnail=path;state.pendingFiles=state.pendingFiles.filter(f=>f.path!==path);state.pendingFiles.push({path,base64:r.base64});thumb=URL.createObjectURL(e.target.files[0]);markDirty();draw()};
+    $('#publishLive').onclick=publish;draw();
+  };
+
+  renderAssets = function() {
+    const a=state.data.assets||{};
+    $('#pageTitle').textContent='Website Graphics';
+    $('#content').innerHTML=`<div class="v2-banner"><strong>Visual Graphics Manager</strong><span>Every upload shows an immediate before-publish preview.</span></div><div class="panel"><div class="graphics-preview-grid">
+    ${[['mediaBackground','Default media-card background','generated/media-card-background.png'],['playerSilhouette','Default player silhouette','images/team/players/player-silhouette.png'],['liveDefaultImage','Default livestream image','images/live/live-default.png']].map(([k,label,path])=>`<article class="graphic-preview-item"><div class="field"><label>${label}</label><input data-asset-path="${path}" data-asset-key="${k}" type="file" accept="image/png,image/jpeg,image/webp"><div class="help">Protected destination: ${esc(a[k]||path)} 🔒</div></div><div class="graphic-preview-box"><img data-graphic-preview="${k}" src="../${esc(a[k]||path)}"></div></article>`).join('')}</div><div class="admin-actions form-actions"><button class="btn primary" id="publishAssets">Publish Website Graphics</button></div></div>`;
+    $$('[data-asset-key]').forEach(inp=>inp.onchange=async()=>{await queueAssetUpload(inp);if(inp.files[0])$(`[data-graphic-preview="${inp.dataset.assetKey}"]`).src=URL.createObjectURL(inp.files[0])});
+    $('#publishAssets').onclick=publish;
+  };
+})();
