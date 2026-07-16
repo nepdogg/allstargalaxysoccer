@@ -1,7 +1,7 @@
 
 (() => {
  "use strict";
- const URL='data/site-settings.json?v=138';
+ const URL='data/site-settings.json?v=139';
  const pageKey=()=>document.body.className.match(/page-([a-z-]+)/)?.[1]||'home';
  const getData=async()=>{
    if(new URLSearchParams(location.search).get('adminPreview')==='1'){
@@ -41,36 +41,64 @@
      });
    });
    document.querySelectorAll('.footer-email').forEach(a=>{a.href=`mailto:${s.social?.email||''}`;if(!s.social?.email)a.style.display='none'});
-   document.querySelectorAll('.footer-small').forEach(el=>{
+   document.querySelectorAll('footer').forEach(footerElement=>{
      const footer=s.footer||{};
+     const socialRow=footerElement.querySelector('.footer-social-row');
+     const social=socialRow?.querySelector('.footer-social');
+     const leftLogo=socialRow?.querySelector('.footer-logo-left');
+     const rightLogo=socialRow?.querySelector('.footer-logo-right');
+     const legacySmall=footerElement.querySelector('.footer-small');
+     if(!social || !leftLogo || !rightLogo || !legacySmall)return;
+
      const about=footer.showAboutLink!==false
-       ? ` <span aria-hidden="true" class="footer-divider">•</span> <a class="footer-about-link" href="about.html">${footer.aboutLabel||'About'}</a>`
+       ? `<a class="footer-about-link" href="about.html">${footer.aboutLabel||'About'}</a>`
        : '';
      const admin=footer.showAdminLink!==false
-       ? ` <span aria-hidden="true" class="footer-divider footer-admin-divider">•</span> <a class="footer-admin-link" href="${footer.adminHref||'admin/'}">${footer.adminLabel||'Admin'}</a>`
+       ? `<a class="footer-admin-link" href="${footer.adminHref||'admin/'}">${footer.adminLabel||'Admin'}</a>`
        : '';
 
      const platformName=footer.platformName||'Allstar Galaxy Platform';
      const platformVersion=footer.platformVersion||'v1.0';
-     const platformBuild=footer.platformBuild||'138';
-     const showPlatform=footer.showPlatformVersion!==false;
-     const platform=showPlatform
-       ? `<div class="footer-platform-version">${platformName} ${platformVersion} <span>(Build ${platformBuild})</span></div>`
+     const platformBuild=footer.platformBuild||'139';
+     const platform=footer.showPlatformVersion!==false
+       ? `<span class="footer-platform-version">${platformName} ${platformVersion} <span>(Build ${platformBuild})</span></span>`
        : '';
 
-     const showCredit=footer.showXitlaliCredit!==false;
      const creditText=footer.xitlaliCreditText||'Designed and Developed by Xitlali Media';
      const creditUrl=footer.xitlaliUrl||'https://xitlalimedia.com';
      const logoPath=footer.xitlaliLogo||'';
-     const logo=logoPath
+     const xitlaliLogo=logoPath
        ? `<img class="footer-xitlali-logo" src="${logoPath}" alt="Xitlali Media" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">`
        : '';
-     const wordmark=`<span class="footer-xitlali-wordmark" ${logoPath?'hidden':''}>XITLALI MEDIA</span>`;
-     const credit=showCredit
-       ? `<a class="footer-xitlali-credit" href="${creditUrl}" target="_blank" rel="noopener">${logo}${wordmark}<span>${creditText}</span></a>`
+     const xitlaliWordmark=`<span class="footer-xitlali-wordmark" ${logoPath?'hidden':''}>XM</span>`;
+     const credit=footer.showXitlaliCredit!==false
+       ? `<a class="footer-xitlali-credit" href="${creditUrl}" target="_blank" rel="noopener">${xitlaliLogo}${xitlaliWordmark}<span>${creditText}</span></a>`
        : '';
 
-     el.innerHTML=`<div class="footer-primary-line">${footer.copyright||''}${about}${admin}</div>${platform}${credit}`;
+     footerElement.classList.add('footer-balanced-v139');
+     footerElement.innerHTML=`
+       <div class="footer-balanced-grid">
+         <div class="footer-owner-side">
+           <span class="footer-copyright">${footer.copyright||''}</span>
+           ${leftLogo.outerHTML}
+         </div>
+
+         <div class="footer-center-side">
+           ${social.outerHTML}
+           <div class="footer-center-meta">
+             ${about}
+             ${about && platform ? '<span class="footer-meta-divider">•</span>' : ''}
+             ${platform}
+             ${(about || platform) && admin ? '<span class="footer-meta-divider">•</span>' : ''}
+             ${admin}
+           </div>
+         </div>
+
+         <div class="footer-credit-side">
+           ${rightLogo.outerHTML}
+           ${credit}
+         </div>
+       </div>`;
    });
    if(key==='home'&&Array.isArray(s.homeSections)){
      const main=document.querySelector('main');

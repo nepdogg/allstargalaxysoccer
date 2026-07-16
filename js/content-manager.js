@@ -148,6 +148,7 @@
       <div class="generated-news-content">
         <small>${esc(n.date||n.category||'ALLSTAR GALAXY NEWS')}</small>
         <h3>${esc(n.title)}</h3>
+        ${n.imageNote ? `<div class="generated-news-image-note">${esc(n.imageNote)}</div>` : ""}
         <p>${esc(n.summary)}</p>
         ${externalLink?`<a class="generated-news-external-link" href="${esc(externalLink)}" target="_blank" rel="noopener">Open Related Link</a>`:''}
       </div>
