@@ -645,3 +645,169 @@ window.AdminCMS={initCommon,publish};
     $("#publishAssets").onclick = publish;
   };
 })();
+
+
+/* ============================================================
+   V141 — PERMANENT LIVE PREVIEWS
+   Players, Games, Seasons and Playlists now match the permanent
+   visual-manager behavior already used by News.
+   ============================================================ */
+(() => {
+  "use strict";
+
+  const priorRenderManagerV141 = renderManager;
+
+  const v141PreviewPath = (path, fallback = "../images/logos/logo.png") => {
+    const value = String(path || "").trim();
+    if (!value) return fallback;
+    if (/^(blob:|data:|https?:)/i.test(value)) return value;
+    return "../" + value.replace(/^\/+/, "");
+  };
+
+  const v141EmptyPreview = label => `
+    <div class="empty-admin-preview">
+      <strong>No ${label} selected</strong>
+      <p>Select Preview, Edit, or Add New to view the live card.</p>
+    </div>`;
+
+  const v141PermanentPreview = (section, item) => {
+    if (!item) return v141EmptyPreview(section.replace(/s$/, ""));
+
+    const schema = SECTION_SCHEMAS[section];
+    const image = schema?.imageField ? v141PreviewPath(item[schema.imageField]) : "";
+    return renderVisualPreview(section, item, image);
+  };
+
+  function v141RenderPermanentManager(section) {
+    state.section = section;
+    const schema = SECTION_SCHEMAS[section];
+    const arr = state.data[schema.array] || [];
+    const firstVisible = arr.findIndex(item => item.status !== "hidden");
+    let selectedIndex = firstVisible >= 0 ? firstVisible : (arr.length ? 0 : -1);
+
+    const labels = {
+      players: "Player",
+      games: "Game",
+      seasons: "Season",
+      playlists: "Playlist"
+    };
+    const label = labels[section] || "Item";
+
+    $("#pageTitle").textContent = schema.title;
+    $("#content").innerHTML = `
+      <div class="v2-banner">
+        <strong>Visual ${schema.title} Manager</strong>
+        <span>Select any item to see the exact website card. Add, edit, hide, restore or delete while keeping the visual result visible.</span>
+      </div>
+
+      <div class="admin-actions manager-actions">
+        <button class="btn primary" id="addBtn">Add ${label}</button>
+        <button class="btn" id="publishBtn">Publish All Changes</button>
+        <button class="btn" id="previewBtn">Preview Draft</button>
+        <span class="pending" id="pendingLabel">${state.dirty ? "Unpublished changes" : ""}</span>
+      </div>
+
+      <div class="permanent-preview-layout">
+        <div class="item-list permanent-manager-list">
+          ${arr.map((item, index) => `
+            <div class="item-row ${item.status === "hidden" ? "is-hidden" : ""}" data-permanent-row="${index}">
+              <div>
+                <div class="item-title">${esc(titleFor(item, section))}</div>
+                <div class="item-sub">${esc(subFor(item, section) || item.status || "")}</div>
+              </div>
+              <div class="row-actions">
+                <button class="btn small" data-permanent-select="${index}">Preview</button>
+                <button class="btn small" data-permanent-edit="${index}">Edit</button>
+                <button class="btn small" data-permanent-toggle="${index}">${item.status === "hidden" ? "Restore" : "Hide"}</button>
+                <button class="btn small danger" data-permanent-delete="${index}">Delete</button>
+              </div>
+            </div>
+          `).join("")}
+        </div>
+
+        <aside class="visual-editor-preview permanent-card-preview">
+          <div class="preview-toolbar">
+            <div>
+              <span class="v2-pill">LIVE PREVIEW</span>
+              <h4>Selected ${label} Card</h4>
+            </div>
+            <div class="preview-device-switch">
+              <button type="button" class="is-active" data-permanent-device="desktop">Desktop</button>
+              <button type="button" data-permanent-device="mobile">Mobile</button>
+            </div>
+          </div>
+          <div id="permanentCardPreview" class="live-card-preview"></div>
+          <p class="help preview-help">The preview uses the same generated card layout and data as the public website.</p>
+        </aside>
+      </div>
+    `;
+
+    const drawSelected = () => {
+      const target = $("#permanentCardPreview");
+      if (target) target.innerHTML = v141PermanentPreview(section, arr[selectedIndex]);
+      $$("[data-permanent-row]").forEach(row =>
+        row.classList.toggle("is-selected", Number(row.dataset.permanentRow) === selectedIndex)
+      );
+    };
+
+    $("#addBtn").onclick = () => openForm(-1);
+    $("#publishBtn").onclick = publish;
+    $("#previewBtn").onclick = () => {
+      sessionStorage.setItem("asgPreviewMasterContent", JSON.stringify(state.data));
+      const pageMap = {
+        players: "team.html",
+        games: "media.html",
+        seasons: "media.html",
+        playlists: "media.html"
+      };
+      window.open("../" + pageMap[section] + "?adminPreview=1", "_blank");
+    };
+
+    $$("[data-permanent-select]").forEach(button => button.onclick = () => {
+      selectedIndex = Number(button.dataset.permanentSelect);
+      drawSelected();
+    });
+
+    $$("[data-permanent-edit]").forEach(button => button.onclick = () => {
+      selectedIndex = Number(button.dataset.permanentEdit);
+      drawSelected();
+      openForm(selectedIndex);
+    });
+
+    $$("[data-permanent-toggle]").forEach(button => button.onclick = () => {
+      const item = arr[Number(button.dataset.permanentToggle)];
+      item.status = item.status === "hidden" ? "published" : "hidden";
+      markDirty();
+      v141RenderPermanentManager(section);
+    });
+
+    $$("[data-permanent-delete]").forEach(button => button.onclick = () => {
+      const index = Number(button.dataset.permanentDelete);
+      if (confirm(`Permanently delete this ${label.toLowerCase()}? Hide is safer.`)) {
+        arr.splice(index, 1);
+        markDirty();
+        v141RenderPermanentManager(section);
+      }
+    });
+
+    $$("[data-permanent-device]").forEach(button => button.onclick = () => {
+      $$("[data-permanent-device]").forEach(item =>
+        item.classList.toggle("is-active", item === button)
+      );
+      $("#permanentCardPreview").classList.toggle(
+        "mobile-preview",
+        button.dataset.permanentDevice === "mobile"
+      );
+    });
+
+    drawSelected();
+  }
+
+  renderManager = function(section) {
+    if (["players", "games", "seasons", "playlists"].includes(section)) {
+      v141RenderPermanentManager(section);
+      return;
+    }
+    priorRenderManagerV141(section);
+  };
+})();
