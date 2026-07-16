@@ -334,3 +334,61 @@
         flex-wrap: wrap;
     }
 }
+
+
+/* ============================================================
+   V142 — NATURAL-ASPECT WEBSITE GRAPHICS PREVIEWS
+   Overrides older fixed-height rules so nothing is clipped.
+   ============================================================ */
+.graphics-preview-grid {
+    align-items: start !important;
+}
+
+.graphic-preview-item {
+    align-self: start !important;
+}
+
+.graphic-preview-box {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 220px !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 10px !important;
+    box-sizing: border-box !important;
+}
+
+.graphic-preview-box img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+}
+
+.graphic-preview-box img[hidden] {
+    display: none !important;
+}
+
+.graphic-missing-placeholder {
+    position: relative !important;
+    inset: auto !important;
+    min-height: 200px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+@media (max-width: 760px) {
+    .graphic-preview-box {
+        min-height: 180px !important;
+    }
+
+    .graphic-missing-placeholder {
+        min-height: 170px !important;
+    }
+}

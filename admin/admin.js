@@ -16,7 +16,7 @@ function setStatus(msg,type=''){const el=$('#statusbar');if(el){el.textContent=m
 async function ghGet(path){const r=await fetch(`https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${path}?ref=${CONFIG.branch}`,{headers:authHeaders()});if(!r.ok)throw new Error(`${r.status}: ${await r.text()}`);return r.json()}
 async function ghPut(path,content,message,sha){const body={message,content,branch:CONFIG.branch};if(sha)body.sha=sha;const r=await fetch(`https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${path}`,{method:'PUT',headers:{...authHeaders(),'Content-Type':'application/json'},body:JSON.stringify(body)});if(!r.ok)throw new Error(`${r.status}: ${await r.text()}`);return r.json()}
 function decode64(s){return decodeURIComponent(escape(atob(s.replace(/\n/g,''))))} function encode64(s){return btoa(unescape(encodeURIComponent(s)))}
-async function connect(){if(!token()){location.href='index.html';return}setStatus('Connecting to GitHub…');try{const f=await ghGet(CONFIG.dataPath);state.sha=f.sha;state.data=JSON.parse(decode64(f.content));setStatus(`Connected to ${CONFIG.owner}/${CONFIG.repo} • master-content.json loaded • Admin Dashboard V2`,'ok');renderPage()}catch(e){setStatus('Connection failed: '+e.message,'bad')}}
+async function connect(){if(!token()){location.href='index.html';return}setStatus('Connecting to GitHub…');try{const f=await ghGet(CONFIG.dataPath);state.sha=f.sha;state.data=JSON.parse(decode64(f.content));setStatus(`Connected to ${CONFIG.owner}/${CONFIG.repo} • master-content.json loaded • Admin Dashboard V2`,'ok');renderPage()}catch(e){setStatus('Admin page error: '+e.message+' — GitHub connection may still be active.','bad')}}
 function slug(s){return String(s||'item').toLowerCase().trim().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'item'}
 function nextId(arr,prefix){let n=1;const ids=new Set(arr.map(x=>x.id));while(ids.has(`${prefix}-${String(n).padStart(2,'0')}`))n++;return `${prefix}-${String(n).padStart(2,'0')}`}
 function markDirty(){state.dirty=true;const p=$('#pendingLabel');if(p)p.textContent='Unpublished changes';}
@@ -181,6 +181,10 @@ window.AdminCMS={initCommon,publish};
     if (section === 'news') return newsPreview(obj, image);
     return '<div class="visual-card"><p>Preview unavailable.</p></div>';
   }
+
+  // V142: expose one shared renderer so permanent list previews and
+  // Add/Edit previews use the same card generator without scope errors.
+  window.ASGVisualPreview = renderVisualPreview;
 
   openForm = function(index) {
     originalOpenForm(index);
@@ -675,7 +679,10 @@ window.AdminCMS={initCommon,publish};
 
     const schema = SECTION_SCHEMAS[section];
     const image = schema?.imageField ? v141PreviewPath(item[schema.imageField]) : "";
-    return renderVisualPreview(section, item, image);
+    if (typeof window.ASGVisualPreview !== "function") {
+      return `<div class="empty-admin-preview"><strong>Preview temporarily unavailable</strong><p>The content is loaded correctly. Refresh this Admin page to reload the visual renderer.</p></div>`;
+    }
+    return window.ASGVisualPreview(section, item, image);
   };
 
   function v141RenderPermanentManager(section) {
