@@ -1,7 +1,7 @@
 
 (() => {
  "use strict";
- const URL='data/site-settings.json?v=134';
+ const URL='data/site-settings.json?v=138';
  const pageKey=()=>document.body.className.match(/page-([a-z-]+)/)?.[1]||'home';
  const getData=async()=>{
    if(new URLSearchParams(location.search).get('adminPreview')==='1'){
@@ -42,8 +42,35 @@
    });
    document.querySelectorAll('.footer-email').forEach(a=>{a.href=`mailto:${s.social?.email||''}`;if(!s.social?.email)a.style.display='none'});
    document.querySelectorAll('.footer-small').forEach(el=>{
-     const about=s.footer?.showAboutLink!==false?` <span aria-hidden="true" class="footer-divider">•</span> <a class="footer-about-link" href="about.html">${s.footer?.aboutLabel||'About'}</a>`:'';
-     el.innerHTML=`${s.footer?.copyright||''}${about}`;
+     const footer=s.footer||{};
+     const about=footer.showAboutLink!==false
+       ? ` <span aria-hidden="true" class="footer-divider">•</span> <a class="footer-about-link" href="about.html">${footer.aboutLabel||'About'}</a>`
+       : '';
+     const admin=footer.showAdminLink!==false
+       ? ` <span aria-hidden="true" class="footer-divider footer-admin-divider">•</span> <a class="footer-admin-link" href="${footer.adminHref||'admin/'}">${footer.adminLabel||'Admin'}</a>`
+       : '';
+
+     const platformName=footer.platformName||'Allstar Galaxy Platform';
+     const platformVersion=footer.platformVersion||'v1.0';
+     const platformBuild=footer.platformBuild||'138';
+     const showPlatform=footer.showPlatformVersion!==false;
+     const platform=showPlatform
+       ? `<div class="footer-platform-version">${platformName} ${platformVersion} <span>(Build ${platformBuild})</span></div>`
+       : '';
+
+     const showCredit=footer.showXitlaliCredit!==false;
+     const creditText=footer.xitlaliCreditText||'Designed and Developed by Xitlali Media';
+     const creditUrl=footer.xitlaliUrl||'https://xitlalimedia.com';
+     const logoPath=footer.xitlaliLogo||'';
+     const logo=logoPath
+       ? `<img class="footer-xitlali-logo" src="${logoPath}" alt="Xitlali Media" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">`
+       : '';
+     const wordmark=`<span class="footer-xitlali-wordmark" ${logoPath?'hidden':''}>XITLALI MEDIA</span>`;
+     const credit=showCredit
+       ? `<a class="footer-xitlali-credit" href="${creditUrl}" target="_blank" rel="noopener">${logo}${wordmark}<span>${creditText}</span></a>`
+       : '';
+
+     el.innerHTML=`<div class="footer-primary-line">${footer.copyright||''}${about}${admin}</div>${platform}${credit}`;
    });
    if(key==='home'&&Array.isArray(s.homeSections)){
      const main=document.querySelector('main');

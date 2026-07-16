@@ -13,7 +13,7 @@
 
     const DEFAULT_INTERVAL = 7000;
     const DEFAULT_TRANSITION = 1400;
-    const CONFIG_URL = "data/hero-rotation.json?v=133";
+    const CONFIG_URL = "data/hero-rotation.json?v=136";
 
     const pageKey = () => {
         const body = document.body;
@@ -94,6 +94,8 @@ const response = await fetch(CONFIG_URL, { cache: "no-store" });
         container.style.setProperty("--hero-transition", `${settings.transition}ms`);
         container.style.setProperty("--hero-duration", `${settings.interval}ms`);
         container.dataset.heroEffect = settings.effect || "fade";
+        container.dataset.heroTransitionEffect = settings.transitionEffect || "glow-fade";
+        container.dataset.heroGlowIntensity = settings.glowIntensity || "medium";
 
         const originalImage = container.querySelector(":scope > img");
         if (originalImage) originalImage.classList.add("hero-original-fallback");
@@ -139,6 +141,16 @@ const response = await fetch(CONFIG_URL, { cache: "no-store" });
             if (normalized === currentIndex && container.classList.contains("hero-rotation-ready")) return;
 
             const nextLayer = activeLayer === 0 ? 1 : 0;
+
+            // Restart the transition-energy animation on every image change.
+            container.classList.remove("hero-is-transitioning");
+            void container.offsetWidth;
+            container.classList.add("hero-is-transitioning");
+            window.setTimeout(
+                () => container.classList.remove("hero-is-transitioning"),
+                Math.max(500, settings.transition + 350)
+            );
+
             setLayerImage(layers[nextLayer], images[normalized]);
             layers[nextLayer].classList.add("is-active");
             layers[activeLayer].classList.remove("is-active");
@@ -250,6 +262,8 @@ const response = await fetch(CONFIG_URL, { cache: "no-store" });
             interval: Math.max(3000, Number(entry.interval || config.interval || DEFAULT_INTERVAL)),
             transition: Math.max(300, Number(entry.transition || config.transition || DEFAULT_TRANSITION)),
             effect: entry.effect || "fade",
+            transitionEffect: entry.transitionEffect || "glow-fade",
+            glowIntensity: entry.glowIntensity || "medium",
             enabled: entry.enabled !== false
         });
     });
