@@ -1,5 +1,5 @@
 {
-  "version": 162,
+  "version": 163,
   "updated": "2026-07-16",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -3067,7 +3067,7 @@
   ],
   "live": {
     "status": "offline",
-    "title": "Livestream Coming Soon",
+    "title": "Live Stream Coming Soon",
     "description": "Live broadcasts will appear here on game day.",
     "url": "",
     "mode": "automatic",
