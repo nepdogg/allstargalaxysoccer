@@ -878,3 +878,214 @@ window.AdminCMS={initCommon,publish};
     }
   };
 })();
+
+
+/* ============================================================
+   V144 — FIXED TWO-CARD NEWS EDITOR
+   ============================================================ */
+(() => {
+  "use strict";
+
+  const previousRenderManagerV144 = renderManager;
+
+  function newsPreviewCard(item, imageSrc) {
+    const status = item?.status || "published";
+    const note = item?.imageNote || "No image note has been entered yet.";
+    const summary = item?.summary || "No public description has been entered yet.";
+    return `
+      <article class="visual-card news-preview-card ${status === "hidden" ? "preview-hidden" : ""}">
+        <div class="preview-news-image">
+          <img src="${esc(imageSrc)}" alt="" onerror="this.onerror=null;this.src='../images/logos/logo.png'">
+        </div>
+        <div class="preview-news-copy">
+          <small>${esc(item?.category || "NEWS")}</small>
+          <strong>${esc(item?.title || "News Headline")}</strong>
+          <div class="admin-image-note"><b>IMAGE NOTE:</b> ${esc(note)}</div>
+          <p>${esc(summary)}</p>
+          ${item?.link
+            ? '<span class="preview-link">RELATED LINK ACTIVE</span>'
+            : '<span class="preview-link is-disabled">NO RELATED LINK</span>'}
+        </div>
+        <span class="preview-visibility">${status === "hidden" ? "HIDDEN" : "VISIBLE"}</span>
+      </article>`;
+  }
+
+  function fixedNewsItem(arr, index, defaults) {
+    if (!arr[index]) {
+      arr[index] = {
+        id: defaults.id,
+        title: defaults.title,
+        category: defaults.category,
+        imageNote: "",
+        summary: "",
+        link: "",
+        status: "published",
+        order: index + 1,
+        image: defaults.image
+      };
+    }
+    return arr[index];
+  }
+
+  function renderFixedNewsEditor() {
+    state.section = "news";
+    const arr = state.data.news = state.data.news || [];
+    const latest = fixedNewsItem(arr, 0, {
+      id: "news-1",
+      title: "Latest news",
+      category: "NEWS",
+      image: "images/news/news-1.png"
+    });
+    const results = fixedNewsItem(arr, 1, {
+      id: "news-2",
+      title: "Match Results",
+      category: "MATCH",
+      image: "images/news/news-2.png"
+    });
+
+    $("#pageTitle").textContent = "News";
+    $("#content").innerHTML = `
+      <div class="v2-banner">
+        <strong>Visual News Editor</strong>
+        <span>Edit both public News cards together, just like Schedule & Standings.</span>
+      </div>
+
+      <div class="visual-page-editor news-two-card-editor">
+        <div class="panel">
+          ${[latest, results].map((item, index) => `
+            <section class="fixed-news-editor-section" data-news-editor="${index}">
+              <h3>${index === 0 ? "Latest News Card" : "Match Results Card"}</h3>
+              <div class="form-grid">
+                <div class="field full">
+                  <label>Upload image</label>
+                  <input type="file" accept="image/png,image/jpeg,image/webp" data-news-upload="${index}">
+                  <div class="help">Current file: ${esc(item.image || "No image")}</div>
+                </div>
+                <div class="field">
+                  <label>Headline</label>
+                  <input data-news-field="${index}" data-key="title" value="${esc(item.title || "")}">
+                </div>
+                <div class="field">
+                  <label>News type</label>
+                  <select data-news-field="${index}" data-key="category">
+                    ${["NEWS","MATCH","ANNOUNCEMENT","RESULT","TEAM UPDATE"].map(value =>
+                      `<option value="${value}" ${item.category === value ? "selected" : ""}>${value}</option>`
+                    ).join("")}
+                  </select>
+                </div>
+                <div class="field full">
+                  <label>Image note / what this flyer is</label>
+                  <textarea data-news-field="${index}" data-key="imageNote">${esc(item.imageNote || "")}</textarea>
+                </div>
+                <div class="field full">
+                  <label>Public description</label>
+                  <textarea data-news-field="${index}" data-key="summary">${esc(item.summary || "")}</textarea>
+                </div>
+                <div class="field">
+                  <label>Optional related URL</label>
+                  <input type="url" data-news-field="${index}" data-key="link" value="${esc(item.link || "")}">
+                </div>
+                <div class="field">
+                  <label>Visibility</label>
+                  <select data-news-field="${index}" data-key="status">
+                    <option value="published" ${item.status !== "hidden" ? "selected" : ""}>Visible</option>
+                    <option value="hidden" ${item.status === "hidden" ? "selected" : ""}>Hidden</option>
+                  </select>
+                </div>
+              </div>
+            </section>
+          `).join('<hr class="news-editor-divider">')}
+
+          <div class="admin-actions form-actions">
+            <button class="btn primary" id="publishNewsCards">Publish News</button>
+            <button class="btn" id="previewNewsDraft">Preview Draft</button>
+            <span class="pending" id="pendingLabel">${state.dirty ? "Unpublished changes" : ""}</span>
+          </div>
+        </div>
+
+        <aside class="visual-editor-preview page-preview-column">
+          <div class="preview-toolbar">
+            <div><span class="v2-pill">LIVE PREVIEW</span><h4>News Page Cards</h4></div>
+            <div class="preview-device-switch">
+              <button type="button" class="is-active" data-news-stack-device="desktop">Desktop</button>
+              <button type="button" data-news-stack-device="mobile">Mobile</button>
+            </div>
+          </div>
+          <div id="newsStackPreview" class="stacked-card-preview news-stacked-preview"></div>
+        </aside>
+      </div>
+    `;
+
+    const previewUrls = [
+      itemPreviewPath(latest.image),
+      itemPreviewPath(results.image)
+    ];
+
+    function itemPreviewPath(path) {
+      const value = String(path || "").trim();
+      if (!value) return "../images/logos/logo.png";
+      if (/^(blob:|data:|https?:)/i.test(value)) return value;
+      return "../" + value.replace(/^\/+/, "");
+    }
+
+    const draw = () => {
+      $("#newsStackPreview").innerHTML =
+        newsPreviewCard(latest, previewUrls[0]) +
+        newsPreviewCard(results, previewUrls[1]);
+    };
+
+    $$("[data-news-field]").forEach(input => {
+      input.oninput = input.onchange = event => {
+        const item = arr[Number(input.dataset.newsField)];
+        item[input.dataset.key] = event.target.value;
+        markDirty();
+        draw();
+      };
+    });
+
+    $$("[data-news-upload]").forEach(input => {
+      input.onchange = async () => {
+        const file = input.files[0];
+        if (!file) return;
+        const index = Number(input.dataset.newsUpload);
+        const converted = await fileToPng(file);
+        const path = `images/news/news-${index + 1}.png`;
+        arr[index].image = path;
+        state.pendingFiles = state.pendingFiles.filter(item => item.path !== path);
+        state.pendingFiles.push({ path, base64: converted.base64 });
+        previewUrls[index] = converted.url;
+        markDirty();
+        setStatus(`${index === 0 ? "Latest News" : "Match Results"} image ready to publish.`, "ok");
+        draw();
+      };
+    });
+
+    $("#publishNewsCards").onclick = publish;
+    $("#previewNewsDraft").onclick = () => {
+      sessionStorage.setItem("asgPreviewMasterContent", JSON.stringify(state.data));
+      window.open("../news.html?adminPreview=1", "_blank");
+    };
+
+    $$("[data-news-stack-device]").forEach(button => {
+      button.onclick = () => {
+        $$("[data-news-stack-device]").forEach(item =>
+          item.classList.toggle("is-active", item === button)
+        );
+        $("#newsStackPreview").classList.toggle(
+          "mobile-preview",
+          button.dataset.newsStackDevice === "mobile"
+        );
+      };
+    });
+
+    draw();
+  }
+
+  renderManager = function(section) {
+    if (section === "news") {
+      renderFixedNewsEditor();
+      return;
+    }
+    previousRenderManagerV144(section);
+  };
+})();

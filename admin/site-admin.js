@@ -52,7 +52,10 @@
  function drawSitePreview(){
    const s=state.data, nav=[...s.navigation].filter(x=>x.visible!==false).sort((a,b)=>(a.order||0)-(b.order||0));
    const target=document.getElementById('siteChromePreview');if(!target)return;
-   target.innerHTML=`<div class="chrome-preview-header"><img src="../${esc(s.branding.leftLogo)}"><strong>${esc(s.branding.teamName||'ALLSTAR GALAXY')}</strong><img src="../${esc(s.branding.rightLogo)}"></div><div class="chrome-preview-nav">${nav.map(n=>`<span>${esc(n.label)}</span>`).join('')}</div><div class="chrome-preview-page">PAGE CONTENT PREVIEW</div><div class="chrome-preview-footer chrome-preview-footer-v139">
+   const leftSrc=state.previewAssets.leftLogo||`../${s.branding.leftLogo}`;
+   const rightSrc=state.previewAssets.rightLogo||`../${s.branding.rightLogo}`;
+   const titleSrc=state.previewAssets.navigationTitle||`../${s.branding.navigationTitle}`;
+   target.innerHTML=`<div class="chrome-preview-header"><img src="${esc(leftSrc)}"><img class="chrome-preview-navigation-title" src="${esc(titleSrc)}" alt="${esc(s.branding.teamName||'Allstar Galaxy')}"><img src="${esc(rightSrc)}"></div><div class="chrome-preview-nav">${nav.map(n=>`<span>${esc(n.label)}</span>`).join('')}</div><div class="chrome-preview-page">PAGE CONTENT PREVIEW</div><div class="chrome-preview-footer chrome-preview-footer-v139">
      <div class="chrome-preview-footer-left"><span>${esc(s.footer.copyright||'')}</span><b>AG</b></div>
      <div class="chrome-preview-footer-center">
        <span>SOCIAL MEDIA ICONS</span>
@@ -82,19 +85,53 @@
   $('#xitlaliLogoUpload').onchange=async e=>{
     if(!e.target.files[0])return;
     const path='images/managed/xitlali-media-logo.png';
-    state.pending.push({path,base64:await png(e.target.files[0])});
+    const file=e.target.files[0];
+    state.pending=state.pending.filter(item=>item.path!==path);
+    state.pending.push({path,base64:await png(file)});
     state.data.footer.xitlaliLogo=path;
+    state.previewAssets.xitlaliLogo=await new Promise((resolve,reject)=>{
+      const reader=new FileReader();
+      reader.onload=()=>resolve(reader.result);
+      reader.onerror=reject;
+      reader.readAsDataURL(file);
+    });
     $('#xitlaliLogoPath').value=path;
-    mark();drawSitePreview();status('Xitlali Media logo ready to publish.','ok')
+    mark();drawSitePreview();status('Xitlali Media logo ready to publish and preview.','ok')
   };
   document.querySelectorAll('[data-home]').forEach(e=>e.onchange=()=>{let v=e.value;if(e.dataset.k==='visible')v=v==='true';if(e.dataset.k==='order')v=Number(v);state.data.homeSections[+e.dataset.home][e.dataset.k]=v;mark();drawSitePreview()});
-  document.querySelectorAll('[data-upload]').forEach(e=>e.onchange=async()=>{if(!e.files[0])return;const key=e.dataset.upload,path=`images/managed/${key}.png`;state.pending.push({path,base64:await png(e.files[0])});state.data.branding[key]=path;mark();status(`${key} ready to publish.`,'ok')});
-  $('#preview').onclick=()=>{sessionStorage.setItem('asgPreviewSiteSettings',JSON.stringify(state.data));window.open('../index.html?adminPreview=1','_blank')};
+  document.querySelectorAll('[data-upload]').forEach(e=>e.onchange=async()=>{
+    if(!e.files[0])return;
+    const key=e.dataset.upload,path=`images/managed/${key}.png`;
+    const file=e.files[0];
+    const base64=await png(file);
+    state.pending=state.pending.filter(item=>item.path!==path);
+    state.pending.push({path,base64});
+    state.data.branding[key]=path;
+    state.previewAssets[key]=await new Promise((resolve,reject)=>{
+      const reader=new FileReader();
+      reader.onload=()=>resolve(reader.result);
+      reader.onerror=reject;
+      reader.readAsDataURL(file);
+    });
+    mark();drawSitePreview();status(`${key} ready to publish and visible in Preview Draft.`,'ok')
+  });
+  $('#preview').onclick=()=>{
+    const draft=structuredClone(state.data);
+    draft.branding={...draft.branding};
+    for(const [key,value] of Object.entries(state.previewAssets)){
+      if(value)draft.branding[key]=value;
+    }
+    if(state.previewAssets.xitlaliLogo){
+      draft.footer={...draft.footer,xitlaliLogo:state.previewAssets.xitlaliLogo};
+    }
+    sessionStorage.setItem('asgPreviewSiteSettings',JSON.stringify(draft));
+    window.open('../index.html?adminPreview=1','_blank')
+  };
   $('#publish').onclick=publish
  }
  async function publish(){
   status('Creating backup and publishing site settings…');
-  try{await window.ASGBackup?.create('Before Site Settings publish');for(const f of state.pending){let sha;try{sha=(await get(f.path)).sha}catch(e){}await put(f.path,f.base64,`Site Manager: ${f.path}`,sha)}const latest=await get(CFG.path),r=await put(CFG.path,enc(JSON.stringify(state.data,null,2)),'Site Manager: update site settings',latest.sha);state.sha=r.content.sha;state.pending=[];state.dirty=false;status('Site settings published.','ok');render()}catch(e){status('Publish failed: '+e.message,'bad')}
+  try{await window.ASGBackup?.create('Before Site Settings publish');for(const f of state.pending){let sha;try{sha=(await get(f.path)).sha}catch(e){}await put(f.path,f.base64,`Site Manager: ${f.path}`,sha)}const latest=await get(CFG.path),r=await put(CFG.path,enc(JSON.stringify(state.data,null,2)),'Site Manager: update site settings',latest.sha);state.sha=r.content.sha;state.pending=[];state.previewAssets={};state.dirty=false;status('Site settings published.','ok');render()}catch(e){status('Publish failed: '+e.message,'bad')}
  }
  async function init(){if(!token()){location.href='index.html';return}try{const f=await get(CFG.path);state.sha=f.sha;state.data=JSON.parse(dec(f.content));status('Site Manager connected.','ok');render()}catch(e){status('Could not load settings: '+e.message,'bad')}}
  document.addEventListener('DOMContentLoaded',()=>{$('#menuBtn').onclick=()=>document.querySelector('.admin-sidebar').classList.toggle('open');$('#logoutBtn').onclick=()=>{sessionStorage.removeItem('asgGithubToken');location.href='index.html'};init()})
