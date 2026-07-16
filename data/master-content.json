@@ -1,6 +1,6 @@
 {
-  "version": 157,
-  "updated": "2026-07-15",
+  "version": 158,
+  "updated": "2026-07-16",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
     "logo": "generated/allstar-galaxy-logo.png",
@@ -1914,6 +1914,15 @@
       "name": "Neymar",
       "number": "11",
       "position": "LW"
+    },
+    {
+      "status": "published",
+      "order": 24,
+      "id": "player-24",
+      "name": "Pele",
+      "number": "32",
+      "position": "ST",
+      "photo": "images/team/players/pele.png"
     }
   ],
   "news": [
