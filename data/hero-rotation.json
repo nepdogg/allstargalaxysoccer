@@ -1,5 +1,5 @@
 {
-  "version": 133,
+  "version": 136,
   "interval": 7000,
   "transition": 1400,
   "pages": {
@@ -13,7 +13,9 @@
       "enabled": true,
       "interval": 7000,
       "transition": 1400,
-      "effect": "pulse"
+      "effect": "pulse",
+      "transitionEffect": "glow-fade",
+      "glowIntensity": "medium"
     },
     "team": {
       "selector": ".hero-image.hero-team",
@@ -25,7 +27,9 @@
       "enabled": true,
       "interval": 7000,
       "transition": 1400,
-      "effect": "pulse"
+      "effect": "pulse",
+      "transitionEffect": "glow-fade",
+      "glowIntensity": "medium"
     },
     "schedule": {
       "selector": ".hero-image.hero-schedule",
@@ -37,7 +41,9 @@
       "enabled": true,
       "interval": 7000,
       "transition": 1400,
-      "effect": "pulse"
+      "effect": "pulse",
+      "transitionEffect": "glow-fade",
+      "glowIntensity": "medium"
     },
     "media": {
       "selector": ".hero-image.hero-media",
@@ -49,7 +55,9 @@
       "enabled": true,
       "interval": 7000,
       "transition": 1400,
-      "effect": "pulse"
+      "effect": "pulse",
+      "transitionEffect": "glow-fade",
+      "glowIntensity": "medium"
     },
     "news": {
       "selector": ".hero-image.hero-news",
@@ -61,7 +69,9 @@
       "enabled": true,
       "interval": 7000,
       "transition": 1400,
-      "effect": "pulse"
+      "effect": "pulse",
+      "transitionEffect": "glow-fade",
+      "glowIntensity": "medium"
     },
     "livestream": {
       "selector": ".hero-image.hero-live",
@@ -73,7 +83,9 @@
       "enabled": true,
       "interval": 7000,
       "transition": 1400,
-      "effect": "pulse"
+      "effect": "pulse",
+      "transitionEffect": "glow-fade",
+      "glowIntensity": "medium"
     },
     "follow": {
       "selector": ".hero-image.hero-follow",
@@ -85,7 +97,9 @@
       "enabled": true,
       "interval": 7000,
       "transition": 1400,
-      "effect": "pulse"
+      "effect": "pulse",
+      "transitionEffect": "glow-fade",
+      "glowIntensity": "medium"
     },
     "about": {
       "selector": ".special-page-hero.about-page-hero",
@@ -97,7 +111,9 @@
       "enabled": true,
       "interval": 7000,
       "transition": 1400,
-      "effect": "pulse"
+      "effect": "pulse",
+      "transitionEffect": "glow-fade",
+      "glowIntensity": "medium"
     },
     "404": {
       "selector": ".special-page-hero.not-found-page-hero",
@@ -109,7 +125,9 @@
       "enabled": true,
       "interval": 7000,
       "transition": 1400,
-      "effect": "pulse"
+      "effect": "pulse",
+      "transitionEffect": "glow-fade",
+      "glowIntensity": "medium"
     },
     "season-archive": {
       "selector": ".season-archive-hero",
@@ -121,7 +139,9 @@
       "enabled": true,
       "interval": 7000,
       "transition": 1400,
-      "effect": "pulse"
+      "effect": "pulse",
+      "transitionEffect": "glow-fade",
+      "glowIntensity": "medium"
     }
   }
 }

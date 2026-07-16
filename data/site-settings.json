@@ -1,5 +1,5 @@
 {
-  "version": 134,
+  "version": 136,
   "branding": {
     "teamName": "Allstar Galaxy",
     "navigationTitle": "images/titles/page-titles/navigation-title.png",
@@ -112,7 +112,10 @@
   "footer": {
     "copyright": "\u00a9 2026 Allstar Galaxy.",
     "showAboutLink": true,
-    "aboutLabel": "About"
+    "aboutLabel": "About",
+    "showAdminLink": true,
+    "adminLabel": "Admin",
+    "adminHref": "admin/"
   },
   "homeSections": [
     {
