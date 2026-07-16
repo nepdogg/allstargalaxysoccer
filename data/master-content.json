@@ -1,5 +1,5 @@
 {
-  "version": 164,
+  "version": 165,
   "updated": "2026-07-16",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -1750,7 +1750,7 @@
       "number": "6",
       "position": "ST",
       "photo": "images/team/players/halland.png",
-      "status": "published",
+      "status": "hidden",
       "order": 6
     },
     {
@@ -1759,7 +1759,7 @@
       "number": "7",
       "position": "RW",
       "photo": "images/team/players/mbappe.png",
-      "status": "published",
+      "status": "hidden",
       "order": 7
     },
     {
@@ -1768,7 +1768,7 @@
       "number": "8",
       "position": "ST",
       "photo": "images/team/players/kane.png",
-      "status": "published",
+      "status": "hidden",
       "order": 8
     },
     {
@@ -1777,7 +1777,7 @@
       "number": "9",
       "position": "LW",
       "photo": "images/team/players/vinni.png",
-      "status": "published",
+      "status": "hidden",
       "order": 9
     },
     {
@@ -1795,7 +1795,7 @@
       "number": "11",
       "position": "ST",
       "photo": "images/team/players/jude.png",
-      "status": "published",
+      "status": "hidden",
       "order": 11
     },
     {
@@ -1907,7 +1907,7 @@
       "position": "LW"
     },
     {
-      "status": "published",
+      "status": "hidden",
       "order": 23,
       "id": "player-23",
       "photo": "images/team/players/img-3971.png",
