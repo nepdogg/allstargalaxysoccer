@@ -1,5 +1,5 @@
 {
-  "version": 163,
+  "version": 164,
   "updated": "2026-07-16",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -1933,10 +1933,10 @@
       "image": "images/news/img-3493.png",
       "title": "Latest news",
       "date": "",
-      "summary": "Testing ",
+      "summary": "",
       "link": "",
       "category": "",
-      "imageNote": "Testin"
+      "imageNote": ""
     },
     {
       "status": "published",
@@ -1945,10 +1945,10 @@
       "image": "images/news/news-1.png",
       "title": "Match Results",
       "date": "",
-      "summary": "Testing ",
+      "summary": "",
       "link": "",
       "category": "",
-      "imageNote": "Testing "
+      "imageNote": ""
     }
   ],
   "schedule": [
