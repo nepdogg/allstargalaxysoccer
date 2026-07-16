@@ -10,7 +10,7 @@ window.ASGBackup=(()=>{
 
  async function get(path){
    const r=await fetch(`https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${path}?ref=${CONFIG.branch}&_=${Date.now()}`,{
-     headers:{...headers(),'Cache-Control':'no-cache'}
+     headers:headers()
    });
    if(!r.ok)throw new Error(`${r.status}: ${await r.text()}`);
    return r.json();

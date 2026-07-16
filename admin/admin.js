@@ -818,3 +818,63 @@ window.AdminCMS={initCommon,publish};
     priorRenderManagerV141(section);
   };
 })();
+
+/* V143 fixes */
+(() => {
+  "use strict";
+  const previousRenderManagerV143 = renderManager;
+  function mediaBackgroundPath() {
+    const path = state?.data?.assets?.mediaBackground || state?.data?.assets?.mediaCardBackground || "generated/media-card-background.png";
+    if (/^(blob:|data:|https?:)/i.test(String(path))) return path;
+    return "../" + String(path).replace(/^\/+/, "");
+  }
+  function previewImageFor(section, item) {
+    if (section === "players") {
+      const path = item?.photo || state?.data?.assets?.playerSilhouette || "images/team/players/player-silhouette.png";
+      if (/^(blob:|data:|https?:)/i.test(String(path))) return path;
+      return "../" + String(path).replace(/^\/+/, "");
+    }
+    if (["games", "seasons", "playlists"].includes(section)) return mediaBackgroundPath();
+    const path = item?.image || "images/logos/logo.png";
+    if (/^(blob:|data:|https?:)/i.test(String(path))) return path;
+    return "../" + String(path).replace(/^\/+/, "");
+  }
+  function drawSharedPreview(section, item, targetSelector) {
+    const target = document.querySelector(targetSelector); if (!target) return;
+    if (!item) { target.innerHTML = `<div class="empty-admin-preview"><strong>No item selected</strong><p>Select an item or click Preview to display its card.</p></div>`; return; }
+    if (typeof window.ASGVisualPreview !== "function") { target.innerHTML = `<div class="empty-admin-preview"><strong>Preview renderer unavailable</strong><p>Refresh this Admin page to reload the shared card renderer.</p></div>`; return; }
+    target.innerHTML = window.ASGVisualPreview(section, item, previewImageFor(section, item));
+  }
+  function renderSelectableManager(section) {
+    state.section = section;
+    const schema = SECTION_SCHEMAS[section], arr = state.data[schema.array] || [];
+    const firstVisible = arr.findIndex(item => item.status !== "hidden");
+    let selectedIndex = firstVisible >= 0 ? firstVisible : (arr.length ? 0 : -1);
+    const labels = {players:"Player",games:"Game",seasons:"Season",playlists:"Playlist"}; const label=labels[section];
+    $("#pageTitle").textContent = schema.title;
+    $("#content").innerHTML = `<div class="v2-banner"><strong>Visual ${schema.title} Manager</strong><span>Click any row or Preview button to inspect the exact public website card.</span></div>
+    <div class="admin-actions manager-actions"><button class="btn primary" id="addBtn">Add ${label}</button><button class="btn" id="publishBtn">Publish All Changes</button><button class="btn" id="previewBtn">Preview Draft</button><span class="pending" id="pendingLabel">${state.dirty?'Unpublished changes':''}</span></div>
+    <div class="permanent-preview-layout"><div class="item-list permanent-manager-list" id="selectableManagerList">${arr.map((item,index)=>`<div class="item-row ${item.status==='hidden'?'is-hidden':''}" data-manager-row="${index}" tabindex="0" role="button"><div><div class="item-title">${esc(titleFor(item,section))}</div><div class="item-sub">${esc(subFor(item,section)||item.status||'')}</div></div><div class="row-actions"><button class="btn small" data-action="preview" data-index="${index}">Preview</button><button class="btn small" data-action="edit" data-index="${index}">Edit</button><button class="btn small" data-action="toggle" data-index="${index}">${item.status==='hidden'?'Restore':'Hide'}</button><button class="btn small danger" data-action="delete" data-index="${index}">Delete</button></div></div>`).join('')}</div>
+    <aside class="visual-editor-preview permanent-card-preview"><div class="preview-toolbar"><div><span class="v2-pill">LIVE PREVIEW</span><h4>Selected ${label} Card</h4></div><div class="preview-device-switch"><button type="button" class="is-active" data-manager-device="desktop">Desktop</button><button type="button" data-manager-device="mobile">Mobile</button></div></div><div id="permanentCardPreview" class="live-card-preview"></div><p class="help preview-help">Games, seasons and playlists use the shared media-card background from Website Graphics.</p></aside></div>`;
+    const draw=()=>{drawSharedPreview(section,arr[selectedIndex],"#permanentCardPreview"); $$('[data-manager-row]').forEach(row=>row.classList.toggle('is-selected',Number(row.dataset.managerRow)===selectedIndex));};
+    const select=index=>{const next=Number(index); if(!Number.isInteger(next)||!arr[next])return; selectedIndex=next; draw();};
+    $('#addBtn').onclick=()=>openForm(-1); $('#publishBtn').onclick=publish;
+    $('#previewBtn').onclick=()=>{sessionStorage.setItem('asgPreviewMasterContent',JSON.stringify(state.data)); const pages={players:'team.html',games:'media.html',seasons:'media.html',playlists:'media.html'}; window.open('../'+pages[section]+'?adminPreview=1','_blank');};
+    const list=$('#selectableManagerList');
+    list.addEventListener('click',event=>{const actionButton=event.target.closest('[data-action]'); const row=event.target.closest('[data-manager-row]'); if(!row)return; const index=Number(actionButton?.dataset.index??row.dataset.managerRow); if(!actionButton||actionButton.dataset.action==='preview'){select(index);return;} event.stopPropagation(); if(actionButton.dataset.action==='edit'){select(index);openForm(index);return;} if(actionButton.dataset.action==='toggle'){arr[index].status=arr[index].status==='hidden'?'published':'hidden';markDirty();renderSelectableManager(section);return;} if(actionButton.dataset.action==='delete'&&confirm(`Permanently delete this ${label.toLowerCase()}? Hide is safer.`)){arr.splice(index,1);markDirty();renderSelectableManager(section);}});
+    list.addEventListener('keydown',event=>{if(!['Enter',' '].includes(event.key)||event.target.closest('button'))return; const row=event.target.closest('[data-manager-row]'); if(!row)return; event.preventDefault();select(row.dataset.managerRow);});
+    $$('[data-manager-device]').forEach(button=>button.onclick=()=>{$$('[data-manager-device]').forEach(item=>item.classList.toggle('is-active',item===button)); $('#permanentCardPreview').classList.toggle('mobile-preview',button.dataset.managerDevice==='mobile');});
+    draw();
+  }
+  renderManager = function(section) {
+    if (["players","games","seasons","playlists"].includes(section)) {renderSelectableManager(section);return;}
+    previousRenderManagerV143(section);
+    if(section==='news'){
+      const arr=state.data.news||[], list=document.querySelector('.news-admin-list'), preview=document.querySelector('#permanentNewsPreview'); if(!list||!preview)return;
+      let selectedIndex=[...list.querySelectorAll('[data-news-row]')].findIndex(row=>row.classList.contains('is-selected')); if(selectedIndex<0&&arr.length)selectedIndex=0;
+      const drawNews=index=>{const next=Number(index);if(!Number.isInteger(next)||!arr[next])return;selectedIndex=next;preview.innerHTML=newsListPreview(arr[selectedIndex]);list.querySelectorAll('[data-news-row]').forEach(row=>row.classList.toggle('is-selected',Number(row.dataset.newsRow)===selectedIndex));};
+      list.addEventListener('click',event=>{const row=event.target.closest('[data-news-row]');if(!row)return;const index=Number(row.dataset.newsRow);const edit=event.target.closest('[data-edit]'),toggle=event.target.closest('[data-toggle]'),remove=event.target.closest('[data-delete]');if(!edit&&!toggle&&!remove)drawNews(index);});
+      list.querySelectorAll('[data-select]').forEach(button=>button.onclick=event=>{event.stopPropagation();drawNews(button.dataset.select);});
+    }
+  };
+})();

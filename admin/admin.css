@@ -392,3 +392,8 @@
         min-height: 170px !important;
     }
 }
+\n/* V143 selectable rows */
+.permanent-manager-list [data-manager-row],.news-admin-list [data-news-row]{cursor:pointer;transition:border-color .18s ease,box-shadow .18s ease,background .18s ease}
+.permanent-manager-list [data-manager-row]:hover,.news-admin-list [data-news-row]:hover{border-color:rgba(245,197,66,.65);background:rgba(245,197,66,.035)}
+.permanent-manager-list [data-manager-row]:focus-visible,.news-admin-list [data-news-row]:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.permanent-manager-list [data-manager-row].is-selected,.news-admin-list [data-news-row].is-selected{border-color:var(--gold)!important;box-shadow:0 0 0 1px rgba(245,197,66,.30),0 0 22px rgba(245,197,66,.13)!important}
