@@ -1,4 +1,24 @@
 {
   "version": 1,
-  "backups": []
+  "backups": [
+    {
+      "id": "2026-07-16T05-01-01-317Z",
+      "label": "Before Hero Manager publish",
+      "created": "2026-07-16T05:01:05.539Z",
+      "files": [
+        {
+          "source": "data/master-content.json",
+          "backup": "backups/2026-07-16T05-01-01-317Z/master-content.json"
+        },
+        {
+          "source": "data/hero-rotation.json",
+          "backup": "backups/2026-07-16T05-01-01-317Z/hero-rotation.json"
+        },
+        {
+          "source": "data/site-settings.json",
+          "backup": "backups/2026-07-16T05-01-01-317Z/site-settings.json"
+        }
+      ]
+    }
+  ]
 }
