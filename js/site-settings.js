@@ -1,7 +1,7 @@
 
 (() => {
  "use strict";
- const URL='data/site-settings.json?v=139';
+ const URL='data/site-settings.json?v=140';
  const pageKey=()=>document.body.className.match(/page-([a-z-]+)/)?.[1]||'home';
  const getData=async()=>{
    if(new URLSearchParams(location.search).get('adminPreview')==='1'){
@@ -59,7 +59,7 @@
 
      const platformName=footer.platformName||'Allstar Galaxy Platform';
      const platformVersion=footer.platformVersion||'v1.0';
-     const platformBuild=footer.platformBuild||'139';
+     const platformBuild=footer.platformBuild||'140';
      const platform=footer.showPlatformVersion!==false
        ? `<span class="footer-platform-version">${platformName} ${platformVersion} <span>(Build ${platformBuild})</span></span>`
        : '';
@@ -75,17 +75,20 @@
        ? `<a class="footer-xitlali-credit" href="${creditUrl}" target="_blank" rel="noopener">${xitlaliLogo}${xitlaliWordmark}<span>${creditText}</span></a>`
        : '';
 
-     footerElement.classList.add('footer-balanced-v139');
+     footerElement.classList.add('footer-balanced-v140');
      footerElement.innerHTML=`
-       <div class="footer-balanced-grid">
-         <div class="footer-owner-side">
+       <div class="footer-balanced-grid-v140">
+         <div class="footer-left-v140">
            <span class="footer-copyright">${footer.copyright||''}</span>
-           ${leftLogo.outerHTML}
          </div>
 
-         <div class="footer-center-side">
-           ${social.outerHTML}
-           <div class="footer-center-meta">
+         <div class="footer-center-v140">
+           <div class="footer-social-row-v140">
+             ${leftLogo.outerHTML}
+             ${social.outerHTML}
+             ${rightLogo.outerHTML}
+           </div>
+           <div class="footer-center-meta-v140">
              ${about}
              ${about && platform ? '<span class="footer-meta-divider">•</span>' : ''}
              ${platform}
@@ -94,8 +97,7 @@
            </div>
          </div>
 
-         <div class="footer-credit-side">
-           ${rightLogo.outerHTML}
+         <div class="footer-right-v140">
            ${credit}
          </div>
        </div>`;
