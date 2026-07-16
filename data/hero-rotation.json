@@ -1,22 +1,8 @@
 {
-  "version": 137,
+  "version": 136,
   "interval": 7000,
   "transition": 1400,
   "pages": {
-    "404": {
-      "selector": ".special-page-hero.not-found-page-hero",
-      "images": [
-        "images/heroes/pages/404-hero.png",
-        "images/heroes/pages/404-hero.png",
-        "images/heroes/pages/404-hero.png"
-      ],
-      "enabled": true,
-      "interval": 7000,
-      "transition": 1400,
-      "effect": "pulse",
-      "transitionEffect": "glow-fade",
-      "glowIntensity": "medium"
-    },
     "home": {
       "selector": ".hero-image.hero-home",
       "images": [
@@ -29,7 +15,7 @@
       "transition": 1400,
       "effect": "pulse",
       "transitionEffect": "glow-fade",
-      "glowIntensity": "low"
+      "glowIntensity": "medium"
     },
     "team": {
       "selector": ".hero-image.hero-team",
@@ -121,6 +107,20 @@
         "images/heroes/pages/about-hero.png",
         "images/heroes/pages/about-hero.png",
         "images/heroes/pages/about-hero.png"
+      ],
+      "enabled": true,
+      "interval": 7000,
+      "transition": 1400,
+      "effect": "pulse",
+      "transitionEffect": "glow-fade",
+      "glowIntensity": "medium"
+    },
+    "404": {
+      "selector": ".special-page-hero.not-found-page-hero",
+      "images": [
+        "images/heroes/pages/404-hero.png",
+        "images/heroes/pages/404-hero.png",
+        "images/heroes/pages/404-hero.png"
       ],
       "enabled": true,
       "interval": 7000,
