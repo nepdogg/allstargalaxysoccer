@@ -2,6 +2,25 @@
   "version": 1,
   "backups": [
     {
+      "id": "2026-07-16T15-42-29-671Z",
+      "label": "Before content publish",
+      "created": "2026-07-16T15:42:43.205Z",
+      "files": [
+        {
+          "source": "data/master-content.json",
+          "backup": "backups/2026-07-16T15-42-29-671Z/master-content.json"
+        },
+        {
+          "source": "data/hero-rotation.json",
+          "backup": "backups/2026-07-16T15-42-29-671Z/hero-rotation.json"
+        },
+        {
+          "source": "data/site-settings.json",
+          "backup": "backups/2026-07-16T15-42-29-671Z/site-settings.json"
+        }
+      ]
+    },
+    {
       "id": "2026-07-16T14-13-37-638Z",
       "label": "Before content publish",
       "created": "2026-07-16T14:13:44.385Z",
