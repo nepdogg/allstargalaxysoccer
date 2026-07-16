@@ -1,5 +1,5 @@
 {
-  "version": 161,
+  "version": 162,
   "updated": "2026-07-16",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -3085,7 +3085,7 @@
     "standingsVisible": true
   },
   "schedulePage": {
-    "standingsDescription": "Testing",
-    "scheduleDescription": "Testing"
+    "standingsDescription": "",
+    "scheduleDescription": ""
   }
 }
