@@ -1,5 +1,5 @@
 {
-  "version": 159,
+  "version": 160,
   "updated": "2026-07-16",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -583,22 +583,6 @@
       "group": "latest",
       "order": 120,
       "cardImage": ""
-    },
-    {
-      "status": "published",
-      "order": 34,
-      "id": "game-01",
-      "season": "Past Seasons Coming Soon",
-      "gameNumber": 99,
-      "opponent": "Mystery FC",
-      "result": "W (3-2)",
-      "fullMatch": "",
-      "highlights": "",
-      "slideshow": "",
-      "date": "",
-      "time": "",
-      "location": "",
-      "group": "latest"
     }
   ],
   "seasons": [
