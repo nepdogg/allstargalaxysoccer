@@ -1933,9 +1933,10 @@
       "image": "images/news/img-3493.png",
       "title": "Latest news",
       "date": "",
-      "summary": "",
+      "summary": "Testing ",
       "link": "",
-      "category": ""
+      "category": "",
+      "imageNote": "Testin"
     },
     {
       "status": "published",
@@ -1944,9 +1945,10 @@
       "image": "images/news/news-1.png",
       "title": "Match Results",
       "date": "",
-      "summary": "",
+      "summary": "Testing ",
       "link": "",
-      "category": ""
+      "category": "",
+      "imageNote": "Testing "
     }
   ],
   "schedule": [
@@ -3085,7 +3087,7 @@
     "standingsVisible": true
   },
   "schedulePage": {
-    "standingsDescription": "",
-    "scheduleDescription": ""
+    "standingsDescription": "Testing",
+    "scheduleDescription": "Testing"
   }
 }
