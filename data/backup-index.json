@@ -2,6 +2,26 @@
   "version": 2,
   "backups": [
     {
+      "id": "2026-07-17T05-46-21-574Z",
+      "type": "backup",
+      "label": "Before Site Settings publish",
+      "created": "2026-07-17T05:46:25.863Z",
+      "files": [
+        {
+          "source": "data/master-content.json",
+          "backup": "backups/2026-07-17T05-46-21-574Z/master-content.json"
+        },
+        {
+          "source": "data/hero-rotation.json",
+          "backup": "backups/2026-07-17T05-46-21-574Z/hero-rotation.json"
+        },
+        {
+          "source": "data/site-settings.json",
+          "backup": "backups/2026-07-17T05-46-21-574Z/site-settings.json"
+        }
+      ]
+    },
+    {
       "id": "2026-07-17T04-51-33-850Z",
       "type": "backup",
       "label": "Before content publish",
@@ -348,6 +368,26 @@
     }
   ],
   "history": [
+    {
+      "id": "2026-07-17T05-46-21-574Z",
+      "type": "backup",
+      "label": "Before Site Settings publish",
+      "created": "2026-07-17T05:46:25.863Z",
+      "files": [
+        {
+          "source": "data/master-content.json",
+          "backup": "backups/2026-07-17T05-46-21-574Z/master-content.json"
+        },
+        {
+          "source": "data/hero-rotation.json",
+          "backup": "backups/2026-07-17T05-46-21-574Z/hero-rotation.json"
+        },
+        {
+          "source": "data/site-settings.json",
+          "backup": "backups/2026-07-17T05-46-21-574Z/site-settings.json"
+        }
+      ]
+    },
     {
       "id": "2026-07-17T04-51-33-850Z",
       "type": "backup",
