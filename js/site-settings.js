@@ -1,7 +1,7 @@
 
 (() => {
  "use strict";
- const URL='data/site-settings.json?v=140';
+ const URL='data/site-settings.json?v=147';
  const pageKey=()=>document.body.className.match(/page-([a-z-]+)/)?.[1]||'home';
  const getData=async()=>{
    if(new URLSearchParams(location.search).get('adminPreview')==='1'){
@@ -75,30 +75,30 @@
        ? `<a class="footer-xitlali-credit" href="${creditUrl}" target="_blank" rel="noopener">${xitlaliLogo}${xitlaliWordmark}<span>${creditText}</span></a>`
        : '';
 
-     footerElement.classList.add('footer-balanced-v140');
+     footerElement.classList.add('footer-platform-v147');
      footerElement.innerHTML=`
-       <div class="footer-balanced-grid-v140">
-         <div class="footer-left-v140">
-           <span class="footer-copyright">${footer.copyright||''}</span>
+       <div class="footer-platform-grid-v147">
+         <div class="footer-v147-creator">
+           ${credit}
          </div>
 
-         <div class="footer-center-v140">
-           <div class="footer-social-row-v140">
-             ${leftLogo.outerHTML}
+         <div class="footer-v147-center">
+           <div class="footer-v147-social-row">
              ${social.outerHTML}
              ${rightLogo.outerHTML}
            </div>
-           <div class="footer-center-meta-v140">
-             ${about}
-             ${about && platform ? '<span class="footer-meta-divider">•</span>' : ''}
+           <div class="footer-v147-platform">
              ${platform}
-             ${(about || platform) && admin ? '<span class="footer-meta-divider">•</span>' : ''}
-             ${admin}
            </div>
          </div>
 
-         <div class="footer-right-v140">
-           ${credit}
+         <div class="footer-v147-team">
+           <span class="footer-copyright">${footer.copyright||''}</span>
+           <div class="footer-v147-links">
+             ${about}
+             ${about && admin ? '<span class="footer-meta-divider">•</span>' : ''}
+             ${admin}
+           </div>
          </div>
        </div>`;
    });
