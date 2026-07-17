@@ -21,6 +21,24 @@
     ['medium','Medium — balanced'],
     ['high','High — dramatic']
   ];
+  const PAGE_GLOW_COLORS={
+    home:'#ffd700',team:'#b84cff',schedule:'#32ff32',media:'#2588ff',
+    news:'#ff7a00',livestream:'#ff3030',follow:'#ff42c6',about:'#cfd5e3',
+    '404':'#cfd5e3','season-archive':'#2588ff'
+  };
+  const GLOW_COLORS=[
+    ['auto','Automatic — use page accent color'],
+    ['#ffd700','Gold'],['#b84cff','Purple'],['#32ff32','Green'],
+    ['#2588ff','Blue'],['#ff7a00','Orange'],['#ff3030','Red'],
+    ['#ff42c6','Pink'],['#27e9ff','Cyan'],['#ffffff','White'],
+    ['custom','Custom color']
+  ];
+  function resolvedGlowColor(page){
+    const value=page.glowColor||'auto';
+    if(value==='auto')return PAGE_GLOW_COLORS[state.page]||'#ffd700';
+    if(value==='custom')return page.customGlowColor||PAGE_GLOW_COLORS[state.page]||'#ffd700';
+    return value;
+  }
   let state={config:null,sha:null,page:'home',pendingFiles:[],dirty:false};
   const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -56,6 +74,8 @@
       <div class="field"><label>Transition speed</label><select id="heroTransition">${[[500,'Fast — 0.5 seconds'],[900,'Quick — 0.9 seconds'],[1400,'Smooth — 1.4 seconds'],[2000,'Slow — 2 seconds'],[3000,'Cinematic — 3 seconds']].map(([v,t])=>`<option value="${v}" ${Number(p.transition||1400)===v?'selected':''}>${t}</option>`).join('')}</select></div>
       <div class="field"><label>Transition effect</label><select id="heroTransitionEffect">${TRANSITION_EFFECTS.map(([v,t])=>`<option value="${v}" ${(p.transitionEffect||'glow-fade')===v?'selected':''}>${t}</option>`).join('')}</select><div class="help">Controls the energy effect that appears while the next hero photo fades in.</div></div>
       <div class="field"><label>Glow intensity</label><select id="heroGlowIntensity">${GLOW_INTENSITIES.map(([v,t])=>`<option value="${v}" ${(p.glowIntensity||'medium')===v?'selected':''}>${t}</option>`).join('')}</select></div>
+      <div class="field"><label>Glow color</label><select id="heroGlowColor">${GLOW_COLORS.map(([v,t])=>`<option value="${v}" ${(p.glowColor||'auto')===v?'selected':''}>${t}</option>`).join('')}</select><div class="help">Automatic follows the selected page color.</div></div>
+      <div class="field ${p.glowColor==='custom'?'':'is-hidden'}" id="heroCustomGlowField"><label>Custom glow color</label><input id="heroCustomGlowColor" type="color" value="${esc(p.customGlowColor||PAGE_GLOW_COLORS[state.page]||'#ffd700')}"></div>
       <div class="field locked-field"><label>Page selector 🔒</label><input value="${esc(p.selector)}" readonly></div>
     </div></div>
     <div class="admin-actions manager-actions hero-content-actions"><label class="btn primary upload-hero-btn">+ Add Hero Photos<input id="heroUpload" type="file" accept="image/png,image/jpeg,image/webp" multiple hidden></label><button class="btn" id="duplicateFirst">Duplicate First Image</button><span class="pending" id="pendingLabel">${state.dirty?'Unpublished changes':'No unpublished changes'}</span></div>
@@ -92,8 +112,10 @@
       const effect=page.effect||'pulse';
       const transitionEffect=page.transitionEffect||'glow-fade';
       const glow=page.glowIntensity||'medium';
+      const glowColor=resolvedGlowColor(page);
       target.className=`hero-live-preview effect-${effect} transition-${transitionEffect} glow-${glow}${transitioning?' is-transitioning':''}`;
       target.style.setProperty('--hero-preview-transition',`${Number(page.transition||1400)}ms`);
+      target.style.setProperty('--hero-preview-glow-color',glowColor);
       target.innerHTML=`<img src="${esc(images[index])}" alt="Hero preview ${index+1}"><span class="hero-preview-page-label">${esc(pageLabel(state.page))}</span>`;
       if(counter)counter.textContent=`${index+1} / ${images.length}`;
     };
@@ -122,6 +144,12 @@
     $('#heroTransition').onchange=e=>{current().transition=Number(e.target.value);markDirty();startHeroLivePreview()};
     $('#heroTransitionEffect').onchange=e=>{current().transitionEffect=e.target.value;markDirty();startHeroLivePreview()};
     $('#heroGlowIntensity').onchange=e=>{current().glowIntensity=e.target.value;markDirty();startHeroLivePreview()};
+    $('#heroGlowColor').onchange=e=>{
+      current().glowColor=e.target.value;
+      $('#heroCustomGlowField').classList.toggle('is-hidden',e.target.value!=='custom');
+      markDirty();startHeroLivePreview()
+    };
+    $('#heroCustomGlowColor').oninput=e=>{current().customGlowColor=e.target.value;markDirty();startHeroLivePreview()};
     $('#heroUpload').onchange=async e=>{for(const file of e.target.files)await addFile(file);render()};
     $('#duplicateFirst').onclick=()=>{if(current().images[0]){current().images.push(current().images[0]);markDirty();render()}};
     const buildHeroDraft=()=>{

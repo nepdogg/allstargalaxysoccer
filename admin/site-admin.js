@@ -64,7 +64,7 @@
    const rightSrc=state.previewAssets?.rightLogo||`../${s.branding?.rightLogo||'images/logos/logo.png'}`;
    const titleSrc=state.previewAssets?.navigationTitle||`../${s.branding?.navigationTitle||'images/titles/page-titles/navigation-title.png'}`;
    target.innerHTML=`<div class="chrome-preview-header"><img src="${esc(leftSrc)}"><img class="chrome-preview-navigation-title" src="${esc(titleSrc)}" alt="${esc(s.branding.teamName||'Allstar Galaxy')}"><img src="${esc(rightSrc)}"></div><div class="chrome-preview-nav">${nav.map(n=>`<span>${esc(n.label)}</span>`).join('')}</div><div class="chrome-preview-page">PAGE CONTENT PREVIEW</div><div class="chrome-preview-footer chrome-preview-footer-v147">
-     <div class="chrome-preview-v147-creator chrome-preview-v148-creator"><b>XM</b><span><strong>Designed and Developed</strong><small>By Xitlali Media</small></span></div>
+     <div class="chrome-preview-v147-creator chrome-preview-v148-creator">${state.previewAssets?.xitlaliLogo||s.footer.xitlaliLogo?`<img class="chrome-preview-xitlali-logo" src="${esc(state.previewAssets?.xitlaliLogo||('../'+s.footer.xitlaliLogo))}" alt="Xitlali Media">`:'<b>XM</b>'}<span><strong>Designed and Developed</strong><small>By Xitlali Media</small></span></div>
      <div class="chrome-preview-v147-center chrome-preview-v148-center"><b>AG</b><strong>SOCIAL MEDIA ICONS</strong><b>AG</b><small>${s.footer.showPlatformVersion!==false?`${esc(s.footer.platformName||'Allstar Galaxy Platform')} ${esc(s.footer.platformVersion||'v1.0')} (Build ${esc(s.footer.platformBuild||'147')})`:''}</small></div>
      <div class="chrome-preview-v147-team"><span>${esc(s.footer.copyright||'')}</span><small>${s.footer.showAboutLink!==false?esc(s.footer.aboutLabel||'About'):''}${s.footer.showAboutLink!==false&&s.footer.showAdminLink!==false?' • ':''}${s.footer.showAdminLink!==false?esc(s.footer.adminLabel||'Admin'):''}</small></div>
    </div>`;
@@ -87,22 +87,30 @@
   $('#showXitlaliCredit').onchange=e=>{state.data.footer.showXitlaliCredit=e.target.value==='true';mark();drawSitePreview()};
   $('#xitlaliCreditText').oninput=e=>{state.data.footer.xitlaliCreditText=e.target.value;mark();drawSitePreview()};
   $('#xitlaliUrl').oninput=e=>{state.data.footer.xitlaliUrl=e.target.value;mark();drawSitePreview()};
-  $('#xitlaliLogoUpload').onchange=async e=>{
-    if(!e.target.files[0])return;
-    const path='images/managed/xitlali-media-logo.png';
-    const file=e.target.files[0];
-    state.pending=state.pending.filter(item=>item.path!==path);
-    state.pending.push({path,base64:await png(file)});
-    state.data.footer.xitlaliLogo=path;
-    state.previewAssets.xitlaliLogo=await new Promise((resolve,reject)=>{
-      const reader=new FileReader();
-      reader.onload=()=>resolve(reader.result);
-      reader.onerror=reject;
-      reader.readAsDataURL(file);
-    });
-    $('#xitlaliLogoPath').value=path;
-    mark();drawSitePreview();status('Xitlali Media logo ready to publish and preview.','ok')
-  };
+  $('#xitlaliLogoUpload').addEventListener('change',async e=>{
+    try{
+      const file=e.target.files?.[0];if(!file)return;
+      const path='images/managed/xitlali-media-logo.png';
+      const base64=await png(file);
+      const preview=await new Promise((resolve,reject)=>{
+        const reader=new FileReader();
+        reader.onload=()=>resolve(reader.result);
+        reader.onerror=()=>reject(reader.error||new Error('Could not read logo file.'));
+        reader.readAsDataURL(file);
+      });
+      state.pending=state.pending.filter(item=>item.path!==path);
+      state.pending.push({path,base64});
+      state.data.footer=state.data.footer||{};
+      state.data.footer.xitlaliLogo=path;
+      state.previewAssets=state.previewAssets||{};
+      state.previewAssets.xitlaliLogo=preview;
+      const pathField=$('#xitlaliLogoPath');if(pathField)pathField.value=path;
+      mark();drawSitePreview();
+      status('Xitlali Media logo ready to publish and preview.','ok');
+    }catch(error){
+      status('Could not prepare Xitlali Media logo: '+error.message,'bad');
+    }
+  });
   document.querySelectorAll('[data-home]').forEach(e=>e.onchange=()=>{let v=e.value;if(e.dataset.k==='visible')v=v==='true';if(e.dataset.k==='order')v=Number(v);state.data.homeSections[+e.dataset.home][e.dataset.k]=v;mark();drawSitePreview()});
   document.querySelectorAll('[data-upload]').forEach(e=>e.onchange=async()=>{
     if(!e.files[0])return;
@@ -121,34 +129,49 @@
     mark();drawSitePreview();status(`${key} ready to publish and visible in Preview Draft.`,'ok')
   });
   const buildSiteDraft=()=>{
-    const draft=structuredClone(state.data);
-    draft.branding={...draft.branding};
-    for(const [key,value] of Object.entries(state.previewAssets)){
-      if(value)draft.branding[key]=value;
-    }
-    if(state.previewAssets.xitlaliLogo){
-      draft.footer={...draft.footer,xitlaliLogo:state.previewAssets.xitlaliLogo};
+    const draft=JSON.parse(JSON.stringify(state.data||{}));
+    draft.branding={...(draft.branding||{})};
+    draft.footer={...(draft.footer||{})};
+    for(const [key,value] of Object.entries(state.previewAssets||{})){
+      if(!value)continue;
+      if(key==='xitlaliLogo')draft.footer.xitlaliLogo=value;
+      else draft.branding[key]=value;
     }
     return draft;
   };
   const saveSiteDraft=()=>{
-    sessionStorage.setItem('asgDraftSiteSettings',JSON.stringify(state.data));
-    sessionStorage.setItem('asgPreviewSiteSettings',JSON.stringify(buildSiteDraft()));
-    status('Draft saved — not published.','ok');
-    $('#pendingLabel').textContent='Draft saved — not published';
+    try{
+      sessionStorage.setItem('asgDraftSiteSettings',JSON.stringify(state.data||{}));
+      sessionStorage.setItem('asgPreviewSiteSettings',JSON.stringify(buildSiteDraft()));
+      status('Draft saved — not published.','ok');
+      const pending=$('#pendingLabel');if(pending)pending.textContent='Draft saved — not published';
+      return true;
+    }catch(error){
+      status('Could not save draft: '+error.message,'bad');
+      return false;
+    }
   };
-  $('#saveSiteSettings').onclick=saveSiteDraft;
-  $('#preview').onclick=()=>{
-    saveSiteDraft();
-    window.open('../index.html?adminPreview=1','_blank')
+  const previewSiteDraft=()=>{
+    if(!saveSiteDraft())return;
+    const opened=window.open('../index.html?adminPreview=1','_blank');
+    if(!opened)status('Preview was blocked by the browser. Allow pop-ups for this site and try again.','bad');
   };
-  $('#publish').onclick=async()=>{saveSiteDraft();await publish();sessionStorage.removeItem('asgDraftSiteSettings')};
-  $('#cancelSiteSettings').onclick=()=>{
+  const publishSiteDraft=async()=>{
+    if(!saveSiteDraft())return;
+    await publish();
+    if(!state.dirty)sessionStorage.removeItem('asgDraftSiteSettings');
+  };
+  const cancelSiteDraft=()=>{
     if((state.dirty||state.pending.length)&&!confirm('Discard all unpublished Site Settings changes and return to the Dashboard?'))return;
     sessionStorage.removeItem('asgDraftSiteSettings');
     sessionStorage.removeItem('asgPreviewSiteSettings');
-    location.href='dashboard.html'
-  }
+    location.href='dashboard.html';
+  };
+  const saveButton=$('#saveSiteSettings'),previewButton=$('#preview'),publishButton=$('#publish'),cancelButton=$('#cancelSiteSettings');
+  saveButton?.addEventListener('click',event=>{event.preventDefault();saveSiteDraft()});
+  previewButton?.addEventListener('click',event=>{event.preventDefault();previewSiteDraft()});
+  publishButton?.addEventListener('click',event=>{event.preventDefault();publishSiteDraft()});
+  cancelButton?.addEventListener('click',event=>{event.preventDefault();cancelSiteDraft()});
  }
  async function publish(){
   status('Creating backup and publishing site settings…');
