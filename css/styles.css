@@ -17069,3 +17069,76 @@ body.lightbox-open {
         white-space: normal;
     }
 }
+
+
+/* ============================================================
+   V150 — FINAL FOOTER ALIGNMENT AND PAGE ACCENT BORDER
+   ============================================================ */
+.footer-platform-v147 {
+    border-top: 1px solid var(--page-accent, #ffd700) !important;
+}
+
+.footer-xitlali-mark {
+    position: relative;
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    display: grid;
+    place-items: center;
+}
+
+.footer-xitlali-mark .footer-xitlali-logo {
+    position: relative;
+    z-index: 2;
+    width: 52px !important;
+    height: 52px !important;
+    object-fit: contain !important;
+}
+
+.footer-xitlali-mark .footer-xitlali-wordmark {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+}
+
+.footer-xitlali-mark .footer-xitlali-logo + .footer-xitlali-error-fallback {
+    visibility: hidden;
+}
+
+.footer-xitlali-mark .footer-xitlali-logo:not([src]),
+.footer-xitlali-mark .footer-xitlali-logo[src=""] {
+    display: none;
+}
+
+.footer-xitlali-mark:has(.footer-xitlali-logo:not([src])),
+.footer-xitlali-mark:has(.footer-xitlali-logo[src=""]) {
+    visibility: visible;
+}
+
+.footer-v147-team {
+    gap: 2px !important;
+    line-height: 1.15;
+    align-content: center;
+}
+
+.footer-v147-team .footer-copyright,
+.footer-v147-team .footer-v147-links {
+    margin: 0 !important;
+}
+
+.footer-v147-links {
+    line-height: 1.15;
+}
+
+body.page-home .footer-platform-v147 { border-top-color:#ffd700 !important; }
+body.page-team .footer-platform-v147 { border-top-color:#d000ff !important; }
+body.page-schedule .footer-platform-v147 { border-top-color:#32ff32 !important; }
+body.page-media .footer-platform-v147,
+body.page-season-archive .footer-platform-v147 { border-top-color:#00bfff !important; }
+body.page-news .footer-platform-v147 { border-top-color:#ff7a00 !important; }
+body.page-live .footer-platform-v147 { border-top-color:#ff3030 !important; }
+body.page-follow .footer-platform-v147 { border-top-color:#ff42c6 !important; }
+body.page-about .footer-platform-v147,
+body.page-not-found .footer-platform-v147 { border-top-color:#cfd5e3 !important; }
