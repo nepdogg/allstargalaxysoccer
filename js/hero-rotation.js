@@ -13,7 +13,7 @@
 
     const DEFAULT_INTERVAL = 7000;
     const DEFAULT_TRANSITION = 1400;
-    const CONFIG_URL = "data/hero-rotation.json?v=136";
+    const CONFIG_URL = "data/hero-rotation.json?v=149";
 
     const pageKey = () => {
         const body = document.body;
@@ -96,6 +96,16 @@ const response = await fetch(CONFIG_URL, { cache: "no-store" });
         container.dataset.heroEffect = settings.effect || "fade";
         container.dataset.heroTransitionEffect = settings.transitionEffect || "glow-fade";
         container.dataset.heroGlowIntensity = settings.glowIntensity || "medium";
+        const pageAccent = getComputedStyle(document.body).getPropertyValue("--page-accent").trim()
+            || getComputedStyle(container).getPropertyValue("--page-accent").trim()
+            || "#ffd700";
+        const selectedGlow = settings.glowColor || "auto";
+        const glowColor = selectedGlow === "auto"
+            ? pageAccent
+            : selectedGlow === "custom"
+                ? (settings.customGlowColor || pageAccent)
+                : selectedGlow;
+        container.style.setProperty("--hero-glow-color", glowColor);
 
         const originalImage = container.querySelector(":scope > img");
         if (originalImage) originalImage.classList.add("hero-original-fallback");
