@@ -1,5 +1,5 @@
 {
-  "version": 167,
+  "version": 168,
   "updated": "2026-07-17",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -1941,6 +1941,15 @@
       "number": "3",
       "position": "ST",
       "photo": "images/team/players/donovan.png"
+    },
+    {
+      "status": "published",
+      "order": 27,
+      "id": "player-27",
+      "name": "Hugo",
+      "number": "5",
+      "position": "ST",
+      "photo": "images/team/players/hugo.png"
     }
   ],
   "news": [
