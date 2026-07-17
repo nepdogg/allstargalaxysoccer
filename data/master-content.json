@@ -1,5 +1,5 @@
 {
-  "version": 170,
+  "version": 171,
   "updated": "2026-07-17",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -1977,6 +1977,15 @@
       "number": "11",
       "position": "ST",
       "photo": "images/team/players/cuac.png"
+    },
+    {
+      "status": "published",
+      "order": 31,
+      "id": "player-31",
+      "name": "Piojo",
+      "number": "75",
+      "position": "COACH",
+      "photo": "images/team/players/img-4052.png"
     }
   ],
   "news": [
