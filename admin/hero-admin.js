@@ -40,6 +40,14 @@
     const p=current();
     $('#pageTitle').textContent='Hero Images';
     $('#content').innerHTML=`<div class="v2-banner"><strong>Hero Manager</strong><span>Add, replace, reorder, hide or remove hero photos for every page. Choose the motion effect and timing separately for each page.</span></div>
+    <section class="hero-live-preview-panel">
+      <div class="preview-toolbar">
+        <div><span class="v2-pill">LIVE PREVIEW</span><h4>${esc(pageLabel(state.page))} Hero Rotation</h4></div>
+        <div class="hero-preview-controls"><button class="btn small" id="heroPreviewPause" type="button">Pause</button><span id="heroPreviewCounter"></span></div>
+      </div>
+      <div id="heroLivePreview" class="hero-live-preview" aria-label="${esc(pageLabel(state.page))} hero preview"></div>
+      <p class="help">This preview uses the current unpublished image order, timing, motion, transition and glow settings.</p>
+    </section>
     <div class="hero-manager-toolbar panel"><div class="form-grid">
       <div class="field"><label>Website page</label><select id="heroPage">${PAGES.map(([v,t])=>`<option value="${v}" ${state.page===v?'selected':''}>${t}</option>`).join('')}</select></div>
       <div class="field"><label>Hero rotation</label><select id="heroEnabled"><option value="true" ${p.enabled!==false?'selected':''}>Enabled</option><option value="false" ${p.enabled===false?'selected':''}>Disabled — show first image only</option></select></div>
@@ -60,16 +68,60 @@
     <div class="hero-help">Recommended: 5–15 photos per page. Images are automatically converted to PNG. Use the arrows to control the rotation order.</div>
     <div class="hero-admin-grid">${p.images.map((src,i)=>heroCard(src,i)).join('')||'<div class="empty-state">No hero images assigned. Add at least one image.</div>'}</div>`;
     bind();
+    startHeroLivePreview();
   }
   function heroCard(src,i){return `<article class="hero-admin-card ${i===0?'is-first':''}"><div class="hero-admin-preview"><img src="../${esc(src)}?v=${Date.now()}" alt="Hero ${i+1}"></div><div class="hero-admin-info"><strong>${i===0?'Primary / fallback image':`Image ${i+1}`}</strong><span>${esc(src.split('/').pop())}</span></div><div class="hero-admin-actions"><button class="btn small" data-left="${i}" ${i===0?'disabled':''}>← Earlier</button><button class="btn small" data-right="${i}" ${i===current().images.length-1?'disabled':''}>Later →</button><label class="btn small">Replace<input type="file" accept="image/png,image/jpeg,image/webp" data-replace="${i}" hidden></label><button class="btn small danger" data-remove="${i}" ${current().images.length<=1?'disabled':''}>Remove</button></div></article>`}
+  function heroPreviewSource(path){
+    const pending=state.pendingFiles.find(file=>file.path===path);
+    if(pending)return `data:image/png;base64,${pending.base64}`;
+    if(/^(data:|blob:|https?:)/i.test(String(path||'')))return path;
+    return `../${String(path||'').replace(/^\/+/,'')}?v=${Date.now()}`;
+  }
+  function startHeroLivePreview(){
+    clearInterval(window.__asgHeroPreviewTimer);
+    const target=$('#heroLivePreview'),counter=$('#heroPreviewCounter'),pause=$('#heroPreviewPause');
+    if(!target)return;
+    const page=current(),images=(page.images||[]).map(heroPreviewSource);
+    if(!images.length){
+      target.innerHTML='<div class="empty-state">No hero images assigned to this page.</div>';
+      if(counter)counter.textContent='0 images';
+      return;
+    }
+    let index=0,paused=false;
+    const draw=(transitioning=false)=>{
+      const effect=page.effect||'pulse';
+      const transitionEffect=page.transitionEffect||'glow-fade';
+      const glow=page.glowIntensity||'medium';
+      target.className=`hero-live-preview effect-${effect} transition-${transitionEffect} glow-${glow}${transitioning?' is-transitioning':''}`;
+      target.style.setProperty('--hero-preview-transition',`${Number(page.transition||1400)}ms`);
+      target.innerHTML=`<img src="${esc(images[index])}" alt="Hero preview ${index+1}"><span class="hero-preview-page-label">${esc(pageLabel(state.page))}</span>`;
+      if(counter)counter.textContent=`${index+1} / ${images.length}`;
+    };
+    draw();
+    if(page.enabled!==false&&images.length>1){
+      window.__asgHeroPreviewTimer=setInterval(()=>{
+        if(paused)return;
+        target.classList.add('is-transitioning');
+        setTimeout(()=>{
+          index=(index+1)%images.length;
+          draw(true);
+          requestAnimationFrame(()=>target.classList.remove('is-transitioning'));
+        },Math.min(350,Number(page.transition||1400)/3));
+      },Math.max(1500,Number(page.interval||7000)));
+    }
+    if(pause)pause.onclick=()=>{
+      paused=!paused;
+      pause.textContent=paused?'Resume':'Pause';
+    };
+  }
   function bind(){
     $('#heroPage').onchange=e=>{state.page=e.target.value;render()};
-    $('#heroEnabled').onchange=e=>{current().enabled=e.target.value==='true';markDirty()};
-    $('#heroEffect').onchange=e=>{current().effect=e.target.value;markDirty()};
-    $('#heroInterval').onchange=e=>{current().interval=Number(e.target.value);markDirty()};
-    $('#heroTransition').onchange=e=>{current().transition=Number(e.target.value);markDirty()};
-    $('#heroTransitionEffect').onchange=e=>{current().transitionEffect=e.target.value;markDirty()};
-    $('#heroGlowIntensity').onchange=e=>{current().glowIntensity=e.target.value;markDirty()};
+    $('#heroEnabled').onchange=e=>{current().enabled=e.target.value==='true';markDirty();startHeroLivePreview()};
+    $('#heroEffect').onchange=e=>{current().effect=e.target.value;markDirty();startHeroLivePreview()};
+    $('#heroInterval').onchange=e=>{current().interval=Number(e.target.value);markDirty();startHeroLivePreview()};
+    $('#heroTransition').onchange=e=>{current().transition=Number(e.target.value);markDirty();startHeroLivePreview()};
+    $('#heroTransitionEffect').onchange=e=>{current().transitionEffect=e.target.value;markDirty();startHeroLivePreview()};
+    $('#heroGlowIntensity').onchange=e=>{current().glowIntensity=e.target.value;markDirty();startHeroLivePreview()};
     $('#heroUpload').onchange=async e=>{for(const file of e.target.files)await addFile(file);render()};
     $('#duplicateFirst').onclick=()=>{if(current().images[0]){current().images.push(current().images[0]);markDirty();render()}};
     const buildHeroDraft=()=>{

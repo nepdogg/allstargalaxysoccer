@@ -1,7 +1,7 @@
 
 (() => {
  const CFG={owner:'nepdogg',repo:'allstargalaxysoccer',branch:'main',path:'data/site-settings.json'};
- let state={data:null,sha:null,pending:[],dirty:false};
+ let state={data:null,sha:null,pending:[],previewAssets:{},dirty:false};
  const $=s=>document.querySelector(s),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const token=()=>sessionStorage.getItem('asgGithubToken')||'',headers=()=>({'Accept':'application/vnd.github+json','Authorization':`Bearer ${token()}`,'X-GitHub-Api-Version':'2022-11-28'});
  const dec=s=>decodeURIComponent(escape(atob(s.replace(/\n/g,'')))),enc=s=>btoa(unescape(encodeURIComponent(s)));
@@ -56,18 +56,17 @@
  }
 
  function drawSitePreview(){
-   const s=state.data, nav=[...s.navigation].filter(x=>x.visible!==false).sort((a,b)=>(a.order||0)-(b.order||0));
+   state.previewAssets=state.previewAssets||{};
+   const s=state.data||{};s.branding=s.branding||{};s.footer=s.footer||{};s.navigation=Array.isArray(s.navigation)?s.navigation:[];
+   const nav=[...s.navigation].filter(x=>x.visible!==false).sort((a,b)=>(a.order||0)-(b.order||0));
    const target=document.getElementById('siteChromePreview');if(!target)return;
-   const leftSrc=state.previewAssets.leftLogo||`../${s.branding.leftLogo}`;
-   const rightSrc=state.previewAssets.rightLogo||`../${s.branding.rightLogo}`;
-   const titleSrc=state.previewAssets.navigationTitle||`../${s.branding.navigationTitle}`;
-   target.innerHTML=`<div class="chrome-preview-header"><img src="${esc(leftSrc)}"><img class="chrome-preview-navigation-title" src="${esc(titleSrc)}" alt="${esc(s.branding.teamName||'Allstar Galaxy')}"><img src="${esc(rightSrc)}"></div><div class="chrome-preview-nav">${nav.map(n=>`<span>${esc(n.label)}</span>`).join('')}</div><div class="chrome-preview-page">PAGE CONTENT PREVIEW</div><div class="chrome-preview-footer chrome-preview-footer-v139">
-     <div class="chrome-preview-footer-left"><span>${esc(s.footer.copyright||'')}</span><b>AG</b></div>
-     <div class="chrome-preview-footer-center">
-       <span>SOCIAL MEDIA ICONS</span>
-       <small>${s.footer.showAboutLink!==false?esc(s.footer.aboutLabel||'About')+' • ':''}${s.footer.showPlatformVersion!==false?`${esc(s.footer.platformName||'Allstar Galaxy Platform')} ${esc(s.footer.platformVersion||'v1.0')} (Build ${esc(s.footer.platformBuild||'139')})`:''}${s.footer.showAdminLink!==false?' • '+esc(s.footer.adminLabel||'Admin'):''}</small>
-     </div>
-     <div class="chrome-preview-footer-right"><b>AG</b><span>${s.footer.showXitlaliCredit!==false?esc(s.footer.xitlaliCreditText||'Designed and Developed by Xitlali Media'):''}</span></div>
+   const leftSrc=state.previewAssets?.leftLogo||`../${s.branding?.leftLogo||'images/logos/logo.png'}`;
+   const rightSrc=state.previewAssets?.rightLogo||`../${s.branding?.rightLogo||'images/logos/logo.png'}`;
+   const titleSrc=state.previewAssets?.navigationTitle||`../${s.branding?.navigationTitle||'images/titles/page-titles/navigation-title.png'}`;
+   target.innerHTML=`<div class="chrome-preview-header"><img src="${esc(leftSrc)}"><img class="chrome-preview-navigation-title" src="${esc(titleSrc)}" alt="${esc(s.branding.teamName||'Allstar Galaxy')}"><img src="${esc(rightSrc)}"></div><div class="chrome-preview-nav">${nav.map(n=>`<span>${esc(n.label)}</span>`).join('')}</div><div class="chrome-preview-page">PAGE CONTENT PREVIEW</div><div class="chrome-preview-footer chrome-preview-footer-v147">
+     <div class="chrome-preview-v147-creator"><b>XM</b><span>${s.footer.showXitlaliCredit!==false?esc(s.footer.xitlaliCreditText||'Designed & Developed by Xitlali Media'):''}</span></div>
+     <div class="chrome-preview-v147-center"><strong>SOCIAL MEDIA ICONS</strong><b>AG</b><small>${s.footer.showPlatformVersion!==false?`${esc(s.footer.platformName||'Allstar Galaxy Platform')} ${esc(s.footer.platformVersion||'v1.0')} (Build ${esc(s.footer.platformBuild||'147')})`:''}</small></div>
+     <div class="chrome-preview-v147-team"><span>${esc(s.footer.copyright||'')}</span><small>${s.footer.showAboutLink!==false?esc(s.footer.aboutLabel||'About'):''}${s.footer.showAboutLink!==false&&s.footer.showAdminLink!==false?' • ':''}${s.footer.showAdminLink!==false?esc(s.footer.adminLabel||'Admin'):''}</small></div>
    </div>`;
    target.style.setProperty('--preview-accent',s.branding.accentColor||'#ffd700');
  }
