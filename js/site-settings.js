@@ -1,7 +1,7 @@
 
 (() => {
  "use strict";
- const URL='data/site-settings.json?v=148';
+ const URL='data/site-settings.json?v=150';
  const pageKey=()=>document.body.className.match(/page-([a-z-]+)/)?.[1]||'home';
  const getData=async()=>{
    if(new URLSearchParams(location.search).get('adminPreview')==='1'){
@@ -67,12 +67,11 @@
      const creditText=footer.xitlaliCreditText||'Designed and Developed by Xitlali Media';
      const creditUrl=footer.xitlaliUrl||'https://xitlalimedia.com';
      const logoPath=footer.xitlaliLogo||'';
-     const xitlaliLogo=logoPath
-       ? `<img class="footer-xitlali-logo" src="${logoPath}" alt="Xitlali Media" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">`
-       : '';
-     const xitlaliWordmark=`<span class="footer-xitlali-wordmark" ${logoPath?'hidden':''}>XM</span>`;
+     const creatorMark=logoPath
+       ? `<span class="footer-xitlali-mark"><img class="footer-xitlali-logo" src="${logoPath}" alt="Xitlali Media" loading="lazy"><span class="footer-xitlali-wordmark footer-xitlali-error-fallback">XM</span></span>`
+       : `<span class="footer-xitlali-mark"><span class="footer-xitlali-wordmark">XM</span></span>`;
      const credit=footer.showXitlaliCredit!==false
-       ? `<a class="footer-xitlali-credit footer-xitlali-credit-v148" href="${creditUrl}" target="_blank" rel="noopener">${xitlaliLogo}${xitlaliWordmark}<span class="footer-xitlali-copy-v148"><strong>Designed and Developed</strong><span>By Xitlali Media</span></span></a>`
+       ? `<a class="footer-xitlali-credit footer-xitlali-credit-v148" href="${creditUrl}" target="_blank" rel="noopener">${creatorMark}<span class="footer-xitlali-copy-v148"><strong>Designed and Developed</strong><span>By Xitlali Media</span></span></a>`
        : '';
 
      footerElement.classList.add('footer-platform-v147');
