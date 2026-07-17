@@ -16811,3 +16811,171 @@ body.lightbox-open {
         text-align: center;
     }
 }
+
+
+/* ============================================================
+   V147 — NEW PLATFORM FOOTER + TALLER MOBILE NAVIGATION TITLE
+   ============================================================ */
+.footer-platform-v147 {
+    padding: 18px 24px 16px !important;
+    border-top: 1px solid var(--page-accent, #ffd700);
+}
+
+.footer-platform-grid-v147 {
+    width: min(100%, 1220px);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(250px,1fr) minmax(440px,1.5fr) minmax(230px,1fr);
+    gap: 28px;
+    align-items: center;
+}
+
+.footer-v147-creator {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-width: 0;
+}
+
+.footer-v147-creator .footer-xitlali-credit {
+    margin: 0;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.footer-v147-center {
+    display: grid;
+    justify-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.footer-v147-social-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+    min-width: 0;
+}
+
+.footer-v147-social-row .footer-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: nowrap;
+}
+
+.footer-v147-social-row .footer-logo {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 auto;
+}
+
+.footer-v147-social-row .footer-logo img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.footer-v147-social-row .footer-logo-left {
+    display: none !important;
+}
+
+.footer-v147-platform {
+    text-align: center;
+}
+
+.footer-v147-platform .footer-platform-version {
+    margin: 0;
+    font-size: clamp(.66rem,.75vw,.78rem);
+    color: rgba(255,255,255,.68);
+}
+
+.footer-v147-team {
+    display: grid;
+    justify-items: end;
+    gap: 7px;
+    min-width: 0;
+    text-align: right;
+}
+
+.footer-v147-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 7px;
+    flex-wrap: wrap;
+}
+
+.footer-v147-team .footer-copyright {
+    font-weight: 700;
+}
+
+@media (max-width: 900px) {
+    .footer-platform-grid-v147 {
+        grid-template-columns: 1fr;
+        gap: 13px;
+    }
+
+    .footer-v147-center {
+        order: -1;
+    }
+
+    .footer-v147-creator,
+    .footer-v147-team {
+        justify-content: center;
+        justify-items: center;
+        text-align: center;
+    }
+
+    .footer-v147-creator .footer-xitlali-credit {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .footer-v147-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 760px) {
+    .site-top .nav-title img,
+    .site-top .site-title-image,
+    .site-top .navigation-title,
+    .site-top .navigation-title img {
+        height: clamp(84px, 15vw, 104px) !important;
+        transform: scaleY(1.16) !important;
+        transform-origin: center !important;
+    }
+
+    .site-top .nav-title,
+    .site-top .navigation-title {
+        min-height: clamp(94px, 16.5vw, 114px) !important;
+        overflow: visible !important;
+    }
+}
+
+@media (max-width: 430px) {
+    .site-top .nav-title img,
+    .site-top .site-title-image,
+    .site-top .navigation-title,
+    .site-top .navigation-title img {
+        height: clamp(80px, 21vw, 96px) !important;
+        transform: scaleY(1.18) !important;
+    }
+
+    .site-top .nav-title,
+    .site-top .navigation-title {
+        min-height: clamp(90px, 23vw, 108px) !important;
+    }
+
+    .footer-v147-social-row {
+        gap: 8px;
+    }
+
+    .footer-v147-social-row .footer-social {
+        gap: 9px;
+        flex-wrap: wrap;
+    }
+}
