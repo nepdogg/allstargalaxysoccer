@@ -1,6 +1,6 @@
 {
-  "version": 165,
-  "updated": "2026-07-16",
+  "version": 166,
+  "updated": "2026-07-17",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
     "logo": "generated/allstar-galaxy-logo.png",
@@ -1923,6 +1923,24 @@
       "number": "32",
       "position": "ST",
       "photo": "images/team/players/pele.png"
+    },
+    {
+      "status": "published",
+      "order": 25,
+      "id": "player-25",
+      "name": "Lalas",
+      "number": "8",
+      "position": "RB",
+      "photo": "images/team/players/lalas.png"
+    },
+    {
+      "status": "published",
+      "order": 26,
+      "id": "player-26",
+      "name": "Landon",
+      "number": "3",
+      "position": "ST",
+      "photo": "images/team/players/donovan.png"
     }
   ],
   "news": [
