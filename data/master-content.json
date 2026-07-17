@@ -1,5 +1,5 @@
 {
-  "version": 169,
+  "version": 170,
   "updated": "2026-07-17",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -1795,7 +1795,7 @@
       "number": "11",
       "position": "ST",
       "photo": "images/team/players/jude.png",
-      "status": "hidden",
+      "status": "published",
       "order": 11
     },
     {
