@@ -110,13 +110,12 @@
     "email": "allstargalaxy@example.com"
   },
   "footer": {
-    "copyright": "© 2026 Allstar Galaxy.",
+    "copyright": "\u00a9 2026 Allstar Galaxy.",
     "showAboutLink": true,
     "aboutLabel": "About",
     "showAdminLink": true,
     "adminLabel": "Admin",
-    "adminHref": "admin/",
-    "xitlaliLogo": "images/managed/xitlali-media-logo.png"
+    "adminHref": "admin/"
   },
   "homeSections": [
     {
