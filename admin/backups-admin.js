@@ -5,16 +5,16 @@
  function render(){
   $('#pageTitle').textContent='Backup & Restore';
   $('#content').innerHTML=`<div class="v2-banner"><strong>Safety Center</strong><span>Every publish creates a dated backup of website content, hero settings and site settings.</span></div>
-  <div class="admin-actions manager-actions"><button class="btn primary" id="create">Create Backup Now</button><button class="btn" id="refresh">Refresh History</button></div>
-  <div class="panel"><h3>Backup History</h3><div class="backup-list">${entries.length?entries.map((b,i)=>`<article class="item-row"><div><div class="item-title">${new Date(b.created).toLocaleString()}</div><div class="item-sub">${b.label} • ${b.files.length} files</div></div><div class="row-actions"><button class="btn small" data-restore="${i}">Restore</button></div></article>`).join(''):'<p class="help">No backups yet. The first backup will be created before your next publish.</p>'}</div></div>`;
+  <div class="admin-actions manager-actions unified-workflow-bar"><button class="btn primary" id="create">Create Backup Now</button><button class="btn" id="refresh">Refresh History</button><button class="btn danger-outline" id="returnDashboard">Return to Dashboard</button></div>
+  <div class="panel"><h3>Backup History</h3><div class="backup-list">${entries.length?entries.map((b,i)=>`<article class="item-row"><div><div class="item-title">${new Date(b.created).toLocaleString()}</div><div class="item-sub">${b.type==='restore'?'RESTORE HISTORY':'BACKUP'} • ${b.label} • ${(b.files||[]).length} files</div></div><div class="row-actions">${b.type==='restore'?'<span class="history-status">Completed</span>':`<button class="btn small" data-restore="${i}">Restore</button>`}</div></article>`).join(''):'<p class="help">No backups yet. The first backup will be created before your next publish.</p>'}</div></div>`;
   $('#create').onclick=async()=>{status('Creating backup…');try{await window.ASGBackup.create('Manual backup');await load();status('Backup created.','ok')}catch(e){status(e?.message==='Failed to fetch'?'Backup failed because GitHub could not be reached. Reconnect the Admin token and try again.':'Backup failed: '+e.message,'bad')}};
-  $('#refresh').onclick=load;
-  document.querySelectorAll('[data-restore]').forEach(b=>b.onclick=async()=>{const e=entries[+b.dataset.restore];if(!confirm(`Restore backup from ${new Date(e.created).toLocaleString()}? A safety backup will be created first.`))return;status('Creating safety backup and restoring…');try{await window.ASGBackup.create('Before restore');await window.ASGBackup.restore(e);status('Backup restored. GitHub Pages will update shortly.','ok')}catch(err){status('Restore failed: '+err.message,'bad')}})
+  $('#refresh').onclick=load;$('#returnDashboard').onclick=()=>location.href='dashboard.html';
+  document.querySelectorAll('[data-restore]').forEach(b=>b.onclick=async()=>{const e=entries[+b.dataset.restore];if(!confirm(`Restore backup from ${new Date(e.created).toLocaleString()}? A safety backup will be created first.`))return;status('Creating safety backup and restoring…');try{await window.ASGBackup.restore(e);await load();status('Backup restored. GitHub Pages will update shortly.','ok')}catch(err){status('Restore failed: '+err.message,'bad')}})
  }
  async function load(){
   if(!sessionStorage.getItem('asgGithubToken')){entries=[];render();status('Backup Manager is disconnected. Return to the Admin login and reconnect to GitHub.','bad');return;}
   status('Loading backup history…');
-  try{entries=(await window.ASGBackup.index()).backups||[];render();status(entries.length?'Backup history loaded.':'Connected. No backups have been created yet.','ok')}
+  try{const data=await window.ASGBackup.index();entries=data.history||data.backups||[];render();status(entries.length?'Backup history loaded.':'Connected. No backups have been created yet.','ok')}
   catch(e){entries=[];render();status(e?.message==='Failed to fetch'?'Could not reach GitHub. Check the internet connection, reconnect the Admin token, and try again.':'Could not load backup history: '+e.message,'bad')}
 }
  document.addEventListener('DOMContentLoaded',()=>{$('#menuBtn').onclick=()=>document.querySelector('.admin-sidebar').classList.toggle('open');$('#logoutBtn').onclick=()=>{sessionStorage.removeItem('asgGithubToken');location.href='index.html'};load()})

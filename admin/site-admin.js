@@ -16,7 +16,13 @@
   const s=state.data;
   $('#pageTitle').textContent='Site Settings';
   $('#content').innerHTML=`<div class="v2-banner"><strong>Complete Site Manager</strong><span>Update branding, text, navigation, social links, footer and page visibility.</span></div>
-  <div class="admin-actions manager-actions"><button class="btn primary" id="publish">Publish Site Settings</button><button class="btn" id="preview">Preview Draft</button><span class="pending" id="pendingLabel">${state.dirty?'Unpublished changes':''}</span></div>
+  <div class="admin-actions unified-workflow-bar">
+    <button class="btn" id="saveSiteSettings" type="button">Save Changes</button>
+    <button class="btn" id="preview" type="button">Preview Website</button>
+    <button class="btn primary" id="publish" type="button">Publish</button>
+    <button class="btn danger-outline" id="cancelSiteSettings" type="button">Cancel</button>
+    <span class="pending" id="pendingLabel">${state.dirty?'Unpublished changes':'No unpublished changes'}</span>
+  </div>
   <section class="visual-settings-preview"><div class="preview-toolbar"><div><span class="v2-pill">LIVE PREVIEW</span><h4>Navigation & Footer</h4></div></div><div id="siteChromePreview"></div></section>
   <section class="panel"><h3>Global Branding</h3><div class="form-grid">
    <div class="field"><label>Team name</label><input id="teamName" value="${esc(s.branding.teamName)}"></div>
@@ -115,7 +121,7 @@
     });
     mark();drawSitePreview();status(`${key} ready to publish and visible in Preview Draft.`,'ok')
   });
-  $('#preview').onclick=()=>{
+  const buildSiteDraft=()=>{
     const draft=structuredClone(state.data);
     draft.branding={...draft.branding};
     for(const [key,value] of Object.entries(state.previewAssets)){
@@ -124,10 +130,26 @@
     if(state.previewAssets.xitlaliLogo){
       draft.footer={...draft.footer,xitlaliLogo:state.previewAssets.xitlaliLogo};
     }
-    sessionStorage.setItem('asgPreviewSiteSettings',JSON.stringify(draft));
+    return draft;
+  };
+  const saveSiteDraft=()=>{
+    sessionStorage.setItem('asgDraftSiteSettings',JSON.stringify(state.data));
+    sessionStorage.setItem('asgPreviewSiteSettings',JSON.stringify(buildSiteDraft()));
+    status('Draft saved — not published.','ok');
+    $('#pendingLabel').textContent='Draft saved — not published';
+  };
+  $('#saveSiteSettings').onclick=saveSiteDraft;
+  $('#preview').onclick=()=>{
+    saveSiteDraft();
     window.open('../index.html?adminPreview=1','_blank')
   };
-  $('#publish').onclick=publish
+  $('#publish').onclick=async()=>{saveSiteDraft();await publish();sessionStorage.removeItem('asgDraftSiteSettings')};
+  $('#cancelSiteSettings').onclick=()=>{
+    if((state.dirty||state.pending.length)&&!confirm('Discard all unpublished Site Settings changes and return to the Dashboard?'))return;
+    sessionStorage.removeItem('asgDraftSiteSettings');
+    sessionStorage.removeItem('asgPreviewSiteSettings');
+    location.href='dashboard.html'
+  }
  }
  async function publish(){
   status('Creating backup and publishing site settings…');

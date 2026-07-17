@@ -71,7 +71,47 @@ function assetField(key,label,path,current){return `<div class="field"><label>${
 function renderScheduleAssets(){const a=state.data.assets||{},d=state.data.display||{};$('#pageTitle').textContent='Schedule & Standings';$('#content').innerHTML=`<div class="panel"><h3>Schedule and standings images</h3><p class="help">Upload replacement PNG files for the public Schedule page. These controls are separate from the global website graphics.</p><div class="form-grid">${assetField('scheduleImage','Upload Match Schedule PNG','images/schedule/schedule.png',a.scheduleImage)}${assetField('standingsImage','Upload League Standings PNG','images/schedule/standings.png',a.standingsImage)}<div class="field"><label>Schedule visibility</label><select id="scheduleVisible"><option value="true" ${d.scheduleVisible!==false?'selected':''}>Visible</option><option value="false" ${d.scheduleVisible===false?'selected':''}>Hidden</option></select></div><div class="field"><label>Standings visibility</label><select id="standingsVisible"><option value="true" ${d.standingsVisible!==false?'selected':''}>Visible</option><option value="false" ${d.standingsVisible===false?'selected':''}>Hidden</option></select></div></div><div class="admin-actions" style="margin-top:18px"><button class="btn primary" id="publishSchedule">Publish Schedule & Standings</button></div></div>`;$$('[data-asset-key]').forEach(inp=>inp.onchange=()=>queueAssetUpload(inp));$('#scheduleVisible').onchange=e=>{state.data.display=state.data.display||{};state.data.display.scheduleVisible=e.target.value==='true';markDirty()};$('#standingsVisible').onchange=e=>{state.data.display=state.data.display||{};state.data.display.standingsVisible=e.target.value==='true';markDirty()};$('#publishSchedule').onclick=publish}
 function renderAssets(){const a=state.data.assets||{};$('#pageTitle').textContent='Website Graphics';$('#content').innerHTML=`<div class="panel"><h3>Global website graphics</h3><p class="help">Manage reusable default artwork. Schedule and standings are managed on their own page.</p><div class="form-grid">${assetField('mediaBackground','Default media-card background','generated/media-card-background.png',a.mediaBackground)}${assetField('playerSilhouette','Default player silhouette','images/team/players/player-silhouette.png',a.playerSilhouette)}${assetField('liveDefaultImage','Default livestream image','images/live/live-default.png',a.liveDefaultImage)}</div><div class="admin-actions" style="margin-top:18px"><button class="btn primary" id="publishAssets">Publish Website Graphics</button></div></div>`;$$('[data-asset-key]').forEach(inp=>inp.onchange=()=>queueAssetUpload(inp));$('#publishAssets').onclick=publish}
 function renderLive(){const l=state.data.live||{};$('#pageTitle').textContent='Livestream';$('#content').innerHTML=`<form class="panel" id="liveForm"><div class="form-grid">${[['title','Stream title','text'],['opponent','Opponent','text'],['scheduledStart','Scheduled start','datetime-local'],['scheduledEnd','Expected end','datetime-local'],['location','Location','text'],['url','YouTube livestream URL','url'],['replayUrl','Replay URL','url'],['thumbnail','Thumbnail path','text']].map(f=>inputHtml(f,l[f[0]])).join('')}<div class="field"><label>Control mode</label><select name="mode"><option ${l.mode==='automatic'?'selected':''}>automatic</option><option ${l.mode==='manual'?'selected':''}>manual</option></select></div><div class="field"><label>Manual status</label><select name="status">${['offline','scheduled','live','ended','replay'].map(x=>`<option ${l.status===x?'selected':''}>${x}</option>`).join('')}</select></div><div class="field full"><label>Description</label><textarea name="description">${esc(l.description||'')}</textarea></div><div class="field full"><label>Upload livestream thumbnail</label><input id="liveUpload" type="file" accept="image/png,image/jpeg,image/webp"></div></div><div class="admin-actions" style="margin-top:18px"><button class="btn primary" type="submit">Save Livestream</button><button class="btn" type="button" id="publishLive">Publish</button></div></form>`;$('#liveForm').onsubmit=e=>{e.preventDefault();const fd=new FormData(e.target);Object.assign(state.data.live,Object.fromEntries(fd.entries()));markDirty();setStatus('Livestream settings saved locally. Publish when ready.','ok')};$('#liveUpload').onchange=async e=>{if(!e.target.files[0])return;const r=await fileToPng(e.target.files[0]),path='images/live/current-livestream.png';state.data.live.thumbnail=path;state.pendingFiles=state.pendingFiles.filter(f=>f.path!==path);state.pendingFiles.push({path,base64:r.base64});markDirty()};$('#publishLive').onclick=publish}
-function renderDashboard(){const counts=Object.entries(SECTION_SCHEMAS).map(([k,s])=>[k,s.title,(state.data[s.array]||[]).filter(x=>x.status!=='hidden').length]);$('#pageTitle').textContent='Dashboard V2';$('#content').innerHTML=`<div class="v2-hero"><span class="v2-pill">ADMIN V2</span><h3>Fast, guided website updates</h3><p>Technical fields are protected and common choices use dropdowns.</p></div><div class="dashboard-grid">${counts.map(([k,t,n])=>`<a class="dash-card" href="${k}.html"><strong>${t}</strong><span>${n} visible items</span></a>`).join('')}<a class="dash-card" href="schedule.html"><strong>Schedule & Standings</strong><span>Upload replacement PNG files</span></a><a class="dash-card" href="livestream.html"><strong>Livestream</strong><span>Schedule, status and replay</span></a><a class="dash-card" href="graphics.html"><strong>Website Graphics</strong><span>Default backgrounds and silhouettes</span></a><a class="dash-card" href="heroes.html"><strong>Hero Images</strong><span>Photos, effects and timing</span></a><a class="dash-card" href="settings.html"><strong>Site Settings</strong><span>Text, navigation, social, footer and branding</span></a><a class="dash-card" href="backups.html"><strong>Backup & Restore</strong><span>Automatic backups and update history</span></a></div>`}
+function renderDashboard(){
+ const data=state.data||{};
+ const visible=(key)=>((data[key]||[]).filter(item=>item.status!=='hidden').length);
+ $('#pageTitle').textContent='Quick Management';
+ $('#content').innerHTML=`
+  <div class="v2-hero">
+   <span class="v2-pill">ALLSTAR GALAXY ADMIN</span>
+   <h3>Choose what you need to update</h3>
+   <p>The most-used tools are shown first. Open Full Control for every website setting.</p>
+  </div>
+  <div class="quick-management-grid">
+   <a class="quick-management-card" href="games.html">
+    <span class="quick-management-icon">⚽</span>
+    <strong>Games</strong>
+    <small>Add scores, opponents and YouTube links</small>
+    <b>${visible('games')} visible games</b>
+   </a>
+   <a class="quick-management-card" href="players.html">
+    <span class="quick-management-icon">👤</span>
+    <strong>Players</strong>
+    <small>Add players, photos, numbers and positions</small>
+    <b>${visible('players')} visible players</b>
+   </a>
+   <a class="quick-management-card" href="schedule.html">
+    <span class="quick-management-icon">▦</span>
+    <strong>Schedule</strong>
+    <small>Update schedule and standings graphics</small>
+    <b>Schedule & Standings</b>
+   </a>
+   <button class="quick-management-card full-control-card" id="dashboardFullControl" type="button">
+    <span class="quick-management-icon">⚙</span>
+    <strong>Full Control</strong>
+    <small>Open all content, design, hero, backup and site tools</small>
+    <b>Show every Admin page</b>
+   </button>
+  </div>`;
+ $('#dashboardFullControl').onclick=()=>{
+   localStorage.setItem('asgAdminCustomizeMode','customize');
+   location.reload();
+ };
+}
 function renderPage(){const page=document.body.dataset.page||'dashboard';$$('.admin-nav a').forEach(a=>a.classList.toggle('active',a.dataset.page===page));if(SECTION_SCHEMAS[page])renderManager(page);else if(page==='schedule')renderScheduleAssets();else if(page==='graphics')renderAssets();else if(page==='livestream')renderLive();else renderDashboard()}
 function initCommon(){$('#menuBtn')?.addEventListener('click',()=>$('.admin-sidebar').classList.toggle('open'));$('#logoutBtn')?.addEventListener('click',()=>{sessionStorage.removeItem('asgGithubToken');location.href='index.html'});$('#modalClose')?.addEventListener('click',closeModal);connect()}
 window.AdminCMS={initCommon,publish};
@@ -103,15 +143,16 @@ window.AdminCMS={initCommon,publish};
   }
 
   function playerPreview(obj, image) {
-    return `<div class="visual-card player-preview-card ${obj.status==='hidden'?'preview-hidden':''}">
+    return `<div class="visual-card player-preview-card public-style-player-preview ${obj.status==='hidden'?'preview-hidden':''}">
       <div class="preview-player-frame">
+        <div class="preview-player-cosmos"></div>
         <img class="preview-player-logo" src="../images/logos/logo.png" alt="">
         <img class="preview-player-photo" src="${previewEsc(image || '../images/team/players/player-silhouette.png')}" alt="">
-      </div>
-      <div class="preview-player-copy">
-        <span class="preview-number">#${previewEsc(obj.number || 'N/A')}</span>
-        <strong>${previewEsc(obj.name || 'PLAYER NAME')}</strong>
-        <small>${previewEsc(obj.position || 'POSITION N/A')}</small>
+        <span class="preview-number">${previewEsc(obj.number || '')}</span>
+        <div class="preview-player-info">
+          <strong>${previewEsc(obj.name || 'PLAYER NAME')}</strong>
+          <small>${previewEsc(obj.position || 'POSITION N/A')}</small>
+        </div>
       </div>
       <span class="preview-visibility">${visibleLabel(obj.status)}</span>
     </div>`;
@@ -494,6 +535,18 @@ window.AdminCMS={initCommon,publish};
             </div>
 
             <div class="field">
+              <label>Optional Schedule URL</label>
+              <input id="scheduleUrl" type="url" value="${esc(schedulePage.scheduleUrl || "")}" placeholder="N/A — image opens full size">
+              <div class="help">When blank, clicking the schedule opens the uploaded image. Add a URL to open a league page, PDF, or external schedule.</div>
+            </div>
+
+            <div class="field">
+              <label>Optional Standings URL</label>
+              <input id="standingsUrl" type="url" value="${esc(schedulePage.standingsUrl || "")}" placeholder="N/A — image opens full size">
+              <div class="help">When blank, clicking the standings opens the uploaded image.</div>
+            </div>
+
+            <div class="field">
               <label>Schedule visibility</label>
               <select id="scheduleVisible">
                 <option value="true" ${display.scheduleVisible !== false ? "selected" : ""}>Visible</option>
@@ -530,15 +583,17 @@ window.AdminCMS={initCommon,publish};
     const draw = () => {
       const scheduleText = $("#scheduleNote").value.trim() || "Click the image to view the complete schedule.";
       const standingsText = $("#standingsNote").value.trim() || "Click the image to view the complete standings.";
+      const scheduleLinkState = $("#scheduleUrl").value.trim() ? "EXTERNAL URL ACTIVE" : "OPENS FULL IMAGE";
+      const standingsLinkState = $("#standingsUrl").value.trim() ? "EXTERNAL URL ACTIVE" : "OPENS FULL IMAGE";
 
       $("#schedulePreview").innerHTML = `
         <div class="mini-news-card ${$("#scheduleVisible").value === "false" ? "preview-hidden" : ""}">
           <img src="${esc(scheduleSrc)}" alt="" onerror="this.onerror=null;this.src='../images/logos/logo.png'">
-          <div><small>CURRENT SCHEDULE</small><strong>Match Schedule</strong><p>${esc(scheduleText)}</p></div>
+          <div><small>CURRENT SCHEDULE</small><strong>Match Schedule</strong><p>${esc(scheduleText)}</p><span class="preview-link">${scheduleLinkState}</span></div>
         </div>
         <div class="mini-news-card ${$("#standingsVisible").value === "false" ? "preview-hidden" : ""}">
           <img src="${esc(standingsSrc)}" alt="" onerror="this.onerror=null;this.src='../images/logos/logo.png'">
-          <div><small>CURRENT STANDINGS</small><strong>League Standings</strong><p>${esc(standingsText)}</p></div>
+          <div><small>CURRENT STANDINGS</small><strong>League Standings</strong><p>${esc(standingsText)}</p><span class="preview-link">${standingsLinkState}</span></div>
         </div>
       `;
     };
@@ -560,6 +615,16 @@ window.AdminCMS={initCommon,publish};
     };
     $("#standingsNote").oninput = event => {
       schedulePage.standingsDescription = event.target.value;
+      markDirty();
+      draw();
+    };
+    $("#scheduleUrl").oninput = event => {
+      schedulePage.scheduleUrl = event.target.value;
+      markDirty();
+      draw();
+    };
+    $("#standingsUrl").oninput = event => {
+      schedulePage.standingsUrl = event.target.value;
       markDirty();
       draw();
     };
@@ -1087,5 +1152,186 @@ window.AdminCMS={initCommon,publish};
       return;
     }
     previousRenderManagerV144(section);
+  };
+})();
+
+
+/* ============================================================
+   V146 — UNIFIED ADMIN WORKFLOW
+   Save Changes | Preview Website | Publish | Cancel
+   ============================================================ */
+(() => {
+  "use strict";
+
+  const PAGE_PREVIEWS = {
+    players: "team.html",
+    games: "media.html",
+    seasons: "media.html",
+    playlists: "media.html",
+    news: "news.html",
+    schedule: "schedule.html",
+    livestream: "livestream.html",
+    graphics: "media.html"
+  };
+
+  let workflowBusy = false;
+
+  function currentPage() {
+    return document.body.dataset.page || "dashboard";
+  }
+
+  function cloneWithPendingAssets(data) {
+    const assetMap = new Map(
+      (state.pendingFiles || []).map(file => [
+        String(file.path),
+        `data:image/png;base64,${file.base64}`
+      ])
+    );
+
+    const walk = value => {
+      if (Array.isArray(value)) return value.map(walk);
+      if (value && typeof value === "object") {
+        return Object.fromEntries(
+          Object.entries(value).map(([key, item]) => [key, walk(item)])
+        );
+      }
+      if (typeof value === "string" && assetMap.has(value)) {
+        return assetMap.get(value);
+      }
+      return value;
+    };
+
+    return walk(structuredClone(data));
+  }
+
+  function commitOpenForm() {
+    const modal = document.querySelector("#editModal.open");
+    const form = document.querySelector("#editForm");
+    if (modal && form) {
+      if (!form.reportValidity()) return false;
+      form.requestSubmit();
+    }
+
+    const liveForm = document.querySelector("#liveForm");
+    if (liveForm) {
+      if (!liveForm.reportValidity()) return false;
+      liveForm.requestSubmit();
+    }
+    return true;
+  }
+
+  function saveDraft() {
+    if (!commitOpenForm()) return false;
+    const page = currentPage();
+    const draft = cloneWithPendingAssets(state.data);
+    sessionStorage.setItem("asgDraftMasterContent", JSON.stringify(state.data));
+    sessionStorage.setItem("asgPreviewMasterContent", JSON.stringify(draft));
+    sessionStorage.setItem("asgDraftAdminPage", page);
+    setStatus("Draft saved — not published.", "ok");
+    const pending = document.querySelector("#pendingLabel");
+    if (pending) pending.textContent = "Draft saved — not published";
+    return true;
+  }
+
+  function previewWebsite() {
+    if (!saveDraft()) return;
+    const page = currentPage();
+    const destination = PAGE_PREVIEWS[page] || "index.html";
+    window.open(`../${destination}?adminPreview=1`, "_blank");
+    setStatus(`Preview opened: ${destination}`, "ok");
+  }
+
+  async function publishDraft() {
+    if (workflowBusy || !saveDraft()) return;
+    workflowBusy = true;
+    try {
+      await publish();
+      sessionStorage.removeItem("asgDraftMasterContent");
+      sessionStorage.removeItem("asgDraftAdminPage");
+    } finally {
+      workflowBusy = false;
+    }
+  }
+
+  function cancelChanges() {
+    const hasChanges =
+      state.dirty ||
+      (state.pendingFiles && state.pendingFiles.length) ||
+      sessionStorage.getItem("asgDraftMasterContent");
+
+    if (
+      hasChanges &&
+      !confirm("Discard all unpublished changes and return to the Dashboard?")
+    ) return;
+
+    sessionStorage.removeItem("asgDraftMasterContent");
+    sessionStorage.removeItem("asgPreviewMasterContent");
+    sessionStorage.removeItem("asgDraftAdminPage");
+    location.href = "dashboard.html";
+  }
+
+  function removeLegacyActions() {
+    [
+      "#publishBtn", "#previewBtn", "#publishSchedule", "#publishAssets",
+      "#publishLive", "#publishNewsCards", "#previewNewsDraft"
+    ].forEach(selector => document.querySelector(selector)?.remove());
+
+    const liveSubmit = document.querySelector("#liveForm button[type='submit']");
+    if (liveSubmit) liveSubmit.remove();
+
+    document.querySelectorAll(".manager-actions, .form-actions").forEach(bar => {
+      if (!bar.children.length || !bar.querySelector("button, label, .pending")) {
+        bar.remove();
+      }
+    });
+  }
+
+  function injectWorkflowBar() {
+    const page = currentPage();
+    if (["dashboard", "backups"].includes(page)) return;
+
+    const content = document.querySelector("#content");
+    if (!content || content.querySelector("#unifiedWorkflowBar")) return;
+
+    removeLegacyActions();
+
+    const bar = document.createElement("div");
+    bar.id = "unifiedWorkflowBar";
+    bar.className = "admin-actions unified-workflow-bar";
+    bar.innerHTML = `
+      <button class="btn" id="workflowSave" type="button">Save Changes</button>
+      <button class="btn" id="workflowPreview" type="button">Preview Website</button>
+      <button class="btn primary" id="workflowPublish" type="button">Publish</button>
+      <button class="btn danger-outline" id="workflowCancel" type="button">Cancel</button>
+      <span class="pending" id="workflowStatus">${state.dirty ? "Unpublished changes" : "No unpublished changes"}</span>
+    `;
+
+    const banner = content.querySelector(".v2-banner");
+    if (banner) banner.insertAdjacentElement("afterend", bar);
+    else content.prepend(bar);
+
+    bar.querySelector("#workflowSave").onclick = saveDraft;
+    bar.querySelector("#workflowPreview").onclick = previewWebsite;
+    bar.querySelector("#workflowPublish").onclick = publishDraft;
+    bar.querySelector("#workflowCancel").onclick = cancelChanges;
+  }
+
+  const observer = new MutationObserver(() => {
+    clearTimeout(window.__asgWorkflowTimer);
+    window.__asgWorkflowTimer = setTimeout(injectWorkflowBar, 0);
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const content = document.querySelector("#content");
+    if (content) observer.observe(content, { childList: true, subtree: true });
+    injectWorkflowBar();
+  });
+
+  window.ASGUnifiedWorkflow = {
+    saveDraft,
+    previewWebsite,
+    publishDraft,
+    cancelChanges,
+    injectWorkflowBar
   };
 })();

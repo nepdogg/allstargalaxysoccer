@@ -50,7 +50,13 @@
       <div class="field"><label>Glow intensity</label><select id="heroGlowIntensity">${GLOW_INTENSITIES.map(([v,t])=>`<option value="${v}" ${(p.glowIntensity||'medium')===v?'selected':''}>${t}</option>`).join('')}</select></div>
       <div class="field locked-field"><label>Page selector 🔒</label><input value="${esc(p.selector)}" readonly></div>
     </div></div>
-    <div class="admin-actions manager-actions"><label class="btn primary upload-hero-btn">+ Add Hero Photos<input id="heroUpload" type="file" accept="image/png,image/jpeg,image/webp" multiple hidden></label><button class="btn" id="duplicateFirst">Duplicate First Image</button><button class="btn" id="publishHeroes">Publish Hero Changes</button><button class="btn" id="previewHeroes">Preview Page</button><span class="pending" id="pendingLabel">${state.dirty?'Unpublished changes':''}</span></div>
+    <div class="admin-actions manager-actions hero-content-actions"><label class="btn primary upload-hero-btn">+ Add Hero Photos<input id="heroUpload" type="file" accept="image/png,image/jpeg,image/webp" multiple hidden></label><button class="btn" id="duplicateFirst">Duplicate First Image</button><span class="pending" id="pendingLabel">${state.dirty?'Unpublished changes':'No unpublished changes'}</span></div>
+    <div class="admin-actions unified-workflow-bar">
+      <button class="btn" id="saveHeroes" type="button">Save Changes</button>
+      <button class="btn" id="previewHeroes" type="button">Preview Website</button>
+      <button class="btn primary" id="publishHeroes" type="button">Publish</button>
+      <button class="btn danger-outline" id="cancelHeroes" type="button">Cancel</button>
+    </div>
     <div class="hero-help">Recommended: 5–15 photos per page. Images are automatically converted to PNG. Use the arrows to control the rotation order.</div>
     <div class="hero-admin-grid">${p.images.map((src,i)=>heroCard(src,i)).join('')||'<div class="empty-state">No hero images assigned. Add at least one image.</div>'}</div>`;
     bind();
@@ -66,7 +72,33 @@
     $('#heroGlowIntensity').onchange=e=>{current().glowIntensity=e.target.value;markDirty()};
     $('#heroUpload').onchange=async e=>{for(const file of e.target.files)await addFile(file);render()};
     $('#duplicateFirst').onclick=()=>{if(current().images[0]){current().images.push(current().images[0]);markDirty();render()}};
-    $('#publishHeroes').onclick=publish;$('#previewHeroes').onclick=()=>{sessionStorage.setItem('asgPreviewHeroRotation',JSON.stringify(state.config));const map={home:'index.html',team:'team.html',schedule:'schedule.html',media:'media.html',news:'news.html',livestream:'livestream.html',follow:'follow.html',about:'about.html','404':'404.html','season-archive':'summer-2026.html'};window.open('../'+map[state.page]+'?adminPreview=1','_blank')};
+    const buildHeroDraft=()=>{
+      const replacements=new Map(state.pendingFiles.map(file=>[file.path,`data:image/png;base64,${file.base64}`]));
+      const draft=structuredClone(state.config);
+      Object.values(draft.pages||{}).forEach(page=>{
+        page.images=(page.images||[]).map(path=>replacements.get(path)||path);
+      });
+      return draft;
+    };
+    const saveHeroDraft=()=>{
+      sessionStorage.setItem('asgDraftHeroRotation',JSON.stringify(state.config));
+      sessionStorage.setItem('asgPreviewHeroRotation',JSON.stringify(buildHeroDraft()));
+      status('Draft saved — not published.','ok');
+      $('#pendingLabel').textContent='Draft saved — not published';
+    };
+    $('#saveHeroes').onclick=saveHeroDraft;
+    $('#publishHeroes').onclick=async()=>{saveHeroDraft();await publish();sessionStorage.removeItem('asgDraftHeroRotation')};
+    $('#previewHeroes').onclick=()=>{
+      saveHeroDraft();
+      const map={home:'index.html',team:'team.html',schedule:'schedule.html',media:'media.html',news:'news.html',livestream:'livestream.html',follow:'follow.html',about:'about.html','404':'404.html','season-archive':'summer-2026.html'};
+      window.open('../'+map[state.page]+'?adminPreview=1','_blank')
+    };
+    $('#cancelHeroes').onclick=()=>{
+      if((state.dirty||state.pendingFiles.length)&&!confirm('Discard all unpublished hero changes and return to the Dashboard?'))return;
+      sessionStorage.removeItem('asgDraftHeroRotation');
+      sessionStorage.removeItem('asgPreviewHeroRotation');
+      location.href='dashboard.html'
+    };
     $$('[data-left]').forEach(b=>b.onclick=()=>move(+b.dataset.left,-1));
     $$('[data-right]').forEach(b=>b.onclick=()=>move(+b.dataset.right,1));
     $$('[data-remove]').forEach(b=>b.onclick=()=>{const i=+b.dataset.remove;if(confirm('Remove this hero image from the rotation? The uploaded PNG will remain in GitHub.')){current().images.splice(i,1);markDirty();render()}});

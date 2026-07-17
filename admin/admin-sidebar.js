@@ -4,12 +4,12 @@
 
   const ITEMS = [
     ["dashboard", "Dashboard", "dashboard.html", true],
-    ["players", "Players", "players.html", false],
+    ["players", "Players", "players.html", true],
     ["games", "Games", "games.html", true],
     ["seasons", "Seasons", "seasons.html", false],
     ["playlists", "Playlists", "playlists.html", false],
-    ["news", "News", "news.html", true],
-    ["schedule", "Schedule & Standings", "schedule.html", false],
+    ["news", "News", "news.html", false],
+    ["schedule", "Schedule & Standings", "schedule.html", true],
     ["livestream", "Livestream", "livestream.html", false],
     ["graphics", "Website Graphics", "graphics.html", false],
     ["heroes", "Hero Images", "heroes.html", false],
@@ -37,7 +37,7 @@
 
     nav.innerHTML = `
       <div class="admin-mode-summary">
-        <span>${showAdvanced ? "CUSTOMIZE MODE" : "BASIC MODE"}</span>
+        <span>${showAdvanced ? "FULL CONTROL" : "QUICK MANAGEMENT"}</span>
       </div>
 
       ${ITEMS.filter(([, , , basic]) => basic || showAdvanced).map(([key, label, href]) => `
@@ -45,7 +45,7 @@
       `).join("")}
 
       <button type="button" class="admin-customize-toggle ${showAdvanced ? "is-open" : ""}" id="adminCustomizeToggle">
-        ${showAdvanced ? "← Basic View" : "Customize Website"}
+        ${showAdvanced ? "← Quick Management" : "Full Control"}
       </button>
     `;
 

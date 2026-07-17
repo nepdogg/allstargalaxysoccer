@@ -524,3 +524,219 @@
     object-fit: contain !important;
     object-position: center !important;
 }
+
+
+/* ============================================================
+   V145 — QUICK MANAGEMENT + PUBLIC-STYLE PLAYER PREVIEW
+   ============================================================ */
+.quick-management-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.quick-management-card {
+    min-height: 190px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+    padding: 22px;
+    border: 1px solid var(--line);
+    border-radius: 15px;
+    background: linear-gradient(145deg, rgba(15,18,27,.98), rgba(8,9,13,.98));
+    color: #fff;
+    text-decoration: none;
+    text-align: left;
+    cursor: pointer;
+    font: inherit;
+}
+
+.quick-management-card:hover,
+.quick-management-card:focus-visible {
+    border-color: var(--gold);
+    box-shadow: 0 0 22px rgba(245,197,66,.16);
+    transform: translateY(-2px);
+}
+
+.quick-management-card strong {
+    font-size: 23px;
+}
+
+.quick-management-card small {
+    color: var(--muted);
+    line-height: 1.45;
+}
+
+.quick-management-card b {
+    color: var(--gold);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+}
+
+.quick-management-icon {
+    font-size: 34px;
+}
+
+.full-control-card {
+    border-color: rgba(245,197,66,.62);
+    background: linear-gradient(145deg, rgba(245,197,66,.13), rgba(11,12,17,.98));
+}
+
+.public-style-player-preview .preview-player-frame {
+    position: relative;
+    height: 420px;
+    padding-bottom: 72px;
+    background: #05040b;
+}
+
+.public-style-player-preview .preview-player-cosmos {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.15)),
+      url("../generated/media-card-background.png") center/cover no-repeat;
+    opacity: .72;
+}
+
+.public-style-player-preview .preview-player-photo {
+    position: absolute;
+    inset: 0 0 72px;
+    width: 100%;
+    height: calc(100% - 72px);
+    object-fit: contain;
+    z-index: 2;
+}
+
+.public-style-player-preview .preview-player-logo {
+    z-index: 1;
+}
+
+.public-style-player-preview .preview-number {
+    position: absolute;
+    z-index: 4;
+    top: 14px;
+    left: 15px;
+    margin: 0;
+    padding: 5px 9px;
+    border-radius: 8px;
+    background: rgba(0,0,0,.68);
+    color: #fff;
+    font-size: 24px;
+    font-weight: 950;
+    line-height: 1;
+    text-shadow: 0 0 10px var(--gold);
+}
+
+.public-style-player-preview .preview-player-info {
+    position: absolute;
+    z-index: 4;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-height: 72px;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    padding: 8px 12px;
+    background: rgba(5,5,10,.94);
+    border-top: 1px solid #7642ff;
+}
+
+.public-style-player-preview .preview-player-info strong {
+    font-size: 23px;
+}
+
+.public-style-player-preview .preview-player-info small {
+    color: #bd95ff;
+    margin-top: 3px;
+}
+
+.history-status {
+    color: #79e6a4;
+    font-size: 11px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+@media (max-width: 1050px) {
+    .quick-management-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .quick-management-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .quick-management-card {
+        min-height: 145px;
+    }
+}
+
+
+/* ============================================================
+   V146 — UNIFIED ADMIN WORKFLOW
+   ============================================================ */
+.unified-workflow-bar {
+    position: sticky;
+    top: 8px;
+    z-index: 18;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 0 0 18px;
+    padding: 12px;
+    border: 1px solid rgba(245,197,66,.48);
+    border-radius: 12px;
+    background: rgba(7,9,14,.96);
+    box-shadow: 0 8px 25px rgba(0,0,0,.28);
+    backdrop-filter: blur(8px);
+}
+
+.unified-workflow-bar .btn {
+    min-width: 128px;
+}
+
+.danger-outline {
+    border-color: rgba(255,80,80,.72) !important;
+    color: #ff8d8d !important;
+    background: rgba(255,50,50,.05) !important;
+}
+
+.danger-outline:hover,
+.danger-outline:focus-visible {
+    border-color: #ff4d4d !important;
+    color: #fff !important;
+    background: rgba(255,50,50,.16) !important;
+    box-shadow: 0 0 16px rgba(255,50,50,.15);
+}
+
+#workflowStatus {
+    margin-left: auto;
+}
+
+@media (max-width: 760px) {
+    .unified-workflow-bar {
+        position: relative;
+        top: auto;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0,1fr));
+    }
+
+    .unified-workflow-bar .btn {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .unified-workflow-bar .pending,
+    #workflowStatus {
+        grid-column: 1 / -1;
+        margin-left: 0;
+        text-align: center;
+    }
+}

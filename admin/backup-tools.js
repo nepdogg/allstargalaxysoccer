@@ -9,108 +9,99 @@ window.ASGBackup=(()=>{
  const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 
  async function get(path){
-   const r=await fetch(`https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${path}?ref=${CONFIG.branch}&_=${Date.now()}`,{
-     headers:headers()
-   });
-   if(!r.ok)throw new Error(`${r.status}: ${await r.text()}`);
+   const r=await fetch(`https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${path}?ref=${CONFIG.branch}&_=${Date.now()}`,{headers:headers()});
+   if(!r.ok){const error=new Error(`${r.status}: ${await r.text()}`);error.status=r.status;throw error}
    return r.json();
  }
-
  async function put(path,content,message,sha){
-   const body={message,content,branch:CONFIG.branch};
-   if(sha)body.sha=sha;
+   const body={message,content,branch:CONFIG.branch};if(sha)body.sha=sha;
    const r=await fetch(`https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${path}`,{
-     method:'PUT',
-     headers:{...headers(),'Content-Type':'application/json'},
-     body:JSON.stringify(body)
+     method:'PUT',headers:{...headers(),'Content-Type':'application/json'},body:JSON.stringify(body)
    });
-   if(!r.ok){
-     const text=await r.text();
-     const error=new Error(`${r.status}: ${text}`);
-     error.status=r.status;
-     throw error;
-   }
+   if(!r.ok){const error=new Error(`${r.status}: ${await r.text()}`);error.status=r.status;throw error}
    return r.json();
  }
-
  const stamp=()=>new Date().toISOString().replace(/[:.]/g,'-');
 
  async function readIndexWithSha(){
    try{
      const file=await get(CONFIG.index);
-     return {
-       data:JSON.parse(dec(file.content)),
-       sha:file.sha
-     };
+     const data=JSON.parse(dec(file.content));
+     data.backups=Array.isArray(data.backups)?data.backups:[];
+     data.history=Array.isArray(data.history)?data.history:[...data.backups];
+     return {data,sha:file.sha}
    }catch(error){
-     if(String(error.message).startsWith('404:')){
-       return {data:{version:1,backups:[]},sha:undefined};
+     if(error.status===404||String(error.message).startsWith('404:')){
+       return {data:{version:2,backups:[],history:[]},sha:undefined}
      }
-     throw error;
+     throw error
    }
  }
 
- async function index(){
-   try{return (await readIndexWithSha()).data}
-   catch(e){return {version:1,backups:[]}}
- }
+ async function index(){return (await readIndexWithSha()).data}
 
- async function appendBackupEntry(entry){
+ async function appendHistory(entry){
    let lastError;
-   for(let attempt=1;attempt<=4;attempt++){
+   for(let attempt=1;attempt<=5;attempt++){
      try{
        const latest=await readIndexWithSha();
-       const idx=latest.data&&typeof latest.data==='object'?latest.data:{version:1,backups:[]};
-       idx.version=idx.version||1;
-       idx.backups=Array.isArray(idx.backups)?idx.backups:[];
+       const data=latest.data||{version:2,backups:[],history:[]};
+       data.version=2;
+       data.backups=Array.isArray(data.backups)?data.backups:[];
+       data.history=Array.isArray(data.history)?data.history:[...data.backups];
 
-       // Merge safely and prevent duplicate entries if a retry occurs.
-       idx.backups=idx.backups.filter(item=>item&&item.id!==entry.id);
-       idx.backups.unshift(entry);
-       idx.backups=idx.backups.slice(0,50);
+       data.history=data.history.filter(item=>item&&item.id!==entry.id);
+       data.history.unshift(entry);
+       data.history=data.history.slice(0,250);
 
-       await put(
-         CONFIG.index,
-         enc(JSON.stringify(idx,null,2)),
-         'Backup Manager: update backup index',
-         latest.sha
-       );
+       if(entry.type!=='restore'){
+         data.backups=data.backups.filter(item=>item&&item.id!==entry.id);
+         data.backups.unshift(entry);
+         data.backups=data.backups.slice(0,200);
+       }
+
+       await put(CONFIG.index,enc(JSON.stringify(data,null,2)),'Backup Manager: update complete history',latest.sha);
        return entry;
      }catch(error){
        lastError=error;
        const conflict=error.status===409||String(error.message).startsWith('409:');
-       if(!conflict||attempt===4)throw error;
-       await sleep(300*attempt);
+       if(!conflict||attempt===5)throw error;
+       await sleep(350*attempt)
      }
    }
-   throw lastError;
+   throw lastError
  }
 
  async function create(label='Automatic backup'){
    const id=stamp(),folder=`backups/${id}`,saved=[];
    for(const source of files){
      try{
-       const f=await get(source);
-       const dest=`${folder}/${source.split('/').pop()}`;
+       const f=await get(source),dest=`${folder}/${source.split('/').pop()}`;
        await put(dest,f.content,`Backup: ${source}`);
-       saved.push({source,backup:dest});
-     }catch(e){
-       console.warn('Backup skipped for',source,e);
-     }
+       saved.push({source,backup:dest})
+     }catch(error){console.warn('Backup skipped for',source,error)}
    }
-
-   const entry={id,label,created:new Date().toISOString(),files:saved};
-   await appendBackupEntry(entry);
-   return entry;
+   const entry={id,type:'backup',label,created:new Date().toISOString(),files:saved};
+   await appendHistory(entry);
+   return entry
  }
 
  async function restore(entry){
-   for(const f of entry.files){
-     const backup=await get(f.backup);
-     let sha;
+   const safety=await create(`Safety backup before restoring ${entry.id}`);
+   for(const f of entry.files||[]){
+     const backup=await get(f.backup);let sha;
      try{sha=(await get(f.source)).sha}catch(e){}
-     await put(f.source,backup.content,`Restore backup ${entry.id}: ${f.source}`,sha);
+     await put(f.source,backup.content,`Restore backup ${entry.id}: ${f.source}`,sha)
    }
+   await appendHistory({
+     id:`restore-${stamp()}`,
+     type:'restore',
+     label:`Restored backup from ${new Date(entry.created).toLocaleString()}`,
+     created:new Date().toISOString(),
+     sourceBackupId:entry.id,
+     safetyBackupId:safety.id,
+     files:entry.files||[]
+   });
  }
 
  return {create,index,restore,get,put,encode:enc,decode:dec};
