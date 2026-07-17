@@ -74,41 +74,73 @@ function renderLive(){const l=state.data.live||{};$('#pageTitle').textContent='L
 function renderDashboard(){
  const data=state.data||{};
  const visible=(key)=>((data[key]||[]).filter(item=>item.status!=='hidden').length);
- $('#pageTitle').textContent='Quick Management';
+ const fullControl=localStorage.getItem('asgAdminCustomizeMode')==='customize';
+
+ if(!fullControl){
+   $('#pageTitle').textContent='Quick Management';
+   $('#content').innerHTML=`
+    <div class="v2-hero">
+     <span class="v2-pill">ALLSTAR GALAXY ADMIN</span>
+     <h3>Choose what you need to update</h3>
+     <p>The most-used tools are shown first. Open Full Control for every website setting.</p>
+    </div>
+    <div class="quick-management-grid">
+     <a class="quick-management-card" href="games.html"><span class="quick-management-icon">⚽</span><strong>Games</strong><small>Add scores, opponents and YouTube links</small><b>${visible('games')} visible games</b></a>
+     <a class="quick-management-card" href="players.html"><span class="quick-management-icon">👤</span><strong>Players</strong><small>Add players, photos, numbers and positions</small><b>${visible('players')} visible players</b></a>
+     <a class="quick-management-card" href="schedule.html"><span class="quick-management-icon">▦</span><strong>Schedule</strong><small>Update schedule and standings graphics</small><b>Schedule & Standings</b></a>
+     <button class="quick-management-card full-control-card" id="dashboardFullControl" type="button"><span class="quick-management-icon">⚙</span><strong>Full Control</strong><small>Open all content, design, hero, backup and site tools</small><b>Show every Admin page</b></button>
+    </div>`;
+   $('#dashboardFullControl').onclick=()=>{
+     localStorage.setItem('asgAdminCustomizeMode','customize');
+     location.reload();
+   };
+   return;
+ }
+
+ $('#pageTitle').textContent='Full Control';
+ const groups=[
+  ['CONTENT',[
+   ['players.html','👤','Players','Add players, photos, numbers and positions',`${visible('players')} visible players`],
+   ['games.html','⚽','Games','Add scores, opponents and media links',`${visible('games')} visible games`],
+   ['seasons.html','◫','Seasons','Manage season archive cards and links',`${visible('seasons')} visible seasons`],
+   ['playlists.html','▶','Playlists','Manage every website playlist card',`${visible('playlists')} visible playlists`],
+   ['news.html','▤','News','Update Latest News and Match Results','NEWS CARDS']
+  ]],
+  ['GAME DAY',[
+   ['schedule.html','▦','Schedule & Standings','Update schedule and standings graphics','SCHEDULE & STANDINGS'],
+   ['livestream.html','●','Livestream','Control game-day livestream information','LIVE PAGE']
+  ]],
+  ['DESIGN',[
+   ['graphics.html','▧','Website Graphics','Replace reusable website artwork','GLOBAL GRAPHICS'],
+   ['heroes.html','✦','Hero Images','Control hero photos, motion and glow','HERO MANAGER'],
+   ['settings.html','⚙','Site Settings','Branding, navigation, footer and visibility','COMPLETE SITE MANAGER']
+  ]],
+  ['SAFETY',[
+   ['backups.html','↶','Backup & Restore','Create, review and restore protected backups','SAFETY CENTER']
+  ]]
+ ];
  $('#content').innerHTML=`
-  <div class="v2-hero">
-   <span class="v2-pill">ALLSTAR GALAXY ADMIN</span>
-   <h3>Choose what you need to update</h3>
-   <p>The most-used tools are shown first. Open Full Control for every website setting.</p>
-  </div>
-  <div class="quick-management-grid">
-   <a class="quick-management-card" href="games.html">
-    <span class="quick-management-icon">⚽</span>
-    <strong>Games</strong>
-    <small>Add scores, opponents and YouTube links</small>
-    <b>${visible('games')} visible games</b>
-   </a>
-   <a class="quick-management-card" href="players.html">
-    <span class="quick-management-icon">👤</span>
-    <strong>Players</strong>
-    <small>Add players, photos, numbers and positions</small>
-    <b>${visible('players')} visible players</b>
-   </a>
-   <a class="quick-management-card" href="schedule.html">
-    <span class="quick-management-icon">▦</span>
-    <strong>Schedule</strong>
-    <small>Update schedule and standings graphics</small>
-    <b>Schedule & Standings</b>
-   </a>
-   <button class="quick-management-card full-control-card" id="dashboardFullControl" type="button">
-    <span class="quick-management-icon">⚙</span>
-    <strong>Full Control</strong>
-    <small>Open all content, design, hero, backup and site tools</small>
-    <b>Show every Admin page</b>
-   </button>
-  </div>`;
- $('#dashboardFullControl').onclick=()=>{
-   localStorage.setItem('asgAdminCustomizeMode','customize');
+   <div class="v2-hero full-control-hero">
+    <span class="v2-pill">FULL CONTROL</span>
+    <h3>Manage every part of the website</h3>
+    <p>All content, game-day, design and safety tools are available below.</p>
+   </div>
+   ${groups.map(([title,cards])=>`
+    <section class="full-control-section">
+     <h3>${title}</h3>
+     <div class="full-control-grid">
+      ${cards.map(([href,icon,title,description,status])=>`
+       <a class="quick-management-card" href="${href}">
+        <span class="quick-management-icon">${icon}</span>
+        <strong>${title}</strong>
+        <small>${description}</small>
+        <b>${status}</b>
+       </a>`).join('')}
+     </div>
+    </section>`).join('')}
+   <button class="btn full-control-return" id="dashboardQuickManagement" type="button">← Return to Quick Management</button>`;
+ $('#dashboardQuickManagement').onclick=()=>{
+   localStorage.setItem('asgAdminCustomizeMode','basic');
    location.reload();
  };
 }
@@ -1171,7 +1203,7 @@ window.AdminCMS={initCommon,publish};
     news: "news.html",
     schedule: "schedule.html",
     livestream: "livestream.html",
-    graphics: "media.html"
+    graphics: "livestream.html"
   };
 
   let workflowBusy = false;
@@ -1201,7 +1233,7 @@ window.AdminCMS={initCommon,publish};
       return value;
     };
 
-    return walk(structuredClone(data));
+    return walk(JSON.parse(JSON.stringify(data || {})));
   }
 
   function commitOpenForm() {
@@ -1221,23 +1253,32 @@ window.AdminCMS={initCommon,publish};
   }
 
   function saveDraft() {
-    if (!commitOpenForm()) return false;
-    const page = currentPage();
-    const draft = cloneWithPendingAssets(state.data);
-    sessionStorage.setItem("asgDraftMasterContent", JSON.stringify(state.data));
-    sessionStorage.setItem("asgPreviewMasterContent", JSON.stringify(draft));
-    sessionStorage.setItem("asgDraftAdminPage", page);
-    setStatus("Draft saved — not published.", "ok");
-    const pending = document.querySelector("#pendingLabel");
-    if (pending) pending.textContent = "Draft saved — not published";
-    return true;
+    try {
+      if (!commitOpenForm()) return false;
+      const page = currentPage();
+      const draft = cloneWithPendingAssets(state.data);
+      sessionStorage.setItem("asgDraftMasterContent", JSON.stringify(state.data || {}));
+      sessionStorage.setItem("asgPreviewMasterContent", JSON.stringify(draft));
+      sessionStorage.setItem("asgDraftAdminPage", page);
+      setStatus("Draft saved — not published.", "ok");
+      const pending = document.querySelector("#pendingLabel") || document.querySelector("#workflowStatus");
+      if (pending) pending.textContent = "Draft saved — not published";
+      return true;
+    } catch (error) {
+      setStatus("Could not save draft: " + error.message, "bad");
+      return false;
+    }
   }
 
   function previewWebsite() {
     if (!saveDraft()) return;
     const page = currentPage();
     const destination = PAGE_PREVIEWS[page] || "index.html";
-    window.open(`../${destination}?adminPreview=1`, "_blank");
+    const opened = window.open(`../${destination}?adminPreview=1`, "_blank");
+    if (!opened) {
+      setStatus("Preview was blocked by the browser. Allow pop-ups and try again.", "bad");
+      return;
+    }
     setStatus(`Preview opened: ${destination}`, "ok");
   }
 
@@ -1246,8 +1287,12 @@ window.AdminCMS={initCommon,publish};
     workflowBusy = true;
     try {
       await publish();
-      sessionStorage.removeItem("asgDraftMasterContent");
-      sessionStorage.removeItem("asgDraftAdminPage");
+      if (!state.dirty) {
+        sessionStorage.removeItem("asgDraftMasterContent");
+        sessionStorage.removeItem("asgDraftAdminPage");
+      }
+    } catch (error) {
+      setStatus("Publish failed: " + error.message, "bad");
     } finally {
       workflowBusy = false;
     }
