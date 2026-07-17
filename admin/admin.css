@@ -948,3 +948,46 @@
         text-align: center;
     }
 }
+
+
+/* ============================================================
+   V148 — UNCROPPED HERO ADMIN PREVIEW + FOOTER PREVIEW BALANCE
+   ============================================================ */
+.hero-live-preview {
+    aspect-ratio: 16 / 9 !important;
+    min-height: 0 !important;
+    display: grid;
+    place-items: center;
+    background:
+      radial-gradient(circle at center, rgba(38,20,48,.72), #020307 72%) !important;
+}
+
+.hero-live-preview img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+}
+
+.chrome-preview-v148-creator {
+    grid-template-columns: 34px 1fr !important;
+}
+.chrome-preview-v148-creator b {
+    width: 34px !important;
+    height: 34px !important;
+}
+.chrome-preview-v148-creator > span {
+    display: grid;
+    gap: 2px;
+    text-align: left;
+}
+.chrome-preview-v148-creator strong,
+.chrome-preview-v148-creator small {
+    display: block;
+}
+.chrome-preview-v148-center {
+    grid-template-columns: 24px 1fr 24px !important;
+}
+.chrome-preview-v148-center small {
+    grid-column: 1 / -1;
+}

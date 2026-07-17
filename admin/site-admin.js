@@ -64,8 +64,8 @@
    const rightSrc=state.previewAssets?.rightLogo||`../${s.branding?.rightLogo||'images/logos/logo.png'}`;
    const titleSrc=state.previewAssets?.navigationTitle||`../${s.branding?.navigationTitle||'images/titles/page-titles/navigation-title.png'}`;
    target.innerHTML=`<div class="chrome-preview-header"><img src="${esc(leftSrc)}"><img class="chrome-preview-navigation-title" src="${esc(titleSrc)}" alt="${esc(s.branding.teamName||'Allstar Galaxy')}"><img src="${esc(rightSrc)}"></div><div class="chrome-preview-nav">${nav.map(n=>`<span>${esc(n.label)}</span>`).join('')}</div><div class="chrome-preview-page">PAGE CONTENT PREVIEW</div><div class="chrome-preview-footer chrome-preview-footer-v147">
-     <div class="chrome-preview-v147-creator"><b>XM</b><span>${s.footer.showXitlaliCredit!==false?esc(s.footer.xitlaliCreditText||'Designed & Developed by Xitlali Media'):''}</span></div>
-     <div class="chrome-preview-v147-center"><strong>SOCIAL MEDIA ICONS</strong><b>AG</b><small>${s.footer.showPlatformVersion!==false?`${esc(s.footer.platformName||'Allstar Galaxy Platform')} ${esc(s.footer.platformVersion||'v1.0')} (Build ${esc(s.footer.platformBuild||'147')})`:''}</small></div>
+     <div class="chrome-preview-v147-creator chrome-preview-v148-creator"><b>XM</b><span><strong>Designed and Developed</strong><small>By Xitlali Media</small></span></div>
+     <div class="chrome-preview-v147-center chrome-preview-v148-center"><b>AG</b><strong>SOCIAL MEDIA ICONS</strong><b>AG</b><small>${s.footer.showPlatformVersion!==false?`${esc(s.footer.platformName||'Allstar Galaxy Platform')} ${esc(s.footer.platformVersion||'v1.0')} (Build ${esc(s.footer.platformBuild||'147')})`:''}</small></div>
      <div class="chrome-preview-v147-team"><span>${esc(s.footer.copyright||'')}</span><small>${s.footer.showAboutLink!==false?esc(s.footer.aboutLabel||'About'):''}${s.footer.showAboutLink!==false&&s.footer.showAdminLink!==false?' • ':''}${s.footer.showAdminLink!==false?esc(s.footer.adminLabel||'Admin'):''}</small></div>
    </div>`;
    target.style.setProperty('--preview-accent',s.branding.accentColor||'#ffd700');
