@@ -4,6 +4,9 @@
   const pngOnlyPath = (value='') => {
     const path = String(value || '').trim();
     if (!path) return '';
+    // Admin Preview Website embeds unpublished images as data/blob URLs.
+    // They must pass through unchanged instead of being rewritten as .png paths.
+    if (/^(data:image\/|blob:|https?:)/i.test(path)) return path;
     const match = path.match(/^([^?#]*)([?#].*)?$/);
     const base = match ? match[1] : path;
     const suffix = match && match[2] ? match[2] : '';

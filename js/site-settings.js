@@ -1,7 +1,7 @@
 
 (() => {
  "use strict";
- const URL='data/site-settings.json?v=147';
+ const URL='data/site-settings.json?v=148';
  const pageKey=()=>document.body.className.match(/page-([a-z-]+)/)?.[1]||'home';
  const getData=async()=>{
    if(new URLSearchParams(location.search).get('adminPreview')==='1'){
@@ -72,7 +72,7 @@
        : '';
      const xitlaliWordmark=`<span class="footer-xitlali-wordmark" ${logoPath?'hidden':''}>XM</span>`;
      const credit=footer.showXitlaliCredit!==false
-       ? `<a class="footer-xitlali-credit" href="${creditUrl}" target="_blank" rel="noopener">${xitlaliLogo}${xitlaliWordmark}<span>${creditText}</span></a>`
+       ? `<a class="footer-xitlali-credit footer-xitlali-credit-v148" href="${creditUrl}" target="_blank" rel="noopener">${xitlaliLogo}${xitlaliWordmark}<span class="footer-xitlali-copy-v148"><strong>Designed and Developed</strong><span>By Xitlali Media</span></span></a>`
        : '';
 
      footerElement.classList.add('footer-platform-v147');
@@ -83,7 +83,8 @@
          </div>
 
          <div class="footer-v147-center">
-           <div class="footer-v147-social-row">
+           <div class="footer-v147-social-row footer-social-symmetric-v148">
+             ${leftLogo.outerHTML}
              ${social.outerHTML}
              ${rightLogo.outerHTML}
            </div>
