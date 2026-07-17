@@ -164,12 +164,14 @@
       scheduleConfig.standingsImage, scheduleConfig.tableImage,
       data.standingsImage, data.assets?.standingsImage, firstItemImage(data.standings)
     ));
+    const scheduleUrl=String(scheduleConfig.scheduleUrl||'').trim();
+    const standingsUrl=String(scheduleConfig.standingsUrl||'').trim();
 
     if(scheduleImage || standingsImage){
       const cards=[];
       if(scheduleImage){
         cards.push(`<article class="schedule-image-card generated-schedule-image-card" style="--card-accent:${colorFor(data,'schedule')}">
-          <a class="schedule-lightbox-link" href="${esc(scheduleImage)}" data-lightbox-title="${esc(scheduleConfig.scheduleTitle||'Match Schedule')}">
+          <a class="schedule-lightbox-link" href="${esc(scheduleUrl||scheduleImage)}" ${scheduleUrl?'target="_blank" rel="noopener"':`data-lightbox-title="${esc(scheduleConfig.scheduleTitle||'Match Schedule')}"`}>
             <img src="${esc(scheduleImage)}" alt="${esc(scheduleConfig.scheduleAlt||'Allstar Galaxy match schedule')}" loading="lazy">
             <span class="schedule-image-action">Open Full Image</span>
           </a>
@@ -182,7 +184,7 @@
       }
       if(standingsImage){
         cards.push(`<article class="schedule-image-card generated-schedule-image-card" style="--card-accent:${colorFor(data,'schedule')}">
-          <a class="schedule-lightbox-link" href="${esc(standingsImage)}" data-lightbox-title="${esc(scheduleConfig.standingsTitle||'League Standings')}">
+          <a class="schedule-lightbox-link" href="${esc(standingsUrl||standingsImage)}" ${standingsUrl?'target="_blank" rel="noopener"':`data-lightbox-title="${esc(scheduleConfig.standingsTitle||'League Standings')}"`}>
             <img src="${esc(standingsImage)}" alt="${esc(scheduleConfig.standingsAlt||'Allstar Galaxy league standings')}" loading="lazy">
             <span class="schedule-image-action">Open Full Image</span>
           </a>
