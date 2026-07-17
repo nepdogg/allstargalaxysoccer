@@ -1,5 +1,5 @@
 {
-  "version": 168,
+  "version": 169,
   "updated": "2026-07-17",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -1950,6 +1950,33 @@
       "number": "5",
       "position": "ST",
       "photo": "images/team/players/hugo.png"
+    },
+    {
+      "status": "published",
+      "order": 28,
+      "id": "player-28",
+      "name": "Chicharito",
+      "number": "14",
+      "position": "ST",
+      "photo": "images/team/players/chicharito.png"
+    },
+    {
+      "status": "published",
+      "order": 29,
+      "id": "player-29",
+      "name": "Maradona",
+      "number": "15",
+      "position": "CM",
+      "photo": "images/team/players/maradona.png"
+    },
+    {
+      "status": "published",
+      "order": 30,
+      "id": "player-30",
+      "name": "Cuac",
+      "number": "11",
+      "position": "ST",
+      "photo": "images/team/players/cuac.png"
     }
   ],
   "news": [
