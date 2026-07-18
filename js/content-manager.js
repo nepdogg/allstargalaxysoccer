@@ -122,20 +122,19 @@
     const accent=colorFor(data,'players');
     const uploadedPhoto=pngOnlyPath(p.photo||'');
     const defaultSilhouette=pngOnlyPath(data.assets?.playerSilhouette||'images/team/players/player-silhouette.png');
-    const fallbackLogo=pngOnlyPath(data.assets?.logo||'');
+    const fallbackLogo=pngOnlyPath(data.assets?.logo||'images/logos/logo.png');
     const photoPath=uploadedPhoto||defaultSilhouette;
-    const lightboxPath=photoPath||fallbackLogo;
-    const photo=photoPath
-      ? `<img class="generated-player-photo" src="${esc(photoPath)}" alt="${esc(p.name||'Player')}" loading="lazy" onerror="this.onerror=null;this.src='${esc(defaultSilhouette||fallbackLogo)}'"/>`
-      : `<div class="generated-player-placeholder"><img src="${esc(fallbackLogo)}" alt="Allstar Galaxy logo"><span>PLAYER PHOTO<br>COMING SOON</span></div>`;
-    return `<a href="${esc(lightboxPath||'#')}" class="team-card-slide generated-player-card" aria-label="${esc(p.name)} player card" data-player-image="${esc(lightboxPath)}" data-player-name="${esc(p.name)}" style="--card-accent:${accent}">
-      <div class="generated-player-frame">
-        <div class="generated-player-cosmos" style="background-image:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.12)),url('${esc(pngOnlyPath(data.assets.mediaBackground))}')"></div>
-        ${photo}
-        <div class="generated-player-number">${esc(p.number||'')}</div>
-        <div class="generated-player-info"><span>${esc(p.name||'COMING SOON')}</span>${p.position && !/roster spot/i.test(p.position)?`<strong>${esc(p.position)}</strong>`:''}</div>
+    const parts=String(p.name||'PLAYER').trim().split(/\s+/); const first=parts.shift()||'PLAYER'; const last=parts.join(' ')||first;
+    const attrs={dob:p.dateOfBirth||'',nationality:p.nationality||'',foot:p.preferredFoot||'',height:p.height||'',weight:p.weight||'',quote:p.quote||'',mode:p.profileMode||'standard'};
+    return `<a href="#" class="team-card-slide generated-player-card ultimate-player-card" aria-label="${esc(p.name)} player card" data-player-image="${esc(photoPath)}" data-player-name="${esc(p.name)}" data-player-first="${esc(first)}" data-player-last="${esc(last)}" data-player-number="${esc(p.number||'')}" data-player-position="${esc(p.position||'')}" data-player-mode="${esc(attrs.mode)}" data-player-dob="${esc(attrs.dob)}" data-player-nationality="${esc(attrs.nationality)}" data-player-foot="${esc(attrs.foot)}" data-player-height="${esc(attrs.height)}" data-player-weight="${esc(attrs.weight)}" data-player-quote="${esc(attrs.quote)}" style="--card-accent:${accent}">
+      <div class="ultimate-player-frame">
+        <div class="ultimate-player-bg" style="background-image:url('${esc(pngOnlyPath(data.assets.mediaBackground))}')"></div>
+        <div class="ultimate-card-heading"><div><span>${esc(p.number||'00')}</span><small>${esc(p.position||'PLAYER')}</small></div><img src="${esc(fallbackLogo)}" alt="Allstar Galaxy"></div>
+        <img class="ultimate-player-photo generated-player-photo" src="${esc(photoPath)}" alt="${esc(p.name||'Player')}" loading="lazy" onerror="this.onerror=null;this.src='${esc(defaultSilhouette||fallbackLogo)}'">
+        <div class="ultimate-player-name"><small>${esc(first)}</small><strong>${esc(last)}</strong><em>★ ALLSTAR GALAXY ★</em></div>
       </div></a>`;
   }
+
   function newsCard(data,n){
     const accent=colorFor(data,'news');
     const image=itemImage(n)||pngOnlyPath(data.assets.logo);

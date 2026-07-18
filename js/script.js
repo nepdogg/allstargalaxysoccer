@@ -216,17 +216,28 @@ document.addEventListener("DOMContentLoaded", async () => {
         function showPlayerCard(index) {
             activePlayerIndex = (index + playerCards.length) % playerCards.length;
             const selectedCard = playerCards[activePlayerIndex];
-            const selectedImage = selectedCard.querySelector(".generated-player-photo, .generated-player-placeholder img, img");
-            const imageSrc = selectedCard.dataset.playerImage || selectedCard.getAttribute("href") || selectedImage?.getAttribute("src");
-            const imageAlt = selectedCard.dataset.playerName || selectedImage?.getAttribute("alt") || `Allstar Galaxy player card ${activePlayerIndex + 1}`;
-
-            if (!imageSrc || !lightboxImage) return;
-
-            lightboxImage.src = imageSrc;
-            lightboxImage.alt = imageAlt;
-
-            if (openOriginal) {
-                openOriginal.href = imageSrc;
+            const stage = playerLightbox.querySelector("#ultimatePlayerProfile");
+            if (!stage) return;
+            const front = selectedCard.querySelector(".ultimate-player-frame")?.cloneNode(true);
+            if (!front) return;
+            stage.innerHTML = "";
+            stage.appendChild(front);
+            if ((selectedCard.dataset.playerMode || "standard") === "advanced") {
+                const value = (key, fallback="N/A") => selectedCard.dataset[key] || fallback;
+                const profile = document.createElement("section");
+                profile.className = "ultimate-profile-card";
+                profile.innerHTML = `
+                  <div class="ultimate-profile-top"><div><b>${value("playerNumber","00")}</b><span class="ultimate-profile-position">${value("playerPosition","PLAYER")}</span></div><img src="images/logos/logo.png" alt="Allstar Galaxy"></div>
+                  <div class="ultimate-profile-name"><small>${value("playerFirst","PLAYER")}</small><strong>${value("playerLast","PROFILE")}</strong></div>
+                  <div class="ultimate-profile-rows">
+                    <div class="ultimate-profile-row"><span>Date of Birth</span><b>${value("playerDob")}</b></div>
+                    <div class="ultimate-profile-row"><span>Nationality</span><b>${value("playerNationality")}</b></div>
+                    <div class="ultimate-profile-row"><span>Preferred Foot</span><b>${value("playerFoot")}</b></div>
+                    <div class="ultimate-profile-row"><span>Height</span><b>${value("playerHeight")}</b></div>
+                    <div class="ultimate-profile-row"><span>Weight</span><b>${value("playerWeight")}</b></div>
+                  </div>
+                  <p class="ultimate-profile-quote">“${value("playerQuote","ALLSTAR GALAXY") }”</p>`;
+                stage.appendChild(profile);
             }
         }
 
