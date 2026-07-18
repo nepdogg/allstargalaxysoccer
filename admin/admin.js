@@ -284,7 +284,7 @@ window.AdminCMS={initCommon,publish};
     const parts=String(obj.name||'PLAYER NAME').trim().split(/\s+/); const first=String(obj.firstName||parts.shift()||'PLAYER'); const last=String(obj.lastName||parts.join(' ')||first);
     return `<div class="visual-card player-preview-card public-style-player-preview ${obj.status==='hidden'?'preview-hidden':''}">
       <div class="preview-ultimate-card prototype-player-frame image-mode-${String(obj.imageMode||'cutout').toLowerCase()==='photo'?'photo':'cutout'}">
-        <img class="prototype-card-template" src="../generated/player-card-template.png" alt="" aria-hidden="true">
+        <img class="prototype-card-template" src="${previewEsc((state.data.assets&&state.data.assets.playerCardTemplate)?'../'+state.data.assets.playerCardTemplate:'../generated/player-card-template.png')}" alt="" aria-hidden="true">
         <div class="preview-ultimate-cutout-stage prototype-player-stage" style="--player-scale:${Math.max(60,Math.min(180,Number(obj.photoScale)||100))/100};--player-x:${Math.max(-50,Math.min(50,Number(obj.photoX)||0))}%;--player-y:${Math.max(-50,Math.min(50,Number(obj.photoY)||0))}%"><img class="preview-ultimate-photo" src="${previewEsc(image || '../images/team/players/player-silhouette.png')}" alt=""></div>
         <span class="prototype-player-number">${previewEsc(obj.number||'00')}</span>
         <div class="preview-ultimate-name prototype-player-name"><small>${previewEsc(first)}</small><strong>${previewEsc(last)}</strong><em>${previewEsc(obj.position||'PLAYER')}</em></div>
@@ -784,232 +784,110 @@ window.AdminCMS={initCommon,publish};
   renderAssets = function() {
     const assets = state.data.assets || {};
     $("#pageTitle").textContent = "Website Graphics";
+
+    const groups = [
+      {title:"Player Cards", note:"Templates and defaults used by the Team carousel, player preview, and player popup.", items:[
+        ["playerCardTemplate","Front player-card template","generated/player-card-template.png"],
+        ["playerProfileTemplate","Advanced profile-card template","generated/player-profile-card-template.png"],
+        ["playerSilhouette","Default player silhouette","images/team/players/player-silhouette.png"],
+        ["playerPopupBackground","Player popup background","images/team/player-popup-background.png"]
+      ]},
+      {title:"Carousel Backgrounds", note:"Independent artwork behind each major carousel. Uploading one no longer changes the others.", items:[
+        ["homeCarouselBackground","Homepage carousel background","images/carousels/home-carousel-background.png"],
+        ["teamCarouselBackground","Team player carousel background","images/carousels/team-carousel-background.png"],
+        ["mediaCarouselBackground","Media carousel background","images/carousels/media-carousel-background.png"],
+        ["seasonCarouselBackground","Season archive carousel background","images/carousels/season-carousel-background.png"]
+      ]},
+      {title:"Media Cards", note:"Separate card artwork for games, seasons, playlists, and Best Of content.", items:[
+        ["gameCardBackground","Game-card background","generated/game-card-background.png"],
+        ["seasonCardBackground","Season-card background","generated/season-card-background.png"],
+        ["playlistCardBackground","Playlist-card background","generated/playlist-card-background.png"],
+        ["bestOfCardBackground","Best Of card background","generated/best-of-card-background.png"],
+        ["mediaBackground","Legacy shared media-card fallback","generated/media-card-background.png"]
+      ]},
+      {title:"Livestream Graphics", note:"Default and status-specific artwork used by the Live page.", items:[
+        ["liveDefaultImage","Default livestream image","images/live/live-default.png"],
+        ["liveOfflineImage","Livestream offline image","images/live/live-offline.png"],
+        ["liveComingSoonImage","Livestream coming-soon image","images/live/live-coming-soon.png"],
+        ["liveOverlay","Live Now overlay","images/live/live-now-overlay.png"]
+      ]},
+      {title:"Website Branding", note:"Reusable logos and titles shown across the public website.", items:[
+        ["logo","Website logo","images/logos/logo.png"],
+        ["navigationTitle","Desktop navigation title","images/logos/navigation-title.png"],
+        ["mobileNavigationTitle","Mobile navigation title","images/logos/navigation-title-mobile.png"],
+        ["footerLogo","Footer logo","images/logos/footer-logo.png"],
+        ["favicon","Favicon","images/logos/favicon.png"]
+      ]},
+      {title:"Homepage Graphics", note:"Large reusable homepage artwork outside the hero-image system.", items:[
+        ["homeBanner","Homepage banner","images/home/home-banner.png"],
+        ["bestOfBanner","Best Of banner","images/home/best-of-banner.png"],
+        ["featuredBanner","Featured section banner","images/home/featured-banner.png"]
+      ]},
+      {title:"Team Graphics", note:"Team-page artwork that is separate from individual player cards.", items:[
+        ["teamRosterBanner","Team roster banner","images/team/team-roster-banner.png"],
+        ["teamSectionBackground","Team section background","images/team/team-section-background.png"]
+      ]},
+      {title:"Schedule, News & Generic", note:"Shared placeholders and utility graphics.", items:[
+        ["scheduleBackground","Schedule section background","images/schedule/schedule-background.png"],
+        ["standingsBackground","Standings section background","images/schedule/standings-background.png"],
+        ["newsCardBackground","News-card background","images/news/news-card-background.png"],
+        ["newsPlaceholder","Default news placeholder","images/news/news-placeholder.png"],
+        ["loadingGraphic","Loading graphic","images/system/loading.png"],
+        ["notFoundGraphic","404 graphic","images/system/404.png"],
+        ["comingSoonGraphic","Coming Soon graphic","images/system/coming-soon.png"],
+        ["maintenanceGraphic","Maintenance graphic","images/system/maintenance.png"]
+      ]}
+    ];
+
+    const itemMarkup = ([key,label,path]) => {
+      const current = assets[key] || path;
+      return `<article class="graphic-preview-item">
+        <div class="field">
+          <label>${label}</label>
+          <input data-asset-path="${path}" data-asset-key="${key}" type="file" accept="image/png,image/jpeg,image/webp">
+          <div class="help">Protected destination: ${esc(current)} 🔒</div>
+        </div>
+        <div class="graphic-preview-box">
+          <img data-graphic-preview="${key}" src="../${esc(current)}" alt="${esc(label)}">
+          <div class="graphic-missing-placeholder" hidden><strong>IMAGE NOT AVAILABLE</strong><span>Upload a replacement, save, and publish Website Graphics.</span></div>
+        </div>
+      </article>`;
+    };
+
     $("#content").innerHTML = `
-      <div class="v2-banner">
-        <strong>Visual Graphics Manager</strong>
-        <span>Every graphic is displayed in full without cropping or stretching.</span>
-      </div>
+      <div class="v2-banner"><strong>Complete Graphics Asset Manager</strong><span>Every reusable website graphic now has its own protected upload slot.</span></div>
+      <div class="graphics-manager-summary"><strong>${groups.reduce((n,g)=>n+g.items.length,0)} managed graphics</strong><span>Changing one asset does not overwrite unrelated cards or carousels.</span></div>
+      ${groups.map((group,index)=>`<section class="panel graphics-category" data-graphics-category="${index}">
+        <button class="graphics-category-head" type="button" aria-expanded="${index<3?'true':'false'}">
+          <span><strong>${group.title}</strong><small>${group.note}</small></span><em>${group.items.length} graphics</em>
+        </button>
+        <div class="graphics-preview-grid" ${index<3?'':'hidden'}>${group.items.map(itemMarkup).join('')}</div>
+      </section>`).join('')}
+      <div class="panel sticky-graphics-publish"><div class="admin-actions form-actions"><button class="btn" id="saveAssets">Save Changes</button><button class="btn primary" id="publishAssets">Publish Website Graphics</button></div></div>`;
 
-      <div class="panel">
-        <div class="graphics-preview-grid">
-          ${[
-            ["mediaBackground", "Default media-card background", "generated/media-card-background.png"],
-            ["playerSilhouette", "Default player silhouette", "images/team/players/player-silhouette.png"],
-            ["liveDefaultImage", "Default livestream image", "images/live/live-default.png"]
-          ].map(([key, label, path]) => {
-            const current = assets[key] || path;
-            return `<article class="graphic-preview-item">
-              <div class="field">
-                <label>${label}</label>
-                <input data-asset-path="${path}" data-asset-key="${key}" type="file" accept="image/png,image/jpeg,image/webp">
-                <div class="help">Protected destination: ${esc(current)} 🔒</div>
-              </div>
-              <div class="graphic-preview-box">
-                <img data-graphic-preview="${key}" src="../${esc(current)}" alt="${esc(label)}">
-                <div class="graphic-missing-placeholder" hidden>
-                  <strong>IMAGE NOT AVAILABLE</strong>
-                  <span>Upload a replacement image, then publish Website Graphics.</span>
-                </div>
-              </div>
-            </article>`;
-          }).join("")}
-        </div>
-
-        <div class="admin-actions form-actions">
-          <button class="btn primary" id="publishAssets">Publish Website Graphics</button>
-        </div>
-      </div>
-    `;
+    $$(".graphics-category-head").forEach(button => button.onclick = () => {
+      const grid = button.parentElement.querySelector(".graphics-preview-grid");
+      const opening = grid.hasAttribute("hidden");
+      grid.toggleAttribute("hidden", !opening);
+      button.setAttribute("aria-expanded", opening ? "true" : "false");
+    });
 
     $$("[data-graphic-preview]").forEach(image => {
-      image.onerror = () => {
-        image.hidden = true;
-        const placeholder = image.nextElementSibling;
-        if (placeholder) placeholder.hidden = false;
-      };
-      image.onload = () => {
-        image.hidden = false;
-        const placeholder = image.nextElementSibling;
-        if (placeholder) placeholder.hidden = true;
-      };
+      image.onerror = () => { image.hidden = true; image.nextElementSibling && (image.nextElementSibling.hidden = false); };
+      image.onload = () => { image.hidden = false; image.nextElementSibling && (image.nextElementSibling.hidden = true); };
     });
 
     $$("[data-asset-key]").forEach(input => input.onchange = async () => {
       await queueAssetUpload(input);
       if (!input.files[0]) return;
-
       const image = $(`[data-graphic-preview="${input.dataset.assetKey}"]`);
-      const placeholder = image?.nextElementSibling;
-      if (image) {
-        image.src = URL.createObjectURL(input.files[0]);
-        image.hidden = false;
-      }
-      if (placeholder) placeholder.hidden = true;
+      if (image) { image.src = URL.createObjectURL(input.files[0]); image.hidden = false; }
+      if (image?.nextElementSibling) image.nextElementSibling.hidden = true;
     });
 
+    $("#saveAssets").onclick = () => setStatus("Website Graphics draft saved locally. Publish when ready.","ok");
     $("#publishAssets").onclick = publish;
   };
-})();
-
-
-/* ============================================================
-   V141 — PERMANENT LIVE PREVIEWS
-   Players, Games, Seasons and Playlists now match the permanent
-   visual-manager behavior already used by News.
-   ============================================================ */
-(() => {
-  "use strict";
-
-  const priorRenderManagerV141 = renderManager;
-
-  const v141PreviewPath = (path, fallback = "../images/logos/logo.png") => {
-    const value = String(path || "").trim();
-    if (!value) return fallback;
-    if (/^(blob:|data:|https?:)/i.test(value)) return value;
-    return "../" + value.replace(/^\/+/, "");
-  };
-
-  const v141EmptyPreview = label => `
-    <div class="empty-admin-preview">
-      <strong>No ${label} selected</strong>
-      <p>Select Preview, Edit, or Add New to view the live card.</p>
-    </div>`;
-
-  const v141PermanentPreview = (section, item) => {
-    if (!item) return v141EmptyPreview(section.replace(/s$/, ""));
-
-    const schema = SECTION_SCHEMAS[section];
-    const image = schema?.imageField ? v141PreviewPath(item[schema.imageField]) : "";
-    if (typeof window.ASGVisualPreview !== "function") {
-      return `<div class="empty-admin-preview"><strong>Preview temporarily unavailable</strong><p>The content is loaded correctly. Refresh this Admin page to reload the visual renderer.</p></div>`;
-    }
-    return window.ASGVisualPreview(section, item, image);
-  };
-
-  function v141RenderPermanentManager(section) {
-    state.section = section;
-    const schema = SECTION_SCHEMAS[section];
-    const arr = state.data[schema.array] || [];
-    const firstVisible = arr.findIndex(item => item.status !== "hidden");
-    let selectedIndex = firstVisible >= 0 ? firstVisible : (arr.length ? 0 : -1);
-
-    const labels = {
-      players: "Player",
-      games: "Game",
-      seasons: "Season",
-      playlists: "Playlist"
-    };
-    const label = labels[section] || "Item";
-
-    $("#pageTitle").textContent = schema.title;
-    $("#content").innerHTML = `
-      <div class="v2-banner">
-        <strong>Visual ${schema.title} Manager</strong>
-        <span>Select any item to see the exact website card. Add, edit, hide, restore or delete while keeping the visual result visible.</span>
-      </div>
-
-      <div class="admin-actions manager-actions">
-        <button class="btn primary" id="addBtn">Add ${label}</button>
-        <button class="btn" id="publishBtn">Publish All Changes</button>
-        <button class="btn" id="previewBtn">Preview Draft</button>
-        <span class="pending" id="pendingLabel">${state.dirty ? "Unpublished changes" : ""}</span>
-      </div>
-
-      <div class="permanent-preview-layout">
-        <div class="item-list permanent-manager-list">
-          ${arr.map((item, index) => `
-            <div class="item-row ${item.status === "hidden" ? "is-hidden" : ""}" data-permanent-row="${index}">
-              <div>
-                <div class="item-title">${esc(titleFor(item, section))}</div>
-                <div class="item-sub">${esc(subFor(item, section) || item.status || "")}</div>
-              </div>
-              <div class="row-actions">
-                <button class="btn small" data-permanent-select="${index}">Preview</button>
-                <button class="btn small" data-permanent-edit="${index}">Edit</button>
-                <button class="btn small" data-permanent-toggle="${index}">${item.status === "hidden" ? "Restore" : "Hide"}</button>
-                <button class="btn small danger" data-permanent-delete="${index}">Delete</button>
-              </div>
-            </div>
-          `).join("")}
-        </div>
-
-        <aside class="visual-editor-preview permanent-card-preview">
-          <div class="preview-toolbar">
-            <div>
-              <span class="v2-pill">LIVE PREVIEW</span>
-              <h4>Selected ${label} Card</h4>
-            </div>
-            <div class="preview-device-switch">
-              <button type="button" class="is-active" data-permanent-device="desktop">Desktop</button>
-              <button type="button" data-permanent-device="mobile">Mobile</button>
-            </div>
-          </div>
-          <div id="permanentCardPreview" class="live-card-preview"></div>
-          <p class="help preview-help">The preview uses the same generated card layout and data as the public website.</p>
-        </aside>
-      </div>
-    `;
-
-    const drawSelected = () => {
-      const target = $("#permanentCardPreview");
-      if (target) target.innerHTML = v141PermanentPreview(section, arr[selectedIndex]);
-      $$("[data-permanent-row]").forEach(row =>
-        row.classList.toggle("is-selected", Number(row.dataset.permanentRow) === selectedIndex)
-      );
-    };
-
-    $("#addBtn").onclick = () => openForm(-1);
-    $("#publishBtn").onclick = publish;
-    $("#previewBtn").onclick = () => {
-      sessionStorage.setItem("asgPreviewMasterContent", JSON.stringify(state.data));
-      const pageMap = {
-        players: "team.html",
-        games: "media.html",
-        seasons: "media.html",
-        playlists: "media.html"
-      };
-      window.open("../" + pageMap[section] + "?adminPreview=1", "_blank");
-    };
-
-    $$("[data-permanent-select]").forEach(button => button.onclick = () => {
-      selectedIndex = Number(button.dataset.permanentSelect);
-      drawSelected();
-    });
-
-    $$("[data-permanent-edit]").forEach(button => button.onclick = () => {
-      selectedIndex = Number(button.dataset.permanentEdit);
-      drawSelected();
-      openForm(selectedIndex);
-    });
-
-    $$("[data-permanent-toggle]").forEach(button => button.onclick = () => {
-      const item = arr[Number(button.dataset.permanentToggle)];
-      item.status = item.status === "hidden" ? "published" : "hidden";
-      markDirty();
-      v141RenderPermanentManager(section);
-    });
-
-    $$("[data-permanent-delete]").forEach(button => button.onclick = () => {
-      const index = Number(button.dataset.permanentDelete);
-      if (confirm(`Permanently delete this ${label.toLowerCase()}? Hide is safer.`)) {
-        arr.splice(index, 1);
-        markDirty();
-        v141RenderPermanentManager(section);
-      }
-    });
-
-    $$("[data-permanent-device]").forEach(button => button.onclick = () => {
-      $$("[data-permanent-device]").forEach(item =>
-        item.classList.toggle("is-active", item === button)
-      );
-      $("#permanentCardPreview").classList.toggle(
-        "mobile-preview",
-        button.dataset.permanentDevice === "mobile"
-      );
-    });
-
-    drawSelected();
-  }
 
   renderManager = function(section) {
     if (["players", "games", "seasons", "playlists"].includes(section)) {
@@ -1024,8 +902,9 @@ window.AdminCMS={initCommon,publish};
 (() => {
   "use strict";
   const previousRenderManagerV143 = renderManager;
-  function mediaBackgroundPath() {
-    const path = state?.data?.assets?.mediaBackground || state?.data?.assets?.mediaCardBackground || "generated/media-card-background.png";
+  function mediaBackgroundPath(section) {
+    const a=state?.data?.assets||{};
+    const path = section==="games" ? (a.gameCardBackground||a.mediaBackground) : section==="seasons" ? (a.seasonCardBackground||a.mediaBackground) : section==="playlists" ? (a.playlistCardBackground||a.mediaBackground) : (a.mediaBackground||a.mediaCardBackground) || "generated/media-card-background.png";
     if (/^(blob:|data:|https?:)/i.test(String(path))) return path;
     return "../" + String(path).replace(/^\/+/, "");
   }
@@ -1035,7 +914,7 @@ window.AdminCMS={initCommon,publish};
       if (/^(blob:|data:|https?:)/i.test(String(path))) return path;
       return "../" + String(path).replace(/^\/+/, "");
     }
-    if (["games", "seasons", "playlists"].includes(section)) return mediaBackgroundPath();
+    if (["games", "seasons", "playlists"].includes(section)) return mediaBackgroundPath(section);
     const path = item?.image || "images/logos/logo.png";
     if (/^(blob:|data:|https?:)/i.test(String(path))) return path;
     return "../" + String(path).replace(/^\/+/, "");
