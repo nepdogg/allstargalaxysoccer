@@ -132,11 +132,11 @@
     const photoX=Math.max(-50,Math.min(50,Number(p.photoX)||0));
     const photoY=Math.max(-50,Math.min(50,Number(p.photoY)||0));
     return `<a href="#" class="team-card-slide generated-player-card ultimate-player-card" aria-label="${esc(p.name)} player card" data-player-image="${esc(photoPath)}" data-player-name="${esc(p.name)}" data-player-first="${esc(first)}" data-player-last="${esc(last)}" data-player-number="${esc(p.number||'')}" data-player-position="${esc(p.position||'')}" data-player-mode="${esc(attrs.mode)}" data-player-dob="${esc(attrs.dob)}" data-player-nationality="${esc(attrs.nationality)}" data-player-foot="${esc(attrs.foot)}" data-player-height="${esc(attrs.height)}" data-player-weight="${esc(attrs.weight)}" data-player-quote="${esc(attrs.quote)}" data-player-image-mode="${esc(imageMode)}" data-player-photo-scale="${photoScale}" data-player-photo-x="${photoX}" data-player-photo-y="${photoY}" style="--card-accent:${accent};--player-scale:${photoScale/100};--player-x:${photoX}%;--player-y:${photoY}%">
-      <div class="ultimate-player-frame image-mode-${imageMode}">
-        <div class="ultimate-player-bg"></div>
-        <div class="ultimate-card-heading"><div><span>${esc(p.number||'00')}</span><small>${esc(p.position||'PLAYER')}</small></div><img src="${esc(fallbackLogo)}" alt="Allstar Galaxy"></div>
-        <div class="ultimate-player-cutout-stage"><img class="ultimate-player-photo generated-player-photo" src="${esc(photoPath)}" alt="${esc(p.name||'Player')}" loading="lazy" onerror="this.onerror=null;this.src='${esc(defaultSilhouette||fallbackLogo)}'"></div>
-        <div class="ultimate-player-name name-length-${Math.min(20,String(last).length)}"><small>${esc(first)}</small><strong>${esc(last)}</strong><em>${esc(p.position||'PLAYER')}</em></div>
+      <div class="ultimate-player-frame prototype-player-frame image-mode-${imageMode}">
+        <img class="prototype-card-template" src="generated/player-card-template.png" alt="" aria-hidden="true">
+        <div class="ultimate-player-cutout-stage prototype-player-stage"><img class="ultimate-player-photo generated-player-photo" src="${esc(photoPath)}" alt="${esc(p.name||'Player')}" loading="lazy" onerror="this.onerror=null;this.src='${esc(defaultSilhouette||fallbackLogo)}'"></div>
+        <span class="prototype-player-number">${esc(p.number||'00')}</span>
+        <div class="ultimate-player-name prototype-player-name name-length-${Math.min(20,String(last).length)}"><small>${esc(first)}</small><strong>${esc(last)}</strong><em>${esc(p.position||'PLAYER')}</em></div>
       </div></a>`;
   }
 
