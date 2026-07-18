@@ -220,6 +220,43 @@
       else if(source==='live') el.innerHTML=liveMarkup(data);
     });
   }
-  const preview=(()=>{if(new URLSearchParams(location.search).get('adminPreview')!=='1')return null;try{return JSON.parse(sessionStorage.getItem('asgPreviewMasterContent')||'null')}catch(e){return null}})();const ready=(preview?Promise.resolve(preview):fetch(DATA_URL,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(`Unable to load ${DATA_URL}`);return r.json()})).then(data=>{render(data);window.ASG_MASTER_DATA=data;return data}).catch(err=>{console.error(err);document.querySelectorAll('[data-generated-source]').forEach(el=>el.innerHTML='<p class="generated-data-error">Content could not load. Check data/master-content.json.</p>');});
+  async function loadIndexedPreviewAssets(){
+    if(sessionStorage.getItem('asgPreviewAssetsInIndexedDb')!=='1')return new Map();
+    return new Promise(resolve=>{
+      const request=indexedDB.open('asg-admin-preview',1);
+      request.onupgradeneeded=()=>{const db=request.result;if(!db.objectStoreNames.contains('pending-assets'))db.createObjectStore('pending-assets',{keyPath:'path'})};
+      request.onerror=()=>resolve(new Map());
+      request.onsuccess=()=>{
+        const db=request.result,tx=db.transaction('pending-assets','readonly'),store=tx.objectStore('pending-assets'),all=store.getAll();
+        all.onerror=()=>{db.close();resolve(new Map())};
+        all.onsuccess=()=>{const map=new Map((all.result||[]).map(item=>[String(item.path),`data:image/png;base64,${item.base64}`]));db.close();resolve(map)};
+      };
+    });
+  }
+  function hydratePreviewAssets(value,assetMap){
+    if(Array.isArray(value))return value.map(item=>hydratePreviewAssets(item,assetMap));
+    if(value&&typeof value==='object')return Object.fromEntries(Object.entries(value).map(([key,item])=>[key,hydratePreviewAssets(item,assetMap)]));
+    if(typeof value==='string'&&assetMap.has(value))return assetMap.get(value);
+    return value;
+  }
+  async function loadPreviewContent(){
+    if(new URLSearchParams(location.search).get('adminPreview')!=='1')return null;
+    try{
+      const draft=JSON.parse(sessionStorage.getItem('asgPreviewMasterContent')||'null');
+      if(!draft)return null;
+      let assets=new Map();
+      try{
+        const openerAssets=window.opener && window.opener.__ASG_PENDING_PREVIEW_ASSETS;
+        if(openerAssets && typeof openerAssets==='object'){
+          assets=new Map(Object.entries(openerAssets));
+        }
+      }catch(error){
+        console.warn('Could not read temporary preview assets from the Admin tab.',error);
+      }
+      if(!assets.size)assets=await loadIndexedPreviewAssets();
+      return hydratePreviewAssets(draft,assets);
+    }catch(error){console.warn('Could not load Admin preview content.',error);return null}
+  }
+  const ready=loadPreviewContent().then(preview=>preview||fetch(DATA_URL,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(`Unable to load ${DATA_URL}`);return r.json()})).then(data=>{render(data);window.ASG_MASTER_DATA=data;return data}).catch(err=>{console.error(err);document.querySelectorAll('[data-generated-source]').forEach(el=>el.innerHTML='<p class="generated-data-error">Content could not load. Check data/master-content.json.</p>');});
   window.ASGContent={ready,render};
 })();

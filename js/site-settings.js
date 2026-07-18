@@ -1,7 +1,7 @@
 
 (() => {
  "use strict";
- const URL='data/site-settings.json?v=150';
+ const URL='data/site-settings.json?v=153';
  const pageKey=()=>document.body.className.match(/page-([a-z-]+)/)?.[1]||'home';
  const getData=async()=>{
    if(new URLSearchParams(location.search).get('adminPreview')==='1'){
@@ -96,7 +96,7 @@
            <span class="footer-copyright">${footer.copyright||''}</span>
            <div class="footer-v147-links">
              ${about}
-             ${about && admin ? '<span class="footer-meta-divider">•</span>' : ''}
+             ${about && admin ? '<span class="footer-meta-divider footer-link-separator">|</span>' : ''}
              ${admin}
            </div>
          </div>
