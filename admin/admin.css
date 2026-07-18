@@ -1207,3 +1207,72 @@
         padding: 12px;
     }
 }
+
+
+/* ============================================================
+   V154 — PLAYER FALLBACK / WEBSITE GRAPHICS DESKTOP VISIBILITY
+   Keeps the graphics live preview compact so upload controls stay
+   visible at normal desktop zoom.
+   ============================================================ */
+.graphics-top-preview {
+    overflow: visible !important;
+}
+
+.graphics-top-preview-grid {
+    align-items: start !important;
+}
+
+.graphics-top-preview-grid .graphic-preview-box {
+    display: grid !important;
+    place-items: center !important;
+    height: 220px !important;
+    min-height: 220px !important;
+    max-height: 220px !important;
+    overflow: hidden !important;
+    padding: 10px !important;
+}
+
+.graphics-top-preview-grid .graphic-preview-box img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 200px !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    margin: 0 auto !important;
+}
+
+/* The actual upload controls must never be clipped on desktop. */
+.standardized-admin-flow .panel:has(.graphics-preview-grid),
+.standardized-admin-flow .graphics-preview-grid,
+.standardized-admin-flow .graphic-preview-item,
+.standardized-admin-flow .graphic-preview-item .field {
+    overflow: visible !important;
+}
+
+.standardized-admin-flow .graphic-preview-item .field {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+.standardized-admin-flow .graphic-preview-item input[type="file"] {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+@media (max-width: 760px) {
+    .graphics-top-preview-grid .graphic-preview-box {
+        height: 190px !important;
+        min-height: 190px !important;
+        max-height: 190px !important;
+    }
+
+    .graphics-top-preview-grid .graphic-preview-box img {
+        max-height: 170px !important;
+    }
+}
