@@ -1,5 +1,5 @@
 {
-  "version": 174,
+  "version": 175,
   "updated": "2026-07-18",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -1710,12 +1710,23 @@
   "players": [
     {
       "id": "player-01",
-      "name": "Neptune",
+      "name": "Neptune Garcia",
       "number": "22",
       "position": "CB",
-      "photo": "images/team/players/neptune.png",
+      "photo": "images/team/players/neptune-nb.png",
       "status": "published",
-      "order": 1
+      "order": 1,
+      "imageMode": "cutout",
+      "profileMode": "advanced",
+      "photoScale": "",
+      "photoX": "",
+      "photoY": "",
+      "dateOfBirth": "",
+      "nationality": "",
+      "preferredFoot": "",
+      "height": "",
+      "weight": "",
+      "quote": ""
     },
     {
       "id": "player-03",
