@@ -17364,3 +17364,109 @@ body.page-not-found .footer-platform-v147 { border-top-color:#cfd5e3 !important;
 .page-team .team-roster-carousel{background-image:var(--team-carousel-background,none);background-size:cover;background-position:center}
 .page-media .carousel{background-image:var(--media-carousel-background,none);background-size:cover;background-position:center}
 .season-games-carousel,.season-archive-carousel{background-image:var(--season-carousel-background,none);background-size:cover;background-position:center}
+
+
+/* ============================================================
+   V161 — APPROVED PROTOTYPE PLAYER TEMPLATE RENDERER
+   One renderer: Admin preview, carousel, website preview and popup.
+   ============================================================ */
+.prototype-player-frame{
+  aspect-ratio:2/3!important;
+  background:#020006!important;
+  overflow:hidden!important;
+}
+.prototype-card-template{
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  z-index:1!important;
+}
+/* The transparent player is a foreground layer over the baked galaxy artwork. */
+.prototype-player-stage,
+.preview-ultimate-cutout-stage.prototype-player-stage{
+  left:3.5%!important;
+  right:3.5%!important;
+  top:5.5%!important;
+  bottom:30.5%!important;
+  overflow:visible!important;
+  z-index:2!important;
+  align-items:flex-end!important;
+}
+.prototype-player-stage .ultimate-player-photo,
+.prototype-player-stage .preview-ultimate-photo{
+  width:100%!important;
+  height:100%!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  object-fit:contain!important;
+  object-position:center bottom!important;
+  transform:translate(var(--player-x,0),var(--player-y,0)) scale(var(--player-scale,1))!important;
+  transform-origin:center bottom!important;
+  -webkit-mask-image:linear-gradient(to bottom,#000 0 92%,rgba(0,0,0,.98) 97%,transparent 100%)!important;
+  mask-image:linear-gradient(to bottom,#000 0 92%,rgba(0,0,0,.98) 97%,transparent 100%)!important;
+}
+/* Regular photos also remain fully visible; no head cropping. */
+.prototype-player-frame.image-mode-photo .prototype-player-stage{
+  left:3.5%!important;right:3.5%!important;top:5.5%!important;bottom:30.5%!important;overflow:hidden!important;
+}
+.prototype-player-frame.image-mode-photo .prototype-player-stage img{
+  object-fit:contain!important;
+  object-position:center bottom!important;
+  transform:translate(var(--player-x,0),var(--player-y,0)) scale(var(--player-scale,1))!important;
+}
+.prototype-player-number{
+  top:5.1%!important;
+  left:8.3%!important;
+  width:30%!important;
+  font-size:clamp(2.25rem,8.15vw,6.5rem)!important;
+  z-index:4!important;
+}
+.prototype-player-name,
+.preview-ultimate-name.prototype-player-name{
+  left:8.2%!important;
+  right:8.2%!important;
+  bottom:5.15%!important;
+  height:28.8%!important;
+  grid-template-rows:19% 53% 28%!important;
+  z-index:5!important;
+}
+.prototype-player-name small,
+.preview-ultimate-name.prototype-player-name small{
+  max-width:92%!important;
+  font-size:clamp(.68rem,2.05vw,1.62rem)!important;
+  letter-spacing:.22em!important;
+}
+.prototype-player-name strong,
+.preview-ultimate-name.prototype-player-name strong{
+  max-width:100%!important;
+  font-size:clamp(2rem,6.9vw,5.45rem)!important;
+  transform:scaleX(.84)!important;
+  transform-origin:center!important;
+}
+.prototype-player-name em,
+.preview-ultimate-name.prototype-player-name em{
+  min-width:52%!important;
+  max-width:88%!important;
+  min-height:34%!important;
+  font-size:clamp(.52rem,1.48vw,1.1rem)!important;
+}
+/* Long surnames scale down instead of clipping. */
+.prototype-player-name.name-length-9 strong{font-size:clamp(1.88rem,6.35vw,5rem)!important}
+.prototype-player-name.name-length-10 strong,.prototype-player-name.name-length-11 strong{font-size:clamp(1.7rem,5.75vw,4.55rem)!important}
+.prototype-player-name.name-length-12 strong,.prototype-player-name.name-length-13 strong{font-size:clamp(1.5rem,5.05vw,4rem)!important}
+.prototype-player-name.name-length-14 strong,.prototype-player-name.name-length-15 strong{font-size:clamp(1.32rem,4.45vw,3.5rem)!important}
+.prototype-player-name.name-length-16 strong,.prototype-player-name.name-length-17 strong,.prototype-player-name.name-length-18 strong,.prototype-player-name.name-length-19 strong,.prototype-player-name.name-length-20 strong{font-size:clamp(1.08rem,3.7vw,3rem)!important}
+/* Keep every public presentation on the exact 2:3 prototype proportion. */
+.team-roster-carousel .team-card-slide,
+.generated-player-card,
+.player-preview-card .prototype-player-frame,
+.ultimate-view-card .prototype-player-frame{aspect-ratio:2/3!important}
+.team-roster-carousel .generated-player-card{overflow:visible!important}
+@media(max-width:700px){
+  .prototype-player-number{font-size:clamp(2.1rem,18vw,5.15rem)!important}
+  .prototype-player-name small{font-size:clamp(.66rem,4.1vw,1.22rem)!important}
+  .prototype-player-name strong{font-size:clamp(1.9rem,13.8vw,4.15rem)!important}
+  .prototype-player-name em{font-size:clamp(.5rem,3.05vw,.9rem)!important}
+}
