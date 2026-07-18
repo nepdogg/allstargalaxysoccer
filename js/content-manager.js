@@ -29,6 +29,7 @@
   const sortItems = items => [...items].filter(isVisible).sort((a,b)=>(a.order||0)-(b.order||0));
   const linkAttrs = url => url && url !== '#' ? `href="${esc(url)}" target="_blank" rel="noopener"` : 'href="#" class="generated-disabled" aria-disabled="true"';
   function colorFor(data, category) { return data.colors?.[category] || data.colors?.archive || '#f5c542'; }
+  function applyGraphicAssets(data){const a=data.assets||{},root=document.documentElement;const set=(n,v)=>{if(v)root.style.setProperty(n,`url("${pngOnlyPath(v)}")`);};set('--home-carousel-background',a.homeCarouselBackground);set('--team-carousel-background',a.teamCarouselBackground);set('--media-carousel-background',a.mediaCarouselBackground);set('--season-carousel-background',a.seasonCarouselBackground);}
   function iconFor(category='archive') {
     const icons={
       goals:'⚽', saves:'✋', assists:'➤', plays:'★', shorts:'S', best:'★',
@@ -50,7 +51,7 @@
     const length=String(title||'').trim().length;
     const sizeClass=length>28?' is-very-long-title':(length>18?' is-long-title':'');
     return `<div class="generated-playlist-art${sizeClass}" style="--card-accent:${color}">
-      <div class="generated-playlist-image" style="background-image:url('${esc(pngOnlyPath(data.assets.mediaBackground))}')"></div>
+      <div class="generated-playlist-image" style="background-image:url('${esc(pngOnlyPath(data.assets.playlistCardBackground || data.assets.mediaBackground || 'generated/media-card-background.png'))}')"></div>
       <div class="generated-playlist-footer">
         <span class="generated-playlist-footer-icon">${iconFor(category)}</span>
         <span class="generated-playlist-footer-title">${esc(title)}</span>
@@ -80,7 +81,7 @@
     ];
     return `<a href="#" class="media-slide media-game-slide generated-game-card" aria-label="Open ${esc(title)}" data-game-title="${esc(title)}" data-game-opponent="Allstar Galaxy vs ${esc(g.opponent||'Coming Soon')}" data-game-result="${esc(result)}" data-full="${esc(g.fullMatch||'')}" data-highlights="${esc(g.highlights||'')}" data-slideshow="${esc(g.slideshow||'')}">
       <div class="generated-wide-card generated-game-layout" style="--card-accent:${mediaBlue}">
-        <section class="generated-wide-visual" style="background-image:url('${esc(pngOnlyPath(data.assets.mediaBackground))}')"></section>
+        <section class="generated-wide-visual" style="background-image:url('${esc(pngOnlyPath(data.assets.gameCardBackground || data.assets.mediaBackground || 'generated/media-card-background.png'))}')"></section>
         <section class="generated-wide-actions">${actionRows(rows)}</section>
         <footer class="generated-card-footer generated-game-footer">
           <div class="generated-game-meta-block">
@@ -107,7 +108,7 @@
     ];
     return `<a href="#" class="media-slide season-archive-slide media-game-slide generated-season-card" aria-label="Open ${esc(s.title)} archive" data-game-title="${esc(s.title)} Season Archive" data-game-opponent="Full Matches • Highlights • Slideshows" data-game-result="${esc(s.subtitle||'Season Archive')}" data-full="${esc(s.fullMatches||'')}" data-highlights="${esc(s.highlights||'')}" data-slideshow="${esc(s.slideshows||'')}" data-full-label="▶ Full Matches" data-highlights-label="▣ Highlights" data-slideshow-label="▧ Slideshows">
       <div class="generated-wide-card generated-season-layout" style="--card-accent:${mediaBlue}">
-        <section class="generated-wide-visual generated-season-visual" style="background-image:url('${esc(pngOnlyPath(data.assets.mediaBackground))}')"></section>
+        <section class="generated-wide-visual generated-season-visual" style="background-image:url('${esc(pngOnlyPath(data.assets.seasonCardBackground || data.assets.mediaBackground || 'generated/media-card-background.png'))}')"></section>
         <section class="generated-wide-actions">${actionRows(rows)}</section>
         <footer class="generated-card-footer generated-season-footer">${esc(s.title)}</footer>
       </div></a>`;
@@ -133,7 +134,7 @@
     const photoY=Math.max(-50,Math.min(50,Number(p.photoY)||0));
     return `<a href="#" class="team-card-slide generated-player-card ultimate-player-card" aria-label="${esc(p.name)} player card" data-player-image="${esc(photoPath)}" data-player-name="${esc(p.name)}" data-player-first="${esc(first)}" data-player-last="${esc(last)}" data-player-number="${esc(p.number||'')}" data-player-position="${esc(p.position||'')}" data-player-mode="${esc(attrs.mode)}" data-player-dob="${esc(attrs.dob)}" data-player-nationality="${esc(attrs.nationality)}" data-player-foot="${esc(attrs.foot)}" data-player-height="${esc(attrs.height)}" data-player-weight="${esc(attrs.weight)}" data-player-quote="${esc(attrs.quote)}" data-player-image-mode="${esc(imageMode)}" data-player-photo-scale="${photoScale}" data-player-photo-x="${photoX}" data-player-photo-y="${photoY}" style="--card-accent:${accent};--player-scale:${photoScale/100};--player-x:${photoX}%;--player-y:${photoY}%">
       <div class="ultimate-player-frame prototype-player-frame image-mode-${imageMode}">
-        <img class="prototype-card-template" src="generated/player-card-template.png" alt="" aria-hidden="true">
+        <img class="prototype-card-template" src="${esc(pngOnlyPath(data.assets?.playerCardTemplate || 'generated/player-card-template.png'))}" alt="" aria-hidden="true">
         <div class="ultimate-player-cutout-stage prototype-player-stage"><img class="ultimate-player-photo generated-player-photo" src="${esc(photoPath)}" alt="${esc(p.name||'Player')}" loading="lazy" onerror="this.onerror=null;this.src='${esc(defaultSilhouette||fallbackLogo)}'"></div>
         <span class="prototype-player-number">${esc(p.number||'00')}</span>
         <div class="ultimate-player-name prototype-player-name name-length-${Math.min(20,String(last).length)}"><small>${esc(first)}</small><strong>${esc(last)}</strong><em>${esc(p.position||'PLAYER')}</em></div>
@@ -263,6 +264,6 @@
       return hydratePreviewAssets(draft,assets);
     }catch(error){console.warn('Could not load Admin preview content.',error);return null}
   }
-  const ready=loadPreviewContent().then(preview=>preview||fetch(DATA_URL,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(`Unable to load ${DATA_URL}`);return r.json()})).then(data=>{render(data);window.ASG_MASTER_DATA=data;return data}).catch(err=>{console.error(err);document.querySelectorAll('[data-generated-source]').forEach(el=>el.innerHTML='<p class="generated-data-error">Content could not load. Check data/master-content.json.</p>');});
+  const ready=loadPreviewContent().then(preview=>preview||fetch(DATA_URL,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(`Unable to load ${DATA_URL}`);return r.json()})).then(data=>{applyGraphicAssets(data);render(data);window.ASG_MASTER_DATA=data;return data}).catch(err=>{console.error(err);document.querySelectorAll('[data-generated-source]').forEach(el=>el.innerHTML='<p class="generated-data-error">Content could not load. Check data/master-content.json.</p>');});
   window.ASGContent={ready,render};
 })();
