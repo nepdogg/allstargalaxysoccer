@@ -17357,3 +17357,10 @@ body.page-not-found .footer-platform-v147 { border-top-color:#cfd5e3 !important;
 .prototype-player-name.name-length-10 strong{font-size:clamp(1.85rem,6.5vw,5.1rem)!important}.prototype-player-name.name-length-11 strong,.prototype-player-name.name-length-12 strong{font-size:clamp(1.65rem,5.8vw,4.65rem)!important}.prototype-player-name.name-length-13 strong,.prototype-player-name.name-length-14 strong,.prototype-player-name.name-length-15 strong{font-size:clamp(1.45rem,5vw,4.05rem)!important}.prototype-player-name.name-length-16 strong,.prototype-player-name.name-length-17 strong,.prototype-player-name.name-length-18 strong,.prototype-player-name.name-length-19 strong,.prototype-player-name.name-length-20 strong{font-size:clamp(1.22rem,4.25vw,3.45rem)!important}
 .team-roster-carousel .prototype-player-frame{box-shadow:0 0 16px rgba(255,43,168,.8),0 0 30px rgba(121,56,255,.5)!important}.team-roster-carousel .team-card-slide{aspect-ratio:2/3!important}.ultimate-card-deck .prototype-player-frame{width:min(430px,38vw)!important}.preview-ultimate-card.prototype-player-frame{width:100%!important;max-width:none!important}
 @media(max-width:700px){.prototype-player-number{font-size:clamp(2.2rem,19vw,5.4rem)}.prototype-player-name small{font-size:clamp(.7rem,4.5vw,1.3rem)!important}.prototype-player-name strong{font-size:clamp(2rem,15vw,4.5rem)!important}.prototype-player-name em{font-size:clamp(.52rem,3.3vw,.95rem)!important}.ultimate-card-deck .prototype-player-frame{width:min(88vw,430px)!important}}
+
+
+/* V160 independent carousel asset hooks */
+.page-home .homepage-media-carousel{background-image:var(--home-carousel-background,none);background-size:cover;background-position:center}
+.page-team .team-roster-carousel{background-image:var(--team-carousel-background,none);background-size:cover;background-position:center}
+.page-media .carousel{background-image:var(--media-carousel-background,none);background-size:cover;background-position:center}
+.season-games-carousel,.season-archive-carousel{background-image:var(--season-carousel-background,none);background-size:cover;background-position:center}
