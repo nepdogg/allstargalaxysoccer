@@ -220,12 +220,23 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (!stage) return;
             const front = selectedCard.querySelector(".ultimate-player-frame")?.cloneNode(true);
             if (!front) return;
+            const value = (key, fallback="N/A") => selectedCard.dataset[key] || fallback;
+            const advanced = String(selectedCard.dataset.playerMode || "standard").toLowerCase() === "advanced" ||
+              ["playerDob","playerNationality","playerFoot","playerHeight","playerWeight","playerQuote"].some(k => String(selectedCard.dataset[k]||"").trim());
             stage.innerHTML = "";
-            stage.appendChild(front);
-            if ((selectedCard.dataset.playerMode || "standard") === "advanced") {
-                const value = (key, fallback="N/A") => selectedCard.dataset[key] || fallback;
+            const toolbar = document.createElement("div");
+            toolbar.className = "ultimate-profile-toolbar";
+            toolbar.innerHTML = `<button type="button" class="ultimate-tab is-active" data-card-view="front">Front Card</button>${advanced?'<button type="button" class="ultimate-tab" data-card-view="profile">Profile Card</button>':''}<a class="ultimate-open-photo" href="${value("playerImage", "#")}" target="_blank" rel="noopener">Open Full Player Photo</a>`;
+            stage.appendChild(toolbar);
+            const deck = document.createElement("div");
+            deck.className = "ultimate-card-deck" + (advanced ? " is-advanced" : "");
+            front.classList.add("ultimate-view-card","is-active");
+            front.dataset.cardPanel = "front";
+            deck.appendChild(front);
+            if (advanced) {
                 const profile = document.createElement("section");
-                profile.className = "ultimate-profile-card";
+                profile.className = "ultimate-profile-card ultimate-view-card";
+                profile.dataset.cardPanel = "profile";
                 profile.innerHTML = `
                   <div class="ultimate-profile-top"><div><b>${value("playerNumber","00")}</b><span class="ultimate-profile-position">${value("playerPosition","PLAYER")}</span></div><img src="images/logos/logo.png" alt="Allstar Galaxy"></div>
                   <div class="ultimate-profile-name"><small>${value("playerFirst","PLAYER")}</small><strong>${value("playerLast","PROFILE")}</strong></div>
@@ -237,8 +248,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                     <div class="ultimate-profile-row"><span>Weight</span><b>${value("playerWeight")}</b></div>
                   </div>
                   <p class="ultimate-profile-quote">“${value("playerQuote","ALLSTAR GALAXY") }”</p>`;
-                stage.appendChild(profile);
+                deck.appendChild(profile);
             }
+            stage.appendChild(deck);
+            toolbar.querySelectorAll(".ultimate-tab").forEach(btn=>btn.addEventListener("click",()=>{
+              toolbar.querySelectorAll(".ultimate-tab").forEach(x=>x.classList.toggle("is-active",x===btn));
+              deck.querySelectorAll(".ultimate-view-card").forEach(card=>card.classList.toggle("is-active",card.dataset.cardPanel===btn.dataset.cardView));
+            }));
         }
 
         function openPlayerLightbox(index) {

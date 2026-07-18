@@ -125,12 +125,17 @@
     const fallbackLogo=pngOnlyPath(data.assets?.logo||'images/logos/logo.png');
     const photoPath=uploadedPhoto||defaultSilhouette;
     const parts=String(p.name||'PLAYER').trim().split(/\s+/); const first=parts.shift()||'PLAYER'; const last=parts.join(' ')||first;
-    const attrs={dob:p.dateOfBirth||'',nationality:p.nationality||'',foot:p.preferredFoot||'',height:p.height||'',weight:p.weight||'',quote:p.quote||'',mode:p.profileMode||'standard'};
-    return `<a href="#" class="team-card-slide generated-player-card ultimate-player-card" aria-label="${esc(p.name)} player card" data-player-image="${esc(photoPath)}" data-player-name="${esc(p.name)}" data-player-first="${esc(first)}" data-player-last="${esc(last)}" data-player-number="${esc(p.number||'')}" data-player-position="${esc(p.position||'')}" data-player-mode="${esc(attrs.mode)}" data-player-dob="${esc(attrs.dob)}" data-player-nationality="${esc(attrs.nationality)}" data-player-foot="${esc(attrs.foot)}" data-player-height="${esc(attrs.height)}" data-player-weight="${esc(attrs.weight)}" data-player-quote="${esc(attrs.quote)}" style="--card-accent:${accent}">
-      <div class="ultimate-player-frame">
+    const advancedData=[p.dateOfBirth,p.nationality,p.preferredFoot,p.height,p.weight,p.quote].some(v=>String(v||'').trim());
+    const attrs={dob:p.dateOfBirth||'',nationality:p.nationality||'',foot:p.preferredFoot||'',height:p.height||'',weight:p.weight||'',quote:p.quote||'',mode:String(p.profileMode||'').toLowerCase()==='advanced'||advancedData?'advanced':'standard'};
+    const imageMode=String(p.imageMode||'cutout').toLowerCase()==='photo'?'photo':'cutout';
+    const photoScale=Math.max(60,Math.min(180,Number(p.photoScale)||100));
+    const photoX=Math.max(-50,Math.min(50,Number(p.photoX)||0));
+    const photoY=Math.max(-50,Math.min(50,Number(p.photoY)||0));
+    return `<a href="#" class="team-card-slide generated-player-card ultimate-player-card" aria-label="${esc(p.name)} player card" data-player-image="${esc(photoPath)}" data-player-name="${esc(p.name)}" data-player-first="${esc(first)}" data-player-last="${esc(last)}" data-player-number="${esc(p.number||'')}" data-player-position="${esc(p.position||'')}" data-player-mode="${esc(attrs.mode)}" data-player-dob="${esc(attrs.dob)}" data-player-nationality="${esc(attrs.nationality)}" data-player-foot="${esc(attrs.foot)}" data-player-height="${esc(attrs.height)}" data-player-weight="${esc(attrs.weight)}" data-player-quote="${esc(attrs.quote)}" data-player-image-mode="${esc(imageMode)}" data-player-photo-scale="${photoScale}" data-player-photo-x="${photoX}" data-player-photo-y="${photoY}" style="--card-accent:${accent};--player-scale:${photoScale/100};--player-x:${photoX}%;--player-y:${photoY}%">
+      <div class="ultimate-player-frame image-mode-${imageMode}">
         <div class="ultimate-player-bg" style="background-image:url('${esc(pngOnlyPath(data.assets.mediaBackground))}')"></div>
         <div class="ultimate-card-heading"><div><span>${esc(p.number||'00')}</span><small>${esc(p.position||'PLAYER')}</small></div><img src="${esc(fallbackLogo)}" alt="Allstar Galaxy"></div>
-        <img class="ultimate-player-photo generated-player-photo" src="${esc(photoPath)}" alt="${esc(p.name||'Player')}" loading="lazy" onerror="this.onerror=null;this.src='${esc(defaultSilhouette||fallbackLogo)}'">
+        <div class="ultimate-player-cutout-stage"><img class="ultimate-player-photo generated-player-photo" src="${esc(photoPath)}" alt="${esc(p.name||'Player')}" loading="lazy" onerror="this.onerror=null;this.src='${esc(defaultSilhouette||fallbackLogo)}'"></div>
         <div class="ultimate-player-name"><small>${esc(first)}</small><strong>${esc(last)}</strong><em>★ ALLSTAR GALAXY ★</em></div>
       </div></a>`;
   }
