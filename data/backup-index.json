@@ -2,6 +2,13 @@
   "version": 2,
   "backups": [
     {
+      "id": "2026-07-18T02-38-40-102Z",
+      "type": "backup",
+      "label": "Before Hero Manager publish",
+      "created": "2026-07-18T02:38:44.836Z",
+      "files": []
+    },
+    {
       "id": "2026-07-18T02-36-10-384Z",
       "type": "backup",
       "label": "Before Hero Manager publish",
@@ -468,6 +475,13 @@
     }
   ],
   "history": [
+    {
+      "id": "2026-07-18T02-38-40-102Z",
+      "type": "backup",
+      "label": "Before Hero Manager publish",
+      "created": "2026-07-18T02:38:44.836Z",
+      "files": []
+    },
     {
       "id": "2026-07-18T02-36-10-384Z",
       "type": "backup",
