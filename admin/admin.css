@@ -1276,3 +1276,33 @@
         max-height: 170px !important;
     }
 }
+
+
+/* ============================================================
+   V156 — PLAYERS ADMIN RESPONSIVE ACCESSIBILITY
+   ============================================================ */
+body[data-page="players"] .admin-main{overflow:visible!important}
+body[data-page="players"] #content{min-width:0;overflow:visible}
+body[data-page="players"] .modal{align-items:flex-start!important;overflow-y:auto!important;padding:18px!important}
+body[data-page="players"] .modal-card{width:min(920px,calc(100vw - 36px))!important;max-height:none!important;overflow:visible!important;margin:0 auto 30px}
+body[data-page="players"] #editForm{overflow:visible!important}
+body[data-page="players"] .form-actions{position:sticky;bottom:0;z-index:10;background:#171b24;padding:14px 0 4px}
+body[data-page="players"] .player-preview-card{max-width:340px!important;width:100%}
+.preview-ultimate-card{position:relative;aspect-ratio:2/3;overflow:hidden;background:#050009;border:2px solid #ff3aa7;box-shadow:0 0 0 3px #ff9d00,0 0 18px #ff2da4;clip-path:polygon(6% 0,94% 0,100% 5%,100% 95%,94% 100%,6% 100%,0 95%,0 5%)}
+.preview-card-top{position:absolute;z-index:4;left:7%;right:7%;top:5%;display:flex;justify-content:space-between;align-items:flex-start}.preview-card-top div{display:flex;flex-direction:column}.preview-card-top b{font:italic 3.6rem/.8 Impact;color:#ffc000;text-shadow:0 3px #8c5600}.preview-card-top small{color:#ff3ba7;font-weight:900;font-style:italic;text-transform:uppercase}.preview-card-top img{width:24%;filter:drop-shadow(0 0 8px #ff39c8)}
+.preview-ultimate-photo{position:absolute;left:3%;bottom:19%;width:94%;height:76%;object-fit:cover;object-position:center top}.preview-ultimate-name{position:absolute;z-index:5;left:7%;right:7%;bottom:4%;height:25%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4%;background:rgba(0,0,0,.9);border:1px solid #ff32ac;clip-path:polygon(7% 0,93% 0,100% 17%,100% 100%,0 100%,0 17%);text-transform:uppercase}.preview-ultimate-name small{color:#ffc000;font-weight:900;letter-spacing:.18em}.preview-ultimate-name strong{font:italic clamp(2rem,5vw,3.8rem)/.9 Impact;color:#fff;text-align:center;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}.preview-ultimate-name em{color:#ff3ca8;font-size:.7rem;font-weight:900;letter-spacing:.14em}.preview-profile-badge{text-align:center;margin-top:10px;color:#ffc000;font-weight:900}
+@media(max-width:850px){body[data-page="players"] .admin-topbar{position:relative!important}.preview-card-top b{font-size:3rem}}
+
+
+/* V157 — player admin layered cutout preview and stable form layout */
+body[data-page="players"] .modal-card{display:block!important;max-width:980px!important}
+body[data-page="players"] .modal-body,body[data-page="players"] .form-grid{min-width:0!important}
+body[data-page="players"] .form-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important}
+body[data-page="players"] .form-field,body[data-page="players"] .field-row{min-width:0!important}
+.preview-ultimate-card{background:url('../generated/media-card-background.png') center/cover!important}
+.preview-ultimate-cutout-stage{position:absolute;z-index:3;left:1%;right:1%;top:8%;bottom:17%;display:flex;align-items:flex-end;justify-content:center;overflow:visible}
+.preview-ultimate-cutout-stage .preview-ultimate-photo{position:relative!important;inset:auto!important;width:96%!important;height:100%!important;object-fit:contain!important;object-position:center bottom!important;transform:translate(var(--player-x,0),var(--player-y,0)) scale(var(--player-scale,1));transform-origin:center bottom;mask-image:linear-gradient(to bottom,#000 0 88%,rgba(0,0,0,.98) 94%,transparent 100%);filter:drop-shadow(0 8px 8px rgba(0,0,0,.9)) drop-shadow(0 0 12px rgba(255,42,184,.55))}
+.preview-card-top{z-index:7!important}.preview-ultimate-name{z-index:8!important}
+body[data-page="players"] .form-actions{display:flex!important;flex-wrap:wrap!important;gap:10px!important;position:sticky!important;bottom:0!important;padding:12px!important;margin:12px -12px -12px!important;background:rgba(18,22,31,.98)!important;border-top:1px solid #343b49!important}
+body[data-page="players"] .form-actions button{min-width:130px!important}
+@media(max-width:700px){body[data-page="players"] .form-grid{grid-template-columns:1fr!important}body[data-page="players"] .modal{padding:8px!important}body[data-page="players"] .modal-card{width:calc(100vw - 16px)!important}.preview-ultimate-cutout-stage{top:7%;bottom:18%}}
