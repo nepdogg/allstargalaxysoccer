@@ -17575,3 +17575,53 @@ body.page-not-found .footer-platform-v147 { border-top-color:#cfd5e3 !important;
   .player-preview-card .prototype-player-frame,.public-style-player-preview .prototype-player-frame{width:min(100%,270px)!important}
   .prototype-player-name strong,.preview-ultimate-name.prototype-player-name strong{font-size:clamp(1.1rem,10.5vw,3rem)!important}
 }
+
+/* ============================================================
+   V166 — UNIFIED PLAYER CARD RENDER SYNC
+   Final overrides: one centered card, full-card fit, visible number,
+   contained photos, and one-line auto-scaled surnames.
+   ============================================================ */
+.prototype-player-frame{
+  position:relative!important;
+  width:100%!important;
+  height:auto!important;
+  aspect-ratio:2/3!important;
+  overflow:hidden!important;
+}
+.prototype-card-template{display:block!important;position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:contain!important;z-index:1!important}
+.prototype-player-stage{position:absolute!important;left:4%!important;right:4%!important;top:7%!important;bottom:28.5%!important;display:flex!important;align-items:flex-end!important;justify-content:center!important;overflow:visible!important;z-index:2!important}
+.prototype-player-stage img{display:block!important;width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center bottom!important;transform:translate(var(--player-x,0),var(--player-y,0)) scale(var(--player-scale,.86))!important;transform-origin:center bottom!important}
+.prototype-player-stage.is-default-silhouette img{mix-blend-mode:multiply!important;filter:contrast(1.35) drop-shadow(0 0 10px rgba(255,38,174,.55))!important}
+.prototype-player-number{display:block!important;visibility:visible!important;opacity:1!important;position:absolute!important;top:4.7%!important;left:8.4%!important;width:31%!important;z-index:7!important;color:#ffc400!important;font-family:Impact,"Arial Black","Arial Narrow",sans-serif!important;font-style:italic!important;font-size:clamp(2rem,7.2vw,5.8rem)!important;line-height:.84!important;text-align:left!important;white-space:nowrap!important;text-shadow:0 3px 0 #8a3e00,0 0 9px #ff9d00,0 0 18px rgba(255,180,0,.8)!important}
+.prototype-player-name{left:9%!important;right:9%!important;bottom:5.3%!important;height:27.2%!important;padding:0 2%!important;display:grid!important;grid-template-rows:20% 50% 30%!important;align-items:center!important;justify-items:center!important;overflow:hidden!important;z-index:8!important}
+.prototype-player-name small{font-size:clamp(.62rem,1.65vw,1.32rem)!important;max-width:94%!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+.prototype-player-name strong{display:block!important;width:100%!important;max-width:100%!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:clip!important;font-size:clamp(1.25rem,4.55vw,3.55rem)!important;line-height:.84!important;letter-spacing:-.035em!important;transform:scaleX(.78)!important;transform-origin:center!important}
+.prototype-player-name em{font-size:clamp(.48rem,1.15vw,.88rem)!important;max-width:88%!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+/* Stronger surname fit for longer names — never wrap. */
+.prototype-player-name.name-length-8 strong{font-size:clamp(1.15rem,4.2vw,3.25rem)!important}
+.prototype-player-name.name-length-9 strong{font-size:clamp(1.08rem,3.9vw,3rem)!important}
+.prototype-player-name.name-length-10 strong{font-size:clamp(1rem,3.6vw,2.78rem)!important}
+.prototype-player-name.name-length-11 strong{font-size:clamp(.94rem,3.35vw,2.55rem)!important}
+.prototype-player-name.name-length-12 strong{font-size:clamp(.88rem,3.1vw,2.35rem)!important}
+.prototype-player-name.name-length-13 strong{font-size:clamp(.82rem,2.9vw,2.18rem)!important}
+.prototype-player-name.name-length-14 strong{font-size:clamp(.76rem,2.7vw,2.02rem)!important}
+.prototype-player-name.name-length-15 strong{font-size:clamp(.72rem,2.5vw,1.88rem)!important}
+.prototype-player-name.name-length-16 strong,.prototype-player-name.name-length-17 strong,.prototype-player-name.name-length-18 strong,.prototype-player-name.name-length-19 strong,.prototype-player-name.name-length-20 strong{font-size:clamp(.65rem,2.25vw,1.7rem)!important}
+/* Admin/public preview always shows the complete card. */
+.player-preview-card,.public-style-player-preview{width:100%!important;max-width:360px!important;margin-inline:auto!important;padding:10px!important;overflow:visible!important}
+.player-preview-card .prototype-player-frame,.public-style-player-preview .prototype-player-frame,.preview-ultimate-card.prototype-player-frame{width:min(100%,330px)!important;max-height:none!important;height:auto!important;margin:auto!important;object-fit:contain!important}
+/* Restore one and only one centered active Team card. */
+.page-team .team-roster-carousel .team-card-slide{position:absolute!important;left:50%!important;top:50%!important;width:clamp(210px,18vw,300px)!important;height:auto!important;aspect-ratio:2/3!important;transform:translate(-50%,-50%) translateX(calc(var(--roster-offset,0) * clamp(112px,13.5vw,172px))) scale(.72)!important;transform-origin:center!important;opacity:.32!important;z-index:calc(20 - var(--roster-offset,0))!important;transition:transform .45s ease,opacity .45s ease,filter .45s ease!important}
+.page-team .team-roster-carousel .team-card-slide.is-neighbor{transform:translate(-50%,-50%) translateX(calc(var(--roster-offset,0) * clamp(112px,13.5vw,172px))) scale(.82)!important;opacity:.58!important;z-index:30!important}
+.page-team .team-roster-carousel .team-card-slide.is-distance-2{opacity:.38!important;transform:translate(-50%,-50%) translateX(calc(var(--roster-offset,0) * clamp(112px,13.5vw,172px))) scale(.72)!important}
+.page-team .team-roster-carousel .team-card-slide.is-distance-3{opacity:.22!important;transform:translate(-50%,-50%) translateX(calc(var(--roster-offset,0) * clamp(112px,13.5vw,172px))) scale(.64)!important}
+.page-team .team-roster-carousel .team-card-slide.is-active{left:50%!important;top:50%!important;transform:translate(-50%,-50%) translateX(0) scale(1)!important;opacity:1!important;z-index:60!important;filter:none!important}
+.page-team .team-roster-carousel .team-card-slide.is-active:hover{transform:translate(-50%,-50%) translateX(0) scale(1.025)!important}
+.page-team .team-roster-carousel .team-card-slide.is-hidden-card{display:none!important}
+@media(max-width:700px){
+  .page-team .team-roster-carousel .team-card-slide{width:clamp(190px,58vw,255px)!important;transform:translate(-50%,-50%) translateX(calc(var(--roster-offset,0) * clamp(82px,24vw,118px))) scale(.68)!important}
+  .page-team .team-roster-carousel .team-card-slide.is-neighbor{transform:translate(-50%,-50%) translateX(calc(var(--roster-offset,0) * clamp(82px,24vw,118px))) scale(.78)!important}
+  .page-team .team-roster-carousel .team-card-slide.is-active{transform:translate(-50%,-50%) scale(1)!important}
+  .prototype-player-number{font-size:clamp(1.9rem,16vw,4.8rem)!important}
+  .prototype-player-name strong{font-size:clamp(1.05rem,9.5vw,2.7rem)!important}
+}
