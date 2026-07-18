@@ -1064,3 +1064,146 @@
         grid-template-columns: 1fr;
     }
 }
+
+
+/* ============================================================
+   V151 — UNIFIED ADMIN PAGE FLOW
+   Status → controls → live preview → add/edit controls → fields
+   ============================================================ */
+.standardized-admin-flow .standardized-top-preview {
+    width: 100%;
+    margin: 0 0 18px;
+    order: initial;
+}
+
+.standardized-admin-flow > .standardized-top-preview {
+    display: block;
+}
+
+.standardized-admin-flow .visual-page-editor,
+.standardized-admin-flow .permanent-preview-layout {
+    display: block !important;
+}
+
+.standardized-admin-flow .visual-page-editor > .panel,
+.standardized-admin-flow .permanent-preview-layout > .item-list {
+    width: 100%;
+}
+
+.standardized-admin-flow .permanent-preview-layout > .visual-editor-preview,
+.standardized-admin-flow .visual-page-editor > .visual-editor-preview {
+    display: none;
+}
+
+.standardized-admin-flow .standardized-top-preview.visual-editor-preview {
+    display: block !important;
+    max-width: none;
+}
+
+.standardized-admin-flow .manager-actions {
+    margin: 0 0 18px;
+}
+
+.graphics-top-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: 14px;
+}
+
+.graphics-top-preview-grid article {
+    display: grid;
+    gap: 8px;
+}
+
+.graphics-top-preview-grid article > strong {
+    color: #dce6ff;
+    font-size: 12px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+
+.graphics-top-preview-grid .graphic-preview-box {
+    min-height: 190px;
+}
+
+.graphics-top-preview-grid img {
+    width: 100%;
+    height: 100%;
+    max-height: 320px;
+    object-fit: contain;
+}
+
+@media (max-width: 760px) {
+    .standardized-admin-flow .standardized-top-preview {
+        margin-bottom: 18px;
+    }
+
+    .standardized-admin-flow .unified-workflow-bar {
+        margin-bottom: 18px;
+    }
+
+    .standardized-admin-flow .manager-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-bottom: 18px;
+    }
+
+    .standardized-admin-flow .manager-actions .btn {
+        width: 100%;
+    }
+
+    .graphics-top-preview-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .graphics-top-preview-grid .graphic-preview-box {
+        min-height: 180px;
+    }
+}
+
+
+/* ============================================================
+   V152 — CUSTOM SEASON AND PLAYLIST TYPE CONTROLS
+   ============================================================ */
+.custom-choice-panel {
+    margin-top: 12px;
+    padding: 14px;
+    border: 1px solid #35506a;
+    border-radius: 12px;
+    background: rgba(17,35,49,.72);
+    display: grid;
+    gap: 10px;
+}
+
+.custom-choice-panel.is-hidden {
+    display: none !important;
+}
+
+.custom-choice-panel label {
+    margin: 0;
+}
+
+.inline-check {
+    display: flex !important;
+    align-items: flex-start;
+    gap: 9px;
+    font-size: 13px !important;
+    line-height: 1.35;
+    color: #c6d5ea !important;
+}
+
+.inline-check input {
+    width: auto !important;
+    margin-top: 2px;
+}
+
+.season-assignment-field select,
+.playlist-type-field select {
+    border-color: var(--gold);
+}
+
+@media (max-width: 700px) {
+    .custom-choice-panel {
+        padding: 12px;
+    }
+}

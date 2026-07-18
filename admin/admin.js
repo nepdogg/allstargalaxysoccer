@@ -5,7 +5,7 @@ const SECTION_SCHEMAS={
  players:{title:'Players',array:'players',imageField:'photo',imageFolder:'images/team/players',fields:[['name','Player name','text',true,'basic'],['number','Jersey number','text',false,'basic'],['position','Position','select',POSITION_OPTIONS,'basic'],['status','Show on website','select',['published','hidden'],'basic'],['order','Carousel position','number',false,'advanced'],['photo','Player photo storage path','locked',false,'developer']]},
  games:{title:'Games',array:'games',imageField:'cardImage',imageFolder:'images/media/latest-games',fields:[['season','Season','seasonselect',true,'basic'],['gameNumber','Game number','number',true,'basic'],['opponent','Opponent team','text',true,'basic'],['result','Final result, e.g. W (3-1)','text',false,'basic'],['fullMatch','Full Match YouTube URL','url',false,'basic'],['highlights','Highlights YouTube URL','url',false,'basic'],['slideshow','Slideshow YouTube URL','url',false,'basic'],['status','Show on website','select',['published','hidden'],'basic'],['date','Match date','date',false,'advanced'],['time','Match time','time',false,'advanced'],['location','Location','text',false,'advanced'],['group','Game carousel','select',['latest','archive'],'advanced'],['order','Carousel position','number',false,'advanced'],['cardImage','Custom card image path','locked',false,'developer']]},
  seasons:{title:'Seasons',array:'seasons',imageField:'cardImage',imageFolder:'images/seasons',fields:[['title','Season name','text',true,'basic'],['fullMatches','Full Matches playlist URL','url',false,'basic'],['highlights','Highlights playlist URL','url',false,'basic'],['slideshows','Slideshows playlist URL','url',false,'basic'],['status','Show on website','select',['published','hidden'],'basic'],['subtitle','Optional subtitle','text',false,'advanced'],['dateRange','Date range','text',false,'advanced'],['league','League','text',false,'advanced'],['order','Carousel position','number',false,'advanced'],['cardImage','Custom card image path','locked',false,'developer']]},
- playlists:{title:'Playlists',array:'playlists',imageField:'cardImage',imageFolder:'images/media/playlists',fields:[['title','Playlist name','text',true,'basic'],['url','YouTube playlist URL','url',false,'basic'],['category','Playlist type','select',['core','archive','shorts','best','goals','saves','assists','plays'],'basic'],['locations','Show in these carousels','locationselect',false,'basic'],['status','Show on website','select',['published','hidden'],'basic'],['description','Optional description','textarea',false,'advanced'],['order','Carousel position','number',false,'advanced'],['cardImage','Custom card image path','locked',false,'developer']]},
+ playlists:{title:'Playlists',array:'playlists',imageField:'cardImage',imageFolder:'images/media/playlists',fields:[['title','Playlist name','text',true,'basic'],['url','YouTube playlist URL','url',false,'basic'],['category','Playlist type','playlisttypeselect',['core','archive','shorts','best','goals','saves','assists','plays'],'basic'],['locations','Show in these carousels','locationselect',false,'basic'],['status','Show on website','select',['published','hidden'],'basic'],['description','Optional description','textarea',false,'advanced'],['order','Carousel position','number',false,'advanced'],['cardImage','Custom card image path','locked',false,'developer']]},
  news:{title:'News',array:'news',imageField:'image',imageFolder:'images/news',fields:[['title','Headline','text',true,'basic'],['imageNote','Image note / what this flyer is','textarea',false,'basic'],['summary','Public description','textarea',false,'basic'],['category','News type','select',['NEWS','MATCH','ANNOUNCEMENT','RESULT','TEAM UPDATE'],'basic'],['link','Optional related URL','url',false,'basic'],['status','Show on website','select',['published','hidden','placeholder'],'basic'],['date','Date','date',false,'advanced'],['order','Display position','number',false,'advanced'],['image','News image storage path','locked',false,'developer']]}
 };
 let state={data:null,sha:null,dirty:false,section:null,editIndex:-1,pendingFiles:[]};
@@ -26,9 +26,115 @@ function renderManager(section){state.section=section;const schema=SECTION_SCHEM
 function playlistLocationValue(val){const a=Array.isArray(val)?val:String(val||'').split(',').map(x=>x.trim()).filter(Boolean);const has=x=>a.includes(x);if(has('home-best')&&has('media-archive'))return 'best-and-archive';if(has('home-best'))return 'home-best';if(has('season-archive')&&has('latest-season-playlists'))return 'season-and-latest';if(has('latest-season-playlists'))return 'latest-season-playlists';if(has('season-archive'))return 'season-archive';return 'media-archive'}
 function playlistLocationsFromValue(val){const map={'media-archive':['media-archive'],'home-best':['home-best'],'best-and-archive':['home-best','media-archive'],'season-archive':['season-archive'],'latest-season-playlists':['latest-season-playlists'],'season-and-latest':['season-archive','latest-season-playlists']};return map[val]||['media-archive']}
 function friendlyOption(v){const m={published:'Visible',hidden:'Hidden',placeholder:'Placeholder',latest:'Latest Games',archive:'Archive / older games',core:'Full Matches / Highlights / Slideshows',best:'Best Of',goals:'Goals',saves:'Saves',assists:'Assists',plays:'Plays',shorts:'Shorts'};return m[v]||v||'Not assigned / N/A'}
-function inputHtml(field,val){const [key,label,type,rule]=field;const required=rule===true?'required':'';if(type==='locked')return `<div class="field locked-field"><label>${label} 🔒</label><input value="${esc(val||'Automatically generated')}" readonly><div class="help">Protected technical field. The dashboard manages this automatically.</div></div>`;if(type==='seasonselect'){const seasons=(state.data.seasons||[]).filter(x=>x.status!=='hidden').map(x=>x.title).filter(Boolean);if(val&&!seasons.includes(val))seasons.unshift(val);return `<div class="field"><label>${label}</label><select name="${key}" ${required}><option value="">Select season / N/A</option>${seasons.map(o=>`<option ${String(val)===o?'selected':''}>${esc(o)}</option>`).join('')}</select></div>`}if(type==='select'){const opts=rule.map(o=>`<option value="${esc(o)}" ${String(val)===o?'selected':''}>${esc(friendlyOption(o))}</option>`).join('');return `<div class="field"><label>${label}</label><select name="${key}">${opts}</select></div>`}if(type==='locationselect'){const current=playlistLocationValue(val);const options=[['media-archive','Media Archive only'],['home-best','Homepage Best Of only'],['best-and-archive','Homepage Best Of + Media Archive'],['season-archive','Season Archive only'],['latest-season-playlists','Latest Season Playlists only'],['season-and-latest','Season Archive + Latest Season Playlists']];return `<div class="field"><label>${label}</label><select name="${key}">${options.map(([v,t])=>`<option value="${v}" ${current===v?'selected':''}>${t}</option>`).join('')}</select><div class="help">Choose exactly where this playlist card should appear.</div></div>`}if(type==='textarea')return `<div class="field full"><label>${label}</label><textarea name="${key}" placeholder="N/A">${esc(val||'')}</textarea></div>`;return `<div class="field"><label>${label}</label><input name="${key}" type="${type}" value="${esc(val??'')}" ${required} placeholder="${type==='url'?'Not available yet':'N/A'}"></div>`}
+function latestSeasonTitle(){
+ const visible=(state.data.seasons||[])
+   .filter(item=>item&&item.status!=='hidden'&&item.title)
+   .sort((a,b)=>(Number(a.order)||9999)-(Number(b.order)||9999));
+ return visible[0]?.title||'';
+}
+function inputHtml(field,val){
+ const [key,label,type,rule]=field;
+ const required=rule===true?'required':'';
+ if(type==='locked')return `<div class="field locked-field"><label>${label} 🔒</label><input value="${esc(val||'Automatically generated')}" readonly><div class="help">Protected technical field. The dashboard manages this automatically.</div></div>`;
+
+ if(type==='seasonselect'){
+   const seasons=(state.data.seasons||[])
+     .filter(item=>item&&item.title)
+     .sort((a,b)=>(Number(a.order)||9999)-(Number(b.order)||9999))
+     .map(item=>item.title)
+     .filter((title,index,list)=>list.indexOf(title)===index);
+   const selected=String(val||latestSeasonTitle()||'');
+   const isCustom=selected&& !seasons.includes(selected);
+   return `<div class="field full season-assignment-field">
+     <label>${label}</label>
+     <select name="${key}" id="seasonSelect" ${required}>
+       <option value="" ${selected===''?'selected':''}>No season / N/A</option>
+       ${seasons.map(title=>`<option value="${esc(title)}" ${selected===title?'selected':''}>${esc(title)}</option>`).join('')}
+       <option value="__custom__" ${isCustom?'selected':''}>Enter another season…</option>
+     </select>
+     <div class="help">The newest visible season is selected automatically. You may choose any existing season or enter another one.</div>
+     <div class="custom-choice-panel ${isCustom?'':'is-hidden'}" id="customSeasonPanel">
+       <label>Custom season name</label>
+       <input id="customSeasonName" type="text" value="${isCustom?esc(selected):''}" placeholder="Example: Winter 2025">
+       <label class="inline-check"><input id="createSeasonCard" type="checkbox" checked> Create a matching season card if it does not exist</label>
+     </div>
+   </div>`;
+ }
+
+ if(type==='playlisttypeselect'){
+   const presets=rule||[];
+   const current=String(val||presets[0]||'core');
+   const isCustom=current && !presets.includes(current);
+   return `<div class="field full playlist-type-field">
+     <label>${label}</label>
+     <select name="${key}" id="playlistTypeSelect">
+       ${presets.map(value=>`<option value="${esc(value)}" ${current===value?'selected':''}>${esc(friendlyOption(value))}</option>`).join('')}
+       <option value="__custom__" ${isCustom?'selected':''}>Custom type…</option>
+     </select>
+     <div class="help">Preset types provide automatic icons and colors. Custom types use a neutral default until customized later.</div>
+     <div class="custom-choice-panel ${isCustom?'':'is-hidden'}" id="customPlaylistTypePanel">
+       <label>Custom playlist type</label>
+       <input id="customPlaylistType" type="text" value="${isCustom?esc(current):''}" placeholder="Example: Interviews">
+     </div>
+   </div>`;
+ }
+
+ if(type==='select'){
+   const opts=rule.map(option=>`<option value="${esc(option)}" ${String(val)===option?'selected':''}>${esc(friendlyOption(option))}</option>`).join('');
+   return `<div class="field"><label>${label}</label><select name="${key}">${opts}</select></div>`;
+ }
+ if(type==='locationselect'){
+   const current=playlistLocationValue(val);
+   const options=[['media-archive','Media Archive only'],['home-best','Homepage Best Of only'],['best-and-archive','Homepage Best Of + Media Archive'],['season-archive','Season Archive only'],['latest-season-playlists','Latest Season Playlists only'],['season-and-latest','Season Archive + Latest Season Playlists']];
+   return `<div class="field"><label>${label}</label><select name="${key}">${options.map(([value,text])=>`<option value="${value}" ${current===value?'selected':''}>${text}</option>`).join('')}</select><div class="help">Choose exactly where this playlist card should appear.</div></div>`;
+ }
+ if(type==='textarea')return `<div class="field full"><label>${label}</label><textarea name="${key}" placeholder="N/A">${esc(val||'')}</textarea></div>`;
+ return `<div class="field"><label>${label}</label><input name="${key}" type="${type}" value="${esc(val??'')}" ${required} placeholder="${type==='url'?'Not available yet':'N/A'}"></div>`;
+}
 function safeImagePath(schema,form,item,uploadFile){const pathInput=form.querySelector(`[name="${schema.imageField}"]`);let requested=String(pathInput?.value||'').trim().replace(/^\/+/, '');let fileName='';if(requested){fileName=requested.split('/').pop().replace(/\.[^.]+$/,'')+'.png'}else if(uploadFile?.name){const originalBase=uploadFile.name.replace(/\.[^.]+$/,'');fileName=`${slug(originalBase)}.png`}else if(item?.[schema.imageField]){fileName=String(item[schema.imageField]).split('/').pop().replace(/\.[^.]+$/,'')+'.png'}else{const name=form.querySelector('[name="name"]')?.value||form.querySelector('[name="title"]')?.value||form.querySelector('[name="id"]')?.value||item.id;fileName=`${slug(name)}.png`}return `${schema.imageFolder}/${fileName}`}
-function openForm(index){const schema=SECTION_SCHEMAS[state.section],arr=state.data[schema.array],item=index>=0?structuredClone(arr[index]):{status:'published',order:arr.length+1};let uploadedPath='';state.editIndex=index;if(index<0)item.id=nextId(arr,state.section.replace(/s$/,''));$('#modalTitle').textContent=(index>=0?'Edit ':'Add ')+schema.title.replace(/s$/,'');const basic=schema.fields.filter(f=>(f[4]||'basic')==='basic').map(f=>inputHtml(f,item[f[0]])).join('');const advanced=schema.fields.filter(f=>f[4]==='advanced').map(f=>inputHtml(f,item[f[0]])).join('');const developer=schema.fields.filter(f=>f[4]==='developer').map(f=>inputHtml(f,item[f[0]])).join('');$('#editForm').innerHTML=`<div class="form-section"><h4>Basic Settings</h4><div class="form-grid">${basic}</div></div><div class="field full upload-field"><label>${state.section==='players'?'Upload player photo':state.section==='news'?'Upload news flyer':'Upload optional PNG image'}</label><input id="imageUpload" type="file" accept="image/png,image/jpeg,image/webp"><div class="help">The dashboard converts the file to PNG and creates the correct storage path automatically.</div><img id="imagePreview" class="upload-preview" ${item[schema.imageField]?`src="../${esc(item[schema.imageField])}"`:'hidden'}></div><details class="advanced-box"><summary>Advanced Settings</summary><div class="form-grid">${advanced||'<p class="help">No advanced settings.</p>'}</div></details><details class="developer-box"><summary>Technical Information (read only)</summary><div class="form-grid"><div class="field locked-field"><label>Internal ID 🔒</label><input value="${esc(item.id)}" readonly></div>${developer}</div></details><div class="admin-actions form-actions"><button class="btn primary" type="submit">Save Form</button><button class="btn" type="button" id="cancelForm">Cancel</button></div>`;const form=$('#editForm');form.onsubmit=e=>{e.preventDefault();const fd=new FormData(e.target),obj={...item,id:item.id};for(const [k,v] of fd.entries())obj[k]=['order','gameNumber'].includes(k)&&v!==''?Number(v):v;if(uploadedPath)obj[schema.imageField]=uploadedPath;if(state.section==='playlists')obj.locations=playlistLocationsFromValue(obj.locations);if(index>=0)arr[index]=obj;else arr.push(obj);markDirty();closeModal();renderManager(state.section)};$('#cancelForm').onclick=closeModal;const up=$('#imageUpload');up.onchange=async()=>{if(!up.files[0])return;const result=await fileToPng(up.files[0]);uploadedPath=safeImagePath(schema,form,item,up.files[0]);state.pendingFiles=state.pendingFiles.filter(f=>f.path!==uploadedPath);state.pendingFiles.push({path:uploadedPath,base64:result.base64});$('#imagePreview').src=result.url;$('#imagePreview').hidden=false;setStatus(`${uploadedPath} ready to publish.`,'ok')};$('#editModal').classList.add('open')}
+function openForm(index){const schema=SECTION_SCHEMAS[state.section],arr=state.data[schema.array],item=index>=0?JSON.parse(JSON.stringify(arr[index])):{status:'published',order:arr.length+1};let uploadedPath='';state.editIndex=index;if(index<0){item.id=nextId(arr,state.section.replace(/s$/,''));if(state.section==='games')item.season=latestSeasonTitle();}$('#modalTitle').textContent=(index>=0?'Edit ':'Add ')+schema.title.replace(/s$/,'');const basic=schema.fields.filter(f=>(f[4]||'basic')==='basic').map(f=>inputHtml(f,item[f[0]])).join('');const advanced=schema.fields.filter(f=>f[4]==='advanced').map(f=>inputHtml(f,item[f[0]])).join('');const developer=schema.fields.filter(f=>f[4]==='developer').map(f=>inputHtml(f,item[f[0]])).join('');$('#editForm').innerHTML=`<div class="form-section"><h4>Basic Settings</h4><div class="form-grid">${basic}</div></div><div class="field full upload-field"><label>${state.section==='players'?'Upload player photo':state.section==='news'?'Upload news flyer':'Upload optional PNG image'}</label><input id="imageUpload" type="file" accept="image/png,image/jpeg,image/webp"><div class="help">The dashboard converts the file to PNG and creates the correct storage path automatically.</div><img id="imagePreview" class="upload-preview" ${item[schema.imageField]?`src="../${esc(item[schema.imageField])}"`:'hidden'}></div><details class="advanced-box"><summary>Advanced Settings</summary><div class="form-grid">${advanced||'<p class="help">No advanced settings.</p>'}</div></details><details class="developer-box"><summary>Technical Information (read only)</summary><div class="form-grid"><div class="field locked-field"><label>Internal ID 🔒</label><input value="${esc(item.id)}" readonly></div>${developer}</div></details><div class="admin-actions form-actions"><button class="btn primary" type="submit">Save Form</button><button class="btn" type="button" id="cancelForm">Cancel</button></div>`;const form=$('#editForm');form.onsubmit=e=>{
+ e.preventDefault();
+ const fd=new FormData(e.target),obj={...item,id:item.id};
+ for(const [k,v] of fd.entries())obj[k]=['order','gameNumber'].includes(k)&&v!==''?Number(v):v;
+
+ if(state.section==='games'&&obj.season==='__custom__'){
+   const custom=String($('#customSeasonName')?.value||'').trim();
+   if(!custom){setStatus('Enter a custom season name or select an existing season.','bad');return}
+   obj.season=custom;
+   if($('#createSeasonCard')?.checked){
+     const seasons=state.data.seasons=state.data.seasons||[];
+     const exists=seasons.some(season=>String(season.title||'').trim().toLowerCase()===custom.toLowerCase());
+     if(!exists){
+       seasons.push({
+         id:nextId(seasons,'season'),
+         title:custom,
+         status:'published',
+         order:seasons.length+1,
+         subtitle:'Season Archive',
+         fullMatches:'',
+         highlights:'',
+         slideshows:''
+       });
+     }
+   }
+ }
+
+ if(state.section==='playlists'&&obj.category==='__custom__'){
+   const custom=String($('#customPlaylistType')?.value||'').trim();
+   if(!custom){setStatus('Enter a custom playlist type or select a preset type.','bad');return}
+   obj.category=custom;
+ }
+
+ if(uploadedPath)obj[schema.imageField]=uploadedPath;
+ if(state.section==='playlists')obj.locations=playlistLocationsFromValue(obj.locations);
+ if(index>=0)arr[index]=obj;else arr.push(obj);
+ markDirty();closeModal();renderManager(state.section)
+};$('#cancelForm').onclick=closeModal;
+ const seasonSelect=$('#seasonSelect');
+ if(seasonSelect)seasonSelect.onchange=()=>$('#customSeasonPanel')?.classList.toggle('is-hidden',seasonSelect.value!=='__custom__');
+ const playlistTypeSelect=$('#playlistTypeSelect');
+ if(playlistTypeSelect)playlistTypeSelect.onchange=()=>$('#customPlaylistTypePanel')?.classList.toggle('is-hidden',playlistTypeSelect.value!=='__custom__');
+ const up=$('#imageUpload');up.onchange=async()=>{if(!up.files[0])return;const result=await fileToPng(up.files[0]);uploadedPath=safeImagePath(schema,form,item,up.files[0]);state.pendingFiles=state.pendingFiles.filter(f=>f.path!==uploadedPath);state.pendingFiles.push({path:uploadedPath,base64:result.base64});$('#imagePreview').src=result.url;$('#imagePreview').hidden=false;setStatus(`${uploadedPath} ready to publish.`,'ok')};$('#editModal').classList.add('open')}
 function closeModal(){$('#editModal').classList.remove('open')}
 async function fileToPng(file){const bmp=await createImageBitmap(file),canvas=document.createElement('canvas');canvas.width=bmp.width;canvas.height=bmp.height;canvas.getContext('2d').drawImage(bmp,0,0);const blob=await new Promise(r=>canvas.toBlob(r,'image/png',.92));const url=URL.createObjectURL(blob),buf=await blob.arrayBuffer(),bytes=new Uint8Array(buf);let binary='';for(let i=0;i<bytes.length;i+=0x8000)binary+=String.fromCharCode(...bytes.subarray(i,i+0x8000));return {url,base64:btoa(binary)}}
 async function publish(){
@@ -1212,28 +1318,52 @@ window.AdminCMS={initCommon,publish};
     return document.body.dataset.page || "dashboard";
   }
 
-  function cloneWithPendingAssets(data) {
-    const assetMap = new Map(
+  const PREVIEW_DB_NAME = "asg-admin-preview";
+  const PREVIEW_DB_STORE = "pending-assets";
+
+  function openPreviewDb() {
+    return new Promise((resolve, reject) => {
+      const request = indexedDB.open(PREVIEW_DB_NAME, 1);
+      request.onupgradeneeded = () => {
+        const db = request.result;
+        if (!db.objectStoreNames.contains(PREVIEW_DB_STORE)) {
+          db.createObjectStore(PREVIEW_DB_STORE, { keyPath: "path" });
+        }
+      };
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error || new Error("Could not open preview storage."));
+    });
+  }
+
+  async function savePendingAssetsToPreviewDb() {
+    // V153: do not place large image data into sessionStorage or IndexedDB.
+    // The preview tab reads these temporary assets directly from its opener.
+    window.__ASG_PENDING_PREVIEW_ASSETS = Object.fromEntries(
       (state.pendingFiles || []).map(file => [
         String(file.path),
-        `data:image/png;base64,${file.base64}`
+        `data:image/png;base64,${String(file.base64 || "")}`
       ])
     );
+    return true;
+  }
 
-    const walk = value => {
-      if (Array.isArray(value)) return value.map(walk);
-      if (value && typeof value === "object") {
-        return Object.fromEntries(
-          Object.entries(value).map(([key, item]) => [key, walk(item)])
-        );
-      }
-      if (typeof value === "string" && assetMap.has(value)) {
-        return assetMap.get(value);
-      }
-      return value;
-    };
+  async function clearPreviewDb() {
+    try {
+      const db = await openPreviewDb();
+      await new Promise((resolve, reject) => {
+        const tx = db.transaction(PREVIEW_DB_STORE, "readwrite");
+        tx.objectStore(PREVIEW_DB_STORE).clear();
+        tx.oncomplete = resolve;
+        tx.onerror = () => reject(tx.error);
+      });
+      db.close();
+    } catch (error) {
+      console.warn("Could not clear preview database.", error);
+    }
+  }
 
-    return walk(JSON.parse(JSON.stringify(data || {})));
+  function cloneDraftMetadata(data) {
+    return JSON.parse(JSON.stringify(data || {}));
   }
 
   function commitOpenForm() {
@@ -1252,14 +1382,16 @@ window.AdminCMS={initCommon,publish};
     return true;
   }
 
-  function saveDraft() {
+  async function saveDraft() {
     try {
       if (!commitOpenForm()) return false;
       const page = currentPage();
-      const draft = cloneWithPendingAssets(state.data);
+      const draft = cloneDraftMetadata(state.data);
+      await savePendingAssetsToPreviewDb();
       sessionStorage.setItem("asgDraftMasterContent", JSON.stringify(state.data || {}));
       sessionStorage.setItem("asgPreviewMasterContent", JSON.stringify(draft));
       sessionStorage.setItem("asgDraftAdminPage", page);
+      sessionStorage.removeItem("asgPreviewAssetsInIndexedDb");
       setStatus("Draft saved — not published.", "ok");
       const pending = document.querySelector("#pendingLabel") || document.querySelector("#workflowStatus");
       if (pending) pending.textContent = "Draft saved — not published";
@@ -1270,8 +1402,8 @@ window.AdminCMS={initCommon,publish};
     }
   }
 
-  function previewWebsite() {
-    if (!saveDraft()) return;
+  async function previewWebsite() {
+    if (!(await saveDraft())) return;
     const page = currentPage();
     const destination = PAGE_PREVIEWS[page] || "index.html";
     const opened = window.open(`../${destination}?adminPreview=1`, "_blank");
@@ -1283,13 +1415,17 @@ window.AdminCMS={initCommon,publish};
   }
 
   async function publishDraft() {
-    if (workflowBusy || !saveDraft()) return;
+    if (workflowBusy || !(await saveDraft())) return;
     workflowBusy = true;
     try {
       await publish();
       if (!state.dirty) {
         sessionStorage.removeItem("asgDraftMasterContent");
+        sessionStorage.removeItem("asgPreviewMasterContent");
         sessionStorage.removeItem("asgDraftAdminPage");
+        sessionStorage.removeItem("asgPreviewAssetsInIndexedDb");
+        window.__ASG_PENDING_PREVIEW_ASSETS = {};
+        await clearPreviewDb();
       }
     } catch (error) {
       setStatus("Publish failed: " + error.message, "bad");
@@ -1298,7 +1434,7 @@ window.AdminCMS={initCommon,publish};
     }
   }
 
-  function cancelChanges() {
+  async function cancelChanges() {
     const hasChanges =
       state.dirty ||
       (state.pendingFiles && state.pendingFiles.length) ||
@@ -1312,6 +1448,9 @@ window.AdminCMS={initCommon,publish};
     sessionStorage.removeItem("asgDraftMasterContent");
     sessionStorage.removeItem("asgPreviewMasterContent");
     sessionStorage.removeItem("asgDraftAdminPage");
+    sessionStorage.removeItem("asgPreviewAssetsInIndexedDb");
+    window.__ASG_PENDING_PREVIEW_ASSETS = {};
+    await clearPreviewDb();
     location.href = "dashboard.html";
   }
 
@@ -1355,15 +1494,87 @@ window.AdminCMS={initCommon,publish};
     if (banner) banner.insertAdjacentElement("afterend", bar);
     else content.prepend(bar);
 
-    bar.querySelector("#workflowSave").onclick = saveDraft;
-    bar.querySelector("#workflowPreview").onclick = previewWebsite;
-    bar.querySelector("#workflowPublish").onclick = publishDraft;
-    bar.querySelector("#workflowCancel").onclick = cancelChanges;
+    bar.querySelector("#workflowSave").onclick = async event => { event.preventDefault(); await saveDraft(); };
+    bar.querySelector("#workflowPreview").onclick = async event => { event.preventDefault(); await previewWebsite(); };
+    bar.querySelector("#workflowPublish").onclick = async event => { event.preventDefault(); await publishDraft(); };
+    bar.querySelector("#workflowCancel").onclick = async event => { event.preventDefault(); await cancelChanges(); };
+
+    normalizeAdminPageLayout();
+  }
+
+  function buildGraphicsTopPreview(content, workflowBar) {
+    if (currentPage() !== "graphics" || content.querySelector("#standardGraphicsPreview")) return;
+    const sourceItems = [...content.querySelectorAll(".graphic-preview-item")];
+    if (!sourceItems.length) return;
+
+    const panel = document.createElement("aside");
+    panel.id = "standardGraphicsPreview";
+    panel.className = "visual-editor-preview standardized-top-preview graphics-top-preview";
+    panel.innerHTML = `
+      <div class="preview-toolbar">
+        <div><span class="v2-pill">LIVE PREVIEW</span><h4>Website Graphics</h4></div>
+      </div>
+      <div class="graphics-top-preview-grid">
+        ${sourceItems.map(item => {
+          const label = item.querySelector("label")?.textContent || "Website graphic";
+          const image = item.querySelector("[data-graphic-preview]");
+          const key = image?.dataset.graphicPreview || "";
+          const src = image?.getAttribute("src") || "";
+          return `<article><strong>${label}</strong><div class="graphic-preview-box"><img data-top-graphic-preview="${key}" src="${src}" alt="${label}"></div></article>`;
+        }).join("")}
+      </div>
+      <p class="help">These previews update immediately. The upload controls are below.</p>`;
+
+    workflowBar.insertAdjacentElement("afterend", panel);
+
+    content.querySelectorAll("[data-asset-key]").forEach(input => {
+      input.addEventListener("change", () => {
+        const file = input.files?.[0];
+        const target = panel.querySelector(`[data-top-graphic-preview="${input.dataset.assetKey}"]`);
+        if (file && target) target.src = URL.createObjectURL(file);
+      });
+    });
+  }
+
+  function normalizeAdminPageLayout() {
+    const content = document.querySelector("#content");
+    const bar = content?.querySelector("#unifiedWorkflowBar");
+    if (!content || !bar) return;
+
+    const page = currentPage();
+    if (["dashboard", "backups"].includes(page)) return;
+
+    const preview = content.querySelector(
+      ".hero-live-preview-panel, .site-live-preview, .site-preview-shell, .visual-editor-preview"
+    );
+
+    if (preview && !preview.classList.contains("standardized-top-preview")) {
+      preview.classList.add("standardized-top-preview");
+      bar.insertAdjacentElement("afterend", preview);
+    }
+
+    buildGraphicsTopPreview(content, bar);
+
+    const addButton = content.querySelector(
+      "#addBtn, #addNewsBtn, .manager-actions #addBtn, [id^='add'][class*='btn']"
+    );
+    if (addButton) {
+      const actionBar = addButton.closest(".admin-actions");
+      const topPreview = content.querySelector(".standardized-top-preview");
+      if (actionBar && topPreview && actionBar.previousElementSibling !== topPreview) {
+        topPreview.insertAdjacentElement("afterend", actionBar);
+      }
+    }
+
+    content.classList.add("standardized-admin-flow");
   }
 
   const observer = new MutationObserver(() => {
     clearTimeout(window.__asgWorkflowTimer);
-    window.__asgWorkflowTimer = setTimeout(injectWorkflowBar, 0);
+    window.__asgWorkflowTimer = setTimeout(() => {
+      injectWorkflowBar();
+      normalizeAdminPageLayout();
+    }, 0);
   });
 
   document.addEventListener("DOMContentLoaded", () => {
