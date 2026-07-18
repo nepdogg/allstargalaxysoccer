@@ -1,5 +1,5 @@
 {
-  "version": 138,
+  "version": 139,
   "interval": 7000,
   "transition": 1400,
   "pages": {
@@ -44,7 +44,7 @@
       "effect": "pulse",
       "transitionEffect": "glow-fade",
       "glowIntensity": "medium",
-      "glowColor": "#b84cff"
+      "glowColor": "#32ff32"
     },
     "schedule": {
       "selector": ".hero-image.hero-schedule",
