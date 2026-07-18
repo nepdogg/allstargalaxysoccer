@@ -1,5 +1,5 @@
 {
-  "version": 172,
+  "version": 173,
   "updated": "2026-07-18",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -1986,14 +1986,6 @@
       "number": "75",
       "position": "COACH",
       "photo": "images/team/players/img-4052.png"
-    },
-    {
-      "status": "published",
-      "order": 32,
-      "id": "player-32",
-      "name": "Player",
-      "number": "66",
-      "position": "STAFF"
     }
   ],
   "news": [
