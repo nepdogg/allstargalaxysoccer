@@ -120,11 +120,13 @@
   }
   function playerCard(data,p){
     const accent=colorFor(data,'players');
-    const photoPath=pngOnlyPath(p.photo||'');
-    const fallbackLogo=pngOnlyPath(data.assets.logo||'');
+    const uploadedPhoto=pngOnlyPath(p.photo||'');
+    const defaultSilhouette=pngOnlyPath(data.assets?.playerSilhouette||'images/team/players/player-silhouette.png');
+    const fallbackLogo=pngOnlyPath(data.assets?.logo||'');
+    const photoPath=uploadedPhoto||defaultSilhouette;
     const lightboxPath=photoPath||fallbackLogo;
     const photo=photoPath
-      ? `<img class="generated-player-photo" src="${esc(photoPath)}" alt="${esc(p.name)}" loading="lazy"/>`
+      ? `<img class="generated-player-photo" src="${esc(photoPath)}" alt="${esc(p.name||'Player')}" loading="lazy" onerror="this.onerror=null;this.src='${esc(defaultSilhouette||fallbackLogo)}'"/>`
       : `<div class="generated-player-placeholder"><img src="${esc(fallbackLogo)}" alt="Allstar Galaxy logo"><span>PLAYER PHOTO<br>COMING SOON</span></div>`;
     return `<a href="${esc(lightboxPath||'#')}" class="team-card-slide generated-player-card" aria-label="${esc(p.name)} player card" data-player-image="${esc(lightboxPath)}" data-player-name="${esc(p.name)}" style="--card-accent:${accent}">
       <div class="generated-player-frame">
