@@ -226,7 +226,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             stage.innerHTML = "";
             const toolbar = document.createElement("div");
             toolbar.className = "ultimate-profile-toolbar";
-            toolbar.innerHTML = `<button type="button" class="ultimate-tab is-active" data-card-view="front">Front Card</button>${advanced?'<button type="button" class="ultimate-tab" data-card-view="profile">Profile Card</button>':''}<a class="ultimate-open-photo" href="${value("playerImage", "#")}" target="_blank" rel="noopener">Open Full Player Photo</a>`;
+            toolbar.innerHTML = `<button type="button" class="ultimate-tab is-active" data-card-view="front">Front Card</button>${advanced?'<button type="button" class="ultimate-tab" data-card-view="profile">Profile Card</button>':''}<button type="button" class="ultimate-open-photo">Open Full Player Photo</button>`;
             stage.appendChild(toolbar);
             const deck = document.createElement("div");
             deck.className = "ultimate-card-deck" + (advanced ? " is-advanced" : "");
@@ -255,6 +255,11 @@ document.addEventListener("DOMContentLoaded", async () => {
               toolbar.querySelectorAll(".ultimate-tab").forEach(x=>x.classList.toggle("is-active",x===btn));
               deck.querySelectorAll(".ultimate-view-card").forEach(card=>card.classList.toggle("is-active",card.dataset.cardPanel===btn.dataset.cardView));
             }));
+            toolbar.querySelector(".ultimate-open-photo")?.addEventListener("click", (event)=>{
+              event.preventDefault();
+              const url=value("playerImage", "");
+              if(url) window.open(url, "_blank", "noopener,noreferrer");
+            });
         }
 
         function openPlayerLightbox(index) {
