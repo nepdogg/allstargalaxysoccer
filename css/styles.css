@@ -17142,3 +17142,110 @@ body.page-live .footer-platform-v147 { border-top-color:#ff3030 !important; }
 body.page-follow .footer-platform-v147 { border-top-color:#ff42c6 !important; }
 body.page-about .footer-platform-v147,
 body.page-not-found .footer-platform-v147 { border-top-color:#cfd5e3 !important; }
+
+
+/* ============================================================
+   V153 — MOBILE FOOTER BALANCE + MOBILE NAVIGATION TITLE
+   ============================================================ */
+.footer-link-separator {
+    opacity: .62;
+    margin: 0 2px;
+}
+
+.footer-v147-links a,
+.footer-v147-links .footer-admin-link {
+    font-size: .78rem !important;
+    letter-spacing: .14em !important;
+    line-height: 1.1;
+}
+
+@media (max-width: 900px) {
+    .footer-v147-social-row .footer-logo {
+        width: 60px !important;
+        height: 60px !important;
+        flex: 0 0 60px !important;
+    }
+
+    .footer-v147-social-row .footer-logo img {
+        width: 56px !important;
+        height: 56px !important;
+        object-fit: contain !important;
+    }
+
+    .footer-v147-social-row .footer-social img {
+        width: 34px !important;
+        height: 34px !important;
+        object-fit: contain !important;
+    }
+
+    .footer-xitlali-mark {
+        width: 60px !important;
+        height: 60px !important;
+        min-width: 60px !important;
+    }
+
+    .footer-xitlali-mark .footer-xitlali-logo {
+        width: 58px !important;
+        height: 58px !important;
+    }
+
+    .footer-v147-team {
+        gap: 3px !important;
+    }
+
+    .footer-v147-team .footer-copyright {
+        font-size: .92rem !important;
+    }
+
+    .footer-v147-links a,
+    .footer-v147-links .footer-admin-link {
+        font-size: .74rem !important;
+        letter-spacing: .16em !important;
+    }
+}
+
+/* Mobile only: give the center navigation-title graphic more height.
+   Desktop sizing is intentionally unchanged. */
+@media (max-width: 760px) {
+    .site-top .nav-title img,
+    .site-top .site-title-image,
+    .site-top .navigation-title,
+    .site-top .navigation-title img {
+        height: clamp(92px, 17vw, 114px) !important;
+        transform: scaleY(1.22) !important;
+        max-height: none !important;
+        width: auto !important;
+        object-fit: contain !important;
+        transform-origin: center !important;
+    }
+
+    .site-top .nav-title,
+    .site-top .navigation-title {
+        min-height: clamp(104px, 18.5vw, 126px) !important;
+        overflow: visible !important;
+    }
+}
+
+@media (max-width: 430px) {
+    .site-top .nav-title img,
+    .site-top .site-title-image,
+    .site-top .navigation-title,
+    .site-top .navigation-title img {
+        height: clamp(88px, 23vw, 106px) !important;
+        transform: scaleY(1.23) !important;
+    }
+
+    .site-top .nav-title,
+    .site-top .navigation-title {
+        min-height: clamp(100px, 25vw, 118px) !important;
+    }
+
+    .footer-v147-social-row {
+        gap: 10px !important;
+    }
+
+    .footer-v147-social-row .footer-social {
+        gap: 10px !important;
+        flex-wrap: nowrap !important;
+    }
+}
