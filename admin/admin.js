@@ -1468,3 +1468,58 @@ window.AdminCMS={initCommon,publish};
     injectWorkflowBar
   };
 })();
+
+/* ============================================================
+   V162 — PLAYER PHOTO D-PAD + FIT CONTROLS
+   ============================================================ */
+(() => {
+  const priorOpenFormV162 = openForm;
+  const clamp = (value,min,max) => Math.max(min,Math.min(max,Number(value)||0));
+
+  function addPlayerPositionController(){
+    if(state.section !== 'players') return;
+    const form = document.querySelector('#editForm');
+    if(!form || form.querySelector('.player-position-controller')) return;
+    const details = form.querySelector('.advanced-box .form-grid');
+    if(!details) return;
+    const x = form.querySelector('[name="photoX"]');
+    const y = form.querySelector('[name="photoY"]');
+    const scale = form.querySelector('[name="photoScale"]');
+    if(!x || !y || !scale) return;
+    if(!String(scale.value).trim()) scale.value='90';
+    if(!String(x.value).trim()) x.value='0';
+    if(!String(y.value).trim()) y.value='0';
+
+    const controller=document.createElement('section');
+    controller.className='player-position-controller';
+    controller.innerHTML=`<h5>Position player photo</h5>
+      <div class="player-position-grid" aria-label="Move player photo">
+        <button type="button" class="up" data-move-y="-2" aria-label="Move photo up">↑</button>
+        <button type="button" class="left" data-move-x="-2" aria-label="Move photo left">←</button>
+        <button type="button" class="reset" data-photo-reset aria-label="Reset photo position">●</button>
+        <button type="button" class="right" data-move-x="2" aria-label="Move photo right">→</button>
+        <button type="button" class="down" data-move-y="2" aria-label="Move photo down">↓</button>
+      </div>
+      <div class="player-zoom-controls">
+        <button type="button" data-zoom="-5">Zoom −</button>
+        <button type="button" data-photo-fit>Fit Player</button>
+        <button type="button" data-zoom="5">Zoom +</button>
+      </div>
+      <div class="player-position-readout" aria-live="polite"></div>`;
+    details.appendChild(controller);
+
+    const emit = input => { input.dispatchEvent(new Event('input',{bubbles:true})); input.dispatchEvent(new Event('change',{bubbles:true})); };
+    const updateReadout=()=>{controller.querySelector('.player-position-readout').textContent=`X ${x.value}% • Y ${y.value}% • Size ${scale.value}%`;};
+    controller.querySelectorAll('[data-move-x]').forEach(btn=>btn.addEventListener('click',()=>{x.value=clamp(Number(x.value)+Number(btn.dataset.moveX),-50,50);emit(x);updateReadout();}));
+    controller.querySelectorAll('[data-move-y]').forEach(btn=>btn.addEventListener('click',()=>{y.value=clamp(Number(y.value)+Number(btn.dataset.moveY),-50,50);emit(y);updateReadout();}));
+    controller.querySelectorAll('[data-zoom]').forEach(btn=>btn.addEventListener('click',()=>{scale.value=clamp(Number(scale.value)+Number(btn.dataset.zoom),60,180);emit(scale);updateReadout();}));
+    controller.querySelector('[data-photo-reset]').addEventListener('click',()=>{x.value=0;y.value=0;scale.value=90;[x,y,scale].forEach(emit);updateReadout();});
+    controller.querySelector('[data-photo-fit]').addEventListener('click',()=>{x.value=0;y.value=0;scale.value=82;[x,y,scale].forEach(emit);updateReadout();});
+    updateReadout();
+  }
+
+  openForm = function(index){
+    priorOpenFormV162(index);
+    requestAnimationFrame(addPlayerPositionController);
+  };
+})();
