@@ -287,7 +287,7 @@ window.AdminCMS={initCommon,publish};
         <img class="prototype-card-template" src="${previewEsc((state.data.assets&&state.data.assets.playerCardTemplate)?'../'+state.data.assets.playerCardTemplate:'../generated/player-card-template.png')}" alt="" aria-hidden="true">
         <div class="preview-ultimate-cutout-stage prototype-player-stage" style="--player-scale:${Math.max(60,Math.min(180,Number(obj.photoScale)||100))/100};--player-x:${Math.max(-50,Math.min(50,Number(obj.photoX)||0))}%;--player-y:${Math.max(-50,Math.min(50,Number(obj.photoY)||0))}%"><img class="preview-ultimate-photo" src="${previewEsc(image || '../images/team/players/player-silhouette.png')}" alt=""></div>
         <span class="prototype-player-number">${previewEsc(obj.number||'00')}</span>
-        <div class="preview-ultimate-name prototype-player-name"><small>${previewEsc(first)}</small><strong>${previewEsc(last)}</strong><em>${previewEsc(obj.position||'PLAYER')}</em></div>
+        <div class="preview-ultimate-name prototype-player-name name-length-${Math.min(20,String(last).length)}"><small>${previewEsc(first)}</small><strong>${previewEsc(last)}</strong><em>${previewEsc(obj.position||'PLAYER')}</em></div>
       </div>
       ${String(obj.profileMode||'standard').toLowerCase()==='advanced'?`<div class="preview-profile-badge">ADVANCED • DOUBLE CARD</div>`:''}
       <span class="preview-visibility">${visibleLabel(obj.status)}</span>
