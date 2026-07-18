@@ -17292,3 +17292,50 @@ body.page-not-found .footer-platform-v147 { border-top-color:#cfd5e3 !important;
 .ultimate-player-name strong{font-size:clamp(1.35rem,3.6vw,3.55rem)!important;letter-spacing:-.02em;word-break:normal!important;overflow-wrap:break-word!important}
 .ultimate-player-frame:after{content:"";position:absolute;inset:2.2%;z-index:10;pointer-events:none;border:1px solid rgba(255,61,180,.75);clip-path:polygon(6% 0,94% 0,100% 6%,100% 94%,94% 100%,6% 100%,0 94%,0 6%);box-shadow:inset 0 0 14px rgba(255,46,179,.45)}
 @media(max-width:700px){.ultimate-player-cutout-stage{top:7%;bottom:18%}.ultimate-player-name strong{font-size:clamp(1.5rem,12vw,3.2rem)!important}}
+
+
+/* ============================================================
+   V158 — PLAYER CARD CONSISTENCY, PROFILE CONTROLS AND NAME FIXES
+   ============================================================ */
+.ultimate-player-bg,
+.preview-ultimate-card,
+.ultimate-profile-card {
+  background-color:#07000d!important;
+  background-image:
+    radial-gradient(circle at 76% 22%, rgba(255,174,0,.95) 0 1.2%, rgba(255,49,171,.65) 2%, transparent 10%),
+    radial-gradient(circle at 72% 24%, transparent 0 4%, rgba(255,49,171,.28) 8%, rgba(107,38,255,.22) 15%, transparent 26%),
+    radial-gradient(circle at 23% 30%, rgba(255,36,170,.38), transparent 24%),
+    radial-gradient(circle at 64% 54%, rgba(98,34,255,.38), transparent 30%),
+    linear-gradient(145deg,#120020 0%,#320044 38%,#090014 72%,#020005 100%)!important;
+  background-size:cover!important;
+  background-position:center!important;
+}
+.ultimate-player-bg:before,.preview-ultimate-card:before,.ultimate-profile-card:after{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    radial-gradient(circle,#fff 0 1px,transparent 1.5px),
+    radial-gradient(circle,#ff6ad9 0 1px,transparent 1.5px),
+    radial-gradient(circle,#a977ff 0 1px,transparent 1.5px);
+  background-size:29px 31px,47px 43px,71px 67px;
+  background-position:3px 5px,19px 11px,37px 29px;
+  opacity:.55;
+}
+.ultimate-player-bg:after{z-index:1!important;background:linear-gradient(to bottom,rgba(0,0,0,.02),rgba(0,0,0,.08) 55%,rgba(0,0,0,.86) 88%)!important}
+.preview-ultimate-card{isolation:isolate}.preview-ultimate-card>*{z-index:2}
+.preview-ultimate-card:before{z-index:0}
+.ultimate-profile-card{isolation:isolate}.ultimate-profile-card>*{position:relative;z-index:2}.ultimate-profile-card:before{display:none!important}.ultimate-profile-card:after{z-index:0}
+.ultimate-player-name em,.preview-ultimate-name em{color:#ff48b2!important;text-transform:uppercase!important;font-style:italic!important;font-weight:900!important;letter-spacing:.14em!important}
+.ultimate-player-name strong,.preview-ultimate-name strong{width:100%;max-width:100%;text-align:center;white-space:normal!important;overflow:visible!important;text-overflow:clip!important;word-break:normal!important;overflow-wrap:break-word!important;line-height:.82!important}
+.ultimate-player-name strong{font-size:clamp(1.25rem,3.1vw,3.15rem)!important}
+.team-roster-carousel .ultimate-player-name strong{font-size:clamp(1.18rem,2.55vw,2.8rem)!important}
+.ultimate-player-name[class*="name-length-1"] strong{font-size:clamp(1.05rem,2.65vw,2.75rem)!important}
+.ultimate-profile-name strong{font-size:clamp(1.6rem,3.1vw,3rem)!important;overflow-wrap:anywhere}
+.ultimate-card-deck .ultimate-view-card{display:none!important}
+.ultimate-card-deck .ultimate-view-card.is-active{display:block!important}
+.ultimate-card-deck{min-height:min(650px,74vh);align-items:flex-start!important}
+.ultimate-profile-toolbar{position:relative;z-index:20}
+.ultimate-tab,.ultimate-open-photo{pointer-events:auto!important;position:relative;z-index:21;appearance:none;font:inherit}
+.ultimate-open-photo{background:#100617!important}
+.player-lightbox-stage,.ultimate-lightbox-cards{overflow:visible!important}
+@media(min-width:701px){.ultimate-card-deck.is-advanced .ultimate-view-card{display:none!important}.ultimate-card-deck.is-advanced .ultimate-view-card.is-active{display:block!important}}
+@media(max-width:700px){.ultimate-card-deck{min-height:0}.ultimate-player-name strong{font-size:clamp(1.35rem,10vw,2.85rem)!important}.ultimate-profile-toolbar{position:relative!important}}
