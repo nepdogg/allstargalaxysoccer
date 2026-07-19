@@ -607,3 +607,27 @@ document.addEventListener("click", (event) => {
         if (event.key === "Escape") closeScheduleViewer();
     });
 })();
+
+/* V170 — exact one-line player-name fitting in every public rendering context. */
+(()=>{
+  const fitOne=(el,min=8)=>{
+    if(!el || !el.parentElement) return;
+    el.style.fontSize='';
+    const box=el.parentElement;
+    const max=Math.max(1,box.clientWidth*.90);
+    let size=parseFloat(getComputedStyle(el).fontSize)||18;
+    let guard=80;
+    while(el.scrollWidth>max && size>min && guard--){size-=.5;el.style.fontSize=size+'px';}
+  };
+  const fitAll=(root=document)=>{
+    root.querySelectorAll?.('.prototype-player-name small').forEach(el=>fitOne(el,7));
+    root.querySelectorAll?.('.prototype-player-name strong').forEach(el=>fitOne(el,7));
+    root.querySelectorAll?.('.prototype-profile-name small').forEach(el=>fitOne(el,7));
+    root.querySelectorAll?.('.prototype-profile-name strong').forEach(el=>fitOne(el,8));
+  };
+  const run=()=>requestAnimationFrame(()=>fitAll());
+  document.addEventListener('DOMContentLoaded',run,{once:true});
+  window.addEventListener('load',run,{once:true});
+  window.addEventListener('resize',run);
+  new MutationObserver(run).observe(document.documentElement,{subtree:true,childList:true,characterData:true});
+})();
