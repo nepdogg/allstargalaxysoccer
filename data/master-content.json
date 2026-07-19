@@ -1,5 +1,5 @@
 {
-  "version": 183,
+  "version": 184,
   "updated": "2026-07-19",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -2284,9 +2284,9 @@
       "lastName": "LAST NAME",
       "imageMode": "cutout",
       "profileMode": "advanced",
-      "photoScale": 152,
+      "photoScale": 107,
       "photoX": 4,
-      "photoY": 50,
+      "photoY": 0,
       "dateOfBirth": "",
       "nationality": "",
       "preferredFoot": "",
