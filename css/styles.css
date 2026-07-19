@@ -18845,3 +18845,213 @@ body[data-page="graphics"] .sticky-graphics-publish{position:sticky!important;bo
 .ultimate-card-deck .popup-exact-front-card .prototype-player-stage{
   box-sizing:border-box!important;
 }
+
+/* ============================================================
+   V175 — PROTOTYPE-FIDELITY PLAYER + PROFILE CARDS
+   The approved PNG artwork is the coordinate system. Every view scales the
+   complete card; no view independently rebuilds the photo or typography.
+   ============================================================ */
+.prototype-player-frame,
+.ultimate-profile-card.prototype-profile-frame{
+  container-type:inline-size!important;
+}
+
+/* FRONT CARD — exact artwork zones */
+.prototype-player-number{
+  top:4.15%!important;
+  left:6.2%!important;
+  width:22%!important;
+  font-size:13.25cqw!important;
+  line-height:.86!important;
+  letter-spacing:-.055em!important;
+  text-align:left!important;
+}
+.prototype-player-stage,
+.preview-ultimate-cutout-stage.prototype-player-stage,
+.team-roster-carousel .prototype-player-stage,
+.ultimate-card-deck .prototype-player-stage,
+.popup-exact-front-card .prototype-player-stage{
+  left:5.5%!important;
+  right:5.5%!important;
+  top:5.5%!important;
+  bottom:33.0%!important;
+  height:auto!important;
+  overflow:visible!important;
+  z-index:3!important;
+}
+.prototype-player-stage .ultimate-player-photo,
+.prototype-player-stage .preview-ultimate-photo{
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  object-position:center bottom!important;
+  transform:translate(var(--player-x,0),var(--player-y,0)) scale(var(--player-scale,1))!important;
+  transform-origin:center bottom!important;
+}
+.prototype-player-name,
+.preview-ultimate-name.prototype-player-name,
+.team-roster-carousel .prototype-player-name,
+.ultimate-card-deck .prototype-player-name,
+.popup-exact-front-card .prototype-player-name{
+  left:8.0%!important;
+  right:8.0%!important;
+  bottom:5.7%!important;
+  height:27.2%!important;
+  padding:0 1.2%!important;
+  grid-template-rows:24% 51% 25%!important;
+  overflow:hidden!important;
+}
+.prototype-player-name small{
+  width:96%!important;
+  align-self:end!important;
+  font-size:5.55cqw!important;
+  line-height:.95!important;
+  letter-spacing:.17em!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:clip!important;
+}
+.prototype-player-name strong{
+  width:100%!important;
+  max-width:100%!important;
+  align-self:center!important;
+  font-size:14.8cqw!important;
+  line-height:.82!important;
+  letter-spacing:-.045em!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:clip!important;
+  transform:scaleX(.94)!important;
+  transform-origin:center!important;
+}
+/* Longer surnames retain one line while still filling the prototype zone. */
+.prototype-player-name.name-length-8 strong{font-size:13.4cqw!important}
+.prototype-player-name.name-length-9 strong{font-size:12.5cqw!important}
+.prototype-player-name.name-length-10 strong{font-size:11.7cqw!important}
+.prototype-player-name.name-length-11 strong{font-size:10.9cqw!important}
+.prototype-player-name.name-length-12 strong{font-size:10.1cqw!important}
+.prototype-player-name.name-length-13 strong{font-size:9.45cqw!important}
+.prototype-player-name.name-length-14 strong{font-size:8.85cqw!important}
+.prototype-player-name.name-length-15 strong,
+.prototype-player-name.name-length-16 strong,
+.prototype-player-name.name-length-17 strong,
+.prototype-player-name.name-length-18 strong,
+.prototype-player-name.name-length-19 strong,
+.prototype-player-name.name-length-20 strong{font-size:8.15cqw!important}
+.prototype-player-name em{
+  width:78%!important;
+  align-self:center!important;
+  font-size:4.85cqw!important;
+  line-height:1!important;
+  letter-spacing:.15em!important;
+  text-align:center!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+}
+
+/* The popup is literally the completed front card enlarged. */
+.ultimate-card-deck .popup-exact-front-card{
+  width:min(88vw,520px)!important;
+  max-width:520px!important;
+  aspect-ratio:2/3!important;
+}
+
+/* PROFILE CARD — coordinates measured against approved 1024 × 1536 art. */
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-number{
+  top:4.7%!important;
+  left:7.0%!important;
+  width:23%!important;
+  font-size:13.1cqw!important;
+  line-height:.86!important;
+  letter-spacing:-.055em!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-position{
+  top:15.65%!important;
+  left:7.3%!important;
+  width:31%!important;
+  font-size:4.3cqw!important;
+  line-height:1!important;
+  letter-spacing:.08em!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name{
+  left:10.5%!important;
+  right:10.5%!important;
+  top:22.1%!important;
+  height:14.9%!important;
+  display:grid!important;
+  grid-template-rows:35% 65%!important;
+  align-items:center!important;
+  justify-items:center!important;
+  overflow:hidden!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name small{
+  align-self:end!important;
+  width:96%!important;
+  font-size:5.45cqw!important;
+  line-height:.95!important;
+  letter-spacing:.19em!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name strong{
+  align-self:start!important;
+  width:100%!important;
+  max-width:100%!important;
+  font-size:13.9cqw!important;
+  line-height:.82!important;
+  letter-spacing:-.045em!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  transform:scaleX(.92)!important;
+  transform-origin:center!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values{
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b{
+  position:absolute!important;
+  left:58.0%!important;
+  right:8.0%!important;
+  height:4.0%!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  padding:0!important;
+  margin:0!important;
+  font-size:4.45cqw!important;
+  line-height:1!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(1){top:44.05%!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(2){top:51.0%!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(3){top:57.95%!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(4){top:64.90%!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(5){top:71.85%!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-quote{
+  top:79.65%!important;
+  left:13.5%!important;
+  right:13.5%!important;
+  height:7.0%!important;
+  max-height:7.0%!important;
+  margin:0!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  padding:0!important;
+  font-size:4.05cqw!important;
+  line-height:1.15!important;
+  letter-spacing:.05em!important;
+  text-align:center!important;
+  overflow:hidden!important;
+}
+
+/* Keep desktop, mobile, admin preview, website preview and public popup on the
+   same geometry. Only the complete card width changes. */
+@media(max-width:700px){
+  .ultimate-card-deck .popup-exact-front-card,
+  .ultimate-profile-card.prototype-profile-frame{width:min(91vw,520px)!important}
+}
