@@ -265,7 +265,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     <b>${value("playerHeight")}</b>
                     <b>${value("playerWeight")}</b>
                   </div>
-                  <p class="prototype-profile-quote">“${value("playerQuote","ALLSTAR GALAXY") }”</p>`;
+                  <p class="prototype-profile-quote">“${value("playerQuote","") }”</p>`;
                 deck.appendChild(profile);
             }
             stage.appendChild(deck);
