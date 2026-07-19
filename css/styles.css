@@ -17781,3 +17781,143 @@ body[data-page="graphics"] #content{height:auto!important;min-height:100%!import
 body[data-page="graphics"] .graphics-preview-grid{position:relative!important;overflow:visible!important;align-items:start!important}
 body[data-page="graphics"] .graphic-preview-item{position:relative!important;min-width:0!important;overflow:visible!important}
 body[data-page="graphics"] .sticky-graphics-publish{position:sticky!important;bottom:0!important;z-index:20!important;margin-top:22px!important;background:#090d14!important}
+
+/* ============================================================
+   V168 — PLAYER CARD FINAL LAYERING + PROFILE ALIGNMENT
+   ============================================================ */
+/* Keep the player cutout behind a solid name/position plate. */
+.prototype-player-stage,
+.preview-ultimate-cutout-stage.prototype-player-stage{
+  z-index:2!important;
+}
+.prototype-player-name,
+.preview-ultimate-name.prototype-player-name{
+  z-index:6!important;
+  isolation:isolate!important;
+  background:rgba(2,2,6,.96)!important;
+  border:1px solid rgba(255,38,174,.55)!important;
+  clip-path:polygon(8% 0,92% 0,100% 14%,100% 100%,0 100%,0 14%)!important;
+}
+.prototype-player-name::before,
+.preview-ultimate-name.prototype-player-name::before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:-1!important;
+  background:linear-gradient(180deg,rgba(6,4,10,.97),rgba(0,0,0,.99))!important;
+}
+.prototype-player-name small,
+.prototype-player-name strong,
+.prototype-player-name em,
+.preview-ultimate-name.prototype-player-name small,
+.preview-ultimate-name.prototype-player-name strong,
+.preview-ultimate-name.prototype-player-name em{
+  position:relative!important;
+  z-index:2!important;
+}
+
+/* Number should visually match the logo rather than dominate the card. */
+.prototype-player-number{
+  top:5.7%!important;
+  left:8.7%!important;
+  width:17%!important;
+  font-size:clamp(1.05rem,3.15vw,2.55rem)!important;
+  letter-spacing:-.03em!important;
+}
+
+/* Surname always stays on one line and leaves safe padding. */
+.prototype-player-name strong,
+.preview-ultimate-name.prototype-player-name strong{
+  width:94%!important;
+  max-width:94%!important;
+  margin:auto!important;
+  font-size:clamp(.78rem,2.65vw,2.05rem)!important;
+  letter-spacing:-.05em!important;
+  transform:scaleX(.78)!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:clip!important;
+}
+.prototype-player-name.name-length-8 strong{font-size:clamp(.74rem,2.48vw,1.92rem)!important}
+.prototype-player-name.name-length-9 strong{font-size:clamp(.70rem,2.32vw,1.80rem)!important}
+.prototype-player-name.name-length-10 strong{font-size:clamp(.66rem,2.18vw,1.68rem)!important}
+.prototype-player-name.name-length-11 strong{font-size:clamp(.62rem,2.04vw,1.56rem)!important}
+.prototype-player-name.name-length-12 strong{font-size:clamp(.58rem,1.91vw,1.46rem)!important}
+.prototype-player-name.name-length-13 strong{font-size:clamp(.54rem,1.79vw,1.36rem)!important}
+.prototype-player-name.name-length-14 strong{font-size:clamp(.51rem,1.68vw,1.27rem)!important}
+.prototype-player-name.name-length-15 strong{font-size:clamp(.48rem,1.58vw,1.19rem)!important}
+.prototype-player-name.name-length-16 strong,
+.prototype-player-name.name-length-17 strong,
+.prototype-player-name.name-length-18 strong,
+.prototype-player-name.name-length-19 strong,
+.prototype-player-name.name-length-20 strong{font-size:clamp(.43rem,1.42vw,1.07rem)!important}
+
+/* Position is centered in its dedicated lower row. */
+.prototype-player-name em,
+.preview-ultimate-name.prototype-player-name em{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:82%!important;
+  margin:auto!important;
+  padding:0!important;
+  text-align:center!important;
+  line-height:1!important;
+}
+
+/* Dedicated profile-template coordinates, measured against the 2:3 artwork. */
+.prototype-profile-number{
+  top:5.0%!important;
+  left:8.0%!important;
+  width:17%!important;
+  font-size:clamp(1.0rem,3.05vw,2.45rem)!important;
+}
+.prototype-profile-position{
+  top:13.0%!important;
+  left:7.8%!important;
+  width:21%!important;
+  text-align:center!important;
+}
+.prototype-profile-name{
+  left:10.5%!important;
+  right:10.5%!important;
+  top:25.2%!important;
+  height:15.5%!important;
+  grid-template-rows:34% 66%!important;
+}
+.prototype-profile-name strong{
+  width:94%!important;
+  max-width:94%!important;
+  overflow:hidden!important;
+  font-size:clamp(.92rem,2.85vw,2.25rem)!important;
+  transform:scaleX(.80)!important;
+}
+.prototype-profile-values{
+  left:58.0%!important;
+  right:9.0%!important;
+  top:44.1%!important;
+  height:31.7%!important;
+  grid-template-rows:repeat(5,1fr)!important;
+  align-items:center!important;
+}
+.prototype-profile-values b{
+  display:flex!important;
+  align-items:center!important;
+  height:100%!important;
+  font-size:clamp(.48rem,1.05vw,.82rem)!important;
+  line-height:1!important;
+}
+.prototype-profile-quote{
+  left:15%!important;
+  right:15%!important;
+  top:78.7%!important;
+  max-height:8.5%!important;
+  font-size:clamp(.45rem,.95vw,.76rem)!important;
+}
+
+@media(max-width:700px){
+  .prototype-player-number{font-size:clamp(.95rem,8vw,2.25rem)!important}
+  .prototype-player-name strong{font-size:clamp(.72rem,5.7vw,1.72rem)!important}
+  .prototype-profile-number{font-size:clamp(.95rem,7.5vw,2.2rem)!important}
+  .prototype-profile-name strong{font-size:clamp(.78rem,6.2vw,1.85rem)!important}
+}
