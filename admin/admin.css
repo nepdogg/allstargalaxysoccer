@@ -1349,7 +1349,7 @@ body[data-page="players"] #editModal .modal-card{max-height:94vh!important;overf
 body[data-page="players"] #editForm{align-items:start!important}
 
 /* ============================================================
-   V168 — PLAYER ADMIN PREVIEW PARITY
+   v170 — PLAYER ADMIN PREVIEW PARITY
    ============================================================ */
 body[data-page="players"] .prototype-player-stage{z-index:2!important}
 body[data-page="players"] .prototype-player-name{
@@ -1397,7 +1397,7 @@ body[data-page="players"] .prototype-player-name em{
  body[data-page="players"] .prototype-player-name strong{font-size:clamp(.72rem,5.7vw,1.72rem)!important}
 }
 
-/* V169 — Admin preview uses the exact public card layer geometry. */
+/* v170 — Admin preview uses the exact public card layer geometry. */
 .preview-ultimate-card.prototype-player-frame{
   --player-scale:1;
   --player-x:0%;
@@ -1405,3 +1405,16 @@ body[data-page="players"] .prototype-player-name em{
 }
 .preview-ultimate-cutout-stage.prototype-player-stage{overflow:hidden!important;z-index:2!important}
 .preview-ultimate-name.prototype-player-name{z-index:12!important;background:#030207!important;overflow:hidden!important}
+
+/* V170 — keep Admin player preview geometry identical to the public card. */
+.player-preview-card .prototype-player-stage img,
+.public-style-player-preview .prototype-player-stage img,
+.live-card-preview .prototype-player-stage img,
+.preview-ultimate-card.prototype-player-frame .prototype-player-stage img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  object-position:center bottom!important;
+  transform:translate(var(--player-x,0%),var(--player-y,0%)) scale(var(--player-scale,1))!important;
+  transform-origin:center bottom!important;
+}

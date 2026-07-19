@@ -1534,3 +1534,24 @@ window.AdminCMS={initCommon,publish};
     requestAnimationFrame(addPlayerPositionController);
   };
 })();
+
+/* V170 — exact one-line player-name fitting for dynamically rebuilt Admin previews. */
+(()=>{
+  const fitOne=(el,min=8)=>{
+    if(!el || !el.parentElement) return;
+    el.style.fontSize='';
+    const max=Math.max(1,el.parentElement.clientWidth*.90);
+    let size=parseFloat(getComputedStyle(el).fontSize)||18;
+    let guard=80;
+    while(el.scrollWidth>max && size>min && guard--){size-=.5;el.style.fontSize=size+'px';}
+  };
+  const run=()=>requestAnimationFrame(()=>{
+    document.querySelectorAll('.prototype-player-name small').forEach(el=>fitOne(el,7));
+    document.querySelectorAll('.prototype-player-name strong').forEach(el=>fitOne(el,7));
+    document.querySelectorAll('.prototype-profile-name small').forEach(el=>fitOne(el,7));
+    document.querySelectorAll('.prototype-profile-name strong').forEach(el=>fitOne(el,8));
+  });
+  document.addEventListener('DOMContentLoaded',run,{once:true});
+  window.addEventListener('resize',run);
+  new MutationObserver(run).observe(document.documentElement,{subtree:true,childList:true,characterData:true});
+})();
