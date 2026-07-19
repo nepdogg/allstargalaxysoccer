@@ -232,6 +232,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             deck.className = "ultimate-card-deck" + (advanced ? " is-advanced" : "");
             front.classList.add("ultimate-view-card","is-active");
             front.dataset.cardPanel = "front";
+            // The carousel card inherits photo variables from its anchor.
+            // A cloned popup card does not, so copy the saved player values explicitly.
+            front.style.setProperty("--player-scale", String((Number(selectedCard.dataset.playerPhotoScale)||100)/100));
+            front.style.setProperty("--player-x", `${Number(selectedCard.dataset.playerPhotoX)||0}%`);
+            front.style.setProperty("--player-y", `${Number(selectedCard.dataset.playerPhotoY)||0}%`);
             deck.appendChild(front);
             if (advanced) {
                 const profile = document.createElement("section");
