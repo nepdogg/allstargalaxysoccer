@@ -235,19 +235,22 @@ document.addEventListener("DOMContentLoaded", async () => {
             deck.appendChild(front);
             if (advanced) {
                 const profile = document.createElement("section");
-                profile.className = "ultimate-profile-card ultimate-view-card";
+                profile.className = "ultimate-profile-card ultimate-view-card prototype-profile-frame";
                 profile.dataset.cardPanel = "profile";
+                const profileTemplate = selectedCard.dataset.playerProfileTemplate || "generated/player-profile-card-template.png";
                 profile.innerHTML = `
-                  <div class="ultimate-profile-top"><div><b>${value("playerNumber","00")}</b><span class="ultimate-profile-position">${value("playerPosition","PLAYER")}</span></div><img src="images/logos/logo.png" alt="Allstar Galaxy"></div>
-                  <div class="ultimate-profile-name"><small>${value("playerFirst","PLAYER")}</small><strong>${value("playerLast","PROFILE")}</strong></div>
-                  <div class="ultimate-profile-rows">
-                    <div class="ultimate-profile-row"><span>Date of Birth</span><b>${value("playerDob")}</b></div>
-                    <div class="ultimate-profile-row"><span>Nationality</span><b>${value("playerNationality")}</b></div>
-                    <div class="ultimate-profile-row"><span>Preferred Foot</span><b>${value("playerFoot")}</b></div>
-                    <div class="ultimate-profile-row"><span>Height</span><b>${value("playerHeight")}</b></div>
-                    <div class="ultimate-profile-row"><span>Weight</span><b>${value("playerWeight")}</b></div>
+                  <img class="prototype-profile-template" src="${profileTemplate}" alt="" aria-hidden="true">
+                  <span class="prototype-profile-number">${value("playerNumber","00")}</span>
+                  <span class="prototype-profile-position">${value("playerPosition","PLAYER")}</span>
+                  <div class="prototype-profile-name"><small>${value("playerFirst","PLAYER")}</small><strong>${value("playerLast","PROFILE")}</strong></div>
+                  <div class="prototype-profile-values">
+                    <b>${value("playerDob")}</b>
+                    <b>${value("playerNationality")}</b>
+                    <b>${value("playerFoot")}</b>
+                    <b>${value("playerHeight")}</b>
+                    <b>${value("playerWeight")}</b>
                   </div>
-                  <p class="ultimate-profile-quote">“${value("playerQuote","ALLSTAR GALAXY") }”</p>`;
+                  <p class="prototype-profile-quote">“${value("playerQuote","ALLSTAR GALAXY") }”</p>`;
                 deck.appendChild(profile);
             }
             stage.appendChild(deck);
