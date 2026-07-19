@@ -218,8 +218,34 @@ document.addEventListener("DOMContentLoaded", async () => {
             const selectedCard = playerCards[activePlayerIndex];
             const stage = playerLightbox.querySelector("#ultimatePlayerProfile");
             if (!stage) return;
-            const front = selectedCard.querySelector(".ultimate-player-frame")?.cloneNode(true);
-            if (!front) return;
+            const sourceFront = selectedCard.querySelector(".ultimate-player-frame");
+            const front = sourceFront?.cloneNode(true);
+            if (!front || !sourceFront) return;
+
+            // Preserve the exact carousel rendering in the popup. The popup used
+            // to recalculate responsive font sizes and offsets in a new context,
+            // which changed the number and names. Copy the rendered geometry and
+            // typography from the source card before displaying the clone.
+            const copyRenderedStyle = (selector, properties) => {
+              const sourceNode = sourceFront.querySelector(selector);
+              const cloneNode = front.querySelector(selector);
+              if (!sourceNode || !cloneNode) return;
+              const cs = getComputedStyle(sourceNode);
+              properties.forEach(prop => cloneNode.style.setProperty(prop, cs.getPropertyValue(prop), "important"));
+            };
+            const sourceRect = sourceFront.getBoundingClientRect();
+            front.classList.add("popup-exact-front-card");
+            front.style.setProperty("--popup-source-width", `${sourceRect.width}px`);
+            front.style.setProperty("--popup-source-height", `${sourceRect.height}px`);
+            [
+              [".prototype-player-number", ["top","left","right","width","height","font-size","line-height","letter-spacing","transform","transform-origin"]],
+              [".prototype-player-name", ["top","left","right","bottom","width","height","grid-template-rows","padding","background","clip-path"]],
+              [".prototype-player-name small", ["font-size","line-height","letter-spacing","transform","width","max-width"]],
+              [".prototype-player-name strong", ["font-size","line-height","letter-spacing","transform","transform-origin","width","max-width"]],
+              [".prototype-player-name em", ["font-size","line-height","letter-spacing","transform","width","max-width"]],
+              [".prototype-player-stage", ["top","left","right","bottom","width","height","overflow"]],
+              [".prototype-player-stage img", ["width","height","object-fit","object-position","transform","transform-origin"]]
+            ].forEach(([selector, props]) => copyRenderedStyle(selector, props));
             const value = (key, fallback="N/A") => selectedCard.dataset[key] || fallback;
             const advanced = String(selectedCard.dataset.playerMode || "standard").toLowerCase() === "advanced" ||
               ["playerDob","playerNationality","playerFoot","playerHeight","playerWeight","playerQuote"].some(k => String(selectedCard.dataset[k]||"").trim());
@@ -608,7 +634,7 @@ document.addEventListener("click", (event) => {
     });
 })();
 
-/* V171 — exact one-line player-name fitting in every public rendering context. */
+/* V172 — exact one-line player-name fitting in every public rendering context. */
 (()=>{
   const fitOne=(el,min=8)=>{
     if(!el || !el.parentElement) return;
