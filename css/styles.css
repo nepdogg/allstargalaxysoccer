@@ -18518,3 +18518,129 @@ body[data-page="graphics"] .sticky-graphics-publish{position:sticky!important;bo
   .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b{font-size:clamp(.43rem,3vw,.72rem)!important}
   .ultimate-profile-card.prototype-profile-frame .prototype-profile-quote{font-size:clamp(.39rem,2.7vw,.64rem)!important}
 }
+
+/* ============================================================
+   V173 — CLEAN PROTOTYPE FRONT CARD (NO EXTRA NAME MASK)
+   ============================================================ */
+/* The approved PNG already contains the lower name/position artwork. The
+   website must not draw an additional black panel over that artwork. */
+.prototype-player-name,
+.preview-ultimate-name.prototype-player-name,
+.team-roster-carousel .prototype-player-name,
+.ultimate-card-deck .prototype-player-name,
+.popup-exact-front-card .prototype-player-name{
+  z-index:6!important;
+  left:8.2%!important;
+  right:8.2%!important;
+  bottom:5.8%!important;
+  height:28.5%!important;
+  padding:0 3%!important;
+  display:grid!important;
+  grid-template-rows:24% 49% 27%!important;
+  align-items:center!important;
+  justify-items:center!important;
+  background:transparent!important;
+  background-image:none!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  clip-path:none!important;
+  border-radius:0!important;
+  overflow:visible!important;
+}
+.prototype-player-name::before,
+.preview-ultimate-name.prototype-player-name::before,
+.team-roster-carousel .prototype-player-name::before,
+.ultimate-card-deck .prototype-player-name::before,
+.popup-exact-front-card .prototype-player-name::before{
+  content:none!important;
+  display:none!important;
+  background:none!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+/* Stop the cutout at the top of the artwork's built-in lower panel. This
+   keeps the player behind the panel without adding a replacement mask. */
+.prototype-player-stage,
+.preview-ultimate-cutout-stage.prototype-player-stage,
+.team-roster-carousel .prototype-player-stage,
+.ultimate-card-deck .prototype-player-stage,
+.popup-exact-front-card .prototype-player-stage{
+  bottom:32.4%!important;
+  overflow:visible!important;
+  z-index:2!important;
+}
+.prototype-card-template{z-index:1!important}
+.prototype-player-number{z-index:7!important}
+.prototype-player-name small,
+.preview-ultimate-name.prototype-player-name small{
+  align-self:end!important;
+  width:96%!important;
+  max-width:96%!important;
+  margin:0!important;
+  padding:0!important;
+  text-align:center!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:clip!important;
+}
+.prototype-player-name strong,
+.preview-ultimate-name.prototype-player-name strong{
+  align-self:center!important;
+  width:98%!important;
+  max-width:98%!important;
+  margin:0!important;
+  padding:0!important;
+  text-align:center!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:clip!important;
+}
+/* Use only the decorative position area that is already printed in the
+   template. No generated pill, box, border or background. */
+.prototype-player-name em,
+.preview-ultimate-name.prototype-player-name em,
+.team-roster-carousel .prototype-player-name em,
+.ultimate-card-deck .prototype-player-name em,
+.popup-exact-front-card .prototype-player-name em{
+  align-self:center!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:86%!important;
+  max-width:86%!important;
+  min-width:0!important;
+  min-height:0!important;
+  height:auto!important;
+  margin:0 auto!important;
+  padding:0!important;
+  color:#ffc400!important;
+  background:transparent!important;
+  background-image:none!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  clip-path:none!important;
+  border-radius:0!important;
+  text-align:center!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:clip!important;
+}
+/* Prevent older popup copied styles from restoring the mask. */
+.ultimate-card-deck .popup-exact-front-card .prototype-player-name{
+  background:transparent!important;
+  clip-path:none!important;
+}
+@media(max-width:700px){
+  .prototype-player-name,
+  .preview-ultimate-name.prototype-player-name{
+    bottom:5.8%!important;
+    height:28.5%!important;
+    grid-template-rows:24% 49% 27%!important;
+  }
+  .prototype-player-stage,
+  .preview-ultimate-cutout-stage.prototype-player-stage{
+    bottom:32.4%!important;
+  }
+}
