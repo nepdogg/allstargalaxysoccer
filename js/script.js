@@ -608,7 +608,7 @@ document.addEventListener("click", (event) => {
     });
 })();
 
-/* V170 — exact one-line player-name fitting in every public rendering context. */
+/* V171 — exact one-line player-name fitting in every public rendering context. */
 (()=>{
   const fitOne=(el,min=8)=>{
     if(!el || !el.parentElement) return;
