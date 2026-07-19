@@ -134,7 +134,7 @@ function openForm(index){const schema=SECTION_SCHEMAS[state.section],arr=state.d
  if(seasonSelect)seasonSelect.onchange=()=>$('#customSeasonPanel')?.classList.toggle('is-hidden',seasonSelect.value!=='__custom__');
  const playlistTypeSelect=$('#playlistTypeSelect');
  if(playlistTypeSelect)playlistTypeSelect.onchange=()=>$('#customPlaylistTypePanel')?.classList.toggle('is-hidden',playlistTypeSelect.value!=='__custom__');
- const up=$('#imageUpload');up.onchange=async()=>{if(!up.files[0])return;const result=await fileToPng(up.files[0]);uploadedPath=safeImagePath(schema,form,item,up.files[0]);state.pendingFiles=state.pendingFiles.filter(f=>f.path!==uploadedPath);state.pendingFiles.push({path:uploadedPath,base64:result.base64});$('#imagePreview').src=result.url;$('#imagePreview').hidden=false;setStatus(`${uploadedPath} ready to publish.`,'ok')};$('#editModal').classList.add('open')}
+ const up=$('#imageUpload');up.onchange=async()=>{if(!up.files[0])return;const result=await fileToPng(up.files[0]);uploadedPath=safeImagePath(schema,form,item,up.files[0]);state.pendingFiles=state.pendingFiles.filter(f=>f.path!==uploadedPath);state.pendingFiles.push({path:uploadedPath,base64:result.base64});state.pendingPreviewUrls=state.pendingPreviewUrls||{};state.pendingPreviewUrls[uploadedPath]=result.url;$('#imagePreview').src=result.url;$('#imagePreview').hidden=false;setStatus(`${uploadedPath} ready to publish.`,'ok')};$('#editModal').classList.add('open')}
 function closeModal(){$('#editModal').classList.remove('open')}
 async function fileToPng(file){const bmp=await createImageBitmap(file),canvas=document.createElement('canvas');canvas.width=bmp.width;canvas.height=bmp.height;canvas.getContext('2d').drawImage(bmp,0,0);const blob=await new Promise(r=>canvas.toBlob(r,'image/png',.92));const url=URL.createObjectURL(blob),buf=await blob.arrayBuffer(),bytes=new Uint8Array(buf);let binary='';for(let i=0;i<bytes.length;i+=0x8000)binary+=String.fromCharCode(...bytes.subarray(i,i+0x8000));return {url,base64:btoa(binary)}}
 async function publish(){
@@ -165,6 +165,7 @@ async function publish(){
   }
   state.sha=r.content.sha;
   state.pendingFiles=[];
+  state.pendingPreviewUrls={};
   state.dirty=false;
   setStatus('Published successfully. GitHub Pages will update shortly.','ok');
   renderPage()
@@ -266,6 +267,7 @@ window.AdminCMS={initCommon,publish};
   const previewEsc = v => esc(v || '');
   const previewImage = (path, fallback='') => {
     if (!path) return fallback;
+    if (state.pendingPreviewUrls && state.pendingPreviewUrls[path]) return state.pendingPreviewUrls[path];
     if (/^(blob:|data:|https?:)/i.test(path)) return path;
     return '../' + String(path).replace(/^\/+/, '');
   };
