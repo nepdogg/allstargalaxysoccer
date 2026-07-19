@@ -222,30 +222,14 @@ document.addEventListener("DOMContentLoaded", async () => {
             const front = sourceFront?.cloneNode(true);
             if (!front || !sourceFront) return;
 
-            // Preserve the exact carousel rendering in the popup. The popup used
-            // to recalculate responsive font sizes and offsets in a new context,
-            // which changed the number and names. Copy the rendered geometry and
-            // typography from the source card before displaying the clone.
-            const copyRenderedStyle = (selector, properties) => {
-              const sourceNode = sourceFront.querySelector(selector);
-              const cloneNode = front.querySelector(selector);
-              if (!sourceNode || !cloneNode) return;
-              const cs = getComputedStyle(sourceNode);
-              properties.forEach(prop => cloneNode.style.setProperty(prop, cs.getPropertyValue(prop), "important"));
-            };
-            const sourceRect = sourceFront.getBoundingClientRect();
+            // V174: keep the popup and carousel on one shared percentage-based
+            // renderer. Do not copy pixel measurements from the smaller carousel
+            // card into the larger popup; only clone the card data and saved photo
+            // variables, then allow the shared card CSS to scale the complete card.
             front.classList.add("popup-exact-front-card");
-            front.style.setProperty("--popup-source-width", `${sourceRect.width}px`);
-            front.style.setProperty("--popup-source-height", `${sourceRect.height}px`);
-            [
-              [".prototype-player-number", ["top","left","right","width","height","font-size","line-height","letter-spacing","transform","transform-origin"]],
-              [".prototype-player-name", ["top","left","right","bottom","width","height","grid-template-rows","padding","background","clip-path"]],
-              [".prototype-player-name small", ["font-size","line-height","letter-spacing","transform","width","max-width"]],
-              [".prototype-player-name strong", ["font-size","line-height","letter-spacing","transform","transform-origin","width","max-width"]],
-              [".prototype-player-name em", ["font-size","line-height","letter-spacing","transform","width","max-width"]],
-              [".prototype-player-stage", ["top","left","right","bottom","width","height","overflow"]],
-              [".prototype-player-stage img", ["width","height","object-fit","object-position","transform","transform-origin"]]
-            ].forEach(([selector, props]) => copyRenderedStyle(selector, props));
+            front.querySelectorAll(".prototype-player-number,.prototype-player-name,.prototype-player-name small,.prototype-player-name strong,.prototype-player-name em,.prototype-player-stage,.prototype-player-stage img").forEach(node => {
+              ["top","left","right","bottom","width","height","font-size","line-height","letter-spacing","transform","transform-origin","grid-template-rows","padding","background","clip-path","object-fit","object-position","overflow"].forEach(prop => node.style.removeProperty(prop));
+            });
             const value = (key, fallback="N/A") => selectedCard.dataset[key] || fallback;
             const advanced = String(selectedCard.dataset.playerMode || "standard").toLowerCase() === "advanced" ||
               ["playerDob","playerNationality","playerFoot","playerHeight","playerWeight","playerQuote"].some(k => String(selectedCard.dataset[k]||"").trim());
