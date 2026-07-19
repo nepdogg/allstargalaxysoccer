@@ -18520,7 +18520,7 @@ body[data-page="graphics"] .sticky-graphics-publish{position:sticky!important;bo
 }
 
 /* ============================================================
-   V173 — CLEAN PROTOTYPE FRONT CARD (NO EXTRA NAME MASK)
+   V174 — CLEAN PROTOTYPE FRONT CARD (NO EXTRA NAME MASK)
    ============================================================ */
 /* The approved PNG already contains the lower name/position artwork. The
    website must not draw an additional black panel over that artwork. */
@@ -18643,4 +18643,205 @@ body[data-page="graphics"] .sticky-graphics-publish{position:sticky!important;bo
   .preview-ultimate-cutout-stage.prototype-player-stage{
     bottom:32.4%!important;
   }
+}
+
+/* ============================================================
+   V174 — UNIFIED FRONT/POPUP TYPOGRAPHY + PROFILE COORDINATE MAP
+   ============================================================ */
+/* Every card now scales from the card itself rather than viewport units. */
+.prototype-player-frame,
+.ultimate-profile-card.prototype-profile-frame{
+  container-type:inline-size!important;
+}
+
+/* FRONT CARD — use the artwork's built-in lower panel. */
+.prototype-player-number{
+  top:5.0%!important;
+  left:7.0%!important;
+  width:19%!important;
+  height:auto!important;
+  font-size:11.2cqw!important;
+  line-height:.86!important;
+  letter-spacing:-.04em!important;
+  text-align:left!important;
+  transform:none!important;
+}
+.prototype-player-name,
+.preview-ultimate-name.prototype-player-name,
+.team-roster-carousel .prototype-player-name,
+.ultimate-card-deck .prototype-player-name,
+.popup-exact-front-card .prototype-player-name{
+  left:8.0%!important;
+  right:8.0%!important;
+  bottom:5.0%!important;
+  height:29.0%!important;
+  grid-template-rows:27% 45% 28%!important;
+  padding:0 2.5%!important;
+  background:transparent!important;
+  clip-path:none!important;
+  overflow:visible!important;
+}
+.prototype-player-name small,
+.preview-ultimate-name.prototype-player-name small{
+  width:96%!important;
+  max-width:96%!important;
+  font-size:5.3cqw!important;
+  line-height:1!important;
+  letter-spacing:.16em!important;
+  transform:none!important;
+}
+.prototype-player-name strong,
+.preview-ultimate-name.prototype-player-name strong{
+  width:99%!important;
+  max-width:99%!important;
+  font-size:8.2cqw!important;
+  line-height:.90!important;
+  letter-spacing:-.035em!important;
+  transform:scaleX(.92)!important;
+  transform-origin:center!important;
+}
+.prototype-player-name em,
+.preview-ultimate-name.prototype-player-name em,
+.team-roster-carousel .prototype-player-name em,
+.ultimate-card-deck .prototype-player-name em,
+.popup-exact-front-card .prototype-player-name em{
+  width:78%!important;
+  max-width:78%!important;
+  font-size:4.2cqw!important;
+  line-height:1!important;
+  letter-spacing:.13em!important;
+  transform:none!important;
+  color:#ffc400!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+/* The cutout stops at the baked panel edge and never changes in popup/mobile. */
+.prototype-player-stage,
+.preview-ultimate-cutout-stage.prototype-player-stage,
+.team-roster-carousel .prototype-player-stage,
+.ultimate-card-deck .prototype-player-stage,
+.popup-exact-front-card .prototype-player-stage{
+  top:5.2%!important;
+  left:5%!important;
+  right:5%!important;
+  bottom:32.8%!important;
+  width:auto!important;
+  height:auto!important;
+  overflow:hidden!important;
+}
+.prototype-player-stage .ultimate-player-photo,
+.prototype-player-stage .preview-ultimate-photo,
+.team-roster-carousel .prototype-player-stage img,
+.popup-exact-front-card .prototype-player-stage img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  object-position:center bottom!important;
+  transform:translate(var(--player-x,0%),var(--player-y,0%)) scale(var(--player-scale,1))!important;
+  transform-origin:center bottom!important;
+}
+
+/* PROFILE CARD — exact overlay map for the approved 1024×1536 artwork. */
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-number{
+  top:4.5%!important;
+  left:7.1%!important;
+  width:18.5%!important;
+  font-size:11.3cqw!important;
+  line-height:.86!important;
+  letter-spacing:-.04em!important;
+  text-align:left!important;
+  transform:none!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-position{
+  top:14.0%!important;
+  left:7.3%!important;
+  width:21%!important;
+  font-size:4.1cqw!important;
+  line-height:1!important;
+  letter-spacing:.08em!important;
+  text-align:left!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name{
+  position:absolute!important;
+  top:17.0%!important;
+  left:10.5%!important;
+  right:10.5%!important;
+  height:14.5%!important;
+  display:grid!important;
+  grid-template-rows:38% 62%!important;
+  align-items:center!important;
+  justify-items:center!important;
+  overflow:visible!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name small{
+  align-self:end!important;
+  width:94%!important;
+  max-width:94%!important;
+  font-size:4.4cqw!important;
+  line-height:1!important;
+  letter-spacing:.20em!important;
+  text-align:center!important;
+  transform:none!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name strong{
+  align-self:start!important;
+  width:98%!important;
+  max-width:98%!important;
+  font-size:8.0cqw!important;
+  line-height:.88!important;
+  letter-spacing:-.035em!important;
+  transform:scaleX(.90)!important;
+  transform-origin:center!important;
+  text-align:center!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values{
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b{
+  position:absolute!important;
+  left:56.5%!important;
+  right:8.5%!important;
+  height:4.0%!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  padding:0!important;
+  margin:0!important;
+  font-size:3.2cqw!important;
+  line-height:1!important;
+  white-space:nowrap!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(1){top:43.9%!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(2){top:50.8%!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(3){top:57.7%!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(4){top:64.6%!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(5){top:71.5%!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-quote{
+  position:absolute!important;
+  top:80.6%!important;
+  left:14%!important;
+  right:14%!important;
+  height:6.2%!important;
+  margin:0!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  font-size:3.0cqw!important;
+  line-height:1.18!important;
+  text-align:center!important;
+  overflow:hidden!important;
+}
+
+/* Popup front card must remain an exact proportional copy of the carousel card. */
+.ultimate-card-deck .popup-exact-front-card{
+  width:min(430px,86vw)!important;
+  aspect-ratio:2/3!important;
+}
+.ultimate-card-deck .popup-exact-front-card .prototype-player-name,
+.ultimate-card-deck .popup-exact-front-card .prototype-player-number,
+.ultimate-card-deck .popup-exact-front-card .prototype-player-stage{
+  box-sizing:border-box!important;
 }
