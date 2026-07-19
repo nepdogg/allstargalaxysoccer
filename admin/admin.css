@@ -1396,3 +1396,12 @@ body[data-page="players"] .prototype-player-name em{
  body[data-page="players"] .prototype-player-number{font-size:clamp(.95rem,8vw,2.25rem)!important}
  body[data-page="players"] .prototype-player-name strong{font-size:clamp(.72rem,5.7vw,1.72rem)!important}
 }
+
+/* V169 — Admin preview uses the exact public card layer geometry. */
+.preview-ultimate-card.prototype-player-frame{
+  --player-scale:1;
+  --player-x:0%;
+  --player-y:0%;
+}
+.preview-ultimate-cutout-stage.prototype-player-stage{overflow:hidden!important;z-index:2!important}
+.preview-ultimate-name.prototype-player-name{z-index:12!important;background:#030207!important;overflow:hidden!important}

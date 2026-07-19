@@ -126,6 +126,14 @@ function openForm(index){const schema=SECTION_SCHEMAS[state.section],arr=state.d
  }
 
  if(uploadedPath)obj[schema.imageField]=uploadedPath;
+ if(state.section==='players'){
+   obj.photoScale=Math.max(60,Math.min(180,Number(obj.photoScale)||90));
+   obj.photoX=Math.max(-50,Math.min(50,Number(obj.photoX)||0));
+   obj.photoY=Math.max(-50,Math.min(50,Number(obj.photoY)||0));
+   obj.firstName=String(obj.firstName||'').trim();
+   obj.lastName=String(obj.lastName||'').trim();
+   obj.name=[obj.firstName,obj.lastName].filter(Boolean).join(' ')||String(obj.name||'Player').trim();
+ }
  if(state.section==='playlists')obj.locations=playlistLocationsFromValue(obj.locations);
  if(index>=0)arr[index]=obj;else arr.push(obj);
  markDirty();closeModal();renderManager(state.section)
@@ -286,7 +294,7 @@ window.AdminCMS={initCommon,publish};
     const parts=String(obj.name||'PLAYER NAME').trim().split(/\s+/); const first=String(obj.firstName||parts.shift()||'PLAYER'); const last=String(obj.lastName||parts.join(' ')||first);
     const isDefaultSilhouette=!String(obj.photo||'').trim() && (!image || /player-silhouette/i.test(String(image)));
     return `<div class="visual-card player-preview-card public-style-player-preview ${obj.status==='hidden'?'preview-hidden':''}">
-      <div class="preview-ultimate-card prototype-player-frame image-mode-${String(obj.imageMode||'cutout').toLowerCase()==='photo'?'photo':'cutout'}">
+      <div class="preview-ultimate-card prototype-player-frame image-mode-${String(obj.imageMode||'cutout').toLowerCase()==='photo'?'photo':'cutout'}" style="--player-scale:${Math.max(60,Math.min(180,Number(obj.photoScale)||100))/100};--player-x:${Math.max(-50,Math.min(50,Number(obj.photoX)||0))}%;--player-y:${Math.max(-50,Math.min(50,Number(obj.photoY)||0))}%">
         <img class="prototype-card-template" src="${previewEsc((state.data.assets&&state.data.assets.playerCardTemplate)?'../'+state.data.assets.playerCardTemplate:'../generated/player-card-template.png')}" alt="" aria-hidden="true">
         <div class="preview-ultimate-cutout-stage prototype-player-stage${isDefaultSilhouette?' is-default-silhouette':''}" style="--player-scale:${Math.max(60,Math.min(180,Number(obj.photoScale)||100))/100};--player-x:${Math.max(-50,Math.min(50,Number(obj.photoX)||0))}%;--player-y:${Math.max(-50,Math.min(50,Number(obj.photoY)||0))}%"><img class="preview-ultimate-photo" src="${previewEsc(image || '../images/team/players/player-silhouette.png')}" alt=""></div>
         <span class="prototype-player-number">${previewEsc(obj.number||'00')}</span>
