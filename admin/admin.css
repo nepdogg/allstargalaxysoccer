@@ -1443,3 +1443,77 @@ body[data-page="players"] .preview-ultimate-name.prototype-player-name em{
   overflow:hidden!important;
   text-overflow:clip!important;
 }
+
+/* ============================================================
+   V173 — PLAYERS ADMIN CLEAN PROTOTYPE FRONT CARD
+   ============================================================ */
+body[data-page="players"] .prototype-player-name,
+body[data-page="players"] .preview-ultimate-name.prototype-player-name{
+  z-index:8!important;
+  left:8.2%!important;
+  right:8.2%!important;
+  bottom:5.8%!important;
+  height:28.5%!important;
+  padding:0 3%!important;
+  display:grid!important;
+  grid-template-rows:24% 49% 27%!important;
+  align-items:center!important;
+  justify-items:center!important;
+  background:transparent!important;
+  background-image:none!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  clip-path:none!important;
+  border-radius:0!important;
+  overflow:visible!important;
+}
+body[data-page="players"] .prototype-player-name::before,
+body[data-page="players"] .preview-ultimate-name.prototype-player-name::before{
+  content:none!important;
+  display:none!important;
+  background:none!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+body[data-page="players"] .prototype-player-stage,
+body[data-page="players"] .preview-ultimate-cutout-stage.prototype-player-stage{
+  bottom:32.4%!important;
+  overflow:visible!important;
+  z-index:2!important;
+}
+body[data-page="players"] .prototype-player-name small,
+body[data-page="players"] .prototype-player-name strong{
+  width:98%!important;
+  max-width:98%!important;
+  text-align:center!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:clip!important;
+}
+body[data-page="players"] .prototype-player-name em,
+body[data-page="players"] .preview-ultimate-name.prototype-player-name em{
+  align-self:center!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:86%!important;
+  max-width:86%!important;
+  min-width:0!important;
+  min-height:0!important;
+  height:auto!important;
+  margin:0 auto!important;
+  padding:0!important;
+  color:#ffc400!important;
+  background:transparent!important;
+  background-image:none!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  clip-path:none!important;
+  border-radius:0!important;
+  text-align:center!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:clip!important;
+}
