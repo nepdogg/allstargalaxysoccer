@@ -1,5 +1,5 @@
 {
-  "version": 180,
+  "version": 181,
   "updated": "2026-07-19",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -1740,9 +1740,9 @@
       "lastName": "Lionel",
       "imageMode": "cutout",
       "profileMode": "standard",
-      "photoScale": 90,
-      "photoX": 0,
-      "photoY": 0,
+      "photoScale": 115,
+      "photoX": -2,
+      "photoY": 12,
       "dateOfBirth": "",
       "nationality": "",
       "preferredFoot": "",
