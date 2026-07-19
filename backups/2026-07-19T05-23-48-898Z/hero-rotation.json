@@ -1,0 +1,148 @@
+{
+  "version": 140,
+  "interval": 7000,
+  "transition": 1400,
+  "pages": {
+    "404": {
+      "selector": ".special-page-hero.not-found-page-hero",
+      "images": [
+        "images/heroes/pages/404-hero.png",
+        "images/heroes/pages/404-hero.png",
+        "images/heroes/pages/404-hero.png"
+      ],
+      "enabled": true,
+      "interval": 7000,
+      "transition": 1400,
+      "effect": "pulse",
+      "transitionEffect": "glow-fade",
+      "glowIntensity": "medium"
+    },
+    "home": {
+      "selector": ".hero-image.hero-home",
+      "images": [
+        "images/heroes/pages/hero-home.png",
+        "images/heroes/pages/hero-home.png",
+        "images/heroes/pages/hero-home.png"
+      ],
+      "enabled": true,
+      "interval": 7000,
+      "transition": 1400,
+      "effect": "pulse",
+      "transitionEffect": "glow-fade",
+      "glowIntensity": "low"
+    },
+    "team": {
+      "selector": ".hero-image.hero-team",
+      "images": [
+        "images/heroes/pages/hero-team.png",
+        "images/heroes/pages/hero-team.png",
+        "images/heroes/pages/hero-team.png"
+      ],
+      "enabled": true,
+      "interval": 7000,
+      "transition": 1400,
+      "effect": "pulse",
+      "transitionEffect": "glow-fade",
+      "glowIntensity": "medium",
+      "glowColor": "auto"
+    },
+    "schedule": {
+      "selector": ".hero-image.hero-schedule",
+      "images": [
+        "images/heroes/pages/hero-schedule.png",
+        "images/heroes/pages/hero-schedule.png",
+        "images/heroes/pages/hero-schedule.png"
+      ],
+      "enabled": true,
+      "interval": 7000,
+      "transition": 1400,
+      "effect": "pulse",
+      "transitionEffect": "glow-fade",
+      "glowIntensity": "medium"
+    },
+    "media": {
+      "selector": ".hero-image.hero-media",
+      "images": [
+        "images/heroes/pages/hero-media.png",
+        "images/heroes/pages/hero-media.png",
+        "images/heroes/pages/hero-media.png"
+      ],
+      "enabled": true,
+      "interval": 7000,
+      "transition": 1400,
+      "effect": "pulse",
+      "transitionEffect": "glow-fade",
+      "glowIntensity": "medium"
+    },
+    "news": {
+      "selector": ".hero-image.hero-news",
+      "images": [
+        "images/heroes/pages/hero-news.png",
+        "images/heroes/pages/hero-news.png",
+        "images/heroes/pages/hero-news.png"
+      ],
+      "enabled": true,
+      "interval": 7000,
+      "transition": 1400,
+      "effect": "pulse",
+      "transitionEffect": "glow-fade",
+      "glowIntensity": "medium"
+    },
+    "livestream": {
+      "selector": ".hero-image.hero-live",
+      "images": [
+        "images/heroes/pages/hero-live.png",
+        "images/heroes/pages/hero-live.png",
+        "images/heroes/pages/hero-live.png"
+      ],
+      "enabled": true,
+      "interval": 7000,
+      "transition": 1400,
+      "effect": "pulse",
+      "transitionEffect": "glow-fade",
+      "glowIntensity": "medium"
+    },
+    "follow": {
+      "selector": ".hero-image.hero-follow",
+      "images": [
+        "images/heroes/pages/hero-follow.png",
+        "images/heroes/pages/hero-follow.png",
+        "images/heroes/pages/hero-follow.png"
+      ],
+      "enabled": true,
+      "interval": 7000,
+      "transition": 1400,
+      "effect": "pulse",
+      "transitionEffect": "glow-fade",
+      "glowIntensity": "medium"
+    },
+    "about": {
+      "selector": ".special-page-hero.about-page-hero",
+      "images": [
+        "images/heroes/pages/about-hero.png",
+        "images/heroes/pages/about-hero.png",
+        "images/heroes/pages/about-hero.png"
+      ],
+      "enabled": true,
+      "interval": 7000,
+      "transition": 1400,
+      "effect": "pulse",
+      "transitionEffect": "glow-fade",
+      "glowIntensity": "medium"
+    },
+    "season-archive": {
+      "selector": ".season-archive-hero",
+      "images": [
+        "images/heroes/seasons/summer-2026-season-hero.png",
+        "images/heroes/seasons/summer-2026-season-hero.png",
+        "images/heroes/seasons/summer-2026-season-hero.png"
+      ],
+      "enabled": true,
+      "interval": 7000,
+      "transition": 1400,
+      "effect": "pulse",
+      "transitionEffect": "glow-fade",
+      "glowIntensity": "medium"
+    }
+  }
+}
