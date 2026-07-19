@@ -1,5 +1,5 @@
 {
-  "version": 176,
+  "version": 177,
   "updated": "2026-07-19",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -1915,7 +1915,20 @@
       "photo": "images/team/players/cr7.png",
       "name": "Cristiano",
       "number": "7",
-      "position": "LW"
+      "position": "LW",
+      "firstName": "Cristiano",
+      "lastName": "Cristiano",
+      "imageMode": "cutout",
+      "profileMode": "standard",
+      "photoScale": "82",
+      "photoX": "0",
+      "photoY": "0",
+      "dateOfBirth": "",
+      "nationality": "",
+      "preferredFoot": "",
+      "height": "",
+      "weight": "",
+      "quote": ""
     },
     {
       "status": "published",
@@ -2008,7 +2021,7 @@
       "firstName": "FIRST NAME",
       "lastName": "LAST NAME",
       "imageMode": "cutout",
-      "profileMode": "standard",
+      "profileMode": "advanced",
       "photoScale": "162",
       "photoX": "8",
       "photoY": "46",
@@ -2017,7 +2030,7 @@
       "preferredFoot": "",
       "height": "",
       "weight": "",
-      "quote": "",
+      "quote": "Ronaldo is the GOAT",
       "photo": "images/team/players/player-silhouette.png"
     }
   ],
