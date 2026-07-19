@@ -1347,3 +1347,52 @@ body[data-page="players"] .prototype-player-name.name-length-19 strong,
 body[data-page="players"] .prototype-player-name.name-length-20 strong{font-size:clamp(.62rem,2.12vw,1.62rem)!important}
 body[data-page="players"] #editModal .modal-card{max-height:94vh!important;overflow:auto!important}
 body[data-page="players"] #editForm{align-items:start!important}
+
+/* ============================================================
+   V168 — PLAYER ADMIN PREVIEW PARITY
+   ============================================================ */
+body[data-page="players"] .prototype-player-stage{z-index:2!important}
+body[data-page="players"] .prototype-player-name{
+  z-index:6!important;
+  isolation:isolate!important;
+  background:rgba(2,2,6,.96)!important;
+  border:1px solid rgba(255,38,174,.55)!important;
+  clip-path:polygon(8% 0,92% 0,100% 14%,100% 100%,0 100%,0 14%)!important;
+}
+body[data-page="players"] .prototype-player-name::before{
+  content:""!important;position:absolute!important;inset:0!important;z-index:-1!important;
+  background:linear-gradient(180deg,rgba(6,4,10,.97),rgba(0,0,0,.99))!important;
+}
+body[data-page="players"] .prototype-player-name small,
+body[data-page="players"] .prototype-player-name strong,
+body[data-page="players"] .prototype-player-name em{position:relative!important;z-index:2!important}
+body[data-page="players"] .prototype-player-number{
+  top:5.7%!important;left:8.7%!important;width:17%!important;
+  font-size:clamp(1.05rem,3.15vw,2.55rem)!important;letter-spacing:-.03em!important;
+}
+body[data-page="players"] .prototype-player-name strong{
+  width:94%!important;max-width:94%!important;margin:auto!important;
+  font-size:clamp(.78rem,2.65vw,2.05rem)!important;letter-spacing:-.05em!important;
+  transform:scaleX(.78)!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:clip!important;
+}
+body[data-page="players"] .prototype-player-name.name-length-8 strong{font-size:clamp(.74rem,2.48vw,1.92rem)!important}
+body[data-page="players"] .prototype-player-name.name-length-9 strong{font-size:clamp(.70rem,2.32vw,1.80rem)!important}
+body[data-page="players"] .prototype-player-name.name-length-10 strong{font-size:clamp(.66rem,2.18vw,1.68rem)!important}
+body[data-page="players"] .prototype-player-name.name-length-11 strong{font-size:clamp(.62rem,2.04vw,1.56rem)!important}
+body[data-page="players"] .prototype-player-name.name-length-12 strong{font-size:clamp(.58rem,1.91vw,1.46rem)!important}
+body[data-page="players"] .prototype-player-name.name-length-13 strong{font-size:clamp(.54rem,1.79vw,1.36rem)!important}
+body[data-page="players"] .prototype-player-name.name-length-14 strong{font-size:clamp(.51rem,1.68vw,1.27rem)!important}
+body[data-page="players"] .prototype-player-name.name-length-15 strong{font-size:clamp(.48rem,1.58vw,1.19rem)!important}
+body[data-page="players"] .prototype-player-name.name-length-16 strong,
+body[data-page="players"] .prototype-player-name.name-length-17 strong,
+body[data-page="players"] .prototype-player-name.name-length-18 strong,
+body[data-page="players"] .prototype-player-name.name-length-19 strong,
+body[data-page="players"] .prototype-player-name.name-length-20 strong{font-size:clamp(.43rem,1.42vw,1.07rem)!important}
+body[data-page="players"] .prototype-player-name em{
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  width:82%!important;margin:auto!important;padding:0!important;text-align:center!important;line-height:1!important;
+}
+@media(max-width:700px){
+ body[data-page="players"] .prototype-player-number{font-size:clamp(.95rem,8vw,2.25rem)!important}
+ body[data-page="players"] .prototype-player-name strong{font-size:clamp(.72rem,5.7vw,1.72rem)!important}
+}
