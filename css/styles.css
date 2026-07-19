@@ -17625,3 +17625,159 @@ body.page-not-found .footer-platform-v147 { border-top-color:#cfd5e3 !important;
   .prototype-player-number{font-size:clamp(1.9rem,16vw,4.8rem)!important}
   .prototype-player-name strong{font-size:clamp(1.05rem,9.5vw,2.7rem)!important}
 }
+
+
+/* ============================================================
+   V167 — FINAL PLAYER CARD + PROFILE TEMPLATE SYNC
+   ============================================================ */
+/* Front card: maintain true 2:3 ratio and consistent layering everywhere. */
+.prototype-player-frame,
+.preview-ultimate-card.prototype-player-frame,
+.player-preview-card .prototype-player-frame,
+.public-style-player-preview .prototype-player-frame,
+.ultimate-card-deck .prototype-player-frame{
+  aspect-ratio:2/3!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+}
+.prototype-card-template{z-index:1!important}
+.prototype-player-stage,
+.preview-ultimate-cutout-stage.prototype-player-stage{
+  z-index:2!important;
+  top:8%!important;
+  bottom:26.5%!important;
+  left:5%!important;
+  right:5%!important;
+  overflow:visible!important;
+}
+.prototype-player-stage img,
+.preview-ultimate-cutout-stage.prototype-player-stage img{
+  object-fit:contain!important;
+  object-position:center bottom!important;
+  transform-origin:center bottom!important;
+}
+.prototype-player-name,
+.preview-ultimate-name.prototype-player-name{
+  z-index:5!important;
+  left:7.2%!important;
+  right:7.2%!important;
+  width:auto!important;
+  bottom:4.7%!important;
+  height:27.5%!important;
+  grid-template-rows:22% 48% 30%!important;
+  overflow:hidden!important;
+  text-align:center!important;
+}
+.prototype-player-number{
+  z-index:6!important;
+  top:5.2%!important;
+  left:8.2%!important;
+  width:22%!important;
+  font-size:clamp(1.35rem,4.5vw,3.65rem)!important;
+  line-height:.9!important;
+}
+.prototype-player-name strong,
+.preview-ultimate-name.prototype-player-name strong{
+  width:100%!important;
+  max-width:100%!important;
+  white-space:nowrap!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+  font-size:clamp(.92rem,3.35vw,2.55rem)!important;
+  line-height:.88!important;
+  letter-spacing:-.045em!important;
+  transform:scaleX(.82)!important;
+  transform-origin:center center!important;
+}
+.prototype-player-name.name-length-8 strong{font-size:clamp(.88rem,3.1vw,2.38rem)!important}
+.prototype-player-name.name-length-9 strong{font-size:clamp(.84rem,2.95vw,2.24rem)!important}
+.prototype-player-name.name-length-10 strong{font-size:clamp(.8rem,2.8vw,2.1rem)!important}
+.prototype-player-name.name-length-11 strong{font-size:clamp(.75rem,2.62vw,1.95rem)!important}
+.prototype-player-name.name-length-12 strong{font-size:clamp(.71rem,2.46vw,1.82rem)!important}
+.prototype-player-name.name-length-13 strong{font-size:clamp(.67rem,2.3vw,1.7rem)!important}
+.prototype-player-name.name-length-14 strong{font-size:clamp(.63rem,2.14vw,1.58rem)!important}
+.prototype-player-name.name-length-15 strong{font-size:clamp(.59rem,2vw,1.47rem)!important}
+.prototype-player-name.name-length-16 strong,
+.prototype-player-name.name-length-17 strong,
+.prototype-player-name.name-length-18 strong,
+.prototype-player-name.name-length-19 strong,
+.prototype-player-name.name-length-20 strong{font-size:clamp(.53rem,1.82vw,1.34rem)!important}
+.prototype-player-name em,
+.preview-ultimate-name.prototype-player-name em{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:86%!important;
+  height:100%!important;
+  margin:auto!important;
+  text-align:center!important;
+  white-space:nowrap!important;
+  line-height:1!important;
+}
+/* Full-card previews must fit their panels without clipping. */
+.live-card-preview .prototype-player-frame,
+.visual-card.player-preview-card .prototype-player-frame,
+.public-style-player-preview .prototype-player-frame{
+  width:min(100%,320px)!important;
+  height:auto!important;
+  max-height:none!important;
+  margin:0 auto!important;
+}
+
+/* Approved advanced profile-card template. */
+.ultimate-profile-card.prototype-profile-frame{
+  position:relative!important;
+  width:min(430px,38vw)!important;
+  aspect-ratio:2/3!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  clip-path:none!important;
+  overflow:hidden!important;
+  background:#040006!important;
+  box-shadow:0 0 22px rgba(255,45,164,.8),0 0 40px rgba(113,45,255,.55)!important;
+  isolation:isolate!important;
+}
+.prototype-profile-template{
+  position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
+  object-fit:contain!important;z-index:1!important;pointer-events:none!important;
+}
+.prototype-profile-number{
+  position:absolute!important;z-index:3!important;top:4.6%!important;left:7.8%!important;width:20%!important;
+  color:#ffc400!important;font-family:Impact,"Arial Black",sans-serif!important;font-style:italic!important;
+  font-size:clamp(1.35rem,4.2vw,3.4rem)!important;line-height:.9!important;text-shadow:0 2px #8b3e00,0 0 10px #ff9d00!important;
+}
+.prototype-profile-position{
+  position:absolute!important;z-index:3!important;top:13.1%!important;left:7.6%!important;width:23%!important;
+  color:#ff3ea8!important;font-weight:900!important;font-style:italic!important;text-transform:uppercase!important;
+  font-size:clamp(.48rem,1.25vw,.92rem)!important;white-space:nowrap!important;text-align:center!important;
+}
+.prototype-profile-name{
+  position:absolute!important;z-index:3!important;left:9%!important;right:9%!important;top:17.5%!important;height:17.2%!important;
+  display:grid!important;grid-template-rows:32% 68%!important;align-items:center!important;justify-items:center!important;overflow:hidden!important;
+}
+.prototype-profile-name small{color:#ffc400!important;font-weight:900!important;letter-spacing:.22em!important;text-transform:uppercase!important;font-size:clamp(.58rem,1.35vw,1rem)!important;white-space:nowrap!important}
+.prototype-profile-name strong{color:#fff!important;font-family:Impact,"Arial Narrow",sans-serif!important;font-style:italic!important;text-transform:uppercase!important;font-size:clamp(1.2rem,3.8vw,3rem)!important;line-height:.88!important;white-space:nowrap!important;max-width:100%!important;transform:scaleX(.84)!important;text-shadow:0 3px #777,0 0 8px rgba(255,255,255,.35)!important}
+.prototype-profile-values{
+  position:absolute!important;z-index:3!important;left:39%!important;right:8.5%!important;top:41.3%!important;height:34.9%!important;
+  display:grid!important;grid-template-rows:repeat(5,1fr)!important;align-items:center!important;
+}
+.prototype-profile-values b{color:#ffc400!important;font-weight:900!important;text-transform:uppercase!important;font-size:clamp(.55rem,1.25vw,.98rem)!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+.prototype-profile-quote{
+  position:absolute!important;z-index:3!important;left:13%!important;right:13%!important;top:78.5%!important;margin:0!important;
+  color:#ff3f9f!important;font-weight:900!important;font-style:italic!important;text-align:center!important;text-transform:uppercase!important;
+  font-size:clamp(.5rem,1.15vw,.9rem)!important;line-height:1.45!important;max-height:10%!important;overflow:hidden!important;
+}
+.ultimate-profile-card.prototype-profile-frame:before,
+.ultimate-profile-card.prototype-profile-frame:after{display:none!important}
+@media(max-width:700px){
+  .ultimate-profile-card.prototype-profile-frame{width:min(88vw,430px)!important}
+  .prototype-player-number{font-size:clamp(1.25rem,12vw,3.25rem)!important}
+  .prototype-player-name strong{font-size:clamp(.86rem,7.7vw,2.2rem)!important}
+}
+
+/* Website Graphics: natural document flow and non-overlapping action bar. */
+body[data-page="graphics"] #content{height:auto!important;min-height:100%!important;overflow:visible!important;padding-bottom:140px!important}
+body[data-page="graphics"] .graphics-preview-grid{position:relative!important;overflow:visible!important;align-items:start!important}
+body[data-page="graphics"] .graphic-preview-item{position:relative!important;min-width:0!important;overflow:visible!important}
+body[data-page="graphics"] .sticky-graphics-publish{position:sticky!important;bottom:0!important;z-index:20!important;margin-top:22px!important;background:#090d14!important}
