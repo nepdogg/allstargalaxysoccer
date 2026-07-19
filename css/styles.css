@@ -17921,3 +17921,164 @@ body[data-page="graphics"] .sticky-graphics-publish{position:sticky!important;bo
   .prototype-profile-number{font-size:clamp(.95rem,7.5vw,2.2rem)!important}
   .prototype-profile-name strong{font-size:clamp(.78rem,6.2vw,1.85rem)!important}
 }
+
+/* ============================================================
+   V169 — PLAYER WYSIWYG POSITION SYNC + PROFILE TEMPLATE TUNING
+   ============================================================ */
+/* The player position values now live on the card itself, so every context
+   (Admin, carousel, preview site and popup clone) uses the same transform. */
+.prototype-player-frame{
+  --player-scale:1;
+  --player-x:0%;
+  --player-y:0%;
+}
+
+/* Clip the photo at the top edge of the baked name plate. The plate and all
+   text remain above the player in every rendering context. */
+.prototype-player-stage,
+.preview-ultimate-cutout-stage.prototype-player-stage{
+  top:5.2%!important;
+  bottom:30.0%!important;
+  overflow:hidden!important;
+  z-index:2!important;
+}
+.prototype-player-stage .ultimate-player-photo,
+.prototype-player-stage .preview-ultimate-photo{
+  z-index:2!important;
+}
+.prototype-player-name,
+.preview-ultimate-name.prototype-player-name{
+  z-index:12!important;
+  background:#030207!important;
+  overflow:hidden!important;
+}
+.prototype-player-name::before,
+.preview-ultimate-name.prototype-player-name::before{
+  z-index:0!important;
+  background:#030207!important;
+  opacity:1!important;
+}
+
+/* Smaller number, matching the logo's visual weight. */
+.prototype-player-number{
+  top:6.0%!important;
+  left:8.7%!important;
+  width:15.5%!important;
+  font-size:clamp(.88rem,2.55vw,2.05rem)!important;
+  line-height:.88!important;
+}
+
+/* A wider safe zone and more conservative surname sizing. Never wrap. */
+.prototype-player-name,
+.preview-ultimate-name.prototype-player-name{
+  left:7.3%!important;
+  right:7.3%!important;
+  width:auto!important;
+}
+.prototype-player-name strong,
+.preview-ultimate-name.prototype-player-name strong{
+  width:98%!important;
+  max-width:98%!important;
+  font-size:clamp(.66rem,2.05vw,1.58rem)!important;
+  transform:scaleX(.72)!important;
+  transform-origin:center!important;
+  white-space:nowrap!important;
+  word-break:normal!important;
+  overflow:hidden!important;
+}
+.prototype-player-name.name-length-8 strong{font-size:clamp(.63rem,1.98vw,1.52rem)!important}
+.prototype-player-name.name-length-9 strong{font-size:clamp(.60rem,1.88vw,1.44rem)!important}
+.prototype-player-name.name-length-10 strong{font-size:clamp(.57rem,1.78vw,1.36rem)!important}
+.prototype-player-name.name-length-11 strong{font-size:clamp(.54rem,1.68vw,1.28rem)!important}
+.prototype-player-name.name-length-12 strong{font-size:clamp(.51rem,1.58vw,1.20rem)!important}
+.prototype-player-name.name-length-13 strong{font-size:clamp(.48rem,1.48vw,1.13rem)!important}
+.prototype-player-name.name-length-14 strong{font-size:clamp(.45rem,1.39vw,1.06rem)!important}
+.prototype-player-name.name-length-15 strong{font-size:clamp(.42rem,1.30vw,.99rem)!important}
+.prototype-player-name.name-length-16 strong,
+.prototype-player-name.name-length-17 strong,
+.prototype-player-name.name-length-18 strong,
+.prototype-player-name.name-length-19 strong,
+.prototype-player-name.name-length-20 strong{font-size:clamp(.37rem,1.16vw,.88rem)!important}
+.prototype-player-name em,
+.preview-ultimate-name.prototype-player-name em{
+  justify-self:center!important;
+  align-self:center!important;
+  width:78%!important;
+  max-width:78%!important;
+  min-width:0!important;
+  text-align:center!important;
+}
+
+/* Profile template coordinates measured from the approved 1024x1536 artwork. */
+.prototype-profile-number{
+  top:4.6%!important;
+  left:7.5%!important;
+  width:17.5%!important;
+  font-size:clamp(.88rem,2.55vw,2.05rem)!important;
+}
+.prototype-profile-position{
+  top:12.3%!important;
+  left:7.4%!important;
+  width:22%!important;
+  font-size:clamp(.42rem,1vw,.76rem)!important;
+  text-align:left!important;
+}
+.prototype-profile-name{
+  left:10.2%!important;
+  right:10.2%!important;
+  top:17.2%!important;
+  height:19.0%!important;
+  grid-template-rows:35% 65%!important;
+}
+.prototype-profile-name small{
+  align-self:end!important;
+  font-size:clamp(.48rem,1.08vw,.82rem)!important;
+}
+.prototype-profile-name strong{
+  align-self:start!important;
+  width:96%!important;
+  max-width:96%!important;
+  font-size:clamp(.78rem,2.15vw,1.66rem)!important;
+  transform:scaleX(.76)!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+}
+.prototype-profile-values{
+  left:57.2%!important;
+  right:8.8%!important;
+  top:42.55%!important;
+  height:34.15%!important;
+  display:grid!important;
+  grid-template-rows:repeat(5,20%)!important;
+}
+.prototype-profile-values b{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  padding:0!important;
+  margin:0!important;
+  line-height:1!important;
+  font-size:clamp(.44rem,.94vw,.72rem)!important;
+}
+.prototype-profile-quote{
+  top:78.0%!important;
+  left:14%!important;
+  right:14%!important;
+  font-size:clamp(.40rem,.82vw,.65rem)!important;
+  line-height:1.25!important;
+}
+
+/* Popup and Admin cards must keep exactly the same internal geometry. */
+.ultimate-card-deck .prototype-player-frame,
+.live-card-preview .prototype-player-frame,
+.visual-card.player-preview-card .prototype-player-frame,
+.public-style-player-preview .prototype-player-frame{
+  aspect-ratio:2/3!important;
+}
+
+@media(max-width:700px){
+  .prototype-player-number{font-size:clamp(.82rem,6.4vw,1.85rem)!important}
+  .prototype-player-name strong{font-size:clamp(.60rem,4.8vw,1.42rem)!important}
+  .prototype-profile-number{font-size:clamp(.82rem,6.2vw,1.82rem)!important}
+  .prototype-profile-name strong{font-size:clamp(.70rem,5.2vw,1.55rem)!important}
+}
