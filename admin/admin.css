@@ -1349,7 +1349,7 @@ body[data-page="players"] #editModal .modal-card{max-height:94vh!important;overf
 body[data-page="players"] #editForm{align-items:start!important}
 
 /* ============================================================
-   v170 — PLAYER ADMIN PREVIEW PARITY
+   v171 — PLAYER ADMIN PREVIEW PARITY
    ============================================================ */
 body[data-page="players"] .prototype-player-stage{z-index:2!important}
 body[data-page="players"] .prototype-player-name{
@@ -1397,7 +1397,7 @@ body[data-page="players"] .prototype-player-name em{
  body[data-page="players"] .prototype-player-name strong{font-size:clamp(.72rem,5.7vw,1.72rem)!important}
 }
 
-/* v170 — Admin preview uses the exact public card layer geometry. */
+/* v171 — Admin preview uses the exact public card layer geometry. */
 .preview-ultimate-card.prototype-player-frame{
   --player-scale:1;
   --player-x:0%;
@@ -1406,7 +1406,7 @@ body[data-page="players"] .prototype-player-name em{
 .preview-ultimate-cutout-stage.prototype-player-stage{overflow:hidden!important;z-index:2!important}
 .preview-ultimate-name.prototype-player-name{z-index:12!important;background:#030207!important;overflow:hidden!important}
 
-/* V170 — keep Admin player preview geometry identical to the public card. */
+/* V171 — keep Admin player preview geometry identical to the public card. */
 .player-preview-card .prototype-player-stage img,
 .public-style-player-preview .prototype-player-stage img,
 .live-card-preview .prototype-player-stage img,
@@ -1417,4 +1417,29 @@ body[data-page="players"] .prototype-player-name em{
   object-position:center bottom!important;
   transform:translate(var(--player-x,0%),var(--player-y,0%)) scale(var(--player-scale,1))!important;
   transform-origin:center bottom!important;
+}
+
+/* V171 — Admin preview mirrors public position label cleanup. */
+body[data-page="players"] .prototype-player-name em,
+body[data-page="players"] .preview-ultimate-name.prototype-player-name em{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  align-self:center!important;
+  width:88%!important;
+  max-width:88%!important;
+  min-width:0!important;
+  min-height:0!important;
+  height:auto!important;
+  margin:0 auto!important;
+  padding:0!important;
+  border:0!important;
+  outline:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  clip-path:none!important;
+  border-radius:0!important;
+  text-align:center!important;
+  overflow:hidden!important;
+  text-overflow:clip!important;
 }
