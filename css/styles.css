@@ -17628,7 +17628,7 @@ body.page-not-found .footer-platform-v147 { border-top-color:#cfd5e3 !important;
 
 
 /* ============================================================
-   V167 — FINAL PLAYER CARD + PROFILE TEMPLATE SYNC
+   v170 — FINAL PLAYER CARD + PROFILE TEMPLATE SYNC
    ============================================================ */
 /* Front card: maintain true 2:3 ratio and consistent layering everywhere. */
 .prototype-player-frame,
@@ -17783,7 +17783,7 @@ body[data-page="graphics"] .graphic-preview-item{position:relative!important;min
 body[data-page="graphics"] .sticky-graphics-publish{position:sticky!important;bottom:0!important;z-index:20!important;margin-top:22px!important;background:#090d14!important}
 
 /* ============================================================
-   V168 — PLAYER CARD FINAL LAYERING + PROFILE ALIGNMENT
+   v170 — PLAYER CARD FINAL LAYERING + PROFILE ALIGNMENT
    ============================================================ */
 /* Keep the player cutout behind a solid name/position plate. */
 .prototype-player-stage,
@@ -17923,7 +17923,7 @@ body[data-page="graphics"] .sticky-graphics-publish{position:sticky!important;bo
 }
 
 /* ============================================================
-   V169 — PLAYER WYSIWYG POSITION SYNC + PROFILE TEMPLATE TUNING
+   v170 — PLAYER WYSIWYG POSITION SYNC + PROFILE TEMPLATE TUNING
    ============================================================ */
 /* The player position values now live on the card itself, so every context
    (Admin, carousel, preview site and popup clone) uses the same transform. */
@@ -18081,4 +18081,174 @@ body[data-page="graphics"] .sticky-graphics-publish{position:sticky!important;bo
   .prototype-player-name strong{font-size:clamp(.60rem,4.8vw,1.42rem)!important}
   .prototype-profile-number{font-size:clamp(.82rem,6.2vw,1.82rem)!important}
   .prototype-profile-name strong{font-size:clamp(.70rem,5.2vw,1.55rem)!important}
+}
+
+/* ============================================================
+   V170 — FINAL PLAYER CARD CONSISTENCY, NAME FIT & PROFILE ALIGNMENT
+   ============================================================ */
+/* The old carousel rule targeted every image with object-fit:cover. These
+   selectors are intentionally more specific so only the complete card is
+   scaled by the carousel; the transparent player remains contain-positioned. */
+.page-team .team-roster-carousel .team-card-slide .prototype-player-frame .prototype-player-stage,
+.page-team .team-roster-carousel .team-card-slide .prototype-player-frame .ultimate-player-cutout-stage{
+  top:5.2%!important;
+  bottom:30%!important;
+  left:5%!important;
+  right:5%!important;
+  width:auto!important;
+  height:auto!important;
+  overflow:hidden!important;
+}
+.page-team .team-roster-carousel .team-card-slide .prototype-player-frame .prototype-player-stage img,
+.page-team .team-roster-carousel .team-card-slide .prototype-player-frame .ultimate-player-cutout-stage img,
+.page-team .team-roster-carousel .team-card-slide .prototype-player-frame img.ultimate-player-photo,
+.page-team .team-roster-carousel .team-card-slide .prototype-player-frame img.generated-player-photo{
+  position:relative!important;
+  inset:auto!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  max-height:none!important;
+  object-fit:contain!important;
+  object-position:center bottom!important;
+  border-radius:0!important;
+  transform:translate(var(--player-x,0%),var(--player-y,0%)) scale(var(--player-scale,1))!important;
+  transform-origin:center bottom!important;
+  z-index:2!important;
+}
+/* Do not allow carousel-specific image styling to alter the template layer. */
+.page-team .team-roster-carousel .team-card-slide .prototype-player-frame > img.prototype-card-template{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:fill!important;
+  border-radius:0!important;
+  transform:none!important;
+}
+
+/* True one-line names: no wrapping, clipping, or ellipsis. JavaScript applies
+   an exact inline font size after measuring the available safe area. */
+.prototype-player-name small,
+.preview-ultimate-name.prototype-player-name small,
+.prototype-player-name strong,
+.preview-ultimate-name.prototype-player-name strong,
+.prototype-profile-name small,
+.prototype-profile-name strong{
+  display:block!important;
+  width:94%!important;
+  max-width:94%!important;
+  min-width:0!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  white-space:nowrap!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+  word-break:normal!important;
+  overflow-wrap:normal!important;
+  -webkit-line-clamp:unset!important;
+}
+.prototype-player-name small,
+.preview-ultimate-name.prototype-player-name small{
+  font-size:clamp(.48rem,1.18vw,.94rem)!important;
+  letter-spacing:.16em!important;
+}
+.prototype-player-name strong,
+.preview-ultimate-name.prototype-player-name strong{
+  font-size:clamp(.48rem,1.48vw,1.14rem)!important;
+  letter-spacing:-.035em!important;
+  transform:none!important;
+}
+.prototype-player-name em,
+.preview-ultimate-name.prototype-player-name em{
+  width:72%!important;
+  max-width:72%!important;
+  font-size:clamp(.42rem,.94vw,.72rem)!important;
+  text-overflow:clip!important;
+  overflow:hidden!important;
+}
+/* Keep the photo below the opaque baked-name overlay in every context. */
+.prototype-player-stage,
+.preview-ultimate-cutout-stage.prototype-player-stage{z-index:2!important}
+.prototype-player-name,
+.preview-ultimate-name.prototype-player-name{z-index:20!important;background:#030207!important}
+
+/* Approved profile-card artwork coordinates (1024 x 1536). */
+.ultimate-profile-card.prototype-profile-frame{
+  aspect-ratio:2/3!important;
+  overflow:hidden!important;
+}
+.prototype-profile-number{
+  top:4.4%!important;
+  left:7.0%!important;
+  width:19%!important;
+  font-size:clamp(.78rem,2.05vw,1.62rem)!important;
+  text-align:left!important;
+}
+.prototype-profile-position{
+  top:14.7%!important;
+  left:7.3%!important;
+  width:27%!important;
+  font-size:clamp(.38rem,.78vw,.62rem)!important;
+  text-align:left!important;
+}
+.prototype-profile-name{
+  position:absolute!important;
+  left:9.5%!important;
+  right:9.5%!important;
+  top:20.8%!important;
+  height:18.0%!important;
+  display:grid!important;
+  grid-template-rows:36% 64%!important;
+  align-items:center!important;
+  text-align:center!important;
+}
+.prototype-profile-name small{
+  align-self:end!important;
+  font-size:clamp(.46rem,1.04vw,.80rem)!important;
+  letter-spacing:.20em!important;
+}
+.prototype-profile-name strong{
+  align-self:start!important;
+  font-size:clamp(.76rem,2.35vw,1.82rem)!important;
+  line-height:.9!important;
+  transform:none!important;
+}
+.prototype-profile-values{
+  position:absolute!important;
+  left:56.0%!important;
+  right:8.5%!important;
+  top:43.0%!important;
+  height:33.2%!important;
+  display:grid!important;
+  grid-template-rows:repeat(5,20%)!important;
+  align-items:stretch!important;
+}
+.prototype-profile-values b{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  padding:0!important;
+  margin:0!important;
+  font-size:clamp(.40rem,.82vw,.64rem)!important;
+  line-height:1!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:clip!important;
+}
+.prototype-profile-quote{
+  top:79.0%!important;
+  left:14%!important;
+  right:14%!important;
+  width:auto!important;
+  max-height:7.8%!important;
+  font-size:clamp(.38rem,.74vw,.58rem)!important;
+  line-height:1.2!important;
+  text-align:center!important;
+}
+
+@media(max-width:700px){
+  .prototype-player-name small{font-size:clamp(.42rem,3.5vw,.78rem)!important}
+  .prototype-player-name strong{font-size:clamp(.44rem,4.2vw,.94rem)!important}
+  .prototype-profile-name strong{font-size:clamp(.68rem,5.3vw,1.48rem)!important}
 }
