@@ -1,6 +1,6 @@
 {
-  "version": 175,
-  "updated": "2026-07-18",
+  "version": 176,
+  "updated": "2026-07-19",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
     "logo": "generated/allstar-galaxy-logo.png",
@@ -2003,8 +2003,22 @@
       "order": 32,
       "id": "player-32",
       "name": "Player",
-      "number": "35",
-      "position": "ST"
+      "number": "99",
+      "position": "STRIKER",
+      "firstName": "FIRST NAME",
+      "lastName": "LAST NAME",
+      "imageMode": "cutout",
+      "profileMode": "standard",
+      "photoScale": "162",
+      "photoX": "8",
+      "photoY": "46",
+      "dateOfBirth": "",
+      "nationality": "",
+      "preferredFoot": "",
+      "height": "",
+      "weight": "",
+      "quote": "",
+      "photo": "images/team/players/player-silhouette.png"
     }
   ],
   "news": [
