@@ -227,9 +227,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             // card into the larger popup; only clone the card data and saved photo
             // variables, then allow the shared card CSS to scale the complete card.
             front.classList.add("popup-exact-front-card");
-            front.querySelectorAll(".prototype-player-number,.prototype-player-name,.prototype-player-name small,.prototype-player-name strong,.prototype-player-name em,.prototype-player-stage,.prototype-player-stage img").forEach(node => {
-              ["top","left","right","bottom","width","height","font-size","line-height","letter-spacing","transform","transform-origin","grid-template-rows","padding","background","clip-path","object-fit","object-position","overflow"].forEach(prop => node.style.removeProperty(prop));
-            });
+            // V175: this is an exact visual clone of the carousel card. Do not
+            // clear or recalculate any internal photo/text measurements here.
+            // The complete card scales as one proportional unit in the popup.
             const value = (key, fallback="N/A") => selectedCard.dataset[key] || fallback;
             const advanced = String(selectedCard.dataset.playerMode || "standard").toLowerCase() === "advanced" ||
               ["playerDob","playerNationality","playerFoot","playerHeight","playerWeight","playerQuote"].some(k => String(selectedCard.dataset[k]||"").trim());
