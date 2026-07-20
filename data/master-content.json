@@ -1,5 +1,5 @@
 {
-  "version": 186,
+  "version": 187,
   "updated": "2026-07-20",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -3446,7 +3446,7 @@
     "scheduledEnd": "",
     "opponent": "",
     "location": "",
-    "thumbnail": "",
+    "thumbnail": "images/live/current-livestream.png",
     "replayUrl": "",
     "youtubeVideoId": "",
     "pastStreams": [],
