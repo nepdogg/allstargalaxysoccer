@@ -2,6 +2,18 @@
   "version": 2,
   "backups": [
     {
+      "id": "2026-07-20T00-34-39-271Z",
+      "type": "backup",
+      "label": "Before content publish",
+      "created": "2026-07-20T00:34:52.974Z",
+      "files": [
+        {
+          "source": "data/hero-rotation.json",
+          "backup": "backups/2026-07-20T00-34-39-271Z/hero-rotation.json"
+        }
+      ]
+    },
+    {
       "id": "2026-07-20T00-23-37-701Z",
       "type": "backup",
       "label": "Before content publish",
@@ -742,6 +754,18 @@
     }
   ],
   "history": [
+    {
+      "id": "2026-07-20T00-34-39-271Z",
+      "type": "backup",
+      "label": "Before content publish",
+      "created": "2026-07-20T00:34:52.974Z",
+      "files": [
+        {
+          "source": "data/hero-rotation.json",
+          "backup": "backups/2026-07-20T00-34-39-271Z/hero-rotation.json"
+        }
+      ]
+    },
     {
       "id": "2026-07-20T00-23-37-701Z",
       "type": "backup",
