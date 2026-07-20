@@ -618,7 +618,7 @@ document.addEventListener("click", (event) => {
     });
 })();
 
-/* V179 — preserve letter height and fit every identity field horizontally. */
+/* V180 — preserve letter height and fit every identity field horizontally. */
 (()=>{
   const fitOne=(el,maxRatio=.94,minScale=.42,translate=false,origin='center center')=>{
     if(!el || !el.parentElement) return;
@@ -635,10 +635,10 @@ document.addEventListener("click", (event) => {
   const fitAll=(root=document)=>{
     root.querySelectorAll?.('.prototype-player-name small').forEach(el=>fitOne(el,.94,.50));
     root.querySelectorAll?.('.prototype-player-name strong').forEach(el=>fitOne(el,.97,.34));
-    root.querySelectorAll?.('.prototype-player-name em').forEach(el=>fitOne(el,.94,.34));
+    root.querySelectorAll?.('.prototype-player-name em').forEach(el=>fitOne(el,.995,.22));
     root.querySelectorAll?.('.prototype-profile-name small').forEach(el=>fitOne(el,.94,.48,true));
     root.querySelectorAll?.('.prototype-profile-name strong').forEach(el=>fitOne(el,.97,.33,true));
-    root.querySelectorAll?.('.prototype-profile-position').forEach(el=>fitOne(el,.98,.34,false,'left center'));
+    root.querySelectorAll?.('.prototype-profile-position').forEach(el=>fitOne(el,.995,.22,false,'center center'));
   };
   const run=()=>requestAnimationFrame(()=>fitAll());
   document.addEventListener('DOMContentLoaded',run,{once:true});
