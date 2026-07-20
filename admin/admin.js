@@ -1535,21 +1535,23 @@ window.AdminCMS={initCommon,publish};
   };
 })();
 
-/* V172 — exact one-line player-name fitting for dynamically rebuilt Admin previews. */
+/* V177 — admin preview uses equal-height type with horizontal fitting only. */
 (()=>{
-  const fitOne=(el,min=8)=>{
+  const fitOne=(el,maxRatio=.94,minScale=.46)=>{
     if(!el || !el.parentElement) return;
-    el.style.fontSize='';
-    const max=Math.max(1,el.parentElement.clientWidth*.90);
-    let size=parseFloat(getComputedStyle(el).fontSize)||18;
-    let guard=80;
-    while(el.scrollWidth>max && size>min && guard--){size-=.5;el.style.fontSize=size+'px';}
+    el.style.removeProperty('font-size');
+    el.style.removeProperty('transform');
+    const max=Math.max(1,el.parentElement.clientWidth*maxRatio);
+    const natural=Math.max(1,el.scrollWidth);
+    const scale=Math.max(minScale,Math.min(1,max/natural));
+    el.style.setProperty('transform',`scaleX(${scale})`,'important');
+    el.style.setProperty('transform-origin','center center','important');
   };
   const run=()=>requestAnimationFrame(()=>{
-    document.querySelectorAll('.prototype-player-name small').forEach(el=>fitOne(el,7));
-    document.querySelectorAll('.prototype-player-name strong').forEach(el=>fitOne(el,7));
-    document.querySelectorAll('.prototype-profile-name small').forEach(el=>fitOne(el,7));
-    document.querySelectorAll('.prototype-profile-name strong').forEach(el=>fitOne(el,8));
+    document.querySelectorAll('.prototype-player-name small').forEach(el=>fitOne(el,.94,.52));
+    document.querySelectorAll('.prototype-player-name strong').forEach(el=>fitOne(el,.96,.42));
+    document.querySelectorAll('.prototype-profile-name small').forEach(el=>fitOne(el,.93,.50));
+    document.querySelectorAll('.prototype-profile-name strong').forEach(el=>fitOne(el,.95,.40));
   });
   document.addEventListener('DOMContentLoaded',run,{once:true});
   window.addEventListener('resize',run);
