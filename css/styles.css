@@ -19297,7 +19297,7 @@ body[data-page="graphics"] .sticky-graphics-publish{position:sticky!important;bo
 .ultimate-profile-card.prototype-profile-frame .prototype-profile-quote:empty{display:none!important}
 
 /* ============================================================
-   V179 — FINAL SHARED PLAYER / PROFILE CARD GEOMETRY
+   V180 — FINAL SHARED PLAYER / PROFILE CARD GEOMETRY
    One percentage-based renderer for carousel, admin preview and popup.
    ============================================================ */
 .prototype-player-frame,
@@ -19552,4 +19552,107 @@ body[data-page="graphics"] .sticky-graphics-publish{position:sticky!important;bo
 @media (max-width:700px){
   .ultimate-card-deck .popup-exact-front-card,
   .ultimate-profile-card.prototype-profile-frame{width:min(92vw,520px)!important}
+}
+
+/* V180 — final prototype alignment pass for front and profile player cards. */
+.prototype-player-name,
+.preview-ultimate-name.prototype-player-name,
+.team-roster-carousel .prototype-player-name,
+.popup-exact-front-card .prototype-player-name{
+  overflow:visible!important;
+}
+.prototype-player-name strong,
+.preview-ultimate-name.prototype-player-name strong,
+.popup-exact-front-card .prototype-player-name strong{
+  color:#fff!important;
+  text-shadow:
+    0 .035em 0 #bfc1c8,
+    0 .075em 0 #777b84,
+    0 .12em .09em rgba(0,0,0,.92),
+    0 0 .22em rgba(255,255,255,.78)!important;
+  filter:drop-shadow(0 0 .11em rgba(255,255,255,.56))!important;
+}
+.prototype-player-name em,
+.preview-ultimate-name.prototype-player-name em,
+.popup-exact-front-card .prototype-player-name em{
+  position:absolute!important;
+  left:4%!important;
+  right:4%!important;
+  bottom:4.3%!important;
+  width:92%!important;
+  min-width:0!important;
+  max-width:none!important;
+  height:12.5%!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  padding:0 2%!important;
+  box-sizing:border-box!important;
+  overflow:visible!important;
+  white-space:nowrap!important;
+  text-align:center!important;
+  font-size:6.0cqw!important;
+  line-height:1!important;
+  letter-spacing:.075em!important;
+  transform-origin:center center!important;
+}
+
+/* Profile identity block lowered into the artwork's reserved name area. */
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-number{
+  top:5.1%!important;
+  left:5.4%!important;
+  height:12.4%!important;
+  align-items:flex-start!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-position{
+  top:15.5%!important;
+  left:5.8%!important;
+  height:4.7%!important;
+  align-items:center!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name{
+  left:17%!important;
+  right:9%!important;
+  top:21.6%!important;
+  height:13.4%!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name small{
+  top:0!important;
+  font-size:5.55cqw!important;
+  line-height:1!important;
+  letter-spacing:.18em!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name strong{
+  top:30%!important;
+  font-size:12.1cqw!important;
+  line-height:.78!important;
+  color:#fff!important;
+  text-shadow:
+    0 .035em 0 #bfc1c8,
+    0 .075em 0 #777b84,
+    0 .12em .09em rgba(0,0,0,.92),
+    0 0 .20em rgba(255,255,255,.65)!important;
+}
+
+/* Values sit directly on the five printed prototype rows. */
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b{
+  left:57.5%!important;
+  right:8.3%!important;
+  height:4.2%!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  font-size:3.85cqw!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(1){top:44.55%!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(2){top:51.42%!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(3){top:58.30%!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(4){top:65.18%!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(5){top:72.05%!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-quote{
+  top:79.0%!important;
+  left:14%!important;
+  right:14%!important;
+  height:7.0%!important;
+  align-items:center!important;
+  font-size:3.45cqw!important;
 }
