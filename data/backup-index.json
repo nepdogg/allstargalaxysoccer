@@ -2,6 +2,13 @@
   "version": 2,
   "backups": [
     {
+      "id": "2026-07-20T00-23-37-701Z",
+      "type": "backup",
+      "label": "Before content publish",
+      "created": "2026-07-20T00:23:45.904Z",
+      "files": []
+    },
+    {
       "id": "2026-07-19T19-04-38-187Z",
       "type": "backup",
       "label": "Before content publish",
@@ -735,6 +742,13 @@
     }
   ],
   "history": [
+    {
+      "id": "2026-07-20T00-23-37-701Z",
+      "type": "backup",
+      "label": "Before content publish",
+      "created": "2026-07-20T00:23:45.904Z",
+      "files": []
+    },
     {
       "id": "2026-07-19T19-04-38-187Z",
       "type": "backup",
