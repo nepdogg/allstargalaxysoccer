@@ -1,5 +1,5 @@
 {
-  "version": 186,
+  "version": 187,
   "updated": "2026-07-20",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -1726,7 +1726,7 @@
       "preferredFoot": "",
       "height": "",
       "weight": "",
-      "quote": "",
+      "quote": "Messi is washed",
       "firstName": "Neptune",
       "lastName": "Garcia"
     },
