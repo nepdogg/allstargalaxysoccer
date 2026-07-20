@@ -19295,3 +19295,261 @@ body[data-page="graphics"] .sticky-graphics-publish{position:sticky!important;bo
   height:5.6%!important;
 }
 .ultimate-profile-card.prototype-profile-frame .prototype-profile-quote:empty{display:none!important}
+
+/* ============================================================
+   V179 — FINAL SHARED PLAYER / PROFILE CARD GEOMETRY
+   One percentage-based renderer for carousel, admin preview and popup.
+   ============================================================ */
+.prototype-player-frame,
+.popup-exact-front-card,
+.public-style-player-preview .prototype-player-frame{
+  container-type:inline-size!important;
+  aspect-ratio:2/3!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+}
+
+/* Photo remains behind the printed identity panel and uses saved positioning. */
+.prototype-player-frame .prototype-player-stage,
+.popup-exact-front-card .prototype-player-stage{
+  position:absolute!important;
+  inset:3.4% 3.4% 31.6% 3.4%!important;
+  overflow:hidden!important;
+  z-index:2!important;
+  pointer-events:none!important;
+}
+.prototype-player-frame .prototype-player-stage img,
+.popup-exact-front-card .prototype-player-stage img{
+  position:absolute!important;
+  left:50%!important;
+  bottom:0!important;
+  width:auto!important;
+  height:calc(100% * var(--player-scale,1))!important;
+  max-width:none!important;
+  object-fit:contain!important;
+  object-position:center bottom!important;
+  transform:translate(calc(-50% + var(--player-x,0%)),var(--player-y,0%))!important;
+  transform-origin:center bottom!important;
+  z-index:2!important;
+}
+.prototype-player-frame.image-mode-photo .prototype-player-stage img,
+.popup-exact-front-card.image-mode-photo .prototype-player-stage img{
+  width:calc(100% * var(--player-scale,1))!important;
+  height:calc(100% * var(--player-scale,1))!important;
+  object-fit:cover!important;
+  object-position:center top!important;
+  bottom:auto!important;
+  top:50%!important;
+  transform:translate(calc(-50% + var(--player-x,0%)),calc(-50% + var(--player-y,0%)))!important;
+}
+
+.prototype-player-number,
+.popup-exact-front-card .prototype-player-number{
+  left:5.1%!important;
+  top:4.0%!important;
+  width:26%!important;
+  height:14%!important;
+  display:flex!important;
+  align-items:flex-start!important;
+  justify-content:flex-start!important;
+  font-size:14.0cqw!important;
+  line-height:.82!important;
+  letter-spacing:-.05em!important;
+  z-index:7!important;
+  white-space:nowrap!important;
+}
+
+/* Use the identity area already printed into the artwork; no added mask. */
+.prototype-player-name,
+.preview-ultimate-name.prototype-player-name,
+.team-roster-carousel .prototype-player-name,
+.popup-exact-front-card .prototype-player-name{
+  position:absolute!important;
+  left:8.2%!important;
+  right:8.2%!important;
+  bottom:4.9%!important;
+  height:27.2%!important;
+  padding:0 2.2%!important;
+  display:grid!important;
+  grid-template-rows:24% 50% 26%!important;
+  align-items:center!important;
+  justify-items:center!important;
+  overflow:visible!important;
+  background:transparent!important;
+  border:0!important;
+  clip-path:none!important;
+  z-index:8!important;
+  container-type:inline-size!important;
+}
+.prototype-player-name::before,
+.preview-ultimate-name.prototype-player-name::before{display:none!important;content:none!important}
+.prototype-player-name small,
+.prototype-player-name strong,
+.prototype-player-name em{
+  display:block!important;
+  position:relative!important;
+  width:max-content!important;
+  max-width:none!important;
+  min-width:0!important;
+  margin:0!important;
+  padding:0!important;
+  white-space:nowrap!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+  text-align:center!important;
+  transform-origin:center center!important;
+}
+.prototype-player-name small{
+  align-self:end!important;
+  font-size:7.1cqw!important;
+  line-height:.9!important;
+  letter-spacing:.16em!important;
+}
+.prototype-player-name strong,
+.prototype-player-name.name-length-8 strong,
+.prototype-player-name.name-length-9 strong,
+.prototype-player-name.name-length-10 strong,
+.prototype-player-name.name-length-11 strong,
+.prototype-player-name.name-length-12 strong,
+.prototype-player-name.name-length-13 strong,
+.prototype-player-name.name-length-14 strong,
+.prototype-player-name.name-length-15 strong,
+.prototype-player-name.name-length-16 strong,
+.prototype-player-name.name-length-17 strong,
+.prototype-player-name.name-length-18 strong,
+.prototype-player-name.name-length-19 strong,
+.prototype-player-name.name-length-20 strong{
+  align-self:center!important;
+  font-size:17.1cqw!important;
+  line-height:.78!important;
+  letter-spacing:-.045em!important;
+}
+.prototype-player-name em{
+  align-self:start!important;
+  font-size:6.55cqw!important;
+  line-height:1!important;
+  letter-spacing:.13em!important;
+  min-width:54%!important;
+}
+
+/* Exact popup clone: only the complete card scales; internal geometry is identical. */
+.ultimate-card-deck .popup-exact-front-card{
+  width:min(88vw,520px)!important;
+  max-height:none!important;
+  transform:none!important;
+}
+
+/* Profile card identity and values aligned to the printed prototype artwork. */
+.ultimate-profile-card.prototype-profile-frame{
+  container-type:inline-size!important;
+  aspect-ratio:2/3!important;
+  overflow:hidden!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-number{
+  left:5.2%!important;
+  top:3.6%!important;
+  width:24%!important;
+  height:13%!important;
+  font-size:13.5cqw!important;
+  line-height:.82!important;
+  letter-spacing:-.05em!important;
+  display:flex!important;
+  align-items:flex-start!important;
+  justify-content:flex-start!important;
+  white-space:nowrap!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-position{
+  left:5.8%!important;
+  top:14.2%!important;
+  width:31%!important;
+  height:5%!important;
+  font-size:4.35cqw!important;
+  line-height:1!important;
+  letter-spacing:.08em!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  white-space:nowrap!important;
+  overflow:visible!important;
+  transform-origin:left center!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name{
+  position:absolute!important;
+  left:18%!important;
+  right:10%!important;
+  top:19.0%!important;
+  height:15.2%!important;
+  display:block!important;
+  overflow:visible!important;
+  text-align:center!important;
+  container-type:inline-size!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name small,
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name strong{
+  position:absolute!important;
+  left:50%!important;
+  width:max-content!important;
+  max-width:none!important;
+  white-space:nowrap!important;
+  overflow:visible!important;
+  text-align:center!important;
+  transform-origin:center center!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name small{
+  top:0!important;
+  font-size:6.1cqw!important;
+  line-height:.9!important;
+  letter-spacing:.17em!important;
+  transform:translateX(-50%)!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name strong{
+  top:28%!important;
+  font-size:13.0cqw!important;
+  line-height:.78!important;
+  letter-spacing:-.04em!important;
+  transform:translateX(-50%)!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values{
+  position:absolute!important;
+  inset:0!important;
+  pointer-events:none!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b{
+  position:absolute!important;
+  left:56.2%!important;
+  right:8.5%!important;
+  height:4.0%!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  font-size:4.05cqw!important;
+  line-height:1!important;
+  white-space:nowrap!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(1){top:43.05%!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(2){top:50.00%!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(3){top:56.95%!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(4){top:63.90%!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(5){top:70.85%!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-quote{
+  position:absolute!important;
+  left:13%!important;
+  right:13%!important;
+  top:79.5%!important;
+  height:6.2%!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  margin:0!important;
+  font-size:3.7cqw!important;
+  line-height:1.08!important;
+  text-align:center!important;
+  white-space:normal!important;
+  overflow:hidden!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-quote:empty{display:none!important}
+
+@media (max-width:700px){
+  .ultimate-card-deck .popup-exact-front-card,
+  .ultimate-profile-card.prototype-profile-frame{width:min(92vw,520px)!important}
+}
