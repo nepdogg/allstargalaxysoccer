@@ -1535,23 +1535,26 @@ window.AdminCMS={initCommon,publish};
   };
 })();
 
-/* V177 — admin preview uses equal-height type with horizontal fitting only. */
+/* V179 — admin preview uses the same horizontal fitting as the public card. */
 (()=>{
-  const fitOne=(el,maxRatio=.94,minScale=.46)=>{
+  const fitOne=(el,maxRatio=.94,minScale=.42,translate=false,origin='center center')=>{
     if(!el || !el.parentElement) return;
     el.style.removeProperty('font-size');
     el.style.removeProperty('transform');
     const max=Math.max(1,el.parentElement.clientWidth*maxRatio);
     const natural=Math.max(1,el.scrollWidth);
     const scale=Math.max(minScale,Math.min(1,max/natural));
-    el.style.setProperty('transform',`scaleX(${scale})`,'important');
-    el.style.setProperty('transform-origin','center center','important');
+    const prefix=translate?'translateX(-50%) ':'';
+    el.style.setProperty('transform',`${prefix}scaleX(${scale})`,'important');
+    el.style.setProperty('transform-origin',origin,'important');
   };
   const run=()=>requestAnimationFrame(()=>{
-    document.querySelectorAll('.prototype-player-name small').forEach(el=>fitOne(el,.94,.52));
-    document.querySelectorAll('.prototype-player-name strong').forEach(el=>fitOne(el,.96,.42));
-    document.querySelectorAll('.prototype-profile-name small').forEach(el=>fitOne(el,.93,.50));
-    document.querySelectorAll('.prototype-profile-name strong').forEach(el=>fitOne(el,.95,.40));
+    document.querySelectorAll('.prototype-player-name small').forEach(el=>fitOne(el,.94,.50));
+    document.querySelectorAll('.prototype-player-name strong').forEach(el=>fitOne(el,.97,.34));
+    document.querySelectorAll('.prototype-player-name em').forEach(el=>fitOne(el,.94,.34));
+    document.querySelectorAll('.prototype-profile-name small').forEach(el=>fitOne(el,.94,.48,true));
+    document.querySelectorAll('.prototype-profile-name strong').forEach(el=>fitOne(el,.97,.33,true));
+    document.querySelectorAll('.prototype-profile-position').forEach(el=>fitOne(el,.98,.34,false,'left center'));
   });
   document.addEventListener('DOMContentLoaded',run,{once:true});
   window.addEventListener('resize',run);

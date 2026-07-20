@@ -1517,3 +1517,77 @@ body[data-page="players"] .preview-ultimate-name.prototype-player-name em{
   overflow:hidden!important;
   text-overflow:clip!important;
 }
+
+/* ============================================================
+   V179 — Admin preview uses the exact public player-card geometry.
+   ============================================================ */
+body[data-page="players"] .preview-ultimate-card.prototype-player-frame{
+  container-type:inline-size!important;
+  aspect-ratio:2/3!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+}
+body[data-page="players"] .preview-ultimate-card.prototype-player-frame .prototype-player-stage{
+  position:absolute!important;
+  inset:3.4% 3.4% 31.6% 3.4%!important;
+  overflow:hidden!important;
+  z-index:2!important;
+}
+body[data-page="players"] .preview-ultimate-card.prototype-player-frame .prototype-player-stage img{
+  position:absolute!important;
+  left:50%!important;
+  bottom:0!important;
+  width:auto!important;
+  height:calc(100% * var(--player-scale,1))!important;
+  max-width:none!important;
+  object-fit:contain!important;
+  object-position:center bottom!important;
+  transform:translate(calc(-50% + var(--player-x,0%)),var(--player-y,0%))!important;
+  transform-origin:center bottom!important;
+}
+body[data-page="players"] .preview-ultimate-card.prototype-player-frame.image-mode-photo .prototype-player-stage img{
+  width:calc(100% * var(--player-scale,1))!important;
+  height:calc(100% * var(--player-scale,1))!important;
+  object-fit:cover!important;
+  object-position:center top!important;
+  top:50%!important;
+  bottom:auto!important;
+  transform:translate(calc(-50% + var(--player-x,0%)),calc(-50% + var(--player-y,0%)))!important;
+}
+body[data-page="players"] .prototype-player-number{
+  left:5.1%!important;top:4%!important;width:26%!important;height:14%!important;
+  display:flex!important;align-items:flex-start!important;justify-content:flex-start!important;
+  font-size:14cqw!important;line-height:.82!important;letter-spacing:-.05em!important;white-space:nowrap!important;z-index:7!important
+}
+body[data-page="players"] .prototype-player-name,
+body[data-page="players"] .preview-ultimate-name.prototype-player-name{
+  position:absolute!important;left:8.2%!important;right:8.2%!important;bottom:4.9%!important;height:27.2%!important;
+  padding:0 2.2%!important;display:grid!important;grid-template-rows:24% 50% 26%!important;
+  align-items:center!important;justify-items:center!important;overflow:visible!important;background:transparent!important;
+  border:0!important;clip-path:none!important;z-index:8!important;container-type:inline-size!important
+}
+body[data-page="players"] .prototype-player-name::before,
+body[data-page="players"] .preview-ultimate-name.prototype-player-name::before{display:none!important;content:none!important}
+body[data-page="players"] .prototype-player-name small,
+body[data-page="players"] .prototype-player-name strong,
+body[data-page="players"] .prototype-player-name em{
+  display:block!important;position:relative!important;width:max-content!important;max-width:none!important;
+  white-space:nowrap!important;overflow:visible!important;text-overflow:clip!important;text-align:center!important;
+  transform-origin:center center!important;margin:0!important;padding:0!important
+}
+body[data-page="players"] .prototype-player-name small{align-self:end!important;font-size:7.1cqw!important;line-height:.9!important;letter-spacing:.16em!important}
+body[data-page="players"] .prototype-player-name strong,
+body[data-page="players"] .prototype-player-name.name-length-8 strong,
+body[data-page="players"] .prototype-player-name.name-length-9 strong,
+body[data-page="players"] .prototype-player-name.name-length-10 strong,
+body[data-page="players"] .prototype-player-name.name-length-11 strong,
+body[data-page="players"] .prototype-player-name.name-length-12 strong,
+body[data-page="players"] .prototype-player-name.name-length-13 strong,
+body[data-page="players"] .prototype-player-name.name-length-14 strong,
+body[data-page="players"] .prototype-player-name.name-length-15 strong,
+body[data-page="players"] .prototype-player-name.name-length-16 strong,
+body[data-page="players"] .prototype-player-name.name-length-17 strong,
+body[data-page="players"] .prototype-player-name.name-length-18 strong,
+body[data-page="players"] .prototype-player-name.name-length-19 strong,
+body[data-page="players"] .prototype-player-name.name-length-20 strong{align-self:center!important;font-size:17.1cqw!important;line-height:.78!important;letter-spacing:-.045em!important}
+body[data-page="players"] .prototype-player-name em{align-self:start!important;font-size:6.55cqw!important;line-height:1!important;letter-spacing:.13em!important;min-width:54%!important}
