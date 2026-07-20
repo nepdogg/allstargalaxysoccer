@@ -618,9 +618,9 @@ document.addEventListener("click", (event) => {
     });
 })();
 
-/* V177 — preserve equal letter height and fit long names horizontally. */
+/* V179 — preserve letter height and fit every identity field horizontally. */
 (()=>{
-  const fitOne=(el,maxRatio=.94,minScale=.46)=>{
+  const fitOne=(el,maxRatio=.94,minScale=.42,translate=false,origin='center center')=>{
     if(!el || !el.parentElement) return;
     el.style.removeProperty('font-size');
     el.style.removeProperty('transform');
@@ -628,14 +628,17 @@ document.addEventListener("click", (event) => {
     const max=Math.max(1,box.clientWidth*maxRatio);
     const natural=Math.max(1,el.scrollWidth);
     const scale=Math.max(minScale,Math.min(1,max/natural));
-    el.style.setProperty('transform',`scaleX(${scale})`,'important');
-    el.style.setProperty('transform-origin','center center','important');
+    const prefix=translate?'translateX(-50%) ':'';
+    el.style.setProperty('transform',`${prefix}scaleX(${scale})`,'important');
+    el.style.setProperty('transform-origin',origin,'important');
   };
   const fitAll=(root=document)=>{
-    root.querySelectorAll?.('.prototype-player-name small').forEach(el=>fitOne(el,.94,.52));
-    root.querySelectorAll?.('.prototype-player-name strong').forEach(el=>fitOne(el,.96,.42));
-    root.querySelectorAll?.('.prototype-profile-name small').forEach(el=>fitOne(el,.93,.50));
-    root.querySelectorAll?.('.prototype-profile-name strong').forEach(el=>fitOne(el,.95,.40));
+    root.querySelectorAll?.('.prototype-player-name small').forEach(el=>fitOne(el,.94,.50));
+    root.querySelectorAll?.('.prototype-player-name strong').forEach(el=>fitOne(el,.97,.34));
+    root.querySelectorAll?.('.prototype-player-name em').forEach(el=>fitOne(el,.94,.34));
+    root.querySelectorAll?.('.prototype-profile-name small').forEach(el=>fitOne(el,.94,.48,true));
+    root.querySelectorAll?.('.prototype-profile-name strong').forEach(el=>fitOne(el,.97,.33,true));
+    root.querySelectorAll?.('.prototype-profile-position').forEach(el=>fitOne(el,.98,.34,false,'left center'));
   };
   const run=()=>requestAnimationFrame(()=>fitAll());
   document.addEventListener('DOMContentLoaded',run,{once:true});
