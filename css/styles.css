@@ -19057,7 +19057,7 @@ body[data-page="graphics"] .sticky-graphics-publish{position:sticky!important;bo
 }
 
 /* ============================================================
-   V176 — FINAL PROTOTYPE PROPORTION CALIBRATION
+   V177 — FINAL PROTOTYPE PROPORTION CALIBRATION
    Calibrated directly against the approved populated front/profile cards.
    The template PNG remains the background; only player data is layered above it.
    ============================================================ */
@@ -19203,3 +19203,95 @@ body[data-page="graphics"] .sticky-graphics-publish{position:sticky!important;bo
 .ultimate-card-deck .popup-exact-front-card{
   aspect-ratio:2/3!important;
 }
+
+
+/* ============================================================
+   V177 — EQUAL-HEIGHT NAME FITTING + PROFILE ROW ALIGNMENT
+   Long names keep the same vertical letter height as short names.
+   Only horizontal width is compressed when necessary.
+   ============================================================ */
+.prototype-player-name small,
+.prototype-player-name strong,
+.prototype-player-name em,
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name small,
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name strong{
+  text-overflow:clip!important;
+  white-space:nowrap!important;
+  overflow:visible!important;
+  max-width:none!important;
+  width:100%!important;
+  transform-origin:center center!important;
+}
+
+/* One consistent front-card hierarchy for every player and every view. */
+.prototype-player-name small{
+  font-size:6.35cqw!important;
+  line-height:.92!important;
+  letter-spacing:.16em!important;
+}
+.prototype-player-name strong,
+.prototype-player-name.name-length-8 strong,
+.prototype-player-name.name-length-9 strong,
+.prototype-player-name.name-length-10 strong,
+.prototype-player-name.name-length-11 strong,
+.prototype-player-name.name-length-12 strong,
+.prototype-player-name.name-length-13 strong,
+.prototype-player-name.name-length-14 strong,
+.prototype-player-name.name-length-15 strong,
+.prototype-player-name.name-length-16 strong,
+.prototype-player-name.name-length-17 strong,
+.prototype-player-name.name-length-18 strong,
+.prototype-player-name.name-length-19 strong,
+.prototype-player-name.name-length-20 strong{
+  font-size:16.2cqw!important;
+  line-height:.80!important;
+  letter-spacing:-.045em!important;
+}
+.prototype-player-name em{
+  font-size:6.1cqw!important;
+  line-height:1!important;
+  letter-spacing:.16em!important;
+}
+
+/* Profile identity block sits completely above the printed information box. */
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name{
+  top:20.0%!important;
+  left:8.2%!important;
+  right:8.2%!important;
+  height:14.2%!important;
+  grid-template-rows:36% 64%!important;
+  overflow:visible!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name small{
+  font-size:5.55cqw!important;
+  line-height:.92!important;
+  letter-spacing:.18em!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name strong{
+  font-size:12.5cqw!important;
+  line-height:.80!important;
+  letter-spacing:-.04em!important;
+}
+
+/* Place each value directly on the matching printed row baseline. */
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b{
+  left:57.5%!important;
+  right:8.0%!important;
+  height:3.8%!important;
+  font-size:3.85cqw!important;
+  line-height:1!important;
+  align-items:center!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(1){top:44.45%!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(2){top:51.30%!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(3){top:58.15%!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(4){top:65.00%!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(5){top:71.85%!important}
+
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-quote{
+  top:80.8%!important;
+  left:13%!important;
+  right:13%!important;
+  height:5.6%!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-quote:empty{display:none!important}
