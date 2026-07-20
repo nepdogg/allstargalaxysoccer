@@ -1519,7 +1519,7 @@ body[data-page="players"] .preview-ultimate-name.prototype-player-name em{
 }
 
 /* ============================================================
-   V179 — Admin preview uses the exact public player-card geometry.
+   V180 — Admin preview uses the exact public player-card geometry.
    ============================================================ */
 body[data-page="players"] .preview-ultimate-card.prototype-player-frame{
   container-type:inline-size!important;

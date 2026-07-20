@@ -1535,7 +1535,7 @@ window.AdminCMS={initCommon,publish};
   };
 })();
 
-/* V179 — admin preview uses the same horizontal fitting as the public card. */
+/* V180 — admin preview uses the same horizontal fitting as the public card. */
 (()=>{
   const fitOne=(el,maxRatio=.94,minScale=.42,translate=false,origin='center center')=>{
     if(!el || !el.parentElement) return;
@@ -1551,10 +1551,10 @@ window.AdminCMS={initCommon,publish};
   const run=()=>requestAnimationFrame(()=>{
     document.querySelectorAll('.prototype-player-name small').forEach(el=>fitOne(el,.94,.50));
     document.querySelectorAll('.prototype-player-name strong').forEach(el=>fitOne(el,.97,.34));
-    document.querySelectorAll('.prototype-player-name em').forEach(el=>fitOne(el,.94,.34));
+    document.querySelectorAll('.prototype-player-name em').forEach(el=>fitOne(el,.995,.22));
     document.querySelectorAll('.prototype-profile-name small').forEach(el=>fitOne(el,.94,.48,true));
     document.querySelectorAll('.prototype-profile-name strong').forEach(el=>fitOne(el,.97,.33,true));
-    document.querySelectorAll('.prototype-profile-position').forEach(el=>fitOne(el,.98,.34,false,'left center'));
+    document.querySelectorAll('.prototype-profile-position').forEach(el=>fitOne(el,.995,.22,false,'center center'));
   });
   document.addEventListener('DOMContentLoaded',run,{once:true});
   window.addEventListener('resize',run);
