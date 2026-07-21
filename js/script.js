@@ -257,7 +257,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                   <img class="prototype-profile-template" src="${profileTemplate}" alt="" aria-hidden="true">
                   <span class="prototype-profile-number">${value("playerNumber","00")}</span>
                   <span class="prototype-profile-position">${value("playerPosition","PLAYER")}</span>
-                  <div class="prototype-profile-name"><small>${value("playerFirst","PLAYER")}</small><strong>${value("playerLast","PROFILE")}</strong></div>
+                  <div class="prototype-profile-name name-length-${Math.min(20,String(value("playerLast","PROFILE")).length)}"><small>${value("playerFirst","PLAYER")}</small><strong>${value("playerLast","PROFILE")}</strong></div>
                   <div class="prototype-profile-values">
                     <b>${value("playerDob")}</b>
                     <b>${value("playerNationality")}</b>
@@ -618,31 +618,20 @@ document.addEventListener("click", (event) => {
     });
 })();
 
-/* V180 — preserve letter height and fit every identity field horizontally. */
+/* V182 — deterministic player-card typography.
+   Previous runtime fitting measured inactive carousel slides while they were
+   transformed or partially hidden, which permanently shrank some surnames.
+   Typography is now controlled by the shared percentage-based CSS renderer. */
 (()=>{
-  const fitOne=(el,maxRatio=.94,minScale=.42,translate=false,origin='center center')=>{
-    if(!el || !el.parentElement) return;
-    el.style.removeProperty('font-size');
-    el.style.removeProperty('transform');
-    const box=el.parentElement;
-    const max=Math.max(1,box.clientWidth*maxRatio);
-    const natural=Math.max(1,el.scrollWidth);
-    const scale=Math.max(minScale,Math.min(1,max/natural));
-    const prefix=translate?'translateX(-50%) ':'';
-    el.style.setProperty('transform',`${prefix}scaleX(${scale})`,'important');
-    el.style.setProperty('transform-origin',origin,'important');
+  const clearLegacyFits=(root=document)=>{
+    root.querySelectorAll?.('.prototype-player-name small, .prototype-player-name strong, .prototype-player-name em, .prototype-profile-name small, .prototype-profile-name strong, .prototype-profile-position').forEach(el=>{
+      el.style.removeProperty('font-size');
+      el.style.removeProperty('transform');
+      el.style.removeProperty('transform-origin');
+    });
   };
-  const fitAll=(root=document)=>{
-    root.querySelectorAll?.('.prototype-player-name small').forEach(el=>fitOne(el,.94,.50));
-    root.querySelectorAll?.('.prototype-player-name strong').forEach(el=>fitOne(el,.97,.34));
-    root.querySelectorAll?.('.prototype-player-name em').forEach(el=>fitOne(el,.995,.22));
-    root.querySelectorAll?.('.prototype-profile-name small').forEach(el=>fitOne(el,.94,.48,true));
-    root.querySelectorAll?.('.prototype-profile-name strong').forEach(el=>fitOne(el,.97,.33,true));
-    root.querySelectorAll?.('.prototype-profile-position').forEach(el=>fitOne(el,.995,.22,false,'center center'));
-  };
-  const run=()=>requestAnimationFrame(()=>fitAll());
+  const run=()=>requestAnimationFrame(()=>clearLegacyFits());
   document.addEventListener('DOMContentLoaded',run,{once:true});
   window.addEventListener('load',run,{once:true});
-  window.addEventListener('resize',run);
-  new MutationObserver(run).observe(document.documentElement,{subtree:true,childList:true,characterData:true});
+  new MutationObserver(run).observe(document.documentElement,{subtree:true,childList:true});
 })();
