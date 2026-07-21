@@ -1535,28 +1535,15 @@ window.AdminCMS={initCommon,publish};
   };
 })();
 
-/* V180 — admin preview uses the same horizontal fitting as the public card. */
+/* V182 — admin preview uses the same deterministic CSS typography as the public card. */
 (()=>{
-  const fitOne=(el,maxRatio=.94,minScale=.42,translate=false,origin='center center')=>{
-    if(!el || !el.parentElement) return;
-    el.style.removeProperty('font-size');
-    el.style.removeProperty('transform');
-    const max=Math.max(1,el.parentElement.clientWidth*maxRatio);
-    const natural=Math.max(1,el.scrollWidth);
-    const scale=Math.max(minScale,Math.min(1,max/natural));
-    const prefix=translate?'translateX(-50%) ':'';
-    el.style.setProperty('transform',`${prefix}scaleX(${scale})`,'important');
-    el.style.setProperty('transform-origin',origin,'important');
-  };
-  const run=()=>requestAnimationFrame(()=>{
-    document.querySelectorAll('.prototype-player-name small').forEach(el=>fitOne(el,.94,.50));
-    document.querySelectorAll('.prototype-player-name strong').forEach(el=>fitOne(el,.97,.34));
-    document.querySelectorAll('.prototype-player-name em').forEach(el=>fitOne(el,.995,.22));
-    document.querySelectorAll('.prototype-profile-name small').forEach(el=>fitOne(el,.94,.48,true));
-    document.querySelectorAll('.prototype-profile-name strong').forEach(el=>fitOne(el,.97,.33,true));
-    document.querySelectorAll('.prototype-profile-position').forEach(el=>fitOne(el,.995,.22,false,'center center'));
+  const clearLegacyFits=()=>requestAnimationFrame(()=>{
+    document.querySelectorAll('.prototype-player-name small, .prototype-player-name strong, .prototype-player-name em, .prototype-profile-name small, .prototype-profile-name strong, .prototype-profile-position').forEach(el=>{
+      el.style.removeProperty('font-size');
+      el.style.removeProperty('transform');
+      el.style.removeProperty('transform-origin');
+    });
   });
-  document.addEventListener('DOMContentLoaded',run,{once:true});
-  window.addEventListener('resize',run);
-  new MutationObserver(run).observe(document.documentElement,{subtree:true,childList:true,characterData:true});
+  document.addEventListener('DOMContentLoaded',clearLegacyFits,{once:true});
+  new MutationObserver(clearLegacyFits).observe(document.documentElement,{subtree:true,childList:true});
 })();

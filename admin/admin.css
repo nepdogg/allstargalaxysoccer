@@ -1592,24 +1592,22 @@ body[data-page="players"] .prototype-player-name.name-length-19 strong,
 body[data-page="players"] .prototype-player-name.name-length-20 strong{align-self:center!important;font-size:17.1cqw!important;line-height:.78!important;letter-spacing:-.045em!important}
 body[data-page="players"] .prototype-player-name em{align-self:start!important;font-size:6.55cqw!important;line-height:1!important;letter-spacing:.13em!important;min-width:54%!important}
 
-/* V181 — mobile Players Admin profile preview mirrors the public card. */
-@media (max-width: 800px) {
-  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame,
-  body[data-page="players"] .preview-ultimate-profile.prototype-profile-frame {
-    width: min(88vw, 480px) !important;
-    max-width: 100% !important;
-    aspect-ratio: 2 / 3 !important;
-    container-type: inline-size !important;
-    overflow: hidden !important;
-    transform: none !important;
-  }
-  body[data-page="players"] .prototype-profile-number { top: 6.15% !important; left: 5.4% !important; }
-  body[data-page="players"] .prototype-profile-position { top: 17.05% !important; left: 5.8% !important; }
-  body[data-page="players"] .prototype-profile-name { top: 23.05% !important; left: 17% !important; right: 9% !important; height: 12.8% !important; }
-  body[data-page="players"] .prototype-profile-values b:nth-child(1) { top: 44.75% !important; }
-  body[data-page="players"] .prototype-profile-values b:nth-child(2) { top: 51.62% !important; }
-  body[data-page="players"] .prototype-profile-values b:nth-child(3) { top: 58.49% !important; }
-  body[data-page="players"] .prototype-profile-values b:nth-child(4) { top: 65.36% !important; }
-  body[data-page="players"] .prototype-profile-values b:nth-child(5) { top: 72.23% !important; }
-  body[data-page="players"] .prototype-profile-quote { top: 79.35% !important; }
-}
+/* V182 — deterministic admin player-card preview typography. */
+.preview-ultimate-card.prototype-player-frame{container-type:inline-size!important}
+.preview-ultimate-name.prototype-player-name{container-type:normal!important;overflow:hidden!important}
+.preview-ultimate-name.prototype-player-name small{font-size:7.1cqw!important;transform:none!important}
+.preview-ultimate-name.prototype-player-name strong{font-size:17.1cqw!important;transform:scaleX(.94)!important;transform-origin:center!important;white-space:nowrap!important}
+.preview-ultimate-name.prototype-player-name.name-length-8 strong{font-size:16.2cqw!important;transform:scaleX(.92)!important}
+.preview-ultimate-name.prototype-player-name.name-length-9 strong{font-size:15.3cqw!important;transform:scaleX(.90)!important}
+.preview-ultimate-name.prototype-player-name.name-length-10 strong{font-size:14.5cqw!important;transform:scaleX(.88)!important}
+.preview-ultimate-name.prototype-player-name.name-length-11 strong{font-size:13.7cqw!important;transform:scaleX(.86)!important}
+.preview-ultimate-name.prototype-player-name.name-length-12 strong{font-size:12.9cqw!important;transform:scaleX(.84)!important}
+.preview-ultimate-name.prototype-player-name.name-length-13 strong{font-size:12.1cqw!important;transform:scaleX(.82)!important}
+.preview-ultimate-name.prototype-player-name.name-length-14 strong{font-size:11.4cqw!important;transform:scaleX(.80)!important}
+.preview-ultimate-name.prototype-player-name.name-length-15 strong,
+.preview-ultimate-name.prototype-player-name.name-length-16 strong,
+.preview-ultimate-name.prototype-player-name.name-length-17 strong,
+.preview-ultimate-name.prototype-player-name.name-length-18 strong,
+.preview-ultimate-name.prototype-player-name.name-length-19 strong,
+.preview-ultimate-name.prototype-player-name.name-length-20 strong{font-size:10.7cqw!important;transform:scaleX(.78)!important}
+.preview-ultimate-name.prototype-player-name em{display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important;transform:none!important;font-size:5.7cqw!important}
