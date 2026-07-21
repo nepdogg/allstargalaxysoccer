@@ -1,5 +1,5 @@
 {
-  "version": 188,
+  "version": 189,
   "updated": "2026-07-21",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -583,6 +583,22 @@
       "group": "latest",
       "order": 120,
       "cardImage": ""
+    },
+    {
+      "status": "published",
+      "order": 34,
+      "id": "game-01",
+      "season": "Fall 2026",
+      "gameNumber": 1,
+      "opponent": "Argentina ",
+      "result": "W (3-2)",
+      "fullMatch": "",
+      "highlights": "",
+      "slideshow": "",
+      "date": "",
+      "time": "",
+      "location": "",
+      "group": "latest"
     }
   ],
   "seasons": [
