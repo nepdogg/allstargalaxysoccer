@@ -1,6 +1,6 @@
 {
-  "version": 187,
-  "updated": "2026-07-20",
+  "version": 188,
+  "updated": "2026-07-21",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
     "logo": "generated/allstar-galaxy-logo.png",
@@ -1225,16 +1225,27 @@
     },
     {
       "status": "published",
-      "order": 50,
-      "id": "season-01",
-      "title": "Past Seasons Coming Soon",
-      "subtitle": "",
-      "dateRange": "",
-      "league": "",
+      "order": 51,
+      "id": "season-02",
+      "title": "Fall 2026",
       "fullMatches": "",
       "highlights": "",
       "slideshows": "",
-      "cardImage": ""
+      "subtitle": "",
+      "dateRange": "",
+      "league": ""
+    },
+    {
+      "status": "published",
+      "order": 51,
+      "id": "season-01",
+      "title": "PAST SEASONS - COMING SOON",
+      "fullMatches": "",
+      "highlights": "",
+      "slideshows": "",
+      "subtitle": "",
+      "dateRange": "",
+      "league": ""
     }
   ],
   "playlists": [
