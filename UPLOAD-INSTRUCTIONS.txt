@@ -1,0 +1,23 @@
+ALLSTAR GALAXY V181 — MOBILE LOCKDOWN UPDATE
+
+Upload the contents of this folder to the ROOT of the existing GitHub repository.
+Keep the folder structure exactly as shown and allow GitHub to overwrite files
+with the same names.
+
+This is a code-only update. It intentionally contains no PNG graphics and does
+not replace or remove any existing images, player data, videos, or other assets.
+
+Updated:
+- css/styles.css
+- admin/admin.css
+- data/site-settings.json
+- Public HTML pages for v181 cache refresh
+
+Fixes:
+- Mobile player profile-card geometry and row alignment
+- Lower profile number, position, and name block
+- Consistent 2:3 scaling across mobile popup and preview
+- Taller mobile navigation title
+- Larger, visually balanced footer logos
+- Narrower game/season action link column
+- Footer separator aligned with media artwork edge
