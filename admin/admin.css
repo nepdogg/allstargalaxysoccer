@@ -1591,3 +1591,25 @@ body[data-page="players"] .prototype-player-name.name-length-18 strong,
 body[data-page="players"] .prototype-player-name.name-length-19 strong,
 body[data-page="players"] .prototype-player-name.name-length-20 strong{align-self:center!important;font-size:17.1cqw!important;line-height:.78!important;letter-spacing:-.045em!important}
 body[data-page="players"] .prototype-player-name em{align-self:start!important;font-size:6.55cqw!important;line-height:1!important;letter-spacing:.13em!important;min-width:54%!important}
+
+/* V181 — mobile Players Admin profile preview mirrors the public card. */
+@media (max-width: 800px) {
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame,
+  body[data-page="players"] .preview-ultimate-profile.prototype-profile-frame {
+    width: min(88vw, 480px) !important;
+    max-width: 100% !important;
+    aspect-ratio: 2 / 3 !important;
+    container-type: inline-size !important;
+    overflow: hidden !important;
+    transform: none !important;
+  }
+  body[data-page="players"] .prototype-profile-number { top: 6.15% !important; left: 5.4% !important; }
+  body[data-page="players"] .prototype-profile-position { top: 17.05% !important; left: 5.8% !important; }
+  body[data-page="players"] .prototype-profile-name { top: 23.05% !important; left: 17% !important; right: 9% !important; height: 12.8% !important; }
+  body[data-page="players"] .prototype-profile-values b:nth-child(1) { top: 44.75% !important; }
+  body[data-page="players"] .prototype-profile-values b:nth-child(2) { top: 51.62% !important; }
+  body[data-page="players"] .prototype-profile-values b:nth-child(3) { top: 58.49% !important; }
+  body[data-page="players"] .prototype-profile-values b:nth-child(4) { top: 65.36% !important; }
+  body[data-page="players"] .prototype-profile-values b:nth-child(5) { top: 72.23% !important; }
+  body[data-page="players"] .prototype-profile-quote { top: 79.35% !important; }
+}
