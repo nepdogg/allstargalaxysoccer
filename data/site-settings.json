@@ -1,5 +1,5 @@
 {
-  "version": 136,
+  "version": 183,
   "branding": {
     "teamName": "Allstar Galaxy",
     "navigationTitle": "images/titles/page-titles/navigation-title.png",
@@ -110,7 +110,7 @@
     "email": "allstargalaxy@example.com"
   },
   "footer": {
-    "copyright": "© 2026 Allstar Galaxy.",
+    "copyright": "\u00a9 2026 Allstar Galaxy.",
     "showAboutLink": true,
     "aboutLabel": "About",
     "showAdminLink": true,
