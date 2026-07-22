@@ -1704,3 +1704,39 @@ body[data-page="players"] .prototype-player-name em{align-self:start!important;f
   body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(4) { top: 64.76% !important; }
   body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(5) { top: 71.63% !important; }
 }
+
+/* V185 — phone Player Admin profile preview alignment */
+@media (max-width: 760px) {
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-position {
+    left: 5.0% !important; top: 15.4% !important; width: 31.5% !important; height: 5.0% !important;
+    display:flex !important; align-items:center !important; justify-content:center !important;
+    padding:0 !important; margin:0 !important; font-size:3.55cqw !important; line-height:1 !important;
+    letter-spacing:.055em !important; text-align:center !important; white-space:nowrap !important;
+    overflow:hidden !important; transform:none !important;
+  }
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-name {
+    left:21.5% !important; right:17.5% !important; top:20.4% !important; height:14.0% !important;
+    position:absolute !important; display:block !important; overflow:hidden !important; text-align:center !important;
+  }
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-name small,
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-name strong {
+    position:absolute !important; left:0 !important; right:0 !important; width:100% !important; max-width:100% !important;
+    margin:0 !important; text-align:center !important; white-space:nowrap !important; transform-origin:center center !important;
+  }
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-name small {
+    top:7% !important; font-size:5.05cqw !important; line-height:1 !important; letter-spacing:.17em !important; transform:none !important;
+  }
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-name strong {
+    top:35% !important; font-size:11.2cqw !important; line-height:.80 !important; transform:scaleX(.92) !important;
+  }
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b {
+    left:52.0% !important; right:10.0% !important; width:auto !important; height:4.35% !important;
+    display:flex !important; align-items:center !important; justify-content:center !important; padding:0 !important; margin:0 !important;
+    font-size:3.72cqw !important; line-height:1 !important; text-align:center !important; white-space:nowrap !important; transform:none !important;
+  }
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(1) { top:44.10% !important; }
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(2) { top:50.98% !important; }
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(3) { top:57.86% !important; }
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(4) { top:64.74% !important; }
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(5) { top:71.62% !important; }
+}
