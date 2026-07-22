@@ -1,6 +1,6 @@
 {
-  "version": 189,
-  "updated": "2026-07-21",
+  "version": 190,
+  "updated": "2026-07-22",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
     "logo": "generated/allstar-galaxy-logo.png",
@@ -35,7 +35,7 @@
       "fullMatch": "https://youtu.be/nHQV9Jhr3ks",
       "highlights": "#",
       "slideshow": "#",
-      "status": "published",
+      "status": "hidden",
       "group": "latest",
       "order": 1,
       "cardImage": ""
@@ -586,7 +586,7 @@
     },
     {
       "status": "published",
-      "order": 34,
+      "order": 1,
       "id": "game-01",
       "season": "Fall 2026",
       "gameNumber": 1,
