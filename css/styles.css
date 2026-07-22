@@ -19900,3 +19900,179 @@ body[data-page="graphics"] .sticky-graphics-publish{position:sticky!important;bo
   text-align:center!important;
   overflow:hidden!important;
 }
+
+/* ============================================================
+   V183 — FINAL MOBILE CARD / HEADER / FOOTER ALIGNMENT
+   Phone-only finishing pass based on July 21 field screenshots.
+   Desktop geometry is intentionally unchanged.
+   ============================================================ */
+@media (max-width: 760px) {
+  /* Give the center navigation artwork a final small height increase
+     without widening it or moving the navigation row. */
+  .site-top .nav-title img,
+  .site-top .site-title-image,
+  .site-top .navigation-title,
+  .site-top .navigation-title img {
+    height: clamp(100px, 23vw, 122px) !important;
+    transform: scaleY(1.30) !important;
+    transform-origin: center center !important;
+    width: auto !important;
+    max-height: none !important;
+    object-fit: contain !important;
+  }
+
+  .site-top .nav-title,
+  .site-top .navigation-title {
+    min-height: clamp(106px, 24vw, 128px) !important;
+    overflow: visible !important;
+  }
+
+  /* Center the front-card position inside the printed position bay.
+     This selector covers carousel, popup and admin/public previews. */
+  .prototype-player-name em,
+  .preview-ultimate-name.prototype-player-name em,
+  .team-roster-carousel .prototype-player-name em,
+  .popup-exact-front-card .prototype-player-name em {
+    left: 5% !important;
+    right: 5% !important;
+    bottom: 5.7% !important;
+    width: 90% !important;
+    height: 14.2% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 2% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+    transform-origin: center center !important;
+  }
+
+  /* Profile-card upper-left position is centered in its printed box. */
+  .ultimate-profile-card.prototype-profile-frame .prototype-profile-position {
+    left: 4.8% !important;
+    top: 15.2% !important;
+    width: 33.5% !important;
+    height: 5.4% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    transform-origin: center center !important;
+  }
+
+  /* Keep both names fully inside the dedicated profile-name opening. */
+  .ultimate-profile-card.prototype-profile-frame .prototype-profile-name {
+    left: 16.5% !important;
+    right: 8.5% !important;
+    top: 20.0% !important;
+    height: 14.7% !important;
+    display: block !important;
+    overflow: visible !important;
+    text-align: center !important;
+  }
+
+  .ultimate-profile-card.prototype-profile-frame .prototype-profile-name small {
+    top: 2% !important;
+    font-size: 5.45cqw !important;
+    line-height: 1 !important;
+    letter-spacing: .18em !important;
+  }
+
+  .ultimate-profile-card.prototype-profile-frame .prototype-profile-name strong {
+    top: 34% !important;
+    font-size: 11.9cqw !important;
+    line-height: .78 !important;
+  }
+
+  /* Center each value horizontally and vertically in its exact printed row. */
+  .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b {
+    left: 54.2% !important;
+    right: 7.8% !important;
+    height: 4.6% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    font-size: 3.85cqw !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+  }
+
+  .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(1) { top: 43.55% !important; }
+  .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(2) { top: 50.43% !important; }
+  .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(3) { top: 57.31% !important; }
+  .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(4) { top: 64.19% !important; }
+  .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(5) { top: 71.07% !important; }
+
+  /* Prevent the enlarged edge logos from clipping on narrow phones. */
+  .footer-v147-social-row .footer-logo,
+  .footer-social-symmetric-v148 .footer-logo,
+  .footer-v147-social-row a.footer-logo {
+    width: 50px !important;
+    height: 50px !important;
+    flex: 0 0 50px !important;
+    overflow: visible !important;
+  }
+
+  .footer-v147-social-row .footer-logo img,
+  .footer-social-symmetric-v148 .footer-logo img,
+  .footer-v147-social-row a.footer-logo img {
+    width: 48px !important;
+    height: 48px !important;
+    max-width: 48px !important;
+    max-height: 48px !important;
+    object-fit: contain !important;
+  }
+
+  /* More breathing room between the Xitlali mark and credit copy. */
+  .footer-xitlali-credit,
+  .footer-xitlali-credit-v148,
+  .footer-v147-creator .footer-xitlali-credit,
+  .footer-v147-creator .footer-xitlali-credit-v148 {
+    column-gap: 20px !important;
+    gap: 20px !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .site-top .nav-title img,
+  .site-top .site-title-image,
+  .site-top .navigation-title,
+  .site-top .navigation-title img {
+    height: clamp(98px, 25vw, 116px) !important;
+    transform: scaleY(1.32) !important;
+  }
+
+  .site-top .nav-title,
+  .site-top .navigation-title {
+    min-height: clamp(104px, 26vw, 122px) !important;
+  }
+
+  .footer-v147-social-row .footer-logo,
+  .footer-social-symmetric-v148 .footer-logo,
+  .footer-v147-social-row a.footer-logo {
+    width: 47px !important;
+    height: 47px !important;
+    flex-basis: 47px !important;
+  }
+
+  .footer-v147-social-row .footer-logo img,
+  .footer-social-symmetric-v148 .footer-logo img,
+  .footer-v147-social-row a.footer-logo img {
+    width: 45px !important;
+    height: 45px !important;
+    max-width: 45px !important;
+    max-height: 45px !important;
+  }
+
+  .footer-xitlali-credit,
+  .footer-xitlali-credit-v148,
+  .footer-v147-creator .footer-xitlali-credit,
+  .footer-v147-creator .footer-xitlali-credit-v148 {
+    column-gap: 18px !important;
+    gap: 18px !important;
+  }
+}
