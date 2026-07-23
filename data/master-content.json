@@ -1,5 +1,5 @@
 {
-  "version": 203,
+  "version": 204,
   "updated": "2026-07-23",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -595,24 +595,6 @@
       "group": "latest",
       "order": 120,
       "cardImage": ""
-    },
-    {
-      "status": "published",
-      "order": 1,
-      "id": "game-01",
-      "season": "Fall 2026",
-      "gameNumber": 1,
-      "opponent": "Argentina ",
-      "result": "W (3-2)",
-      "fullMatch": "",
-      "highlights": "",
-      "slideshow": "",
-      "date": "",
-      "time": "",
-      "location": "",
-      "group": "latest",
-      "cardLabel": "new",
-      "cardImage": "images/media/latest-games/game-01-mrxoapgb.png"
     }
   ],
   "seasons": [
@@ -3490,5 +3472,5 @@
     "standingsDescription": "Testing",
     "scheduleDescription": "Testing"
   },
-  "lastPublishToken": "admin-1784824068164-4rdk9a"
+  "lastPublishToken": "admin-1784828986195-2fbirk"
 }
