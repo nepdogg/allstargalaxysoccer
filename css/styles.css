@@ -20634,3 +20634,13 @@ body[data-page="graphics"] .sticky-graphics-publish{position:sticky!important;bo
     max-height: 39px !important;
   }
 }
+
+
+/* V187 — game status labels and cache-safe uploaded card artwork */
+.generated-wide-visual{position:relative}
+.generated-game-label-badge{position:absolute;top:4%;left:3.5%;z-index:4;display:inline-flex;align-items:center;justify-content:center;max-width:62%;padding:.42em .8em;border:2px solid currentColor;border-radius:999px;background:rgba(2,4,14,.82);font-weight:900;font-size:clamp(10px,1.2vw,18px);line-height:1;letter-spacing:.09em;white-space:nowrap;text-transform:uppercase;pointer-events:none}
+.generated-game-label-badge.label-new{color:#ff3da9;box-shadow:0 0 8px #ff3da9,0 0 18px rgba(255,61,169,.9)}
+.generated-game-label-badge.label-latest{color:#ffd24a;box-shadow:0 0 8px #ffd24a,0 0 18px rgba(255,210,74,.9)}
+.generated-game-label-badge.label-current-season{color:#35c9ff;box-shadow:0 0 8px #35c9ff,0 0 18px rgba(53,201,255,.85)}
+.generated-game-label-badge.label-last-season{color:#d8def0;box-shadow:0 0 8px #aeb8d8,0 0 16px rgba(174,184,216,.7)}
+@media(max-width:700px){.generated-game-label-badge{top:3.5%;left:3%;font-size:clamp(9px,2.5vw,13px);padding:.38em .68em;max-width:68%}}
