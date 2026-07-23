@@ -193,11 +193,11 @@
     status('Creating backup and publishing hero images and rotation settings…');
     try{
       await window.ASGBackup?.create('Before Hero Manager publish');
-      for(const f of state.pendingFiles){let sha;try{sha=(await ghGet(f.path)).sha}catch(e){}await ghPut(f.path,f.base64,`Hero Manager: upload ${f.path}`,sha)}
+      for(const f of state.pendingFiles){let sha;try{sha=(await ghGet(f.path)).sha}catch(e){}const uploaded=await ghPut(f.path,f.base64,`Hero Manager: upload ${f.path}`,sha);if(!uploaded?.content?.sha)throw new Error(`GitHub did not confirm ${f.path}`);const verified=await ghGet(f.path);if(verified.sha!==uploaded.content.sha)throw new Error(`Hero image verification failed: ${f.path}`)}
       state.config.version=Number(state.config.version||132)+1;
       const latest=await ghGet(CONFIG.path);
       const r=await ghPut(CONFIG.path,encode64(JSON.stringify(state.config,null,2)),'Hero Manager: update hero rotations, effects and timing',latest.sha);
-      state.sha=r.content.sha;state.pendingFiles=[];state.dirty=false;status('Hero settings published. GitHub Pages will update shortly.','ok');render()
+      state.sha=r.content.sha;const verifiedConfig=await ghGet(CONFIG.path);if(verifiedConfig.sha!==r.content.sha)throw new Error('Hero settings verification failed.');state.pendingFiles=[];state.dirty=false;status('Hero images and settings published and verified. GitHub Pages will update shortly.','ok');render()
     }catch(e){status('Publish failed: '+e.message,'bad')}
   }
   async function init(){

@@ -1782,3 +1782,12 @@ body[data-page="players"] .prototype-player-name em{align-self:start!important;f
     text-align: center !important;
   }
 }
+
+
+/* V187 — Game label preview */
+.preview-media-main{position:relative}
+.preview-game-label{position:absolute;top:10px;left:10px;z-index:3;padding:6px 10px;border:2px solid currentColor;border-radius:999px;background:rgba(2,4,14,.84);font-size:12px;font-weight:900;letter-spacing:.08em;white-space:nowrap}
+.preview-game-label.label-new{color:#ff3da9;box-shadow:0 0 12px #ff3da9}
+.preview-game-label.label-latest{color:#ffd24a;box-shadow:0 0 12px #ffd24a}
+.preview-game-label.label-current-season{color:#35c9ff;box-shadow:0 0 12px #35c9ff}
+.preview-game-label.label-last-season{color:#d8def0;box-shadow:0 0 10px #aeb8d8}
