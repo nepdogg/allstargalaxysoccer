@@ -48,7 +48,9 @@
   const encode64=s=>btoa(unescape(encodeURIComponent(s)));
   const slug=s=>String(s||'hero').toLowerCase().trim().replace(/\.[^.]+$/,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'hero';
   function status(msg,type=''){const el=$('#statusbar');el.textContent=msg;el.className='statusbar '+type}
-  async function ghGet(path){const r=await fetch(`https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${path}?ref=${CONFIG.branch}`,{headers:headers()});if(!r.ok)throw new Error(`${r.status}: ${await r.text()}`);return r.json()}
+  async function ghGet(path){const r=await fetch(`https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${path}?ref=${CONFIG.branch}&_=${Date.now()}`,{headers:{...headers(),'Cache-Control':'no-cache','Pragma':'no-cache'},cache:'no-store'});if(!r.ok)throw new Error(`${r.status}: ${await r.text()}`);return r.json()}
+const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+async function waitForSha(path,sha,attempts=4){let last;for(let i=0;i<attempts;i++){if(i)await wait([700,1400,2500][Math.min(i-1,2)]);try{last=await ghGet(path);if(last.sha===sha)return last}catch(error){last={error}}}return last}
   async function ghPut(path,content,message,sha){const body={message,content,branch:CONFIG.branch};if(sha)body.sha=sha;const r=await fetch(`https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${path}`,{method:'PUT',headers:{...headers(),'Content-Type':'application/json'},body:JSON.stringify(body)});if(!r.ok)throw new Error(`${r.status}: ${await r.text()}`);return r.json()}
   async function fileToPng(file){const bmp=await createImageBitmap(file),canvas=document.createElement('canvas');canvas.width=bmp.width;canvas.height=bmp.height;canvas.getContext('2d').drawImage(bmp,0,0);const blob=await new Promise(r=>canvas.toBlob(r,'image/png',.92));const url=URL.createObjectURL(blob),buf=await blob.arrayBuffer(),bytes=new Uint8Array(buf);let binary='';for(let i=0;i<bytes.length;i+=0x8000)binary+=String.fromCharCode(...bytes.subarray(i,i+0x8000));return {url,base64:btoa(binary)}}
   function current(){return state.config.pages[state.page]}
@@ -189,16 +191,32 @@
   async function addFile(file){const r=await fileToPng(file),path=uniquePath(file);state.pendingFiles.push({path,base64:r.base64});current().images.push(path);markDirty();status(`${file.name} added to ${pageLabel(state.page)}.`,'ok')}
   async function replaceFile(index,file){const r=await fileToPng(file),path=uniquePath(file);state.pendingFiles.push({path,base64:r.base64});current().images[index]=path;markDirty();status(`Image ${index+1} replaced.`,'ok')}
   async function publish(){
-    if(!current().images.length){status('Add at least one hero image before publishing.','bad');return}
-    status('Creating backup and publishing hero images and rotation settings…');
+    if(!current().images.length){status('Add at least one hero image before publishing.','bad');return false}
+    status('Publishing hero images and rotation settings…');
     try{
       await window.ASGBackup?.create('Before Hero Manager publish');
-      for(const f of state.pendingFiles){let sha;try{sha=(await ghGet(f.path)).sha}catch(e){}const uploaded=await ghPut(f.path,f.base64,`Hero Manager: upload ${f.path}`,sha);if(!uploaded?.content?.sha)throw new Error(`GitHub did not confirm ${f.path}`);const verified=await ghGet(f.path);if(verified.sha!==uploaded.content.sha)throw new Error(`Hero image verification failed: ${f.path}`)}
+      for(const f of state.pendingFiles){
+        let sha;
+        try{sha=(await ghGet(f.path)).sha}catch(e){if(!String(e.message).startsWith('404:'))throw e}
+        const uploaded=await ghPut(f.path,f.base64,`Hero Manager: upload ${f.path}`,sha);
+        if(!uploaded?.content?.sha)throw new Error(`GitHub did not confirm ${f.path}`);
+        await waitForSha(f.path,uploaded.content.sha,3);
+      }
       state.config.version=Number(state.config.version||132)+1;
       const latest=await ghGet(CONFIG.path);
       const r=await ghPut(CONFIG.path,encode64(JSON.stringify(state.config,null,2)),'Hero Manager: update hero rotations, effects and timing',latest.sha);
-      state.sha=r.content.sha;const verifiedConfig=await ghGet(CONFIG.path);if(verifiedConfig.sha!==r.content.sha)throw new Error('Hero settings verification failed.');state.pendingFiles=[];state.dirty=false;status('Hero images and settings published and verified. GitHub Pages will update shortly.','ok');render()
-    }catch(e){status('Publish failed: '+e.message,'bad')}
+      if(!r?.content?.sha)throw new Error('GitHub did not confirm the hero settings commit.');
+      state.sha=r.content.sha;
+      const verified=await waitForSha(CONFIG.path,r.content.sha,4);
+      state.pendingFiles=[];
+      state.dirty=false;
+      status(verified?.sha===r.content.sha?'Hero images and settings published. GitHub Pages will update shortly.':'Hero images and settings published. GitHub accepted the update; verification is still refreshing.','ok');
+      render();
+      return true;
+    }catch(e){
+      status('Publish failed: '+e.message,'bad');
+      return false;
+    }
   }
   async function init(){
     if(!token()){location.href='index.html';return}

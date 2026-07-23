@@ -13,7 +13,9 @@ const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function token(){return sessionStorage.getItem('asgGithubToken')||''} function authHeaders(){return {'Accept':'application/vnd.github+json','Authorization':`Bearer ${token()}`,'X-GitHub-Api-Version':'2022-11-28'}}
 function setStatus(msg,type=''){const el=$('#statusbar');if(el){el.textContent=msg;el.className='statusbar '+type}}
-async function ghGet(path){const r=await fetch(`https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${path}?ref=${CONFIG.branch}`,{headers:authHeaders()});if(!r.ok)throw new Error(`${r.status}: ${await r.text()}`);return r.json()}
+async function ghGet(path){const joiner=String(path).includes('?')?'&':'?';const url=`https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${path}${joiner}ref=${CONFIG.branch}&_=${Date.now()}`;const r=await fetch(url,{headers:{...authHeaders(),'Cache-Control':'no-cache','Pragma':'no-cache'},cache:'no-store'});if(!r.ok)throw new Error(`${r.status}: ${await r.text()}`);return r.json()}
+function wait(ms){return new Promise(resolve=>setTimeout(resolve,ms))}
+async function waitForGitHubSha(path,expectedSha,attempts=5){let last=null;for(let i=0;i<attempts;i++){if(i)await wait([700,1200,2000,3200,5000][Math.min(i-1,4)]);try{last=await ghGet(path);if(!expectedSha||last.sha===expectedSha)return last}catch(error){last={error}}}return last}
 async function ghPut(path,content,message,sha){const body={message,content,branch:CONFIG.branch};if(sha)body.sha=sha;const r=await fetch(`https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${path}`,{method:'PUT',headers:{...authHeaders(),'Content-Type':'application/json'},body:JSON.stringify(body)});if(!r.ok)throw new Error(`${r.status}: ${await r.text()}`);return r.json()}
 function decode64(s){return decodeURIComponent(escape(atob(s.replace(/\n/g,''))))} function encode64(s){return btoa(unescape(encodeURIComponent(s)))}
 async function connect(){if(!token()){location.href='index.html';return}setStatus('Connecting to GitHub…');try{const f=await ghGet(CONFIG.dataPath);state.sha=f.sha;state.data=JSON.parse(decode64(f.content));setStatus(`Connected to ${CONFIG.owner}/${CONFIG.repo} • master-content.json loaded • Admin Dashboard V2`,'ok');renderPage()}catch(e){setStatus('Admin page error: '+e.message+' — GitHub connection may still be active.','bad')}}
@@ -153,46 +155,70 @@ function openForm(index){const schema=SECTION_SCHEMAS[state.section],arr=state.d
 function closeModal(){$('#editModal').classList.remove('open')}
 async function fileToPng(file){const bmp=await createImageBitmap(file),canvas=document.createElement('canvas');canvas.width=bmp.width;canvas.height=bmp.height;canvas.getContext('2d').drawImage(bmp,0,0);const blob=await new Promise(r=>canvas.toBlob(r,'image/png',.92));const url=URL.createObjectURL(blob),buf=await blob.arrayBuffer(),bytes=new Uint8Array(buf);let binary='';for(let i=0;i<bytes.length;i+=0x8000)binary+=String.fromCharCode(...bytes.subarray(i,i+0x8000));return {url,base64:btoa(binary)}}
 async function publish(){
- if(!state.data)return;
- setStatus('Creating backup and publishing images and website data…');
+ if(!state.data)return false;
+ setStatus('Publishing images and website data to GitHub…');
+ const originalVersion=Number(state.data.version||0);
  try{
   await window.ASGBackup?.create('Before content publish');
-  for(const file of state.pendingFiles){
+  const files=[...(state.pendingFiles||[])];
+  for(let index=0;index<files.length;index++){
+   const file=files[index];
    const cleanPath=String(file.path).split('?')[0];
+   setStatus(`Uploading image ${index+1} of ${files.length}: ${cleanPath}`);
    let sha;
-   try{sha=(await ghGet(cleanPath)).sha}catch(e){}
+   try{sha=(await ghGet(cleanPath)).sha}catch(error){if(!String(error.message).startsWith('404:'))throw error}
    const uploaded=await ghPut(cleanPath,file.base64,`Admin: update ${cleanPath}`,sha);
-   if(!uploaded?.content?.sha)throw new Error(`GitHub did not confirm the image upload: ${cleanPath}`);
-   const verified=await ghGet(cleanPath);
-   if(verified.sha!==uploaded.content.sha)throw new Error(`Image verification failed: ${cleanPath}`);
+   const uploadedSha=uploaded?.content?.sha;
+   if(!uploadedSha)throw new Error(`GitHub did not confirm the image upload: ${cleanPath}`);
+   // GitHub's contents endpoint can briefly return the previous revision after a PUT.
+   // Retry in the background, but the successful PUT response is authoritative.
+   await waitForGitHubSha(cleanPath,uploadedSha,3);
   }
-  state.data.version=Number(state.data.version||0)+1;
+
+  const publishToken=`admin-${Date.now()}-${Math.random().toString(36).slice(2,8)}`;
+  state.data.version=originalVersion+1;
   state.data.updated=new Date().toISOString().slice(0,10);
+  state.data.lastPublishToken=publishToken;
   const encoded=encode64(JSON.stringify(state.data,null,2));
-  // Always request the newest file SHA immediately before publishing. This
-  // prevents GitHub 409 conflicts when another admin tab or a recent update
-  // changed master-content.json after this page was opened.
   let latest=await ghGet(CONFIG.dataPath);
-  let r;
+  let result;
   try{
-   r=await ghPut(CONFIG.dataPath,encoded,'Admin: publish website content update',latest.sha)
+   result=await ghPut(CONFIG.dataPath,encoded,'Admin: publish website content update',latest.sha);
   }catch(firstError){
    if(!String(firstError.message).startsWith('409:'))throw firstError;
-   // One automatic retry handles a change that happened between GET and PUT.
    latest=await ghGet(CONFIG.dataPath);
-   r=await ghPut(CONFIG.dataPath,encoded,'Admin: publish website content update (automatic retry)',latest.sha)
+   result=await ghPut(CONFIG.dataPath,encoded,'Admin: publish website content update (automatic retry)',latest.sha);
   }
-  state.sha=r.content.sha;
-  const verifiedDataFile=await ghGet(CONFIG.dataPath);
-  const verifiedData=JSON.parse(decode64(verifiedDataFile.content));
-  if(Number(verifiedData.version)!==Number(state.data.version))throw new Error('Published data verification failed. The repository still contains an older version.');
+  const committedSha=result?.content?.sha;
+  if(!committedSha)throw new Error('GitHub did not confirm the website data commit.');
+  state.sha=committedSha;
+
+  const verifiedFile=await waitForGitHubSha(CONFIG.dataPath,committedSha,5);
+  let verificationMessage='Published successfully. GitHub Pages will update shortly.';
+  if(verifiedFile?.sha===committedSha){
+   try{
+    const verifiedData=JSON.parse(decode64(verifiedFile.content));
+    if(verifiedData.lastPublishToken!==publishToken){
+      verificationMessage='Published successfully. GitHub accepted the update; the read endpoint is still refreshing.';
+    }
+   }catch(error){
+    verificationMessage='Published successfully. GitHub accepted the update; verification is still refreshing.';
+   }
+  }else{
+   verificationMessage='Published successfully. GitHub accepted the update; verification is still refreshing.';
+  }
+
   state.pendingFiles=[];
   state.pendingPreviewUrls={};
   state.dirty=false;
-  setStatus('Published successfully. GitHub Pages will update shortly.','ok');
-  renderPage()
+  setStatus(verificationMessage,'ok');
+  renderPage();
+  return true;
  }catch(e){
-  setStatus('Publish failed: '+e.message,'bad')
+  state.data.version=originalVersion;
+  delete state.data.lastPublishToken;
+  setStatus('Publish failed: '+e.message,'bad');
+  return false;
  }
 }
 function queueAssetUpload(inp){if(!inp.files[0])return Promise.resolve();return fileToPng(inp.files[0]).then(r=>{const path=inp.dataset.assetPath,key=inp.dataset.assetKey;state.data.assets=state.data.assets||{};state.data.assets[key]=`${path}?v=${Date.now()}`;state.pendingFiles=state.pendingFiles.filter(f=>f.path!==path);state.pendingFiles.push({path,base64:r.base64});markDirty();setStatus(`${key} ready to publish.`,'ok')})}
@@ -1238,14 +1264,28 @@ window.AdminCMS={initCommon,publish};
   }
 
   async function savePendingAssetsToPreviewDb() {
-    // V153: do not place large image data into sessionStorage or IndexedDB.
-    // The preview tab reads these temporary assets directly from its opener.
+    const pending=(state.pendingFiles||[]).map(file=>({path:String(file.path).split('?')[0],base64:String(file.base64||'')}));
     window.__ASG_PENDING_PREVIEW_ASSETS = Object.fromEntries(
-      (state.pendingFiles || []).map(file => [
-        String(file.path),
-        `data:image/png;base64,${String(file.base64 || "")}`
-      ])
+      pending.map(file => [file.path, `data:image/png;base64,${file.base64}`])
     );
+    // Store the same assets in IndexedDB so Preview Website also works when
+    // Safari/iOS does not expose window.opener to the newly opened tab.
+    try{
+      const db=await openPreviewDb();
+      await new Promise((resolve,reject)=>{
+        const tx=db.transaction(PREVIEW_DB_STORE,'readwrite');
+        const store=tx.objectStore(PREVIEW_DB_STORE);
+        store.clear();
+        pending.forEach(file=>store.put(file));
+        tx.oncomplete=resolve;
+        tx.onerror=()=>reject(tx.error||new Error('Could not save preview images.'));
+      });
+      db.close();
+      sessionStorage.setItem('asgPreviewAssetsInIndexedDb','1');
+    }catch(error){
+      console.warn('Could not save preview assets to IndexedDB.',error);
+      sessionStorage.removeItem('asgPreviewAssetsInIndexedDb');
+    }
     return true;
   }
 
@@ -1293,7 +1333,6 @@ window.AdminCMS={initCommon,publish};
       sessionStorage.setItem("asgDraftMasterContent", JSON.stringify(state.data || {}));
       sessionStorage.setItem("asgPreviewMasterContent", JSON.stringify(draft));
       sessionStorage.setItem("asgDraftAdminPage", page);
-      sessionStorage.removeItem("asgPreviewAssetsInIndexedDb");
       setStatus("Draft saved — not published.", "ok");
       const pending = document.querySelector("#pendingLabel") || document.querySelector("#workflowStatus");
       if (pending) pending.textContent = "Draft saved — not published";
