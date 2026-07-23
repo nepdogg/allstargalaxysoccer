@@ -1,5 +1,5 @@
 {
-  "version": 201,
+  "version": 202,
   "updated": "2026-07-23",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -1755,7 +1755,7 @@
       "preferredFoot": "",
       "height": "",
       "weight": "",
-      "quote": "",
+      "quote": "Messi is the GOAT\nRonaldo is washed\nArgentina was robbed",
       "firstName": "Neptune",
       "lastName": "Garcia"
     },
@@ -3490,5 +3490,5 @@
     "standingsDescription": "Testing",
     "scheduleDescription": "Testing"
   },
-  "lastPublishToken": "admin-1784821073568-xvo0zw"
+  "lastPublishToken": "admin-1784822259326-cktvp6"
 }
