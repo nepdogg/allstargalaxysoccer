@@ -20726,3 +20726,171 @@ body[data-page="graphics"] .sticky-graphics-publish{position:sticky!important;bo
     font-size: clamp(.48rem, 1.75vw, .66rem) !important;
   }
 }
+
+/* ============================================================
+   V191 — DESKTOP PLAYER CARD FINAL ALIGNMENT
+   Matches the clean Edit Player preview typography and locks the
+   front/profile overlays to the printed card artwork.
+   ============================================================ */
+@media (min-width: 761px) {
+  /* Front card surname: metallic white with a restrained depth shadow,
+     not the heavy white halo that made letters merge together. */
+  .prototype-player-name strong,
+  .preview-ultimate-name.prototype-player-name strong,
+  .team-roster-carousel .prototype-player-name strong,
+  .popup-exact-front-card .prototype-player-name strong,
+  body[data-page="players"] .prototype-player-name strong {
+    color: #fff !important;
+    -webkit-text-stroke: 0 !important;
+    text-shadow:
+      0 .035em 0 #aeb3bc,
+      0 .075em 0 #696e78,
+      0 .11em .10em rgba(0,0,0,.95) !important;
+    filter: none !important;
+  }
+
+  /* Position text occupies one fixed printed bay and remains centered for
+     ST, CM, RIGHT WINGER, CENTER BACK, etc. */
+  .prototype-player-name em,
+  .preview-ultimate-name.prototype-player-name em,
+  .team-roster-carousel .prototype-player-name em,
+  .popup-exact-front-card .prototype-player-name em,
+  body[data-page="players"] .prototype-player-name em {
+    position: absolute !important;
+    left: 7% !important;
+    right: 7% !important;
+    bottom: 2.9% !important;
+    width: 86% !important;
+    height: 13.8% !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    padding: 0 2.5% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    line-height: 1 !important;
+    font-size: 5.45cqw !important;
+    letter-spacing: .055em !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: clip !important;
+    transform: none !important;
+    transform-origin: center center !important;
+  }
+
+  /* Desktop profile card: fixed coordinates based on the full 2:3
+     player-profile-card-template artwork. */
+  .ultimate-profile-card.prototype-profile-frame {
+    container-type: inline-size !important;
+    aspect-ratio: 2 / 3 !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+  .ultimate-profile-card.prototype-profile-frame .prototype-profile-number {
+    position: absolute !important;
+    top: 7.4% !important;
+    left: 6.0% !important;
+    width: 23% !important;
+    height: 9.5% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    font-size: 12.6cqw !important;
+    line-height: .82 !important;
+    transform: none !important;
+  }
+  .ultimate-profile-card.prototype-profile-frame .prototype-profile-position {
+    position: absolute !important;
+    top: 16.6% !important;
+    left: 5.6% !important;
+    width: 31.5% !important;
+    height: 4.8% !important;
+    box-sizing: border-box !important;
+    padding: 0 1.5% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 3.65cqw !important;
+    line-height: 1 !important;
+    letter-spacing: .055em !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    transform: none !important;
+  }
+
+  /* The blank name opening ends immediately above the information panel. */
+  .ultimate-profile-card.prototype-profile-frame .prototype-profile-name {
+    position: absolute !important;
+    top: 24.7% !important;
+    left: 14.0% !important;
+    right: 13.0% !important;
+    height: 9.9% !important;
+    box-sizing: border-box !important;
+    display: grid !important;
+    grid-template-rows: 37% 63% !important;
+    align-items: center !important;
+    justify-items: center !important;
+    overflow: hidden !important;
+    text-align: center !important;
+    transform: none !important;
+  }
+  .ultimate-profile-card.prototype-profile-frame .prototype-profile-name small,
+  .ultimate-profile-card.prototype-profile-frame .prototype-profile-name strong {
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    transform-origin: center center !important;
+  }
+  .ultimate-profile-card.prototype-profile-frame .prototype-profile-name small {
+    align-self: end !important;
+    font-size: 4.75cqw !important;
+    line-height: 1 !important;
+    letter-spacing: .17em !important;
+    transform: none !important;
+  }
+  .ultimate-profile-card.prototype-profile-frame .prototype-profile-name strong {
+    align-self: start !important;
+    font-size: 10.3cqw !important;
+    line-height: .82 !important;
+    transform: scaleX(.92) !important;
+    text-shadow: 0 .035em 0 #9aa0aa, 0 .075em .08em rgba(0,0,0,.95) !important;
+    filter: none !important;
+  }
+
+  /* One centered value column, each value centered on its printed row. */
+  .ultimate-profile-card.prototype-profile-frame .prototype-profile-values {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+  }
+  .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b {
+    position: absolute !important;
+    left: 55.0% !important;
+    right: 12.0% !important;
+    width: auto !important;
+    height: 4.15% !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 3.55cqw !important;
+    line-height: 1 !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    transform: none !important;
+  }
+  .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(1) { top: 43.55% !important; }
+  .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(2) { top: 50.42% !important; }
+  .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(3) { top: 57.29% !important; }
+  .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(4) { top: 64.16% !important; }
+  .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(5) { top: 71.03% !important; }
+}
