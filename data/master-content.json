@@ -616,24 +616,6 @@
       "location": "",
       "group": "latest",
       "cardImage": "images/media/latest-games/img-3967.png"
-    },
-    {
-      "status": "published",
-      "order": 36,
-      "id": "game-03",
-      "season": "Fall 2026",
-      "gameNumber": 2,
-      "opponent": "Spain",
-      "result": "W (3-1)",
-      "fullMatch": "",
-      "highlights": "",
-      "slideshow": "",
-      "cardLabel": "new",
-      "date": "",
-      "time": "",
-      "location": "",
-      "group": "latest",
-      "cardImage": "images/media/latest-games/game-03-mrwrzrfd.png"
     }
   ],
   "seasons": [
@@ -1296,7 +1278,8 @@
       "slideshows": "",
       "subtitle": "",
       "dateRange": "",
-      "league": ""
+      "league": "",
+      "cardImage": "images/seasons/season-01-mrws1mgh.png"
     }
   ],
   "playlists": [
