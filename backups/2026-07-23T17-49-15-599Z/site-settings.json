@@ -1,0 +1,130 @@
+{
+  "version": 191,
+  "branding": {
+    "teamName": "Allstar Galaxy",
+    "navigationTitle": "images/titles/page-titles/navigation-title.png",
+    "leftLogo": "images/logos/logo.png",
+    "rightLogo": "images/logos/logo.png",
+    "favicon": "images/logos/favicon.png",
+    "accentColor": "#ffd700"
+  },
+  "navigation": [
+    {
+      "key": "home",
+      "label": "Home",
+      "href": "index.html",
+      "visible": true,
+      "order": 1
+    },
+    {
+      "key": "team",
+      "label": "Team",
+      "href": "team.html",
+      "visible": true,
+      "order": 2
+    },
+    {
+      "key": "schedule",
+      "label": "Schedule",
+      "href": "schedule.html",
+      "visible": true,
+      "order": 3
+    },
+    {
+      "key": "media",
+      "label": "Media",
+      "href": "media.html",
+      "visible": true,
+      "order": 4
+    },
+    {
+      "key": "news",
+      "label": "News",
+      "href": "news.html",
+      "visible": true,
+      "order": 5
+    },
+    {
+      "key": "live",
+      "label": "Live",
+      "href": "livestream.html",
+      "visible": true,
+      "order": 6
+    },
+    {
+      "key": "follow",
+      "label": "Follow",
+      "href": "follow.html",
+      "visible": true,
+      "order": 7
+    }
+  ],
+  "pages": {
+    "home": {
+      "visible": true,
+      "title": "Allstar Galaxy | Home",
+      "description": "Browse the best moments from the Allstar Galaxy archive, including goals, saves, assists, awards, and featured highlights."
+    },
+    "team": {
+      "visible": true,
+      "title": "Allstar Galaxy | Team",
+      "description": "Meet the Allstar Galaxy roster."
+    },
+    "schedule": {
+      "visible": true,
+      "title": "Allstar Galaxy | Schedule",
+      "description": "View the latest Allstar Galaxy schedule and league standings."
+    },
+    "media": {
+      "visible": true,
+      "title": "Allstar Galaxy | Media",
+      "description": "Explore the complete Allstar Galaxy media archive."
+    },
+    "news": {
+      "visible": true,
+      "title": "Allstar Galaxy | News",
+      "description": "Read the latest Allstar Galaxy news and match updates."
+    },
+    "live": {
+      "visible": true,
+      "title": "Allstar Galaxy | Live",
+      "description": "Watch Allstar Galaxy livestreams and replays."
+    },
+    "follow": {
+      "visible": true,
+      "title": "Allstar Galaxy | Follow",
+      "description": "Follow Allstar Galaxy on social media."
+    },
+    "about": {
+      "visible": true,
+      "title": "Allstar Galaxy | About",
+      "description": "About Allstar Galaxy."
+    }
+  },
+  "social": {
+    "youtube": "https://www.youtube.com/@Allstar-Galaxy",
+    "instagram": "https://www.instagram.com/allstargalaxysoccer/",
+    "facebook": "https://www.facebook.com/profile.php?id=61591642103786",
+    "tiktok": "https://www.tiktok.com/@allstar.galaxy",
+    "x": "https://x.com/Allstar__Galaxy",
+    "email": "allstargalaxy@example.com"
+  },
+  "footer": {
+    "copyright": "\u00a9 2026 Allstar Galaxy.",
+    "showAboutLink": true,
+    "aboutLabel": "About",
+    "showAdminLink": true,
+    "adminLabel": "Admin",
+    "adminHref": "admin/",
+    "xitlaliLogo": "images/managed/xitlali-media-logo.png"
+  },
+  "homeSections": [
+    {
+      "key": "best-media",
+      "selector": "#best-media",
+      "label": "Best Of Carousel",
+      "visible": true,
+      "order": 1
+    }
+  ]
+}
