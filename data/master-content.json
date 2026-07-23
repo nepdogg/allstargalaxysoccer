@@ -1,6 +1,6 @@
 {
-  "version": 191,
-  "updated": "2026-07-22",
+  "version": 192,
+  "updated": "2026-07-23",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
     "logo": "generated/allstar-galaxy-logo.png",
@@ -2328,9 +2328,9 @@
       "lastName": "LAST NAME",
       "imageMode": "cutout",
       "profileMode": "advanced",
-      "photoScale": 107,
-      "photoX": 4,
-      "photoY": 0,
+      "photoScale": 92,
+      "photoX": -6,
+      "photoY": -6,
       "dateOfBirth": "",
       "nationality": "",
       "preferredFoot": "",
