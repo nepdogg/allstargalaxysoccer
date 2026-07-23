@@ -250,7 +250,11 @@
   function hydratePreviewAssets(value,assetMap){
     if(Array.isArray(value))return value.map(item=>hydratePreviewAssets(item,assetMap));
     if(value&&typeof value==='object')return Object.fromEntries(Object.entries(value).map(([key,item])=>[key,hydratePreviewAssets(item,assetMap)]));
-    if(typeof value==='string'&&assetMap.has(value))return assetMap.get(value);
+    if(typeof value==='string'){
+      if(assetMap.has(value))return assetMap.get(value);
+      const clean=value.split('?')[0];
+      if(assetMap.has(clean))return assetMap.get(clean);
+    }
     return value;
   }
   async function loadPreviewContent(){
