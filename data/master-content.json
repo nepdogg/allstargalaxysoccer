@@ -1,5 +1,5 @@
 {
-  "version": 200,
+  "version": 201,
   "updated": "2026-07-23",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -612,7 +612,7 @@
       "location": "",
       "group": "latest",
       "cardLabel": "new",
-      "cardImage": "images/media/latest-games/game-01-mrx1raik.png"
+      "cardImage": "images/media/latest-games/game-01-mrxoapgb.png"
     }
   ],
   "seasons": [
@@ -3490,5 +3490,5 @@
     "standingsDescription": "Testing",
     "scheduleDescription": "Testing"
   },
-  "lastPublishToken": "admin-1784784583877-mh8gvd"
+  "lastPublishToken": "admin-1784821073568-xvo0zw"
 }
