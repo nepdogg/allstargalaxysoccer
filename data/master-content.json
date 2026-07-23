@@ -1,5 +1,5 @@
 {
-  "version": 199,
+  "version": 200,
   "updated": "2026-07-23",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -3475,7 +3475,7 @@
     "scheduledEnd": "",
     "opponent": "",
     "location": "",
-    "thumbnail": "images/live/current-livestream-mrwrrpt0.png",
+    "thumbnail": "images/live/current-livestream-mrx2lsl7.png",
     "replayUrl": "",
     "youtubeVideoId": "",
     "pastStreams": [],
@@ -3490,5 +3490,5 @@
     "standingsDescription": "Testing",
     "scheduleDescription": "Testing"
   },
-  "lastPublishToken": "admin-1784783302394-i01yh3"
+  "lastPublishToken": "admin-1784784583877-mh8gvd"
 }
