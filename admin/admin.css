@@ -1740,3 +1740,45 @@ body[data-page="players"] .prototype-player-name em{align-self:start!important;f
   body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(4) { top:64.74% !important; }
   body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(5) { top:71.62% !important; }
 }
+
+/* V186 — phone Player Admin profile preview mirrors public card geometry. */
+@media (max-width: 760px) {
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-number {
+    top: 7.0% !important;
+    left: 6.0% !important;
+  }
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-position {
+    top: 17.4% !important;
+    left: 5.8% !important;
+    width: 34% !important;
+    height: 5% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 3.65cqw !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    transform: none !important;
+  }
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-name {
+    top: 31.2% !important;
+    left: 15% !important;
+    right: 15% !important;
+    height: 10.8% !important;
+  }
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-name small {
+    top: 2% !important;
+    font-size: 4.85cqw !important;
+  }
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-name strong {
+    top: 31% !important;
+    font-size: 10.4cqw !important;
+  }
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b {
+    left: 51.5% !important;
+    right: 10.5% !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+}
