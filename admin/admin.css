@@ -1824,3 +1824,89 @@ body[data-page="players"] .prototype-player-name em{align-self:start!important;f
   .wide-preview-card .preview-action { font-size: 15px !important; }
   .wide-preview-card .preview-action span { font-size: 7px !important; }
 }
+
+/* ============================================================
+   V191 — DESKTOP PLAYER ADMIN PREVIEW FINAL ALIGNMENT
+   ============================================================ */
+@media (min-width: 761px) {
+  body[data-page="players"] .prototype-player-name strong,
+  body[data-page="players"] .preview-ultimate-name.prototype-player-name strong {
+    color:#fff !important;
+    -webkit-text-stroke:0 !important;
+    text-shadow:0 .035em 0 #aeb3bc,0 .075em 0 #696e78,0 .11em .10em rgba(0,0,0,.95) !important;
+    filter:none !important;
+  }
+  body[data-page="players"] .prototype-player-name em,
+  body[data-page="players"] .preview-ultimate-name.prototype-player-name em {
+    position:absolute !important;
+    left:7% !important;
+    right:7% !important;
+    bottom:2.9% !important;
+    width:86% !important;
+    height:13.8% !important;
+    box-sizing:border-box !important;
+    padding:0 2.5% !important;
+    margin:0 !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    text-align:center !important;
+    line-height:1 !important;
+    font-size:5.45cqw !important;
+    letter-spacing:.055em !important;
+    white-space:nowrap !important;
+    overflow:hidden !important;
+    transform:none !important;
+  }
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame {
+    container-type:inline-size !important;
+    aspect-ratio:2/3 !important;
+    position:relative !important;
+    overflow:hidden !important;
+  }
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-number {
+    top:7.4% !important; left:6% !important; width:23% !important; height:9.5% !important;
+    display:flex !important; align-items:center !important; justify-content:flex-start !important;
+    font-size:12.6cqw !important; line-height:.82 !important; transform:none !important;
+  }
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-position {
+    top:16.6% !important; left:5.6% !important; width:31.5% !important; height:4.8% !important;
+    display:flex !important; align-items:center !important; justify-content:center !important;
+    padding:0 1.5% !important; font-size:3.65cqw !important; line-height:1 !important;
+    letter-spacing:.055em !important; text-align:center !important; white-space:nowrap !important;
+    overflow:hidden !important; transform:none !important;
+  }
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-name {
+    top:24.7% !important; left:14% !important; right:13% !important; height:9.9% !important;
+    display:grid !important; grid-template-rows:37% 63% !important; align-items:center !important;
+    justify-items:center !important; overflow:hidden !important; text-align:center !important;
+  }
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-name small,
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-name strong {
+    position:static !important; width:100% !important; max-width:100% !important; margin:0 !important;
+    text-align:center !important; white-space:nowrap !important; transform-origin:center center !important;
+  }
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-name small {
+    align-self:end !important; font-size:4.75cqw !important; line-height:1 !important;
+    letter-spacing:.17em !important; transform:none !important;
+  }
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-name strong {
+    align-self:start !important; font-size:10.3cqw !important; line-height:.82 !important;
+    transform:scaleX(.92) !important; text-shadow:0 .035em 0 #9aa0aa,0 .075em .08em rgba(0,0,0,.95) !important;
+    filter:none !important;
+  }
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-values {
+    position:absolute !important; inset:0 !important; display:block !important;
+  }
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b {
+    position:absolute !important; left:55% !important; right:12% !important; width:auto !important; height:4.15% !important;
+    display:flex !important; align-items:center !important; justify-content:center !important;
+    padding:0 !important; margin:0 !important; font-size:3.55cqw !important; line-height:1 !important;
+    text-align:center !important; white-space:nowrap !important; overflow:hidden !important; transform:none !important;
+  }
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(1){top:43.55% !important}
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(2){top:50.42% !important}
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(3){top:57.29% !important}
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(4){top:64.16% !important}
+  body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(5){top:71.03% !important}
+}
