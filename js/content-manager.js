@@ -14,6 +14,12 @@
     if (/\.(jpe?g|webp|gif|avif)$/i.test(base)) return base.replace(/\.(jpe?g|webp|gif|avif)$/i, '.png') + suffix;
     return /\.[a-z0-9]+$/i.test(base) ? base + suffix : `${base}.png${suffix}`;
   };
+  const versionedAsset = (value='',version='') => {
+    const path=pngOnlyPath(value);
+    if(!path || /^(data:image\/|blob:)/i.test(path))return path;
+    if(/[?&]v=/.test(path) || !version)return path;
+    return `${path}${path.includes('?')?'&':'?'}v=${encodeURIComponent(version)}`;
+  };
   const firstValue = (...values) => values.find(value => String(value || '').trim()) || '';
   const itemImage = (item={}) => pngOnlyPath(firstValue(
     item.image, item.imagePath, item.photo, item.thumbnail, item.flyer,
@@ -46,12 +52,12 @@
       </div>`;
     }).join('')}</div>`;
   }
-  function mediaArt(data, title, category) {
+  function mediaArt(data, title, category, customImage='') {
     const color=colorFor(data,category);
     const length=String(title||'').trim().length;
     const sizeClass=length>28?' is-very-long-title':(length>18?' is-long-title':'');
     return `<div class="generated-playlist-art${sizeClass}" style="--card-accent:${color}">
-      <div class="generated-playlist-image" style="background-image:url('${esc(pngOnlyPath(data.assets.playlistCardBackground || data.assets.mediaBackground || 'generated/media-card-background.png'))}')"></div>
+      <div class="generated-playlist-image" style="background-image:url('${esc(versionedAsset(customImage || data.assets.playlistCardBackground || data.assets.mediaBackground || 'generated/media-card-background.png',data.version))}')"></div>
       <div class="generated-playlist-footer">
         <span class="generated-playlist-footer-icon">${iconFor(category)}</span>
         <span class="generated-playlist-footer-title">${esc(title)}</span>
@@ -81,7 +87,7 @@
     ];
     return `<a href="#" class="media-slide media-game-slide generated-game-card" aria-label="Open ${esc(title)}" data-game-title="${esc(title)}" data-game-opponent="Allstar Galaxy vs ${esc(g.opponent||'Coming Soon')}" data-game-result="${esc(result)}" data-full="${esc(g.fullMatch||'')}" data-highlights="${esc(g.highlights||'')}" data-slideshow="${esc(g.slideshow||'')}">
       <div class="generated-wide-card generated-game-layout" style="--card-accent:${mediaBlue}">
-        <section class="generated-wide-visual" style="background-image:url('${esc(pngOnlyPath(data.assets.gameCardBackground || data.assets.mediaBackground || 'generated/media-card-background.png'))}')"></section>
+        <section class="generated-wide-visual" style="background-image:url('${esc(versionedAsset(g.cardImage || data.assets.gameCardBackground || data.assets.mediaBackground || 'generated/media-card-background.png',data.version))}')">${g.cardLabel?`<span class="generated-game-label-badge label-${esc(g.cardLabel)}">${esc(({new:'NEW GAME',latest:'LATEST GAME','current-season':'CURRENT SEASON','last-season':'LAST SEASON'}[g.cardLabel]||g.cardLabel).toUpperCase())}</span>`:''}</section>
         <section class="generated-wide-actions">${actionRows(rows)}</section>
         <footer class="generated-card-footer generated-game-footer">
           <div class="generated-game-meta-block">
@@ -108,7 +114,7 @@
     ];
     return `<a href="#" class="media-slide season-archive-slide media-game-slide generated-season-card" aria-label="Open ${esc(s.title)} archive" data-game-title="${esc(s.title)} Season Archive" data-game-opponent="Full Matches • Highlights • Slideshows" data-game-result="${esc(s.subtitle||'Season Archive')}" data-full="${esc(s.fullMatches||'')}" data-highlights="${esc(s.highlights||'')}" data-slideshow="${esc(s.slideshows||'')}" data-full-label="▶ Full Matches" data-highlights-label="▣ Highlights" data-slideshow-label="▧ Slideshows">
       <div class="generated-wide-card generated-season-layout" style="--card-accent:${mediaBlue}">
-        <section class="generated-wide-visual generated-season-visual" style="background-image:url('${esc(pngOnlyPath(data.assets.seasonCardBackground || data.assets.mediaBackground || 'generated/media-card-background.png'))}')"></section>
+        <section class="generated-wide-visual generated-season-visual" style="background-image:url('${esc(versionedAsset(s.cardImage || data.assets.seasonCardBackground || data.assets.mediaBackground || 'generated/media-card-background.png',data.version))}')"></section>
         <section class="generated-wide-actions">${actionRows(rows)}</section>
         <footer class="generated-card-footer generated-season-footer">${esc(s.title)}</footer>
       </div></a>`;
@@ -117,7 +123,7 @@
     const accent=theme==='blue'?'#20bfff':'#f5c542';
     const original=data.colors?.[p.category];
     const themed={...data,colors:{...(data.colors||{}),[p.category]:accent,archive:accent}};
-    return `<a class="media-slide generated-playlist-card theme-${theme}" ${linkAttrs(p.url)} aria-label="Open ${esc(p.title)} playlist">${mediaArt(themed,p.title,p.category)}</a>`;
+    return `<a class="media-slide generated-playlist-card theme-${theme}" ${linkAttrs(p.url)} aria-label="Open ${esc(p.title)} playlist">${mediaArt(themed,p.title,p.category,p.cardImage)}</a>`;
   }
   function playerCard(data,p){
     const accent=colorFor(data,'players');

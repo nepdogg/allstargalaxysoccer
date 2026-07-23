@@ -13,7 +13,7 @@
 
     const DEFAULT_INTERVAL = 7000;
     const DEFAULT_TRANSITION = 1400;
-    const CONFIG_URL = "data/hero-rotation.json?v=149";
+    const CONFIG_URL = "data/hero-rotation.json?v=187";
 
     const pageKey = () => {
         const body = document.body;
