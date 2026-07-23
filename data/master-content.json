@@ -1,5 +1,5 @@
 {
-  "version": 196,
+  "version": 197,
   "updated": "2026-07-23",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -1250,19 +1250,6 @@
       "subtitle": "",
       "dateRange": "",
       "league": ""
-    },
-    {
-      "status": "published",
-      "order": 51,
-      "id": "season-01",
-      "title": "PAST SEASONS - COMING SOON",
-      "fullMatches": "",
-      "highlights": "",
-      "slideshows": "",
-      "subtitle": "",
-      "dateRange": "",
-      "league": "",
-      "cardImage": "images/seasons/season-01-mrws1mgh.png"
     }
   ],
   "playlists": [
