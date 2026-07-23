@@ -1791,3 +1791,36 @@ body[data-page="players"] .prototype-player-name em{align-self:start!important;f
 .preview-game-label.label-latest{color:#ffd24a;box-shadow:0 0 12px #ffd24a}
 .preview-game-label.label-current-season{color:#35c9ff;box-shadow:0 0 12px #35c9ff}
 .preview-game-label.label-last-season{color:#d8def0;box-shadow:0 0 10px #aeb8d8}
+
+/* V190 — Admin live-preview proportions match public game/season cards. */
+.wide-preview-card {
+  grid-template-columns: 83% 17% !important;
+}
+.wide-preview-card .preview-media-main {
+  background-size: 100% 100% !important;
+  background-position: center center !important;
+  border-right: 2px solid #2577ff !important;
+}
+.wide-preview-card .preview-actions {
+  min-width: 0 !important;
+}
+.wide-preview-card .preview-action {
+  padding: 4px 2px !important;
+  font-size: 18px !important;
+}
+.wide-preview-card .preview-action span {
+  font-size: 8px !important;
+  white-space: nowrap !important;
+}
+.preview-game-footer {
+  grid-template-columns: 27% 56% 17% !important;
+}
+.preview-game-footer > div:nth-child(2) {
+  border-right: 2px solid #164caa !important;
+}
+@media (max-width: 560px) {
+  .wide-preview-card { grid-template-columns: 80% 20% !important; }
+  .preview-game-footer { grid-template-columns: 27% 53% 20% !important; }
+  .wide-preview-card .preview-action { font-size: 15px !important; }
+  .wide-preview-card .preview-action span { font-size: 7px !important; }
+}
