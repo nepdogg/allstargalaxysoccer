@@ -48,7 +48,7 @@
   const encode64=s=>btoa(unescape(encodeURIComponent(s)));
   const slug=s=>String(s||'hero').toLowerCase().trim().replace(/\.[^.]+$/,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'hero';
   function status(msg,type=''){const el=$('#statusbar');el.textContent=msg;el.className='statusbar '+type}
-  async function ghGet(path){const r=await fetch(`https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${path}?ref=${CONFIG.branch}&_=${Date.now()}`,{headers:{...headers(),'Cache-Control':'no-cache','Pragma':'no-cache'},cache:'no-store'});if(!r.ok)throw new Error(`${r.status}: ${await r.text()}`);return r.json()}
+  async function ghGet(path){const cleanPath=String(path).split('?')[0];const r=await fetch(`https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${cleanPath}?ref=${encodeURIComponent(CONFIG.branch)}&_=${Date.now()}`,{headers:headers(),cache:'no-store'});if(!r.ok)throw new Error(`${r.status}: ${await r.text()}`);return r.json()}
 const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 async function waitForSha(path,sha,attempts=4){let last;for(let i=0;i<attempts;i++){if(i)await wait([700,1400,2500][Math.min(i-1,2)]);try{last=await ghGet(path);if(last.sha===sha)return last}catch(error){last={error}}}return last}
   async function ghPut(path,content,message,sha){const body={message,content,branch:CONFIG.branch};if(sha)body.sha=sha;const r=await fetch(`https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${path}`,{method:'PUT',headers:{...headers(),'Content-Type':'application/json'},body:JSON.stringify(body)});if(!r.ok)throw new Error(`${r.status}: ${await r.text()}`);return r.json()}
