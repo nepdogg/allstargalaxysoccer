@@ -20894,3 +20894,87 @@ body[data-page="graphics"] .sticky-graphics-publish{position:sticky!important;bo
   .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(4) { top: 64.16% !important; }
   .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(5) { top: 71.03% !important; }
 }
+
+/* ============================================================
+   V192 — FINAL SHARED PROFILE / MOBILE HEADER / FOOTER ACCENTS
+   Phone geometry is the master geometry at every screen size.
+   ============================================================ */
+.ultimate-profile-card.prototype-profile-frame{
+  position:relative!important;aspect-ratio:2/3!important;container-type:inline-size!important;overflow:hidden!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-number{
+  position:absolute!important;top:8.3%!important;left:6.2%!important;width:24%!important;height:10.5%!important;
+  display:flex!important;align-items:flex-start!important;justify-content:flex-start!important;font-size:13.4cqw!important;line-height:.82!important;transform:none!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-position{
+  position:absolute!important;top:18.8%!important;left:7.2%!important;width:38%!important;height:4.8%!important;
+  display:flex!important;align-items:center!important;justify-content:flex-start!important;box-sizing:border-box!important;padding:0!important;margin:0!important;
+  font-size:3.65cqw!important;line-height:1!important;letter-spacing:.045em!important;text-align:left!important;white-space:nowrap!important;overflow:hidden!important;transform:none!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name{
+  position:absolute!important;top:29.0%!important;left:14%!important;right:14%!important;height:11.7%!important;
+  display:grid!important;grid-template-rows:35% 65%!important;align-items:center!important;justify-items:center!important;overflow:hidden!important;text-align:center!important;transform:none!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name small,
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name strong{
+  position:static!important;width:100%!important;max-width:100%!important;margin:0!important;text-align:center!important;white-space:nowrap!important;transform-origin:center center!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name small{
+  align-self:end!important;font-size:5.15cqw!important;line-height:1!important;letter-spacing:.17em!important;transform:none!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name strong{
+  align-self:start!important;font-size:11.6cqw!important;line-height:.80!important;transform:scaleX(.92)!important;
+  text-shadow:0 .035em 0 #9aa0aa,0 .075em .08em rgba(0,0,0,.95)!important;filter:none!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-9 strong{transform:scaleX(.88)!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-10 strong{transform:scaleX(.84)!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-11 strong{transform:scaleX(.80)!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-12 strong{transform:scaleX(.76)!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-13 strong,
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-14 strong,
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-15 strong,
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-16 strong,
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-17 strong,
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-18 strong,
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-19 strong,
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-20 strong{font-size:9.6cqw!important;transform:scaleX(.70)!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values{position:absolute!important;inset:0!important;display:block!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b{
+  position:absolute!important;left:53.2%!important;right:11.5%!important;width:auto!important;height:4.2%!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;padding:0!important;margin:0!important;
+  font-size:3.55cqw!important;line-height:1!important;text-align:center!important;white-space:nowrap!important;overflow:hidden!important;transform:none!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(1){top:44.9%!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(2){top:51.78%!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(3){top:58.66%!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(4){top:65.54%!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(5){top:72.42%!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-quote{
+  position:absolute!important;left:15%!important;right:15%!important;top:78.4%!important;height:7.2%!important;margin:0!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important;overflow:hidden!important;
+  font-size:3.35cqw!important;line-height:1.08!important;
+}
+
+@media(max-width:760px){
+  .site-top .hero-title{height:88px!important;min-height:88px!important;overflow:visible!important}
+  .site-top .hero-title>img{width:min(100%,270px)!important;max-width:270px!important;height:auto!important;max-height:none!important;transform:translateY(8px) scaleY(2.34)!important;transform-origin:center center!important}
+  footer .footer-social-row{overflow:visible!important;padding-inline:8px!important}
+  footer .footer-social-row>a.footer-logo,footer a.footer-logo.footer-logo-left,footer a.footer-logo.footer-logo-right{
+    width:47px!important;height:47px!important;min-width:47px!important;max-width:47px!important;min-height:47px!important;max-height:47px!important;flex:0 0 47px!important;overflow:visible!important
+  }
+  footer .footer-social-row>a.footer-logo img,footer a.footer-logo.footer-logo-left img,footer a.footer-logo.footer-logo-right img{
+    width:45px!important;height:45px!important;min-width:45px!important;max-width:45px!important;min-height:45px!important;max-height:45px!important;object-fit:contain!important;transform:none!important
+  }
+  .page-home footer .footer-logo img{filter:drop-shadow(0 0 7px #ffd24a) drop-shadow(0 0 14px rgba(255,180,0,.82))!important}
+  .page-team footer .footer-logo img{filter:drop-shadow(0 0 7px #d532ff) drop-shadow(0 0 14px rgba(174,0,255,.82))!important}
+  .page-schedule footer .footer-logo img{filter:drop-shadow(0 0 7px #37ff79) drop-shadow(0 0 14px rgba(0,220,90,.82))!important}
+  .page-media footer .footer-logo img{filter:drop-shadow(0 0 7px #35c9ff) drop-shadow(0 0 14px rgba(0,150,255,.82))!important}
+  .page-news footer .footer-logo img{filter:drop-shadow(0 0 7px #ff9d32) drop-shadow(0 0 14px rgba(255,105,0,.82))!important}
+  .page-live footer .footer-logo img{filter:drop-shadow(0 0 7px #ff3535) drop-shadow(0 0 14px rgba(255,0,0,.82))!important}
+  .page-follow footer .footer-logo img{filter:drop-shadow(0 0 7px #ff3da9) drop-shadow(0 0 14px rgba(255,0,145,.82))!important}
+}
+@media(max-width:430px){
+  .site-top .hero-title>img{width:min(100%,245px)!important;max-width:245px!important;transform:translateY(8px) scaleY(2.39)!important}
+  footer .footer-social-row>a.footer-logo,footer a.footer-logo.footer-logo-left,footer a.footer-logo.footer-logo-right{width:44px!important;height:44px!important;min-width:44px!important;max-width:44px!important;min-height:44px!important;max-height:44px!important;flex-basis:44px!important}
+  footer .footer-social-row>a.footer-logo img,footer a.footer-logo.footer-logo-left img,footer a.footer-logo.footer-logo-right img{width:42px!important;height:42px!important;min-width:42px!important;max-width:42px!important;min-height:42px!important;max-height:42px!important}
+}
