@@ -20978,3 +20978,70 @@ body[data-page="graphics"] .sticky-graphics-publish{position:sticky!important;bo
   footer .footer-social-row>a.footer-logo,footer a.footer-logo.footer-logo-left,footer a.footer-logo.footer-logo-right{width:44px!important;height:44px!important;min-width:44px!important;max-width:44px!important;min-height:44px!important;max-height:44px!important;flex-basis:44px!important}
   footer .footer-social-row>a.footer-logo img,footer a.footer-logo.footer-logo-left img,footer a.footer-logo.footer-logo-right img{width:42px!important;height:42px!important;min-width:42px!important;max-width:42px!important;min-height:42px!important;max-height:42px!important}
 }
+
+/* ============================================================
+   V193 — LIVESTREAM IMAGE FILL + ACTION LABEL SPACING
+   Phone and desktop production alignment.
+   ============================================================ */
+.page-live .generated-live-card,
+.generated-live-card {
+  overflow: hidden !important;
+}
+.page-live .generated-live-card img,
+.generated-live-card img {
+  display: block !important;
+  width: min(760px, 100%) !important;
+  max-width: 100% !important;
+  height: clamp(210px, 27vw, 340px) !important;
+  margin: 0 auto 16px !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  border-radius: 12px !important;
+}
+
+/* Keep the three action groups evenly distributed, but give the
+   icon and its caption enough breathing room. */
+.page-media .media-games-carousel .generated-action-list,
+.page-media .media-season-carousel .generated-action-list {
+  height: 100% !important;
+  display: grid !important;
+  grid-template-rows: repeat(3, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+}
+.page-media .media-games-carousel .generated-action-row,
+.page-media .media-season-carousel .generated-action-row {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  min-height: 0 !important;
+}
+.page-media .media-games-carousel .generated-action-copy,
+.page-media .media-season-carousel .generated-action-copy {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  line-height: 1 !important;
+}
+.page-media .media-games-carousel .generated-action-copy strong,
+.page-media .media-season-carousel .generated-action-copy strong {
+  display: block !important;
+  margin: 0 !important;
+  line-height: 1.08 !important;
+}
+
+@media (max-width: 800px) {
+  .page-live .generated-live-card img,
+  .generated-live-card img {
+    width: 100% !important;
+    height: clamp(180px, 48vw, 270px) !important;
+    margin-bottom: 14px !important;
+    border-radius: 10px !important;
+  }
+  .page-media .media-games-carousel .generated-action-row,
+  .page-media .media-season-carousel .generated-action-row {
+    gap: 5px !important;
+    padding-block: 5px !important;
+  }
+}
