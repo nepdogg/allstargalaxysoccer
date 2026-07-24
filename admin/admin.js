@@ -1600,3 +1600,90 @@ window.AdminCMS={initCommon,publish};
   document.addEventListener('DOMContentLoaded',clearLegacyFits,{once:true});
   new MutationObserver(clearLegacyFits).observe(document.documentElement,{subtree:true,childList:true});
 })();
+
+/* ============================================================
+   V192 — SHARED DRAFT IMAGE + PLAYER PROFILE PREVIEW LOCK
+   ============================================================ */
+(() => {
+  'use strict';
+
+  const originalVisualPreview = window.ASGVisualPreview;
+  const clean = value => String(value || '').split('?')[0];
+  const localPreview = path => {
+    const key = clean(path);
+    return (state.pendingPreviewUrls && (state.pendingPreviewUrls[path] || state.pendingPreviewUrls[key])) || '';
+  };
+  const pathToPreview = path => {
+    if (!path) return '';
+    const pending = localPreview(path);
+    if (pending) return pending;
+    if (/^(blob:|data:|https?:)/i.test(String(path))) return String(path);
+    return '../' + String(path).replace(/^\/+/, '');
+  };
+
+  // Permanent Admin previews now use the item's own unpublished/published
+  // artwork instead of always falling back to the shared media background.
+  window.ASGVisualPreview = function(section, item, suppliedImage) {
+    let image = suppliedImage;
+    if (['games','seasons','playlists'].includes(section)) {
+      image = pathToPreview(item && item.cardImage) || suppliedImage;
+    } else if (section === 'players') {
+      image = pathToPreview(item && item.photo) || suppliedImage;
+    }
+    return originalVisualPreview(section, item, image);
+  };
+
+  function profilePreviewMarkup(player) {
+    const parts=String(player?.name||'PLAYER').trim().split(/\s+/);
+    const first=String(player?.firstName||parts.shift()||'PLAYER');
+    const last=String(player?.lastName||parts.join(' ')||first);
+    const template=pathToPreview(state.data?.assets?.playerProfileTemplate||'generated/player-profile-card-template.png');
+    return `<div class="visual-card player-preview-card public-style-player-preview">
+      <div class="ultimate-profile-card prototype-profile-frame">
+        <img class="prototype-profile-template" src="${esc(template)}" alt="" aria-hidden="true">
+        <span class="prototype-profile-number">${esc(player?.number||'00')}</span>
+        <span class="prototype-profile-position">${esc(player?.position||'PLAYER')}</span>
+        <div class="prototype-profile-name name-length-${Math.min(20,last.length)}"><small>${esc(first)}</small><strong>${esc(last)}</strong></div>
+        <div class="prototype-profile-values">
+          <b>${esc(player?.dateOfBirth||'N/A')}</b><b>${esc(player?.nationality||'N/A')}</b><b>${esc(player?.preferredFoot||'N/A')}</b><b>${esc(player?.height||'N/A')}</b><b>${esc(player?.weight||'N/A')}</b>
+        </div>
+        <blockquote class="prototype-profile-quote">${esc(player?.quote||'')}</blockquote>
+      </div>
+      <span class="preview-visibility">${player?.status==='hidden'?'HIDDEN':'VISIBLE'}</span>
+    </div>`;
+  }
+
+  function selectedPlayer() {
+    const row=document.querySelector('#selectableManagerList [data-manager-row].is-selected');
+    const index=Number(row?.dataset.managerRow ?? 0);
+    return (state.data?.players||[])[index] || (state.data?.players||[])[0];
+  }
+
+  function enhancePlayerLivePreview() {
+    if (document.body.dataset.page !== 'players') return;
+    const preview=document.querySelector('#permanentCardPreview');
+    const toolbar=document.querySelector('.permanent-card-preview .preview-toolbar');
+    if (!preview || !toolbar || toolbar.querySelector('[data-player-card-side]')) return;
+    const switcher=document.createElement('div');
+    switcher.className='preview-device-switch player-card-side-switch';
+    switcher.innerHTML='<button type="button" class="is-active" data-player-card-side="front">Front Card</button><button type="button" data-player-card-side="profile">Profile Card</button>';
+    toolbar.appendChild(switcher);
+    let side='front';
+    const draw=()=>{
+      const player=selectedPlayer();
+      if (!player) return;
+      if (side==='profile') preview.innerHTML=profilePreviewMarkup(player);
+      else preview.innerHTML=window.ASGVisualPreview('players',player,pathToPreview(player.photo));
+    };
+    switcher.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>{
+      side=button.dataset.playerCardSide;
+      switcher.querySelectorAll('button').forEach(x=>x.classList.toggle('is-active',x===button));
+      draw();
+    }));
+    document.querySelector('#selectableManagerList')?.addEventListener('click',()=>setTimeout(draw,0));
+  }
+
+  const observer=new MutationObserver(()=>requestAnimationFrame(enhancePlayerLivePreview));
+  observer.observe(document.documentElement,{subtree:true,childList:true});
+  document.addEventListener('DOMContentLoaded',enhancePlayerLivePreview,{once:true});
+})();
