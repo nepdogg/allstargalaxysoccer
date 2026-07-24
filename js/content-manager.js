@@ -220,7 +220,7 @@
     const standings=(data.standings||[]).filter(isVisible).map(r=>`<tr><td>${esc(r.position)}</td><td>${esc(r.team)}</td><td>${esc(r.played)}</td><td>${esc(r.wins)}</td><td>${esc(r.draws)}</td><td>${esc(r.losses)}</td><td>${esc(r.points)}</td></tr>`).join('');
     return `<div class="generated-schedule-grid"><section><h2>Match Schedule</h2>${rows}</section><section><h2>League Standings</h2><div class="generated-table-wrap"><table><thead><tr><th>#</th><th>Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>Pts</th></tr></thead><tbody>${standings}</tbody></table></div></section></div>`;
   }
-  function liveMarkup(data){const l=data.live||{};return `<div class="generated-live-card"><img src="${esc(pngOnlyPath(data.assets.logo))}" alt="Allstar Galaxy"><span>${esc((l.status||'offline').toUpperCase())}</span><h2>${esc(l.title||'Livestream Coming Soon')}</h2><p>${esc(l.description||'')}</p>${l.url?`<a href="${esc(l.url)}" target="_blank" rel="noopener">WATCH LIVE</a>`:''}</div>`}
+  function liveMarkup(data){const l=data.live||{};const image=versionedAsset(firstValue(l.thumbnail,data.assets?.liveDefaultImage,data.assets?.logo,'images/live/live-default.png'),data.version);return `<div class="generated-live-card"><img src="${esc(image)}" alt="${esc(l.title||'Allstar Galaxy livestream')}"><span>${esc((l.status||'offline').toUpperCase())}</span><h2>${esc(l.title||'Livestream Coming Soon')}</h2><p>${esc(l.description||'')}</p>${l.url?`<a href="${esc(l.url)}" target="_blank" rel="noopener">WATCH LIVE</a>`:''}</div>`}
   function render(data){
     document.querySelectorAll('[data-generated-source]').forEach(el=>{
       const source=el.dataset.generatedSource;
