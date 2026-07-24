@@ -17398,3 +17398,61 @@ body.page-not-found .footer-platform-v147 { border-top-color:#cfd5e3 !important;
 .page-media .media-games-carousel .generated-game-footer {grid-template-columns:minmax(138px,23%) minmax(0,60%) minmax(105px,17%)!important}
 .page-media .media-games-carousel .generated-game-matchup-block {border-right:2px solid var(--card-accent)!important}
 @media(max-width:800px){.page-media .media-games-carousel .generated-wide-card,.page-media .media-season-carousel .generated-wide-card{grid-template-columns:minmax(0,80%) minmax(0,20%)!important}.page-media .media-games-carousel .generated-game-footer{grid-template-columns:minmax(82px,27%) minmax(0,53%) minmax(66px,20%)!important}}
+
+/* ============================================================
+   V193 — LIVESTREAM IMAGE FILL + ACTION LABEL SPACING
+   Mirrors the public card layout in Admin live previews.
+   ============================================================ */
+.generated-live-card { overflow: hidden !important; }
+.generated-live-card img {
+  display: block !important;
+  width: min(760px, 100%) !important;
+  max-width: 100% !important;
+  height: clamp(210px, 27vw, 340px) !important;
+  margin: 0 auto 16px !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  border-radius: 12px !important;
+}
+.page-media .media-games-carousel .generated-action-list,
+.page-media .media-season-carousel .generated-action-list,
+.admin-card-preview .generated-action-list,
+.live-card-preview .generated-action-list {
+  height: 100% !important;
+  display: grid !important;
+  grid-template-rows: repeat(3, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+}
+.page-media .media-games-carousel .generated-action-row,
+.page-media .media-season-carousel .generated-action-row,
+.admin-card-preview .generated-action-row,
+.live-card-preview .generated-action-row {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  min-height: 0 !important;
+}
+.page-media .generated-action-copy,
+.admin-card-preview .generated-action-copy,
+.live-card-preview .generated-action-copy {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  line-height: 1 !important;
+}
+@media (max-width: 800px) {
+  .generated-live-card img {
+    width: 100% !important;
+    height: clamp(180px, 48vw, 270px) !important;
+    margin-bottom: 14px !important;
+    border-radius: 10px !important;
+  }
+  .page-media .generated-action-row,
+  .admin-card-preview .generated-action-row,
+  .live-card-preview .generated-action-row {
+    gap: 5px !important;
+    padding-block: 5px !important;
+  }
+}
