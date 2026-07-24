@@ -1,6 +1,6 @@
 {
-  "version": 204,
-  "updated": "2026-07-23",
+  "version": 205,
+  "updated": "2026-07-24",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
     "logo": "generated/allstar-galaxy-logo.png",
@@ -3457,7 +3457,7 @@
     "scheduledEnd": "",
     "opponent": "",
     "location": "",
-    "thumbnail": "images/live/current-livestream-mrxpx8lf.png",
+    "thumbnail": "images/live/current-livestream-mryg2p5i.png",
     "replayUrl": "",
     "youtubeVideoId": "",
     "pastStreams": [],
@@ -3472,5 +3472,5 @@
     "standingsDescription": "Testing",
     "scheduleDescription": "Testing"
   },
-  "lastPublishToken": "admin-1784828986195-2fbirk"
+  "lastPublishToken": "admin-1784867627261-rpg926"
 }
