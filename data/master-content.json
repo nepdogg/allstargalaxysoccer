@@ -1,6 +1,6 @@
 {
-  "version": 205,
-  "updated": "2026-07-24",
+  "version": 206,
+  "updated": "2026-07-25",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
     "logo": "generated/allstar-galaxy-logo.png",
@@ -595,6 +595,23 @@
       "group": "latest",
       "order": 120,
       "cardImage": ""
+    },
+    {
+      "status": "published",
+      "order": 34,
+      "id": "game-01",
+      "season": "Fall 2026",
+      "gameNumber": 1,
+      "opponent": "Argentina ",
+      "result": "W (3-2)",
+      "fullMatch": "",
+      "highlights": "",
+      "slideshow": "https://youtu.be/tP5Xf2CWOaw",
+      "cardLabel": "new",
+      "date": "2026-07-19",
+      "time": "",
+      "location": "FAIR OAKS PARK",
+      "group": "latest"
     }
   ],
   "seasons": [
@@ -3472,5 +3489,5 @@
     "standingsDescription": "Testing",
     "scheduleDescription": "Testing"
   },
-  "lastPublishToken": "admin-1784867627261-rpg926"
+  "lastPublishToken": "admin-1784946700654-vkwfh8"
 }
