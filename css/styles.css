@@ -21045,3 +21045,158 @@ body[data-page="graphics"] .sticky-graphics-publish{position:sticky!important;bo
     padding-block: 5px !important;
   }
 }
+
+/* ============================================================
+   V194 — FINAL RESPONSIVE LOCKDOWN
+   Shared phone/desktop geometry, mobile media dividers, header,
+   footer accents, livestream fill, and clean player typography.
+   ============================================================ */
+
+/* Media game + season cards: one exact action/result column on every size. */
+.page-media .media-games-carousel .generated-wide-card,
+.page-media .media-season-carousel .generated-wide-card {
+  --asg-action-col: 17%;
+  grid-template-columns: minmax(0, calc(100% - var(--asg-action-col))) minmax(0, var(--asg-action-col)) !important;
+}
+.page-media .media-games-carousel .generated-wide-visual,
+.page-media .media-season-carousel .generated-wide-visual,
+.page-media .media-games-carousel .generated-wide-actions,
+.page-media .media-season-carousel .generated-wide-actions { box-sizing: border-box !important; min-width: 0 !important; }
+.page-media .media-games-carousel .generated-game-footer {
+  grid-template-columns: minmax(0, 23%) minmax(0, 60%) minmax(0, 17%) !important;
+}
+.page-media .generated-action-row { justify-content:center !important; align-content:center !important; }
+.page-media .generated-action-icon { margin-bottom: 5px !important; }
+.page-media .generated-action-copy { margin-top: 2px !important; }
+
+@media (max-width: 800px) {
+  .page-media .media-games-carousel .generated-wide-card,
+  .page-media .media-season-carousel .generated-wide-card {
+    --asg-action-col: 20%;
+    grid-template-columns: minmax(0, 80%) minmax(0, 20%) !important;
+  }
+  .page-media .media-games-carousel .generated-game-footer {
+    grid-template-columns: minmax(0, 27%) minmax(0, 53%) minmax(0, 20%) !important;
+  }
+  .page-media .media-games-carousel .generated-wide-visual,
+  .page-media .media-season-carousel .generated-wide-visual {
+    width:100% !important;
+    border-right:2px solid var(--card-accent) !important;
+  }
+  .page-media .generated-action-icon { margin-bottom: 3px !important; }
+  .page-media .generated-action-copy { margin-top: 1px !important; }
+}
+
+/* Livestream artwork fills the visual bay on public and preview cards. */
+.page-live .generated-live-card img,
+.generated-live-card img,
+.livestream-preview-card img {
+  display:block !important;
+  width:100% !important;
+  max-width:none !important;
+  height:clamp(220px, 34vw, 430px) !important;
+  object-fit:cover !important;
+  object-position:center !important;
+  margin:0 0 14px !important;
+  border-radius:12px !important;
+}
+@media (max-width:700px){
+  .page-live .generated-live-card img,
+  .generated-live-card img,
+  .livestream-preview-card img { height:clamp(190px, 57vw, 330px) !important; }
+}
+
+/* Front-card typography: clean metallic surname and centered position. */
+.prototype-player-name strong,
+.preview-ultimate-name.prototype-player-name strong,
+.team-roster-carousel .prototype-player-name strong,
+.popup-exact-front-card .prototype-player-name strong,
+body[data-page="players"] .prototype-player-name strong {
+  color:#fff !important;
+  -webkit-text-stroke:0 !important;
+  filter:none !important;
+  text-shadow:0 .035em 0 #aeb3bc,0 .075em 0 #696e78,0 .11em .10em rgba(0,0,0,.95) !important;
+}
+.prototype-player-name em,
+.preview-ultimate-name.prototype-player-name em,
+.team-roster-carousel .prototype-player-name em,
+.popup-exact-front-card .prototype-player-name em,
+body[data-page="players"] .prototype-player-name em {
+  position:absolute !important;
+  left:7% !important; right:7% !important; bottom:2.8% !important;
+  width:86% !important; height:13.5% !important;
+  display:flex !important; align-items:center !important; justify-content:center !important;
+  box-sizing:border-box !important; padding:0 3% !important; margin:0 !important;
+  text-align:center !important; line-height:1 !important; white-space:nowrap !important;
+  overflow:hidden !important; transform:none !important;
+}
+
+/* One profile-card coordinate system for phone, desktop, popup and Admin. */
+.ultimate-profile-card.prototype-profile-frame {
+  position:relative !important; aspect-ratio:1079 / 1457 !important;
+  container-type:inline-size !important; overflow:hidden !important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-number {
+  position:absolute !important; top:7.0% !important; left:6.1% !important;
+  width:23% !important; height:10.2% !important; margin:0 !important;
+  display:flex !important; align-items:center !important; justify-content:flex-start !important;
+  font-size:12.6cqw !important; line-height:.82 !important; transform:none !important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-position {
+  position:absolute !important; top:17.2% !important; left:6.4% !important;
+  width:35% !important; height:4.8% !important; margin:0 !important; padding:0 !important;
+  display:flex !important; align-items:center !important; justify-content:flex-start !important;
+  text-align:left !important; font-size:3.75cqw !important; line-height:1 !important;
+  letter-spacing:.045em !important; white-space:nowrap !important; overflow:hidden !important;
+  transform:none !important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name {
+  position:absolute !important; top:24.5% !important; left:13.5% !important; right:13.5% !important;
+  height:11.2% !important; margin:0 !important;
+  display:grid !important; grid-template-rows:38% 62% !important;
+  align-items:center !important; justify-items:center !important;
+  text-align:center !important; overflow:hidden !important; transform:none !important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name small {
+  font-size:5.7cqw !important; line-height:1 !important; letter-spacing:.18em !important;
+  white-space:nowrap !important; max-width:100% !important; overflow:hidden !important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name strong {
+  font-size:9.7cqw !important; line-height:.88 !important; white-space:nowrap !important;
+  max-width:100% !important; overflow:hidden !important; text-shadow:0 .035em 0 #aaa,0 .07em 0 #666,0 .11em .1em rgba(0,0,0,.92) !important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values { position:absolute !important; inset:0 !important; display:block !important; }
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b {
+  position:absolute !important; left:65.5% !important; width:22.5% !important; height:4.9% !important;
+  display:flex !important; align-items:center !important; justify-content:center !important;
+  padding:0 !important; margin:0 !important; font-size:3.55cqw !important; line-height:1 !important;
+  text-align:center !important; white-space:nowrap !important; overflow:hidden !important; transform:none !important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(1){top:44.55% !important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(2){top:51.42% !important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(3){top:58.29% !important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(4){top:65.16% !important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(5){top:72.03% !important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-quote {
+  position:absolute !important; left:14% !important; right:14% !important; top:79.15% !important; height:6.8% !important;
+  margin:0 !important; display:flex !important; align-items:center !important; justify-content:center !important;
+  text-align:center !important; overflow:hidden !important; font-size:3.2cqw !important; line-height:1.08 !important;
+}
+
+/* Mobile masthead and page-aware footer logos. */
+@media (max-width:700px){
+  .site-top .hero-title > img { transform:translateY(10px) scaleY(2.38) !important; transform-origin:center !important; }
+  footer .footer-social-row > a.footer-logo,
+  footer a.footer-logo.footer-logo-left,
+  footer a.footer-logo.footer-logo-right {
+    width:44px !important; height:44px !important; min-width:44px !important; min-height:44px !important;
+    max-width:44px !important; max-height:44px !important; flex:0 0 44px !important; overflow:visible !important;
+  }
+  footer .footer-social-row > a.footer-logo img,
+  footer a.footer-logo.footer-logo-left img,
+  footer a.footer-logo.footer-logo-right img {
+    width:42px !important; height:42px !important; min-width:42px !important; min-height:42px !important;
+    max-width:42px !important; max-height:42px !important; object-fit:contain !important;
+    filter:drop-shadow(0 0 7px var(--page-glow-1)) drop-shadow(0 0 15px var(--page-glow-1)) !important;
+  }
+}
