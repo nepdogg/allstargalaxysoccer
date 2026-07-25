@@ -1,5 +1,5 @@
 {
-  "version": 206,
+  "version": 207,
   "updated": "2026-07-25",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -598,7 +598,7 @@
     },
     {
       "status": "published",
-      "order": 34,
+      "order": 1,
       "id": "game-01",
       "season": "Fall 2026",
       "gameNumber": 1,
@@ -3489,5 +3489,5 @@
     "standingsDescription": "Testing",
     "scheduleDescription": "Testing"
   },
-  "lastPublishToken": "admin-1784946700654-vkwfh8"
+  "lastPublishToken": "admin-1784946797659-nii3yx"
 }
