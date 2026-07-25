@@ -2,8 +2,8 @@
 const CONFIG={owner:'nepdogg',repo:'allstargalaxysoccer',branch:'main',dataPath:'data/master-content.json'};
 const POSITION_OPTIONS=['','GK','CB','LB','RB','CDM','CM','CAM','LW','RW','ST','CF','COACH','STAFF'];
 const SECTION_SCHEMAS={
- players:{title:'Players',array:'players',imageField:'photo',imageFolder:'images/team/players',fields:[['firstName','First name','text',true,'basic'],['lastName','Last name','text',true,'basic'],['name','Combined player name','locked',false,'developer'],['number','Jersey number','text',false,'basic'],['position','Position','text',false,'basic'],['imageMode','Player image style','select',['cutout','photo'],'basic'],['photoScale','Player size %','number',false,'advanced'],['photoX','Move player left/right','number',false,'advanced'],['photoY','Move player up/down','number',false,'advanced'],['profileMode','Player profile mode','select',['standard','advanced'],'basic'],['status','Show on website','select',['published','hidden'],'basic'],['dateOfBirth','Date of birth','text',false,'advanced'],['nationality','Nationality','text',false,'advanced'],['preferredFoot','Preferred foot','select',['','Right','Left','Both'],'advanced'],['height','Height','text',false,'advanced'],['weight','Weight','text',false,'advanced'],['quote','Player quote','textarea',false,'advanced'],['order','Carousel position','number',false,'advanced'],['photo','Player photo storage path','locked',false,'developer']]},
- games:{title:'Games',array:'games',imageField:'cardImage',imageFolder:'images/media/latest-games',fields:[['season','Season','seasonselect',true,'basic'],['gameNumber','Game number','number',true,'basic'],['opponent','Opponent team','text',true,'basic'],['result','Final result, e.g. W (3-1)','text',false,'basic'],['fullMatch','Full Match YouTube URL','url',false,'basic'],['highlights','Highlights YouTube URL','url',false,'basic'],['slideshow','Slideshow YouTube URL','url',false,'basic'],['cardLabel','Game card label','select',['','new','latest','current-season','last-season'],'basic'],['status','Show on website','select',['published','hidden'],'basic'],['date','Match date','date',false,'advanced'],['time','Match time','time',false,'advanced'],['location','Location','text',false,'advanced'],['group','Game carousel','select',['latest','archive'],'advanced'],['order','Carousel position','number',false,'advanced'],['cardImage','Custom card image path','locked',false,'developer']]},
+ players:{title:'Players',array:'players',imageField:'photo',imageFolder:'images/team/players',fields:[['firstName','First name','text',true,'basic'],['lastName','Last name','text',true,'basic'],['name','Combined player name','locked',false,'developer'],['number','Jersey number','text',false,'basic'],['position','Position','text',false,'basic'],['imageMode','Player image style','select',['cutout','photo'],'basic'],['photoScale','Player size %','number',false,'advanced'],['photoX','Move player left/right','number',false,'advanced'],['photoY','Move player up/down','number',false,'advanced'],['profileMode','Player profile mode','select',['standard','advanced'],'basic'],['status','Roster status','select',['active','new','returning','injured','retired','alumni','hidden'],'basic'],['dateOfBirth','Date of birth','text',false,'advanced'],['nationality','Nationality','text',false,'advanced'],['preferredFoot','Preferred foot','select',['','Right','Left','Both'],'advanced'],['height','Height','text',false,'advanced'],['weight','Weight','text',false,'advanced'],['quote','Player quote','textarea',false,'advanced'],['order','Display order','number',false,'basic'],['photo','Player photo storage path','locked',false,'developer']]},
+ games:{title:'Games',array:'games',imageField:'cardImage',imageFolder:'images/media/latest-games',fields:[['season','Season','seasonselect',true,'basic'],['gameNumber','Game number','number',true,'basic'],['opponent','Opponent team','text',true,'basic'],['result','Final result, e.g. W (3-1)','text',false,'basic'],['fullMatch','Full Match YouTube URL','url',false,'basic'],['highlights','Highlights YouTube URL','url',false,'basic'],['slideshow','Slideshow YouTube URL','url',false,'basic'],['cardLabel','Game card label','select',['','new','latest','current-season','last-season'],'basic'],['status','Show on website','select',['published','hidden'],'basic'],['date','Match date','date',false,'advanced'],['time','Match time','time',false,'advanced'],['location','Location','text',false,'advanced'],['group','Game carousel','select',['latest','archive'],'advanced'],['cardImage','Custom card image path','locked',false,'developer']]},
  seasons:{title:'Seasons',array:'seasons',imageField:'cardImage',imageFolder:'images/seasons',fields:[['title','Season name','text',true,'basic'],['fullMatches','Full Matches playlist URL','url',false,'basic'],['highlights','Highlights playlist URL','url',false,'basic'],['slideshows','Slideshows playlist URL','url',false,'basic'],['status','Show on website','select',['published','hidden'],'basic'],['subtitle','Optional subtitle','text',false,'advanced'],['dateRange','Date range','text',false,'advanced'],['league','League','text',false,'advanced'],['order','Carousel position','number',false,'advanced'],['cardImage','Custom card image path','locked',false,'developer']]},
  playlists:{title:'Playlists',array:'playlists',imageField:'cardImage',imageFolder:'images/media/playlists',fields:[['title','Playlist name','text',true,'basic'],['url','YouTube playlist URL','url',false,'basic'],['category','Playlist type','playlisttypeselect',['core','archive','shorts','best','goals','saves','assists','plays'],'basic'],['locations','Show in these carousels','locationselect',false,'basic'],['status','Show on website','select',['published','hidden'],'basic'],['description','Optional description','textarea',false,'advanced'],['order','Carousel position','number',false,'advanced'],['cardImage','Custom card image path','locked',false,'developer']]},
  news:{title:'News',array:'news',imageField:'image',imageFolder:'images/news',fields:[['title','Headline','text',true,'basic'],['imageNote','Image note / what this flyer is','textarea',false,'basic'],['summary','Public description','textarea',false,'basic'],['category','News type','select',['NEWS','MATCH','ANNOUNCEMENT','RESULT','TEAM UPDATE'],'basic'],['link','Optional related URL','url',false,'basic'],['status','Show on website','select',['published','hidden','placeholder'],'basic'],['date','Date','date',false,'advanced'],['order','Display position','number',false,'advanced'],['image','News image storage path','locked',false,'developer']]}
@@ -98,7 +98,7 @@ function safeImagePath(schema,form,item,uploadFile){
  const stamp=Date.now().toString(36);
  return `${schema.imageFolder}/${baseName}-${stamp}.png`;
 }
-function openForm(index){const schema=SECTION_SCHEMAS[state.section],arr=state.data[schema.array],item=index>=0?JSON.parse(JSON.stringify(arr[index])):{status:'published',order:arr.length+1};let uploadedPath='';state.editIndex=index;if(index<0){item.id=nextId(arr,state.section.replace(/s$/,''));if(state.section==='games')item.season=latestSeasonTitle();}if(state.section==='players'){const parts=String(item.name||'').trim().split(/\s+/).filter(Boolean);item.firstName=item.firstName||parts.shift()||'';item.lastName=item.lastName||parts.join(' ')||item.firstName||'';}$('#modalTitle').textContent=(index>=0?'Edit ':'Add ')+schema.title.replace(/s$/,'');const basic=schema.fields.filter(f=>(f[4]||'basic')==='basic').map(f=>inputHtml(f,item[f[0]])).join('');const advanced=schema.fields.filter(f=>f[4]==='advanced').map(f=>inputHtml(f,item[f[0]])).join('');const developer=schema.fields.filter(f=>f[4]==='developer').map(f=>inputHtml(f,item[f[0]])).join('');$('#editForm').innerHTML=`<div class="form-section"><h4>Basic Settings</h4><div class="form-grid">${basic}</div></div><div class="field full upload-field"><label>${state.section==='players'?'Upload player photo':state.section==='news'?'Upload news flyer':'Upload optional PNG image'}</label><input id="imageUpload" type="file" accept="image/png,image/jpeg,image/webp"><div class="help">The dashboard converts the file to PNG and creates the correct storage path automatically.</div><img id="imagePreview" class="upload-preview" ${item[schema.imageField]?`src="../${esc(item[schema.imageField])}"`:'hidden'}></div><details class="advanced-box"><summary>Advanced Settings</summary><div class="form-grid">${advanced||'<p class="help">No advanced settings.</p>'}</div></details><details class="developer-box"><summary>Technical Information (read only)</summary><div class="form-grid"><div class="field locked-field"><label>Internal ID 🔒</label><input value="${esc(item.id)}" readonly></div>${developer}</div></details><div class="admin-actions form-actions"><button class="btn primary" type="submit">Save Form</button><button class="btn" type="button" id="cancelForm">Cancel</button></div>`;const form=$('#editForm');form.onsubmit=e=>{
+function openForm(index){const schema=SECTION_SCHEMAS[state.section],arr=state.data[schema.array],item=index>=0?JSON.parse(JSON.stringify(arr[index])):{status:state.section==='players'?'active':'published',order:state.section==='players'?1:arr.length+1};let uploadedPath='';state.editIndex=index;if(index<0){item.id=nextId(arr,state.section.replace(/s$/,''));if(state.section==='games')item.season=latestSeasonTitle();}if(state.section==='players'){const parts=String(item.name||'').trim().split(/\s+/).filter(Boolean);item.firstName=item.firstName||parts.shift()||'';item.lastName=item.lastName||parts.join(' ')||item.firstName||'';}$('#modalTitle').textContent=(index>=0?'Edit ':'Add ')+schema.title.replace(/s$/,'');const basic=schema.fields.filter(f=>(f[4]||'basic')==='basic').map(f=>inputHtml(f,item[f[0]])).join('');const advanced=schema.fields.filter(f=>f[4]==='advanced').map(f=>inputHtml(f,item[f[0]])).join('');const developer=schema.fields.filter(f=>f[4]==='developer').map(f=>inputHtml(f,item[f[0]])).join('');$('#editForm').innerHTML=`<div class="form-section"><h4>Basic Settings</h4><div class="form-grid">${basic}</div></div><div class="field full upload-field"><label>${state.section==='players'?'Upload player photo':state.section==='news'?'Upload news flyer':'Upload optional PNG image'}</label><input id="imageUpload" type="file" accept="image/png,image/jpeg,image/webp"><div class="help">The dashboard converts the file to PNG and creates the correct storage path automatically.</div><img id="imagePreview" class="upload-preview" ${item[schema.imageField]?`src="../${esc(item[schema.imageField])}"`:'hidden'}></div><details class="advanced-box"><summary>Advanced Settings</summary><div class="form-grid">${advanced||'<p class="help">No advanced settings.</p>'}</div></details><details class="developer-box"><summary>Technical Information (read only)</summary><div class="form-grid"><div class="field locked-field"><label>Internal ID 🔒</label><input value="${esc(item.id)}" readonly></div>${developer}</div></details><div class="admin-actions form-actions"><button class="btn primary" type="submit">Save Form</button><button class="btn" type="button" id="cancelForm">Cancel</button></div>`;const form=$('#editForm');form.onsubmit=e=>{
  e.preventDefault();
  const fd=new FormData(e.target),obj={...item,id:item.id};
  for(const [k,v] of fd.entries())obj[k]=['order','gameNumber'].includes(k)&&v!==''?Number(v):v;
@@ -144,7 +144,14 @@ function openForm(index){const schema=SECTION_SCHEMAS[state.section],arr=state.d
  if(state.section==='games' && obj.cardLabel==='new'){
    arr.forEach((game,i)=>{if(i!==index && game.cardLabel==='new')game.cardLabel='current-season';});
  }
- if(index>=0)arr[index]=obj;else arr.push(obj);
+ if(state.section==='players'){
+   const requested=Math.max(1,Math.min(arr.length+(index<0?1:0),Number(obj.order)||1));
+   const without=index>=0?arr.filter((_,i)=>i!==index):arr.slice();
+   without.sort((a,b)=>(Number(a.order)||9999)-(Number(b.order)||9999));
+   without.splice(requested-1,0,obj);
+   without.forEach((player,i)=>player.order=i+1);
+   arr.splice(0,arr.length,...without);
+ }else if(index>=0)arr[index]=obj;else arr.push(obj);
  markDirty();closeModal();renderManager(state.section)
 };$('#cancelForm').onclick=closeModal;
  const seasonSelect=$('#seasonSelect');
@@ -1689,57 +1696,101 @@ window.AdminCMS={initCommon,publish};
 })();
 
 /* ============================================================
-   V194 — PENDING IMAGE PREVIEW SYNCHRONIZATION
-   Keeps Games/Seasons/Playlists and Livestream live previews on
-   the same draft image used by Preview Website and Publish.
+   V195 — AUTOMATIC GAME ORDER + PLAYER ROSTER ORDER CONTROLS
    ============================================================ */
 (() => {
-  'use strict';
-  const clean = value => String(value || '').split('?')[0];
-  const pendingUrl = path => {
-    const key = clean(path);
-    return (state.pendingPreviewUrls && (state.pendingPreviewUrls[path] || state.pendingPreviewUrls[key])) || '';
+  "use strict";
+
+  const baseRenderManagerV195 = renderManager;
+  const playerVisibleStatus = value => value !== 'hidden';
+  const playerStatusLabel = value => ({published:'ACTIVE',active:'ACTIVE',new:'NEW',returning:'RETURNING',injured:'INJURED',retired:'RETIRED',alumni:'ALUMNI',hidden:'HIDDEN'}[value] || String(value||'ACTIVE').toUpperCase());
+  const seasonRank = value => {
+    const text=String(value||'').trim();
+    const year=Number((text.match(/\b(19|20)\d{2}\b/)||[])[0])||0;
+    const name=text.toLowerCase();
+    const part=name.includes('winter')?1:name.includes('spring')?2:name.includes('summer')?3:name.includes('fall')||name.includes('autumn')?4:0;
+    return year*10+part;
+  };
+  const orderedGames = games => [...(games||[])].sort((a,b)=>{
+    const seasonDiff=seasonRank(b.season)-seasonRank(a.season);
+    if(seasonDiff)return seasonDiff;
+    const gameDiff=(Number(a.gameNumber)||9999)-(Number(b.gameNumber)||9999);
+    if(gameDiff)return gameDiff;
+    return (Number(a.order)||9999)-(Number(b.order)||9999);
+  });
+  const orderedPlayers = players => [...(players||[])].sort((a,b)=>(Number(a.order)||9999)-(Number(b.order)||9999));
+  const previewPath = path => {
+    const value=String(path||'');
+    if(/^(blob:|data:|https?:)/i.test(value))return value;
+    return '../'+value.replace(/^\/+/, '');
+  };
+  const drawPreview = (section,item,target) => {
+    if(!target)return;
+    if(!item){target.innerHTML='<div class="empty-admin-preview"><strong>No item selected</strong></div>';return;}
+    const image=section==='players'
+      ? previewPath(item.photo || state.data?.assets?.playerSilhouette || 'images/team/players/player-silhouette.png')
+      : previewPath(item.cardImage || state.data?.assets?.mediaBackground || 'generated/media-card-background.png');
+    target.innerHTML=typeof window.ASGVisualPreview==='function' ? window.ASGVisualPreview(section,item,image) : '';
   };
 
-  function applySelectedPendingArtwork() {
-    const page = document.body.dataset.page;
-    if (!['games','seasons','playlists'].includes(page)) return;
-    const selected = document.querySelector('#selectableManagerList [data-manager-row].is-selected');
-    const index = Number(selected?.dataset.managerRow ?? -1);
-    const item = state.data?.[page]?.[index];
-    const url = pendingUrl(item?.cardImage);
-    const visual = document.querySelector('#permanentCardPreview .generated-wide-visual');
-    if (url && visual) visual.style.setProperty('background-image', `url("${url}")`, 'important');
-  }
-
-  const observer = new MutationObserver(() => requestAnimationFrame(applySelectedPendingArtwork));
-  observer.observe(document.documentElement, {subtree:true, childList:true});
-  document.addEventListener('click', event => {
-    if (event.target.closest('[data-manager-row], [data-action="preview"]')) setTimeout(applySelectedPendingArtwork, 0);
-  });
-
-  // Make every new upload available to all Admin preview renderers immediately.
-  document.addEventListener('change', event => {
-    const input = event.target;
-    if (!(input instanceof HTMLInputElement) || input.type !== 'file') return;
-    setTimeout(applySelectedPendingArtwork, 60);
-  });
-
-  // Livestream: preserve the object URL in the shared pending-preview map.
-  const priorRenderLive = renderLive;
-  renderLive = function() {
-    priorRenderLive();
-    const upload = document.querySelector('#liveUpload');
-    if (!upload) return;
-    const prior = upload.onchange;
-    upload.onchange = async event => {
-      if (prior) await prior.call(upload, event);
-      const path = state.data?.live?.thumbnail;
-      if (path && upload.files?.[0]) {
-        state.pendingPreviewUrls = state.pendingPreviewUrls || {};
-        const preview = document.querySelector('#livePreview img');
-        if (preview?.src) state.pendingPreviewUrls[path] = preview.src;
+  function renderPlayersV195(){
+    state.section='players';
+    const source=state.data.players||[];
+    const arranged=orderedPlayers(source);
+    arranged.forEach((player,index)=>player.order=index+1);
+    let selectedId=arranged.find(player=>playerVisibleStatus(player.status))?.id || arranged[0]?.id || '';
+    $('#pageTitle').textContent='Players';
+    $('#content').innerHTML=`<div class="v2-banner"><strong>Roster Order Manager</strong><span>New players start in position 1. Use Move Up, Move Down, or Display Order to arrange the roster.</span></div>
+      <div class="admin-actions manager-actions"><button class="btn primary" id="addBtn">Add Player</button><button class="btn" id="publishBtn">Publish All Changes</button><button class="btn" id="previewBtn">Preview Draft</button><span class="pending" id="pendingLabel">${state.dirty?'Unpublished changes':''}</span></div>
+      <div class="permanent-preview-layout"><div class="item-list permanent-manager-list" id="selectableManagerList">${arranged.map((player,index)=>`<div class="item-row ${player.status==='hidden'?'is-hidden':''}" data-player-id="${esc(player.id)}" tabindex="0"><div><div class="item-title"><span class="roster-order-number">${index+1}</span> ${esc(titleFor(player,'players'))}</div><div class="item-sub">#${esc(player.number||'—')} • ${esc(player.position||'Position not set')} • ${esc(playerStatusLabel(player.status))}</div></div><div class="row-actions"><button class="btn small" data-player-action="preview">Preview</button><button class="btn small" data-player-action="up" ${index===0?'disabled':''}>↑ Move Up</button><button class="btn small" data-player-action="down" ${index===arranged.length-1?'disabled':''}>↓ Move Down</button><button class="btn small" data-player-action="edit">Edit</button><button class="btn small" data-player-action="toggle">${player.status==='hidden'?'Restore':'Hide'}</button><button class="btn small danger" data-player-action="delete">Delete</button></div></div>`).join('')}</div>
+      <aside class="visual-editor-preview permanent-card-preview"><div class="preview-toolbar"><div><span class="v2-pill">LIVE PREVIEW</span><h4>Selected Player Card</h4></div><div class="preview-device-switch"><button type="button" class="is-active" data-manager-device="desktop">Desktop</button><button type="button" data-manager-device="mobile">Mobile</button></div></div><div id="permanentCardPreview" class="live-card-preview"></div><p class="help preview-help">Roster status controls visibility and identifies active, new, returning, injured, retired, and alumni players.</p></aside></div>`;
+    const list=$('#selectableManagerList'),preview=$('#permanentCardPreview');
+    const redraw=()=>{
+      const current=(state.data.players||[]).find(player=>player.id===selectedId) || orderedPlayers(state.data.players||[])[0];
+      drawPreview('players',current,preview);
+      list.querySelectorAll('[data-player-id]').forEach(row=>row.classList.toggle('is-selected',row.dataset.playerId===selectedId));
+    };
+    $('#addBtn').onclick=()=>openForm(-1); $('#publishBtn').onclick=publish;
+    $('#previewBtn').onclick=()=>{sessionStorage.setItem('asgPreviewMasterContent',JSON.stringify(state.data));window.open('../team.html?adminPreview=1','_blank');};
+    list.onclick=event=>{
+      const row=event.target.closest('[data-player-id]'); if(!row)return;
+      const action=event.target.closest('[data-player-action]')?.dataset.playerAction||'preview';
+      selectedId=row.dataset.playerId;
+      const live=state.data.players||[],ordered=orderedPlayers(live),index=ordered.findIndex(player=>player.id===selectedId),player=ordered[index];
+      if(action==='preview'){redraw();return;}
+      if(action==='edit'){openForm(live.findIndex(item=>item.id===selectedId));return;}
+      if(action==='toggle'){player.status=player.status==='hidden'?'active':'hidden';markDirty();renderPlayersV195();return;}
+      if(action==='delete'&&confirm('Permanently delete this player? Hide is safer.')){live.splice(live.findIndex(item=>item.id===selectedId),1);orderedPlayers(live).forEach((item,i)=>item.order=i+1);markDirty();renderPlayersV195();return;}
+      if(action==='up'||action==='down'){
+        const target=index+(action==='up'?-1:1); if(target<0||target>=ordered.length)return;
+        [ordered[index],ordered[target]]=[ordered[target],ordered[index]];
+        ordered.forEach((item,i)=>item.order=i+1);
+        live.splice(0,live.length,...ordered);markDirty();renderPlayersV195();
       }
     };
+    $$('[data-manager-device]').forEach(button=>button.onclick=()=>{$$('[data-manager-device]').forEach(item=>item.classList.toggle('is-active',item===button));preview.classList.toggle('mobile-preview',button.dataset.managerDevice==='mobile');});
+    redraw();
+  }
+
+  function renderGamesV195(){
+    state.section='games';
+    const source=state.data.games||[],arranged=orderedGames(source);
+    let selectedId=arranged.find(game=>game.status!=='hidden')?.id || arranged[0]?.id || '';
+    $('#pageTitle').textContent='Games';
+    $('#content').innerHTML=`<div class="v2-banner"><strong>Automatic Latest Games Order</strong><span>The newest season is placed first automatically. Games inside each season appear Game 1, Game 2, Game 3, and so on. Carousel positions are no longer required.</span></div>
+      <div class="admin-actions manager-actions"><button class="btn primary" id="addBtn">Add Game</button><button class="btn" id="publishBtn">Publish All Changes</button><button class="btn" id="previewBtn">Preview Draft</button><span class="pending" id="pendingLabel">${state.dirty?'Unpublished changes':''}</span></div>
+      <div class="permanent-preview-layout"><div class="item-list permanent-manager-list" id="selectableManagerList">${arranged.map((game,index)=>`<div class="item-row ${game.status==='hidden'?'is-hidden':''}" data-game-id="${esc(game.id)}" tabindex="0"><div><div class="item-title"><span class="roster-order-number">${index+1}</span> ${esc(titleFor(game,'games'))}</div><div class="item-sub">${esc(game.opponent||'Opponent')} • ${esc(game.result||'No result')} • ${esc(game.status||'published')}</div></div><div class="row-actions"><button class="btn small" data-game-action="preview">Preview</button><button class="btn small" data-game-action="edit">Edit</button><button class="btn small" data-game-action="toggle">${game.status==='hidden'?'Restore':'Hide'}</button><button class="btn small danger" data-game-action="delete">Delete</button></div></div>`).join('')}</div>
+      <aside class="visual-editor-preview permanent-card-preview"><div class="preview-toolbar"><div><span class="v2-pill">LIVE PREVIEW</span><h4>Selected Game Card</h4></div><div class="preview-device-switch"><button type="button" class="is-active" data-manager-device="desktop">Desktop</button><button type="button" data-manager-device="mobile">Mobile</button></div></div><div id="permanentCardPreview" class="live-card-preview"></div><p class="help preview-help">Example: Fall 2026 games automatically appear before Summer 2026 games.</p></aside></div>`;
+    const list=$('#selectableManagerList'),preview=$('#permanentCardPreview');
+    const redraw=()=>{const game=(state.data.games||[]).find(item=>item.id===selectedId)||orderedGames(state.data.games||[])[0];drawPreview('games',game,preview);list.querySelectorAll('[data-game-id]').forEach(row=>row.classList.toggle('is-selected',row.dataset.gameId===selectedId));};
+    $('#addBtn').onclick=()=>openForm(-1);$('#publishBtn').onclick=publish;$('#previewBtn').onclick=()=>{sessionStorage.setItem('asgPreviewMasterContent',JSON.stringify(state.data));window.open('../media.html?adminPreview=1','_blank');};
+    list.onclick=event=>{const row=event.target.closest('[data-game-id]');if(!row)return;selectedId=row.dataset.gameId;const live=state.data.games||[],index=live.findIndex(item=>item.id===selectedId),game=live[index],action=event.target.closest('[data-game-action]')?.dataset.gameAction||'preview';if(action==='preview'){redraw();return;}if(action==='edit'){openForm(index);return;}if(action==='toggle'){game.status=game.status==='hidden'?'published':'hidden';markDirty();renderGamesV195();return;}if(action==='delete'&&confirm('Permanently delete this game? Hide is safer.')){live.splice(index,1);markDirty();renderGamesV195();}};
+    $$('[data-manager-device]').forEach(button=>button.onclick=()=>{$$('[data-manager-device]').forEach(item=>item.classList.toggle('is-active',item===button));preview.classList.toggle('mobile-preview',button.dataset.managerDevice==='mobile');});redraw();
+  }
+
+  renderManager=function(section){
+    if(section==='players'){renderPlayersV195();return;}
+    if(section==='games'){renderGamesV195();return;}
+    baseRenderManagerV195(section);
   };
 })();
