@@ -1,5 +1,5 @@
 {
-  "version": 210,
+  "version": 211,
   "updated": "2026-07-25",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -604,8 +604,8 @@
       "gameNumber": 1,
       "opponent": "Argentina ",
       "result": "W (3-2)",
-      "fullMatch": "",
-      "highlights": "",
+      "fullMatch": "https://youtu.be/kXrVB0UgooE",
+      "highlights": "https://youtu.be/Tqw5XTsDo4k",
       "slideshow": "https://youtu.be/tP5Xf2CWOaw",
       "cardLabel": "new",
       "date": "2026-07-19",
@@ -3490,5 +3490,5 @@
     "standingsDescription": "Testing",
     "scheduleDescription": "Testing"
   },
-  "lastPublishToken": "admin-1784951324182-e2x1e7"
+  "lastPublishToken": "admin-1784999610474-wt48t7"
 }
