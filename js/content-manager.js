@@ -33,6 +33,22 @@
   };
   const isVisible = item => item && item.status !== 'hidden';
   const sortItems = items => [...items].filter(isVisible).sort((a,b)=>(a.order||0)-(b.order||0));
+  const seasonRank = value => {
+    const text=String(value||'').trim();
+    const year=Number((text.match(/\b(19|20)\d{2}\b/)||[])[0])||0;
+    const name=text.toLowerCase();
+    const part=name.includes('winter')?1:name.includes('spring')?2:name.includes('summer')?3:name.includes('fall')||name.includes('autumn')?4:0;
+    return year*10+part;
+  };
+  const sortLatestGames = items => [...(items||[])].filter(isVisible).filter(g=>g.group==='latest').sort((a,b)=>{
+    const seasonDiff=seasonRank(b.season)-seasonRank(a.season);
+    if(seasonDiff)return seasonDiff;
+    const dateA=Date.parse(a.date||'')||0,dateB=Date.parse(b.date||'')||0;
+    if(dateA&&dateB&&dateA!==dateB)return dateA-dateB;
+    const gameDiff=(Number(a.gameNumber)||9999)-(Number(b.gameNumber)||9999);
+    if(gameDiff)return gameDiff;
+    return (Number(a.order)||9999)-(Number(b.order)||9999);
+  });
   const linkAttrs = url => url && url !== '#' ? `href="${esc(url)}" target="_blank" rel="noopener"` : 'href="#" class="generated-disabled" aria-disabled="true"';
   function colorFor(data, category) { return data.colors?.[category] || data.colors?.archive || '#f5c542'; }
   function applyGraphicAssets(data){const a=data.assets||{},root=document.documentElement;const set=(n,v)=>{if(v)root.style.setProperty(n,`url("${pngOnlyPath(v)}")`);};set('--home-carousel-background',a.homeCarouselBackground);set('--team-carousel-background',a.teamCarouselBackground);set('--media-carousel-background',a.mediaCarouselBackground);set('--season-carousel-background',a.seasonCarouselBackground);}
@@ -224,7 +240,7 @@
   function render(data){
     document.querySelectorAll('[data-generated-source]').forEach(el=>{
       const source=el.dataset.generatedSource;
-      if(source==='games') el.innerHTML=sortItems(data.games).filter(g=>g.group==='latest').map(g=>gameCard(data,g)).join('');
+      if(source==='games') el.innerHTML=sortLatestGames(data.games).map(g=>gameCard(data,g)).join('');
       else if(source==='seasons') el.innerHTML=sortItems(data.seasons).map(s=>seasonCard(data,s)).join('');
       else if(source==='media-archive') el.innerHTML=sortItems(data.playlists).filter(p=>p.locations?.includes('media-archive')).map(p=>playlistCard(data,p,'blue')).join('');
       else if(source==='home-best') el.innerHTML=sortItems(data.playlists).filter(p=>p.locations?.includes('home-best')).map(p=>playlistCard(data,p,'gold')).join('');
