@@ -1687,3 +1687,59 @@ window.AdminCMS={initCommon,publish};
   observer.observe(document.documentElement,{subtree:true,childList:true});
   document.addEventListener('DOMContentLoaded',enhancePlayerLivePreview,{once:true});
 })();
+
+/* ============================================================
+   V194 — PENDING IMAGE PREVIEW SYNCHRONIZATION
+   Keeps Games/Seasons/Playlists and Livestream live previews on
+   the same draft image used by Preview Website and Publish.
+   ============================================================ */
+(() => {
+  'use strict';
+  const clean = value => String(value || '').split('?')[0];
+  const pendingUrl = path => {
+    const key = clean(path);
+    return (state.pendingPreviewUrls && (state.pendingPreviewUrls[path] || state.pendingPreviewUrls[key])) || '';
+  };
+
+  function applySelectedPendingArtwork() {
+    const page = document.body.dataset.page;
+    if (!['games','seasons','playlists'].includes(page)) return;
+    const selected = document.querySelector('#selectableManagerList [data-manager-row].is-selected');
+    const index = Number(selected?.dataset.managerRow ?? -1);
+    const item = state.data?.[page]?.[index];
+    const url = pendingUrl(item?.cardImage);
+    const visual = document.querySelector('#permanentCardPreview .generated-wide-visual');
+    if (url && visual) visual.style.setProperty('background-image', `url("${url}")`, 'important');
+  }
+
+  const observer = new MutationObserver(() => requestAnimationFrame(applySelectedPendingArtwork));
+  observer.observe(document.documentElement, {subtree:true, childList:true});
+  document.addEventListener('click', event => {
+    if (event.target.closest('[data-manager-row], [data-action="preview"]')) setTimeout(applySelectedPendingArtwork, 0);
+  });
+
+  // Make every new upload available to all Admin preview renderers immediately.
+  document.addEventListener('change', event => {
+    const input = event.target;
+    if (!(input instanceof HTMLInputElement) || input.type !== 'file') return;
+    setTimeout(applySelectedPendingArtwork, 60);
+  });
+
+  // Livestream: preserve the object URL in the shared pending-preview map.
+  const priorRenderLive = renderLive;
+  renderLive = function() {
+    priorRenderLive();
+    const upload = document.querySelector('#liveUpload');
+    if (!upload) return;
+    const prior = upload.onchange;
+    upload.onchange = async event => {
+      if (prior) await prior.call(upload, event);
+      const path = state.data?.live?.thumbnail;
+      if (path && upload.files?.[0]) {
+        state.pendingPreviewUrls = state.pendingPreviewUrls || {};
+        const preview = document.querySelector('#livePreview img');
+        if (preview?.src) state.pendingPreviewUrls[path] = preview.src;
+      }
+    };
+  };
+})();

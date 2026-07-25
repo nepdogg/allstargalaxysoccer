@@ -1929,3 +1929,29 @@ body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .protot
 body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(1){top:44.9%!important}body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(2){top:51.78%!important}body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(3){top:58.66%!important}body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(4){top:65.54%!important}body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(5){top:72.42%!important}
 body[data-page="players"] .ultimate-profile-card.prototype-profile-frame .prototype-profile-quote{position:absolute!important;left:15%!important;right:15%!important;top:78.4%!important;height:7.2%!important;margin:0!important;display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important;overflow:hidden!important;font-size:3.35cqw!important;line-height:1.08!important}
 .player-card-side-switch{margin-left:auto!important}
+
+/* V194 — Admin preview parity and live artwork lock */
+#permanentCardPreview .generated-wide-card,
+#liveCardPreview .generated-wide-card { grid-template-columns:minmax(0,80%) minmax(0,20%) !important; }
+#permanentCardPreview .generated-game-footer,
+#liveCardPreview .generated-game-footer { grid-template-columns:minmax(0,27%) minmax(0,53%) minmax(0,20%) !important; }
+#permanentCardPreview .generated-wide-visual,
+#liveCardPreview .generated-wide-visual { box-sizing:border-box !important; border-right:2px solid var(--card-accent) !important; }
+#permanentCardPreview .generated-action-icon,
+#liveCardPreview .generated-action-icon { margin-bottom:4px !important; }
+#permanentCardPreview .generated-action-copy,
+#liveCardPreview .generated-action-copy { margin-top:2px !important; }
+.livestream-preview-card img { width:100% !important; max-width:none !important; height:clamp(220px,32vw,420px) !important; object-fit:cover !important; object-position:center !important; }
+@media(max-width:700px){.livestream-preview-card img{height:clamp(190px,58vw,330px)!important}}
+
+/* Profile preview uses the exact public V194 geometry. */
+.public-style-player-preview .ultimate-profile-card.prototype-profile-frame{aspect-ratio:1079/1457!important;container-type:inline-size!important;position:relative!important;overflow:hidden!important}
+.public-style-player-preview .prototype-profile-number{top:7%!important;left:6.1%!important;width:23%!important;height:10.2%!important;display:flex!important;align-items:center!important;justify-content:flex-start!important;font-size:12.6cqw!important}
+.public-style-player-preview .prototype-profile-position{top:17.2%!important;left:6.4%!important;width:35%!important;height:4.8%!important;display:flex!important;align-items:center!important;justify-content:flex-start!important;text-align:left!important;font-size:3.75cqw!important;white-space:nowrap!important;overflow:hidden!important}
+.public-style-player-preview .prototype-profile-name{top:24.5%!important;left:13.5%!important;right:13.5%!important;height:11.2%!important;display:grid!important;grid-template-rows:38% 62%!important;align-items:center!important;justify-items:center!important;overflow:hidden!important}
+.public-style-player-preview .prototype-profile-name small{font-size:5.7cqw!important;line-height:1!important;letter-spacing:.18em!important;white-space:nowrap!important}
+.public-style-player-preview .prototype-profile-name strong{font-size:9.7cqw!important;line-height:.88!important;white-space:nowrap!important;filter:none!important;text-shadow:0 .035em 0 #aaa,0 .07em 0 #666,0 .11em .1em rgba(0,0,0,.92)!important}
+.public-style-player-preview .prototype-profile-values{position:absolute!important;inset:0!important;display:block!important}
+.public-style-player-preview .prototype-profile-values b{position:absolute!important;left:65.5%!important;width:22.5%!important;height:4.9%!important;display:flex!important;align-items:center!important;justify-content:center!important;font-size:3.55cqw!important;line-height:1!important}
+.public-style-player-preview .prototype-profile-values b:nth-child(1){top:44.55%!important}.public-style-player-preview .prototype-profile-values b:nth-child(2){top:51.42%!important}.public-style-player-preview .prototype-profile-values b:nth-child(3){top:58.29%!important}.public-style-player-preview .prototype-profile-values b:nth-child(4){top:65.16%!important}.public-style-player-preview .prototype-profile-values b:nth-child(5){top:72.03%!important}
+.public-style-player-preview .prototype-profile-quote{left:14%!important;right:14%!important;top:79.15%!important;height:6.8%!important;font-size:3.2cqw!important}
