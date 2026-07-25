@@ -1,5 +1,5 @@
 {
-  "version": 207,
+  "version": 208,
   "updated": "2026-07-25",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -611,7 +611,8 @@
       "date": "2026-07-19",
       "time": "",
       "location": "FAIR OAKS PARK",
-      "group": "latest"
+      "group": "latest",
+      "cardImage": "images/media/latest-games/game-01-mrzt11xh.png"
     }
   ],
   "seasons": [
@@ -3489,5 +3490,5 @@
     "standingsDescription": "Testing",
     "scheduleDescription": "Testing"
   },
-  "lastPublishToken": "admin-1784946797659-nii3yx"
+  "lastPublishToken": "admin-1784949838852-gtssw5"
 }
