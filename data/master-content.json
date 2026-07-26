@@ -1,6 +1,6 @@
 {
-  "version": 211,
-  "updated": "2026-07-25",
+  "version": 212,
+  "updated": "2026-07-26",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
     "logo": "generated/allstar-galaxy-logo.png",
@@ -3490,6 +3490,17 @@
     "standingsDescription": "Testing",
     "scheduleDescription": "Testing"
   },
-  "lastPublishToken": "admin-1784999610474-wt48t7",
-  "gameAwards": []
+  "lastPublishToken": "admin-1785028341125-1t3fft",
+  "gameAwards": [
+    {
+      "status": "published",
+      "order": 1,
+      "id": "award-01",
+      "awardType": "player",
+      "gameId": "game-01",
+      "playerId": "player-04",
+      "videoUrl": "https://youtu.be/vKTeJ3snATo",
+      "customTitle": ""
+    }
+  ]
 }
