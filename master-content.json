@@ -1,5 +1,5 @@
 {
-  "version": 84,
+  "version": 196,
   "updated": "2026-07-11",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -2965,5 +2965,6 @@
     "title": "Livestream Coming Soon",
     "description": "Live broadcasts will appear here on game day.",
     "url": ""
-  }
+  },
+  "gameAwards": []
 }
