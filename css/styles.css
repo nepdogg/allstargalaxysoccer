@@ -21047,19 +21047,108 @@ body[data-page="graphics"] .sticky-graphics-publish{position:sticky!important;bo
 }
 
 
-/* V196 Game Awards: one shared card renderer for Admin, Preview Website and public site */
-.game-awards-carousel .carousel-track{align-items:center}
-.game-award-slide{display:block;text-decoration:none;color:#fff;width:min(680px,82vw);flex:0 0 min(680px,82vw);cursor:pointer}
-.game-award-card{overflow:hidden;border:2px solid #e9f7ff;border-radius:20px;background:#03050a;box-shadow:0 0 18px color-mix(in srgb,var(--award-accent) 70%,transparent);aspect-ratio:2.05/1}
-.game-award-header{height:20%;display:flex;align-items:center;gap:16px;padding:0 22px;border-bottom:1px solid #e9f7ff;background:linear-gradient(90deg,color-mix(in srgb,var(--award-accent) 13%,#020308),#020308)}
-.game-award-header strong{font-size:clamp(15px,2vw,24px);letter-spacing:.08em}.game-award-header small{margin-left:auto;color:var(--award-accent);font-weight:900;font-size:10px}.game-award-icon{font-size:clamp(23px,3vw,34px)}
-.game-award-body{height:80%;display:grid;grid-template-columns:46% 54%}.game-award-photo{min-width:0;overflow:hidden;border-right:1px solid #dcefff;background:#090713}.game-award-photo img{width:100%;height:100%;object-fit:contain;object-position:center bottom;display:block}
-.game-award-copy{min-width:0;padding:clamp(13px,2.1vw,25px);display:flex;flex-direction:column;justify-content:center}.game-award-copy h3{margin:0 0 7px;font-size:clamp(22px,4vw,44px);line-height:.9;text-transform:uppercase;overflow-wrap:anywhere}.game-award-copy h3 span{display:block;font-size:.72em}.game-award-player-meta,.game-award-game-meta,.game-award-match,.game-award-result{margin:4px 0;font-weight:900;letter-spacing:.025em}.game-award-player-meta{color:var(--award-accent);font-size:clamp(13px,1.7vw,19px)}.game-award-game-meta{font-size:clamp(11px,1.35vw,15px)}.game-award-match{font-size:clamp(14px,1.9vw,21px)}.game-award-result{font-size:clamp(12px,1.5vw,17px)}.game-award-watch{margin-top:auto;padding-top:8px;color:var(--award-accent);font-size:clamp(10px,1.25vw,14px);font-weight:900;letter-spacing:.06em}.game-award-watch.is-pending{opacity:.65}
-@media(max-width:640px){.game-award-slide{width:88vw;flex-basis:88vw}.game-award-card{aspect-ratio:1.55/1}.game-award-header{height:18%;padding:0 12px;gap:8px}.game-award-body{height:82%;grid-template-columns:44% 56%}.game-award-copy{padding:10px}.game-award-copy h3{font-size:clamp(20px,7vw,31px)}.game-award-player-meta{font-size:12px}.game-award-game-meta{font-size:10px}.game-award-match{font-size:13px}.game-award-result{font-size:11px}.game-award-watch{font-size:9px}}
-
-
-/* V197 Game Awards section-title graphic */
-.game-awards-heading{display:flex;flex-direction:column;align-items:center;text-align:center}
-.game-awards-heading .game-awards-title-graphic{display:block;width:min(92%,1200px);height:auto;margin:0 auto 10px;object-fit:contain}
-.game-awards-heading p{margin:0 auto 24px;max-width:900px}
-@media(max-width:640px){.game-awards-heading .game-awards-title-graphic{width:96%;margin-bottom:8px}.game-awards-heading p{margin-bottom:18px;padding:0 12px}}
+/* =========================================================
+   V200 — GAME AWARDS CAROUSEL MATCHES MEDIA SHOWCASE
+   Keeps award cards the same carousel size and neighbor layout
+   as Latest Games, Game Archive, and Media Center.
+========================================================= */
+.page-media .media-game-awards-carousel {
+    width: calc(100% - 36px) !important;
+    max-width: 1220px !important;
+    height: clamp(320px, 29vw, 425px) !important;
+    min-height: clamp(320px, 29vw, 425px) !important;
+    margin: 0 auto !important;
+    padding: 28px 56px 56px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 20px !important;
+    border: 1px solid rgba(0,185,255,.92) !important;
+    background: radial-gradient(circle at 50% 8%,rgba(0,185,255,.18),transparent 45%),linear-gradient(180deg,rgba(2,15,38,.97),rgba(3,0,19,.985)) !important;
+    box-shadow: 0 0 18px rgba(0,185,255,.36),inset 0 0 42px rgba(0,185,255,.10),0 16px 32px rgba(0,0,0,.48) !important;
+}
+.page-media .media-game-awards-carousel .carousel-track {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    transform: none !important;
+    overflow: visible !important;
+}
+.page-media .media-game-awards-carousel .game-award-slide {
+    position: absolute !important;
+    left: 50% !important;
+    top: 46% !important;
+    width: clamp(335px,57vw,640px) !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    flex: none !important;
+    aspect-ratio: 16 / 9 !important;
+    border-radius: 15px !important;
+    border: 2px solid var(--award-accent) !important;
+    overflow: hidden !important;
+    opacity: .28 !important;
+    filter: brightness(.50) saturate(.82) !important;
+    transform: translate(-50%,-50%) translateX(calc(var(--media-offset) * clamp(245px,42vw,510px))) scale(.62) !important;
+    transition: transform .5s cubic-bezier(.22,.61,.36,1),opacity .5s ease,filter .5s ease,box-shadow .5s ease,border-color .5s ease !important;
+    z-index: 1 !important;
+    box-shadow: 0 0 13px color-mix(in srgb,var(--award-accent) 55%,transparent),0 12px 28px rgba(0,0,0,.50) !important;
+    text-decoration: none !important;
+}
+.page-media .media-game-awards-carousel .game-award-slide.is-neighbor {
+    opacity: .80 !important;
+    filter: brightness(.80) saturate(1.05) !important;
+    transform: translate(-50%,-50%) translateX(calc(var(--media-offset) * clamp(245px,42vw,510px))) scale(.76) !important;
+    z-index: 3 !important;
+}
+.page-media .media-game-awards-carousel .game-award-slide.is-distance-2 {
+    opacity: .20 !important;
+    filter: brightness(.42) saturate(.76) !important;
+    transform: translate(-50%,-50%) translateX(calc(var(--media-offset) * clamp(245px,42vw,510px))) scale(.52) !important;
+}
+.page-media .media-game-awards-carousel .game-award-slide.is-active {
+    opacity: 1 !important;
+    filter: brightness(1.06) saturate(1.16) !important;
+    transform: translate(-50%,-50%) translateX(0) scale(1.02) !important;
+    z-index: 8 !important;
+    box-shadow: 0 0 20px color-mix(in srgb,var(--award-accent) 82%,transparent),0 0 44px color-mix(in srgb,var(--award-accent) 38%,transparent),0 18px 38px rgba(0,0,0,.62) !important;
+}
+.page-media .media-game-awards-carousel .game-award-slide.is-active:hover,
+.page-media .media-game-awards-carousel .game-award-slide.is-active:focus-visible {
+    transform: translate(-50%,-50%) translateX(0) scale(1.045) !important;
+}
+.page-media .media-game-awards-carousel .game-award-slide.is-hidden-media {opacity:0!important;pointer-events:none!important}
+.page-media .media-game-awards-carousel .game-award-card {width:100%;height:100%;display:grid;grid-template-rows:19% 81%;background:#03050a;color:#fff;border-radius:13px;overflow:hidden}
+.page-media .media-game-awards-carousel .game-award-header {display:flex;align-items:center;gap:14px;padding:0 20px;border-bottom:1px solid rgba(255,255,255,.82);background:linear-gradient(90deg,color-mix(in srgb,var(--award-accent) 18%,#020308),#020308)}
+.page-media .media-game-awards-carousel .game-award-header strong {color:var(--award-accent);font-size:clamp(15px,2vw,24px);letter-spacing:.08em;line-height:1}
+.page-media .media-game-awards-carousel .game-award-icon {font-size:clamp(22px,2.5vw,34px)}
+.page-media .media-game-awards-carousel .game-award-body {display:grid;grid-template-columns:46% 54%;min-height:0}
+.page-media .media-game-awards-carousel .game-award-photo {min-width:0;min-height:0;border-right:1px solid rgba(255,255,255,.82);background:#080313;display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+.page-media .media-game-awards-carousel .game-award-photo img {width:100%;height:100%;object-fit:contain;object-position:center bottom;display:block}
+.page-media .media-game-awards-carousel .game-award-copy {padding:clamp(12px,2vw,24px);display:flex;flex-direction:column;justify-content:center;min-width:0;overflow:hidden}
+.page-media .media-game-awards-carousel .game-award-copy h3 {margin:0 0 7px;color:var(--award-accent);font-size:clamp(21px,3vw,38px);line-height:.94;text-transform:uppercase;letter-spacing:.01em}
+.page-media .media-game-awards-carousel .game-award-copy h3 span {display:block}
+.page-media .media-game-awards-carousel .game-award-copy p {margin:0 0 7px}
+.page-media .media-game-awards-carousel .game-award-player-meta {color:var(--award-accent);font-weight:900;font-size:clamp(11px,1.5vw,17px)}
+.page-media .media-game-awards-carousel .game-award-game-meta {font-weight:800;font-size:clamp(9px,1.2vw,13px)}
+.page-media .media-game-awards-carousel .game-award-match {font-weight:900;font-size:clamp(12px,1.65vw,20px);line-height:1.14}
+.page-media .media-game-awards-carousel .game-award-result {font-weight:900;font-size:clamp(11px,1.4vw,16px)}
+.page-media .media-game-awards-carousel .game-award-watch {margin-top:auto;color:var(--award-accent);font-weight:900;font-size:clamp(8px,1.1vw,12px);letter-spacing:.06em}
+.page-media .media-game-awards-carousel .carousel-button {top:47%!important;z-index:12!important;width:46px!important;height:46px!important;font-size:2.2rem!important}
+.page-media .media-game-awards-carousel .carousel-button.prev {left:16px!important}
+.page-media .media-game-awards-carousel .carousel-button.next {right:16px!important}
+.page-media .media-game-awards-carousel .carousel-dots {bottom:18px!important}
+@media(max-width:760px){
+  .page-media .media-game-awards-carousel{width:calc(100% - 24px)!important;height:clamp(250px,75vw,330px)!important;min-height:clamp(250px,75vw,330px)!important;padding:22px 38px 48px!important}
+  .page-media .media-game-awards-carousel .game-award-slide{width:min(78vw,430px)!important;top:45%!important;transform:translate(-50%,-50%) translateX(calc(var(--media-offset) * 72vw)) scale(.60)!important}
+  .page-media .media-game-awards-carousel .game-award-slide.is-neighbor{transform:translate(-50%,-50%) translateX(calc(var(--media-offset) * 72vw)) scale(.72)!important}
+  .page-media .media-game-awards-carousel .game-award-slide.is-distance-2{transform:translate(-50%,-50%) translateX(calc(var(--media-offset) * 72vw)) scale(.50)!important}
+  .page-media .media-game-awards-carousel .game-award-slide.is-active{transform:translate(-50%,-50%) scale(1)!important}
+  .page-media .media-game-awards-carousel .game-award-slide.is-active:hover,.page-media .media-game-awards-carousel .game-award-slide.is-active:focus-visible{transform:translate(-50%,-50%) scale(1.02)!important}
+  .page-media .media-game-awards-carousel .game-award-header{padding:0 11px;gap:8px}
+  .page-media .media-game-awards-carousel .game-award-body{grid-template-columns:44% 56%}
+  .page-media .media-game-awards-carousel .game-award-copy{padding:9px}
+  .page-media .media-game-awards-carousel .game-award-copy h3{font-size:clamp(17px,5.3vw,27px)}
+  .page-media .media-game-awards-carousel .game-award-watch{font-size:8px}
+}
