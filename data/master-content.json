@@ -1,5 +1,5 @@
 {
-  "version": 214,
+  "version": 215,
   "updated": "2026-07-26",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -3490,17 +3490,54 @@
     "standingsDescription": "Testing",
     "scheduleDescription": "Testing"
   },
-  "lastPublishToken": "admin-1785044417532-y7tm3k",
+  "lastPublishToken": "admin-1785047851844-89dh3s",
   "gameAwards": [
+    {
+      "id": "game-award-01",
+      "awardType": "Save of the Game",
+      "status": "published",
+      "order": 2,
+      "gameId": "game-01",
+      "playerId": "player-32",
+      "videoUrl": "https://youtu.be/7kvHZxafYnM",
+      "gameSnapshot": {
+        "season": "Fall 2026",
+        "gameNumber": 1,
+        "opponent": "Argentina ",
+        "result": "W (3-2)"
+      },
+      "playerSnapshot": {
+        "name": "FIRST NAME LAST NAME",
+        "firstName": "FIRST NAME",
+        "lastName": "LAST NAME",
+        "number": "100",
+        "position": "STRIKER",
+        "photo": "images/team/players/player-silhouette.png"
+      }
+    },
     {
       "status": "published",
       "order": 1,
       "id": "award-01",
-      "awardType": "player",
+      "awardType": "Player of the Game",
       "gameId": "game-01",
-      "playerId": "player-04",
+      "playerId": "player-32",
       "videoUrl": "https://youtu.be/vKTeJ3snATo",
-      "customTitle": ""
+      "customTitle": "",
+      "gameSnapshot": {
+        "season": "Fall 2026",
+        "gameNumber": 1,
+        "opponent": "Argentina ",
+        "result": "W (3-2)"
+      },
+      "playerSnapshot": {
+        "name": "FIRST NAME LAST NAME",
+        "firstName": "FIRST NAME",
+        "lastName": "LAST NAME",
+        "number": "100",
+        "position": "STRIKER",
+        "photo": "images/team/players/player-silhouette.png"
+      }
     }
   ]
 }
