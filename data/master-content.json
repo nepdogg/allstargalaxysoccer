@@ -1,5 +1,5 @@
 {
-  "version": 212,
+  "version": 213,
   "updated": "2026-07-26",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -3490,7 +3490,7 @@
     "standingsDescription": "Testing",
     "scheduleDescription": "Testing"
   },
-  "lastPublishToken": "admin-1785028341125-1t3fft",
+  "lastPublishToken": "admin-1785043448497-orz9nn",
   "gameAwards": [
     {
       "status": "published",
