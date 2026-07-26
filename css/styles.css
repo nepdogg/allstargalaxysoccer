@@ -21152,3 +21152,45 @@ body[data-page="graphics"] .sticky-graphics-publish{position:sticky!important;bo
   .page-media .media-game-awards-carousel .game-award-copy h3{font-size:clamp(17px,5.3vw,27px)}
   .page-media .media-game-awards-carousel .game-award-watch{font-size:8px}
 }
+
+/* =========================================================
+   V201 — GAME AWARDS CAROUSEL HEIGHT MATCH
+   Adds the extra vertical breathing room requested while
+   preserving the V200 card size, neighbor visibility, colors,
+   arrows, dots, and shared award renderer.
+========================================================= */
+.page-media .media-game-awards-carousel {
+    height: clamp(355px, 33vw, 475px) !important;
+    min-height: clamp(355px, 33vw, 475px) !important;
+    padding-top: 34px !important;
+    padding-bottom: 64px !important;
+}
+
+.page-media .media-game-awards-carousel .game-award-slide {
+    top: 45% !important;
+}
+
+.page-media .media-game-awards-carousel .carousel-button {
+    top: 46% !important;
+}
+
+.page-media .media-game-awards-carousel .carousel-dots {
+    bottom: 22px !important;
+}
+
+@media (max-width: 760px) {
+    .page-media .media-game-awards-carousel {
+        height: clamp(285px, 84vw, 370px) !important;
+        min-height: clamp(285px, 84vw, 370px) !important;
+        padding-top: 26px !important;
+        padding-bottom: 56px !important;
+    }
+
+    .page-media .media-game-awards-carousel .game-award-slide {
+        top: 44% !important;
+    }
+
+    .page-media .media-game-awards-carousel .carousel-button {
+        top: 45% !important;
+    }
+}
