@@ -49,26 +49,6 @@
     if(gameDiff)return gameDiff;
     return (Number(a.order)||9999)-(Number(b.order)||9999);
   });
-  const AWARD_META={
-    player:{label:'PLAYER OF THE GAME',icon:'🏆',color:'#dfe7ef'},
-    goal:{label:'GOAL OF THE GAME',icon:'⚽',color:'#ff3131'},
-    assist:{label:'ASSIST OF THE GAME',icon:'➤',color:'#39ff14'},
-    save:{label:'SAVE OF THE GAME',icon:'✋',color:'#20bfff'},
-    play:{label:'PLAY OF THE GAME',icon:'★',color:'#b44cff'}
-  };
-  const awardMeta=value=>AWARD_META[String(value||'').toLowerCase()]||AWARD_META.play;
-  const sortGameAwards = (data={}) => {
-    const games=new Map((data.games||[]).map(game=>[String(game.id),game]));
-    const visible=[...(data.gameAwards||[])].filter(isVisible).filter(item=>games.has(String(item.gameId)));
-    const ranks=visible.map(item=>seasonRank(games.get(String(item.gameId))?.season)).filter(Boolean);
-    const newest=ranks.length?Math.max(...ranks):0;
-    return visible.filter(item=>!newest||seasonRank(games.get(String(item.gameId))?.season)===newest).sort((a,b)=>{
-      const ga=games.get(String(a.gameId))||{},gb=games.get(String(b.gameId))||{};
-      const gameDiff=(Number(ga.gameNumber)||9999)-(Number(gb.gameNumber)||9999);
-      if(gameDiff)return gameDiff;
-      return (Number(a.order)||9999)-(Number(b.order)||9999);
-    });
-  };
   const linkAttrs = url => url && url !== '#' ? `href="${esc(url)}" target="_blank" rel="noopener"` : 'href="#" class="generated-disabled" aria-disabled="true"';
   function colorFor(data, category) { return data.colors?.[category] || data.colors?.archive || '#f5c542'; }
   function applyGraphicAssets(data){const a=data.assets||{},root=document.documentElement;const set=(n,v)=>{if(v)root.style.setProperty(n,`url("${pngOnlyPath(v)}")`);};set('--home-carousel-background',a.homeCarouselBackground);set('--team-carousel-background',a.teamCarouselBackground);set('--media-carousel-background',a.mediaCarouselBackground);set('--season-carousel-background',a.seasonCarouselBackground);}
@@ -141,33 +121,6 @@
         </footer>
       </div></a>`;
   }
-  function awardCard(data,item){
-    const games=new Map((data.games||[]).map(game=>[String(game.id),game]));
-    const players=new Map((data.players||[]).map(player=>[String(player.id),player]));
-    const game=games.get(String(item.gameId))||{};
-    const player=players.get(String(item.playerId))||{};
-    const meta=awardMeta(item.awardType);
-    const image=versionedAsset(player.photo||data.assets?.playerSilhouette||'images/team/players/player-silhouette.png',data.version);
-    const logo=versionedAsset(data.assets?.logo||'images/logos/logo.png',data.version);
-    const playerName=player.name||[player.firstName,player.lastName].filter(Boolean).join(' ')||'PLAYER';
-    const title=item.customTitle||meta.label;
-    const gameLabel=`${game.season||'CURRENT SEASON'} · GAME ${String(game.gameNumber||'').padStart(2,'0')}`;
-    const url=String(item.videoUrl||item.url||'').trim();
-    return `<a href="#" class="media-slide media-game-slide generated-award-card award-${esc(item.awardType||'play')} ${url?'':'generated-disabled'}" aria-label="Open ${esc(title)} — ${esc(playerName)}" data-game-title="${esc(title)} — ${esc(playerName)}" data-game-opponent="Allstar Galaxy vs ${esc(game.opponent||'Opponent')}" data-game-result="${esc(game.result||gameLabel)}" data-award="${esc(url)}" data-award-label="${esc(meta.icon+' Watch '+title)}" data-full="${esc(game.fullMatch||'')}" data-highlights="${esc(game.highlights||'')}" data-slideshow="${esc(game.slideshow||'')}">
-      <article class="generated-award-layout" style="--award-accent:${meta.color}">
-        <header class="generated-award-header"><span class="generated-award-icon">${meta.icon}</span><strong>${esc(title)}</strong><img src="${esc(logo)}" alt=""></header>
-        <div class="generated-award-photo-wrap"><img class="generated-award-photo" src="${esc(image)}" alt="${esc(playerName)}"></div>
-        <div class="generated-award-copy">
-          <h3>${esc(playerName)}</h3>
-          <p>#${esc(player.number||'—')} · ${esc(player.position||'PLAYER')}</p>
-          <small>${esc(gameLabel)}</small>
-          <b>ALLSTAR GALAXY <span>VS</span> ${esc(game.opponent||'OPPONENT')}</b>
-          ${game.result?`<em>${esc(game.result)}</em>`:''}
-        </div>
-      </article>
-    </a>`;
-  }
-
   function seasonCard(data,s){
     const mediaBlue='#20bfff';
     const rows=[
@@ -285,17 +238,10 @@
   }
   function liveMarkup(data){const l=data.live||{};const image=versionedAsset(firstValue(l.thumbnail,data.assets?.liveDefaultImage,data.assets?.logo,'images/live/live-default.png'),data.version);return `<div class="generated-live-card"><img src="${esc(image)}" alt="${esc(l.title||'Allstar Galaxy livestream')}"><span>${esc((l.status||'offline').toUpperCase())}</span><h2>${esc(l.title||'Livestream Coming Soon')}</h2><p>${esc(l.description||'')}</p>${l.url?`<a href="${esc(l.url)}" target="_blank" rel="noopener">WATCH LIVE</a>`:''}</div>`}
   function render(data){
-    document.querySelectorAll('[data-game-awards-header]').forEach(img=>{
-      const src=versionedAsset(data.assets?.gameAwardsHeader||'generated/game-awards-header.png',data.version);
-      img.src=src;
-      img.hidden=false;
-      img.onerror=()=>{img.hidden=true;const fallback=img.nextElementSibling;if(fallback)fallback.hidden=false;};
-      const fallback=img.nextElementSibling;if(fallback)fallback.hidden=true;
-    });
     document.querySelectorAll('[data-generated-source]').forEach(el=>{
       const source=el.dataset.generatedSource;
       if(source==='games') el.innerHTML=sortLatestGames(data.games).map(g=>gameCard(data,g)).join('');
-      else if(source==='game-awards') el.innerHTML=sortGameAwards(data).map(item=>awardCard(data,item)).join('');
+      else if(source==='game-awards') el.innerHTML=window.ASGGameAwards ? window.ASGGameAwards.render(data,data.gameAwards||[]) : '';
       else if(source==='seasons') el.innerHTML=sortItems(data.seasons).map(s=>seasonCard(data,s)).join('');
       else if(source==='media-archive') el.innerHTML=sortItems(data.playlists).filter(p=>p.locations?.includes('media-archive')).map(p=>playlistCard(data,p,'blue')).join('');
       else if(source==='home-best') el.innerHTML=sortItems(data.playlists).filter(p=>p.locations?.includes('home-best')).map(p=>playlistCard(data,p,'gold')).join('');
