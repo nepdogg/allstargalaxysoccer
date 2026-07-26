@@ -1,5 +1,5 @@
 {
-  "version": 216,
+  "version": 217,
   "updated": "2026-07-26",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -3490,8 +3490,54 @@
     "standingsDescription": "Testing",
     "scheduleDescription": "Testing"
   },
-  "lastPublishToken": "admin-1785050448346-w7ws2j",
+  "lastPublishToken": "admin-1785050576723-g5zsp4",
   "gameAwards": [
+    {
+      "id": "game-award-04",
+      "awardType": "Play of the Game",
+      "status": "published",
+      "order": 5,
+      "gameId": "summer-2026-game-01",
+      "playerId": "player-32",
+      "videoUrl": "https://youtu.be/Nk6C34-rv7E",
+      "gameSnapshot": {
+        "season": "Summer 2026",
+        "gameNumber": 1,
+        "opponent": "Latinos Unidos",
+        "result": "L (1-4)"
+      },
+      "playerSnapshot": {
+        "name": "FIRST NAME LAST NAME",
+        "firstName": "FIRST NAME",
+        "lastName": "LAST NAME",
+        "number": "100",
+        "position": "STRIKER",
+        "photo": "images/team/players/player-silhouette.png"
+      }
+    },
+    {
+      "id": "game-award-03",
+      "awardType": "Assist of the Game",
+      "status": "published",
+      "order": 4,
+      "gameId": "game-01",
+      "playerId": "player-32",
+      "videoUrl": "https://youtu.be/I4wbS_uxzjg",
+      "gameSnapshot": {
+        "season": "Fall 2026",
+        "gameNumber": 1,
+        "opponent": "Argentina ",
+        "result": "W (3-2)"
+      },
+      "playerSnapshot": {
+        "name": "FIRST NAME LAST NAME",
+        "firstName": "FIRST NAME",
+        "lastName": "LAST NAME",
+        "number": "100",
+        "position": "STRIKER",
+        "photo": "images/team/players/player-silhouette.png"
+      }
+    },
     {
       "id": "game-award-02",
       "awardType": "Goal of the Game",
