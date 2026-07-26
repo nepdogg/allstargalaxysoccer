@@ -1239,6 +1239,7 @@ window.AdminCMS={initCommon,publish};
   const PAGE_PREVIEWS = {
     players: "team.html",
     games: "media.html",
+    gameAwards: "media.html#game-awards",
     seasons: "media.html",
     playlists: "media.html",
     news: "news.html",
@@ -1354,7 +1355,9 @@ window.AdminCMS={initCommon,publish};
     if (!(await saveDraft())) return;
     const page = currentPage();
     const destination = PAGE_PREVIEWS[page] || "index.html";
-    const opened = window.open(`../${destination}?adminPreview=1`, "_blank");
+    const [previewPath, previewHash=''] = destination.split('#');
+    const previewUrl = `../${previewPath}?adminPreview=1${previewHash ? `#${previewHash}` : ''}`;
+    const opened = window.open(previewUrl, "_blank");
     if (!opened) {
       setStatus("Preview was blocked by the browser. Allow pop-ups and try again.", "bad");
       return;
@@ -1405,7 +1408,8 @@ window.AdminCMS={initCommon,publish};
   function removeLegacyActions() {
     [
       "#publishBtn", "#previewBtn", "#publishSchedule", "#publishAssets",
-      "#publishLive", "#publishNewsCards", "#previewNewsDraft"
+      "#publishLive", "#publishNewsCards", "#previewNewsDraft",
+      "#publishAwardBtn", "#previewAwardsBtn"
     ].forEach(selector => document.querySelector(selector)?.remove());
 
     const liveSubmit = document.querySelector("#liveForm button[type='submit']");
@@ -1803,11 +1807,11 @@ window.AdminCMS={initCommon,publish};
   const awardArray=()=>state.data.gameAwards||(state.data.gameAwards=[]);
   const gameLabel=g=>`${g.season||'Season'} — Game ${g.gameNumber||'—'} — vs ${g.opponent||'Opponent'}`;
   const playerLabel=p=>`#${p.number||'—'} — ${p.name||[p.firstName,p.lastName].filter(Boolean).join(' ')||'Player'} — ${p.position||'PLAYER'}`;
-  function awardPreview(award){return window.ASGGameAwards?.card(state.data,award,{preview:true})||'<p>Preview renderer could not load.</p>'}
+  function awardPreview(award){return window.ASGGameAwards?.card(state.data,award,{preview:true,assetPrefix:'../'})||'<p>Preview renderer could not load.</p>'}
   function renderAwardAdmin(){
     state.section='gameAwards';const arr=awardArray();$('#pageTitle').textContent='Game Awards';let selected=Math.min(Number(state.awardSelected)||0,Math.max(0,arr.length-1));state.awardSelected=selected;
     $('#content').innerHTML=`<div class="v2-banner"><strong>Game Awards</strong><span>The Admin preview, Preview Website and published carousel use the exact same card renderer.</span></div><div class="admin-actions manager-actions"><button class="btn primary" id="addAwardBtn">Add Game Award</button><button class="btn" id="publishAwardBtn">Publish All Changes</button><button class="btn" id="previewAwardsBtn">Preview Website</button><span class="pending" id="pendingLabel">${state.dirty?'Unpublished changes':''}</span></div><div class="game-awards-admin-layout"><div class="game-awards-admin-list" id="awardList">${arr.length?arr.map((a,i)=>{const r=window.ASGGameAwards?.resolve(state.data,a)||{game:{},player:{}};const info=window.ASGGameAwards?.awardInfo(a.awardType)||{title:a.awardType};return `<div class="game-award-admin-row ${i===selected?'is-selected':''} ${a.status==='hidden'?'is-hidden':''}" data-award-row="${i}"><div><strong>${esc(info.title)}</strong><small>${esc(playerLabel(r.player))}<br>${esc(gameLabel(r.game))}</small></div><div class="row-actions"><button class="btn small" data-award-edit="${i}">Edit</button><button class="btn small" data-award-toggle="${i}">${a.status==='hidden'?'Restore':'Hide'}</button><button class="btn small danger" data-award-delete="${i}">Delete</button></div></div>`}).join(''):'<p class="help">No game awards yet. Click Add Game Award.</p>'}</div><aside class="game-awards-admin-preview" id="awardPermanentPreview"><div class="award-preview-toolbar"><div><span class="v2-pill">LIVE PREVIEW</span><h4>Website Card</h4></div><div class="award-device-switch"><button type="button" class="is-active" data-award-device="desktop">Desktop</button><button type="button" data-award-device="mobile">Mobile</button></div></div><div id="awardPreviewCard">${arr[selected]?awardPreview(arr[selected]):'<p class="help">Select or add an award to preview it.</p>'}</div></aside></div>`;
-    $('#addAwardBtn').onclick=()=>openAwardForm(-1);$('#publishAwardBtn').onclick=publish;$('#previewAwardsBtn').onclick=()=>{sessionStorage.setItem('asgPreviewMasterContent',JSON.stringify(state.data));window.open('../game-awards.html?adminPreview=1','_blank')};
+    $('#addAwardBtn').onclick=()=>openAwardForm(-1);$('#publishAwardBtn').onclick=publish;$('#previewAwardsBtn').onclick=()=>{sessionStorage.setItem('asgPreviewMasterContent',JSON.stringify(state.data));window.open('../media.html?adminPreview=1#game-awards','_blank')};
     $$('[data-award-row]').forEach(row=>row.addEventListener('click',e=>{if(e.target.closest('button'))return;state.awardSelected=Number(row.dataset.awardRow);renderAwardAdmin()}));
     $$('[data-award-edit]').forEach(b=>b.onclick=()=>openAwardForm(Number(b.dataset.awardEdit)));$$('[data-award-toggle]').forEach(b=>b.onclick=()=>{const a=arr[Number(b.dataset.awardToggle)];a.status=a.status==='hidden'?'published':'hidden';markDirty();renderAwardAdmin()});$$('[data-award-delete]').forEach(b=>b.onclick=()=>{const i=Number(b.dataset.awardDelete);if(confirm('Permanently delete this game award?')){arr.splice(i,1);markDirty();renderAwardAdmin()}});$$('[data-award-device]').forEach(b=>b.onclick=()=>{$$('[data-award-device]').forEach(x=>x.classList.toggle('is-active',x===b));$('#awardPermanentPreview').classList.toggle('mobile-preview',b.dataset.awardDevice==='mobile')});
   }
