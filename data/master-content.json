@@ -1,5 +1,5 @@
 {
-  "version": 215,
+  "version": 216,
   "updated": "2026-07-26",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -3490,8 +3490,31 @@
     "standingsDescription": "Testing",
     "scheduleDescription": "Testing"
   },
-  "lastPublishToken": "admin-1785047851844-89dh3s",
+  "lastPublishToken": "admin-1785050448346-w7ws2j",
   "gameAwards": [
+    {
+      "id": "game-award-02",
+      "awardType": "Goal of the Game",
+      "status": "published",
+      "order": 3,
+      "gameId": "game-01",
+      "playerId": "player-32",
+      "videoUrl": "https://youtu.be/LeCEXq9lP-Y",
+      "gameSnapshot": {
+        "season": "Fall 2026",
+        "gameNumber": 1,
+        "opponent": "Argentina ",
+        "result": "W (3-2)"
+      },
+      "playerSnapshot": {
+        "name": "FIRST NAME LAST NAME",
+        "firstName": "FIRST NAME",
+        "lastName": "LAST NAME",
+        "number": "100",
+        "position": "STRIKER",
+        "photo": "images/team/players/player-silhouette.png"
+      }
+    },
     {
       "id": "game-award-01",
       "awardType": "Save of the Game",
