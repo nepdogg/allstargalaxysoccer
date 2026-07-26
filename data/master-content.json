@@ -1,5 +1,5 @@
 {
-  "version": 217,
+  "version": 218,
   "updated": "2026-07-26",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -607,12 +607,29 @@
       "fullMatch": "https://youtu.be/kXrVB0UgooE",
       "highlights": "https://youtu.be/Tqw5XTsDo4k",
       "slideshow": "https://youtu.be/tP5Xf2CWOaw",
-      "cardLabel": "new",
+      "cardLabel": "current-season",
       "date": "2026-07-19",
       "time": "",
       "location": "FAIR OAKS PARK",
       "group": "latest",
       "cardImage": "images/media/latest-games/game-01-mrztx12h.png"
+    },
+    {
+      "status": "published",
+      "order": 35,
+      "id": "game-02",
+      "season": "Fall 2026",
+      "gameNumber": 1,
+      "opponent": "Barza",
+      "result": "D (3-3)",
+      "fullMatch": "",
+      "highlights": "",
+      "slideshow": "",
+      "cardLabel": "new",
+      "date": "",
+      "time": "",
+      "location": "",
+      "group": "latest"
     }
   ],
   "seasons": [
@@ -3490,7 +3507,7 @@
     "standingsDescription": "Testing",
     "scheduleDescription": "Testing"
   },
-  "lastPublishToken": "admin-1785050576723-g5zsp4",
+  "lastPublishToken": "admin-1785103375390-wryyo7",
   "gameAwards": [
     {
       "id": "game-award-04",
