@@ -421,6 +421,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const title = gameLightbox.querySelector(".game-link-title");
     const opponent = gameLightbox.querySelector(".game-link-opponent");
     const result = gameLightbox.querySelector(".game-link-result");
+    const awardLink = gameLightbox.querySelector(".game-link-award");
     const fullLink = gameLightbox.querySelector(".game-link-full");
     const highlightsLink = gameLightbox.querySelector(".game-link-highlights");
     const slideshowLink = gameLightbox.querySelector(".game-link-slideshow");
@@ -440,6 +441,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (title) title.textContent = card.dataset.gameTitle || "Game Media";
         if (opponent) opponent.textContent = card.dataset.gameOpponent || "Allstar Galaxy";
         if (result) result.textContent = card.dataset.gameResult || "";
+        const awardValue = card.dataset.award || "";
+        const awardLabel = card.dataset.awardLabel || "🏆 Watch Game Award";
+        if (awardLink) {
+            const hasAward = Boolean(awardValue && awardValue !== "#");
+            awardLink.hidden = !hasAward;
+            if (hasAward) setLink(awardLink, awardValue, awardLabel, awardLabel);
+        }
         const fullLabel = card.dataset.fullLabel || "▶ Full Match";
         const highlightsLabel = card.dataset.highlightsLabel || "▣ Highlights";
         const slideshowLabel = card.dataset.slideshowLabel || "▧ Slideshow";

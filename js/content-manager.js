@@ -153,7 +153,7 @@
     const title=item.customTitle||meta.label;
     const gameLabel=`${game.season||'CURRENT SEASON'} · GAME ${String(game.gameNumber||'').padStart(2,'0')}`;
     const url=String(item.videoUrl||item.url||'').trim();
-    return `<a class="media-slide media-game-slide generated-award-card award-${esc(item.awardType||'play')} ${url?'':'generated-disabled'}" ${url?`href="${esc(url)}" target="_blank" rel="noopener"`:'href="#" aria-disabled="true"'} aria-label="Watch ${esc(title)} — ${esc(playerName)}">
+    return `<a href="#" class="media-slide media-game-slide generated-award-card award-${esc(item.awardType||'play')} ${url?'':'generated-disabled'}" aria-label="Open ${esc(title)} — ${esc(playerName)}" data-game-title="${esc(title)} — ${esc(playerName)}" data-game-opponent="Allstar Galaxy vs ${esc(game.opponent||'Opponent')}" data-game-result="${esc(game.result||gameLabel)}" data-award="${esc(url)}" data-award-label="${esc(meta.icon+' Watch '+title)}" data-full="${esc(game.fullMatch||'')}" data-highlights="${esc(game.highlights||'')}" data-slideshow="${esc(game.slideshow||'')}">
       <article class="generated-award-layout" style="--award-accent:${meta.color}">
         <header class="generated-award-header"><span class="generated-award-icon">${meta.icon}</span><strong>${esc(title)}</strong><img src="${esc(logo)}" alt=""></header>
         <div class="generated-award-photo-wrap"><img class="generated-award-photo" src="${esc(image)}" alt="${esc(playerName)}"></div>
@@ -285,6 +285,13 @@
   }
   function liveMarkup(data){const l=data.live||{};const image=versionedAsset(firstValue(l.thumbnail,data.assets?.liveDefaultImage,data.assets?.logo,'images/live/live-default.png'),data.version);return `<div class="generated-live-card"><img src="${esc(image)}" alt="${esc(l.title||'Allstar Galaxy livestream')}"><span>${esc((l.status||'offline').toUpperCase())}</span><h2>${esc(l.title||'Livestream Coming Soon')}</h2><p>${esc(l.description||'')}</p>${l.url?`<a href="${esc(l.url)}" target="_blank" rel="noopener">WATCH LIVE</a>`:''}</div>`}
   function render(data){
+    document.querySelectorAll('[data-game-awards-header]').forEach(img=>{
+      const src=versionedAsset(data.assets?.gameAwardsHeader||'generated/game-awards-header.png',data.version);
+      img.src=src;
+      img.hidden=false;
+      img.onerror=()=>{img.hidden=true;const fallback=img.nextElementSibling;if(fallback)fallback.hidden=false;};
+      const fallback=img.nextElementSibling;if(fallback)fallback.hidden=true;
+    });
     document.querySelectorAll('[data-generated-source]').forEach(el=>{
       const source=el.dataset.generatedSource;
       if(source==='games') el.innerHTML=sortLatestGames(data.games).map(g=>gameCard(data,g)).join('');
