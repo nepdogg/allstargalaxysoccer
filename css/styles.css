@@ -21219,3 +21219,10 @@ body[data-page="players"] .prototype-player-name em {
 .generated-award-copy em{margin-top:8px;color:var(--award-accent);font-style:normal;font-weight:900}
 .generated-award-card:hover .generated-award-layout,.generated-award-card:focus-visible .generated-award-layout{box-shadow:0 0 34px var(--award-accent),inset 0 0 34px #000;transform:translateY(-2px)}
 @media(max-width:700px){.generated-award-layout{grid-template-columns:42% 58%}.generated-award-header{min-height:50px;padding:7px 10px;gap:7px}.generated-award-header img{width:36px;height:36px}.generated-award-copy{padding:12px}.generated-award-copy p{margin-bottom:8px;font-size:.78rem}.generated-award-copy small,.generated-award-copy b,.generated-award-copy em{font-size:.68rem}.media-section-text-title{font-size:clamp(2rem,11vw,3.2rem)}}
+
+/* V198 — Game Awards title graphic and award-first popup */
+.game-awards-title-graphic{display:block;max-width:min(760px,88%);max-height:150px;width:auto;height:auto;margin:0 auto 8px;object-fit:contain;filter:drop-shadow(0 0 12px #20bfff)}
+.game-awards-title-graphic[hidden]{display:none!important}
+.game-link-award{border-color:#dfe7ef!important;box-shadow:0 0 16px rgba(223,231,239,.48);font-weight:900}
+.game-link-award[hidden]{display:none!important}
+@media(max-width:700px){.game-awards-title-graphic{max-width:94%;max-height:100px}.game-link-actions{gap:10px}}
