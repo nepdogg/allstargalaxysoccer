@@ -19,11 +19,17 @@
     const player=players.find(p=>p.id===award.playerId)||players.find(p=>String(p.name).toLowerCase()===String(award.playerName||'').toLowerCase())||{};
     return {game:{...game,...award.gameSnapshot},player:{...player,...award.playerSnapshot}};
   }
-  function card(data,award,{preview=false}={}){
+  function assetUrl(value,prefix=''){
+    const src=String(value||'').trim();
+    if(!src||/^(?:https?:|data:|blob:|\/\/|\/)/i.test(src))return src;
+    if(src.startsWith('../'))return src;
+    return prefix+src.replace(/^\.\//,'');
+  }
+  function card(data,award,{preview=false,assetPrefix=''}={}){
     const {game,player}=resolve(data,award), info=awardInfo(award.awardType||award.type);
     const first=player.firstName||String(player.name||'PLAYER').trim().split(/\s+/)[0]||'PLAYER';
     const last=player.lastName||String(player.name||'').trim().split(/\s+/).slice(1).join(' ')||first;
-    const photo=player.photo||award.playerPhoto||data?.assets?.playerPlaceholder||data?.assets?.logo||'generated/allstar-galaxy-logo.png';
+    const photo=assetUrl(player.photo||player.image||award.playerPhoto||data?.assets?.playerPlaceholder||data?.assets?.logo||'generated/allstar-galaxy-logo.png',assetPrefix);
     const opponent=game.opponent||award.opponent||'OPPONENT';
     const href=String(award.videoUrl||award.url||'').trim();
     const tag=preview?'div':'a';

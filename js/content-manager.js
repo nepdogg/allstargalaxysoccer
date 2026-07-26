@@ -292,6 +292,6 @@
       return hydratePreviewAssets(draft,assets);
     }catch(error){console.warn('Could not load Admin preview content.',error);return null}
   }
-  const ready=loadPreviewContent().then(preview=>preview||fetch(DATA_URL,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(`Unable to load ${DATA_URL}`);return r.json()})).then(data=>{applyGraphicAssets(data);render(data);window.ASG_MASTER_DATA=data;return data}).catch(err=>{console.error(err);document.querySelectorAll('[data-generated-source]').forEach(el=>el.innerHTML='<p class="generated-data-error">Content could not load. Check data/master-content.json.</p>');});
+  const ready=loadPreviewContent().then(preview=>preview||fetch(DATA_URL,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(`Unable to load ${DATA_URL}`);return r.json()})).then(data=>{applyGraphicAssets(data);render(data);window.ASG_MASTER_DATA=data;if(location.hash){requestAnimationFrame(()=>document.querySelector(location.hash)?.scrollIntoView({block:'start'}));}return data}).catch(err=>{console.error(err);document.querySelectorAll('[data-generated-source]').forEach(el=>el.innerHTML='<p class="generated-data-error">Content could not load. Check data/master-content.json.</p>');});
   window.ASGContent={ready,render};
 })();
