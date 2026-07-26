@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const dotsContainer = carousel.querySelector(".carousel-dots");
         const isHomepagePlaylist = carousel.classList.contains("homepage-media-carousel");
         const isTeamRoster = carousel.classList.contains("team-roster-carousel");
-        const isMediaShowcase = carousel.classList.contains("media-games-carousel") || carousel.classList.contains("media-season-carousel") || carousel.classList.contains("media-playlist-carousel");
+        const isMediaShowcase = carousel.classList.contains("media-games-carousel") || carousel.classList.contains("media-season-carousel") || carousel.classList.contains("media-playlist-carousel") || carousel.classList.contains("media-game-awards-carousel");
         const isShowcaseCarousel = isHomepagePlaylist || isTeamRoster || isMediaShowcase;
 
         if (!track || slides.length === 0) {
@@ -121,6 +121,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         function getCarouselInterval() {
             if (carousel.classList.contains("media-games-carousel")) return 6500;
+            if (carousel.classList.contains("media-game-awards-carousel")) return 7500;
             if (carousel.classList.contains("media-season-carousel")) return 9000;
             if (carousel.classList.contains("media-playlist-carousel")) return 12000;
             return isShowcaseCarousel ? 6500 : 4500;
@@ -128,6 +129,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         function getInitialDelay() {
             if (carousel.classList.contains("media-season-carousel")) return 3000;
+            if (carousel.classList.contains("media-game-awards-carousel")) return 1500;
             if (carousel.classList.contains("media-playlist-carousel")) return 6000;
             return 0;
         }

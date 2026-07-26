@@ -36,7 +36,7 @@
     const attrs=preview?'':(href?` href="${esc(href)}" target="_blank" rel="noopener"`:' href="#" aria-disabled="true"');
     return `<${tag}${attrs} class="game-award-slide media-slide${href?'':' is-pending'}" style="--award-accent:${info.accent}" aria-label="${esc(info.title)} — ${esc(first+' '+last)}">
       <article class="game-award-card">
-        <header class="game-award-header"><span class="game-award-icon">${info.icon}</span><strong>${esc(info.title)}</strong><small>${award.status==='hidden'?'HIDDEN':'VISIBLE'}</small></header>
+        <header class="game-award-header"><span class="game-award-icon">${info.icon}</span><strong>${esc(info.title)}</strong></header>
         <div class="game-award-body">
           <div class="game-award-photo"><img src="${esc(photo)}" alt="${esc(first+' '+last)}" loading="lazy"></div>
           <div class="game-award-copy">
