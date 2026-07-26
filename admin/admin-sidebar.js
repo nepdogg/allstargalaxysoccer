@@ -6,6 +6,7 @@
     ["dashboard", "Dashboard", "dashboard.html", true],
     ["players", "Players", "players.html", true],
     ["games", "Games", "games.html", true],
+    ["gameAwards", "Game Awards", "game-awards.html", true],
     ["seasons", "Seasons", "seasons.html", false],
     ["playlists", "Playlists", "playlists.html", false],
     ["news", "News", "news.html", false],
