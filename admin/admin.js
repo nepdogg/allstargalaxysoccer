@@ -975,13 +975,10 @@ window.AdminCMS={initCommon,publish};
     $("#publishAssets").onclick = publish;
   };
 
-  renderManager = function(section) {
-    if (["players", "games", "seasons", "playlists"].includes(section)) {
-      v141RenderPermanentManager(section);
-      return;
-    }
-    priorRenderManagerV141(section);
-  };
+  /* V197 FIX:
+     Keep the V139 renderManager defined above. The former wrapper referenced
+     two nonexistent V141 functions and caused every unhandled admin section,
+     including Game Awards, to fail during startup. */
 })();
 
 /* V143 fixes */
