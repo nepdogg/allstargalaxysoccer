@@ -1,6 +1,6 @@
 {
-  "version": 218,
-  "updated": "2026-07-26",
+  "version": 219,
+  "updated": "2026-07-27",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
     "logo": "generated/allstar-galaxy-logo.png",
@@ -624,7 +624,7 @@
       "result": "D (3-3)",
       "fullMatch": "",
       "highlights": "",
-      "slideshow": "",
+      "slideshow": "https://youtu.be/SZbYQmpOIM8",
       "cardLabel": "new",
       "date": "",
       "time": "",
@@ -3507,7 +3507,7 @@
     "standingsDescription": "Testing",
     "scheduleDescription": "Testing"
   },
-  "lastPublishToken": "admin-1785103375390-wryyo7",
+  "lastPublishToken": "admin-1785125229587-v89fhy",
   "gameAwards": [
     {
       "id": "game-award-04",
