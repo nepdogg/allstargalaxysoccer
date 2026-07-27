@@ -1,5 +1,5 @@
 {
-  "version": 219,
+  "version": 220,
   "updated": "2026-07-27",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
@@ -629,7 +629,8 @@
       "date": "",
       "time": "",
       "location": "",
-      "group": "latest"
+      "group": "latest",
+      "cardImage": "images/media/latest-games/game-02-ms2px1wv.png"
     }
   ],
   "seasons": [
@@ -3507,7 +3508,7 @@
     "standingsDescription": "Testing",
     "scheduleDescription": "Testing"
   },
-  "lastPublishToken": "admin-1785125229587-v89fhy",
+  "lastPublishToken": "admin-1785126013505-u0j8bn",
   "gameAwards": [
     {
       "id": "game-award-04",
