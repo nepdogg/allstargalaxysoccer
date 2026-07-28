@@ -21194,3 +21194,230 @@ body[data-page="graphics"] .sticky-graphics-publish{position:sticky!important;bo
         top: 45% !important;
     }
 }
+
+/* ============================================================
+   V202 — FINAL RESPONSIVE POLISH + COLOR-CODED NAVIGATION
+   Shared phone/desktop refinements requested after V201.
+   ============================================================ */
+
+/* Page accent system used by the boxed primary navigation. */
+body{--page-accent:#f5c542;--page-accent-rgb:245,197,66}
+body.page-home{--page-accent:#f5c542;--page-accent-rgb:245,197,66}
+body.page-team{--page-accent:#d532ff;--page-accent-rgb:213,50,255}
+body.page-schedule{--page-accent:#37ff79;--page-accent-rgb:55,255,121}
+body.page-media{--page-accent:#35c9ff;--page-accent-rgb:53,201,255}
+body.page-news{--page-accent:#ff9d32;--page-accent-rgb:255,157,50}
+body.page-live{--page-accent:#ff3535;--page-accent-rgb:255,53,53}
+body.page-follow{--page-accent:#ff3da9;--page-accent-rgb:255,61,169}
+
+/* Turn the existing primary links into one coordinated neon button bar. */
+.site-top nav{
+  display:grid!important;
+  grid-template-columns:repeat(7,minmax(0,1fr))!important;
+  gap:clamp(4px,.65vw,10px)!important;
+  padding:8px clamp(8px,2vw,24px) 10px!important;
+  align-items:stretch!important;
+}
+.site-top nav a{
+  min-width:0!important;
+  margin:0!important;
+  padding:clamp(8px,.8vw,12px) 4px!important;
+  border:1px solid rgba(var(--page-accent-rgb),.58)!important;
+  border-radius:9px!important;
+  background:linear-gradient(180deg,rgba(10,11,21,.82),rgba(2,3,10,.94))!important;
+  color:#fff!important;
+  text-align:center!important;
+  line-height:1!important;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.025)!important;
+  transition:background .22s ease,border-color .22s ease,box-shadow .22s ease,transform .22s ease,color .22s ease!important;
+}
+.site-top nav a:hover,
+.site-top nav a:focus-visible{
+  color:#fff!important;
+  border-color:var(--page-accent)!important;
+  background:linear-gradient(180deg,rgba(var(--page-accent-rgb),.45),rgba(var(--page-accent-rgb),.18))!important;
+  box-shadow:0 0 9px rgba(var(--page-accent-rgb),.82),0 0 20px rgba(var(--page-accent-rgb),.42),inset 0 0 16px rgba(var(--page-accent-rgb),.20)!important;
+  transform:translateY(-1px)!important;
+}
+.site-top nav a.active{
+  color:#fff!important;
+  border-color:var(--page-accent)!important;
+  background:linear-gradient(180deg,rgba(var(--page-accent-rgb),.78),rgba(var(--page-accent-rgb),.34))!important;
+  box-shadow:0 0 10px rgba(var(--page-accent-rgb),.92),0 0 24px rgba(var(--page-accent-rgb),.52),inset 0 0 18px rgba(255,255,255,.12)!important;
+}
+
+/* Navigation banner: taller title and true vertical centering between logos. */
+.site-top .hero-bar{align-items:center!important}
+.site-top .hero-title{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  height:clamp(80px,8.2vw,116px)!important;
+  min-height:clamp(80px,8.2vw,116px)!important;
+  overflow:visible!important;
+}
+.site-top .hero-title>img{
+  display:block!important;
+  margin:auto!important;
+  transform:scaleY(1.16)!important;
+  transform-origin:center center!important;
+  max-height:88%!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+}
+
+/* Profile card: larger centered name and position tucked closer to number. */
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-position{
+  top:17.55%!important;
+  left:7.2%!important;
+  width:42%!important;
+  height:4.6%!important;
+  align-items:flex-start!important;
+  font-size:3.8cqw!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name{
+  top:28.25%!important;
+  left:11.5%!important;
+  right:11.5%!important;
+  height:12.8%!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:.4cqw!important;
+  text-align:center!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name small{
+  align-self:center!important;
+  font-size:5.45cqw!important;
+  line-height:.95!important;
+  letter-spacing:.15em!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name strong{
+  align-self:center!important;
+  font-size:12.7cqw!important;
+  line-height:.82!important;
+  transform:scaleX(.94)!important;
+  transform-origin:center center!important;
+}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-9 strong{transform:scaleX(.91)!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-10 strong{transform:scaleX(.87)!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-11 strong{transform:scaleX(.83)!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-12 strong{transform:scaleX(.79)!important}
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-13 strong,
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-14 strong,
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-15 strong,
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-16 strong,
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-17 strong,
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-18 strong,
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-19 strong,
+.ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-20 strong{font-size:10.25cqw!important;transform:scaleX(.73)!important}
+
+/* One uninterrupted divider fixes the tiny mobile mismatch between
+   the action column and the score column below it. */
+.page-media .media-games-carousel .generated-game-layout{
+  position:relative!important;
+}
+.page-media .media-games-carousel .generated-game-layout::after{
+  content:""!important;
+  position:absolute!important;
+  z-index:9!important;
+  top:0!important;
+  bottom:0!important;
+  left:83%!important;
+  width:2px!important;
+  background:var(--card-accent)!important;
+  box-shadow:0 0 4px color-mix(in srgb,var(--card-accent) 65%,transparent)!important;
+  pointer-events:none!important;
+}
+.page-media .media-games-carousel .generated-wide-visual,
+.page-media .media-games-carousel .generated-game-matchup-block{
+  border-right:0!important;
+}
+
+/* Awards cards use the taller proportions of the regular game cards.
+   The extra vertical room prevents names and metadata from clipping. */
+.page-media .media-game-awards-carousel .game-award-slide{
+  aspect-ratio:1.48 / 1!important;
+}
+.page-media .media-game-awards-carousel .game-award-card{
+  grid-template-rows:18% 82%!important;
+}
+.page-media .media-game-awards-carousel .game-award-copy{
+  justify-content:flex-start!important;
+  padding-top:clamp(12px,1.6vw,20px)!important;
+}
+.page-media .media-game-awards-carousel .game-award-copy h3{
+  flex:0 0 auto!important;
+  max-height:none!important;
+  overflow:visible!important;
+}
+
+@media(max-width:760px){
+  .site-top .hero-title{
+    height:94px!important;
+    min-height:94px!important;
+  }
+  .site-top .hero-title>img{
+    width:min(100%,282px)!important;
+    max-width:282px!important;
+    height:auto!important;
+    max-height:82%!important;
+    transform:scaleY(1.30)!important;
+  }
+  .site-top nav{
+    gap:4px!important;
+    padding:7px 5px 9px!important;
+  }
+  .site-top nav a{
+    padding:9px 1px!important;
+    border-radius:7px!important;
+    font-size:clamp(10px,2.45vw,13px)!important;
+    letter-spacing:0!important;
+  }
+  .page-media .media-games-carousel .generated-game-layout::after{
+    left:80%!important;
+  }
+  .page-media .media-game-awards-carousel{
+    height:clamp(330px,98vw,430px)!important;
+    min-height:clamp(330px,98vw,430px)!important;
+    padding:24px 34px 58px!important;
+  }
+  .page-media .media-game-awards-carousel .game-award-slide{
+    width:min(82vw,455px)!important;
+    aspect-ratio:1.42 / 1!important;
+    top:44%!important;
+  }
+  .page-media .media-game-awards-carousel .game-award-header{
+    padding:0 10px!important;
+    gap:7px!important;
+  }
+  .page-media .media-game-awards-carousel .game-award-header strong{
+    font-size:clamp(15px,4.7vw,23px)!important;
+    white-space:nowrap!important;
+  }
+  .page-media .media-game-awards-carousel .game-award-icon{
+    font-size:clamp(20px,5.5vw,29px)!important;
+  }
+  .page-media .media-game-awards-carousel .game-award-body{
+    grid-template-columns:45% 55%!important;
+  }
+  .page-media .media-game-awards-carousel .game-award-copy{
+    padding:11px 9px 9px!important;
+  }
+  .page-media .media-game-awards-carousel .game-award-copy h3{
+    margin-bottom:8px!important;
+    font-size:clamp(17px,5.0vw,25px)!important;
+    line-height:.91!important;
+  }
+  .page-media .media-game-awards-carousel .game-award-player-meta{font-size:clamp(10px,3.25vw,14px)!important}
+  .page-media .media-game-awards-carousel .game-award-game-meta{font-size:clamp(9px,2.75vw,12px)!important}
+  .page-media .media-game-awards-carousel .game-award-match{font-size:clamp(12px,3.7vw,17px)!important}
+  .page-media .media-game-awards-carousel .game-award-result{font-size:clamp(11px,3.25vw,15px)!important}
+  .page-media .media-game-awards-carousel .game-award-watch{font-size:clamp(7px,2.25vw,10px)!important}
+}
+
+@media(max-width:430px){
+  .site-top .hero-title{height:90px!important;min-height:90px!important}
+  .site-top .hero-title>img{width:min(100%,258px)!important;max-width:258px!important;transform:scaleY(1.34)!important}
+}
