@@ -7,7 +7,7 @@
 <meta content="#ffd700" name="theme-color"/>
 <title>Allstar Galaxy | Home</title>
 <link href="images/logos/favicon.png" rel="icon" type="image/png"/>
-<link href="css/styles.css?v=203" rel="stylesheet"/>
+<link href="css/styles.css?v=204" rel="stylesheet"/>
 </head>
 <body class="page-home">
 <div class="site-shell">
@@ -34,6 +34,11 @@
 </nav>
 </header>
 <div class="hero-image hero-home"></div>
+<aside class="section-navigator section-navigator-home" data-section-nav aria-label="Home page sections">
+  <a href="#best-media"><span aria-hidden="true">★</span><b>Best Of</b></a>
+  <a href="#galaxy-stats"><span aria-hidden="true">▥</span><b>Stats</b></a>
+  <button type="button" data-scroll-top aria-label="Back to top"><span aria-hidden="true">↑</span><b>Top</b></button>
+</aside>
 <main>
 <section class="homepage-bestof-section" id="best-media">
 <div class="homepage-bestof-title-wrap">
@@ -46,6 +51,15 @@
 <button aria-label="Next playlist" class="carousel-button next">›</button>
 <div aria-label="Carousel slide navigation" class="carousel-dots"></div>
 </div>
+</section>
+<section class="galaxy-stats-section" id="galaxy-stats">
+  <div class="galaxy-stats-heading">
+    <span>ALLSTAR GALAXY</span>
+    <h2>Galaxy Stats</h2>
+    <p>A live snapshot of the club, roster, results, goals, and game awards.</p>
+  </div>
+  <div class="galaxy-stats-grid" data-galaxy-stats aria-live="polite"></div>
+  <button class="section-back-top" type="button" data-back-to-top>↑ Back to Top</button>
 </section>
 </main>
 <footer>
@@ -73,5 +87,7 @@
 </div>
 <script src="js/site-settings.js?v=190"></script>
 <script src="js/polish.js?v=203"></script>
+<script src="js/galaxy-stats.js?v=204"></script>
+<script src="js/section-navigation.js?v=204"></script>
 </body>
 </html>

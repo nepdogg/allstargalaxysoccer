@@ -7,7 +7,7 @@
 <meta content="#00aaff" name="theme-color"/>
 <title>Allstar Galaxy | Media</title>
 <link href="images/logos/favicon.png" rel="icon" type="image/png"/>
-<link href="css/styles.css?v=203" rel="stylesheet"/>
+<link href="css/styles.css?v=204" rel="stylesheet"/>
 </head>
 <body class="page-media">
 <div class="site-shell">
@@ -34,8 +34,15 @@
 </nav>
 </header>
 <div class="hero-image hero-media"></div>
+<aside class="section-navigator section-navigator-media" data-section-nav aria-label="Media page sections">
+  <a href="#latest-games"><span aria-hidden="true">▶</span><b>Latest</b></a>
+  <a href="#game-awards"><span aria-hidden="true">🏆</span><b>Awards</b></a>
+  <a href="#game-archive"><span aria-hidden="true">▣</span><b>Archive</b></a>
+  <a href="#media-center"><span aria-hidden="true">★</span><b>Best Of</b></a>
+  <button type="button" data-scroll-top aria-label="Back to top"><span aria-hidden="true">↑</span><b>Top</b></button>
+</aside>
 <main class="media-archive-main">
-<section class="media-archive-section">
+<section class="media-archive-section" id="latest-games">
 <div class="media-section-heading">
 <img alt="Latest Games — Allstar Galaxy" class="media-section-title-graphic" src="images/titles/section-titles/media-latest-games-title.png"/>
 <p>Current season game cards. Click a game to open Full Match, Highlights, and Slideshow links.</p>
@@ -59,7 +66,7 @@
 <div aria-label="Game awards slide navigation" class="carousel-dots"></div>
 </div>
 </section>
-<section class="media-archive-section">
+<section class="media-archive-section" id="game-archive">
 <div class="media-section-heading">
 <img alt="Game Archive — Allstar Galaxy" class="media-section-title-graphic" src="images/titles/section-titles/media-game-archive-title.png"/>
 <p>Browse season archives. Click a season card to open Full Matches, Highlights, and Slideshows playlists.</p>
@@ -71,7 +78,7 @@
 <div aria-label="Season archive slide navigation" class="carousel-dots"></div>
 </div>
 </section>
-<section class="media-archive-section">
+<section class="media-archive-section" id="media-center">
 <div class="media-section-heading">
 <img alt="Media Center — Allstar Galaxy" class="media-section-title-graphic" src="images/titles/section-titles/media-media-center-title.png"/>
 <p>Browse every Allstar Galaxy playlist collection, including the complete archive, shorts, full matches, highlights, slideshows, season awards, and featured moments.</p>
@@ -82,6 +89,7 @@
 <button aria-label="Next playlist" class="carousel-button next">›</button>
 <div aria-label="Playlist collection slide navigation" class="carousel-dots"></div>
 </div>
+<button class="section-back-top" type="button" data-back-to-top>↑ Back to Top</button>
 </section>
 </main>
 <footer>
@@ -124,5 +132,6 @@
 </div>
 <script src="js/site-settings.js?v=190"></script>
 <script src="js/polish.js?v=203"></script>
+<script src="js/section-navigation.js?v=204"></script>
 </body>
 </html>
