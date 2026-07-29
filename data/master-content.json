@@ -3473,13 +3473,13 @@
   ],
   "standings": [
     {
-      "position": "—",
+      "position": "\u2014",
       "team": "Allstar Galaxy",
-      "played": "—",
-      "wins": "—",
-      "draws": "—",
-      "losses": "—",
-      "points": "—",
+      "played": "\u2014",
+      "wins": "\u2014",
+      "draws": "\u2014",
+      "losses": "\u2014",
+      "points": "\u2014",
       "status": "published"
     }
   ],
@@ -3626,5 +3626,4614 @@
         "photo": "images/team/players/player-silhouette.png"
       }
     }
-  ]
+  ],
+  "production": {
+    "schemaVersion": 1,
+    "gameTemplate": [
+      {
+        "id": "full-match",
+        "title": "Full Match",
+        "required": true
+      },
+      {
+        "id": "highlights",
+        "title": "Highlights",
+        "required": true
+      },
+      {
+        "id": "slideshow",
+        "title": "Slideshow",
+        "required": true
+      },
+      {
+        "id": "player-of-the-game",
+        "title": "Player of the Game",
+        "required": true
+      },
+      {
+        "id": "goal-of-the-game",
+        "title": "Goal of the Game",
+        "required": false
+      },
+      {
+        "id": "save-of-the-game",
+        "title": "Save of the Game",
+        "required": false
+      },
+      {
+        "id": "play-of-the-game",
+        "title": "Play of the Game",
+        "required": false
+      },
+      {
+        "id": "assist-of-the-game",
+        "title": "Assist of the Game",
+        "required": false
+      }
+    ],
+    "seasonTemplate": [
+      {
+        "id": "all-goals",
+        "title": "All Goals of the Season",
+        "required": true
+      },
+      {
+        "id": "top-10-goals",
+        "title": "Top 10 Goals of the Season",
+        "required": true
+      },
+      {
+        "id": "goal-of-season",
+        "title": "Goal of the Season",
+        "required": true
+      },
+      {
+        "id": "all-saves",
+        "title": "All Saves of the Season",
+        "required": true
+      },
+      {
+        "id": "top-10-saves",
+        "title": "Top 10 Saves of the Season",
+        "required": true
+      },
+      {
+        "id": "save-of-season",
+        "title": "Save of the Season",
+        "required": true
+      },
+      {
+        "id": "all-assists",
+        "title": "All Assists of the Season",
+        "required": true
+      },
+      {
+        "id": "top-10-assists",
+        "title": "Top 10 Assists of the Season",
+        "required": true
+      },
+      {
+        "id": "assist-of-season",
+        "title": "Assist of the Season",
+        "required": true
+      },
+      {
+        "id": "all-plays",
+        "title": "All Plays of the Season",
+        "required": true
+      },
+      {
+        "id": "top-10-plays",
+        "title": "Top 10 Plays of the Season",
+        "required": true
+      },
+      {
+        "id": "play-of-season",
+        "title": "Play of the Season",
+        "required": true
+      },
+      {
+        "id": "players-of-season",
+        "title": "Players of the Season",
+        "required": true
+      },
+      {
+        "id": "top-10-players",
+        "title": "Top 10 Players of the Season",
+        "required": true
+      },
+      {
+        "id": "player-of-season",
+        "title": "Player of the Season",
+        "required": true
+      }
+    ],
+    "socialPlatforms": [
+      {
+        "id": "youtube",
+        "title": "YouTube",
+        "enabled": true
+      },
+      {
+        "id": "facebook",
+        "title": "Facebook",
+        "enabled": true
+      },
+      {
+        "id": "instagram",
+        "title": "Instagram",
+        "enabled": true
+      },
+      {
+        "id": "threads",
+        "title": "Threads",
+        "enabled": true
+      },
+      {
+        "id": "x",
+        "title": "X",
+        "enabled": true
+      },
+      {
+        "id": "tiktok",
+        "title": "TikTok",
+        "enabled": true
+      }
+    ],
+    "games": {
+      "summer-2026-game-01": {
+        "tasks": {
+          "full-match": {
+            "status": "complete",
+            "url": "https://youtu.be/nHQV9Jhr3ks",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "not_started",
+            "url": "#",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "not_started",
+            "url": "#",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "complete",
+            "url": "https://youtu.be/Nk6C34-rv7E",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "summer-2026-game-02": {
+        "tasks": {
+          "full-match": {
+            "status": "complete",
+            "url": "https://youtu.be/-nRrfK47oXI",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "complete",
+            "url": "https://youtu.be/-nRrfK47oXI",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "complete",
+            "url": "https://youtu.be/-nRrfK47oXI",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "summer-2026-game-03": {
+        "tasks": {
+          "full-match": {
+            "status": "complete",
+            "url": "https://youtu.be/b8qmP3Z9Lv0",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "complete",
+            "url": "https://youtu.be/oYBuabL7ixE",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "complete",
+            "url": "https://youtu.be/XdOchG2h2u0",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "summer-2026-game-05": {
+        "tasks": {
+          "full-match": {
+            "status": "complete",
+            "url": "https://youtu.be/aZsNugZfxqM",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "complete",
+            "url": "https://youtu.be/DPq81H0F7cY",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "complete",
+            "url": "https://youtu.be/ry18rl0zRIk",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "summer-2026-game-06": {
+        "tasks": {
+          "full-match": {
+            "status": "complete",
+            "url": "https://youtu.be/PfVwGU9iYvA",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "complete",
+            "url": "https://youtu.be/Ehz5O3GGGlQ",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "complete",
+            "url": "https://youtu.be/Zv0HCyKcgYM",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "summer-2026-game-07": {
+        "tasks": {
+          "full-match": {
+            "status": "complete",
+            "url": "https://youtu.be/8OmLsye4Xys",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "complete",
+            "url": "https://youtu.be/VAjb2ttbSvI",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "complete",
+            "url": "https://youtu.be/IyTPDbYihBs",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "summer-2026-game-08": {
+        "tasks": {
+          "full-match": {
+            "status": "complete",
+            "url": "https://youtu.be/k9VUjXMGXA8",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "complete",
+            "url": "https://youtu.be/mV4sWlzG7VA",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "complete",
+            "url": "https://youtu.be/NOwsq6BnYeg",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "summer-2026-game-10": {
+        "tasks": {
+          "full-match": {
+            "status": "complete",
+            "url": "https://youtu.be/W1VUWJ9kRDk",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "complete",
+            "url": "https://youtu.be/lpjwoMnGcoU",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "complete",
+            "url": "https://youtu.be/pf4FhBFTYW0",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "summer-2026-game-11": {
+        "tasks": {
+          "full-match": {
+            "status": "complete",
+            "url": "https://youtu.be/fq1_LZgHvjI",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "complete",
+            "url": "https://youtu.be/wTpkgnYFP1Y",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "complete",
+            "url": "https://youtu.be/A3g_0wrrVIU",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "summer-2026-game-12": {
+        "tasks": {
+          "full-match": {
+            "status": "complete",
+            "url": "https://youtu.be/-RQcbyonqkY",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "complete",
+            "url": "https://youtu.be/byqjjh8D718",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "complete",
+            "url": "https://youtu.be/znftKzKJhsw",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "summer-2026-game-13": {
+        "tasks": {
+          "full-match": {
+            "status": "complete",
+            "url": "https://youtu.be/FASGt9x25fM",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "complete",
+            "url": "https://youtu.be/ZydOO7kU2TA",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "complete",
+            "url": "https://youtu.be/dAhGqP5FV2U",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "summer-2026-game-14": {
+        "tasks": {
+          "full-match": {
+            "status": "complete",
+            "url": "https://youtu.be/7I83OlHjFhM",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "complete",
+            "url": "https://youtu.be/3gAONumlqRA",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "complete",
+            "url": "https://youtu.be/BdDheshdWvU",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "summer-2026-game-15": {
+        "tasks": {
+          "full-match": {
+            "status": "complete",
+            "url": "https://youtu.be/sFoDM-IKRZc",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "complete",
+            "url": "https://youtu.be/aruirLMz0Pk",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "complete",
+            "url": "https://youtu.be/TqElETWpU-c",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "new-game-01": {
+        "tasks": {
+          "full-match": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "new-game-02": {
+        "tasks": {
+          "full-match": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "new-game-03": {
+        "tasks": {
+          "full-match": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "new-game-04": {
+        "tasks": {
+          "full-match": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "new-game-05": {
+        "tasks": {
+          "full-match": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "new-game-06": {
+        "tasks": {
+          "full-match": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "new-game-07": {
+        "tasks": {
+          "full-match": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "new-game-08": {
+        "tasks": {
+          "full-match": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "new-game-09": {
+        "tasks": {
+          "full-match": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "new-game-10": {
+        "tasks": {
+          "full-match": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "new-game-11": {
+        "tasks": {
+          "full-match": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "new-game-12": {
+        "tasks": {
+          "full-match": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "new-game-13": {
+        "tasks": {
+          "full-match": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "new-game-14": {
+        "tasks": {
+          "full-match": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "new-game-15": {
+        "tasks": {
+          "full-match": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "new-game-16": {
+        "tasks": {
+          "full-match": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "new-game-17": {
+        "tasks": {
+          "full-match": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "new-game-18": {
+        "tasks": {
+          "full-match": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "new-game-19": {
+        "tasks": {
+          "full-match": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "new-game-20": {
+        "tasks": {
+          "full-match": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "game-01": {
+        "tasks": {
+          "full-match": {
+            "status": "complete",
+            "url": "https://youtu.be/kXrVB0UgooE",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "complete",
+            "url": "https://youtu.be/Tqw5XTsDo4k",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "complete",
+            "url": "https://youtu.be/tP5Xf2CWOaw",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "complete",
+            "url": "https://youtu.be/vKTeJ3snATo",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "complete",
+            "url": "https://youtu.be/LeCEXq9lP-Y",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "complete",
+            "url": "https://youtu.be/7kvHZxafYnM",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "complete",
+            "url": "https://youtu.be/I4wbS_uxzjg",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      },
+      "game-02": {
+        "tasks": {
+          "full-match": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "highlights": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "slideshow": {
+            "status": "complete",
+            "url": "https://youtu.be/SZbYQmpOIM8",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-the-game": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": "",
+        "priority": "normal"
+      }
+    },
+    "seasons": {
+      "summer-2026": {
+        "tasks": {
+          "all-goals": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "top-10-goals": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-season": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "all-saves": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "top-10-saves": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-season": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "all-assists": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "top-10-assists": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-season": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "all-plays": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "top-10-plays": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-season": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "players-of-season": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "top-10-players": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-season": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": ""
+      },
+      "fall-2026": {
+        "tasks": {
+          "all-goals": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "top-10-goals": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-season": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "all-saves": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "top-10-saves": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-season": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "all-assists": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "top-10-assists": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-season": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "all-plays": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "top-10-plays": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-season": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "players-of-season": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "top-10-players": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-season": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": ""
+      },
+      "season-02": {
+        "tasks": {
+          "all-goals": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "top-10-goals": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "goal-of-season": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "all-saves": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "top-10-saves": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "save-of-season": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "all-assists": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "top-10-assists": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "assist-of-season": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "all-plays": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "top-10-plays": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "play-of-season": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "players-of-season": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "top-10-players": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          },
+          "player-of-season": {
+            "status": "not_started",
+            "url": "",
+            "notes": "",
+            "social": {
+              "youtube": "not_started",
+              "facebook": "not_started",
+              "instagram": "not_started",
+              "threads": "not_started",
+              "x": "not_started",
+              "tiktok": "not_started"
+            }
+          }
+        },
+        "notes": ""
+      }
+    },
+    "updated": ""
+  }
 }
