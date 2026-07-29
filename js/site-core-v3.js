@@ -32,7 +32,44 @@
   };
   const pageName = () => (location.pathname.split('/').pop() || 'index.html').toLowerCase();
 
-  function installNavigation() {
+  let navigationObserver = null;
+  let navigationRepairQueued = false;
+
+  function navigationMarkup() {
+    const current = pageName();
+    const links = NAV_ITEMS.map(([label, href]) => {
+      const active = current === href || (href === 'team.html' && current === 'players.html');
+      return `<a href="${href}"${active ? ' class="active" aria-current="page"' : ''}>${label}</a>`;
+    }).join('');
+    return `${links}<button type="button" class="site-search-button site-search-button-desktop" data-galaxy-search-open aria-label="Open Galaxy Search"><span aria-hidden="true">⌕</span><b>Search</b></button>`;
+  }
+
+  function navigationIsComplete(nav) {
+    if (!nav || !nav.classList.contains('site-nav-v3')) return false;
+    const labels = [...nav.querySelectorAll(':scope > a')].map(link => link.textContent.trim().toLowerCase());
+    const expected = NAV_ITEMS.map(([label]) => label.toLowerCase());
+    return labels.length === expected.length &&
+      expected.every((label, index) => labels[index] === label) &&
+      Boolean(nav.querySelector(':scope > .site-search-button-desktop[data-galaxy-search-open]'));
+  }
+
+  function installMobileSearch(header) {
+    const rightLogo = header.querySelector('.hero-logo-right');
+    if (!rightLogo) return;
+    rightLogo.classList.add('desktop-right-logo');
+    let button = header.querySelector('.mobile-search-button[data-galaxy-search-open]');
+    if (!button) {
+      button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'mobile-search-button';
+      button.setAttribute('data-galaxy-search-open', '');
+      button.setAttribute('aria-label', 'Open Galaxy Search');
+      button.innerHTML = '<span aria-hidden="true">⌕</span>';
+      rightLogo.insertAdjacentElement('afterend', button);
+    }
+  }
+
+  function installNavigation({ force = false } = {}) {
     const header = document.querySelector('header.site-top, header');
     if (!header) return;
     let nav = header.querySelector('nav');
@@ -41,25 +78,22 @@
       header.appendChild(nav);
     }
 
-    const current = pageName();
-    nav.classList.add('site-nav-v3');
-    nav.innerHTML = NAV_ITEMS.map(([label, href]) => {
-      const active = current === href || (href === 'team.html' && current === 'players.html');
-      return `<a href="${href}"${active ? ' class="active" aria-current="page"' : ''}>${label}</a>`;
-    }).join('') + '<button type="button" class="site-search-button site-search-button-desktop" data-galaxy-search-open aria-label="Open Galaxy Search"><span aria-hidden="true">⌕</span><b>Search</b></button>';
+    if (force || !navigationIsComplete(nav)) {
+      nav.className = `${nav.className.replace(/\bsite-nav-v3\b/g, '').trim()} site-nav-v3`.trim();
+      nav.innerHTML = navigationMarkup();
+    }
+    installMobileSearch(header);
 
-    const rightLogo = header.querySelector('.hero-logo-right');
-    if (rightLogo) {
-      rightLogo.classList.add('desktop-right-logo');
-      if (!header.querySelector('.mobile-search-button')) {
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.className = 'mobile-search-button';
-        button.setAttribute('data-galaxy-search-open', '');
-        button.setAttribute('aria-label', 'Open Galaxy Search');
-        button.innerHTML = '<span aria-hidden="true">⌕</span>';
-        rightLogo.insertAdjacentElement('afterend', button);
-      }
+    if (!navigationObserver) {
+      navigationObserver = new MutationObserver(() => {
+        if (navigationRepairQueued || navigationIsComplete(nav)) return;
+        navigationRepairQueued = true;
+        requestAnimationFrame(() => {
+          navigationRepairQueued = false;
+          installNavigation({ force: true });
+        });
+      });
+      navigationObserver.observe(nav, { childList: true, subtree: true });
     }
   }
 
@@ -249,8 +283,10 @@
 
   function init() {
     document.documentElement.classList.add('allstar-v3');
-    installNavigation();
+    installNavigation({ force: true });
     installSearch();
+    document.addEventListener('asg:site-settings-applied', () => installNavigation({ force: true }));
+    window.addEventListener('pageshow', () => installNavigation({ force: true }));
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once:true });

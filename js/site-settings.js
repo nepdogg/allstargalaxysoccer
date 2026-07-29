@@ -109,6 +109,7 @@
        if(!el)return;el.hidden=item.visible===false;if(main&&el.parentElement===main)main.appendChild(el);
      });
    }
+   document.dispatchEvent(new CustomEvent('asg:site-settings-applied',{detail:{settings:s}}));
  }
  document.addEventListener('DOMContentLoaded',()=>getData().then(apply).catch(console.error));
 })();
