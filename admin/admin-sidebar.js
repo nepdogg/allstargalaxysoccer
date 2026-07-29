@@ -4,6 +4,7 @@
 
   const ITEMS = [
     ["dashboard", "Dashboard", "dashboard.html", true],
+    ["production", "Production Tracker", "production.html", true],
     ["players", "Players", "players.html", true],
     ["games", "Games", "games.html", true],
     ["gameAwards", "Game Awards", "game-awards.html", true],
