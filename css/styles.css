@@ -21816,3 +21816,23 @@ body.galaxy-search-open{overflow:hidden}
   .galaxy-search-v3{padding:8px}.galaxy-search-panel{min-height:calc(100vh - 16px);border-radius:16px;padding:16px}.galaxy-search-results-v3{grid-template-columns:1fr}.search-result-main{grid-template-columns:76px 1fr}.search-result-image{width:76px}.galaxy-search-filter-row{flex-wrap:nowrap;overflow-x:auto;padding-bottom:.3rem}.galaxy-search-filter-row button{white-space:nowrap}.galaxy-search-summary span:last-child{display:none}
 }
 @media(max-width:520px){.site-nav-v3>a{font-size:clamp(.56rem,2.4vw,.72rem);padding-inline:2px}.galaxy-search-heading h2{font-size:1.75rem}.galaxy-search-close{width:44px;height:44px}.search-result-copy strong{font-size:.96rem}}
+
+
+/* ================================================================
+   ALLSTAR GALAXY V3.0.1 — PERMANENT RESPONSIVE SEARCH NAVIGATION
+   Desktop Search always follows Follow. Mobile Search replaces the
+   right header logo without adding an eighth phone navigation item.
+   ================================================================ */
+@media (min-width:901px){
+  .site-top nav.site-nav-v3{grid-template-columns:repeat(8,minmax(0,1fr))!important}
+  .site-top nav.site-nav-v3>.site-search-button-desktop{display:flex!important;order:8!important}
+  .site-top nav.site-nav-v3>a:nth-of-type(7){order:7!important}
+  .site-top .mobile-search-button{display:none!important}
+  .site-top .desktop-right-logo{display:flex!important}
+}
+@media (max-width:900px){
+  .site-top nav.site-nav-v3{grid-template-columns:repeat(7,minmax(0,1fr))!important}
+  .site-top nav.site-nav-v3>.site-search-button-desktop{display:none!important}
+  .site-top .hero-logo-right.desktop-right-logo{display:none!important}
+  .site-top .mobile-search-button{display:flex!important;grid-column:3;grid-row:1;align-self:center;justify-self:center}
+}
