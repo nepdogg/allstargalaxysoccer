@@ -281,10 +281,42 @@
     });
   }
 
+
+  function installStatusTicker() {
+    let ticker = document.querySelector('.asg-status-ticker');
+    if (!ticker) {
+      const header = document.querySelector('header.site-top, header');
+      if (!header) return;
+      ticker = document.createElement('div');
+      ticker.className = 'asg-status-ticker';
+      ticker.setAttribute('role', 'status');
+      ticker.setAttribute('aria-label', 'Allstar Galaxy status');
+      ticker.innerHTML = '<div class="asg-status-ticker-track"><span>ALLSTAR GALAXY</span><b>•</b><span data-asg-status-text>Loading team status…</span><b>•</b><span>THE OFFICIAL HOME OF THE ALLSTAR GALAXY</span></div>';
+      header.insertAdjacentElement('afterend', ticker);
+    }
+    loadStatusTicker(ticker.querySelector('[data-asg-status-text]'));
+  }
+
+  async function loadStatusTicker(target) {
+    if (!target) return;
+    let data = null;
+    for (const url of DATA_URLS) {
+      try { const response = await fetch(url, { cache:'no-store' }); if (response.ok) { data = await response.json(); break; } } catch (_) {}
+    }
+    if (!data) { target.textContent = 'Latest team news, games, awards, and media'; return; }
+    const live = data.live || {};
+    if (normalize(live.status) === 'live') { target.textContent = `LIVE NOW${live.opponent ? ` — ALLSTAR GALAXY VS ${live.opponent}` : ''}`; return; }
+    const matches = (Array.isArray(data.schedule) ? data.schedule : []).filter(isVisible);
+    const next = matches.find(item => item.date || item.opponent) || null;
+    if (next) target.textContent = ['NEXT GAME', next.date, next.opponent ? `ALLSTAR GALAXY VS ${next.opponent}` : '', next.time, next.location].filter(Boolean).join(' • ');
+    else target.textContent = 'LATEST GAMES • GAME AWARDS • TEAM NEWS • MEDIA ARCHIVE';
+  }
+
   function init() {
     document.documentElement.classList.add('allstar-v3');
     installNavigation({ force: true });
     installSearch();
+    installStatusTicker();
     document.addEventListener('asg:site-settings-applied', () => installNavigation({ force: true }));
     window.addEventListener('pageshow', () => installNavigation({ force: true }));
   }
