@@ -22466,3 +22466,167 @@ html{overflow-x:hidden}body{overflow-x:clip}.site-shell{width:100%;max-width:100
   .page-home .homepage-showcase-carousel .carousel-button.prev{left:5px!important;}
   .page-home .homepage-showcase-carousel .carousel-button.next{right:5px!important;}
 }
+
+/* ============================================================
+   V217 — HOMEPAGE EXACT MEDIA-CAROUSEL ALIGNMENT
+   Final override: ticker stays inside the centered header and the
+   Homepage stages use the same dimensions as Media page carousels.
+   ============================================================ */
+.page-home .site-top{
+  position:sticky!important;
+  top:0!important;
+  left:auto!important;
+  right:auto!important;
+  width:100%!important;
+  max-width:100%!important;
+  margin:0!important;
+  transform:none!important;
+  overflow:hidden!important;
+  box-sizing:border-box!important;
+  z-index:10020!important;
+}
+.page-home .site-top .asg-status-ticker{
+  position:static!important;
+  inset:auto!important;
+  width:100%!important;
+  min-width:0!important;
+  max-width:100%!important;
+  margin:0!important;
+  padding:0!important;
+  transform:none!important;
+  box-sizing:border-box!important;
+  overflow:hidden!important;
+  contain:paint!important;
+  align-self:stretch!important;
+}
+.page-home .site-top .asg-status-ticker-track{
+  max-width:none!important;
+  box-sizing:border-box!important;
+}
+.page-home .hero-image{margin-top:0!important;}
+
+/* Remove all earlier Homepage-specific stage sizing. */
+.page-home .homepage-showcase-carousel{
+  position:relative!important;
+  width:calc(100% - 36px)!important;
+  max-width:1220px!important;
+  height:clamp(390px,34vw,500px)!important;
+  min-height:clamp(390px,34vw,500px)!important;
+  margin:20px auto 46px!important;
+  padding:30px 56px 64px!important;
+  overflow:hidden!important;
+  border-radius:20px!important;
+  box-sizing:border-box!important;
+}
+.page-home .homepage-showcase-carousel .carousel-track{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  transform:none!important;
+  overflow:visible!important;
+}
+.page-home .homepage-showcase-carousel .media-slide,
+.page-home .homepage-showcase-carousel .media-game-slide{
+  position:absolute!important;
+  left:50%!important;
+  top:45%!important;
+  margin:0!important;
+  opacity:0!important;
+  pointer-events:none!important;
+  transform:translate(-50%,-50%) translateX(calc(var(--media-offset,0) * clamp(245px,42vw,510px))) scale(.62)!important;
+  transform-origin:center!important;
+  filter:brightness(.42)!important;
+  transition:transform .45s ease,opacity .45s ease,filter .45s ease!important;
+  z-index:1!important;
+}
+.page-home .homepage-showcase-carousel .media-slide.is-active,
+.page-home .homepage-showcase-carousel .media-game-slide.is-active{
+  opacity:1!important;
+  pointer-events:auto!important;
+  transform:translate(-50%,-50%) translateX(0) scale(1)!important;
+  filter:none!important;
+  z-index:5!important;
+}
+.page-home .homepage-showcase-carousel .media-slide.is-neighbor,
+.page-home .homepage-showcase-carousel .media-game-slide.is-neighbor{
+  opacity:.58!important;
+  pointer-events:none!important;
+  transform:translate(-50%,-50%) translateX(calc(var(--media-offset,0) * clamp(245px,42vw,510px))) scale(.76)!important;
+  filter:brightness(.48)!important;
+  z-index:2!important;
+}
+.page-home .homepage-showcase-carousel .media-slide.is-distance-2,
+.page-home .homepage-showcase-carousel .media-game-slide.is-distance-2{
+  opacity:.16!important;
+  transform:translate(-50%,-50%) translateX(calc(var(--media-offset,0) * clamp(245px,42vw,510px))) scale(.52)!important;
+}
+.page-home .homepage-showcase-carousel .media-slide.is-hidden-media,
+.page-home .homepage-showcase-carousel .media-game-slide.is-hidden-media{opacity:0!important;pointer-events:none!important;}
+.page-home .homepage-showcase-carousel .carousel-button{top:45%!important;z-index:20!important;}
+.page-home .homepage-showcase-carousel .carousel-button.prev{left:18px!important;}
+.page-home .homepage-showcase-carousel .carousel-button.next{right:18px!important;}
+.page-home .homepage-showcase-carousel .carousel-dots{bottom:21px!important;z-index:20!important;}
+
+/* Latest Games: same stage as the Media page Latest Games carousel. */
+.page-home .homepage-latest-showcase .media-slide,
+.page-home .homepage-latest-showcase .media-game-slide{
+  width:clamp(350px,57vw,660px)!important;
+  max-width:660px!important;
+  aspect-ratio:1.55/1!important;
+}
+.page-home .homepage-latest-showcase .generated-wide-card{inset:0!important;width:100%!important;height:100%!important;max-height:none!important;overflow:hidden!important;}
+.page-home .homepage-latest-showcase .generated-game-layout{height:100%!important;min-height:0!important;overflow:hidden!important;}
+.page-home .homepage-latest-showcase .generated-game-footer{min-height:18%!important;height:auto!important;align-items:stretch!important;}
+.page-home .homepage-latest-showcase .generated-game-footer>*{min-height:0!important;padding-top:6px!important;padding-bottom:6px!important;line-height:1.05!important;overflow:visible!important;}
+
+/* Random Video: exact Best Of / Media playlist card proportions. */
+.page-home .homepage-random-showcase .media-slide{
+  width:clamp(350px,57vw,660px)!important;
+  max-width:660px!important;
+}
+.page-home .homepage-random-showcase .generated-playlist-art{
+  position:relative!important;
+  display:grid!important;
+  grid-template-rows:minmax(0,1fr) 68px!important;
+  width:100%!important;
+  height:auto!important;
+  max-height:none!important;
+  aspect-ratio:1.48/1!important;
+  overflow:hidden!important;
+}
+.page-home .homepage-random-showcase .generated-playlist-image{background-position:center!important;background-repeat:no-repeat!important;background-size:cover!important;min-height:0!important;}
+.page-home .homepage-random-showcase .generated-playlist-footer{height:68px!important;min-height:68px!important;padding:8px 16px!important;gap:10px!important;align-items:center!important;}
+.page-home .homepage-random-showcase .generated-playlist-footer-icon,
+.page-home .homepage-random-showcase .generated-playlist-icon{flex:0 0 40px!important;width:40px!important;height:40px!important;margin:0!important;transform:translateY(1px)!important;}
+.page-home .homepage-random-showcase .generated-playlist-footer-title,
+.page-home .homepage-random-showcase .generated-card-title{margin:0!important;font-size:clamp(1.08rem,2.5vw,1.8rem)!important;line-height:1!important;text-align:left!important;}
+
+@media(max-width:760px){
+  .page-home .homepage-showcase-carousel{
+    width:calc(100% - 24px)!important;
+    height:clamp(350px,102vw,430px)!important;
+    min-height:clamp(350px,102vw,430px)!important;
+    padding:25px 34px 58px!important;
+  }
+  .page-home .homepage-showcase-carousel .media-slide,
+  .page-home .homepage-showcase-carousel .media-game-slide{
+    width:min(84vw,455px)!important;
+    top:44%!important;
+    transform:translate(-50%,-50%) translateX(calc(var(--media-offset,0) * 72vw)) scale(.60)!important;
+  }
+  .page-home .homepage-showcase-carousel .media-slide.is-active,
+  .page-home .homepage-showcase-carousel .media-game-slide.is-active{transform:translate(-50%,-50%) translateX(0) scale(1)!important;}
+  .page-home .homepage-showcase-carousel .media-slide.is-neighbor,
+  .page-home .homepage-showcase-carousel .media-game-slide.is-neighbor{transform:translate(-50%,-50%) translateX(calc(var(--media-offset,0) * 72vw)) scale(.72)!important;}
+  .page-home .homepage-showcase-carousel .media-slide.is-distance-2,
+  .page-home .homepage-showcase-carousel .media-game-slide.is-distance-2{transform:translate(-50%,-50%) translateX(calc(var(--media-offset,0) * 72vw)) scale(.50)!important;}
+  .page-home .homepage-showcase-carousel .carousel-button{top:44%!important;}
+  .page-home .homepage-showcase-carousel .carousel-button.prev{left:7px!important;}
+  .page-home .homepage-showcase-carousel .carousel-button.next{right:7px!important;}
+  .page-home .homepage-latest-showcase .generated-game-footer{min-height:20%!important;}
+  .page-home .homepage-latest-showcase .generated-game-footer>*{padding:5px 3px!important;font-size:clamp(8px,2.2vw,11px)!important;}
+  .page-home .homepage-random-showcase .generated-playlist-art{grid-template-rows:minmax(0,1fr) 58px!important;}
+  .page-home .homepage-random-showcase .generated-playlist-footer{height:58px!important;min-height:58px!important;padding:6px 10px!important;}
+}
