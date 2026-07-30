@@ -22004,3 +22004,122 @@ html{overflow-x:hidden}body{overflow-x:clip}.site-shell{width:100%;max-width:100
   .page-home .homepage-random-carousel{min-height:335px;}
   .page-home .homepage-random-carousel .media-slide{width:86vw !important;flex-basis:86vw !important;}
 }
+
+/* ==========================================================
+   V214 HOMEPAGE FINAL CAROUSEL + FIXED STATUS TICKER
+   ========================================================== */
+.page-home{padding-top:31px!important;}
+.page-home .asg-status-ticker{
+  position:fixed!important;
+  top:0!important;
+  left:50%!important;
+  transform:translateX(-50%)!important;
+  width:min(1400px,100vw)!important;
+  z-index:100000!important;
+  margin:0!important;
+  display:flex!important;
+  visibility:visible!important;
+  opacity:1!important;
+}
+
+.page-home .homepage-v214-carousel{
+  position:relative!important;
+  width:min(100%,980px)!important;
+  min-height:540px!important;
+  margin:18px auto 34px!important;
+  overflow:hidden!important;
+  border:2px solid var(--card-accent,#f5c542)!important;
+  border-radius:24px!important;
+  background:rgba(2,5,14,.88)!important;
+}
+.page-home .homepage-v214-carousel .carousel-track{
+  position:relative!important;
+  width:100%!important;
+  min-height:490px!important;
+  transform:none!important;
+  overflow:visible!important;
+}
+.page-home .homepage-v214-carousel .media-slide{
+  position:absolute!important;
+  top:50%!important;
+  left:50%!important;
+  width:min(76%,720px)!important;
+  height:auto!important;
+  margin:0!important;
+  opacity:0!important;
+  pointer-events:none!important;
+  transform:translate(calc(-50% + (var(--media-offset,0) * 58%)), -50%) scale(.72)!important;
+  transition:transform .45s ease,opacity .45s ease,filter .45s ease!important;
+  filter:brightness(.35)!important;
+  z-index:1!important;
+}
+.page-home .homepage-v214-carousel .media-slide.is-active{
+  opacity:1!important;
+  pointer-events:auto!important;
+  transform:translate(-50%,-50%) scale(1)!important;
+  filter:none!important;
+  z-index:5!important;
+}
+.page-home .homepage-v214-carousel .media-slide.is-neighbor{
+  opacity:.48!important;
+  pointer-events:none!important;
+  filter:brightness(.42)!important;
+  z-index:2!important;
+}
+.page-home .homepage-v214-carousel .media-slide.is-hidden-media,
+.page-home .homepage-v214-carousel .media-slide.is-distance-2{opacity:0!important;}
+.page-home .homepage-v214-carousel .carousel-button{
+  position:absolute!important;
+  top:50%!important;
+  z-index:20!important;
+  transform:translateY(-50%)!important;
+}
+.page-home .homepage-v214-carousel .carousel-button.prev{left:14px!important;}
+.page-home .homepage-v214-carousel .carousel-button.next{right:14px!important;}
+.page-home .homepage-v214-carousel .carousel-dots{
+  position:absolute!important;
+  left:50%!important;
+  bottom:12px!important;
+  transform:translateX(-50%)!important;
+  z-index:20!important;
+}
+.page-home .homepage-v214-games-carousel{--card-accent:#20bfff;}
+.page-home .homepage-v214-games-carousel .generated-wide-card{
+  width:100%!important;
+  min-height:400px!important;
+  max-height:none!important;
+}
+.page-home .homepage-v214-games-carousel .generated-game-layout{
+  grid-template-columns:minmax(0,1.65fr) minmax(210px,.75fr)!important;
+}
+.page-home .homepage-v214-random-carousel{--card-accent:#f5c542;min-height:500px!important;}
+.page-home .homepage-v214-random-carousel .carousel-track{min-height:450px!important;}
+.page-home .homepage-v214-random-carousel .media-slide{width:min(64%,590px)!important;}
+.page-home .homepage-v214-random-carousel .generated-playlist-art{position:relative!important;width:100%!important;}
+.page-home .generated-video-type-status{
+  display:block;
+  padding:7px 12px 10px;
+  text-align:center;
+  color:#f5c542;
+  font-weight:800;
+  letter-spacing:.1em;
+  background:#050507;
+}
+
+@media(max-width:700px){
+  .page-home{padding-top:26px!important;}
+  .page-home .asg-status-ticker{width:100vw!important;}
+  .page-home .homepage-v214-carousel{width:calc(100% - 18px)!important;min-height:410px!important;border-radius:16px!important;}
+  .page-home .homepage-v214-carousel .carousel-track{min-height:370px!important;}
+  .page-home .homepage-v214-carousel .media-slide{width:86%!important;transform:translate(calc(-50% + (var(--media-offset,0) * 73%)),-50%) scale(.7)!important;}
+  .page-home .homepage-v214-carousel .media-slide.is-active{transform:translate(-50%,-50%) scale(1)!important;}
+  .page-home .homepage-v214-games-carousel{min-height:500px!important;}
+  .page-home .homepage-v214-games-carousel .carousel-track{min-height:460px!important;}
+  .page-home .homepage-v214-games-carousel .generated-game-layout{grid-template-columns:1fr!important;}
+  .page-home .homepage-v214-games-carousel .generated-wide-card{min-height:415px!important;}
+  .page-home .homepage-v214-random-carousel{min-height:370px!important;}
+  .page-home .homepage-v214-random-carousel .carousel-track{min-height:330px!important;}
+  .page-home .homepage-v214-random-carousel .media-slide{width:82%!important;}
+  .page-home .homepage-v214-carousel .carousel-button.prev{left:5px!important;}
+  .page-home .homepage-v214-carousel .carousel-button.next{right:5px!important;}
+}
