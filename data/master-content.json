@@ -1,6 +1,6 @@
 {
-  "version": 220,
-  "updated": "2026-07-27",
+  "version": 221,
+  "updated": "2026-07-30",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
     "logo": "generated/allstar-galaxy-logo.png",
@@ -3473,13 +3473,13 @@
   ],
   "standings": [
     {
-      "position": "\u2014",
+      "position": "—",
       "team": "Allstar Galaxy",
-      "played": "\u2014",
-      "wins": "\u2014",
-      "draws": "\u2014",
-      "losses": "\u2014",
-      "points": "\u2014",
+      "played": "—",
+      "wins": "—",
+      "draws": "—",
+      "losses": "—",
+      "points": "—",
       "status": "published"
     }
   ],
@@ -8234,6 +8234,6 @@
         "notes": ""
       }
     },
-    "updated": ""
+    "updated": "2026-07-30T18:03:21.458Z"
   }
 }
