@@ -22262,3 +22262,207 @@ html{overflow-x:hidden}body{overflow-x:clip}.site-shell{width:100%;max-width:100
   .page-home .homepage-v215-carousel .carousel-button.prev{left:5px!important;}
   .page-home .homepage-v215-carousel .carousel-button.next{right:5px!important;}
 }
+
+/* ============================================================
+   V216 — HOMEPAGE CLEAN SHOWCASE RESET
+   The status ticker lives inside the sticky header, and both
+   Homepage carousels use the same centered geometry as Media Best Of.
+   ============================================================ */
+.page-home .site-top{
+  position:sticky!important;
+  top:0!important;
+  z-index:10020!important;
+  overflow:visible!important;
+}
+.page-home .site-top .asg-status-ticker{
+  position:relative!important;
+  inset:auto!important;
+  top:auto!important;
+  left:auto!important;
+  right:auto!important;
+  bottom:auto!important;
+  width:100%!important;
+  max-width:100%!important;
+  margin:0!important;
+  border-radius:0!important;
+  z-index:1!important;
+  box-sizing:border-box!important;
+}
+.page-home .hero-image{
+  margin-top:0!important;
+}
+
+/* Exact Best Of-style showcase frame for both Homepage carousels. */
+.page-home .homepage-showcase-carousel{
+  position:relative!important;
+  width:min(calc(100% - 70px),1040px)!important;
+  height:500px!important;
+  min-height:500px!important;
+  margin:20px auto 46px!important;
+  padding:0!important;
+  overflow:hidden!important;
+  border:2px solid var(--card-accent,#20bfff)!important;
+  border-radius:20px!important;
+  background:rgba(0,5,18,.94)!important;
+  box-shadow:0 0 22px color-mix(in srgb,var(--card-accent,#20bfff) 38%,transparent)!important;
+}
+.page-home .homepage-showcase-carousel .carousel-track{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  display:block!important;
+  transform:none!important;
+  overflow:visible!important;
+}
+.page-home .homepage-showcase-carousel .media-slide{
+  position:absolute!important;
+  top:46%!important;
+  left:50%!important;
+  width:58%!important;
+  max-width:620px!important;
+  min-width:0!important;
+  margin:0!important;
+  opacity:0!important;
+  pointer-events:none!important;
+  transform:translate(calc(-50% + (var(--media-offset,0) * 78%)),-50%) scale(.72)!important;
+  transform-origin:center center!important;
+  filter:brightness(.42)!important;
+  transition:transform .45s ease,opacity .45s ease,filter .45s ease!important;
+  z-index:1!important;
+}
+.page-home .homepage-showcase-carousel .media-slide.is-active{
+  opacity:1!important;
+  pointer-events:auto!important;
+  transform:translate(-50%,-50%) scale(1)!important;
+  filter:none!important;
+  z-index:5!important;
+}
+.page-home .homepage-showcase-carousel .media-slide.is-neighbor{
+  opacity:.58!important;
+  pointer-events:none!important;
+  filter:brightness(.48)!important;
+  z-index:2!important;
+}
+.page-home .homepage-showcase-carousel .media-slide.is-distance-2,
+.page-home .homepage-showcase-carousel .media-slide.is-hidden-media{
+  opacity:0!important;
+  pointer-events:none!important;
+}
+.page-home .homepage-showcase-carousel .carousel-button{
+  position:absolute!important;
+  top:50%!important;
+  transform:translateY(-50%)!important;
+  z-index:20!important;
+}
+.page-home .homepage-showcase-carousel .carousel-button.prev{left:18px!important;}
+.page-home .homepage-showcase-carousel .carousel-button.next{right:18px!important;}
+.page-home .homepage-showcase-carousel .carousel-dots{
+  position:absolute!important;
+  left:50%!important;
+  bottom:16px!important;
+  transform:translateX(-50%)!important;
+  z-index:20!important;
+}
+
+/* Latest Games keeps the complete game card, scaled to the same showcase frame. */
+.page-home .homepage-latest-showcase{--card-accent:#20bfff;}
+.page-home .homepage-latest-showcase .media-slide{
+  width:64%!important;
+  max-width:690px!important;
+}
+.page-home .homepage-latest-showcase .generated-wide-card{
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  aspect-ratio:1.48/1!important;
+  overflow:hidden!important;
+}
+.page-home .homepage-latest-showcase .generated-game-layout{
+  grid-template-columns:minmax(0,72%) minmax(0,28%)!important;
+  grid-template-rows:minmax(0,1fr) 70px!important;
+}
+.page-home .homepage-latest-showcase .generated-card-footer,
+.page-home .homepage-latest-showcase .generated-game-footer{
+  height:70px!important;
+  min-height:70px!important;
+}
+
+/* Random categories use the exact playlist-card proportions of Best Of. */
+.page-home .homepage-random-showcase{--card-accent:#f5c542;}
+.page-home .homepage-random-showcase .generated-playlist-art{
+  position:relative!important;
+  display:grid!important;
+  grid-template-rows:minmax(0,1fr) 72px!important;
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  aspect-ratio:1.55/1!important;
+  overflow:hidden!important;
+}
+.page-home .homepage-random-showcase .generated-playlist-image{
+  min-height:0!important;
+  background-size:cover!important;
+  background-position:center!important;
+}
+.page-home .homepage-random-showcase .generated-playlist-footer{
+  height:72px!important;
+  min-height:72px!important;
+  padding:8px 18px!important;
+}
+.page-home .homepage-random-showcase .generated-video-type-status{
+  position:absolute!important;
+  top:10px!important;
+  right:10px!important;
+  z-index:4!important;
+  padding:6px 10px!important;
+  border:1px solid #f5c542!important;
+  border-radius:999px!important;
+  background:rgba(0,0,0,.88)!important;
+  color:#f5c542!important;
+  font-size:.68rem!important;
+}
+
+@media(max-width:760px){
+  .page-home .homepage-showcase-carousel{
+    width:calc(100% - 18px)!important;
+    height:390px!important;
+    min-height:390px!important;
+    border-radius:15px!important;
+  }
+  .page-home .homepage-showcase-carousel .media-slide{
+    width:76%!important;
+    transform:translate(calc(-50% + (var(--media-offset,0) * 86%)),-50%) scale(.68)!important;
+  }
+  .page-home .homepage-showcase-carousel .media-slide.is-active{
+    transform:translate(-50%,-50%) scale(1)!important;
+  }
+  .page-home .homepage-latest-showcase{
+    height:430px!important;
+    min-height:430px!important;
+  }
+  .page-home .homepage-latest-showcase .media-slide{width:88%!important;}
+  .page-home .homepage-latest-showcase .generated-game-layout{
+    grid-template-columns:minmax(0,72%) minmax(0,28%)!important;
+    grid-template-rows:minmax(0,1fr) 58px!important;
+  }
+  .page-home .homepage-latest-showcase .generated-card-footer,
+  .page-home .homepage-latest-showcase .generated-game-footer{
+    height:58px!important;
+    min-height:58px!important;
+  }
+  .page-home .homepage-random-showcase .media-slide{width:78%!important;}
+  .page-home .homepage-random-showcase .generated-playlist-art{
+    grid-template-rows:minmax(0,1fr) 54px!important;
+  }
+  .page-home .homepage-random-showcase .generated-playlist-footer{
+    height:54px!important;
+    min-height:54px!important;
+    padding:5px 10px!important;
+  }
+  .page-home .homepage-showcase-carousel .carousel-button.prev{left:5px!important;}
+  .page-home .homepage-showcase-carousel .carousel-button.next{right:5px!important;}
+}
