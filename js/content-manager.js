@@ -101,7 +101,13 @@
       {label:'HIGHLIGHTS',icon:'▣',url:g.highlights,color:mediaBlue},
       {label:'SLIDESHOW',icon:'▧',url:g.slideshow,color:mediaBlue}
     ];
-    return `<a href="#" class="media-slide media-game-slide generated-game-card" aria-label="Open ${esc(title)}" data-game-title="${esc(title)}" data-game-opponent="Allstar Galaxy vs ${esc(g.opponent||'Coming Soon')}" data-game-result="${esc(result)}" data-full="${esc(g.fullMatch||'')}" data-highlights="${esc(g.highlights||'')}" data-slideshow="${esc(g.slideshow||'')}">
+    const awards=(data.gameAwards||[]).filter(a=>a && a.status!=='hidden' && String(a.gameId||'')===String(g.id||''));
+    const awardUrl=(name)=>{
+      const target=String(name||'').toLowerCase();
+      const match=awards.find(a=>String(a.awardType||'').toLowerCase()===target);
+      return match?.videoUrl||match?.youtubeUrl||match?.url||'';
+    };
+    return `<a href="#" class="media-slide media-game-slide generated-game-card" aria-label="Open ${esc(title)}" data-game-title="${esc(title)}" data-game-opponent="Allstar Galaxy vs ${esc(g.opponent||'Coming Soon')}" data-game-result="${esc(result)}" data-full="${esc(g.fullMatch||'')}" data-highlights="${esc(g.highlights||'')}" data-slideshow="${esc(g.slideshow||'')}" data-goal="${esc(awardUrl('Goal of the Game'))}" data-save="${esc(awardUrl('Save of the Game'))}" data-assist="${esc(awardUrl('Assist of the Game'))}" data-play="${esc(awardUrl('Play of the Game'))}" data-player="${esc(awardUrl('Player of the Game'))}">
       <div class="generated-wide-card generated-game-layout" style="--card-accent:${mediaBlue}">
         <section class="generated-wide-visual" style="background-image:url('${esc(versionedAsset(g.cardImage || data.assets.gameCardBackground || data.assets.mediaBackground || 'generated/media-card-background.png',data.version))}')">${g.cardLabel?`<span class="generated-game-label-badge label-${esc(g.cardLabel)}">${esc(({new:'NEW GAME',latest:'LATEST GAME','current-season':'CURRENT SEASON','last-season':'LAST SEASON'}[g.cardLabel]||g.cardLabel).toUpperCase())}</span>`:''}</section>
         <section class="generated-wide-actions">${actionRows(rows)}</section>
@@ -245,6 +251,9 @@
       else if(source==='seasons') el.innerHTML=sortItems(data.seasons).map(s=>seasonCard(data,s)).join('');
       else if(source==='media-archive') el.innerHTML=sortItems(data.playlists).filter(p=>p.locations?.includes('media-archive')).map(p=>playlistCard(data,p,'blue')).join('');
       else if(source==='home-best') el.innerHTML=sortItems(data.playlists).filter(p=>p.locations?.includes('home-best')).map(p=>playlistCard(data,p,'gold')).join('');
+      else if(source==='home-random') { const items=sortItems(data.playlists).filter(p=>p.locations?.includes('home-best')||p.locations?.includes('media-archive')); for(let i=items.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[items[i],items[j]]=[items[j],items[i]];} el.innerHTML=items.map(p=>playlistCard(data,p,'gold')).join(''); }
+      else if(source==='media-best') el.innerHTML=sortItems(data.playlists).filter(p=>p.locations?.includes('home-best')).map(p=>playlistCard(data,p,'blue')).join('');
+      else if(source==='galaxy-archive') el.innerHTML=sortItems(data.playlists).filter(p=>p.locations?.includes('media-archive')&&!p.locations?.includes('home-best')).map(p=>playlistCard(data,p,'blue')).join('');
       else if(source==='players') el.innerHTML=sortItems(data.players).map(p=>playerCard(data,p)).join('');
       else if(source==='news') el.innerHTML=sortItems(data.news).map(n=>newsCard(data,n)).join('');
       else if(source==='schedule') el.innerHTML=scheduleMarkup(data);

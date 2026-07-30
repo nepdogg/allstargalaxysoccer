@@ -412,48 +412,116 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 
-// Media page game-card lightbox for Full Match / Highlights / Slideshow links.
+// V211 — Complete game-media lightbox with eight links and embedded YouTube playback.
 document.addEventListener("DOMContentLoaded", async () => {
     if (window.ASGContent?.ready) await window.ASGContent.ready;
-    const gameCards = Array.from(document.querySelectorAll(".media-game-slide"));
-    const gameLightbox = document.getElementById("gameLinkLightbox");
 
-    if (!gameCards.length || !gameLightbox) return;
+    function ensureGameLightbox() {
+        let lightbox = document.getElementById("gameLinkLightbox");
+        if (lightbox) return lightbox;
+        document.body.insertAdjacentHTML("beforeend", `
+          <div aria-hidden="true" class="game-link-lightbox" id="gameLinkLightbox">
+            <div aria-label="Game media links" aria-modal="true" class="game-link-panel" role="dialog">
+              <button aria-label="Close game media links" class="game-link-close" type="button">×</button>
+              <h2 class="game-link-title">Game Media</h2>
+              <p class="game-link-opponent">Allstar Galaxy</p>
+              <p class="game-link-result"></p>
+              <div class="game-video-player" hidden>
+                <div class="game-video-frame-wrap"><iframe class="game-video-frame" title="Allstar Galaxy video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+                <div class="game-video-now-playing"></div>
+              </div>
+              <div class="game-link-actions"></div>
+              <p class="game-link-note">Select a video to play it here without leaving the Allstar Galaxy website.</p>
+            </div>
+          </div>`);
+        return document.getElementById("gameLinkLightbox");
+    }
 
+    const gameLightbox = ensureGameLightbox();
+    if (!gameLightbox) return;
+    const panel = gameLightbox.querySelector(".game-link-panel");
     const title = gameLightbox.querySelector(".game-link-title");
     const opponent = gameLightbox.querySelector(".game-link-opponent");
     const result = gameLightbox.querySelector(".game-link-result");
-    const fullLink = gameLightbox.querySelector(".game-link-full");
-    const highlightsLink = gameLightbox.querySelector(".game-link-highlights");
-    const slideshowLink = gameLightbox.querySelector(".game-link-slideshow");
-    const awardLink = gameLightbox.querySelector(".game-link-award");
+    const actions = gameLightbox.querySelector(".game-link-actions");
     const closeButton = gameLightbox.querySelector(".game-link-close");
 
-    function setLink(link, value, availableLabel, unavailableLabel) {
-        if (!link) return;
-        const unavailable = !value || value === "#";
-        link.href = unavailable ? "#" : value;
-        link.classList.toggle("is-disabled", unavailable);
-        link.setAttribute("aria-disabled", unavailable ? "true" : "false");
-        link.tabIndex = unavailable ? -1 : 0;
-        link.textContent = unavailable ? unavailableLabel : availableLabel;
+    let player = gameLightbox.querySelector(".game-video-player");
+    let iframe = gameLightbox.querySelector(".game-video-frame");
+    let nowPlaying = gameLightbox.querySelector(".game-video-now-playing");
+    if (!player) {
+        const markup = `<div class="game-video-player" hidden><div class="game-video-frame-wrap"><iframe class="game-video-frame" title="Allstar Galaxy video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><div class="game-video-now-playing"></div></div>`;
+        actions?.insertAdjacentHTML("beforebegin", markup);
+        player = gameLightbox.querySelector(".game-video-player");
+        iframe = gameLightbox.querySelector(".game-video-frame");
+        nowPlaying = gameLightbox.querySelector(".game-video-now-playing");
+    }
+
+    function youtubeEmbedUrl(value) {
+        const raw = String(value || "").trim();
+        if (!raw || raw === "#") return "";
+        try {
+            const url = new URL(raw, window.location.href);
+            let id = "";
+            if (url.hostname.includes("youtu.be")) id = url.pathname.split("/").filter(Boolean)[0] || "";
+            else if (url.hostname.includes("youtube.com")) {
+                if (url.pathname.startsWith("/shorts/") || url.pathname.startsWith("/live/") || url.pathname.startsWith("/embed/")) id = url.pathname.split("/").filter(Boolean)[1] || "";
+                else id = url.searchParams.get("v") || "";
+            }
+            return id ? `https://www.youtube.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0&modestbranding=1` : "";
+        } catch (_) { return ""; }
+    }
+
+    function stopVideo() {
+        if (iframe) iframe.src = "about:blank";
+        if (player) player.hidden = true;
+        if (nowPlaying) nowPlaying.textContent = "";
+    }
+
+    function playVideo(url, label) {
+        const embed = youtubeEmbedUrl(url);
+        if (!embed || !iframe || !player) return;
+        iframe.src = embed;
+        player.hidden = false;
+        if (nowPlaying) nowPlaying.textContent = `NOW PLAYING — ${label}`;
+        player.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+
+    function buildAction(label, icon, url, key) {
+        const unavailable = !url || url === "#";
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = `game-link-action game-link-${key}${unavailable ? " is-disabled" : ""}`;
+        button.disabled = unavailable;
+        button.setAttribute("aria-disabled", unavailable ? "true" : "false");
+        button.textContent = unavailable ? `${icon} ${label} — Coming Soon` : `${icon} ${label}`;
+        if (!unavailable) button.addEventListener("click", () => playVideo(url, label));
+        return button;
     }
 
     function openGameLightbox(card) {
+        const isSeason = card.classList.contains("generated-season-card") || card.classList.contains("season-archive-slide");
         if (title) title.textContent = card.dataset.gameTitle || "Game Media";
         if (opponent) opponent.textContent = card.dataset.gameOpponent || "Allstar Galaxy";
         if (result) result.textContent = card.dataset.gameResult || "";
-        const fullLabel = card.dataset.fullLabel || "▶ Full Match";
-        const highlightsLabel = card.dataset.highlightsLabel || "▣ Highlights";
-        const slideshowLabel = card.dataset.slideshowLabel || "▧ Slideshow";
-        setLink(fullLink, card.dataset.full, fullLabel, "▶ Full Match — Coming Soon");
-        setLink(highlightsLink, card.dataset.highlights, highlightsLabel, "▣ Highlights — Coming Soon");
-        setLink(slideshowLink, card.dataset.slideshow, slideshowLabel, "▧ Slideshow — Coming Soon");
-        if (awardLink) {
-            const awardValue = card.dataset.award || "";
-            awardLink.hidden = !card.hasAttribute("data-award");
-            if (!awardLink.hidden) setLink(awardLink, awardValue, card.dataset.awardLabel || "🏆 Award Video", "🏆 Award Video — Coming Soon");
+        stopVideo();
+        if (actions) {
+            actions.innerHTML = "";
+            const items = [
+                [card.dataset.fullLabel || (isSeason ? "Full Matches" : "Full Match"), "▶", card.dataset.full, "full"],
+                [card.dataset.highlightsLabel || "Highlights", "▣", card.dataset.highlights, "highlights"],
+                [card.dataset.slideshowLabel || (isSeason ? "Slideshows" : "Slideshow"), "▧", card.dataset.slideshow, "slideshow"]
+            ];
+            if (!isSeason) items.push(
+                ["Goal of the Game", "⚽", card.dataset.goal, "goal"],
+                ["Save of the Game", "✋", card.dataset.save, "save"],
+                ["Assist of the Game", "➤", card.dataset.assist, "assist"],
+                ["Play of the Game", "★", card.dataset.play, "play"],
+                ["Player of the Game", "🏆", card.dataset.player, "player"]
+            );
+            items.forEach(([label, icon, url, key]) => actions.appendChild(buildAction(label.replace(/^[▶▣▧]\s*/, ""), icon, url, key)));
         }
+        panel?.classList.toggle("is-season-panel", isSeason);
         gameLightbox.classList.add("is-open");
         gameLightbox.setAttribute("aria-hidden", "false");
         document.body.classList.add("lightbox-open");
@@ -461,28 +529,21 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     function closeGameLightbox() {
+        stopVideo();
         gameLightbox.classList.remove("is-open");
         gameLightbox.setAttribute("aria-hidden", "true");
         document.body.classList.remove("lightbox-open");
     }
 
-    gameCards.forEach((card) => {
-        card.addEventListener("click", (event) => {
-            event.preventDefault();
-            openGameLightbox(card);
-        });
+    document.addEventListener("click", (event) => {
+        const card = event.target.closest(".media-game-slide");
+        if (!card) return;
+        event.preventDefault();
+        openGameLightbox(card);
     });
-
     closeButton?.addEventListener("click", closeGameLightbox);
-    gameLightbox.addEventListener("click", (event) => {
-        if (event.target === gameLightbox) closeGameLightbox();
-    });
-
-    document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape" && gameLightbox.classList.contains("is-open")) {
-            closeGameLightbox();
-        }
-    });
+    gameLightbox.addEventListener("click", (event) => { if (event.target === gameLightbox) closeGameLightbox(); });
+    document.addEventListener("keydown", (event) => { if (event.key === "Escape" && gameLightbox.classList.contains("is-open")) closeGameLightbox(); });
 });
 
 
