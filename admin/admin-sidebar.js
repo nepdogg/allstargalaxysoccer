@@ -16,7 +16,8 @@
     ["graphics", "Website Graphics", "graphics.html", false],
     ["heroes", "Hero Images", "heroes.html", false],
     ["settings", "Site Settings", "settings.html", false],
-    ["backups", "Backup & Restore", "backups.html", false]
+    ["backups", "Backup & Restore", "backups.html", false],
+    ["qa", "QA Diagnostics", "qa.html", true]
   ];
 
   const MODE_KEY = "asgAdminCustomizeMode";
