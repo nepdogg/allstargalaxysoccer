@@ -1,0 +1,6 @@
+ALLSTAR GALAXY V208 — UPDATE-ONLY PACKAGE
+
+Upload everything inside this package to the root of the existing GitHub repository.
+Keep the folder structure exactly as provided and replace files with matching names.
+Do not delete the existing images, data, generated, or other folders.
+After GitHub Pages redeploys, open /admin/qa.html and run QA Diagnostics.
