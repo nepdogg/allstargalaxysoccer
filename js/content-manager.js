@@ -148,28 +148,56 @@
     return `<a class="media-slide generated-playlist-card theme-${theme}" ${linkAttrs(p.url)} aria-label="Open ${esc(p.title)} playlist">${mediaArt(themed,p.title,p.category,p.cardImage)}</a>`;
   }
 
-  function randomVideoCards(data){
-    const videos=[];
-    const add=(title,url,image,subtitle='')=>{
-      const clean=String(url||'').trim();
-      if(!clean || clean==='#')return;
-      videos.push({title:String(title||'Allstar Galaxy Video'),url:clean,image:image||'',subtitle:String(subtitle||'')});
+  function homeVideoTypeCards(data){
+    const gameList=sortLatestGames(data.games);
+    const awards=(data.gameAwards||[]).filter(isVisible);
+    const norm=value=>String(value||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+    const awardUrl=(award)=>String(award.videoUrl||award.youtubeUrl||award.url||'').trim();
+    const valid=url=>url && url!=='#';
+    const types=[
+      {key:'full',label:'FULL MATCH',icon:'▶',field:'fullMatch',aliases:[]},
+      {key:'highlights',label:'HIGHLIGHTS',icon:'▣',field:'highlights',aliases:[]},
+      {key:'slideshow',label:'SLIDESHOW',icon:'▧',field:'slideshow',aliases:[]},
+      {key:'goal',label:'GOAL OF THE GAME',icon:'⚽',aliases:['goal of the game','goal']},
+      {key:'save',label:'SAVE OF THE GAME',icon:'🧤',aliases:['save of the game','save']},
+      {key:'assist',label:'ASSIST OF THE GAME',icon:'➤',aliases:['assist of the game','assist']},
+      {key:'play',label:'PLAY OF THE GAME',icon:'★',aliases:['play of the game','play']},
+      {key:'player',label:'PLAYER OF THE GAME',icon:'🏆',aliases:['player of the game','player']}
+    ];
+    const itemsFor=type=>{
+      if(type.field){
+        return gameList.map(g=>({
+          url:String(g[type.field]||'').trim(),
+          title:`${g.season||''} — Game ${String(g.gameNumber||'').padStart(2,'0')} — ${type.label}`,
+          subtitle:`Allstar Galaxy vs ${g.opponent||''}`,
+          result:g.result||'',
+          image:g.cardImage||data.assets?.gameCardBackground||data.assets?.mediaBackground||'generated/media-card-background.png'
+        })).filter(item=>valid(item.url));
+      }
+      return awards.filter(a=>type.aliases.some(alias=>norm(a.awardType||a.type||a.title).includes(norm(alias)))).map(a=>{
+        const game=gameList.find(g=>String(g.id)===String(a.gameId))||a.gameSnapshot||{};
+        return {
+          url:awardUrl(a),
+          title:`${game.season||a.season||''}${game.gameNumber||a.gameNumber?` — Game ${game.gameNumber||a.gameNumber}`:''} — ${type.label}`,
+          subtitle:a.playerName||game.opponent||a.opponent||'Allstar Galaxy',
+          result:game.result||a.result||'',
+          image:a.cardImage||a.image||game.cardImage||data.assets?.mediaBackground||'generated/media-card-background.png'
+        };
+      }).filter(item=>valid(item.url));
     };
-    sortLatestGames(data.games).forEach(g=>{
-      const base=`${g.season||''} Game ${String(g.gameNumber||'').padStart(2,'0')}`.trim();
-      const image=g.cardImage||data.assets?.gameCardBackground||data.assets?.mediaBackground;
-      add(`${base} — Full Match`,g.fullMatch,image,`Allstar Galaxy vs ${g.opponent||''}`);
-      add(`${base} — Highlights`,g.highlights,image,`Allstar Galaxy vs ${g.opponent||''}`);
-      add(`${base} — Slideshow`,g.slideshow,image,`Allstar Galaxy vs ${g.opponent||''}`);
-    });
-    (data.gameAwards||[]).filter(isVisible).forEach(a=>add(a.awardType||a.title||'Game Award',a.videoUrl||a.youtubeUrl||a.url,a.cardImage||a.image||data.assets?.mediaBackground,a.playerName||a.opponent||''));
-    sortItems(data.playlists).forEach(p=>add(p.title,p.url,p.cardImage||data.assets?.playlistCardBackground||data.assets?.mediaBackground,p.subtitle||'Allstar Galaxy Playlist'));
-    for(let i=videos.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[videos[i],videos[j]]=[videos[j],videos[i]];}
-    return videos.map(v=>`<a href="#" class="media-slide generated-playlist-card theme-gold generated-random-video-card" aria-label="Play ${esc(v.title)}" data-game-title="${esc(v.title)}" data-game-opponent="${esc(v.subtitle||'Allstar Galaxy Video')}" data-game-result="Random Video" data-full="${esc(v.url)}" data-full-label="▶ Play Video">
-      <div class="generated-playlist-art" style="--card-accent:#f5c542">
-        <div class="generated-playlist-image" style="background-image:url('${esc(versionedAsset(v.image||data.assets?.playlistCardBackground||data.assets?.mediaBackground||'generated/media-card-background.png',data.version))}')"></div>
-        <div class="generated-playlist-footer"><span class="generated-playlist-footer-icon">▶</span><span class="generated-playlist-footer-title">${esc(v.title)}</span></div>
-      </div></a>`).join('');
+    window.ASG_HOME_RANDOM_VIDEO_POOLS={};
+    return types.map(type=>{
+      const pool=itemsFor(type);
+      window.ASG_HOME_RANDOM_VIDEO_POOLS[type.key]=pool;
+      const image=pool[0]?.image||data.assets?.playlistCardBackground||data.assets?.mediaBackground||'generated/media-card-background.png';
+      const status=pool.length?`${pool.length} VIDEO${pool.length===1?'':'S'} AVAILABLE`:'COMING SOON';
+      return `<a href="#" class="media-slide generated-playlist-card theme-gold generated-video-type-card${pool.length?'':' playlist-pending'}" aria-label="Play a random ${esc(type.label)} video" data-random-video-type="${esc(type.key)}">
+        <div class="generated-playlist-art" style="--card-accent:#f5c542">
+          <div class="generated-playlist-image" style="background-image:url('${esc(versionedAsset(image,data.version))}')"></div>
+          <div class="generated-playlist-footer"><span class="generated-playlist-footer-icon">${type.icon}</span><span class="generated-playlist-footer-title">${esc(type.label)}</span></div>
+          <small class="generated-video-type-status">${esc(status)}</small>
+        </div></a>`;
+    }).join('');
   }
 
   function playerCard(data,p){
@@ -277,7 +305,7 @@
       else if(source==='media-archive') el.innerHTML=sortItems(data.playlists).filter(p=>p.locations?.includes('media-archive')).map(p=>playlistCard(data,p,'blue')).join('');
       else if(source==='home-best') el.innerHTML=sortItems(data.playlists).filter(p=>p.locations?.includes('home-best')).map(p=>playlistCard(data,p,'gold')).join('');
       else if(source==='home-random') { const items=sortItems(data.playlists).filter(p=>p.locations?.includes('home-best')||p.locations?.includes('media-archive')); for(let i=items.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[items[i],items[j]]=[items[j],items[i]];} el.innerHTML=items.map(p=>playlistCard(data,p,'gold')).join(''); }
-      else if(source==='home-random-videos') el.innerHTML=randomVideoCards(data);
+      else if(source==='home-video-types') el.innerHTML=homeVideoTypeCards(data);
       else if(source==='media-best') el.innerHTML=sortItems(data.playlists).filter(p=>p.locations?.includes('home-best')).map(p=>playlistCard(data,p,'blue')).join('');
       else if(source==='galaxy-archive') el.innerHTML=sortItems(data.playlists).filter(p=>p.locations?.includes('media-archive')&&!p.locations?.includes('home-best')).map(p=>playlistCard(data,p,'blue')).join('');
       else if(source==='players') el.innerHTML=sortItems(data.players).map(p=>playerCard(data,p)).join('');

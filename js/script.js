@@ -704,3 +704,28 @@ document.addEventListener("click", (event) => {
   window.addEventListener('load',run,{once:true});
   new MutationObserver(run).observe(document.documentElement,{subtree:true,childList:true});
 })();
+
+/* V214 Homepage reliability and random video-type selection. */
+(() => {
+  'use strict';
+
+  document.addEventListener('click', event => {
+    const card=event.target.closest('[data-random-video-type]');
+    if(!card) return;
+    const pool=window.ASG_HOME_RANDOM_VIDEO_POOLS?.[card.dataset.randomVideoType]||[];
+    if(!pool.length){ event.preventDefault(); event.stopImmediatePropagation(); return; }
+    const item=pool[Math.floor(Math.random()*pool.length)];
+    card.dataset.gameTitle=item.title||'Allstar Galaxy Video';
+    card.dataset.gameOpponent=item.subtitle||'Allstar Galaxy';
+    card.dataset.gameResult=item.result||'Random Video';
+    card.dataset.full=item.url;
+    card.dataset.fullLabel='▶ Play Video';
+    delete card.dataset.highlights;
+    delete card.dataset.slideshow;
+    delete card.dataset.goal;
+    delete card.dataset.save;
+    delete card.dataset.assist;
+    delete card.dataset.play;
+    delete card.dataset.player;
+  }, true);
+})();
