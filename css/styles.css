@@ -21864,3 +21864,32 @@ html{overflow-x:hidden}body{overflow-x:clip}.site-shell{width:100%;max-width:100
     min-height:0!important;
   }
 }
+
+
+/* V210 — final V1 content structure and global status ticker */
+.asg-status-ticker{width:100%;overflow:hidden;border-top:1px solid currentColor;border-bottom:1px solid currentColor;background:rgba(4,4,10,.96);color:#ffd700;min-height:30px;display:flex;align-items:center;position:relative;z-index:20}
+.asg-status-ticker-track{display:flex;align-items:center;gap:18px;width:max-content;min-width:100%;padding:7px 24px;font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;animation:asgTickerMove 28s linear infinite}
+.asg-status-ticker:hover .asg-status-ticker-track{animation-play-state:paused}
+@keyframes asgTickerMove{from{transform:translateX(100%)}to{transform:translateX(-100%)}}
+.page-media .asg-status-ticker{color:#00cfff}.page-team .asg-status-ticker{color:#ff39ff}.page-schedule .asg-status-ticker{color:#ff3030}.page-news .asg-status-ticker{color:#39ff6a}.page-live .asg-status-ticker{color:#ff3030}.page-follow .asg-status-ticker{color:#a86cff}
+.homepage-latest-games-section,.homepage-random-video-section,.team-stats-section{padding-left:clamp(20px,5vw,70px);padding-right:clamp(20px,5vw,70px)}
+.homepage-latest-games-section .media-section-heading,.homepage-random-video-section .media-section-heading{text-align:center}
+.homepage-latest-games-section .media-section-title-graphic,.homepage-random-video-section .media-section-title-graphic{display:block;max-width:min(760px,88%);height:auto;margin:0 auto 8px}
+.team-stats-section{margin-top:30px;margin-bottom:35px}
+@media(max-width:700px){.asg-status-ticker-track{font-size:9px;gap:12px;padding:6px 14px;animation-duration:22s}.asg-status-ticker{min-height:25px}}
+
+/* V211 — Eight-link game media popup and embedded website player */
+.game-link-panel{max-width:760px;max-height:92vh;overflow-y:auto}
+.game-link-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.game-link-action{width:100%;font:inherit;cursor:pointer;text-align:center}
+.game-link-action.is-disabled,.game-link-action:disabled{cursor:not-allowed;opacity:.42;filter:saturate(.35)}
+.game-link-goal{border-color:#ff2d2d!important;box-shadow:inset 0 0 16px rgba(255,45,45,.12)}
+.game-link-save{border-color:#20bfff!important;box-shadow:inset 0 0 16px rgba(32,191,255,.12)}
+.game-link-assist{border-color:#2cff76!important;box-shadow:inset 0 0 16px rgba(44,255,118,.12)}
+.game-link-play{border-color:#c94cff!important;box-shadow:inset 0 0 16px rgba(201,76,255,.12)}
+.game-link-player{border-color:#f5c542!important;box-shadow:inset 0 0 16px rgba(245,197,66,.15);grid-column:1/-1}
+.game-video-player{margin:16px 0 18px;border:1px solid #20bfff;border-radius:14px;padding:8px;background:#000;box-shadow:0 0 22px rgba(32,191,255,.28)}
+.game-video-frame-wrap{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:9px;background:#000}
+.game-video-frame{position:absolute;inset:0;width:100%;height:100%;border:0}
+.game-video-now-playing{text-align:center;padding:9px 6px 3px;font-weight:800;letter-spacing:.08em;color:#20bfff}
+@media(max-width:640px){.game-link-actions{grid-template-columns:1fr}.game-link-player{grid-column:auto}.game-link-panel{width:94vw;padding:22px 14px}.game-link-action{font-size:.86rem}}
