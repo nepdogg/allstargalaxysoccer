@@ -426,6 +426,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const fullLink = gameLightbox.querySelector(".game-link-full");
     const highlightsLink = gameLightbox.querySelector(".game-link-highlights");
     const slideshowLink = gameLightbox.querySelector(".game-link-slideshow");
+    const awardLink = gameLightbox.querySelector(".game-link-award");
     const closeButton = gameLightbox.querySelector(".game-link-close");
 
     function setLink(link, value, availableLabel, unavailableLabel) {
@@ -448,6 +449,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         setLink(fullLink, card.dataset.full, fullLabel, "▶ Full Match — Coming Soon");
         setLink(highlightsLink, card.dataset.highlights, highlightsLabel, "▣ Highlights — Coming Soon");
         setLink(slideshowLink, card.dataset.slideshow, slideshowLabel, "▧ Slideshow — Coming Soon");
+        if (awardLink) {
+            const awardValue = card.dataset.award || "";
+            awardLink.hidden = !card.hasAttribute("data-award");
+            if (!awardLink.hidden) setLink(awardLink, awardValue, card.dataset.awardLabel || "🏆 Award Video", "🏆 Award Video — Coming Soon");
+        }
         gameLightbox.classList.add("is-open");
         gameLightbox.setAttribute("aria-hidden", "false");
         document.body.classList.add("lightbox-open");

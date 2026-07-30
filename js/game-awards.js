@@ -33,8 +33,8 @@
     const opponent=game.opponent||award.opponent||'OPPONENT';
     const href=String(award.videoUrl||award.url||'').trim();
     const tag=preview?'div':'a';
-    const attrs=preview?'':(href?` href="${esc(href)}" target="_blank" rel="noopener"`:' href="#" aria-disabled="true"');
-    return `<${tag}${attrs} class="game-award-slide media-slide${href?'':' is-pending'}" style="--award-accent:${info.accent}" aria-label="${esc(info.title)} — ${esc(first+' '+last)}">
+    const attrs=preview?'':` href="#" data-game-title="${esc(gameTitle(game)+' · '+info.title)}" data-game-opponent="${esc('Allstar Galaxy vs '+opponent)}" data-game-result="${esc(game.result||'')}" data-full="${esc(game.fullMatch||'')}" data-highlights="${esc(game.highlights||'')}" data-slideshow="${esc(game.slideshow||'')}" data-award="${esc(href)}" data-award-label="${esc('🏆 '+info.title+' Video')}"`;
+    return `<${tag}${attrs} class="game-award-slide media-slide media-game-slide${href?'':' is-pending'}" style="--award-accent:${info.accent}" aria-label="${esc(info.title)} — ${esc(first+' '+last)}">
       <article class="game-award-card">
         <header class="game-award-header"><span class="game-award-icon">${info.icon}</span><strong>${esc(info.title)}</strong></header>
         <div class="game-award-body">
