@@ -746,23 +746,3 @@ document.addEventListener("click", (event) => {
   window.addEventListener('load',run,{once:true});
   new MutationObserver(run).observe(document.documentElement,{subtree:true,childList:true});
 })();
-
-/* V215 Homepage ticker position helper. */
-(() => {
-  'use strict';
-  function positionTicker(){
-    const header=document.querySelector('.site-top');
-    const shell=document.querySelector('.site-shell');
-    const ticker=document.querySelector('.asg-status-ticker');
-    if(!header||!shell||!ticker) return;
-    const h=Math.ceil(header.getBoundingClientRect().height);
-    const rect=shell.getBoundingClientRect();
-    document.documentElement.style.setProperty('--asg-header-height', `${h}px`);
-    document.documentElement.style.setProperty('--asg-shell-left', `${Math.max(0,rect.left)}px`);
-    document.documentElement.style.setProperty('--asg-shell-width', `${rect.width}px`);
-    document.documentElement.style.setProperty('--asg-ticker-height', `${Math.ceil(ticker.getBoundingClientRect().height||28)}px`);
-  }
-  window.addEventListener('resize',positionTicker,{passive:true});
-  window.addEventListener('load',positionTicker,{once:true});
-  document.addEventListener('DOMContentLoaded',()=>{positionTicker();setTimeout(positionTicker,250);},{once:true});
-})();
