@@ -21893,3 +21893,11 @@ html{overflow-x:hidden}body{overflow-x:clip}.site-shell{width:100%;max-width:100
 .game-video-frame{position:absolute;inset:0;width:100%;height:100%;border:0}
 .game-video-now-playing{text-align:center;padding:9px 6px 3px;font-weight:800;letter-spacing:.08em;color:#20bfff}
 @media(max-width:640px){.game-link-actions{grid-template-columns:1fr}.game-link-player{grid-column:auto}.game-link-panel{width:94vw;padding:22px 14px}.game-link-action{font-size:.86rem}}
+
+
+/* V212 cumulative V1 structure correction */
+.page-team .section-navigator{--section-nav-accent:#ff39ff}
+.page-team .team-stats-section{scroll-margin-top:90px}
+.page-team .team-roster-section{scroll-margin-top:90px}
+.asg-status-ticker{display:flex!important;visibility:visible!important}
+@media(max-width:700px){.page-team .section-navigator{margin-top:10px}}
