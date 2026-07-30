@@ -22123,3 +22123,142 @@ html{overflow-x:hidden}body{overflow-x:clip}.site-shell{width:100%;max-width:100
   .page-home .homepage-v214-carousel .carousel-button.prev{left:5px!important;}
   .page-home .homepage-v214-carousel .carousel-button.next{right:5px!important;}
 }
+
+/* ============================================================
+   V215 — HOMEPAGE FINAL CAROUSEL + TICKER CORRECTION
+   ============================================================ */
+.page-home .site-top{
+  position:sticky!important;
+  top:0!important;
+  z-index:10020!important;
+}
+.page-home .asg-status-ticker{
+  position:fixed!important;
+  top:var(--asg-header-height,148px)!important;
+  left:var(--asg-shell-left,0)!important;
+  width:var(--asg-shell-width,100%)!important;
+  max-width:none!important;
+  z-index:10015!important;
+  margin:0!important;
+  border-radius:0!important;
+}
+.page-home .hero-image{margin-top:var(--asg-ticker-height,28px)!important;}
+
+/* Both Homepage carousels now use the exact centered showcase geometry. */
+.page-home .homepage-v215-carousel{
+  position:relative!important;
+  width:min(calc(100% - 36px),980px)!important;
+  height:520px!important;
+  min-height:520px!important;
+  margin:20px auto 46px!important;
+  padding:0!important;
+  overflow:hidden!important;
+  border:2px solid var(--card-accent,#20bfff)!important;
+  border-radius:22px!important;
+  background:rgba(1,5,16,.92)!important;
+  box-shadow:0 0 22px color-mix(in srgb,var(--card-accent,#20bfff) 38%,transparent)!important;
+}
+.page-home .homepage-v215-carousel .carousel-track{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  transform:none!important;
+  overflow:visible!important;
+}
+.page-home .homepage-v215-carousel .media-slide{
+  position:absolute!important;
+  top:45%!important;
+  left:50%!important;
+  width:58%!important;
+  max-width:620px!important;
+  margin:0!important;
+  opacity:0!important;
+  pointer-events:none!important;
+  transform:translate(calc(-50% + (var(--media-offset,0) * 74%)),-50%) scale(.72)!important;
+  transform-origin:center!important;
+  filter:brightness(.38)!important;
+  transition:transform .45s ease,opacity .45s ease,filter .45s ease!important;
+  z-index:1!important;
+}
+.page-home .homepage-v215-carousel .media-slide.is-active{
+  opacity:1!important;
+  pointer-events:auto!important;
+  transform:translate(-50%,-50%) scale(1)!important;
+  filter:none!important;
+  z-index:5!important;
+}
+.page-home .homepage-v215-carousel .media-slide.is-neighbor{
+  opacity:.54!important;
+  filter:brightness(.46)!important;
+  z-index:2!important;
+}
+.page-home .homepage-v215-carousel .media-slide.is-distance-2,
+.page-home .homepage-v215-carousel .media-slide.is-hidden-media{opacity:0!important;}
+.page-home .homepage-v215-carousel .carousel-button{top:50%!important;z-index:20!important;}
+.page-home .homepage-v215-carousel .carousel-button.prev{left:16px!important;}
+.page-home .homepage-v215-carousel .carousel-button.next{right:16px!important;}
+.page-home .homepage-v215-carousel .carousel-dots{
+  position:absolute!important;left:50%!important;bottom:15px!important;
+  transform:translateX(-50%)!important;z-index:20!important;
+}
+
+/* Latest Games card uses the complete Media-page generated card. */
+.page-home .homepage-v215-games-carousel{--card-accent:#20bfff;}
+.page-home .homepage-v215-games-carousel .media-slide{width:70%!important;max-width:700px!important;top:44%!important;}
+.page-home .homepage-v215-games-carousel .generated-wide-card{
+  width:100%!important;height:auto!important;min-height:0!important;max-height:none!important;
+  aspect-ratio:1.42/1!important;overflow:hidden!important;
+}
+.page-home .homepage-v215-games-carousel .generated-game-layout{
+  grid-template-columns:minmax(0,72%) minmax(0,28%)!important;
+  grid-template-rows:minmax(0,1fr) 72px!important;
+}
+.page-home .homepage-v215-games-carousel .generated-game-footer,
+.page-home .homepage-v215-games-carousel .generated-card-footer{height:72px!important;min-height:72px!important;}
+
+/* Eight fixed random category cards match the Best Of carousel card design. */
+.page-home .homepage-v215-random-carousel{--card-accent:#f5c542;}
+.page-home .homepage-v215-random-carousel .generated-playlist-art{
+  position:relative!important;
+  width:100%!important;height:auto!important;max-height:none!important;
+  aspect-ratio:1.60/1!important;
+  display:grid!important;grid-template-rows:minmax(0,1fr) 74px!important;
+  overflow:hidden!important;
+}
+.page-home .homepage-v215-random-carousel .generated-playlist-image{
+  min-height:0!important;background-size:cover!important;background-position:center!important;
+}
+.page-home .homepage-v215-random-carousel .generated-playlist-footer{
+  height:74px!important;min-height:74px!important;padding:8px 18px!important;gap:12px!important;
+}
+.page-home .homepage-v215-random-carousel .generated-video-type-status{
+  position:absolute!important;top:10px!important;right:10px!important;z-index:3!important;
+  padding:6px 10px!important;border:1px solid #f5c542!important;border-radius:999px!important;
+  background:rgba(0,0,0,.84)!important;font-size:.68rem!important;
+}
+.game-link-panel.is-random-panel .game-link-actions{grid-template-columns:1fr!important;}
+.game-link-panel.is-random-panel .game-link-random-next{
+  border-color:#f5c542!important;color:#fff!important;
+  box-shadow:0 0 16px rgba(245,197,66,.35)!important;
+}
+
+@media(max-width:760px){
+  .page-home .asg-status-ticker{top:var(--asg-header-height,158px)!important;}
+  .page-home .hero-image{margin-top:var(--asg-ticker-height,26px)!important;}
+  .page-home .homepage-v215-carousel{width:calc(100% - 18px)!important;height:390px!important;min-height:390px!important;border-radius:16px!important;}
+  .page-home .homepage-v215-carousel .media-slide{width:74%!important;transform:translate(calc(-50% + (var(--media-offset,0) * 82%)),-50%) scale(.68)!important;}
+  .page-home .homepage-v215-carousel .media-slide.is-active{transform:translate(-50%,-50%) scale(1)!important;}
+  .page-home .homepage-v215-games-carousel{height:430px!important;min-height:430px!important;}
+  .page-home .homepage-v215-games-carousel .media-slide{width:88%!important;}
+  .page-home .homepage-v215-games-carousel .generated-game-layout{grid-template-columns:minmax(0,72%) minmax(0,28%)!important;grid-template-rows:minmax(0,1fr) 58px!important;}
+  .page-home .homepage-v215-games-carousel .generated-game-footer,
+  .page-home .homepage-v215-games-carousel .generated-card-footer{height:58px!important;min-height:58px!important;}
+  .page-home .homepage-v215-random-carousel .media-slide{width:78%!important;}
+  .page-home .homepage-v215-random-carousel .generated-playlist-art{grid-template-rows:minmax(0,1fr) 54px!important;}
+  .page-home .homepage-v215-random-carousel .generated-playlist-footer{height:54px!important;min-height:54px!important;padding:5px 10px!important;}
+  .page-home .homepage-v215-random-carousel .generated-playlist-footer-title{font-size:clamp(.85rem,4vw,1.2rem)!important;}
+  .page-home .homepage-v215-carousel .carousel-button.prev{left:5px!important;}
+  .page-home .homepage-v215-carousel .carousel-button.next{right:5px!important;}
+}
