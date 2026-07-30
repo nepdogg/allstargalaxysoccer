@@ -21901,3 +21901,106 @@ html{overflow-x:hidden}body{overflow-x:clip}.site-shell{width:100%;max-width:100
 .page-team .team-roster-section{scroll-margin-top:90px}
 .asg-status-ticker{display:flex!important;visibility:visible!important}
 @media(max-width:700px){.page-team .section-navigator{margin-top:10px}}
+
+
+/* =========================================================
+   V213 — HOMEPAGE-ONLY FINAL STRUCTURE CORRECTION
+   ========================================================= */
+.page-home .asg-status-ticker{
+  position:sticky !important;
+  top:0 !important;
+  z-index:120 !important;
+  display:flex !important;
+  visibility:visible !important;
+  width:100% !important;
+}
+.page-home .section-navigator{top:30px;}
+
+.page-home main{
+  overflow:visible;
+}
+.page-home .homepage-latest-games-section,
+.page-home .homepage-random-video-section{
+  width:100%;
+  max-width:1180px;
+  margin:0 auto;
+  padding:44px clamp(18px,4vw,58px);
+  box-sizing:border-box;
+  overflow:visible;
+}
+.page-home .homepage-latest-games-section .media-games-carousel{
+  width:min(100%,1020px);
+  max-width:1020px;
+  min-height:515px;
+  margin:24px auto 0;
+  overflow:hidden;
+  box-sizing:border-box;
+}
+.page-home .homepage-latest-games-section .media-games-carousel .carousel-track{
+  min-height:470px;
+  overflow:visible;
+}
+.page-home .homepage-latest-games-section .media-game-slide{
+  width:min(86vw,760px) !important;
+  max-width:760px !important;
+  flex:0 0 min(86vw,760px) !important;
+  margin:0 !important;
+}
+.page-home .homepage-latest-games-section .generated-wide-card{
+  width:100%;
+  min-height:430px;
+  box-sizing:border-box;
+}
+.page-home .homepage-latest-games-section .generated-game-layout{
+  grid-template-columns:minmax(0,1.65fr) minmax(220px,.85fr);
+}
+.page-home .homepage-latest-games-section .generated-card-footer{
+  grid-column:1/-1;
+}
+
+.page-home .homepage-random-title{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  width:min(760px,92%);
+  margin:0 auto 10px;
+  padding:14px 28px 16px;
+  border:2px solid #f5c542;
+  border-radius:8px;
+  background:linear-gradient(180deg,rgba(30,20,0,.92),rgba(3,3,8,.98));
+  box-shadow:0 0 18px rgba(245,197,66,.65),inset 0 0 20px rgba(245,197,66,.18);
+  color:#ffd84d;
+  text-align:center;
+  text-transform:uppercase;
+}
+.page-home .homepage-random-title small{font-size:clamp(.68rem,1vw,.9rem);letter-spacing:.28em;color:#fff5bd;}
+.page-home .homepage-random-title strong{font-size:clamp(1.75rem,4vw,3.25rem);line-height:1;text-shadow:0 0 12px #f5c542;}
+.page-home .homepage-random-title span{font-size:clamp(.66rem,1vw,.84rem);letter-spacing:.2em;margin-top:7px;color:#fff;}
+.page-home .homepage-random-carousel{
+  width:min(100%,1020px);
+  max-width:1020px;
+  min-height:455px;
+  margin:24px auto 0;
+  overflow:hidden;
+}
+.page-home .homepage-random-carousel .media-slide{
+  width:min(80vw,700px) !important;
+  max-width:700px !important;
+  flex:0 0 min(80vw,700px) !important;
+}
+.page-home .homepage-random-carousel .generated-playlist-art{width:100%;}
+
+@media(max-width:700px){
+  .page-home .asg-status-ticker{top:0 !important;}
+  .page-home .section-navigator{top:25px;}
+  .page-home .homepage-latest-games-section,
+  .page-home .homepage-random-video-section{padding:28px 12px;}
+  .page-home .homepage-latest-games-section .media-games-carousel{min-height:395px;}
+  .page-home .homepage-latest-games-section .media-games-carousel .carousel-track{min-height:350px;}
+  .page-home .homepage-latest-games-section .media-game-slide{width:88vw !important;flex-basis:88vw !important;}
+  .page-home .homepage-latest-games-section .generated-wide-card{min-height:330px;}
+  .page-home .homepage-latest-games-section .generated-game-layout{grid-template-columns:1fr;}
+  .page-home .homepage-random-carousel{min-height:335px;}
+  .page-home .homepage-random-carousel .media-slide{width:86vw !important;flex-basis:86vw !important;}
+}
