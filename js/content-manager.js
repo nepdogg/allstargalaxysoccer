@@ -191,7 +191,7 @@
       window.ASG_HOME_RANDOM_VIDEO_POOLS[type.key]=pool;
       const image=pool[0]?.image||data.assets?.playlistCardBackground||data.assets?.mediaBackground||'generated/media-card-background.png';
       const status=pool.length?`${pool.length} VIDEO${pool.length===1?'':'S'} AVAILABLE`:'COMING SOON';
-      return `<a href="#" class="media-slide generated-playlist-card theme-gold generated-video-type-card${pool.length?'':' playlist-pending'}" aria-label="Play a random ${esc(type.label)} video" data-random-video-type="${esc(type.key)}">
+      return `<a href="#" class="media-slide media-game-slide generated-playlist-card theme-gold generated-video-type-card${pool.length?'':' playlist-pending'}" aria-label="Play a random ${esc(type.label)} video" data-random-video-type="${esc(type.key)}">
         <div class="generated-playlist-art" style="--card-accent:#f5c542">
           <div class="generated-playlist-image" style="background-image:url('${esc(versionedAsset(image,data.version))}')"></div>
           <div class="generated-playlist-footer"><span class="generated-playlist-footer-icon">${type.icon}</span><span class="generated-playlist-footer-title">${esc(type.label)}</span></div>

@@ -449,6 +449,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     let player = gameLightbox.querySelector(".game-video-player");
     let iframe = gameLightbox.querySelector(".game-video-frame");
     let nowPlaying = gameLightbox.querySelector(".game-video-now-playing");
+    let activeRandomType = "";
+    let activeRandomLabel = "";
     if (!player) {
         const markup = `<div class="game-video-player" hidden><div class="game-video-frame-wrap"><iframe class="game-video-frame" title="Allstar Galaxy video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><div class="game-video-now-playing"></div></div>`;
         actions?.insertAdjacentHTML("beforebegin", markup);
@@ -501,10 +503,50 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     function openGameLightbox(card) {
         const isSeason = card.classList.contains("generated-season-card") || card.classList.contains("season-archive-slide");
+        const randomType = card.dataset.randomVideoType || "";
+        const randomLabels = {full:"FULL MATCH",highlights:"HIGHLIGHTS",slideshow:"SLIDESHOW",goal:"GOAL OF THE GAME",save:"SAVE OF THE GAME",assist:"ASSIST OF THE GAME",play:"PLAY OF THE GAME",player:"PLAYER OF THE GAME"};
+        activeRandomType = randomType;
+        activeRandomLabel = randomLabels[randomType] || "RANDOM VIDEO";
+        stopVideo();
+
+        if (randomType) {
+            const playAnotherRandom = () => {
+                const pool = window.ASG_HOME_RANDOM_VIDEO_POOLS?.[randomType] || [];
+                if (!pool.length) return;
+                let item = pool[Math.floor(Math.random() * pool.length)];
+                if (pool.length > 1 && iframe?.dataset.currentRandomUrl === item.url) {
+                    const alternatives = pool.filter(entry => entry.url !== iframe.dataset.currentRandomUrl);
+                    item = alternatives[Math.floor(Math.random() * alternatives.length)] || item;
+                }
+                if (title) title.textContent = item.title || activeRandomLabel;
+                if (opponent) opponent.textContent = item.subtitle || "Allstar Galaxy";
+                if (result) result.textContent = item.result || "Random Video";
+                if (iframe) iframe.dataset.currentRandomUrl = item.url || "";
+                playVideo(item.url, activeRandomLabel);
+            };
+            if (actions) {
+                actions.innerHTML = "";
+                const nextButton = document.createElement("button");
+                nextButton.type = "button";
+                nextButton.className = "game-link-action game-link-random-next";
+                nextButton.textContent = `⟳ RANDOM ${activeRandomLabel}`;
+                nextButton.addEventListener("click", playAnotherRandom);
+                actions.appendChild(nextButton);
+            }
+            panel?.classList.remove("is-season-panel");
+            panel?.classList.add("is-random-panel");
+            gameLightbox.classList.add("is-open");
+            gameLightbox.setAttribute("aria-hidden", "false");
+            document.body.classList.add("lightbox-open");
+            playAnotherRandom();
+            closeButton?.focus();
+            return;
+        }
+
+        panel?.classList.remove("is-random-panel");
         if (title) title.textContent = card.dataset.gameTitle || "Game Media";
         if (opponent) opponent.textContent = card.dataset.gameOpponent || "Allstar Galaxy";
         if (result) result.textContent = card.dataset.gameResult || "";
-        stopVideo();
         if (actions) {
             actions.innerHTML = "";
             const items = [
@@ -705,27 +747,22 @@ document.addEventListener("click", (event) => {
   new MutationObserver(run).observe(document.documentElement,{subtree:true,childList:true});
 })();
 
-/* V214 Homepage reliability and random video-type selection. */
+/* V215 Homepage ticker position helper. */
 (() => {
   'use strict';
-
-  document.addEventListener('click', event => {
-    const card=event.target.closest('[data-random-video-type]');
-    if(!card) return;
-    const pool=window.ASG_HOME_RANDOM_VIDEO_POOLS?.[card.dataset.randomVideoType]||[];
-    if(!pool.length){ event.preventDefault(); event.stopImmediatePropagation(); return; }
-    const item=pool[Math.floor(Math.random()*pool.length)];
-    card.dataset.gameTitle=item.title||'Allstar Galaxy Video';
-    card.dataset.gameOpponent=item.subtitle||'Allstar Galaxy';
-    card.dataset.gameResult=item.result||'Random Video';
-    card.dataset.full=item.url;
-    card.dataset.fullLabel='▶ Play Video';
-    delete card.dataset.highlights;
-    delete card.dataset.slideshow;
-    delete card.dataset.goal;
-    delete card.dataset.save;
-    delete card.dataset.assist;
-    delete card.dataset.play;
-    delete card.dataset.player;
-  }, true);
+  function positionTicker(){
+    const header=document.querySelector('.site-top');
+    const shell=document.querySelector('.site-shell');
+    const ticker=document.querySelector('.asg-status-ticker');
+    if(!header||!shell||!ticker) return;
+    const h=Math.ceil(header.getBoundingClientRect().height);
+    const rect=shell.getBoundingClientRect();
+    document.documentElement.style.setProperty('--asg-header-height', `${h}px`);
+    document.documentElement.style.setProperty('--asg-shell-left', `${Math.max(0,rect.left)}px`);
+    document.documentElement.style.setProperty('--asg-shell-width', `${rect.width}px`);
+    document.documentElement.style.setProperty('--asg-ticker-height', `${Math.ceil(ticker.getBoundingClientRect().height||28)}px`);
+  }
+  window.addEventListener('resize',positionTicker,{passive:true});
+  window.addEventListener('load',positionTicker,{once:true});
+  document.addEventListener('DOMContentLoaded',()=>{positionTicker();setTimeout(positionTicker,250);},{once:true});
 })();
