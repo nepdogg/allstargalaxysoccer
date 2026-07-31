@@ -1,13 +1,12 @@
-UPLOAD V222 AFTER V219, V220, AND V221
-
-At the repository root upload:
-- index.html
-- README-V222.txt
-- css/styles.css
-- data/site-settings.json
-- admin/admin-sidebar.js
-- admin/announcements.html
-- admin/announcements-admin.js
-- admin/visual-qa.html
-
-Choose Replace for matching files. Commit the upload, wait for GitHub Pages to deploy, then hard refresh the website (Ctrl+F5).
+1. Open your GitHub repository Code tab.
+2. Choose Add file > Upload files.
+3. Upload the CONTENTS of this V223 folder to the repository root.
+4. Preserve these paths:
+   css/styles.css
+   js/content-manager.js
+   images/titles/section-titles/homepage-explore-galaxy-title.png
+   images/titles/section-titles/homepage-latest-games-title.png
+   index.html
+5. Replace matching files and commit.
+6. Wait for Pages deployment to finish.
+7. Open the homepage and press Ctrl+F5.
