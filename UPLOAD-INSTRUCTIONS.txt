@@ -1,4 +1,13 @@
-1. Confirm V219 and V220 are already installed.
-2. Upload every file and folder inside this package to the repository root, including the hidden .github folder.
-3. Replace matching files and commit.
-4. Open GitHub Actions and run the Allstar Galaxy Visual QA workflow.
+UPLOAD V222 AFTER V219, V220, AND V221
+
+At the repository root upload:
+- index.html
+- README-V222.txt
+- css/styles.css
+- data/site-settings.json
+- admin/admin-sidebar.js
+- admin/announcements.html
+- admin/announcements-admin.js
+- admin/visual-qa.html
+
+Choose Replace for matching files. Commit the upload, wait for GitHub Pages to deploy, then hard refresh the website (Ctrl+F5).
