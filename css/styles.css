@@ -23402,3 +23402,48 @@ html{overflow-x:hidden}body{overflow-x:clip}.site-shell{width:100%;max-width:100
     transform:scaleX(1)!important;
   }
 }
+
+/* =========================================================
+   V230 — LIVE HOMEPAGE FEATURE TOTALS
+   ========================================================= */
+.page-home .homepage-live-stat{
+  display:inline-flex!important;
+  align-items:center!important;
+  width:max-content!important;
+  max-width:100%!important;
+  min-height:24px!important;
+  margin:0 0 12px!important;
+  padding:5px 10px!important;
+  border:1px solid rgba(245,197,66,.58)!important;
+  border-radius:999px!important;
+  background:linear-gradient(90deg,rgba(245,197,66,.16),rgba(245,197,66,.04))!important;
+  box-shadow:inset 0 0 10px rgba(245,197,66,.08),0 0 8px rgba(245,197,66,.12)!important;
+  color:#ffe590!important;
+  font-size:clamp(.67rem,.76vw,.78rem)!important;
+  font-style:normal!important;
+  font-weight:900!important;
+  line-height:1.15!important;
+  letter-spacing:.055em!important;
+  text-transform:uppercase!important;
+  white-space:normal!important;
+}
+.page-home .homepage-feature-card:hover .homepage-live-stat,
+.page-home .homepage-feature-card:focus-visible .homepage-live-stat{
+  border-color:#ffd95a!important;
+  color:#fff1b5!important;
+  box-shadow:inset 0 0 12px rgba(245,197,66,.14),0 0 12px rgba(245,197,66,.25)!important;
+}
+@media(max-width:900px){
+  .page-home .homepage-live-stat{
+    font-size:.68rem!important;
+    margin-bottom:10px!important;
+  }
+}
+@media(max-width:600px){
+  .page-home .homepage-live-stat{
+    min-height:21px!important;
+    padding:4px 8px!important;
+    margin-bottom:9px!important;
+    font-size:.64rem!important;
+  }
+}
