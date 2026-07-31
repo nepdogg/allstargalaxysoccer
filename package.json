@@ -1,0 +1,11 @@
+{
+  "name": "allstar-galaxy-visual-qa",
+  "private": true,
+  "version": "219.0.0",
+  "scripts": {
+    "visual-qa": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "latest"
+  }
+}

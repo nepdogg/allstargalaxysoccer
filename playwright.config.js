@@ -1,0 +1,2 @@
+const { defineConfig, devices } = require('@playwright/test');
+module.exports=defineConfig({testDir:'./tests',timeout:60000,use:{baseURL:'http://127.0.0.1:4173'},projects:[{name:'desktop',use:{viewport:{width:1440,height:1000}}},{name:'phone',use:{...devices['iPhone 13']}}],webServer:{command:'python3 -m http.server 4173',port:4173,reuseExistingServer:true},reporter:[['html',{outputFolder:'visual-qa-report',open:'never'}]]});

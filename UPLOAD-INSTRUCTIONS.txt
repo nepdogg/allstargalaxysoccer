@@ -1,4 +1,4 @@
-1. Confirm V219 is already installed.
-2. Upload every file and folder inside this update package to the repository root.
-3. Replace matching files and commit the changes.
-4. Wait for GitHub Pages to rebuild, then test Media > Galaxy Shuffle on desktop and phone.
+1. Confirm V219 and V220 are already installed.
+2. Upload every file and folder inside this package to the repository root, including the hidden .github folder.
+3. Replace matching files and commit.
+4. Open GitHub Actions and run the Allstar Galaxy Visual QA workflow.
