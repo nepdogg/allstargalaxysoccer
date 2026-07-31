@@ -22908,3 +22908,121 @@ html{overflow-x:hidden}body{overflow-x:clip}.site-shell{width:100%;max-width:100
   .page-home .homepage-feature-grid{grid-template-columns:1fr!important;gap:12px!important;}
   .page-home .homepage-feature-card{min-height:158px!important;padding:19px!important;}
 }
+
+/* ================================================================
+   V223 — HOMEPAGE TITLE GRAPHICS + FULL-WIDTH GAME CARD IMAGE
+   ================================================================ */
+/* The blue vertical line came from the shared Media-page heading rule.
+   Homepage graphics use their own clean, centered heading treatment. */
+.page-home #latest-games .media-section-heading,
+.page-home #explore-galaxy .media-section-heading{
+  width:min(100%,1180px)!important;
+  max-width:1180px!important;
+  margin:0 auto 18px!important;
+  padding:0 18px!important;
+  border-left:0!important;
+  text-align:center!important;
+  box-sizing:border-box!important;
+}
+.page-home #latest-games .media-section-title-graphic,
+.page-home #explore-galaxy .media-section-title-graphic{
+  display:block!important;
+  width:min(100%,1120px)!important;
+  max-width:1120px!important;
+  height:auto!important;
+  margin:0 auto 9px!important;
+  object-fit:contain!important;
+}
+.page-home #explore-galaxy .homepage-explore-title-graphic{
+  width:min(100%,1120px)!important;
+}
+.page-home #latest-games .media-section-heading p,
+.page-home #explore-galaxy .media-section-heading p{
+  margin:0 auto!important;
+  max-width:860px!important;
+  text-align:center!important;
+}
+
+/* The image now occupies the entire upper card area. The uploaded game-card
+   art is displayed edge-to-edge without the old right-side action column. */
+.page-home .homepage-latest-showcase .generated-game-layout{
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  grid-template-rows:minmax(0,1fr) auto!important;
+}
+.page-home .homepage-latest-showcase .generated-wide-visual{
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  background-position:center!important;
+  background-repeat:no-repeat!important;
+  background-size:100% 100%!important;
+  border-radius:0!important;
+}
+
+/* Three clearly divided information fields:
+   season/game number | teams | result/score. */
+.page-home .homepage-latest-showcase .generated-game-footer{
+  display:grid!important;
+  grid-template-columns:minmax(145px,.9fr) minmax(230px,1.7fr) minmax(105px,.72fr)!important;
+  width:100%!important;
+  min-height:76px!important;
+  padding:0!important;
+  background:linear-gradient(180deg,rgba(5,8,14,.98),rgba(0,0,0,1))!important;
+  border-top:1px solid rgba(32,191,255,.75)!important;
+  align-items:stretch!important;
+}
+.page-home .homepage-latest-showcase .generated-game-footer>div{
+  min-width:0!important;
+  min-height:76px!important;
+  padding:10px 14px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  text-align:center!important;
+  box-sizing:border-box!important;
+}
+.page-home .homepage-latest-showcase .generated-game-footer>div+div{
+  border-left:1px solid rgba(245,197,66,.72)!important;
+  box-shadow:inset 1px 0 0 rgba(255,255,255,.04)!important;
+}
+.page-home .homepage-latest-showcase .generated-game-meta-block span,
+.page-home .homepage-latest-showcase .generated-game-matchup-block span{
+  display:block!important;
+  white-space:normal!important;
+}
+.page-home .homepage-latest-showcase .generated-game-result-block strong{
+  color:#f5c542!important;
+}
+.page-home .homepage-latest-showcase .generated-game-result-block em{
+  font-style:normal!important;
+  font-size:clamp(.9rem,1.5vw,1.18rem)!important;
+  font-weight:1000!important;
+  color:#fff!important;
+}
+
+/* Keep the small dynamic video indicator, but make it secondary to the art. */
+.page-home .homepage-latest-showcase .generated-media-indicator{
+  right:2.2%!important;
+  bottom:3%!important;
+  transform:scale(.88)!important;
+  transform-origin:right bottom!important;
+}
+
+@media(max-width:700px){
+  .page-home #latest-games .media-section-heading,
+  .page-home #explore-galaxy .media-section-heading{padding-inline:8px!important;}
+  .page-home .homepage-latest-showcase .generated-game-footer{
+    grid-template-columns:1fr!important;
+    min-height:0!important;
+  }
+  .page-home .homepage-latest-showcase .generated-game-footer>div{
+    min-height:40px!important;
+    padding:6px 10px!important;
+  }
+  .page-home .homepage-latest-showcase .generated-game-footer>div+div{
+    border-left:0!important;
+    border-top:1px solid rgba(245,197,66,.65)!important;
+  }
+}
