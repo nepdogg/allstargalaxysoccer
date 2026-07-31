@@ -23121,3 +23121,132 @@ html{overflow-x:hidden}body{overflow-x:clip}.site-shell{width:100%;max-width:100
 .page-media .media-latest-games-carousel{--card-accent:#20bfff;}
 @media(max-width:900px){.page-home .homepage-signature-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
 @media(max-width:600px){.page-home .homepage-signature-grid{grid-template-columns:1fr;}.page-home .homepage-signature-grid .homepage-feature-card{min-height:180px;}}
+
+/* =========================================================
+   V226 — FINAL HOMEPAGE SPACING, SCALE + GOLD FEATURE CARDS
+   ========================================================= */
+/* The homepage is now a compact feature hub. Tighten the space between the
+   hero, Explore heading, feature grid, and footer while keeping enough room
+   for the section to breathe on every screen size. */
+.page-home .homepage-feature-hub{
+  box-sizing:border-box!important;
+  width:calc(100% - 56px)!important;
+  max-width:1280px!important;
+  margin:0 auto!important;
+  padding:clamp(22px,3vw,42px) 12px clamp(30px,4vw,56px)!important;
+}
+.page-home #explore-galaxy .media-section-heading{
+  margin-bottom:clamp(14px,2vw,24px)!important;
+}
+.page-home #explore-galaxy .media-section-title-graphic{
+  margin-bottom:6px!important;
+}
+.page-home .homepage-signature-grid{
+  width:100%!important;
+  max-width:1240px!important;
+  margin:0 auto!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  grid-auto-rows:1fr!important;
+  gap:clamp(18px,2vw,26px)!important;
+}
+/* All six cards now share one homepage-gold visual system and identical
+   dimensions. The icons still distinguish each feature. */
+.page-home .homepage-signature-grid .homepage-feature-card,
+.page-home .feature-shuffle,
+.page-home .feature-search,
+.page-home .feature-latest,
+.page-home .feature-awards,
+.page-home .feature-best,
+.page-home .feature-archive{
+  --feature-accent:#f5c542!important;
+}
+.page-home .homepage-signature-grid .homepage-feature-card{
+  box-sizing:border-box!important;
+  width:100%!important;
+  min-height:260px!important;
+  height:100%!important;
+  padding:clamp(25px,2.6vw,34px)!important;
+  border-width:2px!important;
+  border-radius:20px!important;
+  background:
+    radial-gradient(circle at 84% 14%,rgba(245,197,66,.24),transparent 35%),
+    linear-gradient(145deg,#151106,#070705 72%)!important;
+  box-shadow:0 0 18px rgba(245,197,66,.48),inset 0 0 42px rgba(0,0,0,.92)!important;
+}
+.page-home .homepage-signature-grid .homepage-feature-card:hover,
+.page-home .homepage-signature-grid .homepage-feature-card:focus-visible{
+  transform:translateY(-5px) scale(1.012)!important;
+  box-shadow:0 0 34px rgba(245,197,66,.95),inset 0 0 46px #000!important;
+}
+.page-home .homepage-signature-grid .homepage-feature-card strong{
+  font-size:clamp(1.65rem,2.35vw,2.5rem)!important;
+  line-height:1.02!important;
+}
+.page-home .homepage-signature-grid .homepage-feature-card p{
+  min-height:3.9em!important;
+  margin:.65rem 0 1.05rem!important;
+  font-size:clamp(.95rem,1.05vw,1.08rem)!important;
+  line-height:1.42!important;
+}
+.page-home .homepage-signature-grid .homepage-feature-card em{
+  margin-top:auto!important;
+  font-size:.82rem!important;
+}
+.page-home .homepage-signature-grid .homepage-feature-card .feature-icon{
+  right:22px!important;
+  top:19px!important;
+  font-size:clamp(2.35rem,3.5vw,3.75rem)!important;
+}
+
+@media(max-width:900px){
+  .page-home .homepage-feature-hub{
+    width:calc(100% - 28px)!important;
+    padding:24px 8px 38px!important;
+  }
+  .page-home .homepage-signature-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:16px!important;
+  }
+  .page-home .homepage-signature-grid .homepage-feature-card{
+    min-height:220px!important;
+    padding:24px!important;
+  }
+}
+@media(max-width:600px){
+  .page-home .homepage-feature-hub{
+    width:calc(100% - 14px)!important;
+    padding:18px 4px 28px!important;
+  }
+  .page-home #explore-galaxy .media-section-heading{
+    margin-bottom:12px!important;
+    padding-inline:5px!important;
+  }
+  .page-home #explore-galaxy .media-section-heading p{
+    font-size:.72rem!important;
+    line-height:1.35!important;
+  }
+  .page-home .homepage-signature-grid{
+    grid-template-columns:1fr!important;
+    gap:13px!important;
+  }
+  .page-home .homepage-signature-grid .homepage-feature-card{
+    min-height:174px!important;
+    padding:20px!important;
+    border-radius:16px!important;
+  }
+  .page-home .homepage-signature-grid .homepage-feature-card strong{
+    font-size:clamp(1.45rem,7vw,2rem)!important;
+    max-width:78%!important;
+  }
+  .page-home .homepage-signature-grid .homepage-feature-card p{
+    min-height:0!important;
+    max-width:88%!important;
+    margin:.48rem 0 .8rem!important;
+    font-size:.86rem!important;
+  }
+  .page-home .homepage-signature-grid .homepage-feature-card .feature-icon{
+    right:17px!important;
+    top:15px!important;
+    font-size:2.25rem!important;
+  }
+}
