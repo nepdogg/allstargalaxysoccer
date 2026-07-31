@@ -1,12 +1,12 @@
-1. Open your GitHub repository Code tab.
-2. Choose Add file > Upload files.
-3. Upload the CONTENTS of this V223 folder to the repository root.
-4. Preserve these paths:
+UPLOAD V224 TO GITHUB
+
+1. Open this V224 folder.
+2. Upload the css and js folders to the ROOT of your GitHub repository.
+3. Allow GitHub to replace these matching files:
    css/styles.css
-   js/content-manager.js
-   images/titles/section-titles/homepage-explore-galaxy-title.png
-   images/titles/section-titles/homepage-latest-games-title.png
-   index.html
-5. Replace matching files and commit.
-6. Wait for Pages deployment to finish.
-7. Open the homepage and press Ctrl+F5.
+   js/script.js
+4. Commit the upload.
+5. Wait for GitHub Pages deployment to finish.
+6. On the website press Ctrl+F5 to bypass the old cached CSS and JavaScript.
+
+This package is installed after V223 and contains only the changed files.
