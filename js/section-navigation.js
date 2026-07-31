@@ -8,6 +8,21 @@
   const targets = links.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
   const topButton = nav.querySelector('[data-scroll-top]');
 
+  // V218: on phones the Homepage section controls are part of the sticky
+  // header stack, directly beneath the scrolling status ticker.
+  const placeHomeMobileNavigation = () => {
+    if (!document.body.classList.contains('page-home') || !header) return;
+    const ticker = header.querySelector('.asg-status-ticker');
+    const mobile = window.matchMedia('(max-width: 900px)').matches;
+    if (mobile && nav.parentElement !== header) {
+      (ticker || header.lastElementChild)?.insertAdjacentElement('afterend', nav);
+      nav.classList.add('is-section-nav-visible');
+    } else if (!mobile && hero && nav.parentElement === header) {
+      hero.insertAdjacentElement('afterend', nav);
+    }
+  };
+  placeHomeMobileNavigation();
+
   const syncHeaderHeight = () => {
     const height = header ? Math.ceil(header.getBoundingClientRect().height) : 0;
     document.documentElement.style.setProperty('--v206-sticky-header-height', `${height}px`);
@@ -24,6 +39,7 @@
   };
 
   const sync = () => {
+    placeHomeMobileNavigation();
     syncHeaderHeight();
     syncVisibility();
   };

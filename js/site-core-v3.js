@@ -64,7 +64,7 @@
       button.className = 'mobile-search-button';
       button.setAttribute('data-galaxy-search-open', '');
       button.setAttribute('aria-label', 'Open Galaxy Search');
-      button.innerHTML = '<span aria-hidden="true">⌕</span>';
+      button.innerHTML = '<span aria-hidden="true">⌕</span><b>Search</b>';
       rightLogo.insertAdjacentElement('afterend', button);
     }
   }

@@ -470,7 +470,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 if (url.pathname.startsWith("/shorts/") || url.pathname.startsWith("/live/") || url.pathname.startsWith("/embed/")) id = url.pathname.split("/").filter(Boolean)[1] || "";
                 else id = url.searchParams.get("v") || "";
             }
-            return id ? `https://www.youtube.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0&modestbranding=1` : "";
+            return id ? `https://www.youtube.com/embed/${encodeURIComponent(id)}?autoplay=1&playsinline=1&enablejsapi=1&rel=0&modestbranding=1` : "";
         } catch (_) { return ""; }
     }
 
