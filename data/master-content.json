@@ -1,6 +1,6 @@
 {
-  "version": 221,
-  "updated": "2026-07-30",
+  "version": 222,
+  "updated": "2026-07-31",
   "assets": {
     "mediaBackground": "generated/media-card-background.png",
     "logo": "generated/allstar-galaxy-logo.png",
@@ -622,15 +622,15 @@
       "gameNumber": 1,
       "opponent": "Barza",
       "result": "D (3-3)",
-      "fullMatch": "",
-      "highlights": "",
+      "fullMatch": "https://youtu.be/JyTsTOehqxY",
+      "highlights": "https://youtu.be/UbBuPPgXgXo",
       "slideshow": "https://youtu.be/SZbYQmpOIM8",
       "cardLabel": "new",
       "date": "",
       "time": "",
       "location": "",
       "group": "latest",
-      "cardImage": "images/media/latest-games/game-02-ms2px1wv.png"
+      "cardImage": "images/media/latest-games/game-02-ms94tde4.png"
     }
   ],
   "seasons": [
@@ -3508,7 +3508,7 @@
     "standingsDescription": "Testing",
     "scheduleDescription": "Testing"
   },
-  "lastPublishToken": "admin-1785126013505-u0j8bn",
+  "lastPublishToken": "admin-1785513843683-nc2lui",
   "gameAwards": [
     {
       "id": "game-award-04",
