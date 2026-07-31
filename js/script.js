@@ -203,6 +203,29 @@ document.addEventListener("DOMContentLoaded", async () => {
         startAutoPlay();
     });
 
+    document.querySelectorAll('[data-shuffle-carousel]').forEach((carousel) => {
+        const button=document.querySelector('[data-galaxy-shuffle]');
+        const status=document.querySelector('[data-shuffle-status]');
+        if(!button)return;
+        button.addEventListener('click',()=>{
+            const slides=Array.from(carousel.querySelectorAll('.generated-game-card'));
+            if(!slides.length)return;
+            button.disabled=true; carousel.classList.add('is-shuffling');
+            let steps=10+Math.floor(Math.random()*8),count=0;
+            const tick=()=>{
+                carousel.querySelector('.next')?.click(); count++;
+                if(count<steps){setTimeout(tick,70+count*18);}else{
+                    carousel.classList.remove('is-shuffling');
+                    carousel.querySelectorAll('.shuffle-selected').forEach(x=>x.classList.remove('shuffle-selected'));
+                    const active=carousel.querySelector('.generated-game-card.is-active');
+                    active?.classList.add('shuffle-selected');
+                    if(status)status.textContent=`Selected: ${active?.dataset.gameTitle||'Random game'} — click the glowing card to open its videos.`;
+                    button.disabled=false;
+                }
+            }; tick();
+        });
+    });
+
     const playerCards = Array.from(document.querySelectorAll(".team-roster-carousel .team-card-slide"));
     const playerLightbox = document.getElementById("playerCardLightbox");
 
@@ -562,6 +585,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                 ["Player of the Game", "🏆", card.dataset.player, "player"]
             );
             items.forEach(([label, icon, url, key]) => actions.appendChild(buildAction(label.replace(/^[▶▣▧]\s*/, ""), icon, url, key)));
+            const shuffleButton=document.createElement("button");
+            shuffleButton.type="button";shuffleButton.className="game-link-action game-link-random-next";shuffleButton.textContent="✦ GALAXY SHUFFLE";
+            shuffleButton.addEventListener("click",()=>{window.location.href="media.html#galaxy-shuffle";});actions.appendChild(shuffleButton);
         }
         panel?.classList.toggle("is-season-panel", isSeason);
         gameLightbox.classList.add("is-open");
