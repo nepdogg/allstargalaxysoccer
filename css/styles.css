@@ -23339,3 +23339,20 @@ html{overflow-x:hidden}body{overflow-x:clip}.site-shell{width:100%;max-width:100
     font-size:1.9rem!important;
   }
 }
+
+/* =========================================================
+   V228 — FINAL DESKTOP HOMEPAGE FRAME + BOTTOM GALAXY SPACE
+   ========================================================= */
+/* Match the existing desktop space above the site with a deliberate
+   galaxy-background frame below the footer. This is homepage-only so
+   the phone layout and all other pages remain unchanged. */
+@media (min-width: 901px){
+  body.page-home{
+    padding-bottom:31px!important;
+  }
+  body.page-home .site-shell{
+    box-shadow:
+      0 18px 36px rgba(0,0,0,.48),
+      0 0 24px rgba(255,215,0,.08)!important;
+  }
+}
