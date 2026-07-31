@@ -22630,3 +22630,215 @@ html{overflow-x:hidden}body{overflow-x:clip}.site-shell{width:100%;max-width:100
   .page-home .homepage-random-showcase .generated-playlist-art{grid-template-rows:minmax(0,1fr) 58px!important;}
   .page-home .homepage-random-showcase .generated-playlist-footer{height:58px!important;min-height:58px!important;padding:6px 10px!important;}
 }
+
+/* ================================================================
+   V218 — HOMEPAGE MOBILE HEADER, NAVIGATION & CARD CORRECTION
+   Phone-only layout reset based on live iPhone testing.
+   ================================================================ */
+@media (max-width:900px){
+  /* Keep the complete public header stack visible. */
+  .page-home .site-top{
+    position:sticky!important;
+    top:0!important;
+    z-index:10050!important;
+    overflow:visible!important;
+    background:rgba(2,2,10,.985)!important;
+    box-shadow:0 5px 18px rgba(0,0,0,.6)!important;
+  }
+
+  /* Taller title row, but remove the oversized empty gap below it. */
+  .page-home .site-top .hero-bar{
+    min-height:142px!important;
+    height:142px!important;
+    padding:10px 12px 4px!important;
+    display:grid!important;
+    grid-template-columns:82px minmax(0,1fr) 82px!important;
+    align-items:center!important;
+    gap:5px!important;
+  }
+  .page-home .site-top .hero-logo,
+  .page-home .site-top .hero-logo-right{
+    width:72px!important;
+    height:72px!important;
+    margin:0!important;
+    align-self:center!important;
+  }
+  .page-home .site-top .hero-logo img,
+  .page-home .site-top .hero-logo-right img{width:100%!important;height:100%!important;object-fit:contain!important;}
+  .page-home .site-top .hero-title{
+    height:104px!important;
+    min-height:104px!important;
+    margin:0!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    overflow:visible!important;
+  }
+  .page-home .site-top .hero-title>img{
+    width:100%!important;
+    height:auto!important;
+    max-height:94px!important;
+    transform:scaleY(1.28)!important;
+    object-fit:contain!important;
+  }
+
+  /* Search is a proper header control with label under the icon. */
+  .page-home .site-top .mobile-search-button{
+    display:flex!important;
+    width:72px!important;
+    height:72px!important;
+    border-radius:20px!important;
+    margin:0!important;
+    flex-direction:column!important;
+    gap:2px!important;
+    line-height:1!important;
+  }
+  .page-home .site-top .mobile-search-button span{font-size:1.65rem!important;transform:none!important;}
+  .page-home .site-top .mobile-search-button b{display:block!important;font-size:.58rem!important;letter-spacing:.08em!important;text-transform:uppercase!important;}
+
+  /* Move the main nav directly beneath the title row. */
+  .page-home .site-top nav.site-nav-v3{
+    margin:0!important;
+    padding:3px 7px 5px!important;
+    min-height:58px!important;
+    display:grid!important;
+    grid-template-columns:repeat(7,minmax(78px,1fr))!important;
+    gap:5px!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    scroll-snap-type:x proximity!important;
+    scrollbar-width:none!important;
+    background:rgba(1,2,9,.98)!important;
+  }
+  .page-home .site-top nav.site-nav-v3::-webkit-scrollbar{display:none!important;}
+  .page-home .site-top nav.site-nav-v3>a{
+    min-height:48px!important;
+    padding:5px 4px!important;
+    font-size:.69rem!important;
+    scroll-snap-align:start!important;
+    white-space:nowrap!important;
+  }
+
+  /* Ticker remains completely inside the centered page/header. */
+  .page-home .site-top .asg-status-ticker{
+    position:relative!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    height:28px!important;
+    min-height:28px!important;
+    margin:0!important;
+    left:0!important;
+    right:0!important;
+    overflow:hidden!important;
+    border-left:0!important;
+    border-right:0!important;
+    box-sizing:border-box!important;
+  }
+  .page-home .site-top .asg-status-ticker-track{
+    padding:6px 12px!important;
+    font-size:9px!important;
+    line-height:1!important;
+    animation-duration:20s!important;
+  }
+
+  /* On phones the Homepage section nav belongs below the ticker. */
+  .page-home .site-top>.section-navigator-home{
+    position:relative!important;
+    top:auto!important;
+    right:auto!important;
+    left:auto!important;
+    bottom:auto!important;
+    transform:none!important;
+    width:100%!important;
+    min-height:48px!important;
+    margin:0!important;
+    padding:5px 8px!important;
+    display:flex!important;
+    flex-direction:row!important;
+    justify-content:center!important;
+    gap:7px!important;
+    overflow-x:auto!important;
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+    border-radius:0!important;
+    border-left:0!important;
+    border-right:0!important;
+    background:rgba(2,5,16,.985)!important;
+    box-shadow:0 3px 12px rgba(0,0,0,.5)!important;
+    z-index:2!important;
+  }
+  .page-home .site-top>.section-navigator-home a,
+  .page-home .site-top>.section-navigator-home button{
+    min-width:0!important;
+    min-height:38px!important;
+    padding:5px 10px!important;
+    display:flex!important;
+    flex:0 1 auto!important;
+    gap:5px!important;
+    border-radius:999px!important;
+    white-space:nowrap!important;
+  }
+  .page-home .site-top>.section-navigator-home b{display:block!important;font-size:.58rem!important;}
+  .page-home .site-top>.section-navigator-home span{font-size:.82rem!important;}
+
+  /* The card itself opens the eight-video popup, so old side buttons are redundant. */
+  .page-home .homepage-latest-showcase .generated-game-layout{
+    grid-template-columns:1fr!important;
+    grid-template-rows:minmax(0,1fr) 88px!important;
+  }
+  .page-home .homepage-latest-showcase .generated-wide-actions{display:none!important;}
+  .page-home .homepage-latest-showcase .generated-wide-visual{grid-column:1!important;grid-row:1!important;width:100%!important;}
+  .page-home .homepage-latest-showcase .generated-game-footer{
+    grid-column:1!important;
+    grid-row:2!important;
+    width:100%!important;
+    height:88px!important;
+    min-height:88px!important;
+  }
+
+  /* Mobile carousel card proportions and safe separation from browser controls. */
+  .page-home .homepage-showcase-carousel{
+    width:calc(100% - 24px)!important;
+    min-height:470px!important;
+    height:470px!important;
+    padding:20px 22px 62px!important;
+    margin:18px auto 60px!important;
+  }
+  .page-home .homepage-showcase-carousel .media-slide,
+  .page-home .homepage-showcase-carousel .media-game-slide{
+    top:43%!important;
+    width:84%!important;
+    max-width:none!important;
+  }
+  .page-home .homepage-latest-showcase{height:500px!important;min-height:500px!important;}
+  .page-home .homepage-latest-showcase .media-slide{width:88%!important;}
+  .page-home .homepage-random-showcase .media-slide{width:82%!important;}
+
+  /* Popup stays usable inside Safari's dynamic viewport. */
+  .game-link-lightbox{padding:12px 10px calc(12px + env(safe-area-inset-bottom))!important;align-items:center!important;}
+  .game-link-panel{
+    width:min(94vw,560px)!important;
+    max-height:calc(100dvh - 24px)!important;
+    overflow-y:auto!important;
+    overscroll-behavior:contain!important;
+    -webkit-overflow-scrolling:touch!important;
+    padding:26px 18px calc(26px + env(safe-area-inset-bottom))!important;
+  }
+  .game-link-title{font-size:clamp(1.6rem,7vw,2.35rem)!important;line-height:1.18!important;padding-right:44px!important;}
+  .game-link-opponent{font-size:1rem!important;}
+  .game-video-frame-wrap{border-radius:14px!important;}
+  .game-link-actions{gap:10px!important;}
+  .game-link-action{min-height:58px!important;font-size:.92rem!important;padding:12px 8px!important;}
+}
+
+@media (max-width:520px){
+  .page-home .site-top .hero-bar{grid-template-columns:72px minmax(0,1fr) 72px!important;min-height:132px!important;height:132px!important;}
+  .page-home .site-top .hero-logo,.page-home .site-top .hero-logo-right,.page-home .site-top .mobile-search-button{width:64px!important;height:64px!important;}
+  .page-home .site-top .hero-title{height:94px!important;min-height:94px!important;}
+  .page-home .site-top nav.site-nav-v3{grid-template-columns:repeat(7,minmax(74px,1fr))!important;}
+  .page-home .site-top>.section-navigator-home a,.page-home .site-top>.section-navigator-home button{padding-inline:8px!important;}
+  .page-home .homepage-showcase-carousel{height:450px!important;min-height:450px!important;}
+  .page-home .homepage-latest-showcase{height:480px!important;min-height:480px!important;}
+}
