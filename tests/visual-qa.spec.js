@@ -1,0 +1,3 @@
+const { test, expect } = require('@playwright/test');
+const pages=['index.html','team.html','schedule.html','media.html','news.html','livestream.html','follow.html','about.html'];
+for(const page of pages){test(`${page} visual QA`,async({page:browserPage},testInfo)=>{const errors=[];browserPage.on('console',m=>{if(m.type()==='error')errors.push(m.text())});await browserPage.goto('/'+page,{waitUntil:'networkidle'});await browserPage.screenshot({path:testInfo.outputPath(page.replace('.html','')+'-full.png'),fullPage:true});const overflow=await browserPage.evaluate(()=>document.documentElement.scrollWidth>document.documentElement.clientWidth+2);expect(overflow,'Page has horizontal overflow').toBeFalsy();expect(errors,'Browser console errors').toEqual([]);});}
