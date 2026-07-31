@@ -23250,3 +23250,92 @@ html{overflow-x:hidden}body{overflow-x:clip}.site-shell{width:100%;max-width:100
     font-size:2.25rem!important;
   }
 }
+
+/* =========================================================
+   V227 — FINAL HOMEPAGE CARD ICON + CONTENT POLISH
+   ========================================================= */
+/* Give every card a predictable internal layout. The icon now lives in a
+   dedicated upper-right corner zone instead of competing with the title. */
+.page-home .homepage-signature-grid .homepage-feature-card{
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:flex-start!important;
+  padding:clamp(30px,3vw,40px)!important;
+}
+.page-home .homepage-signature-grid .homepage-feature-card strong{
+  display:block!important;
+  width:calc(100% - 64px)!important;
+  max-width:calc(100% - 64px)!important;
+  margin:0!important;
+  padding:0!important;
+}
+.page-home .homepage-signature-grid .homepage-feature-card p{
+  width:100%!important;
+  max-width:34ch!important;
+  margin:.78rem 0 1.15rem!important;
+  font-size:clamp(1rem,1.08vw,1.12rem)!important;
+  line-height:1.48!important;
+}
+.page-home .homepage-signature-grid .homepage-feature-card em{
+  display:inline-flex!important;
+  align-items:center!important;
+  width:max-content!important;
+  margin-top:auto!important;
+  transition:transform .22s ease,text-shadow .22s ease,color .22s ease!important;
+}
+.page-home .homepage-signature-grid .homepage-feature-card .feature-icon{
+  right:clamp(16px,1.7vw,22px)!important;
+  top:clamp(15px,1.5vw,20px)!important;
+  font-size:clamp(1.7rem,2.45vw,2.75rem)!important;
+  line-height:1!important;
+  transform-origin:center!important;
+  transition:transform .22s ease,filter .22s ease!important;
+  pointer-events:none!important;
+}
+.page-home .homepage-signature-grid .homepage-feature-card:hover .feature-icon,
+.page-home .homepage-signature-grid .homepage-feature-card:focus-visible .feature-icon{
+  transform:scale(1.06)!important;
+  filter:drop-shadow(0 0 16px var(--feature-accent))!important;
+}
+.page-home .homepage-signature-grid .homepage-feature-card:hover em,
+.page-home .homepage-signature-grid .homepage-feature-card:focus-visible em{
+  transform:translateX(4px)!important;
+  color:#fff!important;
+  text-shadow:0 0 9px var(--feature-accent)!important;
+}
+
+@media(max-width:900px){
+  .page-home .homepage-signature-grid .homepage-feature-card{
+    padding:28px!important;
+  }
+  .page-home .homepage-signature-grid .homepage-feature-card strong{
+    width:calc(100% - 56px)!important;
+    max-width:calc(100% - 56px)!important;
+  }
+  .page-home .homepage-signature-grid .homepage-feature-card .feature-icon{
+    right:18px!important;
+    top:17px!important;
+    font-size:2.15rem!important;
+  }
+}
+@media(max-width:600px){
+  .page-home .homepage-signature-grid .homepage-feature-card{
+    min-height:180px!important;
+    padding:22px!important;
+  }
+  .page-home .homepage-signature-grid .homepage-feature-card strong{
+    width:calc(100% - 52px)!important;
+    max-width:calc(100% - 52px)!important;
+  }
+  .page-home .homepage-signature-grid .homepage-feature-card p{
+    max-width:100%!important;
+    margin:.58rem 0 .9rem!important;
+    font-size:.9rem!important;
+    line-height:1.42!important;
+  }
+  .page-home .homepage-signature-grid .homepage-feature-card .feature-icon{
+    right:15px!important;
+    top:14px!important;
+    font-size:1.9rem!important;
+  }
+}
