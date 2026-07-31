@@ -23026,3 +23026,80 @@ html{overflow-x:hidden}body{overflow-x:clip}.site-shell{width:100%;max-width:100
     border-top:1px solid rgba(245,197,66,.65)!important;
   }
 }
+
+/* ================================================================
+   V224 — HOMEPAGE FEATURE COLORS, GOLD LATEST-GAMES CAROUSEL,
+          LARGER GAME INFORMATION TEXT
+   ================================================================ */
+/* Correct destination colors requested for the homepage directory. */
+.page-home .feature-team{--feature-accent:#a855f7!important;}      /* purple */
+.page-home .feature-schedule{--feature-accent:#39ff6a!important;}  /* green */
+.page-home .feature-news{--feature-accent:#ff8a24!important;}      /* orange */
+.page-home .feature-follow{--feature-accent:#ff4fd8!important;}    /* pink */
+
+/* The Latest Games carousel is a homepage feature, so its complete frame,
+   controls and active card use the homepage gold treatment. */
+.page-home #latest-games .media-games-carousel,
+.page-home #latest-games .homepage-latest-showcase{
+  border-color:#f5c542!important;
+  box-shadow:0 0 18px rgba(245,197,66,.72),inset 0 0 24px rgba(245,197,66,.09)!important;
+}
+.page-home #latest-games .generated-wide-card{
+  --card-accent:#f5c542!important;
+  border-color:#f5c542!important;
+  box-shadow:0 0 16px rgba(245,197,66,.7)!important;
+}
+.page-home #latest-games .media-game-slide.is-active .generated-wide-card,
+.page-home #latest-games .media-game-slide:hover .generated-wide-card,
+.page-home #latest-games .media-game-slide:focus-visible .generated-wide-card{
+  box-shadow:0 0 15px #f5c542,0 0 34px rgba(245,197,66,.78)!important;
+}
+.page-home #latest-games .carousel-arrow,
+.page-home #latest-games .carousel-dot{
+  border-color:#f5c542!important;
+  color:#f5c542!important;
+}
+.page-home #latest-games .carousel-dot.is-active,
+.page-home #latest-games .carousel-dot.active{
+  background:#f5c542!important;
+  box-shadow:0 0 10px #f5c542!important;
+}
+.page-home #latest-games .generated-game-footer{
+  border-top-color:#f5c542!important;
+}
+.page-home #latest-games .generated-media-indicator{
+  border-color:#f5c542!important;
+  box-shadow:0 0 14px rgba(245,197,66,.78)!important;
+}
+.page-home #latest-games .generated-media-indicator b{color:#f5c542!important;text-shadow:0 0 8px #f5c542!important;}
+
+/* Use the available footer space more confidently and improve readability. */
+.page-home .homepage-latest-showcase .generated-game-footer>div{
+  padding:12px 16px!important;
+}
+.page-home .homepage-latest-showcase .generated-game-meta-block span,
+.page-home .homepage-latest-showcase .generated-game-matchup-block span{
+  font-size:clamp(.72rem,1.2vw,.98rem)!important;
+  line-height:1.15!important;
+  letter-spacing:.045em!important;
+}
+.page-home .homepage-latest-showcase .generated-game-meta-block strong,
+.page-home .homepage-latest-showcase .generated-game-matchup-block strong,
+.page-home .homepage-latest-showcase .generated-game-result-block strong{
+  font-size:clamp(.9rem,1.65vw,1.28rem)!important;
+  line-height:1.08!important;
+  letter-spacing:.055em!important;
+}
+.page-home .homepage-latest-showcase .generated-game-result-block em{
+  font-size:clamp(1rem,1.9vw,1.42rem)!important;
+  line-height:1!important;
+}
+
+@media(max-width:700px){
+  .page-home .homepage-latest-showcase .generated-game-meta-block span,
+  .page-home .homepage-latest-showcase .generated-game-matchup-block span{font-size:.72rem!important;}
+  .page-home .homepage-latest-showcase .generated-game-meta-block strong,
+  .page-home .homepage-latest-showcase .generated-game-matchup-block strong,
+  .page-home .homepage-latest-showcase .generated-game-result-block strong{font-size:.88rem!important;}
+  .page-home .homepage-latest-showcase .generated-game-result-block em{font-size:1rem!important;}
+}
