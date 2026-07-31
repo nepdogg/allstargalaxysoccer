@@ -23103,3 +23103,21 @@ html{overflow-x:hidden}body{overflow-x:clip}.site-shell{width:100%;max-width:100
   .page-home .homepage-latest-showcase .generated-game-result-block strong{font-size:.88rem!important;}
   .page-home .homepage-latest-showcase .generated-game-result-block em{font-size:1rem!important;}
 }
+
+
+/* =========================================================
+   V225 — FINAL HOMEPAGE FEATURE HUB
+   ========================================================= */
+.page-home .homepage-feature-hub{padding-top:clamp(34px,5vw,70px);padding-bottom:clamp(52px,7vw,96px);}
+.page-home .homepage-signature-grid{grid-template-columns:repeat(3,minmax(0,1fr));max-width:1500px;margin-left:auto;margin-right:auto;}
+.page-home .homepage-signature-grid .homepage-feature-card{min-height:240px;}
+.page-home .feature-search{--feature-accent:#7de8ff;}
+.page-home .feature-latest{--feature-accent:#20bfff;}
+.page-home .feature-awards{--feature-accent:#f4f4f4;}
+.page-home .feature-best{--feature-accent:#f5c542;}
+.page-home .feature-archive{--feature-accent:#a86cff;}
+.page-home .homepage-feature-card[data-galaxy-search-open]{cursor:pointer;}
+.page-media .media-latest-games-section{scroll-margin-top:calc(var(--asg-header-height,120px) + 70px);}
+.page-media .media-latest-games-carousel{--card-accent:#20bfff;}
+@media(max-width:900px){.page-home .homepage-signature-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:600px){.page-home .homepage-signature-grid{grid-template-columns:1fr;}.page-home .homepage-signature-grid .homepage-feature-card{min-height:180px;}}
