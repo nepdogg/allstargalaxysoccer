@@ -23356,3 +23356,49 @@ html{overflow-x:hidden}body{overflow-x:clip}.site-shell{width:100%;max-width:100
       0 0 24px rgba(255,215,0,.08)!important;
   }
 }
+
+/* ================================================================
+   V229 — OPPOSING STATUS BAR ENERGY LINES
+   Bottom highlight travels left-to-right; top highlight travels
+   right-to-left for a balanced animated frame around the message.
+   ================================================================ */
+.asg-status-ticker::before{
+  content:"";
+  position:absolute;
+  top:0;
+  right:0;
+  z-index:2;
+  width:100%;
+  height:2px;
+  pointer-events:none;
+  background:currentColor;
+  opacity:.34;
+  transform:scaleX(0);
+  transform-origin:right center;
+  animation:asgStatusProgressTop 6s linear infinite;
+}
+
+@keyframes asgStatusProgressTop{
+  from{transform:scaleX(0)}
+  to{transform:scaleX(1)}
+}
+
+/* Keep the linked announcement above both decorative energy lines. */
+.asg-status-message{
+  position:relative;
+  z-index:3;
+}
+
+/* Soften both moving highlights while a visitor pauses on a message. */
+.asg-status-ticker:hover::before,
+.asg-status-ticker:hover .asg-status-progress{
+  opacity:.2;
+}
+
+@media (prefers-reduced-motion:reduce){
+  .asg-status-ticker::before,
+  .asg-status-progress{
+    animation:none!important;
+    transform:scaleX(1)!important;
+  }
+}
