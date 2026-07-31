@@ -586,8 +586,23 @@ document.addEventListener("DOMContentLoaded", async () => {
             );
             items.forEach(([label, icon, url, key]) => actions.appendChild(buildAction(label.replace(/^[▶▣▧]\s*/, ""), icon, url, key)));
             const shuffleButton=document.createElement("button");
-            shuffleButton.type="button";shuffleButton.className="game-link-action game-link-random-next";shuffleButton.textContent="✦ GALAXY SHUFFLE";
-            shuffleButton.addEventListener("click",()=>{window.location.href="media.html#galaxy-shuffle";});actions.appendChild(shuffleButton);
+            shuffleButton.type="button";
+            shuffleButton.className="game-link-action game-link-random-next";
+            shuffleButton.textContent="✦ GALAXY SHUFFLE";
+            shuffleButton.setAttribute("aria-label","Play another random available video from this game");
+            shuffleButton.addEventListener("click",()=>{
+                const available=items
+                    .map(([label,icon,url,key])=>({label:label.replace(/^[▶▣▧]\s*/,""),url,key}))
+                    .filter(item=>item.url && item.url!=="#");
+                if(!available.length)return;
+                const current=iframe?.dataset.currentShuffleUrl||"";
+                let choices=available.filter(item=>item.url!==current);
+                if(!choices.length)choices=available;
+                const selected=choices[Math.floor(Math.random()*choices.length)];
+                if(iframe)iframe.dataset.currentShuffleUrl=selected.url;
+                playVideo(selected.url,selected.label);
+            });
+            actions.appendChild(shuffleButton);
         }
         panel?.classList.toggle("is-season-panel", isSeason);
         gameLightbox.classList.add("is-open");
