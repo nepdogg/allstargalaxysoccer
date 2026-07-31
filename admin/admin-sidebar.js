@@ -15,9 +15,11 @@
     ["livestream", "Livestream", "livestream.html", false],
     ["graphics", "Website Graphics", "graphics.html", false],
     ["heroes", "Hero Images", "heroes.html", false],
+    ["announcements", "Status / Ticker Banner", "announcements.html", false],
     ["settings", "Site Settings", "settings.html", false],
     ["backups", "Backup & Restore", "backups.html", false],
-    ["qa", "QA Diagnostics", "qa.html", true]
+    ["qa", "QA Diagnostics", "qa.html", true],
+    ["visualQa", "Visual QA", "visual-qa.html", true]
   ];
 
   const MODE_KEY = "asgAdminCustomizeMode";
