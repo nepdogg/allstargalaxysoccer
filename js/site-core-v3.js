@@ -290,26 +290,33 @@
       ticker = document.createElement('div');
       ticker.className = 'asg-status-ticker';
       ticker.setAttribute('role', 'status');
-      ticker.setAttribute('aria-label', 'Allstar Galaxy status');
-      ticker.innerHTML = '<div class="asg-status-ticker-track"><span>ALLSTAR GALAXY</span><b>•</b><span data-asg-status-text>Loading team status…</span><b>•</b><span>THE OFFICIAL HOME OF THE ALLSTAR GALAXY</span></div>';
+      ticker.setAttribute('aria-label', 'Allstar Galaxy announcements');
       header.insertAdjacentElement('afterend', ticker);
     }
-    loadStatusTicker(ticker.querySelector('[data-asg-status-text]'));
+    ticker.innerHTML = '<a class="asg-status-message" data-asg-status-message href="#"><span data-asg-status-icon>⭐</span><strong data-asg-status-text>Loading Allstar Galaxy updates…</strong><em>OPEN →</em></a><div class="asg-status-progress" aria-hidden="true"></div>';
+    loadAnnouncementBar(ticker);
   }
 
-  async function loadStatusTicker(target) {
-    if (!target) return;
-    let data = null;
-    for (const url of DATA_URLS) {
-      try { const response = await fetch(url, { cache:'no-store' }); if (response.ok) { data = await response.json(); break; } } catch (_) {}
-    }
-    if (!data) { target.textContent = 'Latest team news, games, awards, and media'; return; }
-    const live = data.live || {};
-    if (normalize(live.status) === 'live') { target.textContent = `LIVE NOW${live.opponent ? ` — ALLSTAR GALAXY VS ${live.opponent}` : ''}`; return; }
-    const matches = (Array.isArray(data.schedule) ? data.schedule : []).filter(isVisible);
-    const next = matches.find(item => item.date || item.opponent) || null;
-    if (next) target.textContent = ['NEXT GAME', next.date, next.opponent ? `ALLSTAR GALAXY VS ${next.opponent}` : '', next.time, next.location].filter(Boolean).join(' • ');
-    else target.textContent = 'LATEST GAMES • GAME AWARDS • TEAM NEWS • MEDIA ARCHIVE';
+  async function loadAnnouncementBar(ticker) {
+    const messageEl=ticker.querySelector('[data-asg-status-message]');
+    const iconEl=ticker.querySelector('[data-asg-status-icon]');
+    const textEl=ticker.querySelector('[data-asg-status-text]');
+    let settings=null,data=null;
+    try{const r=await fetch('data/site-settings.json',{cache:'no-store'});if(r.ok)settings=await r.json();}catch(_){}
+    for(const url of DATA_URLS){try{const r=await fetch(url,{cache:'no-store'});if(r.ok){data=await r.json();break;}}catch(_){}}
+    const cfg=settings?.announcementBar||{};
+    const messages=[];
+    if(cfg.priorityMessage)messages.push({icon:'⚠',text:cfg.priorityMessage,href:'#'});
+    if(normalize(data?.live?.status)==='live')messages.push({icon:'🔴',text:`LIVE NOW${data.live.opponent?` — ALLSTAR GALAXY VS ${data.live.opponent}`:''}`,href:'livestream.html'});
+    (Array.isArray(cfg.messages)?cfg.messages:[]).forEach(m=>m?.text&&messages.push(m));
+    if(!messages.length)messages.push({icon:'⭐',text:'Latest games, team news, awards, and the complete Allstar Galaxy media archive.',href:'index.html'});
+    let index=0,timer;
+    const show=()=>{const m=messages[index%messages.length];ticker.classList.add('is-changing');setTimeout(()=>{iconEl.textContent=m.icon||'✦';textEl.textContent=m.text;messageEl.href=m.href||'#';messageEl.querySelector('em').style.display=m.href&&m.href!=='#'?'inline':'none';ticker.classList.remove('is-changing');},180);index=(index+1)%messages.length;};
+    show();
+    const interval=Math.max(4,Number(cfg.intervalSeconds)||6)*1000;
+    timer=setInterval(show,interval);
+    ticker.addEventListener('mouseenter',()=>clearInterval(timer));
+    ticker.addEventListener('mouseleave',()=>{clearInterval(timer);timer=setInterval(show,interval);});
   }
 
   function init() {

@@ -91,39 +91,31 @@
     }
     return {label:raw,score:''};
   }
+  function gameMediaCount(data,g){
+    const awards=(data.gameAwards||[]).filter(a=>a && a.status!=='hidden' && String(a.gameId||'')===String(g.id||''));
+    const awardTypes=['Goal of the Game','Save of the Game','Assist of the Game','Play of the Game','Player of the Game'];
+    const core=[g.fullMatch,g.highlights,g.slideshow].filter(v=>v&&v!=='#').length;
+    const awardCount=awardTypes.filter(name=>awards.some(a=>String(a.awardType||'').toLowerCase()===name.toLowerCase() && (a.videoUrl||a.youtubeUrl||a.url))).length;
+    return core+awardCount;
+  }
   function gameCard(data,g){
     const title=`${g.season || ''} — Game ${String(g.gameNumber||'').padStart(2,'0')}`;
     const result=g.result||'';
     const resultParts=splitGameResult(result);
     const mediaBlue='#20bfff';
-    const rows=[
-      {label:'FULL MATCH',icon:'▶',url:g.fullMatch,color:mediaBlue},
-      {label:'HIGHLIGHTS',icon:'▣',url:g.highlights,color:mediaBlue},
-      {label:'SLIDESHOW',icon:'▧',url:g.slideshow,color:mediaBlue}
-    ];
     const awards=(data.gameAwards||[]).filter(a=>a && a.status!=='hidden' && String(a.gameId||'')===String(g.id||''));
-    const awardUrl=(name)=>{
-      const target=String(name||'').toLowerCase();
-      const match=awards.find(a=>String(a.awardType||'').toLowerCase()===target);
-      return match?.videoUrl||match?.youtubeUrl||match?.url||'';
-    };
-    return `<a href="#" class="media-slide media-game-slide generated-game-card" aria-label="Open ${esc(title)}" data-game-title="${esc(title)}" data-game-opponent="Allstar Galaxy vs ${esc(g.opponent||'Coming Soon')}" data-game-result="${esc(result)}" data-full="${esc(g.fullMatch||'')}" data-highlights="${esc(g.highlights||'')}" data-slideshow="${esc(g.slideshow||'')}" data-goal="${esc(awardUrl('Goal of the Game'))}" data-save="${esc(awardUrl('Save of the Game'))}" data-assist="${esc(awardUrl('Assist of the Game'))}" data-play="${esc(awardUrl('Play of the Game'))}" data-player="${esc(awardUrl('Player of the Game'))}">
+    const awardUrl=(name)=>{const target=String(name||'').toLowerCase();const match=awards.find(a=>String(a.awardType||'').toLowerCase()===target);return match?.videoUrl||match?.youtubeUrl||match?.url||'';};
+    const mediaCount=gameMediaCount(data,g);
+    return `<a href="#" class="media-slide media-game-slide generated-game-card simplified-game-card" aria-label="Open ${esc(title)} — ${mediaCount} videos available" data-game-title="${esc(title)}" data-game-opponent="Allstar Galaxy vs ${esc(g.opponent||'Coming Soon')}" data-game-result="${esc(result)}" data-full="${esc(g.fullMatch||'')}" data-highlights="${esc(g.highlights||'')}" data-slideshow="${esc(g.slideshow||'')}" data-goal="${esc(awardUrl('Goal of the Game'))}" data-save="${esc(awardUrl('Save of the Game'))}" data-assist="${esc(awardUrl('Assist of the Game'))}" data-play="${esc(awardUrl('Play of the Game'))}" data-player="${esc(awardUrl('Player of the Game'))}" data-media-count="${mediaCount}">
       <div class="generated-wide-card generated-game-layout" style="--card-accent:${mediaBlue}">
-        <section class="generated-wide-visual" style="background-image:url('${esc(versionedAsset(g.cardImage || data.assets.gameCardBackground || data.assets.mediaBackground || 'generated/media-card-background.png',data.version))}')">${g.cardLabel?`<span class="generated-game-label-badge label-${esc(g.cardLabel)}">${esc(({new:'NEW GAME',latest:'LATEST GAME','current-season':'CURRENT SEASON','last-season':'LAST SEASON'}[g.cardLabel]||g.cardLabel).toUpperCase())}</span>`:''}</section>
-        <section class="generated-wide-actions">${actionRows(rows)}</section>
+        <section class="generated-wide-visual" style="background-image:url('${esc(versionedAsset(g.cardImage || data.assets.gameCardBackground || data.assets.mediaBackground || 'generated/media-card-background.png',data.version))}')">
+          ${g.cardLabel?`<span class="generated-game-label-badge label-${esc(g.cardLabel)}">${esc(({new:'NEW GAME',latest:'LATEST GAME','current-season':'CURRENT SEASON','last-season':'LAST SEASON'}[g.cardLabel]||g.cardLabel).toUpperCase())}</span>`:''}
+          <span class="generated-media-indicator" aria-hidden="true"><b>▶</b><em>${mediaCount}</em><small>VIDEOS</small></span>
+        </section>
         <footer class="generated-card-footer generated-game-footer">
-          <div class="generated-game-meta-block">
-            <span>${esc(g.season||'UPCOMING SEASON')}</span>
-            <strong>GAME ${String(g.gameNumber||'').padStart(2,'0')}</strong>
-          </div>
-          <div class="generated-game-matchup-block">
-            <strong>ALLSTAR GALAXY</strong>
-            <span>VS ${esc(g.opponent||'COMING SOON')}</span>
-          </div>
-          <div class="generated-game-result-block">
-            ${resultParts.label?`<strong>${esc(resultParts.label)}</strong>`:''}
-            ${resultParts.score?`<em>${esc(resultParts.score)}</em>`:''}
-          </div>
+          <div class="generated-game-meta-block"><span>${esc(g.season||'UPCOMING SEASON')}</span><strong>GAME ${String(g.gameNumber||'').padStart(2,'0')}</strong></div>
+          <div class="generated-game-matchup-block"><strong>ALLSTAR GALAXY</strong><span>VS ${esc(g.opponent||'COMING SOON')}</span></div>
+          <div class="generated-game-result-block">${resultParts.label?`<strong>${esc(resultParts.label)}</strong>`:''}${resultParts.score?`<em>${esc(resultParts.score)}</em>`:''}</div>
         </footer>
       </div></a>`;
   }
@@ -300,6 +292,7 @@
     document.querySelectorAll('[data-generated-source]').forEach(el=>{
       const source=el.dataset.generatedSource;
       if(source==='games') el.innerHTML=sortLatestGames(data.games).map(g=>gameCard(data,g)).join('');
+      else if(source==='galaxy-shuffle-games') el.innerHTML=sortItems(data.games).filter(g=>gameMediaCount(data,g)>0).map(g=>gameCard(data,g)).join('');
       else if(source==='game-awards') el.innerHTML=window.ASGGameAwards ? window.ASGGameAwards.render(data,data.gameAwards||[]) : '';
       else if(source==='seasons') el.innerHTML=sortItems(data.seasons).map(s=>seasonCard(data,s)).join('');
       else if(source==='media-archive') el.innerHTML=sortItems(data.playlists).filter(p=>p.locations?.includes('media-archive')).map(p=>playlistCard(data,p,'blue')).join('');
