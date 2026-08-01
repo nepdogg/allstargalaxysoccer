@@ -24275,3 +24275,170 @@ body.page-galaxy-shuffle .shuffle-modal-panel{
     transform:none!important;
   }
 }
+
+/* =========================================================
+   V237 — FINAL HOMEPAGE COLOR / SEARCH / NAVIGATION POLISH
+   ========================================================= */
+
+/* Page color is authoritative. Destination buttons do not keep a foreign
+   color while shown on a different page. Shuffle is orange only on Shuffle. */
+body:not(.page-galaxy-shuffle) .site-top nav.site-nav-v3 > a[href="galaxy-shuffle.html"],
+body:not(.page-galaxy-shuffle) .site-top nav > a[href="galaxy-shuffle.html"]{
+  border-color:var(--page-accent,#f5c542)!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(2,3,8,.95))!important;
+  color:#fff!important;
+  box-shadow:0 0 7px color-mix(in srgb,var(--page-accent,#f5c542) 55%,transparent),inset 0 0 7px rgba(255,255,255,.03)!important;
+  text-shadow:none!important;
+}
+body.page-home .site-top nav.site-nav-v3 > a[href="galaxy-shuffle.html"],
+body.page-home .site-top nav > a[href="galaxy-shuffle.html"]{
+  border-color:#f5c542!important;
+  box-shadow:0 0 8px rgba(245,197,66,.66),inset 0 0 8px rgba(245,197,66,.08)!important;
+}
+body.page-galaxy-shuffle .site-top nav.site-nav-v3 > a[href="galaxy-shuffle.html"],
+body.page-galaxy-shuffle .site-top nav > a[href="galaxy-shuffle.html"]{
+  border-color:#ffc066!important;
+  background:linear-gradient(180deg,rgba(255,146,31,.72),rgba(93,27,0,.98))!important;
+  color:#fff!important;
+  box-shadow:0 0 12px #ff7900,0 0 24px rgba(255,88,0,.76),inset 0 0 12px rgba(255,215,139,.24)!important;
+  text-shadow:0 0 7px #ff7900!important;
+}
+
+/* The Homepage feature grid is one unified gold system. */
+body.page-home .homepage-feature-card.feature-shuffle{
+  --feature-accent:#f5c542!important;
+  border-color:#f5c542!important;
+  box-shadow:0 0 10px rgba(245,197,66,.66),inset 0 0 24px rgba(245,197,66,.09)!important;
+}
+body.page-home .homepage-feature-card.feature-shuffle:hover,
+body.page-home .homepage-feature-card.feature-shuffle:focus-visible{
+  border-color:#ffe486!important;
+  box-shadow:0 0 17px #f5c542,0 0 30px rgba(245,197,66,.48),inset 0 0 28px rgba(245,197,66,.14)!important;
+}
+body.page-home .homepage-feature-card.feature-shuffle .feature-icon,
+body.page-home .homepage-feature-card.feature-shuffle strong{
+  color:#f5c542!important;
+  text-shadow:0 0 9px rgba(245,197,66,.84)!important;
+}
+body.page-home .homepage-feature-card.feature-shuffle .homepage-live-stat{
+  border-color:rgba(245,197,66,.92)!important;
+  color:#ffe9a5!important;
+  box-shadow:0 0 8px rgba(245,197,66,.35)!important;
+}
+
+/* Desktop navigation is a precisely centered group. */
+@media (min-width:701px){
+  body .site-top nav.site-nav-v3,
+  body .site-top nav{
+    display:flex!important;
+    width:max-content!important;
+    max-width:calc(100% - 24px)!important;
+    margin-inline:auto!important;
+    justify-content:center!important;
+    gap:8px!important;
+    padding-inline:0!important;
+  }
+}
+
+@media (max-width:700px){
+  /* Seven truly equal columns produce equal left/right margins and perfect
+     visual centering on every public page. */
+  body .site-top nav.site-nav-v3,
+  body .site-top nav{
+    display:grid!important;
+    grid-template-columns:repeat(7,minmax(0,1fr))!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:100%!important;
+    height:35px!important;
+    min-height:35px!important;
+    column-gap:4px!important;
+    padding:2px 8px 3px!important;
+    margin:0 auto!important;
+    overflow:visible!important;
+    box-sizing:border-box!important;
+  }
+  body .site-top nav.site-nav-v3 > a,
+  body .site-top nav > a{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    height:29px!important;
+    min-height:29px!important;
+    padding:1px!important;
+    margin:0!important;
+    font-size:clamp(.39rem,1.55vw,.47rem)!important;
+    line-height:1!important;
+    white-space:nowrap!important;
+    border-radius:5px!important;
+    box-sizing:border-box!important;
+  }
+
+  /* Use the same compact, complete Search control on every page. */
+  body .site-top .hero-bar{
+    grid-template-columns:45px minmax(0,1fr) 45px!important;
+    gap:5px!important;
+    height:57px!important;
+    min-height:57px!important;
+    padding:2px 8px!important;
+  }
+  body .site-top .hero-logo,
+  body .site-top .hero-logo-right,
+  body .site-top .mobile-search-button{
+    width:43px!important;
+    height:43px!important;
+    min-width:43px!important;
+    min-height:43px!important;
+    max-width:43px!important;
+    max-height:43px!important;
+  }
+  body .site-top .hero-logo img,
+  body .site-top .hero-logo-right img{
+    width:43px!important;
+    height:43px!important;
+  }
+  body .site-top .mobile-search-button{
+    display:grid!important;
+    grid-template-rows:18px 8px!important;
+    place-items:center!important;
+    align-content:center!important;
+    gap:1px!important;
+    padding:4px 0 3px!important;
+    margin:0!important;
+    overflow:hidden!important;
+    border-radius:50%!important;
+    box-sizing:border-box!important;
+  }
+  body .site-top .mobile-search-button span{
+    display:block!important;
+    margin:0!important;
+    padding:0!important;
+    font-size:.92rem!important;
+    line-height:18px!important;
+    transform:none!important;
+  }
+  body .site-top .mobile-search-button b{
+    display:block!important;
+    width:100%!important;
+    margin:0!important;
+    padding:0!important;
+    font-size:.31rem!important;
+    font-weight:900!important;
+    line-height:8px!important;
+    letter-spacing:.075em!important;
+    text-align:center!important;
+    text-transform:uppercase!important;
+    white-space:nowrap!important;
+  }
+
+  /* Home search mirrors the polished Shuffle component, only in gold. */
+  body.page-home .site-top .mobile-search-button{
+    border-color:#f5c542!important;
+    background:rgba(3,4,10,.96)!important;
+    color:#fff!important;
+    box-shadow:0 0 10px #f5c542,0 0 20px rgba(245,197,66,.48),inset 0 0 9px rgba(245,197,66,.08)!important;
+  }
+}
