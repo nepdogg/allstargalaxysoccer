@@ -11,6 +11,7 @@
     ['Team', 'team.html'],
     ['Updates', 'updates.html'],
     ['Media', 'media.html'],
+    ['Shuffle', 'galaxy-shuffle.html'],
     ['Live', 'livestream.html'],
     ['Follow', 'follow.html']
   ];
