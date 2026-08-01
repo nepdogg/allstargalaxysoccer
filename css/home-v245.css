@@ -1,0 +1,143 @@
+/* ================================================================
+   ALLSTAR GALAXY V245 — FINAL PHONE HOMEPAGE POLISH
+   Loaded after css/styles.css. This file intentionally replaces the
+   broken V240/V241/V242 homepage override chain.
+   ================================================================ */
+
+/* Remove accidental page-top spacing on the homepage. */
+html,
+html body.page-home {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+html body.page-home .site-shell,
+html body.page-home .site-top {
+  margin-top: 0 !important;
+}
+
+/* HOME is the only active destination on index.html. */
+html body.page-home .site-top nav > a[href="index.html"].active,
+html body.page-home .site-top nav.site-nav-v3 > a[href="index.html"].active {
+  color: #fff !important;
+  border-color: #ffe276 !important;
+  background: linear-gradient(180deg, rgba(255,221,94,.60), rgba(74,47,2,.98)) !important;
+  box-shadow: 0 0 13px #f5c542, 0 0 24px rgba(245,197,66,.50), inset 0 0 11px rgba(255,240,174,.20) !important;
+  text-shadow: 0 0 7px rgba(255,235,142,.95) !important;
+  filter: none !important;
+}
+
+/* Shuffle must be a normal inactive GOLD homepage button in every
+   interaction state. This also defeats retained iOS hover/focus and
+   page-global orange shuffle selectors. */
+html body.page-home .site-top nav > a[href="galaxy-shuffle.html"],
+html body.page-home .site-top nav > a[href="galaxy-shuffle.html"]:link,
+html body.page-home .site-top nav > a[href="galaxy-shuffle.html"]:visited,
+html body.page-home .site-top nav > a[href="galaxy-shuffle.html"]:hover,
+html body.page-home .site-top nav > a[href="galaxy-shuffle.html"]:focus,
+html body.page-home .site-top nav > a[href="galaxy-shuffle.html"]:focus-visible,
+html body.page-home .site-top nav > a[href="galaxy-shuffle.html"]:active,
+html body.page-home .site-top nav.site-nav-v3 > a[href="galaxy-shuffle.html"],
+html body.page-home .site-top nav.site-nav-v3 > a[href="galaxy-shuffle.html"]:link,
+html body.page-home .site-top nav.site-nav-v3 > a[href="galaxy-shuffle.html"]:visited,
+html body.page-home .site-top nav.site-nav-v3 > a[href="galaxy-shuffle.html"]:hover,
+html body.page-home .site-top nav.site-nav-v3 > a[href="galaxy-shuffle.html"]:focus,
+html body.page-home .site-top nav.site-nav-v3 > a[href="galaxy-shuffle.html"]:focus-visible,
+html body.page-home .site-top nav.site-nav-v3 > a[href="galaxy-shuffle.html"]:active {
+  color: #fff !important;
+  border-color: rgba(245,197,66,.72) !important;
+  background: rgba(5,4,2,.80) !important;
+  box-shadow: inset 0 0 0 1px rgba(245,197,66,.07) !important;
+  text-shadow: none !important;
+  filter: none !important;
+  outline: none !important;
+}
+
+/* The homepage feature hub follows the HOME gold identity. */
+html body.page-home .homepage-feature-card.feature-shuffle,
+html body.page-home .homepage-feature-card.feature-shuffle:hover,
+html body.page-home .homepage-feature-card.feature-shuffle:focus,
+html body.page-home .homepage-feature-card.feature-shuffle:active {
+  border-color: #f5c542 !important;
+  background: radial-gradient(circle at 80% 18%, rgba(245,197,66,.20), transparent 33%), linear-gradient(145deg, rgba(36,27,4,.96), rgba(4,4,3,.98)) !important;
+  box-shadow: 0 0 12px rgba(245,197,66,.42), inset 0 0 20px rgba(245,197,66,.08) !important;
+}
+html body.page-home .homepage-feature-card.feature-shuffle strong,
+html body.page-home .homepage-feature-card.feature-shuffle .feature-icon,
+html body.page-home .homepage-feature-card.feature-shuffle em {
+  color: #f5c542 !important;
+  text-shadow: 0 0 9px rgba(245,197,66,.72) !important;
+}
+html body.page-home .homepage-feature-card.feature-shuffle .homepage-live-stat {
+  color: #ffe79a !important;
+  border-color: rgba(245,197,66,.75) !important;
+  background: rgba(73,51,3,.46) !important;
+  box-shadow: 0 0 9px rgba(245,197,66,.28) !important;
+}
+
+@media (max-width: 700px) {
+  /* Balanced phone title row: taller than V241, but without the V240
+     vertical distortion. */
+  html body.page-home .site-top .hero-bar {
+    grid-template-columns: 45px minmax(0,1fr) 44px !important;
+    height: 57px !important;
+    min-height: 57px !important;
+    padding: 1px 8px !important;
+    gap: 6px !important;
+    overflow: hidden !important;
+  }
+
+  html body.page-home .site-top .hero-logo,
+  html body.page-home .site-top .hero-logo img {
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    max-width: 44px !important;
+    max-height: 44px !important;
+  }
+
+  html body.page-home .site-top .hero-title {
+    height: 54px !important;
+    min-height: 54px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: visible !important;
+    transform: translateY(-1px) !important;
+  }
+
+  html body.page-home .site-top .hero-title img {
+    display: block !important;
+    width: 100% !important;
+    height: 47px !important;
+    min-height: 47px !important;
+    max-height: 47px !important;
+    object-fit: fill !important;
+    object-position: center !important;
+    transform: scaleY(1.13) !important;
+    transform-origin: center center !important;
+  }
+}
+
+
+/* V245 final micro-polish: keep the Search control visually balanced with
+   the left logo and soften the hero-to-content transition. */
+@media (max-width: 700px) {
+  html body.page-home .site-top .mobile-search-button {
+    transform: translateX(-3px) !important;
+  }
+}
+
+html body.page-home .hero-image.hero-home {
+  position: relative !important;
+}
+html body.page-home .hero-image.hero-home::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  pointer-events: none !important;
+  background:
+    radial-gradient(circle at 50% 45%, transparent 42%, rgba(0,0,0,.22) 100%),
+    linear-gradient(to bottom, transparent 78%, rgba(7,4,2,.18) 88%, rgba(12,7,4,.72) 100%) !important;
+  opacity: 1 !important;
+}
