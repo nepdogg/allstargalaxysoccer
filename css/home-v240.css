@@ -1,0 +1,75 @@
+/* ================================================================
+   ALLSTAR GALAXY V240 — FINAL PHONE HOMEPAGE LOCK
+   Loaded after styles.css so these homepage-only rules cannot be
+   overridden by older global Shuffle/orange selectors.
+   ================================================================ */
+
+/* HOME is a completely gold environment. The Shuffle destination
+   becomes orange only after entering galaxy-shuffle.html. */
+html body.page-home div.site-shell header.site-top nav > a[href="galaxy-shuffle.html"],
+html body.page-home div.site-shell header.site-top nav.site-nav-v3 > a[href="galaxy-shuffle.html"] {
+  border-color: #f5c542 !important;
+  color: #fff !important;
+  background: linear-gradient(180deg, rgba(245,197,66,.16), rgba(20,14,1,.95)) !important;
+  box-shadow: 0 0 8px rgba(245,197,66,.62), inset 0 0 9px rgba(255,225,130,.12) !important;
+  text-shadow: 0 0 7px rgba(245,197,66,.92) !important;
+}
+html body.page-home div.site-shell header.site-top nav > a[href="galaxy-shuffle.html"]:hover,
+html body.page-home div.site-shell header.site-top nav.site-nav-v3 > a[href="galaxy-shuffle.html"]:hover {
+  border-color: #ffe276 !important;
+  background: linear-gradient(180deg, rgba(255,221,94,.46), rgba(70,43,0,.98)) !important;
+  box-shadow: 0 0 13px #f5c542, 0 0 24px rgba(245,197,66,.52), inset 0 0 11px rgba(255,240,174,.20) !important;
+}
+
+html body.page-home main #explore-galaxy .homepage-signature-grid > a.homepage-feature-card.feature-shuffle {
+  --feature-accent: #f5c542 !important;
+  border-color: #f5c542 !important;
+  background:
+    radial-gradient(circle at 84% 14%, rgba(245,197,66,.24), transparent 35%),
+    linear-gradient(145deg, #151106, #070705 72%) !important;
+  box-shadow: 0 0 18px rgba(245,197,66,.55), inset 0 0 42px rgba(0,0,0,.92) !important;
+}
+html body.page-home main #explore-galaxy .homepage-signature-grid > a.homepage-feature-card.feature-shuffle:hover,
+html body.page-home main #explore-galaxy .homepage-signature-grid > a.homepage-feature-card.feature-shuffle:focus-visible {
+  border-color: #ffe071 !important;
+  box-shadow: 0 0 30px rgba(245,197,66,.96), inset 0 0 46px #000 !important;
+}
+html body.page-home main #explore-galaxy .homepage-signature-grid > a.homepage-feature-card.feature-shuffle .feature-icon,
+html body.page-home main #explore-galaxy .homepage-signature-grid > a.homepage-feature-card.feature-shuffle strong {
+  color: #f5c542 !important;
+  text-shadow: 0 0 10px rgba(245,197,66,.88) !important;
+  filter: drop-shadow(0 0 10px rgba(245,197,66,.82)) !important;
+}
+html body.page-home main #explore-galaxy .homepage-signature-grid > a.homepage-feature-card.feature-shuffle .homepage-live-stat {
+  border-color: rgba(245,197,66,.94) !important;
+  color: #ffe7a1 !important;
+  background: rgba(45,31,1,.74) !important;
+  box-shadow: 0 0 9px rgba(245,197,66,.42) !important;
+}
+
+/* Make the navigation title visibly taller on phones while preserving
+   its current width and the completed logo/Search alignment. */
+@media (max-width: 700px) {
+  html body.page-home .site-top .hero-bar {
+    overflow: visible !important;
+  }
+  html body.page-home .site-top .hero-title {
+    height: 58px !important;
+    min-height: 58px !important;
+    overflow: visible !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  html body.page-home .site-top .hero-title img {
+    display: block !important;
+    width: 100% !important;
+    height: 58px !important;
+    min-height: 58px !important;
+    max-height: none !important;
+    object-fit: fill !important;
+    object-position: center !important;
+    transform: scaleY(1.30) !important;
+    transform-origin: center !important;
+  }
+}
