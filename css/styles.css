@@ -24055,3 +24055,223 @@ body.page-galaxy-shuffle .shuffle-hero-image{
     object-fit:contain!important;
   }
 }
+
+/* =========================================================
+   V236 — FINAL HOME + SHUFFLE NAVIGATION / HERO CORRECTION
+   ========================================================= */
+
+/* Permanent orange identity for Shuffle anywhere in the site navigation. */
+body .site-top nav.site-nav-v3 > a[href="galaxy-shuffle.html"],
+body .site-top nav > a[href="galaxy-shuffle.html"]{
+  border-color:#ff7900!important;
+  background:linear-gradient(180deg,rgba(255,117,0,.22),rgba(26,8,0,.92))!important;
+  color:#fffaf4!important;
+  box-shadow:0 0 8px rgba(255,105,0,.72),inset 0 0 8px rgba(255,152,45,.18)!important;
+  text-shadow:0 0 7px #ff7900!important;
+}
+body .site-top nav.site-nav-v3 > a[href="galaxy-shuffle.html"]:hover,
+body .site-top nav > a[href="galaxy-shuffle.html"]:hover,
+body.page-galaxy-shuffle .site-top nav.site-nav-v3 > a[href="galaxy-shuffle.html"],
+body.page-galaxy-shuffle .site-top nav > a[href="galaxy-shuffle.html"]{
+  border-color:#ffc066!important;
+  background:linear-gradient(180deg,rgba(255,146,31,.70),rgba(93,27,0,.98))!important;
+  box-shadow:0 0 12px #ff7900,0 0 24px rgba(255,88,0,.76),inset 0 0 12px rgba(255,215,139,.24)!important;
+}
+
+/* The homepage Shuffle feature belongs to the orange Shuffle destination. */
+body.page-home .homepage-feature-card.feature-shuffle{
+  border-color:#ff7900!important;
+  box-shadow:0 0 10px rgba(255,105,0,.70),inset 0 0 24px rgba(255,105,0,.10)!important;
+}
+body.page-home .homepage-feature-card.feature-shuffle:hover,
+body.page-home .homepage-feature-card.feature-shuffle:focus-visible{
+  border-color:#ffc066!important;
+  box-shadow:0 0 16px #ff7900,0 0 30px rgba(255,91,0,.55),inset 0 0 28px rgba(255,130,20,.16)!important;
+}
+body.page-home .homepage-feature-card.feature-shuffle .feature-icon,
+body.page-home .homepage-feature-card.feature-shuffle strong{
+  color:#ff9b35!important;
+  text-shadow:0 0 9px rgba(255,112,0,.85)!important;
+}
+body.page-home .homepage-feature-card.feature-shuffle .homepage-live-stat{
+  border-color:rgba(255,139,35,.90)!important;
+  color:#ffd3a1!important;
+  box-shadow:0 0 8px rgba(255,105,0,.36)!important;
+}
+
+/* Absolutely no cover image, clipping, inset, or over-width padding on Shuffle. */
+body.page-galaxy-shuffle .shuffle-hero{
+  position:relative!important;
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  margin:0!important;
+  padding:0!important;
+  overflow:visible!important;
+  box-sizing:border-box!important;
+  background-color:#050200!important;
+  background-image:none!important;
+  border-color:#ff7900!important;
+}
+body.page-galaxy-shuffle .shuffle-hero::before,
+body.page-galaxy-shuffle .shuffle-hero::after{
+  display:none!important;
+  content:none!important;
+}
+body.page-galaxy-shuffle .shuffle-hero-image{
+  position:static!important;
+  inset:auto!important;
+  display:block!important;
+  width:100%!important;
+  max-width:none!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  margin:0!important;
+  padding:0!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  aspect-ratio:auto!important;
+  transform:none!important;
+  clip-path:none!important;
+  box-sizing:border-box!important;
+}
+
+/* Orange page accents remain consistent below the hero. */
+body.page-galaxy-shuffle .shuffle-live-totals-below,
+body.page-galaxy-shuffle .shuffle-stage,
+body.page-galaxy-shuffle .shuffle-modal-panel{
+  border-color:#ff7900!important;
+  box-shadow:0 0 15px rgba(255,105,0,.44)!important;
+}
+
+@media (min-width:701px){
+  /* Center and evenly distribute the complete desktop navigation group. */
+  body .site-top nav.site-nav-v3{
+    justify-content:center!important;
+    gap:8px!important;
+    padding-inline:14px!important;
+  }
+}
+
+@media (max-width:700px){
+  /* Seven equal, centered destinations. They use the available width instead
+     of collecting against the left edge or leaving unused side space. */
+  body .site-top nav.site-nav-v3,
+  body .site-top nav{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:100%!important;
+    height:34px!important;
+    min-height:34px!important;
+    gap:3px!important;
+    padding:1px 5px 2px!important;
+    margin:0!important;
+    overflow-x:hidden!important;
+    box-sizing:border-box!important;
+  }
+  body .site-top nav.site-nav-v3 > a,
+  body .site-top nav > a{
+    flex:1 1 0!important;
+    width:auto!important;
+    min-width:0!important;
+    max-width:86px!important;
+    height:29px!important;
+    min-height:29px!important;
+    padding:2px 2px!important;
+    margin:0!important;
+    font-size:clamp(.42rem,1.75vw,.50rem)!important;
+    line-height:1!important;
+    text-align:center!important;
+    white-space:nowrap!important;
+    box-sizing:border-box!important;
+  }
+
+  /* Search matches the left logo in size and retains both icon and label. */
+  body .site-top .hero-bar{
+    grid-template-columns:46px minmax(0,1fr) 46px!important;
+    gap:4px!important;
+    height:57px!important;
+    min-height:57px!important;
+    padding:2px 7px!important;
+  }
+  body .site-top .hero-logo,
+  body .site-top .hero-logo-right,
+  body .site-top .mobile-search-button{
+    width:44px!important;
+    height:44px!important;
+    min-width:44px!important;
+    min-height:44px!important;
+    max-width:44px!important;
+    max-height:44px!important;
+  }
+  body .site-top .hero-logo img,
+  body .site-top .hero-logo-right img{
+    width:44px!important;
+    height:44px!important;
+  }
+  body .site-top .mobile-search-button{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:1px!important;
+    padding:0!important;
+    overflow:hidden!important;
+    color:#fff!important;
+    border-radius:50%!important;
+  }
+  body .site-top .mobile-search-button span{
+    display:block!important;
+    font-size:.82rem!important;
+    line-height:.82!important;
+    transform:none!important;
+  }
+  body .site-top .mobile-search-button b{
+    display:block!important;
+    margin:2px 0 0!important;
+    font-size:.35rem!important;
+    line-height:1!important;
+    letter-spacing:.08em!important;
+    text-transform:uppercase!important;
+    white-space:nowrap!important;
+  }
+
+  /* Search glow follows the page identity. */
+  body.page-home .site-top .mobile-search-button{
+    border-color:#ffd34a!important;
+    box-shadow:0 0 11px #ffc400,0 0 20px rgba(255,196,0,.48)!important;
+  }
+  body.page-galaxy-shuffle .site-top .mobile-search-button{
+    border-color:#ff7900!important;
+    box-shadow:0 0 11px #ff7900,0 0 20px rgba(255,91,0,.55)!important;
+  }
+  body.page-updates .site-top .mobile-search-button{
+    border-color:#39ff59!important;
+    box-shadow:0 0 11px #22e84a,0 0 20px rgba(34,232,74,.50)!important;
+  }
+
+  /* Reassert the true natural-ratio hero after every old mobile rule. */
+  body.page-galaxy-shuffle .shuffle-hero{
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    padding:0!important;
+    overflow:visible!important;
+    background-image:none!important;
+  }
+  body.page-galaxy-shuffle .shuffle-hero-image{
+    position:static!important;
+    display:block!important;
+    width:100%!important;
+    max-width:none!important;
+    height:auto!important;
+    max-height:none!important;
+    margin:0!important;
+    object-fit:contain!important;
+    transform:none!important;
+  }
+}
