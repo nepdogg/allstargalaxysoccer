@@ -1,0 +1,83 @@
+/* ================================================================
+   ALLSTAR GALAXY V242 — FINAL PHONE HOMEPAGE HEADER CORRECTIONS
+   Loaded after all previous homepage styles.
+   ================================================================ */
+
+/* HOME is the only active navigation destination on index.html.
+   Force Shuffle to match the other inactive gold-outline buttons in
+   every interaction state, including iOS retained hover/focus states. */
+html body.page-home .site-top nav > a[href="galaxy-shuffle.html"],
+html body.page-home .site-top nav > a[href="galaxy-shuffle.html"]:link,
+html body.page-home .site-top nav > a[href="galaxy-shuffle.html"]:visited,
+html body.page-home .site-top nav > a[href="galaxy-shuffle.html"]:hover,
+html body.page-home .site-top nav > a[href="galaxy-shuffle.html"]:focus,
+html body.page-home .site-top nav > a[href="galaxy-shuffle.html"]:focus-visible,
+html body.page-home .site-top nav > a[href="galaxy-shuffle.html"]:active,
+html body.page-home .site-top nav.site-nav-v3 > a[href="galaxy-shuffle.html"],
+html body.page-home .site-top nav.site-nav-v3 > a[href="galaxy-shuffle.html"]:link,
+html body.page-home .site-top nav.site-nav-v3 > a[href="galaxy-shuffle.html"]:visited,
+html body.page-home .site-top nav.site-nav-v3 > a[href="galaxy-shuffle.html"]:hover,
+html body.page-home .site-top nav.site-nav-v3 > a[href="galaxy-shuffle.html"]:focus,
+html body.page-home .site-top nav.site-nav-v3 > a[href="galaxy-shuffle.html"]:focus-visible,
+html body.page-home .site-top nav.site-nav-v3 > a[href="galaxy-shuffle.html"]:active {
+  color: #fff !important;
+  border-color: rgba(245,197,66,.72) !important;
+  background: rgba(5,4,2,.80) !important;
+  box-shadow: inset 0 0 0 1px rgba(245,197,66,.07) !important;
+  text-shadow: none !important;
+  filter: none !important;
+  outline: none !important;
+}
+
+/* Preserve HOME as the single selected control. */
+html body.page-home .site-top nav > a[href="index.html"].active,
+html body.page-home .site-top nav.site-nav-v3 > a[href="index.html"].active {
+  border-color: #ffe276 !important;
+  background: linear-gradient(180deg, rgba(255,221,94,.60), rgba(74,47,2,.98)) !important;
+  box-shadow: 0 0 13px #f5c542, 0 0 24px rgba(245,197,66,.50), inset 0 0 11px rgba(255,240,174,.20) !important;
+  text-shadow: 0 0 7px rgba(255,235,142,.95) !important;
+}
+
+@media (max-width: 700px) {
+  /* A measured midpoint between V240 (too tall) and V241 (too short). */
+  html body.page-home .site-top .hero-bar {
+    grid-template-columns: 46px minmax(0,1fr) 45px !important;
+    height: 59px !important;
+    min-height: 59px !important;
+    padding: 2px 8px !important;
+    overflow: hidden !important;
+  }
+
+  /* Slightly enlarge the left logo for balance with Search. */
+  html body.page-home .site-top .hero-logo,
+  html body.page-home .site-top .hero-logo img {
+    width: 45px !important;
+    height: 45px !important;
+    min-width: 45px !important;
+    min-height: 45px !important;
+    max-width: 45px !important;
+    max-height: 45px !important;
+  }
+
+  /* Increase title height only moderately and raise it a few pixels. */
+  html body.page-home .site-top .hero-title {
+    height: 55px !important;
+    min-height: 55px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    transform: translateY(-2px) !important;
+  }
+  html body.page-home .site-top .hero-title img {
+    display: block !important;
+    width: 100% !important;
+    height: 55px !important;
+    min-height: 55px !important;
+    max-height: 55px !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    transform: scaleY(1.16) !important;
+    transform-origin: center !important;
+  }
+}
