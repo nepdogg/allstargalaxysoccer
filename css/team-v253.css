@@ -1,0 +1,59 @@
+/* V253 — Team page parity with finalized homepage + player/profile polish */
+:root{--team-accent:#d93cff;--team-accent-2:#8b00ff}
+body.page-team{--page-accent:var(--team-accent);--page-glow-1:#8b00ff;--page-glow-2:#ff3cff}
+
+/* Finalized shared header/ticker behavior, recolored purple. */
+.page-team .site-top{position:sticky;top:0;z-index:250;background:#05000b;border-bottom:1px solid #d93cff;box-shadow:0 8px 28px rgba(0,0,0,.58)}
+.page-team .site-top .hero-bar{align-items:center}
+.page-team .site-top nav{width:min(94%,1280px);margin:0 auto;display:flex;justify-content:center;gap:10px}
+.page-team .site-top nav>a{flex:1 1 0;max-width:150px;border-color:rgba(217,60,255,.74)}
+.page-team .site-top nav>a.active{background:linear-gradient(180deg,rgba(217,60,255,.68),rgba(72,0,96,.92));border-color:#ff8aff;box-shadow:0 0 12px #d93cff,0 0 24px rgba(139,0,255,.65)}
+.page-team .asg-status-ticker{position:relative!important;top:auto!important;z-index:3!important;border-color:#d93cff!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 0 15px rgba(217,60,255,.38)!important}
+.page-team .asg-status-ticker::before,.page-team .asg-status-ticker::after{background:linear-gradient(90deg,transparent,#d93cff,#fff,#8b00ff,transparent)!important}
+.page-team .hero-image{min-height:clamp(390px,46vw,690px);background-size:cover;background-position:center;overflow:hidden}
+.page-team .hero-image .hero-dots,.page-team .hero-image .carousel-dots{bottom:18px}
+.page-team .hero-image .carousel-dot,.page-team .hero-image .hero-dot{border-color:rgba(255,255,255,.55);background:rgba(217,60,255,.32);box-shadow:0 0 8px rgba(217,60,255,.45)}
+.page-team .hero-image .carousel-dot.active,.page-team .hero-image .hero-dot.active{background:#ff54ff;box-shadow:0 0 10px #fff,0 0 22px #d93cff}
+
+/* Section graphics: no added outer glow. */
+.page-team .roster-title-block{margin-top:28px;margin-bottom:18px;padding:0}
+.page-team .roster-title-block::before,.page-team .roster-title-block::after{display:none!important}
+.page-team .roster-title-graphic,.page-team .team-stats-title-graphic{display:block;width:min(88%,1080px);height:auto;margin:0 auto;filter:none!important;box-shadow:none!important;text-shadow:none!important}
+.page-team .team-stats-graphic-heading{text-align:center;margin-bottom:24px}
+.page-team .team-stats-graphic-heading p{margin:8px auto 0;opacity:.84}
+
+/* Stats: balanced 3x2 system with new Team Snapshot + Honors card. */
+.page-team .galaxy-stats-grid{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch;gap:18px}
+.page-team .galaxy-stat-card{min-height:270px;display:flex;flex-direction:column;justify-content:flex-start;border:1px solid #d93cff;background:radial-gradient(circle at 50% 0,rgba(217,60,255,.11),transparent 45%),linear-gradient(145deg,rgba(9,2,20,.98),rgba(18,4,30,.94));box-shadow:inset 0 0 22px rgba(217,60,255,.08),0 0 24px rgba(217,60,255,.24)}
+.page-team .galaxy-stat-featured{grid-column:span 2;display:grid;grid-template-columns:1.12fr .88fr;align-items:end}
+.page-team .galaxy-stat-list{margin-top:auto}
+.page-team .galaxy-stat-list span{min-height:42px}
+.page-team .galaxy-stat-snapshot .galaxy-stat-list b,.page-team .galaxy-stat-honors .galaxy-stat-list b{font-size:1.05rem;line-height:1.2}
+
+/* Front player card readability and geometry. */
+.page-team .prototype-player-number,.page-team .popup-exact-front-card .prototype-player-number{left:7.0%!important;top:5.2%!important;width:25%!important;height:13%!important;align-items:flex-start!important;justify-content:flex-start!important}
+.page-team .prototype-player-name strong,.page-team .preview-ultimate-name.prototype-player-name strong,.page-team .team-roster-carousel .prototype-player-name strong,.page-team .popup-exact-front-card .prototype-player-name strong{letter-spacing:.02em!important;transform:scaleX(.91)!important;text-shadow:0 .035em 0 #c9cbd3,0 .072em 0 #70747e,0 .11em .07em rgba(0,0,0,.95),0 0 .08em rgba(255,255,255,.28)!important}
+.page-team .prototype-player-name em,.page-team .preview-ultimate-name.prototype-player-name em,.page-team .team-roster-carousel .prototype-player-name em,.page-team .popup-exact-front-card .prototype-player-name em{display:flex!important;align-items:center!important;justify-content:center!important;bottom:2.8%!important;height:14.5%!important;text-align:center!important}
+
+/* Profile card: centered top identity, readable surname, centered quote. */
+.page-team .ultimate-profile-card.prototype-profile-frame .prototype-profile-number{left:13%!important;top:4.6%!important;width:43%!important;height:11.5%!important;align-items:center!important;justify-content:center!important;text-align:center!important;letter-spacing:0!important}
+.page-team .ultimate-profile-card.prototype-profile-frame .prototype-profile-position{left:13%!important;top:14.0%!important;width:43%!important;height:5.2%!important;align-items:center!important;justify-content:center!important;text-align:center!important;transform-origin:center!important}
+.page-team .ultimate-profile-card.prototype-profile-frame .prototype-profile-name strong{letter-spacing:.025em!important;transform:translateX(-50%) scaleX(.92)!important;text-shadow:0 .035em 0 #c8cad1,0 .072em 0 #747780,0 .11em .08em rgba(0,0,0,.94),0 0 .08em rgba(255,255,255,.28)!important}
+.page-team .ultimate-profile-card.prototype-profile-frame .prototype-profile-quote{top:78.4%!important;left:13%!important;right:13%!important;height:8.4%!important;display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important;margin:0!important;padding:0 2%!important}
+
+@media(max-width:760px){
+  .page-team .site-top{position:sticky;top:0}
+  .page-team .site-top .hero-bar{grid-template-columns:42px minmax(0,1fr) 42px!important;height:54px!important;min-height:54px!important;padding:2px 9px!important;gap:3px!important}
+  .page-team .site-top .hero-logo,.page-team .site-top .hero-logo-right,.page-team .site-top .mobile-search-button{width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important}
+  .page-team .site-top .hero-logo img,.page-team .site-top .hero-logo-right img{width:40px!important;height:40px!important}
+  .page-team .site-top .hero-title{height:50px!important;min-height:50px!important}
+  .page-team .site-top .hero-title img{width:104%!important;height:48px!important;max-height:48px!important;object-fit:fill!important;transform:translateX(-2%) scaleY(1.06)!important}
+  .page-team .site-top nav{width:calc(100% - 16px)!important;height:34px!important;min-height:34px!important;margin:0 auto!important;padding:1px 0 2px!important;gap:4px!important;overflow:hidden!important}
+  .page-team .site-top nav>a{flex:1 1 0!important;width:0!important;min-width:0!important;max-width:none!important;height:29px!important;min-height:29px!important;padding:2px 1px!important;font-size:clamp(.40rem,1.72vw,.49rem)!important;white-space:nowrap!important}
+  .page-team .asg-status-ticker{position:relative!important;top:auto!important}
+  .page-team .hero-image{min-height:0!important;height:auto!important;aspect-ratio:16/9!important;background-size:cover!important;background-position:center!important}
+  .page-team .roster-title-graphic,.page-team .team-stats-title-graphic{width:92%}
+  .page-team .galaxy-stats-grid{grid-template-columns:1fr}
+  .page-team .galaxy-stat-featured{grid-column:auto;grid-template-columns:1fr .72fr}
+  .page-team .galaxy-stat-card{min-height:245px}
+}
