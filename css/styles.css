@@ -23529,3 +23529,78 @@ html{overflow-x:hidden}body{overflow-x:clip}.site-shell{width:100%;max-width:100
 .shuffle-stage{position:relative;min-height:440px;margin:28px auto 18px;overflow:hidden;border:1px solid rgba(139,92,255,.72);border-radius:24px;background:radial-gradient(circle at center,rgba(139,92,255,.13),transparent 52%),rgba(0,0,0,.56);box-shadow:inset 0 0 60px #000,0 0 24px rgba(139,92,255,.25)}.shuffle-track{height:100%;min-height:440px;display:flex;align-items:center;justify-content:center;gap:24px;padding:30px}.shuffle-art-card{position:absolute;width:min(360px,72vw);aspect-ratio:16/10;border:2px solid rgba(255,255,255,.18);border-radius:20px;background:var(--shuffle-art);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;opacity:.22;transform:translateX(calc((var(--i,0) - 3)*140px)) scale(.7);filter:blur(1px) brightness(.65);transition:transform .16s ease,opacity .16s ease,filter .16s ease,box-shadow .3s ease;cursor:default;overflow:hidden}.shuffle-art-card:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 25%,rgba(255,255,255,.18),transparent 58%);transform:translateX(-130%)}.shuffle-art-card span,.shuffle-art-card strong,.shuffle-art-card em{position:relative;z-index:1}.shuffle-art-card span{font-size:.72rem;letter-spacing:.25em;color:#ffd95a;font-weight:900}.shuffle-art-card strong{font:clamp(1.5rem,4vw,2.7rem)/1 Impact,"Arial Narrow",sans-serif;letter-spacing:.05em;text-shadow:0 0 14px #000}.shuffle-art-card em{font-style:normal;font-size:.72rem;letter-spacing:.18em}.shuffle-art-card.is-active{opacity:1;z-index:5;transform:translateX(0) scale(1);filter:none}.shuffle-art-card.is-selected{cursor:pointer;border-color:#ffd95a;box-shadow:0 0 18px #ffd95a,0 0 44px #8b5cff;animation:shuffleWinner 1s ease-in-out infinite alternate}.shuffle-art-card.is-selected:before{animation:shuffleShine 1.8s ease-in-out infinite}@keyframes shuffleWinner{to{transform:translateX(0) scale(1.035);box-shadow:0 0 28px #ffd95a,0 0 62px #8b5cff}}@keyframes shuffleShine{to{transform:translateX(140%)}}
 .shuffle-status{color:#ffd95a;font-weight:800;min-height:1.5em}.shuffle-modal{position:fixed;inset:0;z-index:4000;display:none;place-items:center;padding:16px;background:rgba(0,0,0,.88);backdrop-filter:blur(12px)}.shuffle-modal.is-open{display:grid}.shuffle-modal-panel{position:relative;width:min(900px,96vw);max-height:calc(100dvh - 32px);overflow:auto;padding:28px;border:1px solid #8b5cff;border-radius:22px;background:linear-gradient(150deg,#100820,#03050b 65%);box-shadow:0 0 34px rgba(139,92,255,.7);text-align:center}.shuffle-modal-close{position:absolute;right:12px;top:10px;width:42px;height:42px;border:1px solid #ffd95a;border-radius:50%;background:#111;color:#fff;font-size:1.6rem;cursor:pointer}.shuffle-modal-kicker{color:#ffd95a;letter-spacing:.22em;font-weight:900}.shuffle-modal h2{margin:8px 44px 5px;color:#fff;font-size:clamp(1.7rem,4vw,3rem);text-shadow:0 0 15px #8b5cff}.shuffle-modal-details{color:#cfd2e8}.shuffle-video-wrap{aspect-ratio:16/9;margin:18px auto;overflow:hidden;border:1px solid rgba(245,197,66,.65);border-radius:14px;background:#000}.shuffle-video-wrap iframe{width:100%;height:100%;border:0}.shuffle-modal-note{font-size:.78rem;color:#aaa}.modal-open{overflow:hidden}
 @media(max-width:600px){.page-galaxy-shuffle .hero-bar{min-height:82px}.page-galaxy-shuffle nav{overflow-x:auto;justify-content:flex-start}.page-galaxy-shuffle nav a{flex:0 0 auto;font-size:.61rem;padding:7px 8px}.shuffle-hero{min-height:270px}.shuffle-hero h1{font-size:3.25rem}.shuffle-hero p{font-size:.86rem}.shuffle-page-main{padding:24px 8px 34px}.shuffle-stage,.shuffle-track{min-height:310px}.shuffle-track{padding:18px}.shuffle-art-card{width:78vw}.shuffle-modal-panel{padding:24px 12px 20px}.shuffle-modal h2{font-size:1.55rem}.shuffle-main-button,.shuffle-again-button{width:min(92%,340px)}}
+
+
+/* =========================================================
+   V233 — ORANGE GALAXY SHUFFLE + MATCHDAY UPDATES HEROES
+   ========================================================= */
+:root{--shuffle-orange:#ff7a00;--shuffle-gold:#ffd24a;--updates-green:#39ff14}
+.visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+
+/* Central public navigation color identity. */
+.site-top nav.site-nav-v3>a[href="galaxy-shuffle.html"]{border-color:rgba(255,122,0,.7)!important}
+.site-top nav.site-nav-v3>a[href="galaxy-shuffle.html"]:hover,
+.site-top nav.site-nav-v3>a[href="galaxy-shuffle.html"].active{color:#fff!important;background:linear-gradient(180deg,rgba(255,122,0,.42),rgba(62,20,0,.86))!important;box-shadow:0 0 15px rgba(255,122,0,.8)!important;text-shadow:0 0 10px #ff7a00!important}
+.page-updates .site-top nav.site-nav-v3>a.active{color:#fff!important;background:linear-gradient(180deg,rgba(57,255,20,.30),rgba(3,48,10,.88))!important;box-shadow:0 0 14px rgba(57,255,20,.72)!important}
+
+/* New page hero artwork. */
+.hero-updates{background-image:url('../images/heroes/pages/hero-updates-v233.png')!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important}
+.shuffle-hero{min-height:clamp(320px,43vw,660px)!important;background-image:linear-gradient(rgba(0,0,0,.02),rgba(0,0,0,.08)),url('../images/heroes/pages/hero-shuffle-v233.png')!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important;border-color:rgba(255,122,0,.72)!important}
+.shuffle-hero:before{display:none!important}
+.shuffle-hero-overlay{position:absolute!important;inset:auto 0 18px!important;padding:0 16px!important}
+.shuffle-live-totals span{border-color:rgba(255,122,0,.9)!important;background:rgba(0,0,0,.72)!important;box-shadow:0 0 13px rgba(255,122,0,.45)!important}
+
+/* Galaxy Shuffle orange identity. */
+.page-galaxy-shuffle{--page-accent:#ff7a00!important;background:#050200!important}
+.page-galaxy-shuffle .site-shell{box-shadow:0 0 26px rgba(255,122,0,.14)!important}
+.shuffle-main-button,.shuffle-again-button{border-color:#ff9b24!important;background:linear-gradient(135deg,#5c2100,#1b0800 58%,#321800)!important;box-shadow:0 0 18px rgba(255,122,0,.75),0 0 22px rgba(255,210,74,.25)!important}
+.shuffle-main-button:hover,.shuffle-again-button:hover{box-shadow:0 0 34px #ff7a00,0 0 28px rgba(255,210,74,.7)!important}
+.shuffle-stage{min-height:500px!important;border-color:rgba(255,122,0,.82)!important;background:radial-gradient(circle at center,rgba(255,122,0,.16),transparent 54%),rgba(0,0,0,.72)!important;box-shadow:inset 0 0 70px #000,0 0 28px rgba(255,122,0,.38)!important}
+.shuffle-track{min-height:500px!important}
+.shuffle-art-card{width:min(430px,76vw)!important;border-color:rgba(255,122,0,.32)!important;transform:translateX(calc((var(--i,0) - 3)*175px)) scale(.72)!important}
+.shuffle-art-card.is-active{transform:translateX(0) scale(1.08)!important}
+.shuffle-art-card.is-selected{border-color:#ffb13b!important;box-shadow:0 0 20px #ffb13b,0 0 52px #ff6a00!important}
+@keyframes shuffleWinner{to{transform:translateX(0) scale(1.12);box-shadow:0 0 32px #ffd24a,0 0 74px #ff6a00}}
+.shuffle-status,.shuffle-modal-kicker{color:#ffb13b!important}
+.shuffle-modal-panel{border-color:#ff7a00!important;background:linear-gradient(150deg,#221000,#050301 68%)!important;box-shadow:0 0 38px rgba(255,122,0,.72)!important}
+.shuffle-modal h2{text-shadow:0 0 15px #ff7a00!important}
+.shuffle-modal-close{border-color:#ff9b24!important;box-shadow:0 0 12px rgba(255,122,0,.55)!important}
+.shuffle-video-wrap{border-color:rgba(255,122,0,.78)!important}
+.page-galaxy-shuffle footer{border-top-color:#ff7a00!important}
+.page-galaxy-shuffle footer .footer-logo img,.page-galaxy-shuffle footer .footer-social img,.page-galaxy-shuffle footer .footer-email{filter:drop-shadow(0 0 8px rgba(255,122,0,.9))!important}
+
+/* Homepage gold footer logos. */
+.page-home footer .footer-logo img{filter:drop-shadow(0 0 10px rgba(255,210,74,1)) drop-shadow(0 0 18px rgba(255,174,0,.62))!important}
+
+/* Mobile public header refinement. */
+@media(max-width:600px){
+  .site-top .hero-bar{min-height:74px!important;height:74px!important;padding:5px 8px!important;gap:4px!important;display:grid!important;grid-template-columns:52px minmax(0,1fr) 52px!important;align-items:center!important}
+  .site-top .hero-logo,.site-top .hero-logo-right,.site-top .mobile-search-button{width:52px!important;height:52px!important;min-width:52px!important;margin:0!important}
+  .site-top .hero-logo img,.site-top .hero-logo-right img{width:52px!important;height:52px!important;object-fit:contain!important}
+  .site-top .hero-title{height:52px!important;min-height:52px!important;width:100%!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important}
+  .site-top .hero-title img{width:100%!important;height:52px!important;max-height:52px!important;object-fit:contain!important}
+  .site-top .mobile-search-button{display:flex!important;flex-direction:column!important;border-radius:50%!important;border-width:2px!important;padding:0!important;gap:0!important}
+  .site-top .mobile-search-button span{font-size:1.25rem!important;line-height:1!important}
+  .site-top .mobile-search-button b{display:block!important;font-size:.49rem!important;line-height:1!important;letter-spacing:.05em!important;text-transform:uppercase!important;margin-top:2px!important}
+  .site-top nav.site-nav-v3{min-height:45px!important;gap:3px!important;padding:2px 3px 4px!important;overflow-x:auto!important;justify-content:flex-start!important;scrollbar-width:none!important}
+  .site-top nav.site-nav-v3::-webkit-scrollbar{display:none!important}
+  .site-top nav.site-nav-v3>a{flex:0 0 auto!important;min-width:64px!important;height:39px!important;padding:5px 7px!important;font-size:.59rem!important;border-radius:7px!important}
+  .asg-status-ticker{margin-top:0!important}
+  .shuffle-hero{min-height:255px!important;background-position:center!important}
+  .shuffle-hero-overlay{bottom:10px!important;padding:0 8px!important}
+  .shuffle-live-totals{gap:5px!important;margin:0!important}
+  .shuffle-live-totals span{padding:5px 8px!important;font-size:.58rem!important}
+  .shuffle-page-main{padding:20px 8px 30px!important}
+  .shuffle-stage,.shuffle-track{min-height:360px!important}
+  .shuffle-art-card{width:min(86vw,430px)!important;transform:translateX(calc((var(--i,0) - 3)*118px)) scale(.66)!important}
+  .shuffle-art-card.is-active{transform:translateX(0) scale(1)!important}
+  @keyframes shuffleWinner{to{transform:translateX(0) scale(1.035);box-shadow:0 0 26px #ffd24a,0 0 56px #ff6a00}}
+  .shuffle-modal{align-items:start!important;padding:max(10px,env(safe-area-inset-top)) 8px max(10px,env(safe-area-inset-bottom))!important;overflow:hidden!important}
+  .shuffle-modal-panel{width:100%!important;max-height:calc(100dvh - max(20px,env(safe-area-inset-top) + env(safe-area-inset-bottom)))!important;margin:0!important;padding:58px 12px 18px!important;overflow-y:auto!important;overscroll-behavior:contain!important;border-radius:18px!important}
+  .shuffle-modal-close{position:sticky!important;float:right!important;right:0!important;top:0!important;z-index:20!important;margin-top:-48px!important;margin-right:0!important;width:42px!important;height:42px!important;background:#120700!important}
+  .shuffle-modal h2{margin:4px 42px 4px!important;font-size:1.45rem!important}
+  .shuffle-modal-details{font-size:.78rem!important;margin:6px 0 10px!important}
+  .shuffle-video-wrap{margin:10px auto 14px!important}
+  .shuffle-again-button{position:relative!important;width:min(94%,360px)!important;margin-top:4px!important}
+  .shuffle-modal-note{margin-bottom:2px!important}
+}
