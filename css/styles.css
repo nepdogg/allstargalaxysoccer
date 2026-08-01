@@ -23891,3 +23891,167 @@ html{overflow-x:hidden}body{overflow-x:clip}.site-shell{width:100%;max-width:100
     margin:0!important;
   }
 }
+
+/* =========================================================
+   V235 — GLOBAL COMPACT NAVIGATION + FULL SHUFFLE HERO
+   ========================================================= */
+
+/* Keep Shuffle orange on every page, including the gold homepage. */
+body .site-top nav.site-nav-v3 > a[href="galaxy-shuffle.html"],
+body .site-top nav > a[href="galaxy-shuffle.html"]{
+  border-color:#ff7a00!important;
+  color:#fff7ec!important;
+  box-shadow:inset 0 0 0 1px rgba(255,122,0,.30),0 0 9px rgba(255,122,0,.34)!important;
+  text-shadow:0 0 7px rgba(255,122,0,.72)!important;
+}
+body .site-top nav.site-nav-v3 > a[href="galaxy-shuffle.html"]:hover,
+body .site-top nav.site-nav-v3 > a[href="galaxy-shuffle.html"].active,
+body.page-galaxy-shuffle .site-top nav.site-nav-v3 > a[href="galaxy-shuffle.html"]{
+  border-color:#ffad3d!important;
+  background:linear-gradient(180deg,rgba(255,132,22,.58),rgba(70,20,0,.94))!important;
+  box-shadow:0 0 10px #ff7a00,0 0 20px rgba(255,91,0,.72),inset 0 0 12px rgba(255,198,87,.22)!important;
+}
+
+/* The complete Shuffle artwork must always remain visible. */
+body.page-galaxy-shuffle .shuffle-hero{
+  display:flex!important;
+  justify-content:center!important;
+  align-items:center!important;
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  padding:0!important;
+  overflow:visible!important;
+  background:#050200!important;
+}
+body.page-galaxy-shuffle .shuffle-hero-image{
+  display:block!important;
+  width:98%!important;
+  max-width:98%!important;
+  height:auto!important;
+  max-height:none!important;
+  margin:0 auto!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  clip-path:none!important;
+  transform:none!important;
+}
+
+@media(max-width:700px){
+  /* One compact mobile header/navigation system on every public page.
+     These selectors intentionally override older homepage-only rules. */
+  body.page-home .site-top .hero-bar,
+  body.page-galaxy-shuffle .site-top .hero-bar,
+  body.page-updates .site-top .hero-bar,
+  body.page-team .site-top .hero-bar,
+  body.page-media .site-top .hero-bar,
+  body.page-live .site-top .hero-bar,
+  body.page-follow .site-top .hero-bar,
+  body .site-top .hero-bar{
+    grid-template-columns:48px minmax(0,1fr) 48px!important;
+    gap:3px!important;
+    min-height:58px!important;
+    height:58px!important;
+    padding:3px 7px!important;
+  }
+  body .site-top .hero-logo,
+  body .site-top .hero-logo-right,
+  body .site-top .mobile-search-button{
+    width:46px!important;
+    height:46px!important;
+    min-width:46px!important;
+    min-height:46px!important;
+    max-width:46px!important;
+    max-height:46px!important;
+  }
+  body .site-top .hero-logo img,
+  body .site-top .hero-logo-right img{
+    width:46px!important;
+    height:46px!important;
+  }
+  body .site-top .hero-title,
+  body.page-home .site-top .hero-title,
+  body.page-galaxy-shuffle .site-top .hero-title{
+    height:50px!important;
+    min-height:50px!important;
+  }
+  body .site-top .hero-title img,
+  body.page-home .site-top .hero-title img,
+  body.page-galaxy-shuffle .site-top .hero-title img{
+    width:100%!important;
+    height:50px!important;
+    min-height:50px!important;
+    max-height:50px!important;
+    object-fit:contain!important;
+  }
+  body .site-top .mobile-search-button span{font-size:.92rem!important}
+  body .site-top .mobile-search-button b{font-size:.37rem!important;margin-top:1px!important}
+
+  body.page-home .site-top nav.site-nav-v3,
+  body.page-galaxy-shuffle .site-top nav.site-nav-v3,
+  body.page-updates .site-top nav.site-nav-v3,
+  body.page-team .site-top nav.site-nav-v3,
+  body.page-media .site-top nav.site-nav-v3,
+  body.page-live .site-top nav.site-nav-v3,
+  body.page-follow .site-top nav.site-nav-v3,
+  body .site-top nav.site-nav-v3,
+  body .site-top nav{
+    display:flex!important;
+    grid-template-columns:none!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    gap:2px!important;
+    width:100%!important;
+    min-height:32px!important;
+    height:32px!important;
+    padding:1px 2px!important;
+    margin:0!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    scrollbar-width:none!important;
+  }
+  body .site-top nav.site-nav-v3::-webkit-scrollbar,
+  body .site-top nav::-webkit-scrollbar{display:none!important}
+
+  body.page-home .site-top nav.site-nav-v3 > a,
+  body.page-galaxy-shuffle .site-top nav.site-nav-v3 > a,
+  body.page-updates .site-top nav.site-nav-v3 > a,
+  body.page-team .site-top nav.site-nav-v3 > a,
+  body.page-media .site-top nav.site-nav-v3 > a,
+  body.page-live .site-top nav.site-nav-v3 > a,
+  body.page-follow .site-top nav.site-nav-v3 > a,
+  body .site-top nav.site-nav-v3 > a,
+  body .site-top nav > a{
+    flex:0 0 auto!important;
+    min-width:48px!important;
+    width:auto!important;
+    height:28px!important;
+    min-height:28px!important;
+    padding:2px 5px!important;
+    margin:0!important;
+    border-radius:5px!important;
+    font-size:.45rem!important;
+    line-height:1!important;
+    letter-spacing:0!important;
+  }
+
+  /* Keep the ticker directly below the smaller navigation. */
+  body .asg-status-ticker{
+    min-height:38px!important;
+    margin:0!important;
+  }
+  body .asg-status-message{padding:4px 7px!important}
+  body .asg-status-message strong{font-size:.60rem!important;line-height:1.15!important}
+
+  /* Add a small safety inset so none of the artwork at the edges is clipped. */
+  body.page-galaxy-shuffle .shuffle-hero{
+    padding:0 4px!important;
+    background:#050200!important;
+  }
+  body.page-galaxy-shuffle .shuffle-hero-image{
+    width:100%!important;
+    max-width:100%!important;
+    height:auto!important;
+    object-fit:contain!important;
+  }
+}
