@@ -1,0 +1,58 @@
+/* ================================================================
+   ALLSTAR GALAXY V241 — FINAL PHONE HOMEPAGE POLISH
+   Loaded last on index.html to override legacy homepage rules only.
+   ================================================================ */
+
+/* Remove the legacy V214 body offset that leaves galaxy background
+   visible above the sticky homepage header. */
+html body.page-home {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+html body.page-home > .site-shell,
+html body.page-home .site-top {
+  margin-top: 0 !important;
+}
+
+/* On Home, only HOME is active. Shuffle remains a normal gold-outline
+   destination without an active fill or outer glow. */
+html body.page-home .site-top nav > a[href="galaxy-shuffle.html"],
+html body.page-home .site-top nav.site-nav-v3 > a[href="galaxy-shuffle.html"] {
+  color: #fff !important;
+  border-color: rgba(245,197,66,.72) !important;
+  background: rgba(5,4,2,.78) !important;
+  box-shadow: inset 0 0 0 1px rgba(245,197,66,.08) !important;
+  text-shadow: none !important;
+  filter: none !important;
+}
+html body.page-home .site-top nav > a[href="galaxy-shuffle.html"]:hover,
+html body.page-home .site-top nav.site-nav-v3 > a[href="galaxy-shuffle.html"]:hover {
+  color: #ffe98c !important;
+  border-color: #f5c542 !important;
+  background: rgba(48,34,4,.88) !important;
+  box-shadow: 0 0 8px rgba(245,197,66,.38), inset 0 0 8px rgba(245,197,66,.10) !important;
+  text-shadow: 0 0 6px rgba(245,197,66,.55) !important;
+}
+
+/* Correct V240's over-stretched phone title. Keep it taller than the
+   earlier compact version, but preserve the artwork's proportions. */
+@media (max-width: 700px) {
+  html body.page-home .site-top .hero-bar {
+    overflow: hidden !important;
+  }
+  html body.page-home .site-top .hero-title {
+    height: 51px !important;
+    min-height: 51px !important;
+    overflow: hidden !important;
+  }
+  html body.page-home .site-top .hero-title img {
+    width: 100% !important;
+    height: 51px !important;
+    min-height: 51px !important;
+    max-height: 51px !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    transform: scaleY(1.10) !important;
+    transform-origin: center !important;
+  }
+}
