@@ -9,9 +9,8 @@
   const NAV_ITEMS = [
     ['Home', 'index.html'],
     ['Team', 'team.html'],
-    ['Schedule', 'schedule.html'],
+    ['Updates', 'updates.html'],
     ['Media', 'media.html'],
-    ['News', 'news.html'],
     ['Live', 'livestream.html'],
     ['Follow', 'follow.html']
   ];
@@ -172,7 +171,7 @@
         type:'news', label:'News', icon:'📰', title:item.title || 'Allstar Galaxy News',
         subtitle:[item.date, item.category, item.summary].filter(Boolean).join(' · '),
         keywords:[item.title, item.date, item.category, item.summary, 'news announcement'].join(' '),
-        image:item.image || '', href:link || 'news.html', actions:[]
+        image:item.image || '', href:link || 'updates.html#latest-news', actions:[]
       });
     });
 

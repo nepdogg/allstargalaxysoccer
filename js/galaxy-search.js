@@ -84,7 +84,7 @@
         type: 'news', icon: '📰', title: item.title || 'News',
         subtitle: [item.date, item.category, item.summary].filter(Boolean).join(' · '),
         keywords: [item.title, item.date, item.category, item.summary, 'news announcement results'].join(' '),
-        image: item.image || '', actions: [['Open', validUrl(item.link)]].filter(a => a[1]), href: 'news.html'
+        image: item.image || '', actions: [['Open', validUrl(item.link)]].filter(a => a[1]), href: 'updates.html#latest-news'
       });
     });
     return out;
