@@ -23604,3 +23604,290 @@ html{overflow-x:hidden}body{overflow-x:clip}.site-shell{width:100%;max-width:100
   .shuffle-again-button{position:relative!important;width:min(94%,360px)!important;margin-top:4px!important}
   .shuffle-modal-note{margin-bottom:2px!important}
 }
+
+/* =========================================================
+   V234 — FINAL MOBILE HOME HEADER + SHUFFLE HERO/ORANGE FIX
+   ========================================================= */
+
+/* Orange Shuffle navigation identity on every public page. */
+.site-top nav > a[href="galaxy-shuffle.html"],
+.site-top nav.site-nav-v3 > a[href="galaxy-shuffle.html"]{
+  border-color:#ff7a00!important;
+  box-shadow:inset 0 0 0 1px rgba(255,122,0,.18),0 0 8px rgba(255,122,0,.18)!important;
+}
+.site-top nav > a[href="galaxy-shuffle.html"]:hover,
+.site-top nav > a[href="galaxy-shuffle.html"].active,
+.page-galaxy-shuffle .site-top nav > a[href="galaxy-shuffle.html"]{
+  color:#fff7e8!important;
+  border-color:#ff9b24!important;
+  background:linear-gradient(180deg,rgba(255,137,24,.52),rgba(67,20,0,.92))!important;
+  box-shadow:0 0 8px #ff7a00,0 0 18px rgba(255,91,0,.72),inset 0 0 12px rgba(255,194,80,.2)!important;
+  text-shadow:0 0 8px #ff8a00!important;
+}
+
+/* Homepage footer team logos: remove inherited pulse/filter and force gold. */
+.page-home footer a.footer-logo,
+.page-home footer a.footer-logo img{
+  animation:none!important;
+}
+.page-home footer a.footer-logo img,
+.page-home footer .footer-social-row > a.footer-logo img{
+  filter:drop-shadow(0 0 5px #ffd74f) drop-shadow(0 0 11px #ffb000) drop-shadow(0 0 18px rgba(255,145,0,.85))!important;
+}
+
+/* Shuffle page uses orange throughout, never purple. */
+.page-galaxy-shuffle{
+  --page-accent:#ff7a00!important;
+  --shuffle-orange:#ff7a00;
+  --shuffle-amber:#ffb13b;
+}
+.page-galaxy-shuffle .shuffle-page-main,
+.page-galaxy-shuffle .shuffle-experience{
+  background:linear-gradient(180deg,rgba(34,12,2,.22),rgba(4,3,6,.98))!important;
+}
+.page-galaxy-shuffle .shuffle-main-button,
+.page-galaxy-shuffle .shuffle-again-button{
+  border-color:#ff9b24!important;
+  background:linear-gradient(135deg,#351000,#a43600 55%,#271000)!important;
+  box-shadow:0 0 10px #ff7a00,0 0 24px rgba(255,89,0,.55)!important;
+}
+.page-galaxy-shuffle .shuffle-stage,
+.page-galaxy-shuffle .shuffle-track{
+  border-color:#ff7a00!important;
+  box-shadow:inset 0 0 24px rgba(255,86,0,.12),0 0 18px rgba(255,106,0,.34)!important;
+}
+.page-galaxy-shuffle .shuffle-art-card.is-active,
+.page-galaxy-shuffle .shuffle-art-card.is-selected{
+  border-color:#ffb13b!important;
+  box-shadow:0 0 13px #ff9a00,0 0 32px #ff5b00,0 0 58px rgba(255,96,0,.55)!important;
+}
+.page-galaxy-shuffle .shuffle-status,
+.page-galaxy-shuffle .shuffle-intro{
+  color:#ffd39a!important;
+}
+.page-galaxy-shuffle .shuffle-modal-panel{
+  border-color:#ff7a00!important;
+  background:linear-gradient(150deg,#241003,#060407 68%)!important;
+  box-shadow:0 0 18px #ff7a00,0 0 42px rgba(255,74,0,.62)!important;
+}
+.page-galaxy-shuffle .shuffle-modal h2{
+  text-shadow:0 0 13px #ff7a00!important;
+}
+.page-galaxy-shuffle .shuffle-modal-close{
+  border-color:#ff9b24!important;
+  box-shadow:0 0 10px rgba(255,122,0,.75)!important;
+}
+.page-galaxy-shuffle footer{
+  border-color:#ff7a00!important;
+}
+.page-galaxy-shuffle footer .footer-logo img,
+.page-galaxy-shuffle footer .footer-social img,
+.page-galaxy-shuffle footer .footer-email{
+  filter:drop-shadow(0 0 7px #ff9b24) drop-shadow(0 0 15px rgba(255,91,0,.8))!important;
+}
+
+/* Full, unobstructed Shuffle hero image. No fixed crop, no overlays. */
+.page-galaxy-shuffle .shuffle-hero{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  aspect-ratio:auto!important;
+  overflow:visible!important;
+  padding:0!important;
+  margin:0!important;
+  background:none!important;
+  border-top:1px solid rgba(255,122,0,.65)!important;
+  border-bottom:1px solid rgba(255,122,0,.75)!important;
+}
+.page-galaxy-shuffle .shuffle-hero:before,
+.page-galaxy-shuffle .shuffle-hero:after,
+.page-galaxy-shuffle .shuffle-hero-overlay{
+  display:none!important;
+}
+.page-galaxy-shuffle .shuffle-hero-image{
+  display:block!important;
+  width:100%!important;
+  max-width:100%!important;
+  height:auto!important;
+  max-height:none!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  margin:0!important;
+}
+.page-galaxy-shuffle .shuffle-live-totals-below{
+  position:relative!important;
+  inset:auto!important;
+  z-index:2!important;
+  display:flex!important;
+  justify-content:center!important;
+  align-items:center!important;
+  flex-wrap:wrap!important;
+  gap:10px!important;
+  width:100%!important;
+  margin:0!important;
+  padding:13px 12px 15px!important;
+  background:linear-gradient(180deg,#160800,#070407)!important;
+  border-bottom:1px solid rgba(255,122,0,.7)!important;
+  box-shadow:0 8px 20px rgba(255,76,0,.12)!important;
+}
+.page-galaxy-shuffle .shuffle-live-totals-below span{
+  padding:7px 14px!important;
+  border:1px solid #ff8a13!important;
+  border-radius:999px!important;
+  background:rgba(20,7,0,.92)!important;
+  color:#fff4df!important;
+  box-shadow:0 0 10px rgba(255,122,0,.28)!important;
+  font-size:.72rem!important;
+  font-weight:900!important;
+  letter-spacing:.08em!important;
+}
+
+/* Mobile homepage/header correction — tightly scoped and intentionally
+   stronger than older responsive rules. */
+@media(max-width:700px){
+  body.page-home .site-top .hero-bar,
+  body.page-galaxy-shuffle .site-top .hero-bar,
+  body.page-updates .site-top .hero-bar,
+  .site-top .hero-bar{
+    display:grid!important;
+    grid-template-columns:56px minmax(0,1fr) 56px!important;
+    align-items:center!important;
+    gap:5px!important;
+    width:100%!important;
+    min-height:68px!important;
+    height:68px!important;
+    padding:5px 10px!important;
+    margin:0!important;
+  }
+  .site-top .hero-logo,
+  .site-top .hero-logo-right,
+  .site-top .mobile-search-button{
+    width:54px!important;
+    height:54px!important;
+    min-width:54px!important;
+    min-height:54px!important;
+    max-width:54px!important;
+    max-height:54px!important;
+    margin:0!important;
+  }
+  .site-top .hero-logo img,
+  .site-top .hero-logo-right img{
+    width:54px!important;
+    height:54px!important;
+    object-fit:contain!important;
+  }
+  .site-top .hero-title{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:100%!important;
+    height:58px!important;
+    min-height:58px!important;
+    padding:0!important;
+    margin:0!important;
+    overflow:visible!important;
+  }
+  .site-top .hero-title img{
+    display:block!important;
+    width:100%!important;
+    height:58px!important;
+    min-height:58px!important;
+    max-height:58px!important;
+    object-fit:contain!important;
+    object-position:center!important;
+  }
+  .site-top .mobile-search-button{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    flex-direction:column!important;
+    padding:0!important;
+    border-radius:50%!important;
+    line-height:1!important;
+  }
+  .site-top .mobile-search-button span{font-size:1.05rem!important;line-height:1!important}
+  .site-top .mobile-search-button b{font-size:.42rem!important;line-height:1!important;margin-top:2px!important}
+
+  .site-top nav,
+  .site-top nav.site-nav-v3{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    gap:3px!important;
+    width:100%!important;
+    min-height:38px!important;
+    height:38px!important;
+    padding:1px 3px 2px!important;
+    margin:0!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    scrollbar-width:none!important;
+  }
+  .site-top nav::-webkit-scrollbar{display:none!important}
+  .site-top nav > a,
+  .site-top nav.site-nav-v3 > a{
+    flex:0 0 auto!important;
+    min-width:55px!important;
+    width:auto!important;
+    height:34px!important;
+    min-height:34px!important;
+    padding:3px 7px!important;
+    margin:0!important;
+    border-radius:6px!important;
+    font-size:.52rem!important;
+    line-height:1!important;
+    letter-spacing:.01em!important;
+  }
+  .asg-status-ticker{
+    margin:0!important;
+  }
+
+  /* Full-width hero remains entirely visible on phones. */
+  .page-galaxy-shuffle .shuffle-hero,
+  .page-galaxy-shuffle .shuffle-hero-image{
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    object-fit:contain!important;
+    object-position:center!important;
+  }
+  .page-galaxy-shuffle .shuffle-live-totals-below{
+    gap:6px!important;
+    padding:9px 6px 11px!important;
+  }
+  .page-galaxy-shuffle .shuffle-live-totals-below span{
+    padding:5px 8px!important;
+    font-size:.55rem!important;
+  }
+  .page-galaxy-shuffle .shuffle-page-main{
+    padding-top:18px!important;
+  }
+
+  /* Keep modal fully usable and close control fixed in view. */
+  .page-galaxy-shuffle .shuffle-modal{
+    display:none;
+    align-items:flex-start!important;
+    overflow:hidden!important;
+    padding:max(8px,env(safe-area-inset-top)) 7px max(8px,env(safe-area-inset-bottom))!important;
+  }
+  .page-galaxy-shuffle .shuffle-modal.is-open{display:flex!important}
+  .page-galaxy-shuffle .shuffle-modal-panel{
+    position:relative!important;
+    width:100%!important;
+    max-height:calc(100dvh - 16px - env(safe-area-inset-top) - env(safe-area-inset-bottom))!important;
+    overflow-y:auto!important;
+    padding:54px 10px 16px!important;
+    border-radius:17px!important;
+  }
+  .page-galaxy-shuffle .shuffle-modal-close{
+    position:fixed!important;
+    top:max(13px,calc(env(safe-area-inset-top) + 5px))!important;
+    right:14px!important;
+    z-index:5005!important;
+    width:40px!important;
+    height:40px!important;
+    margin:0!important;
+  }
+}
