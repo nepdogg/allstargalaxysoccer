@@ -19,6 +19,8 @@
         const body = document.body;
         if (body.classList.contains("page-home")) return "home";
         if (body.classList.contains("page-team")) return "team";
+        if (body.classList.contains("page-updates")) return "updates";
+        if (body.classList.contains("page-galaxy-shuffle")) return "shuffle";
         if (body.classList.contains("page-schedule")) return "schedule";
         if (body.classList.contains("page-media")) return "media";
         if (body.classList.contains("page-news")) return "news";
@@ -33,6 +35,8 @@
     const fallbackConfig = {
         home: { selector: ".hero-image.hero-home", images: ["images/heroes/pages/hero-home.png"] },
         team: { selector: ".hero-image.hero-team", images: ["images/heroes/pages/hero-team.png"] },
+        updates: { selector: ".hero-image.hero-updates", images: ["images/heroes/pages/hero-updates-v233.png"] },
+        shuffle: { selector: ".shuffle-hero", images: ["images/heroes/pages/hero-shuffle-v233.png"] },
         schedule: { selector: ".hero-image.hero-schedule", images: ["images/heroes/pages/hero-schedule.png"] },
         media: { selector: ".hero-image.hero-media", images: ["images/heroes/pages/hero-media.png"] },
         news: { selector: ".hero-image.hero-news", images: ["images/heroes/pages/hero-news.png"] },
