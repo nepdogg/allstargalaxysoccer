@@ -46,12 +46,6 @@
       const topAwardCount = awardCounts.get(String(featured.id)) || 0;
       const latestSeason = [...seasons].sort().at(-1) || 'Current Season';
 
-      const latestGames = [...games].sort((a,b) => String(a.date || '').localeCompare(String(b.date || '')));
-      const latestGame = latestGames.at(-1) || {};
-      const currentPosition = data.settings?.leaguePosition || data.settings?.currentPosition || '—';
-      const nextMatch = (data.schedule || []).filter(visible).find(item => !item.result) || {};
-      const championships = Number(data.settings?.championships || 0);
-      const playoffRuns = Number(data.settings?.playoffRuns || 0);
       root.innerHTML = `
         <article class="galaxy-stat-card galaxy-stat-featured">
           <div class="galaxy-stat-copy">
@@ -69,27 +63,39 @@
         <article class="galaxy-stat-card">
           <span class="galaxy-stat-kicker">Club Record</span>
           <div class="galaxy-stat-list">
-            <span><b>${games.length}</b> Games</span><span><b>${wins}</b> Wins</span><span><b>${draws}</b> Draws</span><span><b>${losses}</b> Losses</span>
+            <span><b>${games.length}</b> Games</span>
+            <span><b>${wins}</b> Wins</span>
+            <span><b>${draws}</b> Draws</span>
+            <span><b>${losses}</b> Losses</span>
           </div>
         </article>
         <article class="galaxy-stat-card">
           <span class="galaxy-stat-kicker">Goals & Seasons</span>
           <div class="galaxy-stat-list">
-            <span><b>${goalsFor}</b> Goals For</span><span><b>${goalsAgainst}</b> Goals Against</span><span><b>${goalsFor-goalsAgainst}</b> Goal Difference</span><span><b>${seasons.size}</b> Seasons</span>
+            <span><b>${goalsFor}</b> Goals For</span>
+            <span><b>${goalsAgainst}</b> Goals Against</span>
+            <span><b>${goalsFor - goalsAgainst}</b> Goal Difference</span>
+            <span><b>${seasons.size}</b> Seasons</span>
           </div>
         </article>
-        <article class="galaxy-stat-card galaxy-stat-snapshot">
+        <article class="galaxy-stat-card">
           <span class="galaxy-stat-kicker">Team Snapshot</span>
           <div class="galaxy-stat-list">
-            <span><b>${esc(latestSeason)}</b> Current Season</span><span><b>${esc(currentPosition)}</b> League Position</span><span><b>${esc(latestGame.result || 'No result')}</b> Latest Result</span><span><b>${esc(nextMatch.opponent || 'To be announced')}</b> Next Opponent</span>
+            <span><b>${esc(latestSeason)}</b> Season</span>
+            <span><b>${awards.length}</b> Game Awards</span>
+            <span><b>${players.length}</b> Roster Players</span>
+            <span><b>${data.playlists?.filter(visible).length || 0}</b> Media Collections</span>
           </div>
         </article>
-        <article class="galaxy-stat-card galaxy-stat-honors">
+        <article class="galaxy-stat-card">
           <span class="galaxy-stat-kicker">Team Honors</span>
           <div class="galaxy-stat-list">
-            <span><b>${championships}</b> Championships</span><span><b>${playoffRuns}</b> Playoff Runs</span><span><b>${awards.length}</b> Game Awards</span><span><b>${data.playlists?.filter(visible).length || 0}</b> Media Collections</span>
+            <span><b>${wins}</b> Match Wins</span>
+            <span><b>${awards.length}</b> Game Awards</span>
+            <span><b>${seasons.size}</b> Seasons Logged</span>
+            <span><b>${data.playlists?.filter(visible).length || 0}</b> Media Collections</span>
           </div>
-        </article>`
+        </article>`;
     })
     .catch(() => { root.closest('.galaxy-stats-section')?.setAttribute('hidden', ''); });
 })();
