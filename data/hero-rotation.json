@@ -1,5 +1,5 @@
 {
-  "version": 140,
+  "version": 262,
   "interval": 7000,
   "transition": 1400,
   "pages": {
@@ -143,6 +143,36 @@
       "effect": "pulse",
       "transitionEffect": "glow-fade",
       "glowIntensity": "medium"
+    },
+    "updates": {
+      "selector": ".hero-image.hero-updates",
+      "images": [
+        "images/heroes/pages/hero-updates-v233.png",
+        "images/heroes/pages/hero-updates-v233.png",
+        "images/heroes/pages/hero-updates-v233.png"
+      ],
+      "enabled": true,
+      "interval": 7000,
+      "transition": 1400,
+      "effect": "pulse",
+      "transitionEffect": "glow-fade",
+      "glowIntensity": "medium",
+      "glowColor": "auto"
+    },
+    "shuffle": {
+      "selector": ".shuffle-hero",
+      "images": [
+        "images/heroes/pages/hero-shuffle-v233.png",
+        "images/heroes/pages/hero-shuffle-v233.png",
+        "images/heroes/pages/hero-shuffle-v233.png"
+      ],
+      "enabled": true,
+      "interval": 7000,
+      "transition": 1400,
+      "effect": "pulse",
+      "transitionEffect": "glow-fade",
+      "glowIntensity": "medium",
+      "glowColor": "auto"
     }
   }
 }
