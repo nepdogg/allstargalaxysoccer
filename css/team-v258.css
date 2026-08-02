@@ -1,0 +1,89 @@
+/* Allstar Galaxy V258 — final Team carousel and card geometry */
+html body.page-team .team-roster-carousel{
+  height:clamp(620px,57vw,700px)!important;min-height:620px!important;padding:44px 86px 104px!important;overflow:hidden!important
+}
+html body.page-team .team-roster-carousel .carousel-track{position:relative!important;height:100%!important;min-height:0!important;padding:0!important;overflow:visible!important}
+html body.page-team .team-roster-carousel .team-card-slide{top:44%!important;transform-origin:center center!important}
+html body.page-team .team-roster-carousel .team-card-slide.is-active,
+html body.page-team .team-roster-carousel .team-card-slide.is-active:hover,
+html body.page-team .team-roster-carousel .team-card-slide.is-active:focus-visible{
+  top:44%!important;transform:translate(-50%,-50%) translateX(0) scale(1.20)!important
+}
+html body.page-team .team-roster-carousel .carousel-button{top:44%!important}
+html body.page-team .team-roster-carousel .carousel-button.prev{left:22px!important}
+html body.page-team .team-roster-carousel .carousel-button.next{right:22px!important}
+html body.page-team .team-roster-carousel .carousel-dots{bottom:25px!important;z-index:40!important}
+
+/* Front player card */
+html body.page-team .prototype-player-number,
+html body.page-team .popup-exact-front-card .prototype-player-number{top:6.4%!important;left:6.4%!important}
+html body.page-team .prototype-player-name,
+html body.page-team .popup-exact-front-card .prototype-player-name{overflow:visible!important}
+html body.page-team .prototype-player-name small,
+html body.page-team .popup-exact-front-card .prototype-player-name small{transform:translateY(-3px)!important;letter-spacing:.14em!important}
+html body.page-team .prototype-player-name strong,
+html body.page-team .popup-exact-front-card .prototype-player-name strong{
+  width:110%!important;max-width:110%!important;margin-left:-5%!important;letter-spacing:.055em!important;text-align:center!important;
+  text-shadow:0 .035em 0 #9299a3,0 .085em .09em rgba(0,0,0,.96)!important;filter:none!important
+}
+html body.page-team .prototype-player-name em,
+html body.page-team .popup-exact-front-card .prototype-player-name em{
+  left:12%!important;right:12%!important;bottom:1.4%!important;height:11.6%!important;margin:0!important;padding:0!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important;line-height:1!important;transform:none!important
+}
+
+/* Profile card — each content block occupies its artwork-defined zone. */
+html body.page-team .ultimate-profile-card.prototype-profile-frame .prototype-profile-number{
+  top:4.5%!important;left:6.5%!important;width:42%!important;height:9.8%!important;display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important;line-height:1!important
+}
+html body.page-team .ultimate-profile-card.prototype-profile-frame .prototype-profile-position{
+  top:13.7%!important;left:6.5%!important;width:42%!important;height:7.2%!important;display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important;line-height:1!important;white-space:nowrap!important
+}
+html body.page-team .ultimate-profile-card.prototype-profile-frame .prototype-profile-name{
+  top:26.0%!important;left:7.5%!important;right:7.5%!important;width:auto!important;height:14.8%!important;margin:0!important;
+  display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:.35cqw!important;text-align:center!important;overflow:visible!important
+}
+html body.page-team .ultimate-profile-card.prototype-profile-frame .prototype-profile-name small{
+  width:100%!important;text-align:center!important;letter-spacing:.15em!important;line-height:1!important;font-size:5.6cqw!important
+}
+html body.page-team .ultimate-profile-card.prototype-profile-frame .prototype-profile-name strong{
+  width:108%!important;max-width:108%!important;margin-left:-4%!important;text-align:center!important;white-space:nowrap!important;
+  font-size:12.4cqw!important;letter-spacing:.035em!important;line-height:.85!important;transform:none!important;transform-origin:center!important;
+  text-shadow:0 .035em 0 #9198a2,0 .085em .09em rgba(0,0,0,.96)!important;filter:none!important
+}
+html body.page-team .ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-10 strong,
+html body.page-team .ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-11 strong,
+html body.page-team .ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-12 strong{font-size:11.8cqw!important;transform:scaleX(.95)!important}
+html body.page-team .ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-13 strong,
+html body.page-team .ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-14 strong,
+html body.page-team .ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-15 strong,
+html body.page-team .ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-16 strong,
+html body.page-team .ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-17 strong,
+html body.page-team .ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-18 strong,
+html body.page-team .ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-19 strong,
+html body.page-team .ultimate-profile-card.prototype-profile-frame .prototype-profile-name.name-length-20 strong{font-size:10.8cqw!important;transform:scaleX(.84)!important}
+html body.page-team .ultimate-profile-card.prototype-profile-frame .prototype-profile-values{position:absolute!important;inset:0!important;transform:none!important}
+html body.page-team .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b{
+  display:flex!important;align-items:center!important;justify-content:flex-end!important;height:6.1%!important;line-height:1!important;margin:0!important;padding:0!important
+}
+html body.page-team .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(1){top:44.55%!important}
+html body.page-team .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(2){top:51.42%!important}
+html body.page-team .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(3){top:58.29%!important}
+html body.page-team .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(4){top:65.16%!important}
+html body.page-team .ultimate-profile-card.prototype-profile-frame .prototype-profile-values b:nth-child(5){top:72.03%!important}
+html body.page-team .ultimate-profile-card.prototype-profile-frame .prototype-profile-quote{
+  left:12.5%!important;right:12.5%!important;top:79.0%!important;height:8.2%!important;margin:0!important;padding:0 2%!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important;line-height:1.12!important;overflow:hidden!important
+}
+
+@media(max-width:700px){
+  html body.page-team .team-roster-carousel{height:clamp(760px,164vw,860px)!important;min-height:760px!important;padding:40px 24px 120px!important}
+  html body.page-team .team-roster-carousel .team-card-slide{top:43%!important;width:68vw!important;min-width:68vw!important;max-width:68vw!important}
+  html body.page-team .team-roster-carousel .team-card-slide.is-active,
+  html body.page-team .team-roster-carousel .team-card-slide.is-active:hover,
+  html body.page-team .team-roster-carousel .team-card-slide.is-active:focus-visible{top:43%!important;transform:translate(-50%,-50%) translateX(0) scale(1.06)!important}
+  html body.page-team .team-roster-carousel .carousel-button{top:43%!important}
+  html body.page-team .team-roster-carousel .carousel-button.prev{left:4px!important}
+  html body.page-team .team-roster-carousel .carousel-button.next{right:4px!important}
+  html body.page-team .team-roster-carousel .carousel-dots{bottom:31px!important}
+}

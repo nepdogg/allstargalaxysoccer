@@ -1,0 +1,123 @@
+/* Allstar Galaxy V258 — final universal public-page header */
+.page-home{--page-accent:#ffd700;--page-accent-rgb:255,215,0}
+.page-team{--page-accent:#d62cff;--page-accent-rgb:214,44,255}
+.page-updates{--page-accent:#39ff14;--page-accent-rgb:57,255,20}
+.page-media{--page-accent:#00b9ff;--page-accent-rgb:0,185,255}
+.page-galaxy-shuffle{--page-accent:#ff7a00;--page-accent-rgb:255,122,0}
+.page-live{--page-accent:#ff263f;--page-accent-rgb:255,38,63}
+.page-follow{--page-accent:#ff4dcb;--page-accent-rgb:255,77,203}
+.page-about{--page-accent:#d8e2ef;--page-accent-rgb:216,226,239}
+
+@keyframes asgLogoPulseV258{
+  0%,18%,100%{filter:drop-shadow(0 0 5px rgba(var(--page-accent-rgb),.48)) brightness(1)}
+  8%{filter:drop-shadow(0 0 15px rgba(var(--page-accent-rgb),1)) drop-shadow(0 0 28px rgba(var(--page-accent-rgb),.55)) brightness(1.14)}
+}
+@keyframes asgActivePulseV258{
+  0%,18%,100%{box-shadow:0 0 7px rgba(var(--page-accent-rgb),.42),inset 0 0 8px rgba(var(--page-accent-rgb),.08)}
+  8%{box-shadow:0 0 17px rgba(var(--page-accent-rgb),1),0 0 30px rgba(var(--page-accent-rgb),.5),inset 0 0 16px rgba(255,255,255,.15)}
+}
+
+html body[class*="page-"] .site-top{
+  --header-cycle:5.4s;position:sticky!important;top:0!important;z-index:1200!important;
+  background:linear-gradient(180deg,rgba(4,2,13,.995),rgba(2,1,9,.985))!important;
+  border-bottom:1px solid var(--page-accent)!important;box-shadow:0 4px 18px rgba(0,0,0,.5)!important
+}
+html body[class*="page-"] .site-top .hero-bar{
+  min-height:88px!important;padding:8px clamp(28px,4.2vw,68px) 4px!important;
+  display:grid!important;grid-template-columns:88px minmax(0,1fr) 88px!important;
+  align-items:center!important;gap:clamp(16px,2vw,30px)!important;box-sizing:border-box!important
+}
+html body[class*="page-"] .site-top .hero-logo,
+html body[class*="page-"] .site-top .hero-logo-right{display:flex!important;align-items:center!important;justify-content:center!important}
+html body[class*="page-"] .site-top .hero-logo img,
+html body[class*="page-"] .site-top .hero-logo-right img{
+  width:72px!important;height:72px!important;object-fit:contain!important;
+  animation:asgLogoPulseV258 var(--header-cycle) ease-in-out infinite!important
+}
+html body[class*="page-"] .site-top .hero-logo img{animation-delay:0s!important}
+html body[class*="page-"] .site-top .hero-logo-right img{animation-delay:3.6s!important}
+html body[class*="page-"] .site-top .hero-title{
+  min-width:0!important;display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important
+}
+html body[class*="page-"] .site-top .hero-title img{
+  display:block!important;width:min(100%,860px)!important;height:72px!important;max-height:72px!important;
+  object-fit:contain!important;object-position:center!important;filter:drop-shadow(0 0 8px rgba(var(--page-accent-rgb),.55))
+}
+html body[class*="page-"] .site-top nav,
+html body[class*="page-"] .site-top nav.site-nav-v3{
+  width:calc(100% - clamp(80px,8vw,140px))!important;max-width:none!important;margin:0 auto!important;
+  padding:6px 0 9px!important;display:grid!important;grid-template-columns:repeat(8,minmax(0,1fr))!important;
+  gap:clamp(8px,.85vw,13px)!important;align-items:stretch!important;box-sizing:border-box!important
+}
+html body[class*="page-"] .site-top nav>a,
+html body[class*="page-"] .site-top nav.site-nav-v3>a,
+html body[class*="page-"] .site-top nav.site-nav-v3>.site-search-button-desktop{
+  width:100%!important;min-width:0!important;height:48px!important;min-height:48px!important;padding:10px 8px!important;
+  border:1px solid rgba(var(--page-accent-rgb),.78)!important;border-radius:8px!important;background:rgba(3,3,12,.9)!important;
+  color:#fff!important;font-size:clamp(.76rem,.82vw,.91rem)!important;font-weight:800!important;letter-spacing:.045em!important;
+  line-height:1!important;text-transform:uppercase!important;display:flex!important;align-items:center!important;justify-content:center!important;
+  text-align:center!important;box-sizing:border-box!important;
+  transition:transform .22s ease,background .22s ease,border-color .22s ease,box-shadow .22s ease,color .22s ease!important
+}
+html body[class*="page-"] .site-top nav>a:hover,
+html body[class*="page-"] .site-top nav>a:focus-visible,
+html body[class*="page-"] .site-top nav.site-nav-v3>.site-search-button-desktop:hover,
+html body[class*="page-"] .site-top nav.site-nav-v3>.site-search-button-desktop:focus-visible{
+  transform:translateY(-2px)!important;border-color:var(--page-accent)!important;color:#fff!important;
+  background:rgba(var(--page-accent-rgb),.14)!important;
+  box-shadow:0 0 14px rgba(var(--page-accent-rgb),.88),0 0 25px rgba(var(--page-accent-rgb),.3)!important
+}
+html body[class*="page-"] .site-top nav>a.active{
+  color:#fff!important;border-color:var(--page-accent)!important;
+  background:linear-gradient(180deg,rgba(var(--page-accent-rgb),.62),rgba(var(--page-accent-rgb),.18))!important;
+  animation:asgActivePulseV258 var(--header-cycle) ease-in-out infinite!important;animation-delay:1.8s!important
+}
+html body[class*="page-"] .site-top .asg-status-ticker,
+html body[class*="page-"]>.site-shell>.asg-status-ticker{
+  position:relative!important;top:auto!important;z-index:1!important;margin:0!important;min-height:32px!important;
+  border-top:1px solid var(--page-accent)!important;border-bottom:2px solid var(--page-accent)!important;
+  background:rgba(2,2,9,.985)!important;color:var(--page-accent)!important;
+  box-shadow:inset 0 1px rgba(var(--page-accent-rgb),.25)!important
+}
+html body[class*="page-"] .asg-status-ticker-track{
+  min-height:30px!important;padding:1px 12px!important;display:flex!important;align-items:center!important;justify-content:center!important;
+  gap:10px!important;color:var(--page-accent)!important;text-align:center!important
+}
+
+@media(max-width:900px){
+  html body[class*="page-"] .site-top .hero-bar{
+    min-height:104px!important;padding:8px 12px 4px!important;grid-template-columns:70px minmax(0,1fr) 70px!important;gap:8px!important
+  }
+  html body[class*="page-"] .site-top .hero-logo img,
+  html body[class*="page-"] .site-top .hero-logo-right img{width:64px!important;height:64px!important}
+  html body[class*="page-"] .site-top .hero-title img{
+    width:100%!important;height:68px!important;max-height:68px!important;object-fit:contain!important;object-position:center!important
+  }
+  html body[class*="page-"] .site-top nav,
+  html body[class*="page-"] .site-top nav.site-nav-v3{
+    width:100%!important;margin:0!important;padding:3px 8px 7px!important;display:grid!important;
+    grid-template-columns:repeat(7,minmax(0,1fr))!important;gap:4px!important;overflow:visible!important
+  }
+  html body[class*="page-"] .site-top nav>a,
+  html body[class*="page-"] .site-top nav.site-nav-v3>a{
+    width:100%!important;min-width:0!important;height:46px!important;min-height:46px!important;padding:4px 1px!important;
+    border-radius:7px!important;font-size:clamp(.50rem,2vw,.66rem)!important;letter-spacing:0!important;line-height:1!important;white-space:nowrap!important
+  }
+  html body[class*="page-"] .site-top nav.site-nav-v3>.site-search-button-desktop{display:none!important}
+  html body[class*="page-"] .site-top .asg-status-ticker,
+  html body[class*="page-"]>.site-shell>.asg-status-ticker{min-height:40px!important}
+  html body[class*="page-"] .asg-status-ticker-track{min-height:38px!important;padding:3px 10px!important;font-size:clamp(.72rem,2.7vw,.93rem)!important;line-height:1.15!important}
+}
+@media(max-width:520px){
+  html body[class*="page-"] .site-top .hero-bar{min-height:98px!important;grid-template-columns:64px minmax(0,1fr) 64px!important;padding-inline:10px!important}
+  html body[class*="page-"] .site-top .hero-logo img,
+  html body[class*="page-"] .site-top .hero-logo-right img{width:58px!important;height:58px!important}
+  html body[class*="page-"] .site-top .hero-title img{height:64px!important;max-height:64px!important}
+  html body[class*="page-"] .site-top nav>a,
+  html body[class*="page-"] .site-top nav.site-nav-v3>a{height:44px!important;min-height:44px!important;font-size:clamp(.47rem,1.92vw,.61rem)!important}
+}
+@media(prefers-reduced-motion:reduce){
+  html body[class*="page-"] .site-top .hero-logo img,
+  html body[class*="page-"] .site-top .hero-logo-right img,
+  html body[class*="page-"] .site-top nav>a.active{animation:none!important}
+}
