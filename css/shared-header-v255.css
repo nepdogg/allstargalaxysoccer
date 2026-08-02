@@ -1,0 +1,27 @@
+/* Allstar Galaxy V255 — shared finalized header motion and page-theme parity */
+@keyframes asg-header-pulse-v255{
+  0%,100%{filter:drop-shadow(0 0 7px rgba(var(--page-accent-rgb),.62)) brightness(1);}
+  45%{filter:drop-shadow(0 0 15px rgba(var(--page-accent-rgb),1)) drop-shadow(0 0 25px rgba(var(--page-accent-rgb),.48)) brightness(1.13);}
+}
+@keyframes asg-active-nav-pulse-v255{
+  0%,100%{box-shadow:0 0 8px rgba(var(--page-accent-rgb),.42),inset 0 0 10px rgba(255,255,255,.06);}
+  45%{box-shadow:0 0 15px rgba(var(--page-accent-rgb),.95),0 0 28px rgba(var(--page-accent-rgb),.48),inset 0 0 16px rgba(255,255,255,.15);}
+}
+.page-home,.page-team{--header-pulse-duration:5.4s}
+.page-home .hero-logo img,.page-team .hero-logo img{animation:asg-header-pulse-v255 var(--header-pulse-duration) ease-in-out infinite!important;animation-delay:0s!important}
+.page-home .site-top nav>a.active,.page-team .site-top nav>a.active{animation:asg-active-nav-pulse-v255 var(--header-pulse-duration) ease-in-out infinite!important;animation-delay:1.15s!important}
+.page-home .hero-logo-right img,.page-team .hero-logo-right img{animation:asg-header-pulse-v255 var(--header-pulse-duration) ease-in-out infinite!important;animation-delay:2.3s!important}
+
+/* Preserve one identical desktop navigation geometry. */
+@media(min-width:901px){
+  .page-home .site-top nav,.page-home .site-top nav.site-nav-v3,
+  .page-team .site-top nav,.page-team .site-top nav.site-nav-v3{
+    width:calc(100% - clamp(60px,6vw,110px))!important;max-width:none!important;margin:0 auto!important;padding:7px 0 10px!important;
+    display:grid!important;grid-template-columns:repeat(8,minmax(0,1fr))!important;gap:clamp(7px,.8vw,12px)!important;align-items:stretch!important;box-sizing:border-box!important;
+  }
+  .page-home .site-top nav>a,.page-home .site-top nav.site-nav-v3>a,.page-home .site-top nav.site-nav-v3>.site-search-button-desktop,
+  .page-team .site-top nav>a,.page-team .site-top nav.site-nav-v3>a,.page-team .site-top nav.site-nav-v3>.site-search-button-desktop{
+    width:100%!important;min-width:0!important;min-height:48px!important;height:48px!important;padding:10px 8px!important;border-radius:8px!important;
+    font-size:clamp(.76rem,.82vw,.9rem)!important;letter-spacing:.045em!important;line-height:1!important;display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important;box-sizing:border-box!important;
+  }
+}
