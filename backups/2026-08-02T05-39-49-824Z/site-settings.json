@@ -1,0 +1,158 @@
+{
+  "version": 231,
+  "branding": {
+    "teamName": "Allstar Galaxy",
+    "navigationTitle": "images/titles/page-titles/navigation-title.png",
+    "leftLogo": "images/logos/logo.png",
+    "rightLogo": "images/logos/logo.png",
+    "favicon": "images/logos/favicon.png",
+    "accentColor": "#ffd700"
+  },
+  "navigation": [
+    {
+      "key": "home",
+      "label": "Home",
+      "href": "index.html",
+      "visible": true,
+      "order": 1
+    },
+    {
+      "key": "team",
+      "label": "Team",
+      "href": "team.html",
+      "visible": true,
+      "order": 2
+    },
+    {
+      "key": "updates",
+      "label": "Updates",
+      "href": "updates.html",
+      "visible": true,
+      "order": 3
+    },
+    {
+      "key": "media",
+      "label": "Media",
+      "href": "media.html",
+      "visible": true,
+      "order": 4
+    },
+    {
+      "key": "live",
+      "label": "Live",
+      "href": "livestream.html",
+      "visible": true,
+      "order": 5
+    },
+    {
+      "key": "follow",
+      "label": "Follow",
+      "href": "follow.html",
+      "visible": true,
+      "order": 6
+    }
+  ],
+  "pages": {
+    "home": {
+      "visible": true,
+      "title": "Allstar Galaxy | Home",
+      "description": "Browse the best moments from the Allstar Galaxy archive, including goals, saves, assists, awards, and featured highlights."
+    },
+    "team": {
+      "visible": true,
+      "title": "Allstar Galaxy | Team",
+      "description": "Meet the Allstar Galaxy roster."
+    },
+    "media": {
+      "visible": true,
+      "title": "Allstar Galaxy | Media",
+      "description": "Explore the complete Allstar Galaxy media archive."
+    },
+    "live": {
+      "visible": true,
+      "title": "Allstar Galaxy | Live",
+      "description": "Watch Allstar Galaxy livestreams and replays."
+    },
+    "follow": {
+      "visible": true,
+      "title": "Allstar Galaxy | Follow",
+      "description": "Follow Allstar Galaxy on social media."
+    },
+    "about": {
+      "visible": true,
+      "title": "Allstar Galaxy | About",
+      "description": "About Allstar Galaxy."
+    },
+    "updates": {
+      "visible": true,
+      "title": "Allstar Galaxy | Updates",
+      "description": "View the latest schedule, results, standings, announcements, and Allstar Galaxy news."
+    }
+  },
+  "social": {
+    "youtube": "https://www.youtube.com/@Allstar-Galaxy",
+    "instagram": "https://www.instagram.com/allstargalaxysoccer/",
+    "facebook": "https://www.facebook.com/profile.php?id=61591642103786",
+    "tiktok": "https://www.tiktok.com/@allstar.galaxy",
+    "x": "https://x.com/Allstar__Galaxy",
+    "email": "allstargalaxy@example.com"
+  },
+  "footer": {
+    "copyright": "\u00a9 2026 Allstar Galaxy.",
+    "showAboutLink": true,
+    "aboutLabel": "About",
+    "showAdminLink": true,
+    "adminLabel": "Admin",
+    "adminHref": "admin/",
+    "xitlaliLogo": "images/managed/xitlali-media-logo.png"
+  },
+  "homeSections": [
+    {
+      "key": "latest-games",
+      "selector": "#latest-games",
+      "label": "Latest Games",
+      "visible": true,
+      "order": 1
+    },
+    {
+      "key": "explore-galaxy",
+      "selector": "#explore-galaxy",
+      "label": "Explore the Galaxy",
+      "visible": true,
+      "order": 2
+    }
+  ],
+  "announcementBar": {
+    "enabled": true,
+    "intervalSeconds": 6,
+    "transition": "fade",
+    "priorityMessage": "",
+    "messages": [
+      {
+        "icon": "\u2b50",
+        "text": "Open a Latest Games card to choose from every available game video.",
+        "href": "index.html#latest-games"
+      },
+      {
+        "icon": "\ud83c\udf0c",
+        "text": "Try Galaxy Shuffle and let the Galaxy select a random game for you.",
+        "href": "media.html#galaxy-shuffle"
+      },
+      {
+        "icon": "\ud83c\udfac",
+        "text": "Visit Media to explore games, awards, seasons, playlists, and the complete archive.",
+        "href": "media.html"
+      },
+      {
+        "icon": "\ud83d\udc65",
+        "text": "Meet the Allstar Galaxy roster and open every player profile on the Team page.",
+        "href": "team.html"
+      },
+      {
+        "icon": "\ud83d\udcc5",
+        "text": "Check the latest schedule, match results, and league standings.",
+        "href": "updates.html#match-center"
+      }
+    ]
+  }
+}
